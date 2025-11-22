@@ -1,0 +1,6 @@
+{
+  "status": "skeleton_mode",
+  "templates": {
+    "default": "This is a placeholder response for {drug}."
+  }
+}
