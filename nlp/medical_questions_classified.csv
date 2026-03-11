@@ -1,0 +1,41 @@
+question,intent
+Are there ways to prevent sleep apnea or treat it naturally?,FOOD_INTERACTION
+What will mutation in runx2 affect in the future?,MEDICAL_DEFINITION
+how long does a minor cornea injury take to heal without medical attention?,DRUG_INTERACTION
+what drug or combination of drugs is most popular for treating stage 4 copd?,DRUG_INTERACTION
+what causes left sided facial numbness?,REDIRECT_MEDICINE_QUERY
+how can i lower my cortisol level?,NOT_RECOGNIZED
+what is a t wave abnormality?,MEDICAL_DEFINITION
+what is fbn1 mutation?,MEDICAL_DEFINITION
+what does cad without angina mean?,DRUG_INTERACTION
+what is tamsulosin used for?,USES_INDICATIONS
+what is nondisjunction and what causes it?,REDIRECT_MEDICINE_QUERY
+what effects does gene therapy have on an organism?,SIDE_EFFECTS
+how does cbd effect liver enzymes?,NOT_RECOGNIZED
+what are side effects for suddenly stopping metoprolol?,SIDE_EFFECTS
+is pcos linked to oxidative stress?,NOT_RECOGNIZED
+what are side effects of using formoterol?,SIDE_EFFECTS
+what is the effect of low vitamin D?,MEDICAL_DEFINITION
+What are the short and long term effects of surgery and its complexity for women with ovarian cyst?,DRUG_INTERACTION
+what are the symptoms and treatments for ibs?,FOOD_INTERACTION
+what can happen if you are prescribed thyroid meds but don't take them?,STEWARDSHIP_MISSED
+what can be done for severe elbow pain?,USES_INDICATIONS
+in an adult with type 2 diabetes would metformin or ketogenic diet be the most effective option to lower a1c levels?​,DRUG_INTERACTION
+can i use Sudafed after using Afrin for nasal congestion?,DRUG_INTERACTION
+what are possible long-term outcomes of not treating anorexia?,FOOD_INTERACTION
+what can cause acute fractures in both of your hands when there hasn’t been injury or trauma?,REDIRECT_MEDICINE_QUERY
+what are the possible complications for a person that has yellow fever?,SIDE_EFFECTS
+what medication has a drug interaction with high blood pressure?,DRUG_INTERACTION
+how to live with huntington's disease?,DRUG_INTERACTION
+when should i treat high blood pressure?,FOOD_INTERACTION
+What are the side effects of opdivo treatment for melanoma?,SIDE_EFFECTS
+how can ptsd be treated/managed?,FOOD_INTERACTION
+what treatments options are available for atherosclerosis?,FOOD_INTERACTION
+why do i bruise so easily?,REDIRECT_MEDICINE_QUERY
+what is the best test to rule out a lumbar disc herniation?,REDIRECT_MEDICINE_QUERY
+what are the effectiveness of physical therapy interventions in reducing pain in patients with lumbar disc herniation?,DRUG_INTERACTION
+what has turned my skin gray and scaly?,REDIRECT_MEDICINE_QUERY
+is it possible to quit taking amlodipine after taking for many years?,STEWARDSHIP_MISSED
+"if hct is 34, does pt need blood transfusion?",NOT_RECOGNIZED
+how to breathe when you are short of breath?,FOOD_INTERACTION
+for how long after cataract surgery do i keep dropping eye drops?,REDIRECT_MEDICINE_QUERY
