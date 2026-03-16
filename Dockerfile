@@ -60,4 +60,4 @@ EXPOSE 10000
 # -w 2: Two worker processes
 # --threads 4: Four concurrent threads per worker
 # app:app : Points to 'app.py' file and the 'app' flask object inside it
-CMD ["gunicorn", "-w", "2", "--threads", "4", "-b", "0.0.0.0:10000", "app:app"]
+CMD ["gunicorn", "-w", "2", "--threads", "4", "-b", "0.0.0.0:10000", "app:app", "npm", "run", "dev", "--", "--host"]
