@@ -1,0 +1,1139 @@
+seID,antibioticID,seName,duration,occurrencePattern,description,referenceID,validatorID
+SE001,A025,Diarrhea,Not specified,Not specified,Loose or watery stools; may resolve after stopping medication.,"R022
+R023",
+SE002,A025,Nausea,1-3 days,Early during treatment,Feeling of sickness or upset stomach.,"R022
+R023",
+SE003,A025,Stomach Pain,1-3 days,Early during treatment,Discomfort or pain in the lower abdomen.,"R022
+R023",
+SE004,A025,Headache,1-3 days,During treatment,Mild to moderate pain in the head.,"R022
+R023",
+SE005,A025,Dizziness,1-3 days,During treatment,Feeling lightheaded or unsteady.,"R022
+R023",
+SE006,A025,Vaginal Discharge / Itching,1-3 days,During or after treatment,"Itching, irritation, or unusual discharge.","R022
+R023",
+SE007,A025,Back Pain,1-3 days,During treatment,Mild discomfort in lower back.,"R022
+R023",
+SE008,A025,Menstrual Pain,1-3 days,During treatment,Increased cramps or discomfort during menstruation.,"R022
+R023",
+SE009,A025,Sore Throat / Stuffy Nose,1-3 days,During treatment,Mild throat irritation or nasal congestion.,"R022
+R023",
+SE010,A025,Rash,1-3 days ,During treatment,Mild skin redness or irritation.,"R022
+R023",
+SE011,A026,Diarrhea,1-3 days,"Common, early during treatment","Loose or watery stools, usually mild and temporary.",R024,
+SE012,A026,Nausea,1-2 days,"Common, may occur shortly after taking",Feeling of queasiness or stomach upset.,R024,
+SE013,A026 ,Vaginitis,Several days,Occasionally,"Irritation or infection of the vagina, may cause itching or discharge.",R024,
+SE014,A026,Headache,1-2 days,Occasionally,Mild to moderate pain.,R024,
+SE015,A026,Dizziness,Few hours to 1 day,"Rare, may occur during treatment",Feeling lightheaded or unsteady.,R024,
+SE016,A026,Asthenia,1-2 days,Rare,Generally feeling of weakness or lack of energy.,R024,
+SE017,A026,Dyspepsia,1-2 days,Rare,"Upset stomach, indigestion, or discomfort in the upper abdomen.",R024,
+SE018,A026,Abdominal Pain,1-2 days,Rare,Mild stomach cramps or discomfort.,R024,
+SE019,A026,Rash,1-3 days ,Rare,"Skin redness, irrittation, or small bumps.",R024,
+SE020,A026,Back Pain,1-2 days,Rare,Mild discomfort in lower back.,R024,
+SE021,A026,Dysmenorrhea,1-2 days,Rare ,Mild mentrual cramps in female patients.,R024,
+SE022,A026,Pharyngitis,1-3 days,Rare,Sore throat or mild irritation in the throat.,R024,
+SE023,A026,Vestibular Loss,Variable,"Very rare, overdose-related","Loss of balance or issues with inner ear, may occur in overdose situations.",R024,
+SE024,A026,Impaired Hearing,Variable,"Very rare, overdose-related",Temporary hearing problems reported in overdose cases.,R024,
+SE025,A026,Metallic Taste,Few hours,"Very rare, overdose-related",Altered or metallic taste in the mouth.,R024,
+SE026,A026,Taste Changes,Few hours,"Very rare, overdose-related",General change or decline in taste perception.,R024,
+SE027,A027,Nausea,Short-term; during treatment,May occur during or shortly after infusion,Feeling sick to the stomach. Usually mild to temporary.,R026,
+SE028,A027,Vomiting,Short-term,May happen during treatment,Throwing up after receiving the medicine.,R026,
+SE029,A027,Diarrhea,During treatment or even weeks after,Can occur anytome while using or after stopping the drug,Loose or water stools. Severe cases may indicate C. difficile infection.,R026,
+SE030,A027,Headache,Temporary,May appear during therapy,Mild to moderate head pain.,R026,
+SE031,A027,Injection Site Reaction,Short-term,At or shortly after IV administration,"Pain, redness, or swelling at the injection site.",R026,
+SE032,A027,Rash,Temporary,Can occur during treatment,Skin redness or itching due to allergic reaction.,R026,
+SE033,A027,Hypersensitivity Reaction,Immediate or shortly after dose,Rare but serious,"Severe allergic reaction such as swelling, breathing difficulty, or hives. Needs urgent care.",R026,
+SE034,A027,Hypokalemia ,During prolonged or high-dose use,More common in long-term therapy,"Low potassium levels which may cause weakness, muscle cramps, or irregular heartbeat.",R026,
+SE035,A027,Elevated Liver Enzymes,During treatment,Usually detected in lab tests,Mild increase in liver enzymes seen in blood tests. Often reversible.,R026,
+SE036,A027,Sodium Overload,During treatment,More likely in high doses,High sodium levels that may worsen heart failure or high blood pressure.,R026,
+SE037,A012,Nausea,Not Specified,Common,Effects are usually mild. Sensation of having to vomit or having the urge to vomit.,"R037
+R056",
+SE038,A012,Vomiting,Not Specified,Common,Effects are usually mild. Forceful ejection stomach contents through the mouth.,"R037
+R057",
+SE039,A012,Diarrhea,Not Specified,Common,"Effects are usually mild. Loose, watery stools during a bowl movement","R037
+R076",
+SE040,A012,Abdominal Pain,Not Specified,Common,Effects are usually mild; pain felt anywhere between the chest and groin.,"R037
+R058",
+SE041,A012,Headache,Not Specified,Rare,Discomfort in the head or face,R037,
+SE043,A012,Palpitations,Not Specified,Not Specified,"Minor side effect; feeling like your heart is missing heartbeats, racing or pounding felt in chest, throat or neck.","R037
+R059",
+SE044,A012,Chest pain,Not Specified,Not Specified,Minor side effect; Pain felt between neck and belly,R037,
+SE045,A012,Dyspepsia,Not Specified,Not Specified,Minor side effect; pain or discomfort in the upper abdomen,R037,
+SE046,A012,Flatulence,Not Specified,Not Specified,Minor side effect; body releases gas in your digestive system through your anus.,R037,
+SE047,A012,Melena,Not Specified,Not Specified,"Minor side effect; black, tarry stool caused by internal bleeding","R037
+R060",
+SE048,A012,Cholestatic jaundice,Not Specified,Not Specified,"Minor side effect; yellowing of skin and whites of the eyes, fatigue ",R037,
+SE050,A012,Vaginitis,Not Specified,Not Specified,Minor side effect; inflammation of the vagina,R037,
+SE051,A012,Nephritis,Not Specified,Not Specified,"Minor side effect; inflammation of one or both kidneys, which can leak protein into urine and impair the body's ability to absorb water and lead to tissue swelling","R037
+R061",
+SE053,A012,Vertigo,Not Specified,Not Specified,Minor side effect; false sensation of motion such as spinning or swaying,R037,
+SE054,A012,Somnolence,Not Specified,Not Specified,Minor side effect; feeling tired and wanting to fall asleep,R037,
+SE055,A012,Fatigue,Not Specified,Not Specified,"Minor side effect; feeling of weariness, tiredness, or lack of energy","R037
+R062",
+SE056,A012,Rash,Not Specified,Not Specified,"Minor side effect; red, bumpy, often itchy skin",R037,
+SE058,A012,Photosensitivity,Not Specified,Not Specified,"Minor side effect; skin reacts negatively to sunlight or UV rays that causes an itchy, painful rash","R037
+R063",
+SE059,A012,Angioedema,Not Specified,Caused by allergies,"Minor side effect; swelling in the tissue under your skin, commonly seen in the lips, eyelids, tongue, genitals, hands or feet","R037
+R064",
+SE061,A012,Transient reductions in neutrophil counts,Short-term,Not Specified,"Reversible side effect; neutrophils, a type of white blood cell, are decreased, but eventually turns back to normal","R037
+",
+SE062,A028,Nausea,Few hours,"Common, may happen during or shortly after infusion",Feeling of wanting to vomit; usually mild and goes away on its own.,"R027
+R028",
+SE063,A028,Vomiting,Few hours,"Common, may happen during infusion",Forceful expulsion of stomach contents; usually mild and stops after the dose.,"R027
+R028",
+SE064,A028,Diarrhea,Few days,"Common, may occue while taking the drug","Loose or watery stools; usually mild, stops after treatment.","R027
+R028",
+SE065,A028,Headache,Few hours to a day,"Common, may happen during treatment",Mild to moderate head pain; usually temporary.,"R027
+R028",
+SE066,A028,Hypokalemia ,During treatment,"Common, can happen while on drug","Low potassium; may cause muscle weakness, cramps, or irregular heartbeat; often corrected with supplements","R027
+R028",
+SE067,A028,Hypernatremia,During treatment,"Common, can happen while on drug","High sodium in blood; may cause thirst, swelling, or confusion if severe.","R027
+R028",
+SE068,A028,Hypocalcemia,During treatment,"Common, can happen while on drug","Low calcium; may cause muscle cramps, tingling, or numbness; usually mild and temporary.","R027
+R028",
+SE069,A028,Hypophosphatemia,During treatment,"Common, can happen while on drug",Low phosphate; may cause weakness or bone/muscle pain; usually mild.,"R027
+R028",
+SE070,A028,Transaminase elevations,During treatment,"Common, usually mild",Liver enzymes increase; usually no symptoms and reversible after stopping drug.,"R027
+R028",
+SE071,A028,Neutropenia,During treatment,"Common, may happen during therapy",Low white blood cell count; can increase infection risk; monitored with blood tests.,"R027
+R028",
+SE072,A028,Anemia,Rare,"Rare, hardly happens","Low red blood cells; may cause fatigue, weakness, or shortness of breath.",R028,
+SE073,A028,Thrombocytopenia,Rare,"Rare, hardly happens",Low platelet count; may cause easy bruising or bleeding.,R028,
+SE074,A028,Rash,Hours to few days,"Rare, can happen","Skin redness, bumps, or hives, may be allergic reaction.","R027
+R028",
+SE075,A028,Infusion Site Reaction,Short-term,"Rare, may happen","Pain, redness, or swelling at IV site; usually mild.",R028,
+SE076,A028,Peripheral Edema,During treatment,"Rare, may happen","Swelling in hands, feet, or ankles; usually mild.",R028,
+SE077,A028,Dysgeusia,During treatment,"Rare, may happen",Unpleasant taste in mouth; usually mild and temporary,R028,
+SE078,A028,Constipation,During treatment,"Rare, may happen",Difficulty passing stools; usually mild and temporary.,R028,
+SE079,A028,Hearing Loss,During treatment,"Rare, may happen",Temporary or mild hearing changes reported rarely.,R028,
+SE080,A028,Dyspnea,During treatment,"Rare, may happen",Shortness of breath; can happen in allergic reactions or fluid overload.,R028,
+SE081,A028,Anaphylaxis,Immediate,"Very rare, emergency","Severe allergic reaction with difficulty breathing, swelling, low blood pressure; needs emergency care.",R028,
+SE082,A028,Torsade de pointes ,During treatment,Very rare,Rare heart rthythm proble; can be life-threatening; monitored in high-risk patients.,R028,
+SE083,A028,C. difficile-associated diarrhea,During or weeks after therapy,Very rare,Severe diarrhea cause by bacterial overgrowth; requires medical attention.,R028,
+SE084,A028,Vertigo,During treatment,Very rare,Feeling of spinning or dizziness; usually temporary.,R028,
+SE085,A028,Visual Impairment ,Rare,Very rare,Temporary vision changes reported in isolated cases.,R028,
+SE086,A029,Abdominal Pain,Short-term,Can occur sooner after taking,Mild to moderate stomach discomfort.,"R029
+R030",
+SE087,A029,Back Pain,Short-term,Occasionally reported,Mild back pain.,"R029
+R030",
+SE088,A029,Diarrhea,Short-term,Can occur within first days,Mild loose stools; monitor for severe watery or bloody diarrhea.,"R029
+R030",
+SE089,A029,Dizziness,Short-term,Occasionally reported,"May cause lightheadedness, affecting activities.","R029
+R030",
+SE090,A029,Headache,Short-term,Occasionally reported,Mild headache.,"R029
+R030",
+SE091,A029,Heartburn,Short-term,Occasionally reported,Mild discomfort or burning in chest.,"R029
+R030",
+SE092,A029,Nausea,Short-term,Occasionally reported,Feeling of sickness or queasiness.,"R029
+R030",
+SE093,A029,Runny Nose,Short-term,Rare,Mild nasal discharge.,"R029
+R030",
+SE094,A029,Unexplained Weakness,Short-term,Rare,Feeling unusually tired or weak.,"R029
+R030",
+SE095,A029,Rash,Short-term,Rare but serious,Skin rash; contact doctor if persistent.,"R029
+R030",
+SE096,A029,Vaginal Itching,Short-term,Rare,Mild itching; may indicate yeast overgrowth.,"R029
+R030",
+SE097,A029,Severe Allergic Reaction,Immediate,Very rare,"Hives, swelling, difficulty breathing, seek emergency care.","R029
+R030",
+SE098,A029,Symptoms of Bowel Inflammation,Short-term,Rare but serious,Persistent or bloody diarrhea with abdominal pain and/or fever; seek doctor immediately.,"R029
+R030",
+SE099,A009,Hypersensitivity Reactions,Not Specified,Not Specified,"Includes skin rashes, urticaria, eosinophilia, fever, reactions resembling serum sickness,, and anaphylaxis.",R014,
+SE100,A010,Hypersensitivity Reactions,Not Specified,Not Specified,"Includes skin rashes, urticaria, eosinophilia, fever, reactions resembling serum sickness,, and anaphylaxis.",R014,
+SE101,A009,Arrythmias,Not Specified,Not Specified,Arrythmias have been associated with rapid bolus administration through a central venous catheter.,R014,
+SE102,A015,Candidiasis,Not Specified,Uncommon,"Yeast infection caused by Candida albicans that commonly affects mouth, skin and vagina","R039
+R065",
+SE104,A015,Pneumonia,Not Specified,Uncommon,"difficulty breathing that can cause fever and cough with yellow, green or blood mucus","R039
+",
+SE105,A015,Fungal Infections,Not Specified,Uncommon,"condition caused by fungus; usually affect skin, hair nails or mucous membranes","R039
+R066",
+SE107,A015,Pharyngitis,Not Specified,Uncommon,scratchy or burning feeling in the back of your throat; it may hurt to swallow or talk,"R039
+R055",
+SE108,A015,Gastroenteritis,Not Specified,Uncommon,inflammation of the lining of the stomach and intestines; vomiting and diarrhea,"R039
+R067",
+SE110,A015,Rhinitis,Not Specified,Uncommon,"nasal congestion, runny nose, sneezing, itching",R039,
+SE111,A015,Oral candidiasis,Not Specified,Uncommon,"Infection that affections your mouth, throat, tongue or esophagus; Causes raised, white sores to develop, along with mouth pain, irritation and redness","R039
+R065",
+SE112,A015,Leukopenia,Not Specified,Uncommon,lower-than-normal number of white blood cells,R039,
+SE114,A015,Eosinophilia,Not Specified,Uncommon,"unusually high number of eosinophils (type of white blood cell) in blood; High number of eosinophils crowd at specific areas of the body, causing medical conditions linked to inflammation that can affecti multiple areas of the body.","R039
+R068",
+SE115,A015,Angioedema,Not Specified,Uncommon,"swelling in the tissue under your skin, commonly seen in the lips, eyelids, tongue, genitals, hands or feet","R039
+R064",
+SE119,A015,Insomnia,Not Specified,Uncommon,difficulty falling asleep or staying asleep,R039,
+SE120,A015,Agitation,Not Specified,Rare,state of severe restlessness or inner tension,R039,
+SE121,A015,Headache,Not Specified,Common,Discomfort in the head or face,R039,
+SE123,A015,Somnolence,Not Specified,Uncommon,feeling tired and wanting to fall asleep,R039,
+SE124,A015,Dysguesia,Not Specified,Uncommon,"all foods taste metallic, sweet, sour or bitter","R039
+R070",
+SE126,A015,Vertigo,Not Specified,Uncommon,false sensation of motion such as spinning or swaying,R039,
+SE127,A015,Palpitations,Not Specified,Uncommon,"feeling like your heart is missing heartbeats, racing or pounding felt in chest, throat or neck.","R039
+R059",
+SE128,A015,Hot flush,Not Specified,Uncommon,"sudden feeling of warmth in the upper body mostly affecting the face, neck and chest",R039,
+SE129,A015,Diarrhoea,Not Specified,Very Common,"Loose, watery stools.",R039,
+SE130,A015,Vomiting,Not Specified,Common,Effects are usually mild. Forceful ejection stomach contents through the mouth.,"R039
+R057",
+SE131,A015,Abdominal Pain,Not Specified,Common,pain felt anywhere between the chest and groin.,"R039
+R058",
+SE132,A015,Nausea,Not Specified,Common,Effects are usually mild. Sensation of having to vomit or having the urge to vomit.,"R039
+R056",
+SE133,A015,Decreased lymphocyte count and blood bicarbonate,Not Specified,Common,Low lymphocyte count can increase chances of getting sick; Low level of blood bicarbonate can cause metabolic acidosis or too much acid in the body.,"R039
+R073
+R074",
+SE134,A015,"Increased Eosinophil count, basophils, monocytes and neutrophils",Not Specified,Common,"This can lead to leukocytosis, which means the patient has a high white blood cell count than normal; Neutrophilia leukocytosis is caused by a high number of neutrophils (the most plentiful type of white blood cell, which helps resolve infections and heal damaged tissues).; Monocytosis is caused by a high number of monocytes (white blood cells that boost your immune responses).; Eosinophilia refers to high levels of eosinophils (white blood cells that play a role in fighting infections and inflammation). Eosinophilia is common and is often related to allergies, parasitic infections or autoimmune disorders; Basophilia, the rarest form of leukocytosis, is characterized by an increased number of basophils (white blood cells that play a role in fighting parasitic infections, preventing blood clotting and responding to allergic reactions).","R039
+R075",
+SE135,A030,Steven-Johnson Syndrome,Not specified,Not specified,"Stevens-Johnson syndrome (SJS) is a rare, serious disorder of the skin and mucous membranes. It's usually a reaction to medication that starts with flu-like symptoms, followed by a painful rash that spreads and blisters. Then the top layer of affected skin dies, sheds and begins to heal after several days.",R034,
+SE136,A030,Toxic epidermal necrolysis,Not specified,Not specified,Toxic epidermal necrolysis (TEN) is potentially life-threatening acute mucocutaneous Syndrome. It usually occurs because of inappropriate immune reactions to certain drugs. ,R033,
+SE137,A031,Steven-Johnson Syndrome,Not specified,Not specified,"Stevens-Johnson syndrome (SJS) is a rare, serious disorder of the skin and mucous membranes. It's usually a reaction to medication that starts with flu-like symptoms, followed by a painful rash that spreads and blisters. Then the top layer of affected skin dies, sheds and begins to heal after several days.",R034,
+SE138,A031,Toxic epidermal necrolysis,Not specified,Not specified,Toxic epidermal necrolysis (TEN) is potentially life-threatening acute mucocutaneous Syndrome. It usually occurs because of inappropriate immune reactions to certain drugs. ,R033,
+SE139,A013,Gastrointestinal disturbances,Not Specified,Most frequent,Mild disease in the gastrointestinal tract,R038,
+SE141,A014,Angioedema and cholestatic jaundice,Not Specified,Happens during multiple-dose regimen,"Swelling in the tissue under your skin, commonly seen in the lips, eyelids, tongue, genitals, hands or feet; yellowing of skin and whites of the eyes","R038
+R064",
+SE142,A014,Nausea,Not Specified,Happens during multiple-dose regimen,Sensation of having to vomit or having the urge to vomit.,"R038
+R056",
+SE143,A014,Vomiting,Not Specified,Happens during multiple-dose regimen,Forceful ejection stomach contents through the mouth.,"R038
+R057",
+SE144,A014,Diarrhea,Not Specified,Happens during multiple-dose regimen,"Loose, watery stool during a bowl movement","R038
+R076",
+SE145,A014,Abdominal Pain,Not Specified,Happens during multiple-dose regimen,Pain felt anywhere between the chest and groin.,"R038
+R058",
+SE146,A014,Palpitations and chest pain,Not Specified,Not Specified,"Feeling like your heart is missing heartbeats, racing or pounding felt in chest, throat or neck; Pain felt between neck and belly","R038
+R059",
+SE147,A014,Dyspepsia,Not Specified,Not Specified,Pain or discomfort in the upper abdomen,R038,
+SE148,A014,Flatulence,Not Specified,Not Specified,Body releases gas in your digestive system through your anus.,R038,
+SE149,A014,Melena,Not Specified,Not Specified,"Black, tarry stool caused by internal bleeding","R038
+R060",
+SE151,A014,Vaginitis,Not Specified,Not Specified,Inflammation of the vagina,R038,
+SE152,A014,Nephritis,Not Specified,Not Specified,"Inflammation of one or both kidneys, which can leak protein into urine and impair the body's ability to absorb water and lead to tissue swelling","R038
+R061",
+SE154,A014,Vertigo,Not Specified,Not Specified,false sensation of motion such as spinning or swaying,R038,
+SE155,A014,Somnolence,Not Specified,Not Specified,feeling tired and wanting to fall asleep,R038,
+SE156,A014,Fatigue,Not Specified,Not Specified,"feeling of weariness, tiredness, or lack of energy","R038
+R062",
+SE157,A014,Rash,Not Specified,Not Specified,"red, bumpy, often itchy skin",R038,
+SE158,A014,Photosensitivity,Not Specified,Not Specified,"Skin reacts negatively to sunlight or UV rays that causes an itchy, painful rash","R038
+R063",
+SE159,A016,Skin Rash,Not Specified,Common,A general skin reaction,R015,
+SE160,A016,Diarrhea,Not Specified,Common,Gastrointestinal disturbance,R015,
+SE161,A016,Nausea,Not Specified,Common,Gastrointestinal disturbance,R015,
+SE162,A016,Vomiting,Not Specified,Uncommon,Gastrointestinal disturbance,R015,
+SE163,A016,Urticaria,Not Specified,Uncommon,A skin reaction (hives),R015,
+SE164,A016,Pruritus,Not Specified,Uncommon,Itching,R015,
+SE165,A017,Superficial Tooth Discoloration,Reversible (can usually be removed by brushing),"Not specifically classified by frequency, but reported in children",Affects Amoxil 100 mg/mL oral drops and Amoxil Forte oral suspension; can often be prevented by good oral hygiene,R015,
+SE166,A017,Skin Rash,Not Specified,Common,A general skin reaction,R015,
+SE167,A017,Diarrhea,Not Specified,Common,Gastrointestinal disturbance,R015,
+SE168,A017,Nausea,Not Specified,Common,Gastrointestinal disturbance,R015,
+SE169,A017,Vomiting,Not Specified,Uncommon,Gastrointestinal disturbance,R015,
+SE170,A017,Urticaria,Not Specified,Uncommon,A skin reaction (hives),R015,
+SE171,A017,Pruritus,Not Specified,Uncommon,Itching,R015,
+SE172,A034,Overgrowth fungal/ C. difficile,Not specified,Common (>1/100 to <1/10),"Clostridioides difficile is a bacterium that causes an infection of the colon, the longest part of the large intestine. Symptoms can range from diarrhea to life-threatening damage to the colon. The bacterium is often called C. difficile or C. diff.","R035
+R072",
+SE173,A034,Leucopenia,Not specified,Very rare,"Leukopenia (low white blood cell count) happens when you have a lower-than-normal number of white blood cells. Specifically, you have fewer neutrophils than normal. Neutrophils are white blood cells that act as your immune system’s first line of defense. Without enough white blood cells, you’re more vulnerable to developing infections.","R035
+R276",
+SE174,A034,Neutropenia ,Not specified,Very rare,Neutropenia involves having lower-than-normal levels of neutrophils (a type of white blood cell) in your blood.,"R035
+R139",
+SE175,A034,Thrombocytopenia,Not specified,Very rare,Thrombocytopenia occurs when your bone marrow doesn’t make enough platelets. Platelets are blood cells that form blood clots to help stop bleeding. People with this condition may bleed a lot and the bleeding may be hard to stop. Thrombocytopenia affects people with certain medical conditions like autoimmune disease or who take certain medications.,"R035
+R140",
+SE176,A034,Agranulocytosis,Not specified,Very rare,Agranulocytosis refers to having severely low neutrophil levels. Neutrophils are a type of white blood cell. They fight germs that make you sick. Untreated agranulocytosis can lead to life-threatening infections.,"R035
+R277",
+SE177,A034,Megaloblastic anaemia,Not specified,Very rare,"Megaloblastic anemia is a form of macrocytic anemia, a blood disorder that happens when your bone marrow produces stem cells that make abnormally large red blood cells. Megaloblastic anemia is a type of vitamin deficiency anemia that happens when you don’t get enough vitamin B12 and/or vitamin B9 (folate). ","R035
+R278",
+SE178,A034,Aplastic anaemia,Not specified,Very rare,"Aplastic anemia is a rare but serious blood disorder. It happens when something damages your bone marrow so it can’t make enough new blood cells and platelets. Left untreated, aplastic anemia is a life-threatening condition.","R035
+R279",
+SE179,A034,"haemolytic
+anaemia",Not specified,Very rare,"Hemolytic anemia is a blood disorder that typically happens when your red blood cells break down or die faster than your body can replace them with new blood cells. People may develop hemolytic anemia by inheriting genetic conditions that cause anemia, certain infections and certain medications. ","R035
+R280",
+SE180,A034,methaemoglobinaemia,Not specified,Very rare,"Methemoglobinemia (MetHb) is a rare blood disorder that affects how red blood cells deliver oxygen throughout your body. Not everyone has symptoms, but nearly all people with this condition have skin, nails or lips that are a distinctive shade of blue or purple.","R035
+R281",
+SE181,A034,eosinophilia,Not specified,Very rare,Eosinophilia happens when your body produces an unusually high number of eosinophils. Eosinophils are one of several white blood cells that support your immune system.,"R035
+R068",
+SE182,A034,purpura,Not specified,Very rare,"Purpura causes red, purple or brown blood spots on your skin. It happens when small blood vessels leak blood under your skin’s surface. ","R035
+R185",
+SE183,A034,haemolysis in certain susceptible G-6-PD deficient patients,Not specified,Very rare,Hemolysis is the medical term used to describe the destruction of red blood cells. Your body is constantly destroying old or damaged red blood cells and replacing them with new ones.,"R035
+R282",
+SE184,A034,Serum sickness,Not specified,Very rare,"Serum sickness is an allergic reaction to certain proteins in medicines. Symptoms may include hives, swelling, fever, rash and joint pain. ","R035
+R186",
+SE185,A034,anaphylactic reaction,Not specified,Very rare,"Anaphylaxis is when you have a severe allergic reaction. Most commonly, it happens after you eat certain foods or get stung by an insect. Going into anaphylactic shock can be life-threatening.","R035
+R283",
+SE186,A034,allergic myocarditis,Not specified,Very rare,"Myocarditis is inflammation of the heart muscle, or myocardium. This inflammation weakens your heart muscle, making it harder for your heart to pump. This can be caused by viral infections or inflammatory conditions.","R035
+R284",
+SE187,A034,"hypersensitivity vasculitis resembling Henoch-Schönlein-
+purpura",Not specified,Very rare,"Henoch-Schonlein purpura causes the small blood vessels in the skin, joints, intestines and kidneys to become inflamed and bleed. The most noticeable symptom of this form of vasculitis is a rash that often appears on the legs and feet. Henoch-Schonlein purpura also can cause belly pain and aching joints. Rarely, the condition may cause serious kidney damage.","R035
+R285",
+SE188,A034,periarteritis nodosa,Not specified,Very rare,Polyarteritis nodosa or PAN is a rare condition of inflamed blood vessels that hurt your organs. You can have symptoms in many parts of your body at one time. ,"R035
+R286",
+SE189,A034,systemic lupus erythematosus,Not specified,Very rare,"Systemic lupus erythematosus (SLE) is a systemic autoimmune disease with multisystem involvement and is associated with significant morbidity and mortality. Genetic, immunological, endocrine, and environmental factors influence the loss of immunological tolerance against self-antigens leading to the formation of pathogenic autoantibodies that cause tissue damage through multiple mechanisms.","R035
+R187",
+SE190,A034,haemophagocytic lymphohistiocytosis,Not specified,Very rare,Hemophagocytic lymphohistiocytosis is a rare and often life-threatening condition if left untreated. HLH causes your immune system to attack your body instead of a foreign invader like a virus. The condition is either acquired or genetic and there’s no way to prevent it.,"R035
+R287",
+SE191,A034,"Severe hypersensitivity reactions associated with
+Pneumocystis jirovecii pneumonia",Not specified,Very rare,"Pneumocystis carinii pneumonia (PCP), now referred to as Pneumocystis jirovecii pneumonia, is a fungal infection that most commonly affects the immunocompromised and, in some cases, can be severely life-threatening. Typically, patients at risk are those with underlying disease states that alter host immunity, such as cancer, human immunodeficiency virus, transplant recipients, or those taking immunosuppressive therapies and medications. Patients presenting with PCP may show signs of fever, cough, dyspnea, and, in severe cases, respiratory failure. ","R035
+R288",
+SE192,A034,thrombocytopenia,Not specified,Very rare,Thrombocytopenia occurs when your bone marrow doesn’t make enough platelets. Platelets are blood cells that form blood clots to help stop bleeding. People with this condition may bleed a lot and the bleeding may be hard to stop. Thrombocytopenia affects people with certain medical conditions like autoimmune disease or who take certain medications.,"R035
+R140",
+SE193,A034,hepatic enzyme increased,Not specified,Very rare,"If your blood test showed high (elevated) levels of liver enzymes, you could have a medical condition. Elevated liver enzymes may also be temporary.","R035
+R247",
+SE194,A034,"
+hyperkalaemia",Not specified,Very rare,"Hyperkalemia is a condition in which you have high potassium levels in your blood. You may not have any symptoms, or they may be easy to dismiss. Severe symptoms may cause muscle weakness or affect your heart. ","R035
+R289",
+SE195,A034,hyponatraemia,Not specified,Very rare,"Hyponatremia is when the amount of sodium in your blood is too low. Common causes include heart, liver, kidney and brain diseases, hormone issues and medications.","R035
+R290",
+SE196,A034,rhabdomyolysis,Not specified,Very rare,Rhabdomyolysis is a rare muscle injury where your muscles break down. This is a life-threatening condition that can happen after an injury or excessive exercise without rest. ,"R035
+R291",
+SE197,A034,Hyperkalaemia,Not specified,Very common,"Hyperkalemia is a condition in which you have high potassium levels in your blood. You may not have any symptoms, or they may be easy to dismiss. Severe symptoms may cause muscle weakness or affect your heart. ","R035
+R289",
+SE198,A034,Hypoglycaemia,Not specified,Very rare,Hypoglycemia (low blood sugar) is common in people who have diabetes. But it can also sometimes affect people without diabetes.,"R035
+R292",
+SE199,A034,hyponatraemia,Not specified,Very rare,"Hyponatremia is when the amount of sodium in your blood is too low. Common causes include heart, liver, kidney and brain diseases, hormone issues and medications.","R035
+R290",
+SE200,A034,decreased appetite,Not specified,Very rare,A loss of appetite is a symptom that can have many causes. This occurs when you don’t feel hungry. The medical term for a loss of appetite is anorexia. This is different from the eating disorder anorexia nervosa.,"R035
+R293",
+SE201,A034,metabolic acidosis,Not specified,Very rare,"Metabolic acidosis is a condition in which acids build up in your body. Causes include untreated diabetes, the loss of bicarbonate in your body and kidney conditions. Symptoms include an accelerated heartbeat, confusion and fatigue.","R035
+R294",
+SE202,A034,Depression,Not specified,Very rare,"Depression is a common mental health condition that causes a persistent feeling of sadness and changes in how you think, sleep, eat and act.","R035
+R295",
+SE203,A034,Hallucination,Not specified,Very rare,"Hallucinations are false perceptions of sensory experiences. Some hallucinations are normal, such as those caused by falling asleep or waking up. But others may be a sign of a more serious condition like schizophrenia or dementia.","R035
+R126",
+SE204,A034,Psychotic disorder,Not specified,Not known,"Psychosis is the term for a collection of symptoms that happen when a person has trouble telling the difference between what’s real and what’s not. This disconnection from reality can happen for several reasons, including many different mental and physical conditions. ","R035
+R296",
+SE205,A034,Headache,Not specified,Very rare,Headaches are a very common condition that most people will experience many times during their lives. The main symptom of a headache is pain in your head or face. ,"R035
+R203",
+SE206,A034,Meningitis aseptic,Not specified,Very rare,"Aseptic meningitis is an inflammatory condition of the meninges characterized by cerebrospinal fluid pleocytosis and negative bacterial cultures. Although generally considered a benign illness, it encompasses a wide range of etiologies and clinical manifestations, which vary depending on the underlying cause and the patient's immune status. ","R035
+R297",
+SE207,A034,seizure,Not specified,Very rare,"A seizure is abnormal electrical activity in your brain. It causes changes in awareness and muscle control. It also causes symptoms that affect your behavior and senses. Seizures can affect anyone at any age and there are a lot of possible causes, from an underlying medical condition to an injury or illness. ","R035
+R144",
+SE208,A034,neuropathy peripheral,Not specified,Very rare,"Peripheral neuropathy refers to any condition that affects the nerves outside your brain or spinal cord. This can happen for several reasons, from trauma to infections to inherited conditions. ","R035
+R298",
+SE209,A034,ataxia,Not specified,Very rare,"Ataxia is when you have problems coordinating how your muscles work, leading to awkward, unwieldy or clumsy movements. It’s a possible symptom with a wide range of conditions or circumstances, or it can happen as a stand-alone condition.","R035
+R299",
+SE210,A034,diziness,Not specified,Very rare,"Dizziness is a common issue. If you have dizziness, you may feel woozy and disoriented. You may feel as if you’re about to lose your balance. Many things may make you dizzy, such as anxiety or a reaction to medication. But dizziness may be a symptom of an underlying medical issue. ","R035
+R300",
+SE211,A034,Vertigo,Not specified,Very rare,"Vertigo causes dizziness and makes you feel like you’re spinning when you’re not. It most commonly occurs when there’s an issue with your inner ear. But you can also develop it if you have a condition affecting your brain, like a tumor or stroke.","R035
+R231",
+SE212,A034,tinnitus,Not specified,Very rare,"Tinnitus fills your ears with sounds no one else hears. It’s a common issue affecting more than 50 million people in the United States. Tinnitus can be severe, affecting people’s daily lives. Tinnitus isn’t a disease. It’s a symptom of several medical conditions.","R035
+R135",
+SE213,A034,Uveitis,Not specified,Very rare,"Uveitis is a condition where you have inflammation of the uvea, which includes the iris, ciliary body and choroid. It’s common, and vision loss is one of the possible complications (especially when uveitis is severe or goes untreated). ","R035
+R301",
+SE214,A034,Cough,Not specified,Very rare,"A cough is a forceful push of air that your body uses to clear irritants, mucus and germs out of your airways. Common causes include allergies, asthma, infections (like colds), chronic lung conditions and acid reflux. ","R035
+R302",
+SE215,A034,dyspnoea,Not specified,Very rare,"Dyspnea, or shortness of breath, is the feeling that you can’t get enough air into your lungs. It might feel like your chest is tight, you’re gasping for air or you’re working harder to breathe. Heart and lung conditions are common causes of dyspnea.","R035
+R303",
+SE216,A034,lung infiltration,Not specified,Very rare,"Lung infiltrates refer to abnormal substances or fluids within the lung tissue that can arise from various causes, including infections, pulmonary hemorrhage, drug toxicity, leukemic infiltration, and pulmonary edema, particularly in patients with hematologic malignancies.","R035
+R304",
+SE217,A034,Nausea,Not specified,Common,"Nausea can make it feel like your stomach is ready to do somersaults, sending whatever’s inside right back up and out.","R035
+R204",
+SE218,A034,diarrhoea,Not specified,Common,"Diarrhea means having a loose, watery stool during a bowel movement. It’s common in both children and adults and usually goes away on its own within a few days. ","R035
+R207",
+SE219,A034,Vomiting,Not specified,Uncommon,"Vomiting is when muscles in your belly, chest, neck and head work together to push whatever’s in your stomach out. This forceful expulsion of your stomach’s contents can be a symptom of many conditions","R035
+R210",
+SE220,A034,Glossitis,Not specified,Very rare,"Glossitis is inflammation that makes your tongue swollen, smooth or red. Allergic reactions, infections and dry mouth may cause it. ","R035
+R245",
+SE221,A034,stomatitis,Not specified,Very rare,"Stomatitis (oral mucositis) is inflammation in the tissue lining your mouth or lips. The most common types are cold sores and canker sores. Causes include infections, injuries, allergic reactions and cancer treatment side effects. ","R035
+R241",
+SE222,A034,pancreatitis,Not specified,Very rare,Pancreatitis is inflammation in your pancreas. It’s usually temporary (acute) but can also be a life-long (chronic) condition. The most common symptom is abdominal pain. The most common causes are alcohol use and gallstones.,"R035
+R242",
+SE223,A034,Jaundice cholestatic,Not specified,Very rare,"Cholestatic jaundice results from impaired bile flow, accumulating bile components, such as bilirubin, in the bloodstream. This condition can be classified as intrahepatic, caused by issues within the liver, or extrahepatic, resulting from obstructions outside the liver. Common clinical manifestations include jaundice, pruritus, fatigue, malabsorption of fats and fat-soluble vitamins, and the appearance of skin lesions such as xanthomas.","R035
+R305",
+SE224,A034,hepatic necrosis,Not specified,Very rare,"The clinical course of acute hepatic necrosis resembles an acute, toxic injury to the liver with sudden and precipitous onset, marked elevations in serum aminotransferase levels, and early signs of hepatic (or other organ) dysfunction or failure despite minimal or no jaundice. Rapid recovery after withdrawal of the agent is also typical. Other organ failure, such as lung, kidney or bone marrow, may also be present and may overshadow the hepatic injury. Acute hepatic necrosis is typically caused by a direct hepatotoxin and is usually dose dependent and “expected”, rather than idiosyncratic.","R035
+R306",
+SE225,A034,Transaminases increased,Not specified,Very rare,"Transaminitis is one result you might see on a standard blood test. It means you have high levels of certain liver enzymes in your blood. Enzymes called transaminases release from liver cells when something injures those cells. Alcohol, medications, viruses and metabolic diseases are among the possible causes of liver damage and transaminitis.","R035
+R307",
+SE226,A034,blood bilirubin increased,Not specified,Very rare,"Higher than usual levels of bilirubin may mean different types of liver or bile duct problems. Sometimes, higher bilirubin levels may be caused by an increased rate of destruction of red blood cells.","R035
+R308",
+SE227,A034,Rash,Not specified,Common,"Skin rashes can be red, inflamed, bumpy as well as dry, itchy or painful. The main cause is dermatitis, which is when your skin reacts to allergens or irritants. Bacteria, viruses, allergens and conditions including eczema, hives, and psoriasis can be the source of skin rashes.","R035
+R116",
+SE228,A034,Photosensitivity reaction,Not specified,Very rare,"Photosensitivity is when your skin reacts negatively to sunlight or UV rays. It causes an itchy, painful rash. Unlike a sunburn, symptoms can appear within minutes. ","R035
+R063",
+SE229,A034,dermatitis exfoliative,Not specified,Very rare,Exfoliative dermatitis is a serious skin condition that causes extreme shedding of the top layers of your skin. It may cover most of your body and lead to so much skin damage that your body can’t keep warm. Dehydration is also a risk due to your skin losing its ability to hold onto moisture.,"R035
+R309",
+SE230,A034,angioedema,Not specified,Very rare,"Angioedema is swelling in the tissue under your skin. It’s most common in your lips, eyelids, tongue, genitals, hands and feet. Causes include allergies, medication side effects, vibrations, inherited gene changes and some health conditions. 
+","R035
+R064",
+SE231,A034,fixed drug eruption,Not specified,Very rare,"The term fixed drug eruption (FDE) describes the development of one or more annular or oval erythematous patches as a result of systemic exposure to a drug. A vesicle or bulla may or may not occur at the center of  patch and these reactions normally resolve with hyperpigmentation and may recur at the same site with reexposure to the drug. Repeated exposure to the offending drug may also cause new lesions to develop in addition to ""lighting up"" the older hyperpigmented lesions. Lesions can occur anywhere on the body (ie, face, tongue, hands, feet, torso, extremities, and genitalia) but genitalia and oral muscosa are often favored.","R035
+R310",
+SE232,A034,erythema multiforme,Not specified,Very rare,"Erythema multiforme is your body’s reaction to an illness, infection or medicine. This condition affects your skin and causes a painful, itchy rash that looks like a bulls-eye or a target.","R035
+R119",
+SE233,A034,"Stevens-Johnson
+syndrome",Not specified,Very rare,"Stevens-Johnson syndrome (SJS) is a rare, serious disorder of the skin and mucous membranes. It's usually a reaction to medication that starts with flu-like symptoms, followed by a painful rash that spreads and blisters. Then the top layer of affected skin dies, sheds and begins to heal after several days.","R035
+R120",
+SE234,A034,toxic epidermal necrolysis,Not specified,Very rare,"Toxic epidermal necrolysis (TEN) is a life-threatening skin condition. It causes peeling and blistering skin over much of the body, including the mouth, eyes, and genitals. TEN is the most severe form of Stevens-Johnson syndrome.","R035
+R121",
+SE235,A034,"acute
+generalised exanthematous pustulosis",Not specified,Very rare,"Acute generalized exanthematous pustulosis (AGEP) comprises a severe cutaneous adverse reaction marked by the abrupt onset of sterile, nonfollicular pinpoint pustules on an erythematous base. Drug exposure, most frequently systemic antibiotics, is the primary cause, although viral infections and environmental triggers have also been implicated. Genetic predisposition, advanced age, and comorbid immune dysregulation are considered risk factors. AGEP is most often attributed to a type IV hypersensitivity mechanism involving drug-specific T cells, neutrophil activation, and cytokine release, although the pathophysiology remains incompletely characterized.","R035
+R311",
+SE236,A034,Acute febrile neutrophilic dermatosis,Not specified,Not known,"Acute febrile neutrophilic dermatosis (AFND), also known as Sweet syndrome or Gomm-Button disease, manifests as erythematous plaques and papules, coupled with constitutional symptoms like fever and malaise.","R035
+R312",
+SE237,A034,Drug reaction with eosinophilia and systemic symptoms,Not specified,Not known,"Drug reaction with eosinophilia and systemic symptoms (DRESS) is a T cell mediated, drug-specific immune response associated with end-organ damage.","R035
+R313",
+SE238,A034,Arthralgia,Not specified,Very rare,"Arthritis isn't a single condition but a broad term for many conditions affecting the joints. Arthritis typically is associated with pain that affects the ability to move a joint. It causes swelling and tenderness of one or more joints. The main symptoms are joint pain and stiffness, which can impact daily activities and work. ","R035
+R314",
+SE239,A034,myalgia,Not specified,Very rare,"Myalgia is the medical term for muscle pain, which has many causes. Many of them are easy to treat at home. But myalgia can also be a symptom of disease, especially when it’s widespread and long-lasting. ","R035
+R252",
+SE240,A034,Renal impairment,Not specified,Very rare,"Kidney failure is a condition in which one or both of your kidneys no longer work on their own. Causes include diabetes, high blood pressure and acute kidney injuries. Symptoms include fatigue, nausea and vomiting, swelling, changes in how often you go to the bathroom and brain fog. ","R035
+R254",
+SE241,A034,tubulointerstitial nephritis and uveitis syndrome,Not specified,Very rare,Tubulointerstitial nephritis and uveitis (TINU) syndrome is defined as the occurrence of tubulointerstitial nephritis (TIN) and uveitis in the absence of other systemic diseases.,"R035
+R315",
+SE242,A034,"renal tubular
+acidosis",Not specified,Very rare,"Renal tubular acidosis is when you have too much acid in your blood because of a problem with your kidneys. There are three main types of RTA. Causes may include genetic conditions, autoimmune diseases and certain medications. ","R035
+R316",
+SE243,A018,Gastrointestinal disturbances,Not Specified,Common,"Includes nausea, vomiting, diarrhea, glossitis, and stomatitis.",R017,
+SE244,A018,Hypersensitivity Reactions,Not Specified,Fairly Frequent,"Erythematous maculopapular rashes, urticaria, or rarely, anaphylaxis.",R017,
+SE245,A018,Hematologic and Lymphatic Systems,Not Specified,Rare,"Includes anemia, thrombocytopenia, and leukopenia; resolves after stopping therapy.",R017,
+SE246,A018,Central Nervous System Effects,Not Specified,Rare,"Reversable hyperactivity, agitation, anxiety, insomnia, confusion, behavioral changes, and/or dizziness.",R017,
+SE247,A019,Gastrointestinal Effects,Not Specified,Common,"Includes nausea, vomiting, enterocolitis, and diarrhea.",R017,
+SE248,A019,Hypersensitivity Reactions,Not Specified,Frequent,"Erythematous maculopapular rashes, urticaria, or rarely, anaphylaxis.",R017,
+SE249,A019,Hematologic and Lymphatic Systems,Not Specified,Rare,"Includes anemia, thrombocytopenia, and leukopenia; resolves after stopping therapy.",R017,
+SE250,A019,Hepatic,Not Specified,Rare,Moderate rise in aminotransferase and/or alanine aminotransferase enzymes.,R017,
+SE251,A032,Injection Site Reaction,5 days,During or immediately after administration,"Pain, swelling, or redness at the site where the medicine was injected.","R032, R322",
+SE252,A032,Diarrhea,2–3 days,During or shortly after treatment,"Loose or watery stools; usually mild, but should be monitored for severity.",R032,
+SE253,A032,Nausea / Vomiting,1–3 days,Early during treatment,Feeling of sickness or upset stomach; often improves if the body adjusts.,R032,
+SE254,A032,Abdominal Pain,1–3 days,Early during treatment,General abdominal discomfort or cramping.,R032,
+SE255,A032,Headache,1–3 days,During treatment,Mild to moderate aching in the head.,R032,
+SE256,A032,Dizziness,1–3 days,During treatment,"Feeling lightheaded, unsteady, or faint.",R032,
+SE257,A032,Vaginal Yeast Infection,3–7 days,During or after treatment,"Itching, irritation, or thick white discharge due to changes in bacterial flora.",R032,
+SE258,A032,Rash / Hives,1–3 days,During treatment,"Mild skin redness, itching, or small bumps.",R032,
+SE259,A032,Oral Thrush,3–5 days,During or after treatment,White patches in the mouth or on the tongue; a common fungal overgrowth.,R032,
+SE260,A032,Sore Throat / Stuffy Nose,1–3 days,During treatment,Mild irritation of the upper respiratory tract.,R032,
+SE261,A020,Tooth Discoloration,Reversible (via brushing),Mostly in pediatric patients,"Brown, yellow, or gray staining; can be reduced or eliminated with dental cleaning.",R016,
+SE262,A020,Gastrointestinal Effects,Not specified,During or following discontinuance of amoxicillin,"Nausea, vomiting, diarrhea, black ""hairy"" tongue, Clostridioides difficile-associated disease and colitis; hemorrhagic colitis; acute, transient enterocolitis with severe abdominal pain and bloody diarrhea, and colitis; glossitis, stomatitis, epigastric distress, gastritis, flatulence, soft stools, loss of appetite, sore mouth or tongue, dry mouth, taste disturbances.",R016,
+SE263,A020,Nervous System Effects,Reversible,Rare / at extremely high doses,"Agitation, anxiety, behavioral changes, confusion, convulsions, hyperactivity, and dizziness.",R016,
+SE264,A020,Hemic and Lymphatic,Not specified,Not specified,"Anemia (including hemolytic), leukopenia, neutropenia, and thrombocytopenia.",R016,
+SE265,A020,Hypersensitivity,Not specified,Not specified,"Anaphylaxis, exanthema, bullous dermatitis, Stevens-Johnson syndrome (SJS), and pruritus",R016,
+SE266,A035,Gastrointestinal,2–3 days,During/shortly after treatment,"Diarrhea (usually mild), Nausea, Vomiting, or Stomach pain/cramping.",R047,
+SE267,A035,Neurological,1–3 days,During treatment,Headache (mild to moderate) or Dizziness (lightheadedness).,R047,
+SE268,A035,Injection Site,1–2 days,Immediate,"Pain, swelling, or redness at the site (if administered via injection).",R047,
+SE269,A035,Vaginal Yeast Inf,3–7 days,During/after treatment,"Itching, irritation, or thick white discharge due to changes in flora.",R047,
+SE270,A035,Hypersensitivity,N/A,Frequent,Rashes and urticaria; occasionally more severe dermatitis.,R047,
+SE271,A035,Systemic (Rare),Reversible,Rare,Hematologic (Anemia) or Hepatic (moderate rise in liver enzymes).,R047,
+SE272,A021,Gastrointestinal Disturbances,Not specified,Most Frequent,"Nausea, dyspepsia, abdominal pain, vomiting, and diarrhea (usually mild).",R018,
+SE273,A021,Central Nervous System Effects,Transient,Not specified,"Includes anxiety, dizziness, insomnia, hallucinations, headache, and confusion.",R018,
+SE274,A021,Hearing Loss,Usually Reversible,Occasionally,Reported upon discontinuation of treatment.,R018,
+SE275,A021,Liver Enzyme Elevation,Transient,,"Transient elevation of liver enzymes, cholestatic jaundice, and hepatitis.",R018,
+SE276,A021,Stomatitis / Glossitis,Not specified,Not specified,Inflammation of the mouth or tongue; may include tooth decoloration.,R018,
+SE277,A021,Cardiac Effects,,,QT prolongation and Torsade de Pointes,R018,
+SE278,A022,Gastrointestinal Effects,,Not specified,"Diarrhea, nausea, abnormal taste, dyspepsia, and abdominal pain.",R019,
+SE279,A022,Central Nervous System Effects,,Not specified,"Diarrhea, nausea, abnormal taste, dyspepsia, and abdominal pain.",R019,
+SE280,A022,Neurological Effects,,Not specified,Headache and various CNS effects.,R019,
+SE281,A022,Allergic Reactions,,Not specified,Hypersensitivity reactions including rash,R019,
+SE282,A023,Gastrointestinal Effects,,Common,"Diarrhea, nausea, vomiting, dyspepsia, and abdominal pain or discomfort.",R019,
+SE283,A023,Nervous System Effects,,Common,Headache and abnormal taste (dysgeusia).,R019,
+SE284,A023,Cardiac Effects,,Infrequent,"QT interval prolongation and ventricular arrhythmias, including Torsades de pointes.",R019,
+SE285,A024,Gastrointestinal Effects,,Common (≥1/100 to <1/10),"Insomnia, headache, dysgeusia (taste perversion), diarrhoea, vomiting, dyspepsia, nausea, and abdominal pain.",R020,
+SE286,A024,Central Nervous System Effects,,Common (≥1/100 to <1/10),"Insomnia, headache, dysgeusia (taste perversion), diarrhoea, vomiting, dyspepsia, nausea, and abdominal pain.",R020,
+SE287,A024,Skin & Systemic Reactions,,Common (≥1/100 to <1/10),"Rash, hyperhidrosis, and abnormal liver function tests (LFT).",R020,
+SE288,A024,Cardiac Arrhythmias,,Associated with drug interactions,"QT prolongation, ventricular tachycardia, ventricular fibrillation, and torsades de pointes.",R020,
+SE289,A024,Rhabdomyolysis,,Rare/Concomitant use reports,"Muscle tissue breakdown (rhabdomyolysis) has been reported when taken with statins, fibrates, colchicine, or allopurinol",R020,
+SE290,A037,Torsade de pointes,During treatment,Very rare,"A life-threatening, polymorphic ventricular tachycardia that must be monitored in high-risk patients.",R054,
+SE291,A037,C. difficile-associated diarrhea,During or weeks after therapy,Severe and potentially life-threatening,"Remember that while diarrhea is a recognized side effect of cefuroxime, it is generally mild and transient in most cases. ",R054,
+SE292,A037,Vertigo,During treatment,Very rare,A temporary feeling of spinning or dizziness.,R054,
+SE293,A037,Visual Impairment,Rare,Very rare,Temporary changes in vision reported in isolated cases.,R054,
+SE294,A037,Severe Allergic Reaction,Immediate,Very rare,"Includes hives, swelling, and difficulty breathing; seek emergency care immediately.",R054,
+SE295,A037,Abdominal Pain,Short-term,Can occur sooner after taking,"A side effect is an unwanted response to a medication when it is taken in normal doses. Side effects can be mild or severe, temporary or permanent.",R054,
+SE296,A037,Back Pain,Short-term,Occasionally reported,Mild back pain.,R054,
+SE297,A037,Diarrhea,Short-term,Can occur within first days,"may cause diarrhea, and in some cases it can be severe. Diarrhea medicines may make the diarrhea worse or make it last longer. ",R054,
+SE298,A037,Dizziness,Short-term,Occasionally reported,May cause lightheadedness that affects daily activities.,R054,
+SE299,A037,Headache,Short-term,Occasionally reported,Mild headache.,R054,
+SE300,A037,Heartburn,Short-term,Occasionally reported,Mild discomfort or burning sensation in the chest.,R054,
+SE301,A037,Nausea,Short-term,Occasionally reported,Feeling of sickness or queasiness.,R054,
+SE302,A037,Runny Nose,Short-term,Rare,Mild nasal discharge.,R054,
+SE303,A037,Unexplained Weakness,Short-term,Rare,Feeling unusually tired or weak.,R054,
+SE304,A037,Rash,Short-term,Rare but serious,Skin rash; contact a doctor if it persists or worsens.,R054,
+SE305,A037,Vaginal Itching,Short-term,mild,Mild itching; may indicate a yeast overgrowth.,R054,
+SE306,A014,Anaphylaxis,Not Specified,Rare,Serious allergic reaction,R038,
+SE307,A014,Steven-Johnson Syndrome,Not Specified,Rare,"is a rare, serious disorder of the skin and mucous membranes","R038
+R260",
+SE308,A013,Hypersensitivity Reactions,May be prolonged,Rare,"immune system overreacts and attacks something that isn’t harmful, like food, pollen, medications or even parts of your own body","R038
+R259",
+SE309,A013,Reduction in neutrophil count,Temporary,Not Specified,lower-than-normal levels of neutrophils (a type of white blood cell) in your blood,"R038
+R258",
+SE310,A001,diarrhea,2 months or more,infrequent,May occur after a patient stop taking doxycycline,"R011 
+R077",
+SE311,A001,Anorexia,Not Specified,frequency not reported,eating disorder,"R011 
+R077
+R167",
+SE312,A001,nausea,Not Specified,common,a feeling of sickness or discomfort in the stomach,"R011 
+R077
+R168",
+SE313,A001,vomiting,Not Specified,common,forceful ejection of some or all of the contents of the stomach through the mouth,"R011 
+R077
+R169",
+SE314,A001,Glossitis,Not Specified,rare,inflammation of tongue,"R011 
+R077
+R170",
+SE315,A001,dysphagia,Not Specified,rare,difficulty swallowing,"R011 
+R077
+R171",
+SE316,A001,enterocolitis,Not Specified,rare,inflammation of both the small and large intestines,"R011 
+R077
+R172",
+SE317,A001,inflammatory lesions (with monilial overgrowth),Not Specified,rare,"An overgrowth of the fungus Candida causes a vaginal yeast infection. A vaginal yeast infection causes the skin around vagina to burn and itch, and it may change the consistency of vaginal discharge","R011 
+R077
+R173",
+SE318,A001,maculopapular,Not Specified,common,discolored areas of skin (macules) and elevated lesions (papules),"R011 
+R077
+R174",
+SE319,A001,erythematous rashes,Not Specified,common,painful or uncomfortable rash on skin,"R011 
+R077
+R175",
+SE320,A001,exfoliative dermatitis,Not Specified,uncommon,redness and scaling of the skin,"R011 
+R077
+R176",
+SE321,A001,hepatotoxicity,Not Specified,rare,a condition characterized by damage to the liver caused by exposure to harmful substances,"R011 
+R077
+R177",
+SE322,A001,esophagitis,4 days,rare,"irritation and inflammation of the lining of esophagus, or food pipe","R011 
+R077
+R178",
+SE323,A001,esophageal ulcerations,Not Specified,rare,open sores or breaks in the esophageal mucosa,"R011 
+R077
+R179",
+SE324,A001,rise in BUN,Not Specified,,impaired kidney function,"R011 
+R077
+R180",
+SE325,A001,urticaria,Not Specified,frequency not reported,Hives (also called urticaria) refers to raised and splotchy areas of skin that can be caused by an allergic reaction to something,"R011 
+R077
+R181",
+SE326,A001,angioneurotic edema,Not Specified,frequency not reported,swelling in the tissue under skin,"R011 
+R077
+R182",
+SE327,A001,anaphylaxis,Not Specified,frequency not reported,"severe, potentially life-threatening allergic reaction","R011 
+R077
+R183",
+SE328,A001,anaphylactoid purpura,Not Specified,frequency not reported,"Henoch-Schönlein purpura (HSP), or anaphylactoid purpura, is an acute, self-limited small-vessel vasculitis","R011 
+R077
+R184",
+SE329,A001,purpura,Not Specified,frequency not reported,"purple, red or brown spots and patches on skin","R011 
+R077
+R185",
+SE330,A001,serum sickness,Not Specified,frequency not reported,allergic reaction to certain proteins in medicines,"R011 
+R077
+R186",
+SE331,A001,exacerbation of systemic lupus erythematosus,Not Specified,frequency not reported,systemic autoimmune disease with multisystem involvement and is associated with significant morbidity and mortality,"R011 
+R077
+R187",
+SE332,A001,hemolytic anemia,Not Specified,rare, a disorder in which red blood cells are destroyed faster than they can be made,"R011 
+R077
+R188",
+SE333,A001,thrombocytopenia,Not Specified,rare,low blood platelet count,"R011 
+R077
+R189",
+SE334,A001,neutropenia ,Neutropenia ,rare,having low levels of neutrophils (a type of white blood cell) in blood,"R011 
+R077
+R190",
+SE335,A001,eosinophilia,Not Specified,not Specified,increase of circulating eosinophils >500 /mm^3,"R011 
+R077
+R191",
+SE336,A001,bulging fontanels,During treatment,rare,outward curving of an infant's soft spot (fontanelle),"R011 
+R077
+R192",
+SE337,A001,intracranial hypertension,Not Specified,rare,increased pressure in skull,"R011 
+R077
+R193",
+SE338,A002,diarrhea,2 months or more,infrequent,May occur after a patient stop taking doxycycline,"R012 
+R077",
+SE339,A002,anorexia,Not Specified,frequency not reported,eating disorder,"R012 
+R077
+R167",
+SE340,A002,nausea,Not Specified,common,a feeling of sickness or discomfort in the stomach,"R012 
+R077
+R168",
+SE341,A002,vomiting,Not Specified,common,forceful ejection of some or all of the contents of the stomach through the mouth,"R012 
+R077
+R169",
+SE342,A002,glossitis,Not Specified,rare,inflammation of tongue,"R012 
+R077
+R170",
+SE343,A002,dysphagia,Not Specified,rare,difficulty swallowing,"R012 
+R077
+R171",
+SE344,A002,enterocolitis,Not Specified,rare,inflammation of both the small and large intestines,"R012 
+R077
+R172",
+SE345,A002,inflammatory lesions (with monilial overgrowth),Not Specified,rare,"An overgrowth of the fungus Candida causes a vaginal yeast infection. A vaginal yeast infection causes the skin around vagina to burn and itch, and it may change the consistency of vaginal discharge","R012 
+R077
+R173",
+SE346,A002,hepatotoxicity,Not Specified,rare,a condition characterized by damage to the liver caused by exposure to harmful substances,"R012 
+R077
+R177",
+SE347,A002,tooth discoloration,Not Specified,frequency not reported,color of teeth changes,"R012 
+R077
+R194",
+SE348,A002,toxic epidermal necrolysis,Not Specified,rare,"a life-threatening skin condition. It causes peeling, blistering skin on large areas of the body.","R012 
+R077
+R196",
+SE349,A002,"Stevens-Johnson
+syndrome",Not Specified,rare,"rare, serious disorder of the skin and mucous membranes","R012 
+R077
+R195",
+SE350,A002,erythema multiforme,Not Specified,rare,painful or uncomfortable rash on skin,"R012 
+R077
+R197",
+SE351,A002,skin hyperpigmentation,Not Specified,not Specified,condition that makes some areas of the skin darker than others,"R012 
+R077
+R198",
+SE352,A002,maculopapular,Not Specified,common,discolored areas of skin (macules) and elevated lesions (papules),"R012 
+R077
+R174",
+SE353,A002,erythematous rashes,Not Specified,common,painful or uncomfortable rash on skin,"R012 
+R077
+R175",
+SE354,A002,exfoliative dermatitis,Not Specified,uncommon,redness and scaling of the skin,"R012 
+R077
+R176",
+SE355,A002,rise in BUN,Not Specified,,impaired kidney function,"R012 
+R077
+R180",
+SE356,A002,urticaria,Not Specified,frequency not reported,Hives (also called urticaria) refers to raised and splotchy areas of skin that can be caused by an allergic reaction to something,"R012 
+R077
+R181",
+SE357,A002,angioneurotic edema,Not Specified,frequency not reported,swelling in the tissue under skin,"R012 
+R077
+R182",
+SE358,A002,anaphylaxis,Not Specified,frequency not reported,"severe, potentially life-threatening allergic reaction","R012 
+R077
+R183",
+SE359,A002,anaphylactoid purpura,Not Specified,frequency not reported,"raised, reddish-purple rash, commonly on the legs, buttocks, and feet","R012 
+R077
+R184",
+SE360,A002,serum sickness,Not Specified,frequency not reported,allergic reaction to certain proteins in medicines,"R012 
+R077
+R186",
+SE361,A002,pericarditis,Not Specified,frequency not reported,"swelling and irritation of the thin, saclike tissue surrounding the heart","R012 
+R077
+R199",
+SE362,A002,exacerbation of systemic lupus erythematosus,Not Specified,frequency not reported,systemic autoimmune disease with multisystem involvement and is associated with significant morbidity and mortality,"R012 
+R077
+R187",
+SE363,A002,drug reaction with eosinophilia and systemic symptoms,Not Specified,rare,severe idiosyncratic drug reaction,"R012 
+R077
+R200",
+SE364,A002,Jarisch-Herxheimer reaction,Not Specified,Not Specified,new or worsening symptoms within a few hours of starting treatment for syphilis or certain other bacterial infections,"R012 
+R077
+R201",
+SE365,A002,hemolytic anemia,Not Specified,rare, a disorder in which red blood cells are destroyed faster than they can be made,"R012 
+R077
+R188",
+SE366,A002,thrombocytopenia,Not Specified,rare,low blood platelet count,"R012 
+R077
+R189",
+SE367,A002,neutropenia ,Not Specified,rare,having low levels of neutrophils (a type of white blood cell) in blood,"R012 
+R077
+R190",
+SE368,A002,eosinophilia,Not Specified,rare,increase of circulating eosinophils >500 /mm^3,"R012 
+R077
+R191",
+SE369,A002,bulging fontanels,During treatment,rare,outward curving of an infant's soft spot (fontanelle),"R012 
+R077
+R192",
+SE370,A002,intracranial hypertension,Not Specified,rare,increased pressure in skull,"R012 
+R077
+R193",
+SE371,A003,diarrhea,2 months or more,infrequent,May occur after a patient stop taking doxycycline,"R013 
+R077",
+SE372,A003,anorexia,Not Specified,frequency not reported,eating disorder,"R013 
+R077
+R167",
+SE373,A003,nausea,Not Specified,common,a feeling of sickness or discomfort in the stomach,"R013 
+R077
+R168",
+SE374,A003,vomiting,Not Specified,common,forceful ejection of some or all of the contents of the stomach through the mouth,"R013 
+R077
+R169",
+SE375,A003,glossitis,Not Specified,rare,inflammation of tongue,"R013 
+R077
+R170",
+SE376,A003,dysphagia,Not Specified,rare,difficulty swallowing,"R013 
+R077
+R171",
+SE377,A003,enterocolitis,Not Specified,rare,inflammation of both the small and large intestines,"R013 
+R077
+R172",
+SE378,A003,inflammatory lesions (with monilial overgrowth),Not Specified,rare,"An overgrowth of the fungus Candida causes a vaginal yeast infection. A vaginal yeast infection causes the skin around vagina to burn and itch, and it may change the consistency of vaginal discharge","R013 
+R077
+R173",
+SE379,A003,maculopapular,Not Specified,common,discolored areas of skin (macules) and elevated lesions (papules),"R013 
+R077
+R174",
+SE380,A003,erythematous rashes,Not Specified,common,painful or uncomfortable rash on skin,"R013 
+R077
+R175",
+SE381,A003,exfoliative dermatitis,Not Specified,uncommon,redness and scaling of the skin,"R013 
+R077
+R176",
+SE382,A003,urticaria,Not Specified,frequency not reported,Hives (also called urticaria) refers to raised and splotchy areas of skin that can be caused by an allergic reaction to something,"R013 
+R077
+R181",
+SE383,A003,angioneurotic edema,Not Specified,frequency not reported,swelling in the tissue under skin,"R013 
+R077
+R1821",
+SE384,A003,anaphylaxis,Not Specified,frequency not reported,"severe, potentially life-threatening allergic reaction","R013 
+R077
+R183",
+SE385,A003,anaphylactoid purpura,Not Specified,frequency not reported,"Henoch-Schönlein purpura (HSP), or anaphylactoid purpura, is an acute, self-limited small-vessel vasculitis","R013 
+R077
+R184",
+SE386,A003,serum sickness,Not Specified,frequency not reported,allergic reaction to certain proteins in medicines,"R013 
+R077
+R186",
+SE387,A003,pericarditis,Not Specified,frequency not reported,"sharp, stabbing chest pain, often arising suddenly in the center or left side of the chest","R013 
+R077",
+SE388,A003,exacerbation of systemic lupus erythematosus,Not Specified,frequency not reported,systemic autoimmune disease with multisystem involvement and is associated with significant morbidity and mortality,"R013 
+R077
+R187",
+SE389,A003,hemolytic anemia,Not Specified,rare, a disorder in which red blood cells are destroyed faster than they can be made,"R013 
+R077
+R188",
+SE390,A003,thrombocytopenia,Not Specified,rare,low blood platelet count,"R013 
+R077
+R189",
+SE391,A003,neutropenia ,Not Specified,rare,having low levels of neutrophils (a type of white blood cell) in blood,"R013 
+R077
+R190",
+SE392,A003,eosinophilia,Not Specified,rare,increase of circulating eosinophils >500 /mm^3,"R013 
+R077
+R191",
+SE393,A004,Phototoxicity,Not Specified,Not Specified,Skin eruptions,R008,
+SE394,A004,Clostridium difficile-associated diarrhea,Not Specified,Not Specified,Diarrhea to fatal colitis,R008,
+SE395,A004,Symptomatic hyper and hypoglycemia,Not Specified,Not Specified,Hypoglycemic reaction,R008,
+SE396,A004,Aoric aneurysm and dissection,Not Specified,Within two months,Increased rate of Aoric aneurysm and dissection,R008,
+SE397,A005,Drop in Blood Pressure,Not Specified,Rare,,R008,
+SE398,A005,Tendinitis and Tendon Rupture,Not Specified,Rare,Tendon rupture,R008,
+SE399,A005,Clostridium difficile-associated diarrhea,Not Specified,Not Specified,Diarrhea to fatal colitis,R008,
+SE400,A005,Hypoglycemia,Not Specified,Not Specified,,R008,
+SE401,A005,Hepatobiliary Disorder,Not Specified,Not Specified,"Anorexia, Jaundice, Dark Urine, Pruritus or tender abdomen.",R008,
+SE402,A005,Aortic neurysm and Dissection,Not Specified,Within two months,Increased rate of Aoric aneurysm and dissection,R008,
+SE403,A006,Tendinitis and Tendon Rupture,Not Specified,Within hours or days,"Increased risk of tendinitis and tendon rupture involving the achillies rendon, rorator cuffm the hande, the biceps, the thumb, and other tendon sites",R009,
+SE404,A006,Peripheral Neuropathy,Not Specified,,"Paresthesias, hypoesthesias, dysesthesias and weakness",R009,
+SE405,A006,Central Nervous System Effects,Not Specified,After the first dose,"Toxic psychoses, hallucination, or paranoia; depression, or suicidal thoughts; anxiety, agitation, restlessness, or nervousness; confusion, delirium, disorientation, or disturbances in attention; insomnia or nightmares; memory impairment.",R009,
+SE406,A006,Exacerbation of Myasthenia Gravis,Not Specified,Not Specified,"Post-marketing reports of serious adverse events, including deaths and requirement for ventilatory support, have been associated with fluoroquinolone use in persons with myasthenia gravis.",R009,
+SE407,A006,Other Serious and Sometimes Fatal Reactions,Not Specified,Rare,"fever, rash, or severe dermatologic reactions (e.g., toxic epidermal necrolysis, Stevens-Johnson syndrome); vasculitis; arthralgia; myalgia; serum sickness; allergic pneumonitis; interstitial nephritis; acute renal insufficiency or failure; hepatitis; jaundice; acute hepatic necrosis or failure; anemia, including hemolytic and aplastic; thrombocytopenia, including thrombotic thrombocytopenic purpura; leukopenia; agranulocytosis; pancytopenia; and/or other hematologic abnormalities.",R009,
+SE408,A006,Hypersensitivity Reactions,Not Specified,Following the first dose,"Cardiovascular collapse, hypotension/shock, seizure, loss of consciousness, tingling, angioedema (including tongue, laryngeal, throat, or facial edema/swelling), airway obstruction (including bronchospasm, shortness of breath, and acute respiratory distress), dyspnea, urticaria, itching, and other serious skin reactions. Levofloxacin should be discontinued immediately at the first appearance of a skin rash or any other sign of hypersensitivity",R009,
+SE409,A006,Hepatotoxicity,Not Specified,14 days of initiation of therapy and most cases occurred within 6 days,When you’re exposed to substances that can harm your liver (toxins),R009,
+SE410,A006,Risk of Aortic Aneurysm and Dissection,Not Specified,two months after intake,"sudden abdominal, chest or back pain,",R009,
+SE411,A006,Clostridium difficile-Associated diarrhea,Not Specified,two months after the administration of antibacterial agents.,Diarrhea to fatal colitis,R009,
+SE412,A006,Prolongation of the QT Interval,Not Specified,Rare,,R009,
+SE413,A006,Blood Glucose Disturbances,Not Specified,Not Specified,"disturbances of blood glucose, including symptomatic hyperglycemia and hypoglycemia",R009,
+SE414,A006,Photosensitivity/Phototoxicity,Not Specified,Not Specified,"exaggerated sunburn reactions (e.g., burning, erythema, exudation, vesicles, blistering, edema)",R009,
+SE415,A006,Vision Disorder,Not Specified,Not Specified,Impairment of vision or any effects on the eyes,R009,
+SE416,A007,Mental Alertness,Not Specified,Not Specified,"Dizziness, lightheadedness, vertigo and visual disturbance",R009,
+SE417,A007,Renal Impairment,Not Specified,Not Specified,reduced and plasma elimination,R009,
+SE418,A008,Tendon Effects,Not Specified,Not Specified,"Ruptures of the shoulder, hand, or Achilles tendon, or other tendons",R010,
+SE419,A008,Prolongation of the QT Interval,Not Specified,Not Specified,problem with the electrical system in your heart taking too long to recharge,"R010
+R257",
+SE420,A008,Peripheral Neuropathies,Not Specified,Not Specified,"Pain, burning, tingling, numbness and/or weakness",R010,
+SE421,A039,Convulsion,Not Specified,Not Specified,Surge of abnormal electrical activity in the brain. Temporary loss of consciousness and uncontrollable movements.,"R114
+R092",
+SE422,A040,Convulsion,Not Specified,Not Specified,Surge of abnormal electrical activity in the brain. Temporary loss of consciousness and uncontrollable movements.,"R114
+R092",
+SE423,A039,Ability to drive or operate machinery,Not Specified,Not Specified,Impair ability to drive or operate machinery,R092,
+SE424,A040,Ability to drive or operate machinery,Not Specified,Not Specified,Impair ability to drive or operate machinery,R092,
+SE427,A039,Toxic Psychosis,Not Specified,Not Specified,"Form of psychosis that is attributed to substance intoxication, withdrawal or recent consumption of psychoactive drugs.",R092,
+SE428,A040,Toxic Psychosis,Not Specified,Not Specified,"Form of psychosis that is attributed to substance intoxication, withdrawal or recent consumption of psychoactive drugs.",R092,
+SE429,A038,Diarrhea,Not Specified,Not Specified,"Loose, watery stool during a bowl movement","R076
+R091",
+SE430,A038,Vomiting,Not Specified,Not Specified,Forceful ejection stomach contents through the mouth.,"R091
+R057",
+SE431,A038,Abdominal Pain,Not Specified,Not Specified,Pain felt anywhere between the chest and groin.,"R091
+R058",
+SE432,A038,Nausea,Not Specified,Not Specified,Sensation of having to vomit or having the urge to vomit.,"R091
+R056",
+SE433,A038,Headache,Not Specified,Not Specified,Discomfort in the head or face,R091,
+SE434,A038,Restlessness,Not Specified,Not Specified,"pacing, constant movements of the legs, inability to sit or stand still, rocking from foot to foot, feeling tense or uncomfortable, feeling anxious","R115
+R091",
+SE435,A038,Dizziness,Not Specified,Not Specified,Feeling lightheaded or unsteady.,R091,
+SE436,A038,Increased Hepatic enzyme levels,Not Specified,Not Specified,Hepatic enzyme levels may be increased especially in the case of pre-existing hepatic malfunction,R091,
+SE437,A039,Nausea,Not Specified,Not Specified,Sensation of having to vomit or having the urge to vomit.,"R092
+R056",
+SE438,A039,Diarrhea,Not Specified,Not Specified,"Loose, watery stool during a bowl movement","R076
+R092",
+SE439,A039,Abdominal Pain,Not Specified,Not Specified,Pain felt anywhere between the chest and groin.,"R092
+R058",
+SE440,A039,Headache,Not Specified,Not Specified,Discomfort in the head or face,R092,
+SE441,A039,Restlessness,Not Specified,Not Specified,"pacing, constant movements of the legs, inability to sit or stand still, rocking from foot to foot, feeling tense or uncomfortable, feeling anxious","R115
+R092",
+SE442,A039,Rash,Not Specified,Not Specified,"red, inflamed, bumpy as well as dry, itchy or painful","R116
+R092",
+SE443,A040,Nausea,Not Specified,Not Specified,Sensation of having to vomit or having the urge to vomit.,"R092
+R056",
+SE444,A040,Diarrhea,Not Specified,Not Specified,"Loose, watery stool during a bowl movement","R076
+R092",
+SE445,A040,Abdominal Pain,Not Specified,Not Specified,Pain felt anywhere between the chest and groin.,"R092
+R058",
+SE446,A040,Headache,Not Specified,Not Specified,Discomfort in the head or face,R092,
+SE447,A040,Restlessness,Not Specified,Not Specified,"pacing, constant movements of the legs, inability to sit or stand still, rocking from foot to foot, feeling tense or uncomfortable, feeling anxious","R092
+R115",
+SE448,A040,Rash,Not Specified,Not Specified,"red, inflamed, bumpy as well as dry, itchy or painful","R116
+R092",
+SE449,A041,Nausea,Not Specified,Common,Sensation of having to vomit or having the urge to vomit.,"R056
+R093",
+SE450,A041,Vomiting,Not Specified,Common,Forceful ejection stomach contents through the mouth.,"R057
+R093",
+SE451,A041,Diarrhea,Not Specified,Common,"Loose, watery stool during a bowl movement","R076
+R093",
+SE452,A041,Abdominal Pain,Not Specified,Common,Pain felt anywhere between the chest and groin.,"R093
+R058",
+SE453,A041,Dyspepsia,Not Specified,Common,Pain or discomfort in the upper abdomen,R093,
+SE454,A041,Headache,Not Specified,Common,Discomfort in the head or face,R093,
+SE456,A041,Flatulence,Not Specified,Common,Body releases gas in your digestive system through your anus.,R093,
+SE458,A041,Dizziness,Not Specified,Common,Feeling lightheaded or unsteady.,R093,
+SE459,A041,Restlessness,Not Specified,Common,"pacing, constant movements of the legs, inability to sit or stand still, rocking from foot to foot, feeling tense or uncomfortable, feeling anxious","R115
+R093",
+SE460,A041,Rash,Not Specified,Not Specified,"red, inflamed, bumpy as well as dry, itchy or painful","R116
+R093",
+SE461,A041,Pruritus,Not Specified,Not Specified,"Itchy skin that can affect small areas, such as the scalp, an arm or a leg or cover the whole body. Itchy come with inflamed skin, scratch marks, bumps, spots or blisters, dry, cracked skin, leathery or scaly patches","R117
+R093",
+SE462,A041,Photosensitivity,Not Specified,Not Specified,"Skin reacts negatively to sunlight or UV rays that causes an itchy, painful rash","R063
+R093",
+SE463,A041,Vasculitis,Not Specified,Not Specified,"Fever, headache, tiredness, weight loss, aches and pains.","R093
+R118",
+SE464,A041,Erythema multiforme,Not Specified,Not Specified,"A red to purple rash that causes your skin to puff up (swell) and be painful to the touch.; Pimple-like blisters on your skin or inside of your mouth.; Round mark on your skin that looks like a bulls-eye on a target, with a dark center and a pale ring around it.; Itchy skin.","R093
+R119",
+SE465,A041,Steven-Johnson Syndrome,Not Specified,Not Specified,"Fever, sore mouth and throat, fatigue, burning eyes, unexplained widespread skin pain, red or purple rash that spreads, blisters on your skin and the mucous membranes of the mouth, nose, eyes and genitals, shedding of skin within days after blisters form","R093
+R120",
+SE466,A041,Toxic epidermal necrolysis,Not Specified,Not Specified,"It causes peeling and blistering skin over much of the body, including the mouth, eyes, and genitals.","R093
+R121",
+SE468,A041,anaphylaxis,Not Specified,Not Specified,"skin reactions, including hives and itching and flushed or pale skin; low blood pressure (hypotension); constriction of the airways and a swollen tongue or throat, which can cause wheezing and trouble breathing; a weak and rapid pulse; nausea, vomiting or diarrhea; dizziness or fainting","R093
+R122",
+SE469,A041,Tremor,Not Specified,Not Specified,type of body movement that’s out of your control. It looks like shakiness and can affect many different body parts.,"R093
+R123",
+SE470,A041,Drowsiness,Not Specified,Not Specified,feeling tired and wanting to fall asleep,R093,
+SE471,A041,Insomnia,Not Specified,Not Specified,"Trouble falling asleep; waking up in the middle of the night but falling back asleep; waking up too early without being able to fall back asleep; feeling tired, unwell or sleepy; delayed responses, such as reacting too slowly when you’re driving; Memory issues; Slowed thinking, confusion or trouble concentrating; Mood changes, like anxiety, depression and irritability","R093
+R124",
+SE472,A041,Agitation,Not Specified,Not Specified,"feeling of irritability, mental distress or severe restlessness.","R093
+R125",
+SE474,A041,Hallucinations,Not Specified,Not Specified,"false perception of objects or events involving your senses: sight, sound, smell, touch and taste.","R093
+R126",
+SE476,A041,Convulsions,Not Specified,Not Specified,Surge of abnormal electrical activity in the brain. Temporary loss of consciousness and uncontrollable movements.,"R093
+R114",
+SE479,A041,Peripheral neuropathy,Not Specified,Not Specified,Peripheral neuropathy refers to any condition that affects the nerves outside your brain or spinal cord.,"R093
+R131",
+SE480,A041,Dysesthesia ,Not Specified,Not Specified,"Dysesthesia is a set of symptoms that revolve around unusual touch-based sensations. It can refer to sensations that are unexpected or feel unpleasant, painful or just strange.","R093
+R132",
+SE481,A041,Catatonia,Not Specified,Not Specified,"Catatonia is a disorder that disrupts a person’s awareness of the world around them. People with this condition sometimes react very little or not at all to their surroundings, or might behave in ways that are unusual, unexpected or unsafe to themselves or others.","R093
+R134",
+SE483,A041,Tinnitus,Not Specified,Not Specified,ringing in the ears,"R093
+R135",
+SE484,A046,Hypersensitivity Reactions,Not Specified,Not Specified,"Skin rashes, urticaria, eosinophilia, fever, serum sickness-like reactions, anaphylaxis",R133,
+SE485,A046,Neutropenia ,Not Specified,Not Specified,having low levels of neutrophils (a type of white blood cell) in blood,R139,
+SE486,A046,thrombocytopenia,Not Specified,Not Specified,low blood platelet count,R140,
+SE487,A046,Convulsions,Not Specified,Not Specified,Surge of abnormal electrical activity in the brain. Temporary loss of consciousness and uncontrollable movements.,"R114
+",
+SE488,A046,Pseudomembranous colitis,Not Specified,Not Specified,An inflammatory process that occurs when your colon lining is being injured. Plaques called “pseudomembranes” develop at the site of the injury.,R142,
+SE489,A046,thrombophlebitis,Not Specified,Not Specified,"Is a vein inflammation that happens in connection with one or more blood clots. This usually happens in your legs but can affect any vein in your body. While it isn't usually dangerous on its own, it's an important indicator of clotting problems that can lead to life-threatening conditions like pulmonary embolism.",R143,
+SE490,A042,Renal Impairment,Not Specified,Not Specified,a condition in which one or both of your kidneys no longer work on their own.,R141,
+SE491,A043,Renal Impairment,Not Specified,Not Specified,a condition in which one or both of your kidneys no longer work on their own.,R141,
+SE492,A042,Diarrhea,Not Specified,Not Specified,"a loose, watery stool during a bowel movement.",R144,
+SE493,A043,Diarrhea,Not Specified,Not Specified,"a loose, watery stool during a bowel movement.",R144,
+SE494,A047,Hypersensitivity Reactions,Not Specified,Not Specified,"Skin rashes, urticaria, eosinophilia, fever, serum sickness-like reactions, anaphylaxis",R133,
+SE495,A047,Neutropenia ,Not Specified,Not Specified,having low levels of neutrophils (a type of white blood cell) in blood,"R139
+R133",
+SE496,A047,thrombocytopenia,Not Specified,Not Specified,low blood platelet count,"R140
+R133",
+SE497,A047,Convulsions,Not Specified,Not Specified,Surge of abnormal electrical activity in the brain. Temporary loss of consciousness and uncontrollable movements.,"R114
+R133",
+SE498,A047,Pseudomembranous colitis,Not Specified,Not Specified,An inflammatory process that occurs when your colon lining is being injured. Plaques called “pseudomembranes” develop at the site of the injury.,"R142
+R133",
+SE499,A047,Pain,Not Specified,Not Specified,Pain at Injection site,R133,
+SE500,A044,Severe Cutaneous Adverse Reactions,Not Specified,Not Specified,"Toxic epidermal necrolysis, Stevens-Johnson syndrome and drug rash with eosinophilia and systemic symptoms (DRESS).",R128,
+SE501,A044,Clostridium difficile-associated diarrhea,Not Specified,Common,"is a bacterium that causes an infection of the colon, the longest part of the large intestine.",R146,
+SE502,A044,Prothrombin Time,Not Specified,Not Specified,fall in Prothrombin that increases the time for a clot to from in blood,"R128
+R273",
+SE503,A044,Seizures,Not Specified,Not Specified,abnormal electrical activity in your brain. It causes changes in awareness and muscle control.,R147,
+SE504,A045,Clostridium difficile-associated diarrhea,Not Specified,Not Specified,"is a bacterium that causes an infection of the colon, the longest part of the large intestine.",R146,
+SE505,A045,Fall in prothrombin activity,Not Specified,Not Specified,a disorder caused by the lack of a protein in the blood called prothrombin.,R149,
+SE506,A045,Seizures,Not Specified,Not Specified,abnormal electrical activity in your brain. It causes changes in awareness and muscle control.,R147,
+SE507,A048,Thrombocytopenia,Not Specified,Not Specified,low blood platelet count,"R140
+R133",
+SE508,A049,Thrombocytopenia,Not Specified,Not Specified,low blood platelet count,"R140
+R133",
+SE509,A048,Eosinophilia,Not Specified,Not Specified,Eosinophilia happens when the body produces an unusually high number of eosinophils - one of the white blood cells that support your immune system.,"R155
+R133",
+SE510,A049,Eosinophilia,Not Specified,Not Specified,Eosinophilia happens when the body produces an unusually high number of eosinophils - one of the white blood cells that support your immune system.,"R155
+R133",
+SE511,A046,Eosinophilia,Not Specified,Not Specified,Eosinophilia happens when the body produces an unusually high number of eosinophils - one of the white blood cells that support your immune system.,R155,
+SE512,A047,Eosinophilia,Not Specified,Not Specified,Eosinophilia happens when the body produces an unusually high number of eosinophils - one of the white blood cells that support your immune system.,"R155
+R133",
+SE513,A048,Leukopenia,Not Specified,Not Specified,lower-than-normal number of white blood cells,"R039
+R133",
+SE514,A049,Leukopenia,Not Specified,Not Specified,lower-than-normal number of white blood cells,"R039
+R133",
+SE515,A050,Nausea,Short-term,Early in treatment,A sick feeling in the stomach that may make the patient feel like vomiting. It usually improves when the medicine is taken with food.,R157,
+SE516,A050,Vomiting,Short-term,Early in treatment,Forceful emptying of stomach contents. It may happen if the medicine irritates the stomach. Taking the capsule with meals may reduce this effect.,R157,
+SE517,A050,Loss of Appetite,Short-term,During therapy,Decreased desire to eat. The patient may feel full quickly or uninterested in food while taking the medicine.,R158,
+SE518,A050,Headache,Short-term,Occasional during use,Mild to moderate head pain that may feel like pressure or throbbing. Usually resolves after the body adjust to the medicine.,R158,
+SE519,A050,Urine Color,While taking the drug,Very common,The urine may turn dark yellow or brown in color. This is harmless and happens because the drug is being removed through the urine. It is not sign of kidney damage.,R157,
+SE520,A050,Lung Reaction,Can be sudden or develop with long-term use,Rare but serious,"May cause cough, chest pain, fever, and difficulty breathing. Acute reactions can happen suddenly within days, while chronic reactions may develop after long-term use. Medical attention is needed immediately.",R159,
+SE521,A050,Peripheral Neuropathy,May last if not treated early,"Rare, higher risk in kidney disease","Damage to nerves that may cause numbness, tingling, burning, or weakness in the hands and feet. Risk is higher in patients with kidney problems or long-term use.",R158,
+SE522,A051,Nausea ,Few hours to days,Usually appears at the start of treatment; may lessen with food,Feeling sick to your stomach or throwing up.,R160,
+SE523,A051,Headache,Hours to a day,Can appear during early days of use,Mild to moderate pain in the head.,R160,
+SE524,A051,Diarrhea,Few days,May appear during or shortly after use,Loose or watery stool; may be mild or severe.,R161,
+SE525,A051,Rust-colored Urine,While taking medicine,Appears soon after starting,"Urine may look brownish, harmless but normal.",R161,
+SE526,A051,Vaginal Itching or Discharge,Days to weeks,May appear while taking medicine,Mild irritation or unusual discharge in females.,R161,
+SE527,A051,DIzziness,Hours to days,Can appear after taking first doses,Feeling lightheaded or unsteady.,R160,
+SE528,A051,Allergic Reactions,Until treatment stopped,Can appear anytime,"Rash, swelling, trouble breathing; serious, seek help immediately.",R160,
+SE529,A051,Peripheral Neuropathy,Weeks to Months,Rare; can appear with long-term use,"Numbness, tingling, or pain in hands or feet; may becoe permanent if untreated.",R162,
+SE530,A051,Liver Damage,Weeks ,Rare; may appear after prolonged use,"Yellow skin/ eyes, dark urine, nausea, tiredness, stomach pain.",R162,
+SE531,A051,Pulmonary Problems,Weeks to Months,Rare; more likely with long-term use,"Trouble breathing, cough, chest pain; can be serious.",R162,
+SE532,A052,Nausea,Few hours to 1 day,Often appears when starting the drug,Feeling sick in the stomach.,"R163
+R164",
+SE533,A052,Vomiting,Few hours to 1 day,Often appears when starting the drug,Throwing up.,"R163
+R164",
+SE534,A052,Loss of Appetite,Few days,Can appear anytime during use,Not feeling hungry.,"R163
+R164",
+SE535,A052,Upset Stomach,Few hours to 1 day,Usually appears at start,Stomach discomfort or mild pain.,"R163
+R164",
+SE536,A052,Diarrhea,Few days,"May appear anytime, can be mild or severe",Loose stools.,"R163
+R164",
+SE537,A052,Headache,Few hours to 1 day,May appear anytime,Pain in head.,"R163
+R164",
+SE538,A052,DIzziness,Few hours,May appear after dose,Feeling lightheaded or unsteady.,"R163
+R164",
+SE539,A052,Drowsiness,Few hours,May appear after dose,Feeling sleepy.,"R163
+R164",
+SE540,A052,Rust-colored Urine,While taking drug,Appears when on drug,"Urine changes color, harmless.","R163
+R164",
+SE541,A052,Vafinal Itching or Discharge,Few days,May appear during or after treatment,Itchy or unusual vaginal discharge.,"R163
+R164",
+SE542,A052,Serious Pulmonary Reaction,Weeks to Months,"Rare, usually with long-term use (6+ months)","Cough, fever, chest pain, shortness of breath.",R163,
+SE543,A052,Peripheral Neuropathy,Weeks to Months,"Rare, usually with long-term use or kidney problems","Numbness, tingling, or weakness in hands/feet.",R163,
+SE544,A052,Hemolytic Anemia,Days ,"Rare, in infants <1 month or G6PD deficiency","Blood cells break down, causing tiredness, pale skin.","R163
+R164",
+SE545,A052,Liver Problems,Days to Weeks,Rare,"Jaundice, liver inflammation.",R163,
+SE546,A052,Allergic Reactions,Minutes to Hours,"Rare, can happen anytime","Rash, swelling, anaphylaxis.","R163
+R164",
+SE547,A053,Nausea,Short-term; may last a few hours to a few days,"Commonly appears early in treatment, especially if taken without food",A feeling of sickness in the stomach that may make the patient feel like vomiting. It may improve when the medicine is taken with meals.,R165,
+SE548,A053,Emesis,Short-term; may occur occasionally during treatment,"May occur after taking a dose, especially if stomach upset happens",Throwing up stomach contents. It may be mild or moderate and often happens together with nausea.,R165,
+SE549,A053,Anorexia,May last during the period of treatment,Can develop gradually while taking the medicine,Reduced desire to eat or feeling full quickly. The patient may eat less than usual because of stomach discomfort.,R165,
+SE550,A053,Abdominal Pain,Usually temporary; may last several hours to days,Can appear during early treatment,"Pain or discomfort in the stomach or lower belly area. It may feel like cramping, pressure, or aching.",R165,
+SE551,A053,Diarrhea,Usually short-term; may last a few days,May occur anytime during treatment,Passing loose or watery stools more often than normal. It may be mild but should be monitored if severe or persistent.,R165,
+SE552,A053,Pulmonary Hypersensitivity Reaction,Can occur suddenly and may become serious if not treated,"May appear during therapy, especially with prolonged use","An allergic-type reaction affecting the lungs. Symptoms may include cough, chest pain, fever, or difficulty breathing. Immediate medical attention is needed.",R165,
+SE553,A053,Peripheral Neuropathy,May develop gradually and can be long-lasting or permanent if not stopped early,More likely with prolonged use or in high-risk patients,"Nerve damage that causes numbness, tingling, burning sensation, or weakness in the hands and feet. Treatment should be stopped if symptoms appear.",R165,
+SE554,A053,Exfoliative Dermatitis,Duration varies; may last until medicine is stopped,Rare but serious reaction during treatment,"Severe skin reaction where the skin becomes red, irritated, and may peel off. Medical attention is required immediately.",R165,
+SE555,A053,Erythema Multiforme,Duration varies; may resolve after stopping the drug,Rare skin reaction during use,"A skin condition causing red patches, spots, or blister-like lesions on the skin. It may be mild or severe.",R165,
+SE556,A053,Lupus-like Syndrome,Nat develop during prolonged therapy; improves after stopping medicine,Rare and usually associated with long-term use,"A reaction that causes symptoms similar to lupus, such as joint pain, muscle pain, fever, and skin rash. Symptoms usually improve when the medicine is discontinued.",R165,
+SE557,A036,Megaloblastosis,Not Specified,Not Specified,"Megaloblastosis is a cytomorphological diagnostic sign for megaloblastic anaemia, which is a morphological and functional erythropoiesis abnormality. At all stages of maturity, megaloblasts have various cytomorphological traits that distinguish them from normal erythroid precursor cells (i.e., normoblasts).",R317,
+SE558,A036,Leukopenia,Not Specified,Not Specified,"Leukopenia (low white blood cell count) happens when you have a lower-than-normal number of white blood cells. Specifically, you have fewer neutrophils than normal. Neutrophils are white blood cells that act as your immune system’s first line of defense. Without enough white blood cells, you’re more vulnerable to developing infections.",R276,
+SE559,A036,Thrombocytopenia,Not Specified,Not Specified,Thrombocytopenia occurs when your bone marrow doesn’t make enough platelets. Platelets are blood cells that form blood clots to help stop bleeding. People with this condition may bleed a lot and the bleeding may be hard to stop. Thrombocytopenia affects people with certain medical conditions like autoimmune disease or who take certain medications.,R140,
+SE560,A036,Skin Rash,Not Specified,Not Specified,"Skin rashes can be red, inflamed, bumpy as well as dry, itchy or painful. The main cause is dermatitis, which is when your skin reacts to allergens or irritants. Bacteria, viruses, allergens and conditions including eczema, hives, and psoriasis can be the source of skin rashes.",R116,
+SE561,A036,Recurrent Fever,Not Specified,Not Specified,"SAIDs (systemic autoinflammatory diseases) are a group of disorders that cause recurring fevers. They most commonly affect children. Formerly known as “periodic fever syndromes,” most of these conditions are hereditary and result from a genetic variant.","
+R318",
+SE562,A036,Neutropenia ,Not Specified,Not Specified,Neutropenia involves having lower-than-normal levels of neutrophils (a type of white blood cell) in your blood.,R139,
+SE563,A036,Liver enzyme Values,Not Specified,Not Specified,"If your blood test showed high (elevated) levels of liver enzymes, you could have a medical condition. Elevated liver enzymes may also be temporary. ",R247,
+SE564,A004,insomnia,Not Specified,Common,experience disruptions in how you feel or function because you aren’t sleeping well or sleeping enough.,"R008
+R202",
+SE565,A004,headache,Not Specified,Common,pain in your head or face,"R008
+R203",
+SE566,A004,dizziness,Not Specified,Common,"sensations, such as feeling faint, woozy, weak or wobbly","R008
+R204",
+SE567,A004,dyspnea,Not Specified,Common,is the feeling that you can’t get enough air into your lungs,"R008
+R205",
+SE568,A004,nausea,Not Specified,Common,"feel like your stomach is ready to do somersaults, sending whatever’s inside right back up and out","R008
+R206",
+SE569,A004,diarrhea,Not Specified,Common,"having a loose, watery stool during a bowel movement","R008
+R207",
+SE570,A004,constipation,Not Specified,Common,passing fewer than three stools a week or having a difficult time passing stool,"R008
+R208",
+SE571,A004,abdominal pain,Not Specified,Common,stomachache,"R008
+R209",
+SE572,A004,vomiting,Not Specified,Common,"muscles in your belly, chest, neck and head work together to push whatever’s in your stomach out","R008
+R210",
+SE573,A004,dyspepsia,Not Specified,Common,pain or discomfort that happens while your stomach digests food,"R008
+R211",
+SE574,A004,rash,Not Specified,Common,"can be red, inflamed, bumpy as well as dry, itchy or painful","R008
+R212",
+SE575,A004,pruritus,Not Specified,Common,causes you to feel the need to scratch your skin to get relief,"R008
+R213",
+SE576,A004,vaginitis,Not Specified,Common,inflammation or infection of your vagina,"R008
+R214",
+SE577,A004,edema,Not Specified,Common,"fluid builds up faster in parts of your body than it can drain out, it causes swelling","R008
+R215",
+SE578,A004,chest pain,Not Specified,Common,pain or discomfort in the area between the neck and belly,"R008
+R216",
+SE579,A004,genital moniliasis,Not Specified,Uncommon,An overgrowth of the fungus Candida causes a vaginal yeast infection,"R008
+R217",
+SE580,A004,anemia,Not Specified,Uncommon,a problem of not having enough healthy red blood cells or hemoglobin to carry oxygen to the body's tissues,"R008
+R218",
+SE581,A004,thrombocytopenia,Not Specified,Uncommon,low blood platelet count,"R008
+R219",
+SE582,A004,granulocytopenia,Not Specified,Uncommon,due to a decrease in bone marrow production resulting from defects in the growth and differentiation of granulocytes,"R008
+R220",
+SE583,A004,allergic reaction,Not Specified,Uncommon,"immune system overreacts to something that’s usually not harmful — like pollen, pet dander and certain foods","R008
+R221",
+SE584,A004,hyperglycemia,Not Specified,Uncommon,high blood sugar,"R008
+R222",
+SE585,A004,hypoglycemia,Not Specified,Uncommon,condition in which your blood sugar (glucose) level is lower than the standard range,"R008
+R223",
+SE586,A004,hyperkalemia,Not Specified,Uncommon,condition in which you have high potassium levels in your blood,"R008
+R224",
+SE587,A004,anxiety,Not Specified,Uncommon,"intense, excessive and persistent worry and fear about everyday situations","R008
+R225",
+SE588,A004,agitation,Not Specified,Uncommon,state of severe restlessness or inner tension,"R008
+R226",
+SE589,A004,confusion,Not Specified,Uncommon,symptom that happens because of brain activity disruptions,"R008
+R227",
+SE590,A004,abnormal dreaming,Not Specified,Uncommon,pattern of repeated frightening and vivid dreams that affects your quality of life,"R008
+R228",
+SE591,A004,tremor,Not Specified,Uncommon,body movement that’s out of your control,"R008
+R229",
+SE593,A004,paresthesia,Not Specified,Uncommon,"the feeling of tingling, numbness or “pins and needles","R008
+R230",
+SE594,A004,vertigo,Not Specified,Uncommon,dizziness and makes you feel like you’re spinning when you’re not,"R008
+R231",
+SE597,A004,abnormal gait,Not Specified,Uncommon,abnormal patterin in walking,"R008
+R232",
+SE598,A004,somnolence,Not Specified,Uncommon,"drowsiness or excessive sleepiness, is wanting to fall asleep","R008
+R233",
+SE599,A004,syncope,Not Specified,Uncommon,fainting,"R008
+R234",
+SE600,A004,epistaxis,Not Specified,Uncommon,lose blood from the tissue that lines the inside of your nose,"R008
+R235",
+SE601,A004,cardiac arrest,Not Specified,Uncommon,"your heart stops pumping blood, you become unconscious","R008
+R236",
+SE602,A004,palpitation,Not Specified,Uncommon,"can feel like pounding, flip-flopping or the wrong amount of heartbeats","R008
+R237",
+SE603,A004,ventricular tachycardia,Not Specified,Uncommon,"fast, abnormal heart rhythm (arrhythmia) that comes from atypical electrical signals in your heart’s lower chambers","R008
+R238",
+SE604,A004,ventricular arrhythmia,Not Specified,Uncommon,abnormal heart rhythms that make the lower chambers of your heart twitch instead of pump,"R008
+R239",
+SE606,A004,gastritis,Not Specified,Uncommon,inflammation in the soft mucous lining of your stomach,"R008
+R240",
+SE607,A004,stomatitis,Not Specified,Uncommon,inflammation in the tissue lining your mouth or lips,"R008
+R241",
+SE608,A004,pancreatitis,Not Specified,Uncommon,inflammation in your pancreas,"R008
+R242",
+SE609,A004,esophagitis,Not Specified,Uncommon,inflammation in your esophagus,"R008
+R243",
+SE610,A004,gastroenteritis,Not Specified,Uncommon,"inflammation that spreads from your stomach into your intestines, causing pain, vomiting and diarrhea","R008
+R244",
+SE611,A004,glossitis,Not Specified,Uncommon,"inflammation that makes your tongue swollen, smooth or red","R008
+R245",
+SE612,A004,pseudomembranous/C. difficile colitis,Not Specified,Uncommon,an inflammatory process that occurs when your colon lining is being injured.,"R008
+R246",
+SE614,A004,increased hepatic enzymes,Not Specified,Uncommon,high (elevated) levels of liver enzymes,"R008
+R247",
+SE615,A004,increased alkaline phosphatase,Not Specified,Uncommon,liver disease or certain bone disorders.,"R008
+R248",
+SE616,A004,urticaria,Not Specified,Uncommon,"a skin rash that’s often very itchy, often results from an allergic reaction to food or something you’ve touched","R008
+R249",
+SE617,A004,arthralgia,Not Specified,Uncommon,joint pain that can be felt in the joints throughout your body,"R008
+R250",
+SE618,A004,tendonitis,Not Specified,Uncommon,the connective tissues between your muscles and bones (tendons) inflame,"R008
+R251",
+SE619,A004,myalgia,Not Specified,Uncommon,muscle pain,"R008
+R252",
+SE620,A004,skeletal pain,Not Specified,Uncommon,"pain affects bones, joints, ligaments, tendons or muscles","R008
+R253",
+SE621,A004,abnormal renal function,Not Specified,Uncommon,condition in which one or both of your kidneys no longer work on their own,"R008
+R254",
+SE622,A004,acute renal failure,Not Specified,Uncommon,when the kidneys suddenly can't filter waste products from the blood,"R008
+R255",
+SE623,A005,insomnia,Not Specified,Common,experience disruptions in how you feel or function because you aren’t sleeping well or sleeping enough.,"R008
+R202",
+SE624,A005,headache,Not Specified,Common,pain in your head or face,"R008
+R203",
+SE625,A005,dizziness,Not Specified,Common,"sensations, such as feeling faint, woozy, weak or wobbly","R008
+R204",
+SE626,A005,dyspnea,Not Specified,Common,is the feeling that you can’t get enough air into your lungs,"R008
+R205",
+SE627,A005,nausea,Not Specified,Common,"feel like your stomach is ready to do somersaults, sending whatever’s inside right back up and out","R008
+R206",
+SE628,A005,diarrhea,Not Specified,Common,"having a loose, watery stool during a bowel movement","R008
+R207",
+SE629,A005,constipation,Not Specified,Common,passing fewer than three stools a week or having a difficult time passing stool,"R008
+R208",
+SE630,A005,abdominal pain,Not Specified,Common,stomachache,"R008
+R209",
+SE631,A005,vomiting,Not Specified,Common,"muscles in your belly, chest, neck and head work together to push whatever’s in your stomach out","R008
+R210",
+SE632,A005,dyspepsia,Not Specified,Common,pain or discomfort that happens while your stomach digests food,"R008
+R211",
+SE633,A005,rash,Not Specified,Common,"can be red, inflamed, bumpy as well as dry, itchy or painful","R008
+R212",
+SE634,A005,pruritus,Not Specified,Common,causes you to feel the need to scratch your skin to get relief,"R008
+R213",
+SE635,A005,vaginitis,Not Specified,Common,inflammation or infection of your vagina,"R008
+R214",
+SE636,A005,edema,Not Specified,Common,"fluid builds up faster in parts of your body than it can drain out, it causes swelling","R008
+R215",
+SE637,A005,chest pain,Not Specified,Common,pain or discomfort in the area between the neck and belly,"R008
+R216",
+SE638,A005,genital moniliasis,Not Specified,Uncommon,An overgrowth of the fungus Candida causes a vaginal yeast infection,"R008
+R217",
+SE639,A005,anemia,Not Specified,Uncommon,a problem of not having enough healthy red blood cells or hemoglobin to carry oxygen to the body's tissues,"R008
+R218",
+SE640,A005,thrombocytopenia,Not Specified,Uncommon,low blood platelet count,"R008
+R219",
+SE641,A005,granulocytopenia,Not Specified,Uncommon,due to a decrease in bone marrow production resulting from defects in the growth and differentiation of granulocytes,"R008
+R220",
+SE642,A005,allergic reaction,Not Specified,Uncommon,"immune system overreacts to something that’s usually not harmful — like pollen, pet dander and certain foods","R008
+R221",
+SE643,A005,hyperglycemia,Not Specified,Uncommon,high blood sugar,"R008
+R222",
+SE644,A005,hypoglycemia,Not Specified,Uncommon,condition in which your blood sugar (glucose) level is lower than the standard range,"R008
+R223",
+SE645,A005,hyperkalemia,Not Specified,Uncommon,condition in which you have high potassium levels in your blood,"R008
+R224",
+SE646,A005,anxiety,Not Specified,Uncommon,"intense, excessive and persistent worry and fear about everyday situations","R008
+R225",
+SE647,A005,agitation,Not Specified,Uncommon,state of severe restlessness or inner tension,"R008
+R226",
+SE648,A005,confusion,Not Specified,Uncommon,symptom that happens because of brain activity disruptions,"R008
+R227",
+SE649,A005,abnormal dreaming,Not Specified,Uncommon,pattern of repeated frightening and vivid dreams that affects your quality of life,"R008
+R228",
+SE650,A005,tremor,Not Specified,Uncommon,body movement that’s out of your control,"R008
+R229",
+SE651,A005,paresthesia,Not Specified,Uncommon,"the feeling of tingling, numbness or “pins and needles","R008
+R230",
+SE652,A005,vertigo,Not Specified,Uncommon,dizziness and makes you feel like you’re spinning when you’re not,"R008
+R231",
+SE653,A005,abnormal gait,Not Specified,Uncommon,abnormal patterin in walking,"R008
+R232",
+SE654,A005,somnolence,Not Specified,Uncommon,"drowsiness or excessive sleepiness, is wanting to fall asleep","R008
+R233",
+SE655,A005,syncope,Not Specified,Uncommon,fainting,"R008
+R234",
+SE656,A005,epistaxis,Not Specified,Uncommon,lose blood from the tissue that lines the inside of your nose,"R008
+R235",
+SE657,A005,cardiac arrest,Not Specified,Uncommon,"your heart stops pumping blood, you become unconscious","R008
+R236",
+SE658,A005,palpitation,Not Specified,Uncommon,"can feel like pounding, flip-flopping or the wrong amount of heartbeats","R008
+R237",
+SE659,A005,ventricular tachycardia,Not Specified,Uncommon,"fast, abnormal heart rhythm (arrhythmia) that comes from atypical electrical signals in your heart’s lower chambers","R008
+R238",
+SE660,A005,ventricular arrhythmia,Not Specified,Uncommon,abnormal heart rhythms that make the lower chambers of your heart twitch instead of pump,"R008
+R239",
+SE661,A005,gastritis,Not Specified,Uncommon,inflammation in the soft mucous lining of your stomach,"R008
+R240",
+SE662,A005,stomatitis,Not Specified,Uncommon,inflammation in the tissue lining your mouth or lips,"R008
+R241",
+SE663,A005,pancreatitis,Not Specified,Uncommon,inflammation in your pancreas,"R008
+R242",
+SE664,A005,esophagitis,Not Specified,Uncommon,inflammation in your esophagus,"R008
+R243",
+SE665,A005,gastroenteritis,Not Specified,Uncommon,"inflammation that spreads from your stomach into your intestines, causing pain, vomiting and diarrhea","R008
+R244",
+SE666,A005,glossitis,Not Specified,Uncommon,"inflammation that makes your tongue swollen, smooth or red","R008
+R245",
+SE667,A005,pseudomembranous/C. difficile colitis,Not Specified,Uncommon,an inflammatory process that occurs when your colon lining is being injured.,"R008
+R246",
+SE668,A005,increased hepatic enzymes,Not Specified,Uncommon,high (elevated) levels of liver enzymes,"R008
+R247",
+SE669,A005,increased alkaline phosphatase,Not Specified,Uncommon,liver disease or certain bone disorders.,"R008
+R248",
+SE670,A005,urticaria,Not Specified,Uncommon,"a skin rash that’s often very itchy, often results from an allergic reaction to food or something you’ve touched","R008
+R249",
+SE671,A005,arthralgia,Not Specified,Uncommon,joint pain that can be felt in the joints throughout your body,"R008
+R250",
+SE672,A005,tendonitis,Not Specified,Uncommon,the connective tissues between your muscles and bones (tendons) inflame,"R008
+R251",
+SE673,A005,myalgia,Not Specified,Uncommon,muscle pain,"R008
+R252",
+SE674,A005,skeletal pain,Not Specified,Uncommon,"pain affects bones, joints, ligaments, tendons or muscles","R008
+R253",
+SE675,A005,abnormal renal function,Not Specified,Uncommon,condition in which one or both of your kidneys no longer work on their own,"R008
+R254",
+SE676,A005,acute renal failure,Not Specified,Uncommon,when the kidneys suddenly can't filter waste products from the blood,"R008
+R255",
+SE677,A018,Hepatic,Not Specified,Rare,Moderate rise in aminotransferase and/or alanine aminotransferase enzymes.,R017,
+SE678,A019,Central Nervous System Effects,Not Specified,Rare,"Reversable hyperactivity, agitation, anxiety, insomnia, confusion, behavioral changes, and/or dizziness.",R017,
+SE679,A020,Hepatic,Not Specified,Not Specified,"moderate rise in aspartate aminotransferase, and/or alanine aminotransferase; transient increases in serum alkaline phosphatase and lactate dehydrogenase levels; hepatic dysfunction including cholestatic jaundice, hepatic cholestasis and acute cytolytic hepatitis.",R016,
+SE680,A020,Renal,Not Specified,Not Specified,acute interstitial nephritis and crystalluria.,R017,

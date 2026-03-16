@@ -1,0 +1,242 @@
+indicationID,conditionName,conditionType,symptoms,conditionSeverity,referenceID,validatorID
+I001,Respiratory Tract Infection,respiratory,"a cough that may bring up mucus (phlegm), sneezing a stuffy or runny nose, a sore throat, headaches, muscle aches, breathlessness, tight chest or wheezing, a high temperature, and feeling generally unwell",Not Specified,"R018
+R031
+R038
+R091
+R092
+R166
+R039
+R095
+R096
+",
+I002,Acute Bacterial Exacerbations of COPD,respiratory,"increased wheezing, fever without another identified cause, or an increase in heart rate or respiratory rate greater than 20% from baseline.",Mild to Moderate,"R037
+R040",
+I003,Acute Bacterial Sinusitis,respiratory,"Colored, thick mucus (from nose or down throat), stuffy, blocked nose, face feels full, pressured, or painful, can't smell things well (or at all), fever",Mild to Moderate,"R037
+R013",
+I004,Sinus Infection (Sinusitis),respiratory,"facial pain, a stuffy or runny nose, and sometimes a fever",Mild,"R020
+R054
+R128
+R129
+R138",
+I005,Acute Bacterial Sinusitis,respiratory,an infection in your sinuses that typically lasts seven to 10 days,Not Specified,"R039
+R092
+R261",
+I006,Acute Bacterial Sinusitis,respiratory,can cause toothache with tenderness over the molar region,Mild to Severe,"R008
+R009
+R261",
+I007,Acute Maxillary Sinusitis,respiratory,an infection in your sinuses that typically lasts seven to 10 days,Not Specified,"R008
+R018
+R019
+R262",
+I008,Acute Maxillary Sinusitis,respiratory,an infection in your sinuses that typically lasts seven to 10 days,Mild to Moderate,"R010
+R019
+R047
+R262",
+I009,Community-Acquired Pneumonia (CAP),respiratory,"Cough, greenish/yellowish mucus, mild or high fever, shaking, chills, shortness of breath when you exert yourself ",Mild to Moderate,"R019
+R037
+R039
+R042
+",
+I010,Community-Acquired Pneumonia (CAP),respiratory,"symptoms may include shortness of breath, coughing, heavy sputum, fever and chills, chest pain that is worse when you breathe or cough, upper belly (abdomen) pain with nausea, vomiting, or diarrhea",Mild to Severe,"R008
+R009
+R263",
+I011,Tonsillitis,respiratory,"Sore throat, swollen tonsils, trouble swallowing, white or yellow coating on the tonsils, swollen glands in the neck. fever, bad breath",Not Specified,"R018
+R019
+R032
+R037
+R039
+R047
+R128
+R129
+R043",
+I012,Pharyngitis,respiratory,"Sore throat, fever, headache, joint pain and muscle aches, skin rashes, swollen lymph nodes (glands) in the neck",Not Specified,"R003
+R018
+R019
+R020
+R032
+R037
+R039
+R047
+R054
+R127
+R128
+R129
+R055",
+I013,Non-gonococcal urethritis,urinary,"Men: Discharge from penis, pain while peeing (dysuria), pain while ejaculating (dysorgasmia or orgasmalgia), itching, irritation and/or tenderness, abdominal pain.
+
+Women: Vaginal discharge, pain while peeing, pain during sexual intercourse (dyspareunia), spotting or cramping throughout the month (irregular periods).",Not Specified,"R038
+R045",
+I014,Urethritis,urinary,"Men: blood in the urine or semen, burning pain while urinating, discharge from penis, frequent urination, itching, tenderness, or swelling in penis, enlarged lymph nodes in the groin area, pain with intercourse or ejaculation
+
+Women: abdominal pain, burning pain while urinating, fever and chills, frequent urination, pelvic pain, pain with intercourse, vaginal discharge",Not Specified,"R003
+R015
+R037
+R044",
+I015,Genital Ulcer Disease for Men,urinary,"Burning sensation, fever, itchy genitals,painful urination or sexual intercourse",Not Specified,"R037
+R046",
+I016,Acute Cystitis,urinary,"Painful urination, frequent urination, urgency, lower abdominal pain",Mild to Moderate,"R022
+R023
+R024
+R157
+R160",
+I017,Complicated Urinary Tract Infection (cUTI),urinary,"Painful urination, frequent urination, fever, lower abdominal pain, cloudy or foul-smelling urine.",Moderate to Severe,"R026
+R027
+R028",
+I018,Uncomplicated Urinary Tract Infection (UTI),urinary,"Painful or frequent urination, lower abdominal pain, back pain, urgency to urinate, cloudy urine, strong urine smell.",Mild to Moderate,"R032
+R029
+R030
+R158
+R163
+R164",
+I019,Uncomplicated Urinary Tract Infection (UTI),urinary,"urinary frequency, urgency, dysuria, and suprapubic discomfort.",Not Specified,"R008
+R264",
+I020,Uncomplicated Urinary Tract Infection (UTI),urinary,"urinary frequency, urgency, dysuria, and suprapubic discomfort.",Mild to Severe,"R009
+R264",
+I021,Acute Uncomplicated Urinary Tract Infection (UTI),urinary,"Strong and frequent urge to urinate, burning or painful feeling when urinating, urine may look cloudy, dark, or have a strong bad smell; Some people may feel mild lower belly pain or discomfort.",Not Specified,"R092
+R165",
+I022,Disseminated Mycobacterium avium complex (MAC) disease,respiratory,"Fever, night sweats, weight loss, fatigue, diarrhea, abdominal pain, anemia and elevated liver alkaline phosphatase levels.",Not Specified,"R019
+R038
+R094
+R038",
+I023,Acute Pyelonephritis,urinary,"High fever, flank or back pain, chills, nausea, vomiting, painful urination",Severe,"R026
+R027
+R028",
+I024,Hospital-Acquired Pneumonia (HAP),respiratory,"Cough, fever, shortness of breath, chest pain, thick mucus",Severe,R026,
+I025,Ventilator-Associated Pneumonia (VAP),respiratory,"Fever, worsening breathing, increased secretions, low oxygen levels",Severe,R026,
+I026,Acute exacerbation of chronic bronchitis,respiratory,"Increased cough, More sputum, Change in sputum color, Worsening shortness of breath, Chest tightness or wheezing, Fatigue and Low-grade fever",Not Specified,"R015
+R019
+R039
+R128
+R032
+R039
+R097",
+I027,Chronic Bronchitis,respiratory,,Not Specified,"R018
+R020",
+I030,Lower Respiratory Tract Infection,respiratory,"cough, that might include mucus, shortness of breath, tight chest, or wheezing, sneezing, sore throat, blocked nose, change or loss of taste and smell, headache",Not Specified,"R014
+R015
+R016
+R017
+R019
+R020
+R093
+R127
+R133
+R137
+",
+I031,Upper Respiratory Tract Infection,respiratory,"a runny or stuffy nose, sore throat or headache",Not Specified,"R015
+R016
+R019
+R020
+R265",
+I032,Upper Urinary Tract Infection,urinary,"pain in the lower back or side, fever or chills, nausea or vomiting, brain fog or overall restlessness and bloody urine",Not Specified,"R031
+",
+I033,Lower Urinary Tract Infection,urinary,"more frequent urination, pain, burning, or other discomfort during urination, a sudden urge to urinate (even if you just went), feeling unable to empty the bladder fully, urine that’s cloudy or slightly colored with blood, urine that smells more pungent than usual, and abdominal or pelvic pain",Not Specified,"R031
+R266",
+I034,Atypical pneumonia,respiratory,"Sore throat, extreme tiredness, chest pain, low-grade fever, mild chills, cough, sneezing, headache",Mild,"R011
+R012
+R019
+R080
+R266",
+I035,Genitourinary Tract Infection,urinary,"needing to pee often, pain while peeing and pain in your side or lower back",Not Specified,"R003
+R014
+R015
+R017
+R016
+R267",
+I036,Single pneumonia,respiratory,"High fever, cough, tiredness, rapid breathing or heart rate, shortness of breath",Mild to severe,"R003
+R020
+R081",
+I037,Lobar pneumonia,respiratory,"persistent cough, high-grade fever with chills, confusion or delirium, pleuritic chest pain, shortness of breath, vomiting, abdominal pain, tiredness or fatigue",Severe,"R011
+R012
+R015
+R082
+",
+I038,Bronchopneumonia,respiratory,"fever, cough, shortness of breath, chest pain, rapid breathing, sweating, chills, headaches, muscle aches, pleurisy, fatigue, confusion or delirium",Mild to severe,"R015
+R083",
+I039,Acute bronchitis,respiratory,"cough, chest soreness, feeling tired and achy, back and muscle pain, headache, runny nose, slight fever, shortness of breath, sore throat, watery eyes, wheezing",Mild to Moderate,"R011
+R012
+R128
+R129
+R319
+R320
+R084",
+I040,Lung Abscess,respiratory,"mimic pneumonia, including fever, chills cough, night sweats, and chest pain, with a productive cough developing as a hallmark sign",Not Specified,"R003
+R086",
+I041,Bronchitis,respiratory,"shortness of breath, fever, runny nose, tiredness",Not Specified,"R003
+R019
+R127
+R087",
+I042,Bronchiectasis,respiratory,"cough with lots of mucus and pus, repeated colds, bad-smelling mucus, shortness of breath, wheezing, coughing up blood",Not Specified,"R003
+R128
+R088",
+I043,Tracheobronchitis,respiratory,"coughing, mild headaches, soreness in the chest, a sore throat, tiredness, mild body aches",Severe,"R012
+R320
+R089",
+I045,Pneumonia,respiratory,"High fever, cough, tiredness, rapid breathing or heart rate, shortness of breath",Not Specified,"R014
+R018
+R020
+R081
+R128
+R129",
+I046,Community Acquired Respiratory Infections,respiratory,,Initial therapy,"R020
+R020",
+I047,Chronic Bacterial Prostatis,urinary,"Fever, chills, painful and frequent urination or have trouble urinating, ",Mild to Severe,"R009
+R071",
+I048,Chronic Bacterial Prostatis,urinary,"Fever, chills, painful and frequent urination or have trouble urinating, ",Not Specified,"R008
+R071
+R092",
+I049,Urinary Tract Infections,urinary,"Pain in your flank, abdomen, pelvic area or lower back, pressure in the lower part of your pelvis, cloudy, foul-smelling pee, urinary incontinence, frequent urination, urge incontinence, pain when you pee (dysuria), and blood in your pee (hematuria).",Not Specified,"R010
+R054
+R091
+R092
+R093
+R127
+R129
+R165
+R166
+R098
+",
+I050,Inhalation Anthrax,respiratory,"Fever and chills, heavy sweats, chest pain, cough, or shortness of breath, confusion or dizziness, nausea, vomiting, or stomach pains, headache or body aches, and extreme tiredness",Not Specified,"R092
+R099",
+I051,Legionnaire's disease,respiratory,"symptoms similar to pneumonia, cough, fever, headaches, muscle aches, shortness of breath",Not Specified,"R093
+R101",
+I052,Q Fever,respiratory,"fever, fatigue, headache, malaise, myalgia, chills or sweats, cough, nausea, vomiting, diarrhea
+",Mild to Severe,"R093
+R102",
+I053,Tuberculosis,respiratory,"A bad cough that lasts 3 weeks or longer, pain in the chest, coughing up blood or sputum (phlegm) from deep inside the lungs",Not Specified,"R093
+R103",
+I054,Secondary infections in chronic respiratory diseases,respiratory,"cough, increased sputum production, or dyspnea",Not Specified,R129,
+I055,Pyelonephritis,urinary,"fever, pain in lower back, chills, pain when peeing, bloody or cloudy pee that might smell bad, urgent or frequent need to pee",Mild to Severe,"R003
+R015
+R129
+R130",
+I056,Uncomplicated Gonorrhea,urinary,"Often, gonorrhea doesn’t cause symptoms, especially in women.",Not Specified,"R014
+R032
+R047
+R128
+R129
+R136",
+I057,Gonorrhea,urinary,,Not Specified,"R054
+R091
+R092
+R093
+R133",
+I058,Recurrent Urinary Tract Infection,urinary,"Repeated bladder infections, urgency to urinate, discomfort in lower abdomen.",Mild,"R159
+R161
+R162",
+I059,Bladder Infection,urinary,Pain or pressure in the lower abdomen and a burning feeling during urination. The person may need to urinate very often. Urine may appear cloudy and sometimes may have small amounts of blood.,Mild to Moderate,R165,
+I060,Recurrent Urinary Tract Infection,urinary,"Repeated episodes of urinary burning, urgency, and discomfort that happen several times over a period of months. Symptoms are similar to previous bladder infections.",Mild to Moderate (can worsen if untreated),R165,
+I061,Genital Infections,urinary,"Burning or itching, discharge or odor, pain around the pelvis, burning and pain when passing urine or with bowel movements, having to go to the bathroom often, and sores, bumps or blisters on genital, anus or mouth",Not Specified,"R166
+R269",
+I062,Acute Bacterial Exacerbation of Chronic Bronchitis,respiratory,"persistent cough that lasts one to three weeks, shortness of breath, fever, runny nose, and tiredness",Mild to Severe,"R008
+R009
+R270",
+I063,Complicated Urinary Tract Infection (cUTI),urinary,"fever or chills, pain in the lower back or side, and overall malaise",Not Specified,"R008
+R271",
+I064,Acute Pyelonephritis,urinary,"fever, chills, pain in your lower back or side, pain when you pee (urinate), bloody or, cloudy pee (hematuria or pyuria) that might smell bad, urgent or frequent need to pee",Not Specified,"R008
+R272",
+I065,Complicated Urinary Tract Infection (cUTI),urinary,"fever or chills, pain in the lower back or side, and overall malaise",Mild to Severe,"R009
+R271",
+I066,Acute Bacterial Exacerbations of Chronic Bronchitis,respiratory,"persistent cough that lasts one to three weeks, shortness of breath, fever, runny nose, and tiredness",Mild to Moderate,"R032
+R047
+R270",
