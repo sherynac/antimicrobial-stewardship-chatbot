@@ -5,14 +5,41 @@ import ophiuchus_logo from './assets/ophiuchus_logo.svg'
 import './App.css'
 
 function App() {
-const navigation=[
-  {}
-]
+// const navigation=[
+//   {}
+// ]
   return (
     <>
-      <div>
+
+      <div className="navbar">
+          <div className="button-container">
+            <a href="" id="new-chat">New Chat</a>
+          </div>
+          <div className="button-container">
+            <a href="" id="chat">Chat</a>
+          </div>
+          <div className="button-container">
+            <a href="" id="about">About</a>
+          </div>
+          <div className="button-container">
+            <a href="" id="faqs">FAQs</a>
+          </div>
+      </div>
+
+      <div className="header">
+        <img src={ophiuchus_logo} className="" alt="Ophiuchus logo" />
+          <div className="title-container">
+            <p className="title">Ophiuchus</p>
+            <p className="sub-title">Ask me anything</p>
+          </div>
+      </div>
+
+      
+      <div className="main-content">
         
       </div>
+
+      
     </>
   )
 }

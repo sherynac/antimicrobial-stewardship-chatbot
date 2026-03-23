@@ -1,20 +1,5 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: Cabin-Bold;
-  src: url(/src/assets/Cabin-Bold.ttf);
-}
-
-@font-face {
-  font-family: Cabin-SemiBold;
-  src: url(/src/assets/Cabin-SemiBold.ttf);
-}
-
-@font-face {
-  font-family: Figtree-Regular;
-  src: url(/src/assets/Figtree-Regular.ttf);
-}
-
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -30,48 +15,32 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@font-face {
+  font-family: Cabin-Bold;
+  src: url(./assets/Cabin-Bold.ttf);
+}
+
+@font-face {
+  font-family: Cabin-SemiBold;
+  src: url(./assets/Cabin-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: Figtree-Regular;
+  src: url(./assets/Figtree-Regular.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
+  min-height: 100%;
   @apply grid grid-cols-5 grid-rows-4 h-fit
 }
 
-.navbar{
-  @apply col-span-1 row-span-4 flex flex-col border-r content-center
+#root {
+  @apply contents; 
 }
-
-.button-container{
-  @apply m-5 w-4/5
-}
-
-#new-chat{
-  @apply bg-[D4E9D7]
-}
-
-a{
-  font-family: Figtree-Regular;
-  @apply p-5
-}
-
-.header{
-  @apply col-span-4 flex justify-start items-center max-h-2/12 border-b
-}
-
-.header img{
-  @apply h-3/4
-}
-
-.title-container{
-  @apply flex flex-col p-3
-}
-
-.sub-title{
-  @apply text-xs pl-1
-}
-
-.title{
-  font-family: Cabin-Bold;
-  @apply text-3xl
-}
-
-
-
-
