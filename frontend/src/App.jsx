@@ -12,10 +12,10 @@ function App() {
     <>
 
       <div className="navbar">
-          <div className="button-container">
+          <div className="button-container" id="new-chat-button">
             <a href="" id="new-chat">New Chat</a>
           </div>
-          <div className="button-container">
+          <div className="button-container-active">
             <a href="" id="chat">Chat</a>
           </div>
           <div className="button-container">
@@ -26,19 +26,26 @@ function App() {
           </div>
       </div>
 
-      <div className="header">
-        <img src={ophiuchus_logo} className="" alt="Ophiuchus logo" />
-          <div className="title-container">
-            <p className="title">Ophiuchus</p>
-            <p className="sub-title">Ask me anything</p>
+      <div className="main-container">
+        <div className="header">
+          <img src={ophiuchus_logo} className="" alt="Ophiuchus logo" />
+            <div className="title-container">
+              <p className="title">Ophiuchus</p>
+              <p className="sub-title">Ask me anything</p>
+            </div>
+        </div>
+
+        <div className="main-content">
+          <div className="main-chat">
+
           </div>
+          <div className="message-box">
+            <form action="">
+              <input type="text" id="message" placeholder='Type your message here..' />
+            </form>
+          </div>
+        </div>
       </div>
-
-      
-      <div className="main-content">
-        
-      </div>
-
       
     </>
   )

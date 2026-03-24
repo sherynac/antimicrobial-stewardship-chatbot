@@ -31,14 +31,11 @@
 }
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  min-height: 100%;
-  @apply grid grid-cols-5 grid-rows-4 h-fit
+  @apply flex overflow-hidden h-dvh w-max m-0 p-0
 }
 
 #root {

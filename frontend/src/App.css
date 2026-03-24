@@ -1,15 +1,34 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: Cabin-Bold;
+  src: url(./assets/Cabin-Bold.ttf);
+}
+
+@font-face {
+  font-family: Cabin-SemiBold;
+  src: url(./assets/Cabin-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: Figtree-Regular;
+  src: url(./assets/Figtree-Regular.ttf);
+}
+
 .navbar{
-  @apply col-span-1 row-span-4 flex flex-col border-r content-center
+  @apply flex flex-col border-r-1 border-r-black/20 content-center h-dvh w-2xs pt-2 bg-[#F8F9FA]
 }
 
 .button-container{
-  @apply m-5 w-4/5
+  @apply m-3 w-11/12 flex justify-start items-center
 }
 
-#new-chat{
-  @apply bg-[#D4E9D7]
+.button-container-active{
+  @apply m-3 w-11/12 flex justify-start items-center bg-white rounded-xl
+}
+
+#new-chat-button{
+  @apply border-[#D4E9D7] rounded-xl bg-[#D4E9D7] w-2/3 h-12 mt-1 items-center
 }
 
 a{
@@ -17,15 +36,16 @@ a{
   @apply p-5
 }
 
+.main-container{
+  @apply flex flex-col justify-start w-dvw 
+}
+
 .header{
-  @apply col-span-4 flex justify-start items-center border-b;
-  grid-column: 2 / -1; 
-  grid-row: 1 / 2;
-  height: 80px;
+  @apply flex justify-start items-center border-b-1 border-b-black/20 max-h-2/12
 }
 
 .header img{
-  @apply h-12 w-auto mr-5
+  @apply h-12 w-auto mr-1 ml-4
 }
 
 .title-container{
@@ -41,8 +61,26 @@ a{
   @apply text-3xl
 }
 
-.main-content {
-  @apply col-span-4 row-span-3 p-6;
-  grid-column: 2 / -1;
-  grid-row: 2 / -1;
+.main-content{
+  @apply flex flex-col h-dvh
+}
+
+.main-chat{
+  @apply h-22/25 w-dvw
+}
+
+.message-box{
+  @apply border-t-1 border-black/20 w-dvw h-20.5 flex flex-row items-center
+}
+
+form{
+  @apply w-11/13 h-11/13 flex flex-row ml-4 items-center
+}
+
+form input{
+  @apply h-3/4 bg-[#F8F9FA] rounded-md w-22/25 border-1 border-black/20
+}
+
+form input[type=text]{
+ @apply pl-4
 }
