@@ -16,7 +16,7 @@
 }
 
 .navbar{
-  @apply flex flex-col border-r-1 border-r-black/20 content-center h-dvh w-2xs pt-2 bg-[#F8F9FA]
+  @apply flex flex-col border-r-1 border-r-black/20 content-center h-dvh w-2xs pt-2 bg-[#F8F9FA] static
 }
 
 .button-container{
@@ -27,13 +27,24 @@
   @apply m-3 w-11/12 flex justify-start items-center bg-white rounded-xl
 }
 
-#new-chat-button{
-  @apply border-[#D4E9D7] rounded-xl bg-[#D4E9D7] w-2/3 h-12 mt-1 items-center
+.icons{
+  @apply ml-4 w-7
 }
 
 a{
-  font-family: Figtree-Regular;
-  @apply p-5
+  @apply p-5 pl-3 font-[Figtree-Regular]
+}
+
+.first-row {
+  @apply flex flex-row items-center w-full
+}
+
+.first-row #clear-chat-button{
+  @apply border-[#D4E9D7] rounded-xl bg-[#D4E9D7] w-5/6 h-12 mt-1 items-center
+}
+
+.menu-button-container{
+  @apply right-0 pr-10
 }
 
 .main-container{
@@ -41,7 +52,7 @@ a{
 }
 
 .header{
-  @apply flex justify-start items-center border-b-1 border-b-black/20 max-h-2/12
+  @apply flex justify-start items-center border-b-1 border-b-black/20 max-h-2/12 static
 }
 
 .header img{
@@ -57,8 +68,7 @@ a{
 }
 
 .title{
-  font-family: Cabin-Bold;
-  @apply text-3xl
+  @apply text-3xl font-[Cabin-Bold]
 }
 
 .main-content{
@@ -66,11 +76,31 @@ a{
 }
 
 .main-chat{
-  @apply h-22/25 w-dvw
+  @apply h-22/25 w-[calc(100%-18rem)] flex flex-col items-start items-center
+}
+
+.message-container{
+  @apply  w-full flex flex-row-reverse
+}
+
+.message-prompt{
+  @apply bg-[#D4E9D7] m-4 rounded-xl max-w-5/12
+}
+
+.reply-container{
+  @apply w-full flex flex-row
+}
+
+.chatbot-reply{
+  @apply bg-[#F8F9FA] m-4 rounded-xl max-w-7/12
+}
+
+.main-chat p{
+  @apply p-3 font-[Figtree-Regular]
 }
 
 .message-box{
-  @apply border-t-1 border-black/20 w-dvw h-20.5 flex flex-row items-center
+  @apply border-t-1 border-black/20 w-dvw h-20.5 flex flex-row items-center static
 }
 
 form{
@@ -84,3 +114,8 @@ form input{
 form input[type=text]{
  @apply pl-4
 }
+
+form input[type=image]{
+  @apply bg-[#D4E9D7] w-15 ml-3 p-2 object-center
+}
+

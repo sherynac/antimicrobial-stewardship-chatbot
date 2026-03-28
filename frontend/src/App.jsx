@@ -12,17 +12,26 @@ function App() {
     <>
 
       <div className="navbar">
-          <div className="button-container" id="new-chat-button">
-            <a href="" id="new-chat">New Chat</a>
+        <div className="first-row">
+          <div className="button-container" id="clear-chat-button">
+            <img src="src\assets\clear-chat.svg" alt="clear-icon" className="icons" />
+            <a href="" id="clear-chat">Clear Chat</a>
           </div>
-          <div className="button-container-active">
-            <a href="" id="chat">Chat</a>
+          <div className="menu-button-container" id="menu-button">
+            <img src="src\assets\menu.svg" alt="menu-icon" className="icons" />
           </div>
-          <div className="button-container">
-            <a href="" id="about">About</a>
-          </div>
-          <div className="button-container">
-            <a href="" id="faqs">FAQs</a>
+        </div>
+        <div className="button-container-active">
+          <img src="src\assets\chat.svg" alt="chat-icon" className="icons" />
+          <a href="" id="chat">Chat</a>
+        </div>
+        <div className="button-container">
+          <img src="src\assets\about.svg" alt="about-icon" className="icons" />
+          <a href="" id="about">About</a>
+        </div>
+        <div className="button-container">
+          <img src="src\assets\FAQs.svg" alt="FAQs-icon" className="icons" />
+          <a href="" id="faqs">FAQs</a>
           </div>
       </div>
 
@@ -37,11 +46,21 @@ function App() {
 
         <div className="main-content">
           <div className="main-chat">
-
+            <div className="message-container">
+              <div className="message-prompt">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+              </div>
+            </div>
+            <div className="reply-container">
+              <div className="chatbot-reply">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+              </div>
+            </div>
           </div>
           <div className="message-box">
             <form action="">
-              <input type="text" id="message" placeholder='Type your message here..' />
+              <input type="text" id="message" placeholder='Type your message here..'/>
+              <input type="image" src="src\assets\send-button.svg" alt="Submit"/>
             </form>
           </div>
         </div>
