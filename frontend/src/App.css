@@ -31,7 +31,7 @@
   @apply ml-4 w-7
 }
 
-a{
+.nav-title{
   @apply p-5 pl-3 font-[Figtree-Regular]
 }
 

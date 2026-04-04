@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: Cabin-Bold;
+  src: url(./assets/Cabin-Bold.ttf);
+}
+
+@font-face {
+  font-family: Cabin-SemiBold;
+  src: url(./assets/Cabin-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: Figtree-Regular;
+  src: url(./assets/Figtree-Regular.ttf);
+}
+
+.header{
+  @apply flex justify-start items-center border-b-1 border-b-black/20 max-h-2/12 static
+}
+
+.header img{
+  @apply h-12 w-auto mr-1 ml-4
+}
+
+.title-container{
+  @apply flex flex-col p-3
+}
+
+.sub-title{
+  @apply text-xs pl-1
+}
+
+.title{
+  @apply text-3xl font-[Cabin-Bold]
+}
+
+.faq-container {
+  @apply h-full overflow-y-auto my-10 mx-20;
+}
+
+.cards-container {
+  @apply flex flex-col items-center gap-6;
+  width: calc(100% - 15rem);
+}
+
+.qa-card {
+  @apply bg-[#F8F9FA] rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1;
+  height: auto;
+  width: calc(100% - 15rem);
+}
+
+.card-question {
+  @apply bg-[#F8F9FA] px-6 pt-6 flex items-start gap-1;
+  height: auto;
+}
+
+.card-question h3 {
+  @apply text-black font-[Cabin-SemiBold] text-lg flex-1;
+}
+
+.card-answer {
+  @apply px-6 pb-6 pt-2 flex items-start gap-1 bg-[#F8F9FA];
+  height: auto;
+}
+
+.card-answer p {
+  @apply text-black leading-relaxed font-[Figtree-Regular] flex-1;
+}
