@@ -1,0 +1,363 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <http://example.org/ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://example.org/sample-ontology> rdf:type owl:Ontology .
+
+###############################################################
+# Classes
+###############################################################
+
+# Medical Term
+:MedicalTerm rdf:type owl:Class .
+:Reference rdf:type owl:Class .
+
+# Antibiotic
+:Antibiotic rdf:type owl:Class .
+:DrugClass rdf:type owl:Class .
+:Brand rdf:type owl:Class .
+:Presentation_Packing rdf:type owl:Class .
+
+# Indication
+:Indication rdf:type owl:Class .
+:RespiratoryDisease rdf:type owl:Class ; rdfs:subClassOf :Indication .
+:UrinaryDisease rdf:type owl:Class ; rdfs:subClassOf :Indication .
+:MildRespiratoryDisease rdf:type owl:Class ; rdfs:subClassOf :RespiratoryDisease .
+
+# Warning
+:Warning rdf:type owl:Class .
+:PregnancyAndLactation rdf:type owl:Class ; rdfs:subClassOf :Warning .
+:AgeRestriction rdf:type owl:Class ; rdfs:subClassOf :Warning .
+:PatientCondition rdf:type owl:Class ; rdfs:subClassOf :Warning .
+:Overdosage rdf:type owl:Class ; rdfs:subClassOf :Warning .
+:Contraindication rdf:type owl:Class ; rdfs:subClassOf :Warning .
+
+# Side Effect
+:SideEffect rdf:type owl:Class .
+:Pattern rdf:type owl:Class .
+:Duration rdf:type owl:Class .
+
+# StewardshipPrinciple
+:StewardshipPrinciple rdf:type owl:Class .
+:ProperUse rdf:type owl:Class ; rdfs:subClassOf :StewardshipPrinciple .
+:Adherence rdf:type owl:Class ; rdfs:subClassOf :StewardshipPrinciple .
+:Storage rdf:type owl:Class ; rdfs:subClassOf :StewardshipPrinciple .
+:Monitoring rdf:type owl:Class ; rdfs:subClassOf :StewardshipPrinciple .
+:Prevention rdf:type owl:Class ; rdfs:subClassOf :StewardshipPrinciple .
+
+# Interaction
+:Interaction rdf:type owl:Class .
+:Substance rdf:type owl:Class .
+:Drug rdf:type owl:Class ; rdfs:subClassOf :Substance .
+:Food rdf:type owl:Class ; rdfs:subClassOf :Substance .
+:Beverage rdf:type owl:Class ; rdfs:subClassOf :Substance .
+
+##############################################################
+# Object Properties
+###############################################################
+
+:hasDrugClass rdf:type owl:ObjectProperty ;
+    rdfs:domain :Antibiotic ;
+    rdfs:range :DrugClass ;
+    rdfs:label "has drug class" .
+
+:hasBrandName rdf:type owl:ObjectProperty ;
+    rdfs:domain :Antibiotic ;
+    rdfs:range :Brand ;
+    rdfs:label "has brand name" .
+
+:hasPresentation rdf:type owl:ObjectProperty ;
+    rdfs:domain :Brand ;
+    rdfs:range :Presentation_Packing ;
+    rdfs:label "has presentation" .
+
+:treats rdf:type owl:ObjectProperty ;
+    rdfs:domain :Brand ;
+    rdfs:range :Indication ;
+    rdfs:label "treats" .
+
+:hasWarning rdf:type owl:ObjectProperty ;
+    rdfs:domain :Brand ;
+    rdfs:range :Warning ;
+    rdfs:label "has warning" .
+
+:hasSideEffect rdf:type owl:ObjectProperty ;
+    rdfs:domain :Brand ;
+    rdfs:range :SideEffect ;
+    rdfs:label "has side effect" .
+
+:whichIs rdf:type owl:ObjectProperty ;
+    rdfs:domain :SideEffect ;
+    rdfs:range :Pattern ;
+    rdfs:label "which is" .
+
+:lastsFor rdf:type owl:ObjectProperty ;
+    rdfs:domain :SideEffect ;
+    rdfs:range :Duration ;
+    rdfs:label "lasts for" .
+
+:hasInteraction rdf:type owl:ObjectProperty ;
+    rdfs:domain :Brand ;
+    rdfs:range :Interaction ;
+    rdfs:label "has interaction" .
+
+:interactsWith rdf:type owl:ObjectProperty ;
+    rdfs:domain :Interaction ;
+    rdfs:range :Substance ;
+    rdfs:label "interacts with" .
+
+:hasReference rdf:type owl:ObjectProperty ;
+    rdfs:domain :Antibiotic , :Indication , :Warning , :Substance , :SideEffect , :Interaction , :StewardshipPrinciple , :MedicalTerm ;
+    rdfs:range :Reference ;
+    rdfs:label "has reference" .
+
+##############################################################
+# Data Type Properties
+###############################################################
+:hasSymptoms rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Indication;
+    rdfs:range xsd:string ;
+    rdfs:label "has symptoms" .
+
+:hasWarningHeadline rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Warning;
+    rdfs:range xsd:string ;
+    rdfs:label "has warning headline" .
+
+:hasWarningText rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Warning;
+    rdfs:range xsd:string ;
+    rdfs:label "has warning text" .
+
+:hasSideEffectName rdf:type owl:DatatypeProperty ;
+    rdfs:domain :SideEffect ;
+    rdfs:range xsd:string ;
+    rdfs:label "has side effect name" .
+
+:hasSideEffectDescription rdf:type owl:DatatypeProperty ;
+    rdfs:domain :SideEffect ;
+    rdfs:range xsd:string ;
+    rdfs:label "is described as" .
+
+:hasClinicalEffects rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Interaction ;
+    rdfs:range xsd:string ;
+    rdfs:label "has clinical effects" .
+
+:hasManagementAdvice rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Interaction ;
+    rdfs:range xsd:string;
+    rdfs:label "has management advice" .
+
+:hasInteractionDescription rdf:type owl:DatatypeProperty;
+    rdfs:domain :Interaction ;
+    rdfs:range xsd:string;
+    rdfs:label "has interaction description" .
+    
+:hasSubstanceDescription rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Substance ;
+    rdfs:range xsd:string ;
+    rdfs:label "has substance description" .
+
+:managedBy rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Brand ;
+    rdfs:range :StewardshipPrinciple;
+    rdfs:label "managed by" .
+
+:hasStewardshipDescription rdf:type owl:DatatypeProperty ;
+    rdfs:domain :StewardshipPrinciple ;
+    rdfs:range xsd:string ;
+    rdfs:label "has stewardship description" .
+
+##############################################################
+# Individuals
+###############################################################
+
+# Antibiotic
+:Doxycycline rdf:type :Antibiotic .
+:Tetracyclines rdf:type :DrugClass .
+:Doxin rdf:type :Brand .
+:Doxyclen rdf:type :Brand .
+:Dynadoxy rdf:type :Brand .
+:Capsule rdf:type :Presentation_Packing .
+
+# Indication
+:UrinaryTractInfection rdf:type :UrinaryDisease .
+:AtypicalPneumonia rdf:type :MildRespiratoryDisease.
+:SinusInfection rdf:type :MildRespiratoryDisease .
+
+# Warning
+:W143 rdf:type :Contraindication .
+:W145 rdf:type :PregnancyAndLactation .
+:W146 rdf:type :AgeRestriction .
+:W172 rdf:type :PregnancyAndLactation .
+:W151 rdf:type :PatientCondition .
+:W175 rdf:type :Overdosage .
+
+# Side Effect
+:SE310 rdf:type :SideEffect .
+:SE312 rdf:type :SideEffect .
+:SE313 rdf:type :SideEffect .
+:SE338 rdf:type :SideEffect .
+:SE371 rdf:type :SideEffect .
+:Common rdf:type :Pattern .
+:Infrequent rdf:type :Pattern .
+:2_months rdf:type :Duration .
+
+# Interaction
+:ITN121 rdf:type :Interaction .
+:ITN122 rdf:type :Interaction .
+:ITN165 rdf:type :Interaction .
+:ITN174 rdf:type :Interaction .
+
+# Substance
+:anticoagulant rdf:type :Drug .
+:penicillin rdf:type :Drug .
+:antacids rdf:type :Drug .
+:Beer rdf:type :Beverage .
+:Dairy_Products rdf:type :Food .
+:Ceimetidine rdf:type :Drug .
+
+# Stewardship Principle
+:SP111 rdf:type :Storage .
+:SP112 rdf:type :Storage .
+:SP113 rdf:type :Storage .
+:SP000 rdf:type :ProperUse .
+:SP082 rdf:type :Monitoring .
+:SP001 rdf:type :Adherence .
+
+##############################################################
+# Relationships
+###############################################################
+
+:Doxycycline :hasDrugClass :Tetracyclines .
+:Doxycycline :hasBrandName :Doxin .
+:Doxycycline :hasBrandName :Doxyclen .
+:Doxycycline :hasBrandName :Dynadoxy .
+
+:Doxin :hasPresentation :Capsule .
+:Doxyclen :hasPresentation :Capsule .
+:Dynadoxy :hasPresentation :Capsule .
+
+:AtypicalPneumonia :hasSymptoms "Sore throat, extreme tiredness, chest pain, low-grade fever, mild chills, cough, sneezing, headache" .
+:SinusInfection :hasSymptoms "facial pain, a stuffy or runny nose, and sometimes a fever" .
+
+:Doxin :treats :AtypicalPneumonia .
+:Doxyclen :treats :AtypicalPneumonia .
+:Dynadoxy :treats :SinusInfection .
+
+# Doxin Warnings
+:W143 :hasWarningHeadline "Hypersensitivity" .
+:W143 :hasWarningText "Hypersensitivity to any of the tetracyclines." .
+
+:W145 :hasWarningHeadline "Pregnancy" .
+:W145 :hasWarningText "Category D. do not use tetracycline during pregnancy. Tetracyclines readily cross the placenta, are found in fetal tissues and can have toxic effects on the developing fetus (retardation of skeletal development). Evidence of embryotoxicity has also been noted in animals treated early in pregnancy." .
+
+:W146 :hasWarningHeadline "Pediatric Use" .
+:W146 :hasWarningText "The use of drugs of the tetracycline class during tooth development (last half of pregnancy, infancy and childhood to the age of 8 years) may cause permanent discoloration of the teeth (yellow-gray-brown)." .
+
+:Doxin :hasWarning :W143 .
+:Doxin :hasWarning :W145 .
+:Doxin :hasWarning :W146 .
+
+# Doxyclen Warnings
+:W151 :hasWarningHeadline "Skin Reactions" .
+:W151 :hasWarningText "Severe skin reactions, such as exfoliative dermatitis, erythema multiforme, Steven-Johnson syndrome, toxic epidermal necrolysis, and drug reaction with eosinophilia and systemic symptoms (DRESS) have veen reported in patients receiving doxycycline." .
+
+:W172 :hasWarningHeadline "Pregnancy Use" .
+:W172 :hasWarningText "If any tetracycline is used during pregnancy or if the patient becomes pregnant while taking this drug, the patient should be apprised of the potential hazard to the fetus." .
+
+:Doxyclen :hasWarning :W151 .
+:Doxyclen :hasWarning :W172 .
+
+# Dynadoxy Warnings
+:W175 :hasWarningHeadline "Overdosage Treatment Guidance" .
+:W175 :hasWarningText "In case of overdosage, discontinue medication. Treat symptomatically and institute supportive measures. Dialysis does not alter serum half-life and thus would not be of benefit in treating cases of overdosage." .
+
+:Dynadoxy :hasWarning :W175.
+
+# Doxin Side Effects
+:SE310 :hasSideEffectName "Diarrhea" .
+:SE310 :hasSideEffectDescription "May occur after a patient stop taking doxycycline" .
+:SE310 :lastsFor :2_months .
+:SE310 :whichIs :Infrequent .
+
+:SE312 :hasSideEffectName "Nausea" .
+:SE312 :hasSideEffectDescription "a feeling of sickness or discomfort in the stomach" .
+:SE312 :whichIs :Common .
+
+:SE313 :hasSideEffectName "Vomiting" .
+:SE313 :hasSideEffectDescription "forceful ejection of some or all of the contents of the stomach through the mouth" .
+:SE313 :whichIs :Common .
+
+:Doxin :hasSideEffect :SE310 .
+:Doxin :hasSideEffect :SE312 .
+:Doxin :hasSideEffect :SE313 .
+
+# Doxyclen Side Effects
+:SE338 :hasSideEffectName "Diarrhea".
+:SE338 :hasSideEffectDescription "May occur after a patient stop taking doxycycline" .
+:SE338 :lastsFor :2_months .
+:SE338 :whichIs :Infrequent .
+
+:Doxyclen :hasSideEffect :SE338 .
+
+# Dynadoxy Side Effects
+:SE371 :hasSideEffectName "Diarrhea" .
+:SE371 :hasSideEffectDescription "May occur after a patient stop taking doxycycline" .
+:SE371 :lastsFor :2_months .
+:SE371 :whichIs :Infrequent .
+
+:Dynadoxy :hasSideEffect :SE371 .
+
+# Substance 
+:anticoagulant :hasSubstanceDescription "Anticoagulant therapy" .
+:penicillin :hasSubstanceDescription "Bactericidal antibiotic" .
+:antacids :hasSubstanceDescription "Products containing aluminum, calcium, magnesium, and iron-containing preparations" .
+
+# Doxin Interaction
+:Doxin :hasInteraction :ITN121 .
+:ITN121 :interactsWith :anticoagulant .
+:ITN121 :hasInteractionDescription "Because tetracyclines depress plasma prothrombin activity, patients who are on anticoagulant therapy may require reduction of their anticoagulant dosage." .
+:ITN121 :hasClinicalEffects "tetracyclines depress plasma prothrombin activity" .
+:ITN121 :hasManagementAdvice "reduction of anticoagulant dosage" .
+
+:Doxin :hasInteraction :ITN122 .
+:ITN122 :interactsWith :penicillin .
+:ITN122 :hasInteractionDescription "Since bacteriostatic drugs interfere with the bactericidal action of penicillin, it is advisable to avoid giving tetracyclines in conjuction with penicillin".
+:ITN122 :hasClinicalEffects "bacteriostatic drugs interfere with the bactericidal action of penicillin" .
+:ITN122 :hasManagementAdvice "avoid giving tetracyclines in conjuction with penicillin" .
+
+# Doxyclen Interaction
+:Doxyclen :hasInteraction :ITN165 .
+:ITN165 :interactsWith :antacids .
+:ITN165 :hasInteractionDescription "Absorption of tetracyclines is impaired by antacids containing aluminum, calcium, or magnesium and iron-containing preparations". 
+:ITN165 :hasClinicalEffects "Decreased absorption" .
+:ITN165 :hasManagementAdvice "Avoid taking together" .
+
+# Dynadoxy Interaction
+:Dynadoxy :hasInteraction :ITN174 .
+:ITN174 :interactsWith :antacids .
+:ITN174 :hasInteractionDescription "Absorption of tetracyclines is impaired by antacids containing aluminum, calcium, or magnesium and iron-containing preparations".
+:ITN174 :hasClinicalEffects "Decreased absorption" .
+:ITN174 :hasClinicalEffects "Avoid taking together" .
+
+# Doxin Stewardship Principle
+:Doxin :managedBy :SP111 .
+:Doxin :managedBy :SP000 .
+:Doxin :managedBy :SP001 .
+:Doxin :managedBy :SP082 .
+:SP000 :hasStewardshipDescription "The bottle must be shaken well before taking each dose to ensure the medication is evenly distributed".
+:SP082 :hasStewardshipDescription "Maintain adequate fluid intake and urinary output to reduce the possibility of crystalluria. Periodic assessment of renal, hepatic, and hematopoietic functions is recommended during prolonged therapy." .
+:SP001 :hasStewardshipDescription "Take at least 2 hr before or 2 hr after antacids containing Mg/Al, sucralfate, metal cations (eg, Fe), & multivit prep w/ Zn.".
+:SP111 :hasStewardshipDescription "Store at temperatures not exceeding 30°C" .
+
+# Doxyclen Stewardship Principle 
+:Doxyclen :managedBy :SP112 .
+:SP112 :hasStewardshipDescription "Store at temperatures not exceeding 30°C" .
+
+# Dynadoxy Stewardship Principle
+:Doxyclen :managedBy :SP113 .
+:SP113 :hasStewardshipDescription "Store at temperatures not exceeding 30°C. Protect from light".
