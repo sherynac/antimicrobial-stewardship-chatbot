@@ -116,6 +116,11 @@
 ##############################################################
 # Data Type Properties
 ###############################################################
+:hasTermDefinition rdf:type owl:DatatypeProperty;
+    rdfs:domain :MedicalTerm;
+    rdfs:range xsd:string;
+    rdfs:label "has term definition" .
+
 :hasSymptoms rdf:type owl:DatatypeProperty ;
     rdfs:domain :Indication;
     rdfs:range xsd:string ;
@@ -171,9 +176,33 @@
     rdfs:range xsd:string ;
     rdfs:label "has stewardship description" .
 
+:hasReferenceTitle rdf:type owl:DatatypeProperty;
+    rdfs:domain :Reference;
+    rdfs:range xsd:string;
+    rdfs:label "has reference title" .
+
+:hasAuthor rdf:type owl:DatatypeProperty;
+    rdfs:domain :Reference;
+    rdfs:range xsd:string;
+    rdfs:label "has author" .
+
+:publishedIn rdf:type owl:DatatypeProperty;
+    rdfs:domain :Reference;
+    rdfs:range xsd:integer;
+    rdfs:label "published in".
+
+:retrievedFrom rdf:type owl:DatatypeProperty;
+    rdfs:domain :Reference;
+    rdfs:range xsd:string;
+    rdfs:label "retrieved from".
+
 ##############################################################
 # Individuals
 ###############################################################
+
+# Medical Terms
+:AntibioticResistance rdf:type :MedicalTerm .
+:AntimicrobialStewardship rdf:type :MedicalTerm.
 
 # Antibiotic
 :Doxycycline rdf:type :Antibiotic .
@@ -217,7 +246,7 @@
 :penicillin rdf:type :Drug .
 :antacids rdf:type :Drug .
 :Beer rdf:type :Beverage .
-:Dairy_Products rdf:type :Food .
+:DairyProducts rdf:type :Food .
 :Ceimetidine rdf:type :Drug .
 
 # Stewardship Principle
@@ -228,9 +257,21 @@
 :SP082 rdf:type :Monitoring .
 :SP001 rdf:type :Adherence .
 
+# References
+:R002 rdf:type :Reference .
+:R003 rdf:type :Reference .
+:R011 rdf:type :Reference .
+:R012 rdf:type :Reference .
+:R013 rdf:type :Reference .
+
 ##############################################################
 # Relationships
 ###############################################################
+
+:AntibioticResistance :hasTermDefinition "microorganisms such as bacteria, fungi, viruses and parasites change when exposed to antimicrobial drugs such as antibiotics (= antibacterials), antifungals, antivirals, antimalarials and anthelmintics. As a result, the medicines become ineffective.".
+:AntimicrobialStewardship :hasTermDefinition "coordinated interventions designed to promote, improve, monitor, and evaluate the judicious use of antimicrobials so as to preserve their future effectiveness and to promote and protect human and animal health. ".
+:AntibioticResistance :hasReference :R002 .
+:AntimicrobialStewardship :hasReference :R003 .
 
 :Doxycycline :hasDrugClass :Tetracyclines .
 :Doxycycline :hasBrandName :Doxin .
@@ -240,6 +281,10 @@
 :Doxin :hasPresentation :Capsule .
 :Doxyclen :hasPresentation :Capsule .
 :Dynadoxy :hasPresentation :Capsule .
+
+:Doxin :hasReference :R011 .
+:Doxyclen :hasReference :R012 .
+:Dynadoxy :hasReference :R013 .
 
 :AtypicalPneumonia :hasSymptoms "Sore throat, extreme tiredness, chest pain, low-grade fever, mild chills, cough, sneezing, headache" .
 :SinusInfection :hasSymptoms "facial pain, a stuffy or runny nose, and sometimes a fever" .
@@ -361,3 +406,30 @@
 # Dynadoxy Stewardship Principle
 :Doxyclen :managedBy :SP113 .
 :SP113 :hasStewardshipDescription "Store at temperatures not exceeding 30°C. Protect from light".
+
+# REFERENCES
+:R002 :hasReferenceTitle "Glossary of Terms: Antimicrobial Resistance".
+:R002 :hasAuthor "Katrime Integrated Health" .
+:R002 :publishedIn 2022.
+:R002 :retrievedFrom "https://nccid.ca/publications/glossary-terms-antimicrobial-resistance/".
+
+:R003 :hasReferenceTitle "Antimicrobial Stewardship Programmes in Health-care Facilities in Low- and Middle-Income Countries".
+:R003 :hasAuthor "World Health Organization".
+:R003 :publishedIn 2019 .
+:R003 :retrievedFrom "https://www.who.int/publications/i/item/9789241515481".
+
+:R011 :hasReferenceTitle "Doxin".
+:R011 :hasAuthor "Monthly Index of Medical Specialties" .
+:R011 :publishedIn 2026.
+:R011 :retrievedFrom "https://www.mims.com/philippines/drug/info/doxin" .
+
+:R012 :hasReferenceTitle "Doxyclen".
+:R012 :hasAuthor "Monthly Index of Medical Specialties" .
+:R012 :publishedIn 2026.
+:R012 :retrievedFrom "https://www.mims.com/philippines/drug/info/doxyclen".
+
+:R013 :hasReferenceTitle "Dynadoxy" .
+:R013 :hasAuthor "Monthly Index of Medical Specialties" .
+:R013 :publishedIn 2026.
+:R013 :retrievedFrom "https://www.mims.com/philippines/drug/info/dynadoxy".
+
