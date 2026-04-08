@@ -108,6 +108,11 @@
     rdfs:range :Substance ;
     rdfs:label "interacts with" .
 
+:managedBy rdf:type owl:ObjectProperty ;
+    rdfs:domain :Brand ;
+    rdfs:range :StewardshipPrinciple;
+    rdfs:label "managed by" .
+
 :hasReference rdf:type owl:ObjectProperty ;
     rdfs:domain :Antibiotic , :Indication , :Warning , :Substance , :SideEffect , :Interaction , :StewardshipPrinciple , :MedicalTerm ;
     rdfs:range :Reference ;
@@ -165,11 +170,6 @@
     rdfs:domain :Substance ;
     rdfs:range xsd:string ;
     rdfs:label "has substance description" .
-
-:managedBy rdf:type owl:DatatypeProperty ;
-    rdfs:domain :Brand ;
-    rdfs:range :StewardshipPrinciple;
-    rdfs:label "managed by" .
 
 :hasStewardshipDescription rdf:type owl:DatatypeProperty ;
     rdfs:domain :StewardshipPrinciple ;
@@ -268,10 +268,21 @@
 # Relationships
 ###############################################################
 
-:AntibioticResistance :hasTermDefinition "microorganisms such as bacteria, fungi, viruses and parasites change when exposed to antimicrobial drugs such as antibiotics (= antibacterials), antifungals, antivirals, antimalarials and anthelmintics. As a result, the medicines become ineffective.".
-:AntimicrobialStewardship :hasTermDefinition "coordinated interventions designed to promote, improve, monitor, and evaluate the judicious use of antimicrobials so as to preserve their future effectiveness and to promote and protect human and animal health. ".
-:AntibioticResistance :hasReference :R002 .
-:AntimicrobialStewardship :hasReference :R003 .
+# REFERENCES
+:R011 :hasReferenceTitle "Doxin".
+:R011 :hasAuthor "Monthly Index of Medical Specialties" .
+:R011 :publishedIn 2026.
+:R011 :retrievedFrom "https://www.mims.com/philippines/drug/info/doxin" .
+
+:R012 :hasReferenceTitle "Doxyclen".
+:R012 :hasAuthor "Monthly Index of Medical Specialties" .
+:R012 :publishedIn 2026.
+:R012 :retrievedFrom "https://www.mims.com/philippines/drug/info/doxyclen".
+
+:R013 :hasReferenceTitle "Dynadoxy" .
+:R013 :hasAuthor "Monthly Index of Medical Specialties" .
+:R013 :publishedIn 2026.
+:R013 :retrievedFrom "https://www.mims.com/philippines/drug/info/dynadoxy".
 
 :Doxycycline :hasDrugClass :Tetracyclines .
 :Doxycycline :hasBrandName :Doxin .
@@ -387,49 +398,22 @@
 :ITN174 :interactsWith :antacids .
 :ITN174 :hasInteractionDescription "Absorption of tetracyclines is impaired by antacids containing aluminum, calcium, or magnesium and iron-containing preparations".
 :ITN174 :hasClinicalEffects "Decreased absorption" .
-:ITN174 :hasClinicalEffects "Avoid taking together" .
+:ITN174 :hasManagementAdvice "Avoid taking together" .
 
 # Doxin Stewardship Principle
-:Doxin :managedBy :SP111 .
-:Doxin :managedBy :SP000 .
-:Doxin :managedBy :SP001 .
-:Doxin :managedBy :SP082 .
 :SP000 :hasStewardshipDescription "The bottle must be shaken well before taking each dose to ensure the medication is evenly distributed".
 :SP082 :hasStewardshipDescription "Maintain adequate fluid intake and urinary output to reduce the possibility of crystalluria. Periodic assessment of renal, hepatic, and hematopoietic functions is recommended during prolonged therapy." .
 :SP001 :hasStewardshipDescription "Take at least 2 hr before or 2 hr after antacids containing Mg/Al, sucralfate, metal cations (eg, Fe), & multivit prep w/ Zn.".
 :SP111 :hasStewardshipDescription "Store at temperatures not exceeding 30°C" .
+:Doxin :managedBy :SP111 .
+:Doxin :managedBy :SP000 .
+:Doxin :managedBy :SP001 .
+:Doxin :managedBy :SP082 .
 
 # Doxyclen Stewardship Principle 
-:Doxyclen :managedBy :SP112 .
 :SP112 :hasStewardshipDescription "Store at temperatures not exceeding 30°C" .
+:Doxyclen :managedBy :SP112 .
 
 # Dynadoxy Stewardship Principle
-:Doxyclen :managedBy :SP113 .
 :SP113 :hasStewardshipDescription "Store at temperatures not exceeding 30°C. Protect from light".
-
-# REFERENCES
-:R002 :hasReferenceTitle "Glossary of Terms: Antimicrobial Resistance".
-:R002 :hasAuthor "Katrime Integrated Health" .
-:R002 :publishedIn 2022.
-:R002 :retrievedFrom "https://nccid.ca/publications/glossary-terms-antimicrobial-resistance/".
-
-:R003 :hasReferenceTitle "Antimicrobial Stewardship Programmes in Health-care Facilities in Low- and Middle-Income Countries".
-:R003 :hasAuthor "World Health Organization".
-:R003 :publishedIn 2019 .
-:R003 :retrievedFrom "https://www.who.int/publications/i/item/9789241515481".
-
-:R011 :hasReferenceTitle "Doxin".
-:R011 :hasAuthor "Monthly Index of Medical Specialties" .
-:R011 :publishedIn 2026.
-:R011 :retrievedFrom "https://www.mims.com/philippines/drug/info/doxin" .
-
-:R012 :hasReferenceTitle "Doxyclen".
-:R012 :hasAuthor "Monthly Index of Medical Specialties" .
-:R012 :publishedIn 2026.
-:R012 :retrievedFrom "https://www.mims.com/philippines/drug/info/doxyclen".
-
-:R013 :hasReferenceTitle "Dynadoxy" .
-:R013 :hasAuthor "Monthly Index of Medical Specialties" .
-:R013 :publishedIn 2026.
-:R013 :retrievedFrom "https://www.mims.com/philippines/drug/info/dynadoxy".
-
+:Dynadoxy :managedBy :SP113 .
