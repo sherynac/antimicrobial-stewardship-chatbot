@@ -1,0 +1,35 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <http://example.org/ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://example.org/reasoning-sample> rdf:type owl:Ontology .
+
+# Classes
+:Drug rdf:type owl:Class .
+:DrugClass rdf:type owl:Class .
+:SideEffect rdf:type owl:Class .
+
+# Instances
+:Doxycycline rdf:type :Drug .
+:Tetracyclines rdf:type :DrugClass .
+:Diarrhea rdf:type :SideEffect .
+
+# Relationships
+:belongsToClass rdf:type owl:ObjectProperty ;
+    rdfs:domain :Drug ;
+    rdfs:range :DrugClass .
+
+:hasSideEffect rdf:type owl:ObjectProperty ;
+    rdfs:range :SideEffect .
+
+# 🔥 PROPERTY CHAIN (this is the key)
+:hasSideEffect owl:propertyChainAxiom (
+    :belongsToClass
+    :hasSideEffect
+) .
+
+# Assertions
+:Doxycycline :belongsToClass :Tetracyclines .
+:Tetracyclines :hasSideEffect :Diarrhea .

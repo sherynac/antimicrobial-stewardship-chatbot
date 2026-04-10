@@ -1,6 +1,25 @@
 {
-  "status": "skeleton_mode",
-  "templates": {
-    "default": "This is a placeholder response for {drug}."
-  }
+  "IntentDefinitions":[{  
+    "intent": "GET_ANTIBIOTIC_INFO",
+    "description": "",
+    "responses": [{
+      "responseID": 1,
+      "responseText": "{generic} is a {drug_class} with presentation of {presentation}",
+      "readabilityLevel":"",
+      "targetNodes":["generic", "drug_class", "presentation"]
+    },
+    {
+      "responseID": 2,
+      "responseText": "{brand} is a {drug_class} with presentation of {presentation}",
+      "readabilityLevel":"",
+      "targetNodes":["brand", "drug_class", "presentation"]
+    },
+    {
+      "responseID": 3,
+      "responseText": "{brand} is a brand of {generic}, which is a type of {drug_class}. It also has presentation of {presentation}",
+      "readabilityLevel":"",
+      "targetNodes":["brand", "generic", "drug_class", "presentation"]
+    }
+  ]}
+  ]
 }
