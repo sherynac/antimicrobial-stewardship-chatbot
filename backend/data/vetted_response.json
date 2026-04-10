@@ -1,25 +1,34 @@
 {
-  "IntentDefinitions":[{  
-    "intent": "GET_ANTIBIOTIC_INFO",
-    "description": "",
-    "responses": [{
-      "responseID": 1,
-      "responseText": "{generic} is a {drug_class} with presentation of {presentation}",
-      "readabilityLevel":"",
-      "targetNodes":["generic", "drug_class", "presentation"]
-    },
+  "IntentDefinitions": [
     {
-      "responseID": 2,
-      "responseText": "{brand} is a {drug_class} with presentation of {presentation}",
-      "readabilityLevel":"",
-      "targetNodes":["brand", "drug_class", "presentation"]
-    },
-    {
-      "responseID": 3,
-      "responseText": "{brand} is a brand of {generic}, which is a type of {drug_class}. It also has presentation of {presentation}",
-      "readabilityLevel":"",
-      "targetNodes":["brand", "generic", "drug_class", "presentation"]
+      "intent": "GET_ANTIBIOTIC_INFO",
+      "description": "Get brands and their presentations for an antibiotic",
+      "responses": [
+        {
+          "responseID": 1,
+          "condition": "generic_only",
+          "responseText": "{generic} (a {drug_class})is available in the following brands and forms: {brand_list_with_presentations}.",
+          "targetNodes": ["generic", "drug_class", "brand_list_with_presentations"]
+        },
+        {
+          "responseID": 2,
+          "condition": "brand_only",
+          "responseText": "{brand} (generic: {generic}) comes in {presentation}. Other brands include {other_brands}.",
+          "targetNodes": ["brand", "generic", "presentation", "other_brands"]
+        },
+        {
+          "responseID": 3,
+          "condition": "presentation_only_query",
+          "responseText": "{brand} comes in {presentation}.",
+          "targetNodes": ["brand", "presentation"]
+        },
+        {
+          "responseID": 4,
+          "condition": "both_generic_and_brand",
+          "responseText": "{is_brand_of}, {brand} is a brand of {generic}. It comes in {presentation}.",
+          "targetNodes" : ["is_brand_of", "brand", "generic", "presentation"]
+        }
+      ]
     }
-  ]}
   ]
 }
