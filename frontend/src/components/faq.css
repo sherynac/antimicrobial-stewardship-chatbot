@@ -67,3 +67,21 @@
 .card-answer p {
   @apply text-black leading-relaxed font-[Figtree-Regular] flex-1;
 }
+
+.card-term {
+  @apply px-6 pt-3 flex items-start bg-[#F8F9FA] gap-0;
+  height: auto;
+}
+
+.card-term p {
+  @apply text-[#696969] leading-relaxed font-[Figtree-Regular] flex-1 text-sm;
+}
+
+.card-reference {
+  @apply px-6 pb-6 flex items-start bg-[#F8F9FA] gap-0;
+  height: auto;
+}
+
+.card-reference p {
+  @apply text-[#696969] leading-relaxed font-[Figtree-Regular] flex-1 text-sm;
+}
