@@ -7,8 +7,8 @@
         {
           "responseID": 1,
           "condition": "generic_only",
-          "responseText": "{generic} (a {drug_class})is available in the following brands and forms: {brand_list_with_presentations}.",
-          "targetNodes": ["generic", "drug_class", "brand_list_with_presentations"]
+          "responseText": "{generic} (a {drug_class})is available in the following brands and forms: ",
+          "targetNodes": ["generic", "drug_class"]
         },
         {
           "responseID": 2,

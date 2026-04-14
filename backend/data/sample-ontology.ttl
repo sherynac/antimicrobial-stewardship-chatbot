@@ -224,6 +224,10 @@
     rdfs:label "Dynadoxy".
 :Capsule rdf:type :Presentation_Packing ;
     rdfs:label "Capsule".
+:Injection rdf:type :Presentation_Packing;
+    rdfs:label "Injection" .
+:SuspensionPowder rdf:type :Presentation_Packing;
+    rdfs:label "Suspension Powder".
 
 # Indication
 :UrinaryTractInfection rdf:type :UrinaryDisease .
@@ -307,6 +311,8 @@
 :Dynadoxy :isBrandOf :Doxycycline .
 
 :Doxin :hasPresentation :Capsule .
+:Doxin :hasPresentation :SuspensionPowder .
+:Doxin :hasPresentation :Injection .
 :Doxyclen :hasPresentation :Capsule .
 :Dynadoxy :hasPresentation :Capsule .
 

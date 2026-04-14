@@ -4,7 +4,7 @@ from flask_cors import CORS
 from whitenoise import WhiteNoise
 
 # Import the skeleton services
-from services.nlp_service import analyze_query
+from backend.services.intent_service import analyze_query
 from services.ontology_service import get_drug_data
 from services.response_service import construct_response
 
