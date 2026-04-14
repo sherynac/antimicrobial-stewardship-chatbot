@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns="http://example.org/ontology#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="http://example.org/ontology#SE310">
+    <rdf:type rdf:resource="http://example.org/ontology#SideEffect"/>
+    <hasSideEffectName>Diarrhea</hasSideEffectName>
+    <hasSideEffectDescription>May occur after a patient stop taking doxycycline</hasSideEffectDescription>
+    <lastsFor rdf:resource="http://example.org/ontology#2_months"/>
+    <whichIs rdf:resource="http://example.org/ontology#Infrequent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Doxin">
+    <rdf:type rdf:resource="http://example.org/ontology#Brand"/>
+    <rdfs:label>Doxin</rdfs:label>
+    <isBrandOf rdf:resource="http://example.org/ontology#Doxycycline"/>
+    <hasPresentation rdf:resource="http://example.org/ontology#Capsule"/>
+    <hasPresentation rdf:resource="http://example.org/ontology#SuspensionPowder"/>
+    <hasPresentation rdf:resource="http://example.org/ontology#Injection"/>
+    <hasReference rdf:resource="http://example.org/ontology#R011"/>
+    <treats rdf:resource="http://example.org/ontology#AtypicalPneumonia"/>
+    <hasWarning rdf:resource="http://example.org/ontology#W143"/>
+    <hasWarning rdf:resource="http://example.org/ontology#W145"/>
+    <hasWarning rdf:resource="http://example.org/ontology#W146"/>
+    <hasSideEffect rdf:resource="http://example.org/ontology#SE310"/>
+    <hasSideEffect rdf:resource="http://example.org/ontology#SE312"/>
+    <hasSideEffect rdf:resource="http://example.org/ontology#SE313"/>
+    <hasInteraction rdf:resource="http://example.org/ontology#ITN121"/>
+    <hasInteraction rdf:resource="http://example.org/ontology#ITN122"/>
+    <managedBy rdf:resource="http://example.org/ontology#SP111"/>
+    <managedBy rdf:resource="http://example.org/ontology#SP000"/>
+    <managedBy rdf:resource="http://example.org/ontology#SP001"/>
+    <managedBy rdf:resource="http://example.org/ontology#SP082"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Doxyclen">
+    <rdf:type rdf:resource="http://example.org/ontology#Brand"/>
+    <rdfs:label>Doxyclen</rdfs:label>
+    <isBrandOf rdf:resource="http://example.org/ontology#Doxycycline"/>
+    <hasPresentation rdf:resource="http://example.org/ontology#Capsule"/>
+    <hasReference rdf:resource="http://example.org/ontology#R012"/>
+    <treats rdf:resource="http://example.org/ontology#AtypicalPneumonia"/>
+    <hasWarning rdf:resource="http://example.org/ontology#W151"/>
+    <hasWarning rdf:resource="http://example.org/ontology#W172"/>
+    <hasSideEffect rdf:resource="http://example.org/ontology#SE338"/>
+    <hasInteraction rdf:resource="http://example.org/ontology#ITN165"/>
+    <managedBy rdf:resource="http://example.org/ontology#SP112"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#interactsWith">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Interaction"/>
+    <rdfs:range rdf:resource="http://example.org/ontology#Substance"/>
+    <rdfs:label>interacts with</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasTermDefinition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#MedicalTerm"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>has term definition</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasManagementAdvice">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Interaction"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>has management advice</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#SP112">
+    <rdf:type rdf:resource="http://example.org/ontology#Storage"/>
+    <hasStewardshipDescription>Store at temperatures not exceeding 30°C</hasStewardshipDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#MildRespiratoryDisease">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology#RespiratoryDisease"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasClinicalEffects">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Interaction"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>has clinical effects</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Beverage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology#Substance"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#SE371">
+    <rdf:type rdf:resource="http://example.org/ontology#SideEffect"/>
+    <hasSideEffectName>Diarrhea</hasSideEffectName>
+    <hasSideEffectDescription>May occur after a patient stop taking doxycycline</hasSideEffectDescription>
+    <lastsFor rdf:resource="http://example.org/ontology#2_months"/>
+    <whichIs rdf:resource="http://example.org/ontology#Infrequent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Prevention">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology#StewardshipPrinciple"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Adherence">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology#StewardshipPrinciple"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#PatientCondition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology#Warning"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasWarning">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Brand"/>
+    <rdfs:range rdf:resource="http://example.org/ontology#Warning"/>
+    <rdfs:label>has warning</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#W151">
+    <rdf:type rdf:resource="http://example.org/ontology#PatientCondition"/>
+    <hasWarningHeadline>Skin Reactions</hasWarningHeadline>
+    <hasWarningText>Severe skin reactions, such as exfoliative dermatitis, erythema multiforme, Steven-Johnson syndrome, toxic epidermal necrolysis, and drug reaction with eosinophilia and systemic symptoms (DRESS) have veen reported in patients receiving doxycycline.</hasWarningText>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Infrequent">
+    <rdf:type rdf:resource="http://example.org/ontology#Pattern"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#whichIs">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#SideEffect"/>
+    <rdfs:range rdf:resource="http://example.org/ontology#Pattern"/>
+    <rdfs:label>which is</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasWarningHeadline">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Warning"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>has warning headline</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Brand">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Contraindication">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology#Warning"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasDrugClass">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Antibiotic"/>
+    <rdfs:range rdf:resource="http://example.org/ontology#DrugClass"/>
+    <rdfs:label>has drug class</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#R013">
+    <rdf:type rdf:resource="http://example.org/ontology#Reference"/>
+    <hasReferenceTitle>Dynadoxy</hasReferenceTitle>
+    <hasAuthor>Monthly Index of Medical Specialties</hasAuthor>
+    <publishedIn rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2026</publishedIn>
+    <retrievedFrom>https://www.mims.com/philippines/drug/info/dynadoxy</retrievedFrom>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasSideEffectName">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#SideEffect"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>has side effect name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#isBrandOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Brand"/>
+    <rdfs:range rdf:resource="http://example.org/ontology#Antibiotic"/>
+    <rdfs:label>is brand of</rdfs:label>
+    <owl:inverseOf rdf:resource="http://example.org/ontology#hasBrandName"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasBrandName">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Antibiotic"/>
+    <rdfs:range rdf:resource="http://example.org/ontology#Brand"/>
+    <rdfs:label>has brand name</rdfs:label>
+    <owl:inverseOf rdf:resource="http://example.org/ontology#isBrandOf"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#SE338">
+    <rdf:type rdf:resource="http://example.org/ontology#SideEffect"/>
+    <hasSideEffectName>Diarrhea</hasSideEffectName>
+    <hasSideEffectDescription>May occur after a patient stop taking doxycycline</hasSideEffectDescription>
+    <lastsFor rdf:resource="http://example.org/ontology#2_months"/>
+    <whichIs rdf:resource="http://example.org/ontology#Infrequent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#managedBy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Brand"/>
+    <rdfs:range rdf:resource="http://example.org/ontology#StewardshipPrinciple"/>
+    <rdfs:label>managed by</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasStewardshipDescription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#StewardshipPrinciple"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>has stewardship description</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#SP000">
+    <rdf:type rdf:resource="http://example.org/ontology#ProperUse"/>
+    <hasStewardshipDescription>The bottle must be shaken well before taking each dose to ensure the medication is evenly distributed</hasStewardshipDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#R011">
+    <rdf:type rdf:resource="http://example.org/ontology#Reference"/>
+    <hasReferenceTitle>Doxin</hasReferenceTitle>
+    <hasAuthor>Monthly Index of Medical Specialties</hasAuthor>
+    <publishedIn rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2026</publishedIn>
+    <retrievedFrom>https://www.mims.com/philippines/drug/info/doxin</retrievedFrom>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Reference">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasWarningText">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Warning"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>has warning text</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#retrievedFrom">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Reference"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>retrieved from</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Doxycycline">
+    <rdf:type rdf:resource="http://example.org/ontology#Antibiotic"/>
+    <rdfs:label>Doxycycline</rdfs:label>
+    <hasDrugClass rdf:resource="http://example.org/ontology#Tetracyclines"/>
+    <hasBrandName rdf:resource="http://example.org/ontology#Doxin"/>
+    <hasBrandName rdf:resource="http://example.org/ontology#Doxyclen"/>
+    <hasBrandName rdf:resource="http://example.org/ontology#Dynadoxy"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasReference">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Antibiotic"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Indication"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Warning"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Substance"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#SideEffect"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Interaction"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#StewardshipPrinciple"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#MedicalTerm"/>
+    <rdfs:range rdf:resource="http://example.org/ontology#Reference"/>
+    <rdfs:label>has reference</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasSymptoms">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Indication"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>has symptoms</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#W146">
+    <rdf:type rdf:resource="http://example.org/ontology#AgeRestriction"/>
+    <hasWarningHeadline>Pediatric Use</hasWarningHeadline>
+    <hasWarningText>The use of drugs of the tetracycline class during tooth development (last half of pregnancy, infancy and childhood to the age of 8 years) may cause permanent discoloration of the teeth (yellow-gray-brown).</hasWarningText>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#ITN122">
+    <rdf:type rdf:resource="http://example.org/ontology#Interaction"/>
+    <interactsWith rdf:resource="http://example.org/ontology#penicillin"/>
+    <hasInteractionDescription>Since bacteriostatic drugs interfere with the bactericidal action of penicillin, it is advisable to avoid giving tetracyclines in conjuction with penicillin</hasInteractionDescription>
+    <hasClinicalEffects>bacteriostatic drugs interfere with the bactericidal action of penicillin</hasClinicalEffects>
+    <hasManagementAdvice>avoid giving tetracyclines in conjuction with penicillin</hasManagementAdvice>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Tetracyclines">
+    <rdf:type rdf:resource="http://example.org/ontology#DrugClass"/>
+    <rdfs:label>Tetracyclines</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#W143">
+    <rdf:type rdf:resource="http://example.org/ontology#Contraindication"/>
+    <hasWarningHeadline>Hypersensitivity</hasWarningHeadline>
+    <hasWarningText>Hypersensitivity to any of the tetracyclines.</hasWarningText>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Presentation_Packing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#SP001">
+    <rdf:type rdf:resource="http://example.org/ontology#Adherence"/>
+    <hasStewardshipDescription>Take at least 2 hr before or 2 hr after antacids containing Mg/Al, sucralfate, metal cations (eg, Fe), &amp; multivit prep w/ Zn.</hasStewardshipDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#SE313">
+    <rdf:type rdf:resource="http://example.org/ontology#SideEffect"/>
+    <hasSideEffectName>Vomiting</hasSideEffectName>
+    <hasSideEffectDescription>forceful ejection of some or all of the contents of the stomach through the mouth</hasSideEffectDescription>
+    <whichIs rdf:resource="http://example.org/ontology#Common"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasInteraction">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Brand"/>
+    <rdfs:range rdf:resource="http://example.org/ontology#Interaction"/>
+    <rdfs:label>has interaction</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Injection">
+    <rdf:type rdf:resource="http://example.org/ontology#Presentation_Packing"/>
+    <rdfs:label>Injection</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#W145">
+    <rdf:type rdf:resource="http://example.org/ontology#PregnancyAndLactation"/>
+    <hasWarningHeadline>Pregnancy</hasWarningHeadline>
+    <hasWarningText>Category D. do not use tetracycline during pregnancy. Tetracyclines readily cross the placenta, are found in fetal tissues and can have toxic effects on the developing fetus (retardation of skeletal development). Evidence of embryotoxicity has also been noted in animals treated early in pregnancy.</hasWarningText>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Pattern">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#R003">
+    <rdf:type rdf:resource="http://example.org/ontology#Reference"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Monitoring">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology#StewardshipPrinciple"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#lastsFor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#SideEffect"/>
+    <rdfs:range rdf:resource="http://example.org/ontology#Duration"/>
+    <rdfs:label>lasts for</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasReferenceTitle">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Reference"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>has reference title</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#R012">
+    <rdf:type rdf:resource="http://example.org/ontology#Reference"/>
+    <hasReferenceTitle>Doxyclen</hasReferenceTitle>
+    <hasAuthor>Monthly Index of Medical Specialties</hasAuthor>
+    <publishedIn rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2026</publishedIn>
+    <retrievedFrom>https://www.mims.com/philippines/drug/info/doxyclen</retrievedFrom>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#SinusInfection">
+    <rdf:type rdf:resource="http://example.org/ontology#MildRespiratoryDisease"/>
+    <hasSymptoms>facial pain, a stuffy or runny nose, and sometimes a fever</hasSymptoms>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Ceimetidine">
+    <rdf:type rdf:resource="http://example.org/ontology#Drug"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#UrinaryTractInfection">
+    <rdf:type rdf:resource="http://example.org/ontology#UrinaryDisease"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Common">
+    <rdf:type rdf:resource="http://example.org/ontology#Pattern"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasSideEffect">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Brand"/>
+    <rdfs:range rdf:resource="http://example.org/ontology#SideEffect"/>
+    <rdfs:label>has side effect</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#RespiratoryDisease">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology#Indication"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Dynadoxy">
+    <rdf:type rdf:resource="http://example.org/ontology#Brand"/>
+    <rdfs:label>Dynadoxy</rdfs:label>
+    <isBrandOf rdf:resource="http://example.org/ontology#Doxycycline"/>
+    <hasPresentation rdf:resource="http://example.org/ontology#Capsule"/>
+    <hasReference rdf:resource="http://example.org/ontology#R013"/>
+    <treats rdf:resource="http://example.org/ontology#SinusInfection"/>
+    <hasWarning rdf:resource="http://example.org/ontology#W175"/>
+    <hasSideEffect rdf:resource="http://example.org/ontology#SE371"/>
+    <hasInteraction rdf:resource="http://example.org/ontology#ITN174"/>
+    <managedBy rdf:resource="http://example.org/ontology#SP113"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#publishedIn">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Reference"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:label>published in</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Antibiotic">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Storage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology#StewardshipPrinciple"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#antacids">
+    <rdf:type rdf:resource="http://example.org/ontology#Drug"/>
+    <hasSubstanceDescription>Products containing aluminum, calcium, magnesium, and iron-containing preparations</hasSubstanceDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#AntimicrobialStewardship">
+    <rdf:type rdf:resource="http://example.org/ontology#MedicalTerm"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasInteractionDescription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Interaction"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>has interaction description</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Warning">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasPresentation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Brand"/>
+    <rdfs:range rdf:resource="http://example.org/ontology#Presentation_Packing"/>
+    <rdfs:label>has presentation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#ITN165">
+    <rdf:type rdf:resource="http://example.org/ontology#Interaction"/>
+    <interactsWith rdf:resource="http://example.org/ontology#antacids"/>
+    <hasInteractionDescription>Absorption of tetracyclines is impaired by antacids containing aluminum, calcium, or magnesium and iron-containing preparations</hasInteractionDescription>
+    <hasClinicalEffects>Decreased absorption</hasClinicalEffects>
+    <hasManagementAdvice>Avoid taking together</hasManagementAdvice>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#ITN174">
+    <rdf:type rdf:resource="http://example.org/ontology#Interaction"/>
+    <interactsWith rdf:resource="http://example.org/ontology#antacids"/>
+    <hasInteractionDescription>Absorption of tetracyclines is impaired by antacids containing aluminum, calcium, or magnesium and iron-containing preparations</hasInteractionDescription>
+    <hasClinicalEffects>Decreased absorption</hasClinicalEffects>
+    <hasManagementAdvice>Avoid taking together</hasManagementAdvice>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#SP113">
+    <rdf:type rdf:resource="http://example.org/ontology#Storage"/>
+    <hasStewardshipDescription>Store at temperatures not exceeding 30°C. Protect from light</hasStewardshipDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#2_months">
+    <rdf:type rdf:resource="http://example.org/ontology#Duration"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#SuspensionPowder">
+    <rdf:type rdf:resource="http://example.org/ontology#Presentation_Packing"/>
+    <rdfs:label>Suspension Powder</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#SE312">
+    <rdf:type rdf:resource="http://example.org/ontology#SideEffect"/>
+    <hasSideEffectName>Nausea</hasSideEffectName>
+    <hasSideEffectDescription>a feeling of sickness or discomfort in the stomach</hasSideEffectDescription>
+    <whichIs rdf:resource="http://example.org/ontology#Common"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasAuthor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Reference"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>has author</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#ITN121">
+    <rdf:type rdf:resource="http://example.org/ontology#Interaction"/>
+    <interactsWith rdf:resource="http://example.org/ontology#anticoagulant"/>
+    <hasInteractionDescription>Because tetracyclines depress plasma prothrombin activity, patients who are on anticoagulant therapy may require reduction of their anticoagulant dosage.</hasInteractionDescription>
+    <hasClinicalEffects>tetracyclines depress plasma prothrombin activity</hasClinicalEffects>
+    <hasManagementAdvice>reduction of anticoagulant dosage</hasManagementAdvice>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#W172">
+    <rdf:type rdf:resource="http://example.org/ontology#PregnancyAndLactation"/>
+    <hasWarningHeadline>Pregnancy Use</hasWarningHeadline>
+    <hasWarningText>If any tetracycline is used during pregnancy or if the patient becomes pregnant while taking this drug, the patient should be apprised of the potential hazard to the fetus.</hasWarningText>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Duration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Drug">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology#Substance"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasSideEffectDescription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#SideEffect"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>is described as</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Overdosage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology#Warning"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#anticoagulant">
+    <rdf:type rdf:resource="http://example.org/ontology#Drug"/>
+    <hasSubstanceDescription>Anticoagulant therapy</hasSubstanceDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#W175">
+    <rdf:type rdf:resource="http://example.org/ontology#Overdosage"/>
+    <hasWarningHeadline>Overdosage Treatment Guidance</hasWarningHeadline>
+    <hasWarningText>In case of overdosage, discontinue medication. Treat symptomatically and institute supportive measures. Dialysis does not alter serum half-life and thus would not be of benefit in treating cases of overdosage.</hasWarningText>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#SP111">
+    <rdf:type rdf:resource="http://example.org/ontology#Storage"/>
+    <hasStewardshipDescription>Store at temperatures not exceeding 30°C</hasStewardshipDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#SP082">
+    <rdf:type rdf:resource="http://example.org/ontology#Monitoring"/>
+    <hasStewardshipDescription>Maintain adequate fluid intake and urinary output to reduce the possibility of crystalluria. Periodic assessment of renal, hepatic, and hematopoietic functions is recommended during prolonged therapy.</hasStewardshipDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Capsule">
+    <rdf:type rdf:resource="http://example.org/ontology#Presentation_Packing"/>
+    <rdfs:label>Capsule</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#treats">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Brand"/>
+    <rdfs:range rdf:resource="http://example.org/ontology#Indication"/>
+    <rdfs:label>treats</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasSubstanceDescription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Substance"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>has substance description</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#MedicalTerm">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#DrugClass">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Indication">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Interaction">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#AgeRestriction">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology#Warning"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Beer">
+    <rdf:type rdf:resource="http://example.org/ontology#Beverage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Food">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology#Substance"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#ProperUse">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology#StewardshipPrinciple"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#penicillin">
+    <rdf:type rdf:resource="http://example.org/ontology#Drug"/>
+    <hasSubstanceDescription>Bactericidal antibiotic</hasSubstanceDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#AtypicalPneumonia">
+    <rdf:type rdf:resource="http://example.org/ontology#MildRespiratoryDisease"/>
+    <hasSymptoms>Sore throat, extreme tiredness, chest pain, low-grade fever, mild chills, cough, sneezing, headache</hasSymptoms>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/sample-ontology">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#StewardshipPrinciple">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#AntibioticResistance">
+    <rdf:type rdf:resource="http://example.org/ontology#MedicalTerm"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#PregnancyAndLactation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology#Warning"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#SideEffect">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Substance">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#DairyProducts">
+    <rdf:type rdf:resource="http://example.org/ontology#Food"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#R002">
+    <rdf:type rdf:resource="http://example.org/ontology#Reference"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#UrinaryDisease">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology#Indication"/>
+  </rdf:Description>
+</rdf:RDF>

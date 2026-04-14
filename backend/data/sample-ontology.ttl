@@ -66,7 +66,14 @@
 :hasBrandName rdf:type owl:ObjectProperty ;
     rdfs:domain :Antibiotic ;
     rdfs:range :Brand ;
-    rdfs:label "has brand name" .
+    rdfs:label "has brand name" ;
+    owl:inverseOf :isBrandOf .
+
+:isBrandOf rdf:type owl:ObjectProperty ;
+    rdfs:domain :Brand;
+    rdfs:range :Antibiotic;
+    rdfs:label "is brand of" ;
+    owl:inverseOf :hasBrandName .
 
 :hasPresentation rdf:type owl:ObjectProperty ;
     rdfs:domain :Brand ;
@@ -205,12 +212,22 @@
 :AntimicrobialStewardship rdf:type :MedicalTerm.
 
 # Antibiotic
-:Doxycycline rdf:type :Antibiotic .
-:Tetracyclines rdf:type :DrugClass .
-:Doxin rdf:type :Brand .
-:Doxyclen rdf:type :Brand .
-:Dynadoxy rdf:type :Brand .
-:Capsule rdf:type :Presentation_Packing .
+:Doxycycline rdf:type :Antibiotic;
+    rdfs:label "Doxycycline".
+:Tetracyclines rdf:type :DrugClass;
+    rdfs:label "Tetracyclines" .
+:Doxin rdf:type :Brand ;
+    rdfs:label "Doxin".
+:Doxyclen rdf:type :Brand ;
+    rdfs:label "Doxyclen".
+:Dynadoxy rdf:type :Brand ;
+    rdfs:label "Dynadoxy".
+:Capsule rdf:type :Presentation_Packing ;
+    rdfs:label "Capsule".
+:Injection rdf:type :Presentation_Packing;
+    rdfs:label "Injection" .
+:SuspensionPowder rdf:type :Presentation_Packing;
+    rdfs:label "Suspension Powder".
 
 # Indication
 :UrinaryTractInfection rdf:type :UrinaryDisease .
@@ -289,7 +306,13 @@
 :Doxycycline :hasBrandName :Doxyclen .
 :Doxycycline :hasBrandName :Dynadoxy .
 
+:Doxin :isBrandOf :Doxycycline .
+:Doxyclen :isBrandOf :Doxycycline .
+:Dynadoxy :isBrandOf :Doxycycline .
+
 :Doxin :hasPresentation :Capsule .
+:Doxin :hasPresentation :SuspensionPowder .
+:Doxin :hasPresentation :Injection .
 :Doxyclen :hasPresentation :Capsule .
 :Dynadoxy :hasPresentation :Capsule .
 

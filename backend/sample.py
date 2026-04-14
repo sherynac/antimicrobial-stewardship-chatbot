@@ -1,66 +1,52 @@
-from owlready2 import *
-import string
+import services.ner_service as ner_service
+import services.intent_service as intent_service
+import services.intent_handlers as intent_handler
+import services.response_service as response_service
+import services.ontology_service as ontology_service
 
+from services.intent_handlers import handle_antibiotic_info
+from utils.helpers import array_to_string, is_yes_or_no, add_space_to_pascal_case
 
-'''
-METHODS
-'''
-# Method for classifying intents
-# NOTE: Add elif for questions to output intent
-def classifyIntent (question):
-    if ("How is DOXYCYCLINE supplied (dosage forms)?" 
-        or "How is DOXIN supplied (dosage forms)?" 
-        or "What dosage forms are available for the generic antibiotic DOXYCYCLINE and the brand-name antibiotic DYNADOXY ?"):
-        return "GET_ANTIBIOTIC_INFO"
-    elif ("hotdog"):
-        return "COMPARE_BRANDS"
-    elif ("hotdog2"):
-        return "GET_USES_INDICATIONS"
+from flask import jsonify
+import json
 
-# Method for simulating entity recognition
-# NOTE: Add entities in capital letters, convert capital words to Pascal case
-def recognizeEntities(question):
-    words = question.split()
-    entities = []
-
-    for word in words:
-        clean_word = word.strip(string.punctuation)
-        if clean_word.isupper():
-            pascal_word = clean_word.capitalize()
-            entities.append(pascal_word)
-    
-    return entities
-
-'''
+''' 
 PROGRAM START
 '''
-onto = get_ontology("./backend/data/sample-ontology.rdf").load()
-print(f"Loaded ontology with {len(list(onto.classes()))} classes")
 
-print("\n")
-print("=" * 10)
-print("Welcome to Ophiuchus!")
-print("=" * 10)
+onto = ontology_service.load_ontology()
+response_index = response_service.build_response_index()
 
-print("\nAsk a question: ", end="")
+INTENT_ROUTER = {
+    "GET_ANTIBIOTIC_INFO": handle_antibiotic_info
+    # "GET_DOSAGE": handle_dosage_info,
+    # "GET_SIDE_EFFECTS": handle_side_effects
+}
 
-question = input()
-intent = classifyIntent(question)
-entities = recognizeEntities(question)
+def main(question):
+    print("\n")
+    print("=" * 10)
+    print("Welcome to Ophiuchus!")
+    print("=" * 10)
 
-if intent == "GET_ANTIBIOTIC_INFO":
-    print(intent)
-    print(entities)
-    brand_name = entities[0] if entities else None
-    brand_obj = onto.search_one(iri=f"*{brand_name}*")
-    print(f"  Presentations: {brand_obj.hasPresentation}")
+    print("\nAsk a question: ", end="")
 
+    # question = input()
+    question = question
+    print(question)
+    intent = intent_service.classify_intent(question)
+    entities = ner_service.recognize_entities(question)
 
+    handler_function = INTENT_ROUTER.get(intent)
 
-
-
-
-
-
-
+    if handler_function:
+        final_response = handler_function(entities, onto, response_index)
+        print(final_response)
+    else:
+        print(f"I recognized the intent '{intent}', but I don't know how to handle it yet.")
+    
+# Testing
+main("How is DOXYCYCLINE supplied?")
+main("How is DOXIN supplied?")
+main("What dosage forms are available for the generic antibiotic DOXYCYCLINE and the brand-name antibiotic DYNADOXY ?")
 

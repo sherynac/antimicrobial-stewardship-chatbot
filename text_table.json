@@ -1,0 +1,38 @@
+{
+    "type": "composite",
+    "contents": [
+        {
+            "type": "text",
+            "content": "Doxycycline (a Tetracyclines)is available in the following brands and forms: "
+        },
+        {
+            "type": "table",
+            "columns": [
+                "Brand Name",
+                "Presentation/Packing"
+            ],
+            "rows": [
+                [
+                    "Doxin",
+                    "Capsule"
+                ],
+                [
+                    "Doxin",
+                    "Suspension Powder"
+                ],
+                [
+                    "Doxin",
+                    "Injection"
+                ],
+                [
+                    "Dynadoxy",
+                    "Capsule"
+                ],
+                [
+                    "Doxyclen",
+                    "Capsule"
+                ]
+            ]
+        }
+    ]
+}
