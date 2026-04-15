@@ -79,6 +79,20 @@ def build_table_response(columns, rows):
     }
     return data
 
+def build_bullet_response(response):
+    '''
+    Builds a bulleted response
+
+    args:
+        response: array containing the responses to be placed in bullet form
+    '''
+
+    data = {
+        "type" : "bullet",
+        "bullets": response
+    }
+    return data
+
 def build_composite_response(responses):
     '''
     Builds composite response (combination of response types)

@@ -24,9 +24,33 @@
         },
         {
           "responseID": 4,
-          "condition": "both_generic_and_brand",
+          "condition": "brand_and_generic",
           "responseText": "{is_brand_of}, {brand} is a brand of {generic}. It comes in {presentation}.",
           "targetNodes" : ["is_brand_of", "brand", "generic", "presentation"]
+        }
+      ]
+    },
+    {
+      "intent": "COMPARE_BRANDS",
+      "description": "Compare different brands of an antibiotic based on their generic equivalency and presentations",
+      "responses": [
+        {
+          "responseID": 5,
+          "condition": "multiple_brands",
+          "responseText": "{brands} are brands of the generic {generic}. However, they are supplied differently: .",
+          "targetNodes": ["brands", "generic"]
+        },
+        {
+          "responseID": 6,
+          "condition": "generic_only",
+          "responseText": "There are several brands available for the generic {generic}. Here is a comparison of how they are supplied:",
+          "targetNodes": ["generic"]
+        },
+        {
+          "responseID": 7,
+          "condition": "brand_and_generic",
+          "responseText": "{brand} is a specific brand of {generic} supplied as {presentation}. When compared to other brands of {generic}, here are the differences in available presentations:",
+          "targetNodes": ["brand", "generic", "presentation"]
         }
       ]
     }

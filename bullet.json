@@ -1,0 +1,13 @@
+{
+    "type": "composite",
+    "responses": [
+        {
+            "type": "text",
+            "response": "this is a bulleted sample"
+        },
+        {
+            "type": "bullet",
+            "response": ["bullet1", "bullet2", "bullet3", "bullet4"]
+        }
+    ]
+}
