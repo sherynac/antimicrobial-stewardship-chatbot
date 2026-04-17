@@ -3,6 +3,18 @@ import ophiuchus_logo from '../assets/ophiuchus_logo.svg'
 
 function FAQ() {
 
+    const getReference = (reference) => {
+        const urlMap = {
+            "Reference: Government of Canada (2018)": "https://www.canada.ca/en/health-canada/services/drugs-health-products/veterinary-drugs/antimicrobial-resistance/oversight-quality-active-pharmaceutical-ingredients-veterinary-use.html",
+            "Reference: Katrime Integrated Health (2022)": "https://nccid.ca/publications/glossary-terms-antimicrobial-resistance/",
+            "Reference: World Health Organization (2019)": "https://www.who.int/publications/i/item/9789241515481",
+            "Reference: National Antimicrobial Resistance Monitoring System for Enteric Bacteria (NARMS) (2024)": "https://www.cdc.gov/narms/glossary/index.html",
+            "Reference: AMR Dictionary (2020)": "https://www.amrdictionary.net/contents/image/AMR%20dictionary%20Englilsh%20version%201.2.pdf",
+            "Reference: Harrison, P.F & Lederberg J. (1998)": "https://pubmed.ncbi.nlm.nih.gov/23035315/"
+        }
+        return urlMap[reference] || "";
+    };
+
     const sampleQA = [
 
         {
@@ -130,22 +142,40 @@ function FAQ() {
 
             <div className="faq-container">
                 <div className="cards-container">
-                    {sampleQA.map((item, index) => (
-                        <div className="qa-card" key={index}>
-                            <div className="card-question">
-                                <h3>{item.question}</h3>
+                    {sampleQA.map((item, index) => {
+                        const referenceUrl = getReference(item.reference);
+                        
+                        return (
+                            <div className="qa-card" key={index}>
+                                <div className="card-question">
+                                    <h3>{item.question}</h3>
+                                </div>
+                                <div className="card-answer">
+                                    <p>{item.answer}</p>
+                                </div>
+                                <div className="card-term">
+                                    <p>{item.other_term}</p>
+                                </div>
+                                <div className="card-reference">
+                                    {referenceUrl ? (
+                                        <p>
+                                            <a 
+                                                href={referenceUrl} 
+                                                target="_blank" 
+                                                rel="noopener noreferrer"
+                                                className="reference-link"
+                                            >
+                                                {item.reference}
+                                            </a>
+                                        </p>
+                                    ) : (
+                                        <p>{item.reference}</p>
+                                    )}
+                                </div>
                             </div>
-                            <div className="card-answer">
-                                <p>{item.answer}</p>
-                            </div>
-                            <div className="card-term">
-                                <p>{item.other_term}</p>
-                            </div>
-                            <div className="card-reference">
-                                <p>{item.reference}</p>
-                            </div>
-                        </div>
-                    ))}
+
+                        );
+                    })}
                 </div>
             </div>
         </>

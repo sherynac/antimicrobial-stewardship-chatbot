@@ -85,3 +85,7 @@
 .card-reference p {
   @apply text-[#696969] leading-relaxed font-[Figtree-Regular] flex-1 text-sm;
 }
+
+.card-reference p:hover {
+  @apply text-[#A9A9A9];
+}
