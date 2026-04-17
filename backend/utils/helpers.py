@@ -34,7 +34,6 @@ def is_yes_or_no (boolean):
         return "Yes"
     return "No"
 
-# Method for adding spaces in names in Pascal Case
 def add_space_to_pascal_case (string):
     '''
     Adds spaces for words written in Pascal case

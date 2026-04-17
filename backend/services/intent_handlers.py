@@ -1,6 +1,6 @@
 import services.response_service as response_service
 from utils.helpers import array_to_string, is_yes_or_no, add_space_to_pascal_case
-from services.ontology_service import query_ontology
+from services.ontology_service import query_ontology, get_indication_severity_type
 
 def handle_antibiotic_info(entities, ontology, response_index):
     if len(entities) > 1: # brand and generic recognized
@@ -170,7 +170,7 @@ def handle_compare_brands (entities, ontology, response_index):
             brands_obj.append(brand_obj)
 
         baseline_generic = brands_obj[0].isBrandOf
-        print(brands_obj[0].name)
+
         for brand in brands_obj[1:]: # checking if same generic name
             current_generic = brand.isBrandOf
 
@@ -197,8 +197,172 @@ def handle_compare_brands (entities, ontology, response_index):
         responses = [text_json, table_json]
         return response_service.build_composite_response(responses)
 
-    
+def handle_uses_indications(entities, ontology, response_index):
+    if len(entities) > 1: # both generic and brand recognized
 
+        brand_name = entities[0]
+        generic_name = entities[1] 
 
-# # def handle_uses_indications(entities, ontology, response_index):
-    
+        brand_obj = query_ontology(ontology, brand_name)
+        if isinstance (brand_obj, dict):
+            return brand_obj
+        
+        generic_obj = query_ontology(ontology, generic_name)
+        if isinstance (generic_obj, dict):
+            return generic_obj
+        
+        indication_obj = brand_obj.treats
+
+        if len(indication_obj) == 1: # single indication
+            severity, disease_type = get_indication_severity_type(indication_obj[0])
+            indication = add_space_to_pascal_case(indication_obj[0].name)
+
+            if severity: # Checking if severity is not specified
+                indication_final = f"{severity} {indication}"
+            else:
+                indication_final = indication
+
+            template = response_service.get_response_template("GET_USES_INDICATIONS", "single_indication", response_index)
+            response = template.format(
+                brand = brand_name,
+                generic = generic_name,
+                disease = indication_final,
+                disease_type = disease_type
+            )
+
+            symptoms_obj = indication_obj[0].hasSymptoms
+            symptoms_array = symptoms_obj[0].split(',')
+
+            symptom_bullets = []
+
+            for symptom in symptoms_array:
+                bullet = response_service.build_bullet(description=symptom)
+                symptom_bullets.append(bullet)
+
+            text_json = response_service.build_text_response(response)
+            bulleted_json = response_service.build_bulleted_response(symptom_bullets)
+            responses = [text_json, bulleted_json]
+
+            return response_service.build_composite_response(responses)
+
+        if len(indication_obj) > 1: # multiple indications
+            indication_bullets = []
+            for indication in indication_obj:
+                severity, disease_type = get_indication_severity_type(indication)
+                indication_name = indication.name
+                symptoms_obj = indication.hasSymptoms
+
+                if severity: # Checking if severity is not specified
+                    indication_final = f"{severity} {indication_name}"
+                else:
+                    indication_final = indication_name
+                
+                bullet = response_service.build_bullet(main_text=add_space_to_pascal_case(indication_final), description="Typically have symptoms such as " + symptoms_obj[0])
+                indication_bullets.append(bullet)
+            
+            template = response_service.get_response_template("GET_USES_INDICATIONS", "multiple_indications", response_index)
+            response = template.format(
+                brand = brand_name,
+                generic = generic_name
+            )
+
+            text_json = response_service.build_text_response(response)
+            bulleted_json = response_service.build_bulleted_response(indication_bullets)
+            responses = [text_json, bulleted_json]
+            return response_service.build_composite_response(responses)
+    if (entities[0] in ["Doxin", "Doxyclen", "Dynadoxy"]): # brand recognized
+        brand_name = entities[0]
+        brand_obj = query_ontology(ontology, brand_name)
+
+        if isinstance (brand_obj, dict):
+            return brand_obj
+        
+        generic_obj = brand_obj.isBrandOf
+        generic_name = generic_obj[0].name
+
+        indication_obj = brand_obj.treats
+
+        if len(indication_obj) == 1: # single indication
+            severity, disease_type = get_indication_severity_type(indication_obj[0])
+            indication = add_space_to_pascal_case(indication_obj[0].name)
+
+            if severity: # Checking if severity is not specified
+                indication_final = f"{severity} {indication}"
+            else:
+                indication_final = indication
+
+            template = response_service.get_response_template("GET_USES_INDICATIONS", "single_indication", response_index)
+            response = template.format(
+                brand = brand_name,
+                generic = generic_name,
+                disease = indication_final,
+                disease_type = disease_type
+            )
+
+            symptoms_obj = indication_obj[0].hasSymptoms
+            symptoms_array = symptoms_obj[0].split(',')
+
+            symptom_bullets = []
+
+            for symptom in symptoms_array:
+                bullet = response_service.build_bullet(description=symptom)
+                symptom_bullets.append(bullet)
+
+            text_json = response_service.build_text_response(response)
+            bulleted_json = response_service.build_bulleted_response(symptom_bullets)
+            responses = [text_json, bulleted_json]
+
+            return response_service.build_composite_response(responses)
+
+        if len(indication_obj) > 1: # multiple indications
+            indication_bullets = []
+            for indication in indication_obj:
+                severity, disease_type = get_indication_severity_type(indication)
+                indication_name = indication.name
+                symptoms_obj = indication.hasSymptoms
+
+                if severity: # Checking if severity is not specified
+                    indication_final = f"{severity} {indication_name}"
+                else:
+                    indication_final = indication_name
+                
+                bullet = response_service.build_bullet(main_text=add_space_to_pascal_case(indication_final), description="Typically have symptoms such as " + symptoms_obj[0])
+                indication_bullets.append(bullet)
+            
+            template = response_service.get_response_template("GET_USES_INDICATIONS", "multiple_indications", response_index)
+            response = template.format(
+                brand = brand_name,
+                generic = generic_name
+            )
+
+            text_json = response_service.build_text_response(response)
+            bulleted_json = response_service.build_bulleted_response(indication_bullets)
+            responses = [text_json, bulleted_json]
+            return response_service.build_composite_response(responses)
+    if (entities[0] in ["Doxycycline", "Paracetamol"]): # generic recognized
+        generic_name = entities[0]
+        generic_obj = query_ontology(ontology, generic_name)
+
+        if isinstance(generic_obj, dict):
+            return generic_obj
+        
+        template = response_service.get_response_template("GET_USES_INDICATIONS", "generic_only", response_index)
+        response = template.format (
+            generic = generic_name
+        )
+
+        brands_obj = generic_obj.hasBrandName
+        columns = ["Brand Name", "Indications/Uses"]
+        rows = []
+
+        for brand in brands_obj:
+            indication_obj = brand.treats
+            row = [brand.name, array_to_string(indication_obj)]
+            rows.append(row)
+
+        text_json = response_service.build_text_response(response)
+        table_json = response_service.build_table_response(columns, rows)
+        responses = [text_json, table_json]
+        return response_service.build_composite_response(responses)
+
+# def handle_side_effects(entities, ontology, response_index):

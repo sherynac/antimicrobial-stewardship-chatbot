@@ -1,0 +1,24 @@
+{
+    "type": "composite",
+    "responses": [
+        {
+            "type": "text",
+            "response": "Doxin (generic: Doxycycline) is an antibiotic prescribed to treat various bacterial infections. Based on my records, it is used for:"
+        },
+        {
+            "type": "bulleted",
+            "bullets": [
+                {
+                    "type": "bullet",
+                    "main_text": "Mild  Atypical Pneumonia",
+                    "description": "Typically have symptoms such as Sore throat, extreme tiredness, chest pain, low-grade fever, mild chills, cough, sneezing, headache"
+                },
+                {
+                    "type": "bullet",
+                    "main_text": "Genitourinary Tract Infection",
+                    "description": "Typically have symptoms such as needing to pee often, pain while peeing and pain in your side or lower back"
+                }
+            ]
+        }
+    ]
+}

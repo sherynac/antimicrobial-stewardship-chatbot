@@ -4,10 +4,10 @@ import services.intent_handlers as intent_handler
 import services.response_service as response_service
 import services.ontology_service as ontology_service
 
-from services.intent_handlers import handle_antibiotic_info, handle_compare_brands
+from services.intent_handlers import handle_antibiotic_info, handle_compare_brands, handle_uses_indications
 from utils.helpers import array_to_string, is_yes_or_no, add_space_to_pascal_case
 
-from flask import jsonify
+# from flask import jsonify
 import json
 
 ''' 
@@ -19,7 +19,8 @@ response_index = response_service.build_response_index()
 
 INTENT_ROUTER = {
     "GET_ANTIBIOTIC_INFO": handle_antibiotic_info,
-    "COMPARE_BRANDS": handle_compare_brands
+    "COMPARE_BRANDS": handle_compare_brands,
+    "GET_USES_INDICATIONS": handle_uses_indications
     # "GET_DOSAGE": handle_dosage_info,
     # "GET_SIDE_EFFECTS": handle_side_effects
 }
@@ -37,6 +38,7 @@ def main(question):
     print(question)
     intent = intent_service.classify_intent(question)
     entities = ner_service.recognize_entities(question)
+    print("ENTITIES:", entities)
 
     handler_function = INTENT_ROUTER.get(intent)
 
@@ -55,13 +57,15 @@ def main(question):
 # main("What dosage forms are available for the generic antibiotic PARACETAMOL and the brand-name antibiotic BIOGESIC ?")
 
 # Testing for compare_brands
-# main("What is the difference between DOXIN and DOXYCLEN?")
-# main("What is the difference between DOXIN, DOXYCLEN and DYNADOXY?")
-# main("What is the difference between DOXIN and LEVOCIN?")
-# main("Compare the different brands of DOXYCYCLINE.")
-# main("Compare DOXIN with other brands of DOXYCYCLINE.")
+# main("What is the difference between DOXIN and DOXYCLEN?") # 2 brands
+# main("What is the difference between DOXIN, DOXYCLEN and DYNADOXY?") # more than 2 brands
+# main("What is the difference between DOXIN and LEVOCIN?") # brands with not same generic
+# main("Compare the different brands of DOXYCYCLINE.") # generic
+# main("Compare DOXIN with other brands of DOXYCYCLINE.") # brand, generic
 
 # Testing for uses/indications
-# main("I was given DYNADOXY (DOXYCYCLINE), what is it for?")
-# main("Why was I prescribed DYNADOXY?")
+# main("i was given DYNADOXY (DOXYCYCLINE), what is it for?") # single indication, brand, generic
+# main("i was given DOXIN (DOXYCYCLINE), what is it for?") # multiple indications, brand, generic
+# main("Why was i prescribed DYNADOXY?") # single indication, brand
+# main("Why was i prescribed DOXIN?") # multiple indications, brand
 # main("What are the clinical indications for DOXYCYCLINE?")

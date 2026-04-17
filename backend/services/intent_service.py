@@ -21,7 +21,9 @@ def classify_intent (question):
         "Compare the different brands of DOXYCYCLINE.",
         "Compare DOXIN with other brands of DOXYCYCLINE."]:
         return "COMPARE_BRANDS"
-    elif question in ["I was given DYNADOXY (DOXYCYCLINE), what is it for?",
-          "Why was I prescribed DYNADOXY?",
-          "What are the clinical indications for DOXYCYCLINE?"]:
+    elif question in ["i was given DYNADOXY (DOXYCYCLINE), what is it for?",
+        "i was given DOXIN (DOXYCYCLINE), what is it for?",
+        "Why was i prescribed DYNADOXY?",
+        "Why was i prescribed DOXIN?",
+        "What are the clinical indications for DOXYCYCLINE?"]:
         return "GET_USES_INDICATIONS"

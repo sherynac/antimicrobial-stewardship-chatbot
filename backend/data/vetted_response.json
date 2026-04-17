@@ -53,6 +53,31 @@
           "targetNodes": ["brand", "generic", "presentation"]
         }
       ]
+    },
+    {
+      "intent": "GET_USES_INDICATIONS",
+      "description": "Get the indications, targeted diseases, and associated symptoms treated by a specific generic or brand antibiotic.",
+      "responses": [
+        {
+          "responseID": 8,
+          "condition": "multiple_indications",
+          "responseText": "{brand} (generic: {generic}) is an antibiotic prescribed to treat various bacterial infections. Based on my records, it is used for:",
+          "targetNodes": ["brand", "generic"]
+        },
+        {
+          "responseID": 9,
+          "condition": "single_indication",
+          "responseText": "{brand} (generic: {generic}) is an antibiotic prescribed to treat bacterial infections. One of its primary indications is for a {disease}. \n\n This type of infection typically involves the {disease_type} system and includes symptoms such as: ",
+          "targetNodes": ["brand", "generic", "disease", "disease_type"]
+        },
+        {
+          "responseID":10,
+          "condition": "generic_only",
+          "responseText": "{generic} is a generic antibiotic used to treat various bacterial infections. Here are the indications based on its available brands:",
+          "targetNodes": ["generic"]
+        }
+      ]
     }
+
   ]
 }

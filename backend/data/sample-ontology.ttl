@@ -25,6 +25,7 @@
 :RespiratoryDisease rdf:type owl:Class ; rdfs:subClassOf :Indication .
 :UrinaryDisease rdf:type owl:Class ; rdfs:subClassOf :Indication .
 :MildRespiratoryDisease rdf:type owl:Class ; rdfs:subClassOf :RespiratoryDisease .
+:NotSpecifiedUrinaryDisease rdf:type owl:Class; rdfs:subClassOf :UrinaryDisease .
 
 # Warning
 :Warning rdf:type owl:Class .
@@ -242,6 +243,7 @@
 :UrinaryTractInfection rdf:type :UrinaryDisease .
 :AtypicalPneumonia rdf:type :MildRespiratoryDisease.
 :SinusInfection rdf:type :MildRespiratoryDisease .
+:GenitourinaryTractInfection rdf:type :NotSpecifiedUrinaryDisease .
 
 # Warning
 :W143 rdf:type :Contraindication .
@@ -336,8 +338,10 @@
 
 :AtypicalPneumonia :hasSymptoms "Sore throat, extreme tiredness, chest pain, low-grade fever, mild chills, cough, sneezing, headache" .
 :SinusInfection :hasSymptoms "facial pain, a stuffy or runny nose, and sometimes a fever" .
+:GenitourinaryTractInfection :hasSymptoms "needing to pee often, pain while peeing and pain in your side or lower back". 
 
 :Doxin :treats :AtypicalPneumonia .
+:Doxin :treats :GenitourinaryTractInfection.
 :Doxyclen :treats :AtypicalPneumonia .
 :Dynadoxy :treats :SinusInfection .
 
