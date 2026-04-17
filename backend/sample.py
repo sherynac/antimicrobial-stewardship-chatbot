@@ -7,7 +7,7 @@ import services.ontology_service as ontology_service
 from services.intent_handlers import handle_antibiotic_info, handle_compare_brands, handle_uses_indications
 from utils.helpers import array_to_string, is_yes_or_no, add_space_to_pascal_case
 
-# from flask import jsonify
+from flask import jsonify
 import json
 
 ''' 

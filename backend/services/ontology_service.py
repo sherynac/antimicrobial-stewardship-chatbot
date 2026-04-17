@@ -1,7 +1,10 @@
 from rdflib import Graph
 from owlready2 import get_ontology
+<<<<<<< HEAD
 from services.response_service import build_text_response
 from utils.helpers import add_space_to_pascal_case
+=======
+>>>>>>> main
 
 def load_ontology():
     '''

@@ -124,7 +124,4 @@ def build_composite_response(responses):
         "responses": responses
     }
 
-    with open("text_bulleted.json", 'w', encoding='utf-8') as f:
-        json.dump(data, f, indent=4)
-
     return data         
