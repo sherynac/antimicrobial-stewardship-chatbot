@@ -79,6 +79,36 @@ def build_table_response(columns, rows):
     }
     return data
 
+def build_bulleted_response(responses):
+    '''
+    Builds the JSON format of a bulleted response
+
+    args:
+        response: array containing the responses to be placed in bullet form
+    '''
+
+    data = {
+        "type" : "bulleted",
+        "bullets": responses
+    }
+    return data
+
+def build_bullet (main_text="", description=""):
+    '''
+    Build the JSON format of a bullet
+
+    args:
+        main_text: main text/point of a bullet usually in bold
+        description: details for expounding main text of the bullet
+    '''
+    data = {
+        "type" : "bullet",
+        "main_text" : main_text,
+        "description" : description,
+    }
+
+    return data
+    
 def build_composite_response(responses):
     '''
     Builds composite response (combination of response types)
@@ -93,4 +123,5 @@ def build_composite_response(responses):
         "type" : "composite",
         "responses": responses
     }
+
     return data         

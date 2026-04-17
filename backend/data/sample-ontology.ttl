@@ -25,6 +25,7 @@
 :RespiratoryDisease rdf:type owl:Class ; rdfs:subClassOf :Indication .
 :UrinaryDisease rdf:type owl:Class ; rdfs:subClassOf :Indication .
 :MildRespiratoryDisease rdf:type owl:Class ; rdfs:subClassOf :RespiratoryDisease .
+:NotSpecifiedUrinaryDisease rdf:type owl:Class; rdfs:subClassOf :UrinaryDisease .
 
 # Warning
 :Warning rdf:type owl:Class .
@@ -214,25 +215,35 @@
 # Antibiotic
 :Doxycycline rdf:type :Antibiotic;
     rdfs:label "Doxycycline".
+:Levofloxacin rdf:type :Antibiotic;
+    rdfs:label "Levofloxacin".
 :Tetracyclines rdf:type :DrugClass;
     rdfs:label "Tetracyclines" .
+:Quinolones rdf:type :DrugClass;
+    rdfs:label "Quinolones" .
 :Doxin rdf:type :Brand ;
     rdfs:label "Doxin".
 :Doxyclen rdf:type :Brand ;
     rdfs:label "Doxyclen".
 :Dynadoxy rdf:type :Brand ;
     rdfs:label "Dynadoxy".
+:Levocin rdf:type :Brand;
+    rdfs:label "Levocin".
+
 :Capsule rdf:type :Presentation_Packing ;
     rdfs:label "Capsule".
 :Injection rdf:type :Presentation_Packing;
     rdfs:label "Injection" .
 :SuspensionPowder rdf:type :Presentation_Packing;
     rdfs:label "Suspension Powder".
+:IV_Infusion rdf:type :Presentation_Packing;
+    rdfs:label "IV Infusion".
 
 # Indication
 :UrinaryTractInfection rdf:type :UrinaryDisease .
 :AtypicalPneumonia rdf:type :MildRespiratoryDisease.
 :SinusInfection rdf:type :MildRespiratoryDisease .
+:GenitourinaryTractInfection rdf:type :NotSpecifiedUrinaryDisease .
 
 # Warning
 :W143 rdf:type :Contraindication .
@@ -306,15 +317,20 @@
 :Doxycycline :hasBrandName :Doxyclen .
 :Doxycycline :hasBrandName :Dynadoxy .
 
+:Levofloxacin :hasDrugClass :Quinolones .
+:Levofloxacin :hasBrandName :Levocin .
+
 :Doxin :isBrandOf :Doxycycline .
 :Doxyclen :isBrandOf :Doxycycline .
 :Dynadoxy :isBrandOf :Doxycycline .
+:Levocin :isBrandOf :Levofloxacin .
 
 :Doxin :hasPresentation :Capsule .
 :Doxin :hasPresentation :SuspensionPowder .
 :Doxin :hasPresentation :Injection .
 :Doxyclen :hasPresentation :Capsule .
 :Dynadoxy :hasPresentation :Capsule .
+:Levocin :hasPresentation :IV_Infusion .
 
 :Doxin :hasReference :R011 .
 :Doxyclen :hasReference :R012 .
@@ -322,8 +338,10 @@
 
 :AtypicalPneumonia :hasSymptoms "Sore throat, extreme tiredness, chest pain, low-grade fever, mild chills, cough, sneezing, headache" .
 :SinusInfection :hasSymptoms "facial pain, a stuffy or runny nose, and sometimes a fever" .
+:GenitourinaryTractInfection :hasSymptoms "needing to pee often, pain while peeing and pain in your side or lower back". 
 
 :Doxin :treats :AtypicalPneumonia .
+:Doxin :treats :GenitourinaryTractInfection.
 :Doxyclen :treats :AtypicalPneumonia .
 :Dynadoxy :treats :SinusInfection .
 
