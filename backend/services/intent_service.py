@@ -27,3 +27,8 @@ def classify_intent (question):
         "Why was i prescribed DOXIN?",
         "What are the clinical indications for DOXYCYCLINE?"]:
         return "GET_USES_INDICATIONS"
+    elif question in ["What are the side effects of DOXYCYCLINE?",
+        "What are the common side effects of DYNADOXY?",
+        "What are the side effects of DYNADOXY (DOXYCYCLINE)?",
+        "Will DOXYCYCLINE give me a HEADACHE?"]:
+        return "GET_SIDE_EFFECTS"

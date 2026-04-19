@@ -20,9 +20,8 @@ response_index = response_service.build_response_index()
 INTENT_ROUTER = {
     "GET_ANTIBIOTIC_INFO": handle_antibiotic_info,
     "COMPARE_BRANDS": handle_compare_brands,
-    "GET_USES_INDICATIONS": handle_uses_indications
-    # "GET_DOSAGE": handle_dosage_info,
-    # "GET_SIDE_EFFECTS": handle_side_effects
+    "GET_USES_INDICATIONS": handle_uses_indications,
+    "GET_SIDE_EFFECTS": handle_side_effects
 }
 
 def main(question):
@@ -69,3 +68,10 @@ def main(question):
 # main("Why was i prescribed DYNADOXY?") # single indication, brand
 # main("Why was i prescribed DOXIN?") # multiple indications, brand
 # main("What are the clinical indications for DOXYCYCLINE?")
+
+# Testing for get side effects
+main("What are the side effects of DOXYCYCLINE?") # generic 
+main("Will DOXYCYCLINE give me a HEADACHE?") # generic, side effect
+main("What are the common side effects of DYNADOXY?") # brand
+main("Will DYNADOXY give me a HEADACHE?") # brand, side effect
+main("What are the side effects of DYNADOXY (DOXYCYCLINE)?") # brand, generic

@@ -1,15 +1,11 @@
 import services.response_service as response_service
 from utils.helpers import array_to_string, is_yes_or_no, add_space_to_pascal_case
-<<<<<<< HEAD
 from services.ontology_service import query_ontology, get_indication_severity_type
-=======
->>>>>>> main
 
 def handle_antibiotic_info(entities, ontology, response_index):
     if len(entities) > 1: # brand and generic recognized
         isBrand = False
         generic_name = entities[0] if entities else None
-<<<<<<< HEAD
         generic_obj = query_ontology(ontology, generic_name)
 
         if isinstance(generic_obj, dict): # check if error
@@ -20,23 +16,13 @@ def handle_antibiotic_info(entities, ontology, response_index):
 
         if isinstance(brand_obj, dict): # check if error
             return brand_obj
-=======
-        brand_name = entities[1] if entities else None
-
-        generic_obj = ontology.search_one(iri=f"*{generic_name}")
-        brand_obj = ontology.search_one(iri=f"*{brand_name}")
->>>>>>> main
 
         if brand_obj.isBrandOf[0] == generic_obj:
             isBrand = True
         
         presentation_obj = brand_obj.hasPresentation
 
-<<<<<<< HEAD
         template = response_service.get_response_template("GET_ANTIBIOTIC_INFO", "brand_and_generic", response_index)
-=======
-        template = response_service.get_response_template("GET_ANTIBIOTIC_INFO", "both_generic_and_brand", response_index)
->>>>>>> main
         response = template.format(
             is_brand_of = is_yes_or_no(isBrand),
             brand=brand_name,
@@ -45,7 +31,6 @@ def handle_antibiotic_info(entities, ontology, response_index):
         )
         return response_service.build_text_response(response)
 
-<<<<<<< HEAD
     elif entities[0] in ["Doxin", "Dynadoxy", "Doxyclen", "Biogesic"]:        
         brand_name = entities[0] if entities else None
         brand_obj = query_ontology(ontology, brand_name)
@@ -53,11 +38,6 @@ def handle_antibiotic_info(entities, ontology, response_index):
         if isinstance(brand_obj, dict): # check for errors
             return brand_obj
         
-=======
-    elif entities[0] in ["Doxin", "Dynadoxy", "Doxyclen"]:        
-        brand_name = entities[0] if entities else None
-        brand_obj = ontology.search_one(iri=f"*{brand_name}*")
->>>>>>> main
         presentation_obj = brand_obj.hasPresentation
 
         generic_obj = brand_obj.isBrandOf
@@ -76,7 +56,6 @@ def handle_antibiotic_info(entities, ontology, response_index):
 
         return response_service.build_text_response(response)
     
-<<<<<<< HEAD
     elif entities[0] in ["Doxycycline", "Paracetamol"]:
         generic_name = entities[0] if entities else None
         generic_obj = query_ontology(ontology, generic_name)
@@ -84,11 +63,6 @@ def handle_antibiotic_info(entities, ontology, response_index):
         if isinstance(generic_obj, dict):
             return generic_obj
         
-=======
-    elif entities[0] == "Doxycycline":
-        generic_name = entities[0] if entities else None
-        generic_obj = ontology.search_one(iri=f"*{generic_name}*")
->>>>>>> main
         drug_class = generic_obj.hasDrugClass
         brand_obj = generic_obj.hasBrandName
 
@@ -112,7 +86,6 @@ def handle_antibiotic_info(entities, ontology, response_index):
         responses = [text_json, table_json]
         return response_service.build_composite_response(responses)
 
-<<<<<<< HEAD
 def handle_compare_brands (entities, ontology, response_index):
     if entities[0] in ["Doxycycline", "Paracetamol"]:
         generic_name = entities[0]
@@ -392,9 +365,4 @@ def handle_uses_indications(entities, ontology, response_index):
         responses = [text_json, table_json]
         return response_service.build_composite_response(responses)
 
-# def handle_side_effects(entities, ontology, response_index):
-=======
-
-def handle_uses_indications(entities, ontology, response_index):
-    
->>>>>>> main
+def handle_side_effects(entities, ontology, response_index):

@@ -37,6 +37,12 @@
 
 # Side Effect
 :SideEffect rdf:type owl:Class .
+:Diarrhea rdf:type owl:Class;
+    rdfs:subClassOf :SideEffect.
+:Nausea rdf:type owl:Class;
+    rdfs:subClassOf :SideEffect .
+:Vomiting rdf:type owl:Class;
+    rdfs:subClassOf :SideEffect.
 :Pattern rdf:type owl:Class .
 :Duration rdf:type owl:Class .
 
@@ -149,11 +155,6 @@
     rdfs:range xsd:string ;
     rdfs:label "has warning text" .
 
-:hasSideEffectName rdf:type owl:DatatypeProperty ;
-    rdfs:domain :SideEffect ;
-    rdfs:range xsd:string ;
-    rdfs:label "has side effect name" .
-
 :hasSideEffectDescription rdf:type owl:DatatypeProperty ;
     rdfs:domain :SideEffect ;
     rdfs:range xsd:string ;
@@ -254,11 +255,11 @@
 :W175 rdf:type :Overdosage .
 
 # Side Effect
-:SE310 rdf:type :SideEffect .
-:SE312 rdf:type :SideEffect .
-:SE313 rdf:type :SideEffect .
-:SE338 rdf:type :SideEffect .
-:SE371 rdf:type :SideEffect .
+:SE310 rdf:type :Diarrhea .
+:SE312 rdf:type :Nausea .
+:SE313 rdf:type :Vomiting .
+:SE338 rdf:type :Diarrhea .
+:SE371 rdf:type :Diarrhea .
 :Common rdf:type :Pattern .
 :Infrequent rdf:type :Pattern .
 :2_months rdf:type :Duration .
@@ -286,11 +287,17 @@
 :SP001 rdf:type :Adherence .
 
 # References
-:R002 rdf:type :Reference .
-:R003 rdf:type :Reference .
 :R011 rdf:type :Reference .
 :R012 rdf:type :Reference .
 :R013 rdf:type :Reference .
+:R019 rdf:type :Reference .
+:R080 rdf:type :Reference .
+:R077 rdf:type :Reference .
+:R168 rdf:type :Reference .
+:R169 rdf:type :Reference .
+
+:R015 rdf:type :Reference .
+:R267 rdf:type :Reference .
 
 ##############################################################
 # Relationships
@@ -311,6 +318,40 @@
 :R013 :hasAuthor "Monthly Index of Medical Specialties" .
 :R013 :publishedIn 2026.
 :R013 :retrievedFrom "https://www.mims.com/philippines/drug/info/dynadoxy".
+
+:R015 :hasReferenceTitle "Amoxil/Amoxil Forte" .
+:R015 :HasAuthor "Monthly Index of Medical Specialties ".
+:R015 :publishedIn 2026 .
+
+:R019 :hasReferenceTitle "RiteMED Clarithromycin" .
+:R019 :hasAuthor "Monthly Index of Medical Specialties" .
+:R019 :publishedIn 2026.
+:R019 :retrievedFrom "https://www.mims.com/philippines/drug/info/ritemed-clarithromycin" .
+
+:R080 :hasReferenceTitle "Atypical (Walking) Pneumonia" .
+:R080 :hasAuthor "Cleveland Clinic" .
+:R080 :publishedIn 2022 .
+:R080 :retrievedFrom "https://my.clevelandclinic.org/health/diseases/15744-pneumonia-atypical-walking-pneumonia".
+
+:R077 :hasReferenceTitle "Doxycycline Side Effects" .
+:R077 :hasAuthor "Drugs.com" .
+:R077 :publishedIn 2024 .
+:R077 :retrievedFrom "https://www.drugs.com/sfx/doxycycline-side-effects.html" .
+
+:R168 :hasReferenceTitle "nausea" .
+:R168 :hasAuthor "National Cancer Institute" .
+:R168 :publishedIn 2026 .
+:R168 :retrievedFrom "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/nausea" .
+
+:R169 :hasReferenceTitle "vomiting" .
+:R169 :hasAuthor "National Cancer Institute".
+:R169 :publishedIn 2026 .
+:R169 :retrievedFrom "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/vomiting" .
+
+:R267 :hasReferenceTitle "Urinary Tract Infections" .
+:R267 :hasAuthor "Cleveland Clinic" .
+:R267 :publishedIn 2023 .
+:R267 :retrievedFrom "https://my.clevelandclinic.org/health/diseases/9135-urinary-tract-infections".
 
 :Doxycycline :hasDrugClass :Tetracyclines .
 :Doxycycline :hasBrandName :Doxin .
@@ -340,6 +381,15 @@
 :SinusInfection :hasSymptoms "facial pain, a stuffy or runny nose, and sometimes a fever" .
 :GenitourinaryTractInfection :hasSymptoms "needing to pee often, pain while peeing and pain in your side or lower back". 
 
+:AtypicalPneumonia :hasReference :R011 .
+:AtypicalPneumonia :hasReference :R012 .
+:AtypicalPneumonia :hasReference :R019 .
+:AtypicalPneumonia :hasReference :R266 .
+
+:GenitourinaryTractInfection :hasReference :R011 .
+:GenitourinaryTractInfection :hasReference :R015 .
+:GenitourinaryTractInfection :hasReference :R267 .
+
 :Doxin :treats :AtypicalPneumonia .
 :Doxin :treats :GenitourinaryTractInfection.
 :Doxyclen :treats :AtypicalPneumonia .
@@ -348,12 +398,15 @@
 # Doxin Warnings
 :W143 :hasWarningHeadline "Hypersensitivity" .
 :W143 :hasWarningText "Hypersensitivity to any of the tetracyclines." .
+:W143 :hasReference :R011 .
 
 :W145 :hasWarningHeadline "Pregnancy" .
 :W145 :hasWarningText "Category D. do not use tetracycline during pregnancy. Tetracyclines readily cross the placenta, are found in fetal tissues and can have toxic effects on the developing fetus (retardation of skeletal development). Evidence of embryotoxicity has also been noted in animals treated early in pregnancy." .
+:W145 :hasReference :R011 .
 
 :W146 :hasWarningHeadline "Pediatric Use" .
 :W146 :hasWarningText "The use of drugs of the tetracycline class during tooth development (last half of pregnancy, infancy and childhood to the age of 8 years) may cause permanent discoloration of the teeth (yellow-gray-brown)." .
+:W146 :hasReference :R011 .
 
 :Doxin :hasWarning :W143 .
 :Doxin :hasWarning :W145 .
@@ -362,9 +415,11 @@
 # Doxyclen Warnings
 :W151 :hasWarningHeadline "Skin Reactions" .
 :W151 :hasWarningText "Severe skin reactions, such as exfoliative dermatitis, erythema multiforme, Steven-Johnson syndrome, toxic epidermal necrolysis, and drug reaction with eosinophilia and systemic symptoms (DRESS) have veen reported in patients receiving doxycycline." .
+:W151 :hasReference :R012 .
 
 :W172 :hasWarningHeadline "Pregnancy Use" .
 :W172 :hasWarningText "If any tetracycline is used during pregnancy or if the patient becomes pregnant while taking this drug, the patient should be apprised of the potential hazard to the fetus." .
+:W172 :hasReference :R012 .
 
 :Doxyclen :hasWarning :W151 .
 :Doxyclen :hasWarning :W172 .
@@ -372,40 +427,48 @@
 # Dynadoxy Warnings
 :W175 :hasWarningHeadline "Overdosage Treatment Guidance" .
 :W175 :hasWarningText "In case of overdosage, discontinue medication. Treat symptomatically and institute supportive measures. Dialysis does not alter serum half-life and thus would not be of benefit in treating cases of overdosage." .
+:W175 :hasReference :R013 .
 
 :Dynadoxy :hasWarning :W175.
 
 # Doxin Side Effects
-:SE310 :hasSideEffectName "Diarrhea" .
 :SE310 :hasSideEffectDescription "May occur after a patient stop taking doxycycline" .
 :SE310 :lastsFor :2_months .
 :SE310 :whichIs :Infrequent .
+:SE310 :hasReference :R011 .
+:SE310 :hasReference :R077 .
 
-:SE312 :hasSideEffectName "Nausea" .
 :SE312 :hasSideEffectDescription "a feeling of sickness or discomfort in the stomach" .
 :SE312 :whichIs :Common .
+:SE312 :hasReference :R011 .
+:SE312 :hasReference :R077 .
+:SE312 :hasReference :R168 .
 
-:SE313 :hasSideEffectName "Vomiting" .
 :SE313 :hasSideEffectDescription "forceful ejection of some or all of the contents of the stomach through the mouth" .
 :SE313 :whichIs :Common .
+:SE313 :hasReference :R011 .
+:SE313 :hasReference :R077 .
+:SE313 :hasReference :R169 .
 
 :Doxin :hasSideEffect :SE310 .
 :Doxin :hasSideEffect :SE312 .
 :Doxin :hasSideEffect :SE313 .
 
 # Doxyclen Side Effects
-:SE338 :hasSideEffectName "Diarrhea".
 :SE338 :hasSideEffectDescription "May occur after a patient stop taking doxycycline" .
 :SE338 :lastsFor :2_months .
 :SE338 :whichIs :Infrequent .
+:SE338 :hasReference :R012 .
+:SE338 :hasReference :R077 .
 
 :Doxyclen :hasSideEffect :SE338 .
 
 # Dynadoxy Side Effects
-:SE371 :hasSideEffectName "Diarrhea" .
 :SE371 :hasSideEffectDescription "May occur after a patient stop taking doxycycline" .
 :SE371 :lastsFor :2_months .
 :SE371 :whichIs :Infrequent .
+:SE371 :hasReference :R012 .
+:SE371 :hasReference :R077 .
 
 :Dynadoxy :hasSideEffect :SE371 .
 
@@ -414,18 +477,24 @@
 :penicillin :hasSubstanceDescription "Bactericidal antibiotic" .
 :antacids :hasSubstanceDescription "Products containing aluminum, calcium, magnesium, and iron-containing preparations" .
 
+:anticoagulant :hasReference :R011 .
+:penicillin :hasReference :R011 .
+:antacids :hasReference :R011 .
+
 # Doxin Interaction
 :Doxin :hasInteraction :ITN121 .
 :ITN121 :interactsWith :anticoagulant .
 :ITN121 :hasInteractionDescription "Because tetracyclines depress plasma prothrombin activity, patients who are on anticoagulant therapy may require reduction of their anticoagulant dosage." .
 :ITN121 :hasClinicalEffects "tetracyclines depress plasma prothrombin activity" .
 :ITN121 :hasManagementAdvice "reduction of anticoagulant dosage" .
+:ITN121 :hasReference :R011 .
 
 :Doxin :hasInteraction :ITN122 .
 :ITN122 :interactsWith :penicillin .
 :ITN122 :hasInteractionDescription "Since bacteriostatic drugs interfere with the bactericidal action of penicillin, it is advisable to avoid giving tetracyclines in conjuction with penicillin".
 :ITN122 :hasClinicalEffects "bacteriostatic drugs interfere with the bactericidal action of penicillin" .
 :ITN122 :hasManagementAdvice "avoid giving tetracyclines in conjuction with penicillin" .
+:ITN121 :hasReference :R011 .
 
 # Doxyclen Interaction
 :Doxyclen :hasInteraction :ITN165 .
@@ -433,6 +502,7 @@
 :ITN165 :hasInteractionDescription "Absorption of tetracyclines is impaired by antacids containing aluminum, calcium, or magnesium and iron-containing preparations". 
 :ITN165 :hasClinicalEffects "Decreased absorption" .
 :ITN165 :hasManagementAdvice "Avoid taking together" .
+:ITN165 :hasReference :R012 .
 
 # Dynadoxy Interaction
 :Dynadoxy :hasInteraction :ITN174 .
@@ -440,6 +510,7 @@
 :ITN174 :hasInteractionDescription "Absorption of tetracyclines is impaired by antacids containing aluminum, calcium, or magnesium and iron-containing preparations".
 :ITN174 :hasClinicalEffects "Decreased absorption" .
 :ITN174 :hasManagementAdvice "Avoid taking together" .
+:ITN174 :hasReference :R013 .
 
 # Doxin Stewardship Principle
 :SP000 :hasStewardshipDescription "The bottle must be shaken well before taking each dose to ensure the medication is evenly distributed".
@@ -451,10 +522,17 @@
 :Doxin :managedBy :SP001 .
 :Doxin :managedBy :SP082 .
 
+:SP000 :hasReference :R011 .
+:SP111 :hasReference :R011 .
+:SP001 :hasReference :R011 .
+:SP082 :hasReference :R011 .
+
 # Doxyclen Stewardship Principle 
 :SP112 :hasStewardshipDescription "Store at temperatures not exceeding 30°C" .
 :Doxyclen :managedBy :SP112 .
+:SP112 :hasReference :R012 .
 
 # Dynadoxy Stewardship Principle
 :SP113 :hasStewardshipDescription "Store at temperatures not exceeding 30°C. Protect from light".
 :Dynadoxy :managedBy :SP113 .
+:SP113 :hasReference :R013 .
