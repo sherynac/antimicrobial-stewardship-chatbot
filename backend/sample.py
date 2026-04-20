@@ -4,10 +4,11 @@ import services.intent_handlers as intent_handler
 import services.response_service as response_service
 import services.ontology_service as ontology_service
 
-from services.intent_handlers import handle_antibiotic_info, handle_compare_brands, handle_uses_indications
+from services.intent_handlers import handle_antibiotic_info, handle_compare_brands, handle_uses_indications, handle_side_effects
 from utils.helpers import array_to_string, is_yes_or_no, add_space_to_pascal_case
 
-from flask import jsonify
+# from flask import jsonify
+from owlready2 import sync_reasoner
 import json
 
 ''' 
@@ -15,6 +16,9 @@ PROGRAM START
 '''
 
 onto = ontology_service.load_ontology()
+with onto:
+    sync_reasoner()
+
 response_index = response_service.build_response_index()
 
 INTENT_ROUTER = {
@@ -25,27 +29,34 @@ INTENT_ROUTER = {
 }
 
 def main(question):
-    print("\n")
-    print("=" * 10)
-    print("Welcome to Ophiuchus!")
-    print("=" * 10)
+    try :
 
-    print("\nAsk a question: ", end="")
+        print("\n")
+        print("=" * 10)
+        print("Welcome to Ophiuchus!")
+        print("=" * 10)
 
-    # question = input()
-    question = question
-    print(question)
-    intent = intent_service.classify_intent(question)
-    entities = ner_service.recognize_entities(question)
-    print("ENTITIES:", entities)
+        print("\nAsk a question: ", end="")
 
-    handler_function = INTENT_ROUTER.get(intent)
+        # question = input()
+        question = question
+        print(question)
+        intent = intent_service.classify_intent(question)
+        entities = ner_service.recognize_entities(question)
+        print("ENTITIES:", entities)
 
-    if handler_function:
-        final_response = handler_function(entities, onto, response_index)
-        print(final_response)
-    else:
-        print(f"I recognized the intent '{intent}', but I don't know how to handle it yet.")
+        handler_function = INTENT_ROUTER.get(intent)
+
+        if handler_function:
+            final_response = handler_function(entities, onto, response_index)
+            print(final_response)
+        else:
+            print(f"I recognized the intent '{intent}', but I don't know how to handle it yet.")
+    except ValueError as e: # When entities cannot be found
+        error_json = response_service.build_text_response(str(e))
+        print(error_json)
+    except Exception as e:
+        print(f"An unexpected error occurred: {str(e)}")
     
 # Testing for get_antibiotic_info
 # main("How is DOXYCYCLINE supplied?")
@@ -70,8 +81,9 @@ def main(question):
 # main("What are the clinical indications for DOXYCYCLINE?")
 
 # Testing for get side effects
-main("What are the side effects of DOXYCYCLINE?") # generic 
-main("Will DOXYCYCLINE give me a HEADACHE?") # generic, side effect
+# main("What are the side effects of DOXYCYCLINE?") # generic 
+# main("Will DOXYCYCLINE give me a HEADACHE?") # generic, side effect (side effect is not connected)
+# main("Will DOXYCYCLINE give me a DIARRHEA?") # generic, side effect (side effect is connected)
 main("What are the common side effects of DYNADOXY?") # brand
-main("Will DYNADOXY give me a HEADACHE?") # brand, side effect
-main("What are the side effects of DYNADOXY (DOXYCYCLINE)?") # brand, generic
+# main("Will DYNADOXY give me a HEADACHE?") # brand, side effect
+# main("What are the side effects of DYNADOXY (DOXYCYCLINE)?") # brand, generic

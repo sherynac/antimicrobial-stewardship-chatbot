@@ -21,13 +21,13 @@ def build_response_index():
 
     for intent_obj in response_bank["IntentDefinitions"]:
         intent = intent_obj["intent"]
-
         index[intent] = {}
 
         for response in intent_obj["responses"]:
             condition = response["condition"]
-            index[intent][condition] = response["responseText"]
+            index[intent][condition] = response 
 
+    print(index)
     return index
 
 def get_response_template(intent, condition, response_index):
@@ -60,6 +60,21 @@ def build_text_response(response):
     }
     return data
 
+def build_header_response(response):
+    '''
+    Builds JSON format for headers (in bold)
+
+    args:
+        response: built response from response template and querying
+    
+    Returns:
+        data: JSON format of a header
+    '''
+    data = {
+        "type": "header",
+        "response": response
+    }
+    return data
 
 def build_table_response(columns, rows):
     '''
@@ -123,5 +138,9 @@ def build_composite_response(responses):
         "type" : "composite",
         "responses": responses
     }
+
+    # Checking of payload
+    with open('debug_payload.json', 'w') as file:
+        json.dump(data, file, indent=4)
 
     return data         

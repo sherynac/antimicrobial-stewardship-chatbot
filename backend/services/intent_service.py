@@ -30,5 +30,6 @@ def classify_intent (question):
     elif question in ["What are the side effects of DOXYCYCLINE?",
         "What are the common side effects of DYNADOXY?",
         "What are the side effects of DYNADOXY (DOXYCYCLINE)?",
-        "Will DOXYCYCLINE give me a HEADACHE?"]:
+        "Will DOXYCYCLINE give me a HEADACHE?",
+        "Will DOXYCYCLINE give me a DIARRHEA?"]:
         return "GET_SIDE_EFFECTS"

@@ -1,10 +1,7 @@
 from rdflib import Graph
 from owlready2 import get_ontology
-<<<<<<< HEAD
 from services.response_service import build_text_response
 from utils.helpers import add_space_to_pascal_case
-=======
->>>>>>> main
 
 def load_ontology():
     '''
@@ -36,7 +33,7 @@ def query_ontology(ontology, entity):
     entity_obj = ontology.search_one(iri=f"*{entity}")
 
     if not entity_obj:  
-        return build_text_response(f"Apologies. I couldn't find any information on {entity} in my knowledge base.")
+        raise ValueError(f"I'm sorry I don't have any records for {entity}")
 
     return entity_obj
 

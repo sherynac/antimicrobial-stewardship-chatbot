@@ -43,6 +43,8 @@
     rdfs:subClassOf :SideEffect .
 :Vomiting rdf:type owl:Class;
     rdfs:subClassOf :SideEffect.
+:Headache rdf:type owl:Class;
+    rdfs:subClassOf :SideEffect .
 :Pattern rdf:type owl:Class .
 :Duration rdf:type owl:Class .
 
@@ -100,7 +102,14 @@
 :hasSideEffect rdf:type owl:ObjectProperty ;
     rdfs:domain :Brand ;
     rdfs:range :SideEffect ;
-    rdfs:label "has side effect" .
+    rdfs:label "has side effect" ;
+    rdfs:inverseOf :sideEffectOf .
+
+:sideEffectOf rdf:type owl:ObjectProperty ;
+    rdfs:domain :SideEffect ;
+    rdfs:range :Brand ;
+    rdfs:label "side effect of";
+    owl:inverseOf :hasSideEffect .
 
 :whichIs rdf:type owl:ObjectProperty ;
     rdfs:domain :SideEffect ;
@@ -128,7 +137,6 @@
     rdfs:label "managed by" .
 
 :hasReference rdf:type owl:ObjectProperty ;
-    rdfs:domain :Antibiotic , :Indication , :Warning , :Substance , :SideEffect , :Interaction , :StewardshipPrinciple , :MedicalTerm ;
     rdfs:range :Reference ;
     rdfs:label "has reference" .
 
@@ -260,9 +268,12 @@
 :SE313 rdf:type :Vomiting .
 :SE338 rdf:type :Diarrhea .
 :SE371 rdf:type :Diarrhea .
+:SE000 rdf:type :Headache .
 :Common rdf:type :Pattern .
 :Infrequent rdf:type :Pattern .
-:2_months rdf:type :Duration .
+:FrequencyNotReported rdf:type :Pattern .
+:2Months rdf:type :Duration .
+:DurationNotReported rdf:type :Pattern .
 
 # Interaction
 :ITN121 rdf:type :Interaction .
@@ -361,11 +372,6 @@
 :Levofloxacin :hasDrugClass :Quinolones .
 :Levofloxacin :hasBrandName :Levocin .
 
-:Doxin :isBrandOf :Doxycycline .
-:Doxyclen :isBrandOf :Doxycycline .
-:Dynadoxy :isBrandOf :Doxycycline .
-:Levocin :isBrandOf :Levofloxacin .
-
 :Doxin :hasPresentation :Capsule .
 :Doxin :hasPresentation :SuspensionPowder .
 :Doxin :hasPresentation :Injection .
@@ -433,18 +439,20 @@
 
 # Doxin Side Effects
 :SE310 :hasSideEffectDescription "May occur after a patient stop taking doxycycline" .
-:SE310 :lastsFor :2_months .
-:SE310 :whichIs :Infrequent .
+:SE310 :lastsFor :2Months .
+:SE310 :whichIs :FrequencyNotReported .
 :SE310 :hasReference :R011 .
 :SE310 :hasReference :R077 .
 
 :SE312 :hasSideEffectDescription "a feeling of sickness or discomfort in the stomach" .
+:SE312 :lastsFor :DurationNotReported .
 :SE312 :whichIs :Common .
 :SE312 :hasReference :R011 .
 :SE312 :hasReference :R077 .
 :SE312 :hasReference :R168 .
 
 :SE313 :hasSideEffectDescription "forceful ejection of some or all of the contents of the stomach through the mouth" .
+:SE313 :lastsFor :DurationNotReported .
 :SE313 :whichIs :Common .
 :SE313 :hasReference :R011 .
 :SE313 :hasReference :R077 .
@@ -456,7 +464,7 @@
 
 # Doxyclen Side Effects
 :SE338 :hasSideEffectDescription "May occur after a patient stop taking doxycycline" .
-:SE338 :lastsFor :2_months .
+:SE338 :lastsFor :2Months .
 :SE338 :whichIs :Infrequent .
 :SE338 :hasReference :R012 .
 :SE338 :hasReference :R077 .
@@ -465,12 +473,19 @@
 
 # Dynadoxy Side Effects
 :SE371 :hasSideEffectDescription "May occur after a patient stop taking doxycycline" .
-:SE371 :lastsFor :2_months .
+:SE371 :lastsFor :2Months .
 :SE371 :whichIs :Infrequent .
 :SE371 :hasReference :R012 .
 :SE371 :hasReference :R077 .
 
 :Dynadoxy :hasSideEffect :SE371 .
+
+# Levocin Side Effects (sample)
+:SE000 :hasSideEffectDescription "Sample description for headaches" .
+:SE000 :lastsFor :DurationNotReported .
+:SE000 :whichIs :FrequencyNotReported .
+
+:Levocin :hasSideEffect :SE000 .
 
 # Substance 
 :anticoagulant :hasSubstanceDescription "Anticoagulant therapy" .

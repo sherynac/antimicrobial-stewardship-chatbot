@@ -5,17 +5,11 @@ from services.ontology_service import query_ontology, get_indication_severity_ty
 def handle_antibiotic_info(entities, ontology, response_index):
     if len(entities) > 1: # brand and generic recognized
         isBrand = False
-        generic_name = entities[0] if entities else None
+        generic_name = entities[0]
         generic_obj = query_ontology(ontology, generic_name)
 
-        if isinstance(generic_obj, dict): # check if error
-            return generic_obj
-        
-        brand_name = entities[1] if entities else None
+        brand_name = entities[1] 
         brand_obj = query_ontology(ontology, brand_name)
-
-        if isinstance(brand_obj, dict): # check if error
-            return brand_obj
 
         if brand_obj.isBrandOf[0] == generic_obj:
             isBrand = True
@@ -35,9 +29,6 @@ def handle_antibiotic_info(entities, ontology, response_index):
         brand_name = entities[0] if entities else None
         brand_obj = query_ontology(ontology, brand_name)
 
-        if isinstance(brand_obj, dict): # check for errors
-            return brand_obj
-        
         presentation_obj = brand_obj.hasPresentation
 
         generic_obj = brand_obj.isBrandOf
@@ -59,9 +50,6 @@ def handle_antibiotic_info(entities, ontology, response_index):
     elif entities[0] in ["Doxycycline", "Paracetamol"]:
         generic_name = entities[0] if entities else None
         generic_obj = query_ontology(ontology, generic_name)
-
-        if isinstance(generic_obj, dict):
-            return generic_obj
         
         drug_class = generic_obj.hasDrugClass
         brand_obj = generic_obj.hasBrandName
@@ -87,12 +75,9 @@ def handle_antibiotic_info(entities, ontology, response_index):
         return response_service.build_composite_response(responses)
 
 def handle_compare_brands (entities, ontology, response_index):
-    if entities[0] in ["Doxycycline", "Paracetamol"]:
+    if entities[0] in ["Doxycycline", "Paracetamol"]: # generic recognized
         generic_name = entities[0]
         generic_obj = query_ontology(ontology, generic_name)
-
-        if isinstance(generic_obj, dict): # check errors
-            return generic_obj
         
         brands_obj = generic_obj.hasBrandName
 
@@ -119,15 +104,9 @@ def handle_compare_brands (entities, ontology, response_index):
     elif len(entities) > 1 and entities[1] == "Doxycycline": # brand and generic recognized
         brand_name = entities[0]
         brand_obj = query_ontology(ontology, brand_name)
-
-        if isinstance(brand_obj, dict):
-            return brand_obj
         
         generic_name = entities[1]
         generic_obj = query_ontology(ontology, generic_name)
-
-        if isinstance(generic_obj, dict):
-            return generic_obj
         
         brands_obj = generic_obj.hasBrandName
         brands_obj.remove(brand_obj)
@@ -164,12 +143,10 @@ def handle_compare_brands (entities, ontology, response_index):
         for brand in entities: # check if brand exists
             brand_obj = query_ontology(ontology, brand)
 
-            if isinstance(brand_obj, dict):
-                return brand_obj
-
             brands_obj.append(brand_obj)
 
         baseline_generic = brands_obj[0].isBrandOf
+        print("OBJECT", brands_obj[0])
 
         for brand in brands_obj[1:]: # checking if same generic name
             current_generic = brand.isBrandOf
@@ -204,12 +181,10 @@ def handle_uses_indications(entities, ontology, response_index):
         generic_name = entities[1] 
 
         brand_obj = query_ontology(ontology, brand_name)
-        if isinstance (brand_obj, dict):
-            return brand_obj
+
         
         generic_obj = query_ontology(ontology, generic_name)
-        if isinstance (generic_obj, dict):
-            return generic_obj
+
         
         indication_obj = brand_obj.treats
 
@@ -273,11 +248,9 @@ def handle_uses_indications(entities, ontology, response_index):
     if (entities[0] in ["Doxin", "Doxyclen", "Dynadoxy"]): # brand recognized
         brand_name = entities[0]
         brand_obj = query_ontology(ontology, brand_name)
-
-        if isinstance (brand_obj, dict):
-            return brand_obj
         
         generic_obj = brand_obj.isBrandOf
+        print("GENERIC", generic_obj)
         generic_name = generic_obj[0].name
 
         indication_obj = brand_obj.treats
@@ -342,9 +315,6 @@ def handle_uses_indications(entities, ontology, response_index):
     if (entities[0] in ["Doxycycline", "Paracetamol"]): # generic recognized
         generic_name = entities[0]
         generic_obj = query_ontology(ontology, generic_name)
-
-        if isinstance(generic_obj, dict):
-            return generic_obj
         
         template = response_service.get_response_template("GET_USES_INDICATIONS", "generic_only", response_index)
         response = template.format (
@@ -366,3 +336,99 @@ def handle_uses_indications(entities, ontology, response_index):
         return response_service.build_composite_response(responses)
 
 def handle_side_effects(entities, ontology, response_index):
+    if (len(entities) == 1 and entities[0] in ["Doxycycline"]): # generic is found
+        generic_name = entities[0]
+        generic_obj = query_ontology(ontology, generic_name)
+
+        template = response_service.get_response_template("GET_SIDE_EFFECTS", "generic_only", response_index)
+        response = template['responseText'].format(
+            generic = generic_name
+        )
+        text_json = response_service.build_text_response(response)
+
+        responses = [text_json]
+
+        brand_obj = generic_obj.hasBrandName
+
+        for brand in brand_obj:
+            side_effects = []
+            header_json = response_service.build_header_response(brand.name)
+            responses.append(header_json)
+            side_effects_obj = brand.hasSideEffect
+
+            for side_effect in side_effects_obj:
+                side_effect_class = side_effect.is_a
+                pattern_obj  = side_effect.whichIs
+                duration_obj = side_effect.lastsFor
+                description = side_effect.hasSideEffectDescription
+
+                if "FrequencyNotReported" in pattern_obj[0].name: # no occurrence pattern specified
+                    template = response_service.get_response_template("GET_SIDE_EFFECTS", "generic_only", response_index)
+                    bullet_main_text = template['bulletNoPattern'].format(
+                        side_effect = side_effect_class[0].name,
+                    )
+                else: # occurrence pattern is specified 
+                    template = response_service.get_response_template("GET_SIDE_EFFECTS", "generic_only", response_index)
+                    bullet_main_text = template['bulletWithPattern'].format(
+                        side_effect = side_effect_class[0].name,
+                        pattern =pattern_obj[0].name,
+                        generic = generic_name
+                    )
+
+                if "DurationNotReported" in duration_obj[0].name: # template for bullet description with no duration
+                    template = response_service.get_response_template("GET_SIDE_EFFECTS", "generic_only", response_index)
+                    bullet_desc = template['descNoDuration'].format(
+                        description = description[0]
+                    )
+                else: # template for bullet description with duration
+                    template = response_service.get_response_template("GET_SIDE_EFFECTS", "generic_only", response_index)
+                    bullet_desc = template['descWithDuration'].format(
+                        description = description[0],
+                        duration = add_space_to_pascal_case(duration_obj[0].name)
+                    )
+                bullet_json = response_service.build_bullet(bullet_main_text, bullet_desc)
+                side_effects.append(bullet_json)
+
+            responses.append(response_service.build_bulleted_response(side_effects))
+        return response_service.build_composite_response(responses)
+    
+    if (len(entities) == 2 and entities[0] in ["Doxycycline"]): # generic is found
+        generic_name = entities[0]
+        generic_obj = query_ontology(ontology, generic_name)
+        
+        target_side_effect = entities[1] 
+        found_brands = []
+
+        brands_obj = generic_obj.hasBrandName
+
+        for brand in brands_obj:
+            for side_effect_instance in brand.hasSideEffect:
+                onto_side_effect_name = side_effect_instance.is_a[0].name
+                if target_side_effect.lower() == onto_side_effect_name.lower():
+                    if brand.name not in found_brands:
+                        found_brands.append(brand)
+                    break 
+        
+        if len(found_brands) < 1:
+            template = response_service.get_response_template("GET_SIDE_EFFECTS", "verify_no_match", response_index)
+            response = template['responseText'].format(
+                side_effect = target_side_effect,
+                generic = generic_name, 
+            )
+            return response_service.build_text_response(response)
+        else:
+            template = response_service.get_response_template("GET_SIDE_EFFECTS", "verify_match", response_index)
+            response = template['responseText'].format(
+                side_effect = target_side_effect,
+                generic = generic_name, 
+                brands = array_to_string(found_brands)
+            )
+            return response_service.build_text_response(response)
+        
+    if (len(entities) == 1 and entities[0] in ["Doxin"]): # brand is found
+        
+
+            
+
+
+
