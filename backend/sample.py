@@ -59,31 +59,31 @@ def main(question):
         print(f"An unexpected error occurred: {str(e)}")
     
 # Testing for get_antibiotic_info
-# main("How is DOXYCYCLINE supplied?")
-# main("How is DOXIN supplied?")
-# main("What dosage forms are available for the generic antibiotic DOXYCYCLINE and the brand-name antibiotic DYNADOXY ?")
-# main("How is PARACETAMOL supplied?")
-# main("How is BIOGESIC supplied?")
-# main("What dosage forms are available for the generic antibiotic PARACETAMOL and the brand-name antibiotic BIOGESIC ?")
+main("How is DOXYCYCLINE supplied?")
+main("How is DOXIN supplied?")
+main("What dosage forms are available for the generic antibiotic DOXYCYCLINE and the brand-name antibiotic DYNADOXY ?")
+main("How is PARACETAMOL supplied?")
+main("How is BIOGESIC supplied?")
+main("What dosage forms are available for the generic antibiotic PARACETAMOL and the brand-name antibiotic BIOGESIC ?")
 
 # Testing for compare_brands
-# main("What is the difference between DOXIN and DOXYCLEN?") # 2 brands
-# main("What is the difference between DOXIN, DOXYCLEN and DYNADOXY?") # more than 2 brands
-# main("What is the difference between DOXIN and LEVOCIN?") # brands with not same generic
-# main("Compare the different brands of DOXYCYCLINE.") # generic
-# main("Compare DOXIN with other brands of DOXYCYCLINE.") # brand, generic
+main("What is the difference between DOXIN and DOXYCLEN?") # 2 brands
+main("What is the difference between DOXIN, DOXYCLEN and DYNADOXY?") # more than 2 brands
+main("What is the difference between DOXIN and LEVOCIN?") # brands with not same generic
+main("Compare the different brands of DOXYCYCLINE.") # generic
+main("Compare DOXIN with other brands of DOXYCYCLINE.") # brand, generic
 
 # Testing for uses/indications
-# main("i was given DYNADOXY (DOXYCYCLINE), what is it for?") # single indication, brand, generic
-# main("i was given DOXIN (DOXYCYCLINE), what is it for?") # multiple indications, brand, generic
-# main("Why was i prescribed DYNADOXY?") # single indication, brand
-# main("Why was i prescribed DOXIN?") # multiple indications, brand
-# main("What are the clinical indications for DOXYCYCLINE?")
+main("i was given DYNADOXY (DOXYCYCLINE), what is it for?") # single indication, brand, generic
+main("i was given DOXIN (DOXYCYCLINE), what is it for?") # multiple indications, brand, generic
+main("Why was i prescribed DYNADOXY?") # single indication, brand
+main("Why was i prescribed DOXIN?") # multiple indications, brand
+main("What are the clinical indications for DOXYCYCLINE?")
 
 # Testing for get side effects
 # main("What are the side effects of DOXYCYCLINE?") # generic 
 # main("Will DOXYCYCLINE give me a HEADACHE?") # generic, side effect (side effect is not connected)
 # main("Will DOXYCYCLINE give me a DIARRHEA?") # generic, side effect (side effect is connected)
-main("What are the common side effects of DYNADOXY?") # brand
+# main("What are the common side effects of DYNADOXY?") # brand
 # main("Will DYNADOXY give me a HEADACHE?") # brand, side effect
 # main("What are the side effects of DYNADOXY (DOXYCYCLINE)?") # brand, generic

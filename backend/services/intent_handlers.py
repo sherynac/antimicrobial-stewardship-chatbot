@@ -17,7 +17,7 @@ def handle_antibiotic_info(entities, ontology, response_index):
         presentation_obj = brand_obj.hasPresentation
 
         template = response_service.get_response_template("GET_ANTIBIOTIC_INFO", "brand_and_generic", response_index)
-        response = template.format(
+        response = template['responseText'].format(
             is_brand_of = is_yes_or_no(isBrand),
             brand=brand_name,
             generic=generic_name,
@@ -37,7 +37,7 @@ def handle_antibiotic_info(entities, ontology, response_index):
         drug_class = generic_obj[0].hasDrugClass
 
         template = response_service.get_response_template("GET_ANTIBIOTIC_INFO", "brand_only", response_index)
-        response = template.format(
+        response = template['responseText'].format(
             brand=brand_name,
             generic=generic_obj[0].name,
             drug_class=drug_class[0].name,
@@ -55,7 +55,7 @@ def handle_antibiotic_info(entities, ontology, response_index):
         brand_obj = generic_obj.hasBrandName
 
         template = response_service.get_response_template("GET_ANTIBIOTIC_INFO", "generic_only", response_index)
-        response = template.format(
+        response = template['responseText'].format(
             generic = generic_name,
             drug_class = drug_class[0].name       
         )
@@ -83,7 +83,7 @@ def handle_compare_brands (entities, ontology, response_index):
 
         template = response_service.get_response_template("COMPARE_BRANDS", "generic_only", response_index)
 
-        response = template.format(
+        response = template['responseText'].format(
             generic = generic_name
         )
 
@@ -114,7 +114,7 @@ def handle_compare_brands (entities, ontology, response_index):
         
         template = response_service.get_response_template("COMPARE_BRANDS", "brand_and_generic", response_index)
         
-        response = template.format(
+        response = template['responseText'].format(
             brand = brand_name,
             generic = generic_name,
             presentation = array_to_string(presentation_obj)
@@ -155,7 +155,7 @@ def handle_compare_brands (entities, ontology, response_index):
                 return response_service.build_text_response(f"The antibiotics have different generic names. {brand.name} has generic name of {current_generic[0].name}, while {brands_obj[0].name} has generic name of {baseline_generic[0].name}")
 
         template = response_service.get_response_template("COMPARE_BRANDS", "multiple_brands", response_index)
-        response = template.format(
+        response = template['responseText'].format(
             brands = array_to_string(brands_obj),
             generic = baseline_generic[0].name
         )
@@ -198,7 +198,7 @@ def handle_uses_indications(entities, ontology, response_index):
                 indication_final = indication
 
             template = response_service.get_response_template("GET_USES_INDICATIONS", "single_indication", response_index)
-            response = template.format(
+            response = template['responseText'].format(
                 brand = brand_name,
                 generic = generic_name,
                 disease = indication_final,
@@ -236,7 +236,7 @@ def handle_uses_indications(entities, ontology, response_index):
                 indication_bullets.append(bullet)
             
             template = response_service.get_response_template("GET_USES_INDICATIONS", "multiple_indications", response_index)
-            response = template.format(
+            response = template['responseText'].format(
                 brand = brand_name,
                 generic = generic_name
             )
@@ -265,7 +265,7 @@ def handle_uses_indications(entities, ontology, response_index):
                 indication_final = indication
 
             template = response_service.get_response_template("GET_USES_INDICATIONS", "single_indication", response_index)
-            response = template.format(
+            response = template['responseText'].format(
                 brand = brand_name,
                 generic = generic_name,
                 disease = indication_final,
@@ -303,7 +303,7 @@ def handle_uses_indications(entities, ontology, response_index):
                 indication_bullets.append(bullet)
             
             template = response_service.get_response_template("GET_USES_INDICATIONS", "multiple_indications", response_index)
-            response = template.format(
+            response = template['responseText'].format(
                 brand = brand_name,
                 generic = generic_name
             )
@@ -317,7 +317,7 @@ def handle_uses_indications(entities, ontology, response_index):
         generic_obj = query_ontology(ontology, generic_name)
         
         template = response_service.get_response_template("GET_USES_INDICATIONS", "generic_only", response_index)
-        response = template.format (
+        response = template['responseText'].format (
             generic = generic_name
         )
 
@@ -425,8 +425,8 @@ def handle_side_effects(entities, ontology, response_index):
             )
             return response_service.build_text_response(response)
         
-    if (len(entities) == 1 and entities[0] in ["Doxin"]): # brand is found
-        
+    # if (len(entities) == 1 and entities[0] in ["Doxin"]): # brand is found
+
 
             
 
