@@ -1,0 +1,20 @@
+{
+    "type": "composite",
+    "responses": [
+        {
+            "type": "text",
+            "response": "Yes, Dynadoxy is a brand of Doxycycline. It comes in Capsule."
+        },
+        {
+            "type": "reference_list",
+            "sources": [
+                {
+                    "type": "reference",
+                    "id": "R013",
+                    "title": "Dynadoxy",
+                    "url": "https://www.mims.com/philippines/drug/info/dynadoxy"
+                }
+            ]
+        }
+    ]
+}

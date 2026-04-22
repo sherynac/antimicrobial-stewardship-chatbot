@@ -9,7 +9,7 @@ def classify_intent (question):
         add elif for other intents, text preprocessing, embedding intent classification model
     '''
     if question in ["How is DOXYCYCLINE supplied?",
-        "How is DOXIN supplied?" ,
+        "How is DYNADOXY supplied?" ,
         "What dosage forms are available for the generic antibiotic DOXYCYCLINE and the brand-name antibiotic DYNADOXY ?",
         "How is PARACETAMOL supplied?",
         "How is BIOGESIC supplied?",
@@ -29,7 +29,12 @@ def classify_intent (question):
         return "GET_USES_INDICATIONS"
     elif question in ["What are the side effects of DOXYCYCLINE?",
         "What are the common side effects of DYNADOXY?",
+        "What are the common side effects of DOXIN?",
         "What are the side effects of DYNADOXY (DOXYCYCLINE)?",
         "Will DOXYCYCLINE give me a HEADACHE?",
-        "Will DOXYCYCLINE give me a DIARRHEA?"]:
+        "Will DOXYCYCLINE give me a DIARRHEA?",
+        "Will DYNADOXY give me a HEADACHE?",
+        "Will DYNADOXY give me a DIARRHEA?",
+        "Will DYNADOXY (DOXYCYCLINE) give me a HEADACHE?",
+        "Will DYNADOXY (DOXYCYCLINE) give me a DIARRHEA?"]:
         return "GET_SIDE_EFFECTS"

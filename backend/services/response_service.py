@@ -144,3 +144,41 @@ def build_composite_response(responses):
         json.dump(data, file, indent=4)
 
     return data         
+
+def build_reference(id, title, url):
+    '''
+    Builds JSON format of a single reference
+
+    args:
+        id: refers to the id of the reference
+        title: refers to the title of the reference
+        url: refers to the exact url reference was retrieved from
+    
+    Return:
+        data: built JSON format of a reference
+    '''
+    data = {
+        "type": "reference",
+        "id": id,
+        "title": title,
+        "url":url
+    }
+    return data
+
+def build_reference_list(references):
+    '''
+    Builds JSON format of a reference list
+
+    args:
+        references: refers to the list of references
+    
+    Returns:
+        data: built JSON format of a reference list
+    '''
+    data = {
+        "type": "reference_list",
+        "sources": references
+    }
+
+    return data
+    

@@ -96,15 +96,67 @@
         },
         {
           "responseID": 12,
-          "condition": "verify_match",
+          "condition": "generic_verify_match",
           "responseText": "Yes, based on my records, {side_effect} is a known side effect of {generic}. \n\nIt is specifically reported for the brand(s): {brands}.",
           "targetNodes":["side_effect", "generic", "brands"]
         },
         {
           "responseID": 13,
-          "condition": "verify_no_match",
+          "condition": "generic_verify_no_match",
           "responseText": "Based on my records, I do not have {side_effect} listed as a known side effect for {generic}.",
           "targetNodes": ["side_effect", "generic"]
+        },
+        {
+          "responseID": 14,
+          "condition": "brand_verify_match",
+          "responseText": "Yes, based on my records, {side_effect} is a known side effect of {brand}.",
+          "targetNodes":["side_effect", "brands"]
+        },
+        {
+          "responseID": 15,
+          "condition": "brand_verify_no_match",
+          "responseText": "Based on my records, I do not have {side_effect} listed as a known side effect for {brand}.",
+          "targetNodes": ["side_effect", "brand"]
+        },
+        {
+          "responseID": 16,
+          "condition": "brand_verify_no_match",
+          "responseText": "Based on my records, I do not have {side_effect} listed as a known side effect for {brand}.",
+          "targetNodes": ["side_effect", "brand"]
+        },
+        {
+          "responseID": 17,
+          "condition": "brand_only",
+          "responseText":"Here are the side effects associated with {brand} based on my records:",
+          "bulletWithPattern": "{side_effect} ({pattern})",
+          "bulletNoPattern": "{side_effect}",
+          "descWithDuration": "Note: May last for {duration}. {description}",
+          "descNoDuration": "{description}",
+          "targetNodes": ["brand", "side_effect, description"],
+          "optionalNodes": ["pattern", "duration"]
+        },
+        {
+          "responseID": 18,
+          "condition": "generic_brand_verify_match",
+          "responseText": "Yes, based on my records, {side_effect} is a known side effect of {brand}({generic}).",
+          "targetNodes":["side_effect", "generic", "brand"]
+        },
+        {
+          "responseID": 19,
+          "condition": "generic_brand_verify_no_match",
+          "responseText": "Based on my records, I do not have {side_effect} listed as a known side effect for {brand}({generic}).",
+          "targetNodes": ["side_effect", "generic", "brand"]
+        },
+        {
+          "responseID": 17,
+          "condition": "generic_brand_only",
+          "responseText":"Here are the side effects associated with {brand} ({generic}) based on my records:",
+          "bulletWithPattern": "{side_effect} ({pattern})",
+          "bulletNoPattern": "{side_effect}",
+          "descWithDuration": "Note: May last for {duration}. {description}",
+          "descNoDuration": "{description}",
+          "targetNodes": ["generic","brand", "side_effect, description"],
+          "optionalNodes": ["pattern", "duration"]
         }
       ]
     }
