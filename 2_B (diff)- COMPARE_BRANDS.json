@@ -1,0 +1,61 @@
+{
+    "type": "composite",
+    "responses": [
+        {
+            "type": "text",
+            "response": "Doxin, Doxyclen and Dynadoxy are brands of the generic Doxycycline. However, they are supplied differently: ."
+        },
+        {
+            "type": "table",
+            "columns": [
+                "Brand Name",
+                "Presentation/Packing"
+            ],
+            "rows": [
+                [
+                    "Doxin",
+                    "Capsule"
+                ],
+                [
+                    "Doxin",
+                    "Suspension Powder"
+                ],
+                [
+                    "Doxin",
+                    "Injection"
+                ],
+                [
+                    "Doxyclen",
+                    "Capsule"
+                ],
+                [
+                    "Dynadoxy",
+                    "Capsule"
+                ]
+            ]
+        },
+        {
+            "type": "reference_list",
+            "sources": [
+                {
+                    "type": "reference",
+                    "id": "R011",
+                    "title": "Doxin",
+                    "url": "https://www.mims.com/philippines/drug/info/doxin"
+                },
+                {
+                    "type": "reference",
+                    "id": "R012",
+                    "title": "Doxyclen",
+                    "url": "https://www.mims.com/philippines/drug/info/doxyclen"
+                },
+                {
+                    "type": "reference",
+                    "id": "R013",
+                    "title": "Dynadoxy",
+                    "url": "https://www.mims.com/philippines/drug/info/dynadoxy"
+                }
+            ]
+        }
+    ]
+}

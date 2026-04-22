@@ -77,11 +77,11 @@ def main(question):
 # main("What dosage forms are available for the generic antibiotic PARACETAMOL and the brand-name antibiotic BIOGESIC ?")
 
 # Testing for compare_brands
-main("What is the difference between DOXIN and DOXYCLEN?") # 2 brands
-# main("What is the difference between DOXIN, DOXYCLEN and DYNADOXY?") # more than 2 brands
-# main("What is the difference between DOXIN and LEVOCIN?") # brands with not same generic
-# main("Compare the different brands of DOXYCYCLINE.") # generic
-# main("Compare DOXIN with other brands of DOXYCYCLINE.") # brand, generic
+# main("What is the difference between DOXIN and DOXYCLEN?") # 2 brands
+main("What is the difference between DOXIN, DOXYCLEN and DYNADOXY?") # more than 2 brands
+main("What is the difference between DOXIN and LEVOCIN?") # brands with not same generic
+main("Compare the different brands of DOXYCYCLINE.") # generic
+main("Compare DOXIN with other brands of DOXYCYCLINE.") # brand, generic
 
 # Testing for uses/indications
 # main("i was given DYNADOXY (DOXYCYCLINE), what is it for?") # single indication, brand, generic

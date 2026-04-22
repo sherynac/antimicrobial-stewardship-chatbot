@@ -123,7 +123,7 @@ def handle_compare_brands (entities, ontology, response_index):
         brands = list(generic_obj.hasBrandName)
         brands.remove(brand_obj)
         brands_obj = generic_obj.hasBrandName
-        reference_list = get_references_list()
+        reference_list = get_references_list(brands_obj)
 
         presentation_obj = brand_obj.hasPresentation
         
@@ -180,6 +180,7 @@ def handle_compare_brands (entities, ontology, response_index):
         columns = ["Brand Name", "Presentation/Packing"]
         rows = []
 
+        reference_list = get_references_list(brands_obj)
         for brand in brands_obj:
             presentation_obj = brand.hasPresentation
             for presentation in presentation_obj:
@@ -188,7 +189,7 @@ def handle_compare_brands (entities, ontology, response_index):
 
         text_json = response_service.build_text_response(response)
         table_json = response_service.build_table_response(columns, rows)
-        responses = [text_json, table_json]
+        responses = [text_json, table_json, reference_list]
         return response_service.build_composite_response(responses)
 
 def handle_uses_indications(entities, ontology, response_index):
