@@ -89,7 +89,7 @@
   <rdf:Description rdf:about="http://example.org/ontology#hasPresentation">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:domain rdf:resource="http://example.org/ontology#Brand"/>
-    <rdfs:range rdf:resource="http://example.org/ontology#Presentation_Packing"/>
+    <rdfs:range rdf:resource="http://example.org/ontology#PresentationPacking"/>
     <rdfs:label>has presentation</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/ontology#Substance">
@@ -362,7 +362,7 @@
     <rdfs:subClassOf rdf:resource="http://example.org/ontology#Warning"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/ontology#Injection">
-    <rdf:type rdf:resource="http://example.org/ontology#Presentation_Packing"/>
+    <rdf:type rdf:resource="http://example.org/ontology#PresentationPacking"/>
     <rdfs:label>Injection</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/ontology#W151">
@@ -515,7 +515,7 @@
     <rdfs:label>has author</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/ontology#IV_Infusion">
-    <rdf:type rdf:resource="http://example.org/ontology#Presentation_Packing"/>
+    <rdf:type rdf:resource="http://example.org/ontology#PresentationPacking"/>
     <rdfs:label>IV Infusion</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/ontology#hasInteraction">
@@ -544,7 +544,7 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/ontology#SuspensionPowder">
-    <rdf:type rdf:resource="http://example.org/ontology#Presentation_Packing"/>
+    <rdf:type rdf:resource="http://example.org/ontology#PresentationPacking"/>
     <rdfs:label>Suspension Powder</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/ontology#AtypicalPneumonia">
@@ -569,7 +569,7 @@
     <rdfs:subClassOf rdf:resource="http://example.org/ontology#Indication"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/ontology#Capsule">
-    <rdf:type rdf:resource="http://example.org/ontology#Presentation_Packing"/>
+    <rdf:type rdf:resource="http://example.org/ontology#PresentationPacking"/>
     <rdfs:label>Capsule</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/ontology#penicillin">
@@ -617,7 +617,7 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="http://example.org/ontology#UrinaryDisease"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/ontology#Presentation_Packing">
+  <rdf:Description rdf:about="http://example.org/ontology#PresentationPacking">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/ontology#SideEffect">
