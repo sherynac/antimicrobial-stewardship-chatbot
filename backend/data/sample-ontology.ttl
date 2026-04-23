@@ -73,7 +73,7 @@
     rdfs:domain :Brand;
     rdfs:range :Antibiotic;
     rdfs:label "is brand of" ;
-    owl:inverseOf :hasBrand .
+    owl:inverseOf :hasBrandName .
 
 :hasPresentation rdf:type owl:ObjectProperty ;
     rdfs:domain :Brand ;
