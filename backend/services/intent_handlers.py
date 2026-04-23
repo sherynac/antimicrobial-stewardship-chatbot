@@ -605,7 +605,6 @@ def handle_side_effects(entities, ontology, response_index):
             )
             return response_service.build_text_response(response)
 
-            
 
 
 

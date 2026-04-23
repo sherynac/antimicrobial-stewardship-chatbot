@@ -69,7 +69,7 @@ def main(question):
     #     print(f"An unexpected error occurred: {str(e)}")
     
 # Testing for get_antibiotic_info
-# main("How is DOXYCYCLINE supplied?") 
+main("How is DOXYCYCLINE supplied?") 
 # main("How is DYNADOXY supplied?") # added referencing
 # main("What dosage forms are available for the generic antibiotic DOXYCYCLINE and the brand-name antibiotic DYNADOXY ?") # added referencing
 # main("How is PARACETAMOL supplied?")
@@ -78,10 +78,10 @@ def main(question):
 
 # Testing for compare_brands
 # main("What is the difference between DOXIN and DOXYCLEN?") # 2 brands
-main("What is the difference between DOXIN, DOXYCLEN and DYNADOXY?") # more than 2 brands
-main("What is the difference between DOXIN and LEVOCIN?") # brands with not same generic
-main("Compare the different brands of DOXYCYCLINE.") # generic
-main("Compare DOXIN with other brands of DOXYCYCLINE.") # brand, generic
+# main("What is the difference between DOXIN, DOXYCLEN and DYNADOXY?") # more than 2 brands
+# main("What is the difference between DOXIN and LEVOCIN?") # brands with not same generic
+# main("Compare the different brands of DOXYCYCLINE.") # generic
+# main("Compare DOXIN with other brands of DOXYCYCLINE.") # brand, generic
 
 # Testing for uses/indications
 # main("i was given DYNADOXY (DOXYCYCLINE), what is it for?") # single indication, brand, generic
@@ -102,3 +102,4 @@ main("Compare DOXIN with other brands of DOXYCYCLINE.") # brand, generic
 # main("Will DYNADOXY (DOXYCYCLINE) give me a HEADACHE?") # brand, generic, side effect (not connected)
 # main("Will DYNADOXY (DOXYCYCLINE) give me a DIARRHEA?") # brand, generic, side effect (connected)
 
+# Testing for monitoring stewardship

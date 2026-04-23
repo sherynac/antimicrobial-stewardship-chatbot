@@ -43,9 +43,6 @@
 
 # Severity
 :Severity rdf:type owl:Class .
-:Mild rdf:type :Severity .
-:Severe rdf:type :Severity .
-:NotSpecified rdf:type :Severity .
 
 # Warning
 :Warning rdf:type owl:Class .
@@ -85,21 +82,16 @@
 ##############################################################
 # Validation and Disjointness Properties
 ###############################################################
-# Property characteristics
-:interactsWith rdf:type owl:SymmetricProperty .
-:isBrandOf rdf:type owl:FunctionalProperty .
-:hasBrandName rdf:type owl:InverseFunctionalProperty .
 
-# Inverse properties (complete the bidirectional relationships)
-:isPresentationOf rdf:type owl:ObjectProperty ;
-    owl:inverseOf :hasPresentation ;
-    rdfs:domain :PresentationPacking ;
-    rdfs:range :Brand .
-
-:warningOf rdf:type owl:ObjectProperty ;
-    owl:inverseOf :hasWarning ;
-    rdfs:domain :Warning ;
-    rdfs:range :Brand .
+:Antibiotic owl:disjointWith :Brand .
+:Brand owl:disjointWith :Indication .
+:Brand owl:disjointWith :Warning .
+:Brand owl:disjointWith :SideEffect .
+:Indication owl:disjointWith :Warning .
+:SideEffect owl:disjointWith :Indication .
+:Interaction owl:disjointWith :Substance .
+:Drug owl:disjointWith :Food, :Beverage .
+:Food owl:disjointWith :Beverage .
 
 # Validation rules (every brand needs a presentation)
 :Brand rdfs:subClassOf [
@@ -116,10 +108,24 @@
     owl:minCardinality 1
 ] .
 
+# Every interaction needs substance
+:Interaction rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty :interactsWith ;
+    owl:minQualifiedCardinality 1 ;
+    owl:onClass :Substance
+] .
+
 # Severity values are distinct
 :Mild owl:differentFrom :Severe .
 :Mild owl:differentFrom :NotSpecified .
 :Severe owl:differentFrom :NotSpecified .
+:Severity owl:oneOf ( :Mild :Severe :NotSpecified ) .
+
+# Pattern values are distinct
+:Common owl:differentFrom :Infrequent, :FrequencyNotReported .
+:Infrequent owl:differentFrom :FrequencyNotReported .
+:Pattern owl:oneOf ( :Common :Infrequent :FrequencyNotReported ) .
 
 ##############################################################
 # Object Properties
@@ -130,7 +136,8 @@
     rdfs:label "has brand name" ;
     owl:inverseOf :isBrandOf .
 
-:isBrandOf rdf:type owl:ObjectProperty ;
+:isBrandOf rdf:type owl:ObjectProperty;
+    rdf:type owl:FunctionalProperty;
     rdfs:domain :Brand;
     rdfs:range :Antibiotic;
     rdfs:label "is brand of" ;
@@ -140,6 +147,11 @@
     rdfs:domain :Brand ;
     rdfs:range :PresentationPacking ;
     rdfs:label "has presentation" .
+
+:isPresentationOf rdf:type owl:ObjectProperty ;
+    owl:inverseOf :hasPresentation ;
+    rdfs:domain :PresentationPacking ;
+    rdfs:range :Brand .
 
 :hasSeverity rdf:type owl:ObjectProperty ;
     rdfs:domain :Indication ;
@@ -155,6 +167,11 @@
     rdfs:domain :Brand ;
     rdfs:range :Warning ;
     rdfs:label "has warning" .
+
+:warningOf rdf:type owl:ObjectProperty ;
+    owl:inverseOf :hasWarning ;
+    rdfs:domain :Warning ;
+    rdfs:range :Brand .
 
 :hasSideEffect rdf:type owl:ObjectProperty ;
     rdfs:domain :Brand ;
@@ -182,6 +199,12 @@
     rdfs:domain :Interaction ;
     rdfs:range :Substance ;
     rdfs:label "interacts with" .
+
+:isInvolvedIn rdf:type owl:ObjectProperty ;
+    rdfs:domain :Substance ;
+    rdfs:range :Interaction ;
+    owl:inverseOf :interactsWith ;
+    rdfs:label "is involved in".
 
 :managedBy rdf:type owl:ObjectProperty ;
     rdfs:domain :Brand ;
@@ -312,18 +335,33 @@
     rdfs:label "Levocin".
 
 # Presentation 
-:A001 rdf:type :Capsule .
-:A002 rdf:type :Capsule
-:A003 rdf:type :Capsule .
-:A004 rdf:type :FilmCoatedTablet .
-:A005 rdf:type :FilmCoatedTablet .
-:A006 rdf:type :IVInfusion .
-:A007 rdf:type :IVInfusion .
+:A001 rdf:type :Capsule;
+    rdfs:label "Doxin 100mg Capsule".
+:A002 rdf:type :Capsule ;
+    rdfs:label "Doxyclen 100mg Capsule" .
+:A003 rdf:type :Capsule ;
+    rdfs:label "Dynadoxy 100mg Capsule" .
+:A004 rdf:type :FilmCoatedTablet ;
+    rdfs:label "Levocin 500mg FC Tablet" .
+:A005 rdf:type :FilmCoatedTablet ;
+    rdfs:label "Levocin 750mg FC Tablet".
+:A006 rdf:type :IVInfusion ;
+    rdfs:label "Levocin 500mg IV Infusion" .
+:A007 rdf:type :IVInfusion ;
+    rdfs:label "Levocin 750mg IV Infusion" .
 
 # Indication
-:I034 rdf:type :AtypicalPneumonia .
-:I004 rdf:type :SinusInfection .
-:I035 rdf:type :GenitourinaryTractInfection .
+:I034 rdf:type :AtypicalPneumonia ;
+    rdfs:label "Mild Atypical Pneumonia".
+:I004 rdf:type :SinusInfection ;
+    rdfs:label "Mild Sinus Infection".
+:I035 rdf:type :GenitourinaryTractInfection ;
+    rdfs:label "Not Specified Genitourinary Tract Infection".
+
+# Severity
+:Mild rdf:type :Severity .
+:Severe rdf:type :Severity .
+:NotSpecified rdf:type :Severity .
 
 # Warning
 :W143 rdf:type :Contraindication .
@@ -340,6 +378,8 @@
 :SE338 rdf:type :Diarrhea .
 :SE371 rdf:type :Diarrhea .
 :SE000 rdf:type :Headache .
+
+# Occurrence Pattern
 :Common rdf:type :Pattern .
 :Infrequent rdf:type :Pattern .
 :FrequencyNotReported rdf:type :Pattern .
@@ -463,13 +503,13 @@
 :A006 :hasDosage "500mg" .
 :A007 :hasDosage "750mg" .
 
-:A001 :hasUnitPrice "103.00" .
-:A002 :hasUnitPrice "110.00" .
-:A003 :hasUnitPrice "115.00" .
-:A004 :hasUnitPrice "95.04" .
-:A005 :hasUnitPrice "139.392" .
-:A006 :hasUnitPrice "1478.4" .
-:A007 :hasUnitPrice "1958.88" .
+:A001 :hasUnitPrice "103.00"^^xsd:double .
+:A002 :hasUnitPrice "110.00"^^xsd:double .
+:A003 :hasUnitPrice "115.00"^^xsd:double .
+:A004 :hasUnitPrice "95.04"^^xsd:double .
+:A005 :hasUnitPrice "139.392"^^xsd:double .
+:A006 :hasUnitPrice "1478.4"^^xsd:double .
+:A007 :hasUnitPrice "1958.88"^^xsd:double .
 
 # Indications
 :I034 :hasSeverity :Mild .
