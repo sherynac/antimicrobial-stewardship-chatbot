@@ -1,0 +1,61 @@
+{
+    "type": "composite",
+    "responses": [
+        {
+            "type": "text",
+            "response": "Here are the brands associated with Doxycycline and their known side effects based on my records:"
+        },
+        {
+            "type": "header",
+            "response": "Doxin"
+        },
+        {
+            "type": "bulleted",
+            "bullets": [
+                {
+                    "type": "bullet",
+                    "main_text": "Diarrhea",
+                    "description": "Note: May last for 2 Months. May occur after a patient stop taking doxycycline"
+                },
+                {
+                    "type": "bullet",
+                    "main_text": "Nausea (Common)",
+                    "description": "a feeling of sickness or discomfort in the stomach"
+                },
+                {
+                    "type": "bullet",
+                    "main_text": "Vomiting (Common)",
+                    "description": "forceful ejection of some or all of the contents of the stomach through the mouth"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "response": "Doxyclen"
+        },
+        {
+            "type": "bulleted",
+            "bullets": [
+                {
+                    "type": "bullet",
+                    "main_text": "Diarrhea (Infrequent)",
+                    "description": "Note: May last for 2 Months. May occur after a patient stop taking doxycycline"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "response": "Dynadoxy"
+        },
+        {
+            "type": "bulleted",
+            "bullets": [
+                {
+                    "type": "bullet",
+                    "main_text": "Diarrhea (Infrequent)",
+                    "description": "Note: May last for 2 Months. May occur after a patient stop taking doxycycline"
+                }
+            ]
+        }
+    ]
+}

@@ -10,22 +10,39 @@
 # Classes
 ###############################################################
 
-# Medical Term
-:MedicalTerm rdf:type owl:Class .
+# Reference
 :Reference rdf:type owl:Class .
 
 # Antibiotic
 :Antibiotic rdf:type owl:Class .
-:DrugClass rdf:type owl:Class .
 :Brand rdf:type owl:Class .
-:Presentation_Packing rdf:type owl:Class .
+
+# Presentation
+:PresentationPacking rdf:type owl:Class .
+:Capsule rdf:type owl:Class ;
+    rdfs:subClassOf :PresentationPacking .
+:FilmCoatedTablet rdf:type owl:Class ;
+    rdfs:subClassOf :PresentationPacking .
+:IVInfusion rdf:type owl:Class ;
+    rdfs:subClassOf :PresentationPacking .
 
 # Indication
 :Indication rdf:type owl:Class .
-:RespiratoryDisease rdf:type owl:Class ; rdfs:subClassOf :Indication .
-:UrinaryDisease rdf:type owl:Class ; rdfs:subClassOf :Indication .
-:MildRespiratoryDisease rdf:type owl:Class ; rdfs:subClassOf :RespiratoryDisease .
-:NotSpecifiedUrinaryDisease rdf:type owl:Class; rdfs:subClassOf :UrinaryDisease .
+:RespiratoryDisease rdf:type owl:Class;
+    rdfs:subClassOf :Indication .
+:UrinaryDisease rdf:type owl:Class ;
+    rdfs:subClassOf :Indication .
+:UrinaryTractInfection rdf:type owl:Class;
+    rdfs:subClassOf :UrinaryDisease .
+:AtypicalPneumonia rdf:type owl:Class;
+    rdfs:subClassOf :RespiratoryDisease .
+:SinusInfection rdf:type owl:Class;
+    rdfs:subClassOf :RespiratoryDisease .
+:GenitourinaryTractInfection rdf:type owl:Class;
+    rdfs:subClassOf :UrinaryDisease .
+
+# Severity
+:Severity rdf:type owl:Class .
 
 # Warning
 :Warning rdf:type owl:Class .
@@ -37,8 +54,15 @@
 
 # Side Effect
 :SideEffect rdf:type owl:Class .
+:Diarrhea rdf:type owl:Class;
+    rdfs:subClassOf :SideEffect.
+:Nausea rdf:type owl:Class;
+    rdfs:subClassOf :SideEffect .
+:Vomiting rdf:type owl:Class;
+    rdfs:subClassOf :SideEffect.
+:Headache rdf:type owl:Class;
+    rdfs:subClassOf :SideEffect .
 :Pattern rdf:type owl:Class .
-:Duration rdf:type owl:Class .
 
 # StewardshipPrinciple
 :StewardshipPrinciple rdf:type owl:Class .
@@ -56,21 +80,64 @@
 :Beverage rdf:type owl:Class ; rdfs:subClassOf :Substance .
 
 ##############################################################
-# Object Properties
+# Validation and Disjointness Properties
 ###############################################################
 
-:hasDrugClass rdf:type owl:ObjectProperty ;
-    rdfs:domain :Antibiotic ;
-    rdfs:range :DrugClass ;
-    rdfs:label "has drug class" .
+:Antibiotic owl:disjointWith :Brand .
+:Brand owl:disjointWith :Indication .
+:Brand owl:disjointWith :Warning .
+:Brand owl:disjointWith :SideEffect .
+:Indication owl:disjointWith :Warning .
+:SideEffect owl:disjointWith :Indication .
+:Interaction owl:disjointWith :Substance .
+:Drug owl:disjointWith :Food, :Beverage .
+:Food owl:disjointWith :Beverage .
 
+# Validation rules (every brand needs a presentation)
+:Brand rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty :hasPresentation ;
+    owl:minQualifiedCardinality 1 ;
+    owl:onClass :PresentationPacking
+] .
+
+# Every indication needs symptoms
+:Indication rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty :hasSymptoms ;
+    owl:minCardinality 1
+] .
+
+# Every interaction needs substance
+:Interaction rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty :interactsWith ;
+    owl:minQualifiedCardinality 1 ;
+    owl:onClass :Substance
+] .
+
+# Severity values are distinct
+:Mild owl:differentFrom :Severe .
+:Mild owl:differentFrom :NotSpecified .
+:Severe owl:differentFrom :NotSpecified .
+:Severity owl:oneOf ( :Mild :Severe :NotSpecified ) .
+
+# Pattern values are distinct
+:Common owl:differentFrom :Infrequent, :FrequencyNotReported .
+:Infrequent owl:differentFrom :FrequencyNotReported .
+:Pattern owl:oneOf ( :Common :Infrequent :FrequencyNotReported ) .
+
+##############################################################
+# Object Properties
+###############################################################
 :hasBrandName rdf:type owl:ObjectProperty ;
     rdfs:domain :Antibiotic ;
     rdfs:range :Brand ;
     rdfs:label "has brand name" ;
     owl:inverseOf :isBrandOf .
 
-:isBrandOf rdf:type owl:ObjectProperty ;
+:isBrandOf rdf:type owl:ObjectProperty;
+    rdf:type owl:FunctionalProperty;
     rdfs:domain :Brand;
     rdfs:range :Antibiotic;
     rdfs:label "is brand of" ;
@@ -78,8 +145,18 @@
 
 :hasPresentation rdf:type owl:ObjectProperty ;
     rdfs:domain :Brand ;
-    rdfs:range :Presentation_Packing ;
+    rdfs:range :PresentationPacking ;
     rdfs:label "has presentation" .
+
+:isPresentationOf rdf:type owl:ObjectProperty ;
+    owl:inverseOf :hasPresentation ;
+    rdfs:domain :PresentationPacking ;
+    rdfs:range :Brand .
+
+:hasSeverity rdf:type owl:ObjectProperty ;
+    rdfs:domain :Indication ;
+    rdfs:range :Severity ;
+    rdfs:label "has severity" .
 
 :treats rdf:type owl:ObjectProperty ;
     rdfs:domain :Brand ;
@@ -91,20 +168,27 @@
     rdfs:range :Warning ;
     rdfs:label "has warning" .
 
+:warningOf rdf:type owl:ObjectProperty ;
+    owl:inverseOf :hasWarning ;
+    rdfs:domain :Warning ;
+    rdfs:range :Brand .
+
 :hasSideEffect rdf:type owl:ObjectProperty ;
     rdfs:domain :Brand ;
     rdfs:range :SideEffect ;
-    rdfs:label "has side effect" .
+    rdfs:label "has side effect" ;
+    rdfs:inverseOf :sideEffectOf .
+
+:sideEffectOf rdf:type owl:ObjectProperty ;
+    rdfs:domain :SideEffect ;
+    rdfs:range :Brand ;
+    rdfs:label "side effect of";
+    owl:inverseOf :hasSideEffect .
 
 :whichIs rdf:type owl:ObjectProperty ;
     rdfs:domain :SideEffect ;
     rdfs:range :Pattern ;
     rdfs:label "which is" .
-
-:lastsFor rdf:type owl:ObjectProperty ;
-    rdfs:domain :SideEffect ;
-    rdfs:range :Duration ;
-    rdfs:label "lasts for" .
 
 :hasInteraction rdf:type owl:ObjectProperty ;
     rdfs:domain :Brand ;
@@ -116,23 +200,54 @@
     rdfs:range :Substance ;
     rdfs:label "interacts with" .
 
+:isInvolvedIn rdf:type owl:ObjectProperty ;
+    rdfs:domain :Substance ;
+    rdfs:range :Interaction ;
+    owl:inverseOf :interactsWith ;
+    rdfs:label "is involved in".
+
 :managedBy rdf:type owl:ObjectProperty ;
     rdfs:domain :Brand ;
     rdfs:range :StewardshipPrinciple;
     rdfs:label "managed by" .
 
+:hasStorageRule rdf:type owl:ObjectProperty ;
+    rdfs:domain :Brand ;
+    rdfs:range :StewardshipPrinciple;
+    rdfs:label "has storage rule" .
+
 :hasReference rdf:type owl:ObjectProperty ;
-    rdfs:domain :Antibiotic , :Indication , :Warning , :Substance , :SideEffect , :Interaction , :StewardshipPrinciple , :MedicalTerm ;
+    rdfs:domain [ owl:unionOf (
+        :Antibiotic 
+        :Brand 
+        :Indication 
+        :Warning 
+        :SideEffect 
+        :Interaction 
+        :StewardshipPrinciple
+        :Pattern
+        :Substance
+    ) ] ;
     rdfs:range :Reference ;
     rdfs:label "has reference" .
 
 ##############################################################
 # Data Type Properties
 ###############################################################
-:hasTermDefinition rdf:type owl:DatatypeProperty;
-    rdfs:domain :MedicalTerm;
-    rdfs:range xsd:string;
-    rdfs:label "has term definition" .
+:hasDrugClass rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Antibiotic ;
+    rdfs:range xsd:string ;
+    rdfs:label "has drug class" .
+
+:hasDosage rdf:type owl:DatatypeProperty ;
+    rdfs:domain :PresentationPacking ;
+    rdfs:range xsd:string ;
+    rdfs:label "has dosage" .
+
+:hasUnitPrice rdf:type owl:DatatypeProperty ;
+    rdfs:domain :PresentationPacking ;
+    rdfs:range xsd:double ;
+    rdfs:label "has unit price" .
 
 :hasSymptoms rdf:type owl:DatatypeProperty ;
     rdfs:domain :Indication;
@@ -149,15 +264,15 @@
     rdfs:range xsd:string ;
     rdfs:label "has warning text" .
 
-:hasSideEffectName rdf:type owl:DatatypeProperty ;
-    rdfs:domain :SideEffect ;
-    rdfs:range xsd:string ;
-    rdfs:label "has side effect name" .
-
 :hasSideEffectDescription rdf:type owl:DatatypeProperty ;
     rdfs:domain :SideEffect ;
     rdfs:range xsd:string ;
     rdfs:label "is described as" .
+
+:lastsFor rdf:type owl:DatatypeProperty ;
+    rdfs:domain :SideEffect ;
+    rdfs:range xsd:string ;
+    rdfs:label "lasts for" .
 
 :hasClinicalEffects rdf:type owl:DatatypeProperty ;
     rdfs:domain :Interaction ;
@@ -208,19 +323,13 @@
 # Individuals
 ###############################################################
 
-# Medical Terms
-:AntibioticResistance rdf:type :MedicalTerm .
-:AntimicrobialStewardship rdf:type :MedicalTerm.
-
 # Antibiotic
 :Doxycycline rdf:type :Antibiotic;
     rdfs:label "Doxycycline".
 :Levofloxacin rdf:type :Antibiotic;
     rdfs:label "Levofloxacin".
-:Tetracyclines rdf:type :DrugClass;
-    rdfs:label "Tetracyclines" .
-:Quinolones rdf:type :DrugClass;
-    rdfs:label "Quinolones" .
+
+# Brand
 :Doxin rdf:type :Brand ;
     rdfs:label "Doxin".
 :Doxyclen rdf:type :Brand ;
@@ -230,20 +339,34 @@
 :Levocin rdf:type :Brand;
     rdfs:label "Levocin".
 
-:Capsule rdf:type :Presentation_Packing ;
-    rdfs:label "Capsule".
-:Injection rdf:type :Presentation_Packing;
-    rdfs:label "Injection" .
-:SuspensionPowder rdf:type :Presentation_Packing;
-    rdfs:label "Suspension Powder".
-:IV_Infusion rdf:type :Presentation_Packing;
-    rdfs:label "IV Infusion".
+# Presentation 
+:A001 rdf:type :Capsule;
+    rdfs:label "Doxin 100mg Capsule".
+:A002 rdf:type :Capsule ;
+    rdfs:label "Doxyclen 100mg Capsule" .
+:A003 rdf:type :Capsule ;
+    rdfs:label "Dynadoxy 100mg Capsule" .
+:A004 rdf:type :FilmCoatedTablet ;
+    rdfs:label "Levocin 500mg FC Tablet" .
+:A005 rdf:type :FilmCoatedTablet ;
+    rdfs:label "Levocin 750mg FC Tablet".
+:A006 rdf:type :IVInfusion ;
+    rdfs:label "Levocin 500mg IV Infusion" .
+:A007 rdf:type :IVInfusion ;
+    rdfs:label "Levocin 750mg IV Infusion" .
 
 # Indication
-:UrinaryTractInfection rdf:type :UrinaryDisease .
-:AtypicalPneumonia rdf:type :MildRespiratoryDisease.
-:SinusInfection rdf:type :MildRespiratoryDisease .
-:GenitourinaryTractInfection rdf:type :NotSpecifiedUrinaryDisease .
+:I034 rdf:type :AtypicalPneumonia ;
+    rdfs:label "Mild Atypical Pneumonia".
+:I004 rdf:type :SinusInfection ;
+    rdfs:label "Mild Sinus Infection".
+:I035 rdf:type :GenitourinaryTractInfection ;
+    rdfs:label "Not Specified Genitourinary Tract Infection".
+
+# Severity
+:Mild rdf:type :Severity .
+:Severe rdf:type :Severity .
+:NotSpecified rdf:type :Severity .
 
 # Warning
 :W143 rdf:type :Contraindication .
@@ -254,14 +377,17 @@
 :W175 rdf:type :Overdosage .
 
 # Side Effect
-:SE310 rdf:type :SideEffect .
-:SE312 rdf:type :SideEffect .
-:SE313 rdf:type :SideEffect .
-:SE338 rdf:type :SideEffect .
-:SE371 rdf:type :SideEffect .
+:SE310 rdf:type :Diarrhea .
+:SE312 rdf:type :Nausea .
+:SE313 rdf:type :Vomiting .
+:SE338 rdf:type :Diarrhea .
+:SE371 rdf:type :Diarrhea .
+:SE000 rdf:type :Headache .
+
+# Occurrence Pattern
 :Common rdf:type :Pattern .
 :Infrequent rdf:type :Pattern .
-:2_months rdf:type :Duration .
+:FrequencyNotReported rdf:type :Pattern .
 
 # Interaction
 :ITN121 rdf:type :Interaction .
@@ -281,22 +407,35 @@
 :SP111 rdf:type :Storage .
 :SP112 rdf:type :Storage .
 :SP113 rdf:type :Storage .
+:SP114 rdf:type :Storage .
 :SP000 rdf:type :ProperUse .
 :SP082 rdf:type :Monitoring .
 :SP001 rdf:type :Adherence .
 
 # References
-:R002 rdf:type :Reference .
-:R003 rdf:type :Reference .
+:R008 rdf:type :Reference .
 :R011 rdf:type :Reference .
 :R012 rdf:type :Reference .
 :R013 rdf:type :Reference .
+:R019 rdf:type :Reference .
+:R080 rdf:type :Reference .
+:R077 rdf:type :Reference .
+:R168 rdf:type :Reference .
+:R169 rdf:type :Reference .
+
+:R015 rdf:type :Reference .
+:R267 rdf:type :Reference .
 
 ##############################################################
 # Relationships
 ###############################################################
 
 # REFERENCES
+:R008 :hasReferenceTitle "Levocin" .
+:R008 :hasAuthor "Monthly Index of Medical Specialties" .
+:R008 :publishedIn 2026.
+:R008 :retrievedFrom "https://www.mims.com/philippines/drug/info/levocin" .
+
 :R011 :hasReferenceTitle "Doxin".
 :R011 :hasAuthor "Monthly Index of Medical Specialties" .
 :R011 :publishedIn 2026.
@@ -312,48 +451,114 @@
 :R013 :publishedIn 2026.
 :R013 :retrievedFrom "https://www.mims.com/philippines/drug/info/dynadoxy".
 
-:Doxycycline :hasDrugClass :Tetracyclines .
+:R015 :hasReferenceTitle "Amoxil/Amoxil Forte" .
+:R015 :hasAuthor "Monthly Index of Medical Specialties ".
+:R015 :publishedIn 2026 .
+:R015 :retrievedFrom "https://www.mims.com/philippines/drug/info/amoxil" .
+
+:R019 :hasReferenceTitle "RiteMED Clarithromycin" .
+:R019 :hasAuthor "Monthly Index of Medical Specialties" .
+:R019 :publishedIn 2026.
+:R019 :retrievedFrom "https://www.mims.com/philippines/drug/info/ritemed-clarithromycin" .
+
+:R080 :hasReferenceTitle "Atypical (Walking) Pneumonia" .
+:R080 :hasAuthor "Cleveland Clinic" .
+:R080 :publishedIn 2022 .
+:R080 :retrievedFrom "https://my.clevelandclinic.org/health/diseases/15744-pneumonia-atypical-walking-pneumonia".
+
+:R077 :hasReferenceTitle "Doxycycline Side Effects" .
+:R077 :hasAuthor "Drugs.com" .
+:R077 :publishedIn 2024 .
+:R077 :retrievedFrom "https://www.drugs.com/sfx/doxycycline-side-effects.html" .
+
+:R168 :hasReferenceTitle "nausea" .
+:R168 :hasAuthor "National Cancer Institute" .
+:R168 :publishedIn 2026 .
+:R168 :retrievedFrom "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/nausea" .
+
+:R169 :hasReferenceTitle "vomiting" .
+:R169 :hasAuthor "National Cancer Institute".
+:R169 :publishedIn 2026 .
+:R169 :retrievedFrom "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/vomiting" .
+
+:R267 :hasReferenceTitle "Genitourinary Tract Infection" .
+:R267 :hasAuthor "Cleveland Clinic" .
+:R267 :publishedIn 2023 .
+:R267 :retrievedFrom "https://my.clevelandclinic.org/health/diseases/9135-urinary-tract-infections".
+
+:Doxycycline :hasDrugClass "Tetracyclines" .
 :Doxycycline :hasBrandName :Doxin .
 :Doxycycline :hasBrandName :Doxyclen .
 :Doxycycline :hasBrandName :Dynadoxy .
 
-:Levofloxacin :hasDrugClass :Quinolones .
+:Levofloxacin :hasDrugClass "Quinolones" .
 :Levofloxacin :hasBrandName :Levocin .
-
-:Doxin :isBrandOf :Doxycycline .
-:Doxyclen :isBrandOf :Doxycycline .
-:Dynadoxy :isBrandOf :Doxycycline .
-:Levocin :isBrandOf :Levofloxacin .
-
-:Doxin :hasPresentation :Capsule .
-:Doxin :hasPresentation :SuspensionPowder .
-:Doxin :hasPresentation :Injection .
-:Doxyclen :hasPresentation :Capsule .
-:Dynadoxy :hasPresentation :Capsule .
-:Levocin :hasPresentation :IV_Infusion .
 
 :Doxin :hasReference :R011 .
 :Doxyclen :hasReference :R012 .
 :Dynadoxy :hasReference :R013 .
+:Levocin :hasReference :R008 .
 
-:AtypicalPneumonia :hasSymptoms "Sore throat, extreme tiredness, chest pain, low-grade fever, mild chills, cough, sneezing, headache" .
-:SinusInfection :hasSymptoms "facial pain, a stuffy or runny nose, and sometimes a fever" .
-:GenitourinaryTractInfection :hasSymptoms "needing to pee often, pain while peeing and pain in your side or lower back". 
+# Presentation
+:Doxin :hasPresentation :A001 .
+:Doxyclen :hasPresentation :A002 .
+:Dynadoxy :hasPresentation :A003 .
+:Levocin :hasPresentation :A004 .
+:Levocin :hasPresentation :A005 .
+:Levocin :hasPresentation :A006 .
+:Levocin :hasPresentation :A007 .
 
-:Doxin :treats :AtypicalPneumonia .
-:Doxin :treats :GenitourinaryTractInfection.
-:Doxyclen :treats :AtypicalPneumonia .
-:Dynadoxy :treats :SinusInfection .
+:A001 :hasDosage "100mg" .
+:A002 :hasDosage "100mg" .
+:A003 :hasDosage "100mg" .
+:A004 :hasDosage "500mg" .
+:A005 :hasDosage "750mg" .
+:A006 :hasDosage "500mg" .
+:A007 :hasDosage "750mg" .
+
+:A001 :hasUnitPrice "103.00"^^xsd:double .
+:A002 :hasUnitPrice "110.00"^^xsd:double .
+:A003 :hasUnitPrice "115.00"^^xsd:double .
+:A004 :hasUnitPrice "95.04"^^xsd:double .
+:A005 :hasUnitPrice "139.392"^^xsd:double .
+:A006 :hasUnitPrice "1478.4"^^xsd:double .
+:A007 :hasUnitPrice "1958.88"^^xsd:double .
+
+# Indications
+:I034 :hasSeverity :Mild .
+:I004 :hasSeverity :Mild .
+:I035 :hasSeverity :NotSpecified .
+
+:I034 :hasSymptoms "Sore throat, extreme tiredness, chest pain, low-grade fever, mild chills, cough, sneezing, headache" .
+:I004 :hasSymptoms "facial pain, a stuffy or runny nose, and sometimes a fever" .
+:I035 :hasSymptoms "needing to pee often, pain while peeing and pain in your side or lower back". 
+
+:I034 :hasReference :R011 .
+:I034 :hasReference :R012 .
+:I034 :hasReference :R019 .
+:I034 :hasReference :R080 .
+
+:I035 :hasReference :R011 .
+:I035 :hasReference :R015 .
+:I035 :hasReference :R267 .
+
+:Doxin :treats :I034 .
+:Doxin :treats :I035.
+:Doxyclen :treats :I034 .
+:Dynadoxy :treats :I004 .
 
 # Doxin Warnings
 :W143 :hasWarningHeadline "Hypersensitivity" .
 :W143 :hasWarningText "Hypersensitivity to any of the tetracyclines." .
+:W143 :hasReference :R011 .
 
 :W145 :hasWarningHeadline "Pregnancy" .
 :W145 :hasWarningText "Category D. do not use tetracycline during pregnancy. Tetracyclines readily cross the placenta, are found in fetal tissues and can have toxic effects on the developing fetus (retardation of skeletal development). Evidence of embryotoxicity has also been noted in animals treated early in pregnancy." .
+:W145 :hasReference :R011 .
 
 :W146 :hasWarningHeadline "Pediatric Use" .
 :W146 :hasWarningText "The use of drugs of the tetracycline class during tooth development (last half of pregnancy, infancy and childhood to the age of 8 years) may cause permanent discoloration of the teeth (yellow-gray-brown)." .
+:W146 :hasReference :R011 .
 
 :Doxin :hasWarning :W143 .
 :Doxin :hasWarning :W145 .
@@ -362,9 +567,11 @@
 # Doxyclen Warnings
 :W151 :hasWarningHeadline "Skin Reactions" .
 :W151 :hasWarningText "Severe skin reactions, such as exfoliative dermatitis, erythema multiforme, Steven-Johnson syndrome, toxic epidermal necrolysis, and drug reaction with eosinophilia and systemic symptoms (DRESS) have veen reported in patients receiving doxycycline." .
+:W151 :hasReference :R012 .
 
 :W172 :hasWarningHeadline "Pregnancy Use" .
 :W172 :hasWarningText "If any tetracycline is used during pregnancy or if the patient becomes pregnant while taking this drug, the patient should be apprised of the potential hazard to the fetus." .
+:W172 :hasReference :R012 .
 
 :Doxyclen :hasWarning :W151 .
 :Doxyclen :hasWarning :W172 .
@@ -372,47 +579,68 @@
 # Dynadoxy Warnings
 :W175 :hasWarningHeadline "Overdosage Treatment Guidance" .
 :W175 :hasWarningText "In case of overdosage, discontinue medication. Treat symptomatically and institute supportive measures. Dialysis does not alter serum half-life and thus would not be of benefit in treating cases of overdosage." .
+:W175 :hasReference :R013 .
 
 :Dynadoxy :hasWarning :W175.
 
 # Doxin Side Effects
-:SE310 :hasSideEffectName "Diarrhea" .
 :SE310 :hasSideEffectDescription "May occur after a patient stop taking doxycycline" .
-:SE310 :lastsFor :2_months .
-:SE310 :whichIs :Infrequent .
+:SE310 :lastsFor "2 months" .
+:SE310 :whichIs :FrequencyNotReported .
+:SE310 :hasReference :R011 .
+:SE310 :hasReference :R077 .
 
-:SE312 :hasSideEffectName "Nausea" .
 :SE312 :hasSideEffectDescription "a feeling of sickness or discomfort in the stomach" .
+:SE312 :lastsFor "Not Specified" .
 :SE312 :whichIs :Common .
+:SE312 :hasReference :R011 .
+:SE312 :hasReference :R077 .
+:SE312 :hasReference :R168 .
 
-:SE313 :hasSideEffectName "Vomiting" .
 :SE313 :hasSideEffectDescription "forceful ejection of some or all of the contents of the stomach through the mouth" .
+:SE313 :lastsFor "Not Specified" .
 :SE313 :whichIs :Common .
+:SE313 :hasReference :R011 .
+:SE313 :hasReference :R077 .
+:SE313 :hasReference :R169 .
 
 :Doxin :hasSideEffect :SE310 .
 :Doxin :hasSideEffect :SE312 .
 :Doxin :hasSideEffect :SE313 .
 
 # Doxyclen Side Effects
-:SE338 :hasSideEffectName "Diarrhea".
 :SE338 :hasSideEffectDescription "May occur after a patient stop taking doxycycline" .
-:SE338 :lastsFor :2_months .
+:SE338 :lastsFor "2 months" .
 :SE338 :whichIs :Infrequent .
+:SE338 :hasReference :R012 .
+:SE338 :hasReference :R077 .
 
 :Doxyclen :hasSideEffect :SE338 .
 
 # Dynadoxy Side Effects
-:SE371 :hasSideEffectName "Diarrhea" .
 :SE371 :hasSideEffectDescription "May occur after a patient stop taking doxycycline" .
-:SE371 :lastsFor :2_months .
+:SE371 :lastsFor "2 months" .
 :SE371 :whichIs :Infrequent .
+:SE371 :hasReference :R012 .
+:SE371 :hasReference :R077 .
 
 :Dynadoxy :hasSideEffect :SE371 .
+
+# Levocin Side Effects (sample)
+:SE000 :hasSideEffectDescription "Sample description for headaches" .
+:SE000 :lastsFor "Not Specified" .
+:SE000 :whichIs :FrequencyNotReported .
+
+:Levocin :hasSideEffect :SE000 .
 
 # Substance 
 :anticoagulant :hasSubstanceDescription "Anticoagulant therapy" .
 :penicillin :hasSubstanceDescription "Bactericidal antibiotic" .
 :antacids :hasSubstanceDescription "Products containing aluminum, calcium, magnesium, and iron-containing preparations" .
+
+:anticoagulant :hasReference :R011 .
+:penicillin :hasReference :R011 .
+:antacids :hasReference :R011 .
 
 # Doxin Interaction
 :Doxin :hasInteraction :ITN121 .
@@ -420,12 +648,14 @@
 :ITN121 :hasInteractionDescription "Because tetracyclines depress plasma prothrombin activity, patients who are on anticoagulant therapy may require reduction of their anticoagulant dosage." .
 :ITN121 :hasClinicalEffects "tetracyclines depress plasma prothrombin activity" .
 :ITN121 :hasManagementAdvice "reduction of anticoagulant dosage" .
+:ITN121 :hasReference :R011 .
 
 :Doxin :hasInteraction :ITN122 .
 :ITN122 :interactsWith :penicillin .
 :ITN122 :hasInteractionDescription "Since bacteriostatic drugs interfere with the bactericidal action of penicillin, it is advisable to avoid giving tetracyclines in conjuction with penicillin".
 :ITN122 :hasClinicalEffects "bacteriostatic drugs interfere with the bactericidal action of penicillin" .
 :ITN122 :hasManagementAdvice "avoid giving tetracyclines in conjuction with penicillin" .
+:ITN122 :hasReference :R011 .
 
 # Doxyclen Interaction
 :Doxyclen :hasInteraction :ITN165 .
@@ -433,6 +663,7 @@
 :ITN165 :hasInteractionDescription "Absorption of tetracyclines is impaired by antacids containing aluminum, calcium, or magnesium and iron-containing preparations". 
 :ITN165 :hasClinicalEffects "Decreased absorption" .
 :ITN165 :hasManagementAdvice "Avoid taking together" .
+:ITN165 :hasReference :R012 .
 
 # Dynadoxy Interaction
 :Dynadoxy :hasInteraction :ITN174 .
@@ -440,21 +671,43 @@
 :ITN174 :hasInteractionDescription "Absorption of tetracyclines is impaired by antacids containing aluminum, calcium, or magnesium and iron-containing preparations".
 :ITN174 :hasClinicalEffects "Decreased absorption" .
 :ITN174 :hasManagementAdvice "Avoid taking together" .
+:ITN174 :hasReference :R013 .
 
 # Doxin Stewardship Principle
 :SP000 :hasStewardshipDescription "The bottle must be shaken well before taking each dose to ensure the medication is evenly distributed".
 :SP082 :hasStewardshipDescription "Maintain adequate fluid intake and urinary output to reduce the possibility of crystalluria. Periodic assessment of renal, hepatic, and hematopoietic functions is recommended during prolonged therapy." .
 :SP001 :hasStewardshipDescription "Take at least 2 hr before or 2 hr after antacids containing Mg/Al, sucralfate, metal cations (eg, Fe), & multivit prep w/ Zn.".
+
 :SP111 :hasStewardshipDescription "Store at temperatures not exceeding 30°C" .
-:Doxin :managedBy :SP111 .
+:SP112 :hasStewardshipDescription "Protect from light" .
+
+:Doxin :hasStorageRule :SP111 .
+:Doxin :hasStorageRule :SP112 .
+
 :Doxin :managedBy :SP000 .
 :Doxin :managedBy :SP001 .
 :Doxin :managedBy :SP082 .
 
+:SP000 :hasReference :R011 .
+:SP111 :hasReference :R011 .
+:SP112 :hasReference :R011 .
+:SP001 :hasReference :R011 .
+:SP082 :hasReference :R011 .
+
 # Doxyclen Stewardship Principle 
-:SP112 :hasStewardshipDescription "Store at temperatures not exceeding 30°C" .
-:Doxyclen :managedBy :SP112 .
+:SP113 :hasStewardshipDescription "Store at temperatures not exceeding 30°C" .
+:Doxyclen :managedBy :SP113 .
+:SP113 :hasReference :R012 .
 
 # Dynadoxy Stewardship Principle
-:SP113 :hasStewardshipDescription "Store at temperatures not exceeding 30°C. Protect from light".
-:Dynadoxy :managedBy :SP113 .
+:SP114 :hasStewardshipDescription "Store powder and reconstituted suspension at temperatures not exceeding 30°C. ".
+:SP115 :hasStewardshipDescription "Reconstituted suspension is stable for 14 days. " .
+:SP116 :hasStewardshipDescription "Do not refrigerate." .
+
+:Dynadoxy :hasStorageRule :SP114 .
+:Dynadoxy :hasStorageRule :SP115 .
+:Dynadoxy :hasStorageRule :SP116 .
+
+:SP114 :hasReference :R013 .
+:SP115 :hasReference :R013 .
+:SP116 :hasReference :R013 .

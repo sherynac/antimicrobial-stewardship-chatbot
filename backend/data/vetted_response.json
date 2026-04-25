@@ -7,26 +7,188 @@
         {
           "responseID": 1,
           "condition": "generic_only",
-          "responseText": "{generic} (a {drug_class})is available in the following brands and forms: ",
+          "responseText": "{generic} (a {drug_class}) is available in the following brands and forms: ",
+          "columns": ["Brand", "Presentation", "Dosage", "Unit Price"],
           "targetNodes": ["generic", "drug_class"]
         },
         {
           "responseID": 2,
-          "condition": "brand_only",
-          "responseText": "{brand} (generic: {generic}) comes in {presentation}. Other brands include {other_brands}.",
-          "targetNodes": ["brand", "generic", "presentation", "other_brands"]
+          "condition": "brand_single",
+          "responseText": "{brand} is a brand of {generic}. Each {presentation} contains {dosage} and costs Php {unit_price}.",
+          "targetNodes": ["brand", "generic", "presentation", "dosage", "unit_price"]
         },
         {
           "responseID": 3,
-          "condition": "presentation_only_query",
-          "responseText": "{brand} comes in {presentation}.",
-          "targetNodes": ["brand", "presentation"]
+          "condition": "brand_multiple",
+          "responseText": "{brand} is a brand of {generic}. It is available in: ",
+          "columns" : ["Presentation", "Dosage", "Unit Price"],
+          "targetNodes" : ["brand", "generic"]
+        }
+      ]
+    },
+    {
+      "intent": "COMPARE_BRANDS",
+      "description": "Compare different brands of an antibiotic based on their generic equivalency and presentations",
+      "responses": [
+        {
+          "responseID": 5,
+          "condition": "multiple_brands",
+          "responseText": "{brands} are brands of the generic {generic}. Here is a comparison of how they are supplied:",
+          "columns": ["Brand", "Presentation", "Dosage", "Unit Price"],
+          "targetNodes": ["brands", "generic"]
         },
         {
-          "responseID": 4,
-          "condition": "brand_and_generic",
-          "responseText": "{is_brand_of}, {brand} is a brand of {generic}. It comes in {presentation}.",
-          "targetNodes" : ["is_brand_of", "brand", "generic", "presentation"]
+          "responseID": 6,
+          "condition": "generic_only",
+          "responseText": "There are several brands available for the generic {generic}. Here is a comparison of how they are supplied:",
+          "columns" : ["Brand", "Presentation", "Dosage", "Unit Price"],
+          "targetNodes": ["generic"]
+        },
+        {
+          "responseID": 7,
+          "condition": "brand_and_generic_single",
+          "responseText": "{brand} is a specific brand of {generic} supplied as {presentation} ({dosage}) at {unit_price}. When compared to other brands of {generic}, here are the differences:",
+          "columns": ["Brand", "Presentation", "Dosage", "Unit Price"],
+          "targetNodes": ["brand", "generic", "presentation", "dosage", "unit_price"]
+        },
+        {
+          "responseID": 8,
+          "condition": "brand_and_generic_multiple",
+          "responseText": "{brand} is a specific brand of {generic} available in multiple forms. When compared to other brands of {generic}, here are the differences in available presentations, dosages, and pricing:",
+          "columns": ["Brand", "Presentation", "Dosage", "Unit Price"],
+          "targetNodes": ["brand", "generic"]
+        }
+      ]
+    },
+    {
+      "intent": "GET_USES_INDICATIONS",
+      "description": "Get the indications, targeted diseases, and associated symptoms treated by a specific generic or brand antibiotic.",
+      "responses": [
+        {
+          "responseID": 8,
+          "condition": "multiple_indications",
+          "responseText": "{brand} (generic: {generic}) is an antibiotic prescribed to treat various bacterial infections. Based on my records, it is used for:",
+          "targetNodes": ["brand", "generic"]
+        },
+        {
+          "responseID": 9,
+          "condition": "single_indication",
+          "responseText": "{brand} (generic: {generic}) is an antibiotic prescribed to treat bacterial infections. One of its primary indications is for a {disease}. \n\n This type of infection typically involves the {disease_type} system and includes symptoms such as: ",
+          "targetNodes": ["brand", "generic", "disease", "disease_type"]
+        },
+        {
+          "responseID":10,
+          "condition": "generic_only",
+          "responseText": "{generic} is a generic antibiotic used to treat various bacterial infections. Here are the indications based on its available brands:",
+          "columns": ["Brand Name", "Indications/Uses"],
+          "targetNodes": ["generic"]
+        }
+      ]
+    },
+    {
+      "intent": "GET_SIDE_EFFECTS",
+      "description": "Get possible side effects with their corresponding description, duration and patterns",
+      "responses":[
+        {
+          "responseID": 11,
+          "condition": "generic_only",
+          "responseText":"Here are the brands associated with {generic} and their known side effects based on my records:",
+          "brandHeaderText": "{brand}",
+          "bulletWithPattern": "{side_effect} ({pattern})",
+          "bulletNoPattern": "{side_effect}",
+          "descWithDuration": "Note: May last for {duration}. {description}",
+          "descNoDuration": "{description}",
+          "targetNodes": ["generic", "brand", "side_effect, description"],
+          "optionalNodes": ["pattern", "duration"]
+        },
+        {
+          "responseID": 12,
+          "condition": "generic_verify_match",
+          "responseText": "Yes, based on my records, {side_effect} is a known side effect of {generic}. \n\nIt is specifically reported for the brand(s): {brands}.",
+          "targetNodes":["side_effect", "generic", "brands"]
+        },
+        {
+          "responseID": 13,
+          "condition": "generic_verify_no_match",
+          "responseText": "Based on my records, I do not have {side_effect} listed as a known side effect for {generic}.",
+          "targetNodes": ["side_effect", "generic"]
+        },
+        {
+          "responseID": 14,
+          "condition": "brand_verify_match",
+          "responseText": "Yes, based on my records, {side_effect} is a known side effect of {brand}.",
+          "targetNodes":["side_effect", "brands"]
+        },
+        {
+          "responseID": 15,
+          "condition": "brand_verify_no_match",
+          "responseText": "Based on my records, I do not have {side_effect} listed as a known side effect for {brand}.",
+          "targetNodes": ["side_effect", "brand"]
+        },
+        {
+          "responseID": 16,
+          "condition": "brand_verify_no_match",
+          "responseText": "Based on my records, I do not have {side_effect} listed as a known side effect for {brand}.",
+          "targetNodes": ["side_effect", "brand"]
+        },
+        {
+          "responseID": 17,
+          "condition": "brand_only",
+          "responseText":"Here are the side effects associated with {brand} based on my records:",
+          "bulletWithPattern": "{side_effect} ({pattern})",
+          "bulletNoPattern": "{side_effect}",
+          "descWithDuration": "Note: May last for {duration}. {description}",
+          "descNoDuration": "{description}",
+          "targetNodes": ["brand", "side_effect, description"],
+          "optionalNodes": ["pattern", "duration"]
+        },
+        {
+          "responseID": 18,
+          "condition": "generic_brand_verify_match",
+          "responseText": "Yes, based on my records, {side_effect} is a known side effect of {brand}({generic}).",
+          "targetNodes":["side_effect", "generic", "brand"]
+        },
+        {
+          "responseID": 19,
+          "condition": "generic_brand_verify_no_match",
+          "responseText": "Based on my records, I do not have {side_effect} listed as a known side effect for {brand}({generic}).",
+          "targetNodes": ["side_effect", "generic", "brand"]
+        },
+        {
+          "responseID": 17,
+          "condition": "generic_brand_only",
+          "responseText":"Here are the side effects associated with {brand} ({generic}) based on my records:",
+          "bulletWithPattern": "{side_effect} ({pattern})",
+          "bulletNoPattern": "{side_effect}",
+          "descWithDuration": "Note: May last for {duration}. {description}",
+          "descNoDuration": "{description}",
+          "targetNodes": ["generic","brand", "side_effect, description"],
+          "optionalNodes": ["pattern", "duration"]
+        }
+      ]
+    },
+    {
+      "intent": "GET_STORAGE_INSTRUCTIONS",
+      "description": "Get storage instructions for a specific generic or brand antibiotic.",
+      "responses": [
+        {
+            "responseID": 18,
+            "condition": "brand_only",
+            "responseText":"Here are the storage instructions associated with {brand} based on my records:",
+            "targetNodes": ["brand"]        
+        },
+        {
+          "responseID": 19,
+          "condition": "generic_brand",
+          "responseText":"Here are the storage instructions associated with {brand} ({generic}) based on my records:",
+          "targetNodes": ["brand", "generic"]        
+        },
+        {
+          "responseID": 20,
+          "condition": "generic_only",
+          "responseText":"Here are the storage instructions associated with {generic} based on my records:",
+          "columns":["Brand", "Storage Instruction"],
+          "targetNodes": ["generic"]        
         }
       ]
     },

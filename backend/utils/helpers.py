@@ -48,3 +48,16 @@ def add_space_to_pascal_case (string):
             result.append(' ')
         result.append(char)
     return ''.join(result)
+
+def is_name_match(user_string, db_string):
+    """
+    Checks if all words in the user's input exist in the database string,
+    ignoring case and parentheses.
+    """
+    clean_db_string = db_string.lower().replace("(", " ").replace(")", " ").replace("_", " ")
+    
+    user_words = set(user_string.lower().split())
+    db_words = set(clean_db_string.split())
+    
+    return user_words.issubset(db_words)
+

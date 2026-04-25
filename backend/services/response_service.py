@@ -21,13 +21,13 @@ def build_response_index():
 
     for intent_obj in response_bank["IntentDefinitions"]:
         intent = intent_obj["intent"]
-
         index[intent] = {}
 
         for response in intent_obj["responses"]:
             condition = response["condition"]
-            index[intent][condition] = response["responseText"]
+            index[intent][condition] = response 
 
+    print(index)
     return index
 
 def get_response_template(intent, condition, response_index):
@@ -60,6 +60,21 @@ def build_text_response(response):
     }
     return data
 
+def build_header_response(response):
+    '''
+    Builds JSON format for headers (in bold)
+
+    args:
+        response: built response from response template and querying
+    
+    Returns:
+        data: JSON format of a header
+    '''
+    data = {
+        "type": "header",
+        "response": response
+    }
+    return data
 
 def build_table_response(columns, rows):
     '''
@@ -109,19 +124,91 @@ def build_bullet (main_text="", description=""):
 
     return data
     
-def build_composite_response(responses):
+def build_composite_response(*responses):
     '''
     Builds composite response (combination of response types)
 
     args:
-        responses: array of built responses which have different types 
+        responses: responses which have different types 
     
     Returns:
         data: built JSON format from combining different response types
     '''
     data = {
         "type" : "composite",
-        "responses": responses
+        "responses": list(responses)
     }
 
+    # Checking of payload
+    with open('debug_payload.json', 'w') as file:
+        json.dump(data, file, indent=4)
+
     return data         
+
+def build_reference(id, title, url):
+    '''
+    Builds JSON format of a single reference
+
+    args:
+        id: refers to the id of the reference
+        title: refers to the title of the reference
+        url: refers to the exact url reference was retrieved from
+    
+    Return:
+        data: built JSON format of a reference
+    '''
+    data = {
+        "type": "reference",
+        "id": id,
+        "title": title,
+        "url":url
+    }
+    return data
+
+def build_reference_list(references):
+    '''
+    Builds JSON format of a reference list
+
+    args:
+        references: refers to the list of references
+    
+    Returns:
+        data: built JSON format of a reference list
+    '''
+    data = {
+        "type": "reference_list",
+        "sources": references
+    }
+
+    return data
+
+def combine_reference_list(json_1, json_2):
+    '''
+    Combines two reference lists into a single reference list
+
+    args:
+        json_1 : json to combine
+        json_2 : second json to combine
+    
+    Returns:
+        JSON containing combined reference list
+    '''
+    json_1_sources = json_1.get("sources", []) if json_1 else []
+    json_2_sources = json_2.get("sources", []) if json_2 else []
+
+    combined_sources = json_1_sources + json_2_sources
+
+    unique_sources_dict = {}
+    for source in combined_sources:
+        if 'url' in source:
+            unique_sources_dict[source['url']] = source
+            
+    unique_sources = list(unique_sources_dict.values())
+    
+    return {
+        "type": "reference_list",
+        "sources": unique_sources
+    }
+
+    return build_reference_list(combined_sources)
+
