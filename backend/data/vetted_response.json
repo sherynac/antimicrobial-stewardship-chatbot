@@ -191,6 +191,54 @@
           "targetNodes": ["generic"]        
         }
       ]
+    },
+    {
+      "intent": "COMPARE_BRANDS",
+      "description": "Compare different brands of an antibiotic based on their generic equivalency and presentations",
+      "responses": [
+        {
+          "responseID": 5,
+          "condition": "multiple_brands",
+          "responseText": "{brands} are brands of the generic {generic}. However, they are supplied differently: .",
+          "targetNodes": ["brands", "generic"]
+        },
+        {
+          "responseID": 6,
+          "condition": "generic_only",
+          "responseText": "There are several brands available for the generic {generic}. Here is a comparison of how they are supplied:",
+          "targetNodes": ["generic"]
+        },
+        {
+          "responseID": 7,
+          "condition": "brand_and_generic",
+          "responseText": "{brand} is a specific brand of {generic} supplied as {presentation}. When compared to other brands of {generic}, here are the differences in available presentations:",
+          "targetNodes": ["brand", "generic", "presentation"]
+        }
+      ]
+    },
+    {
+      "intent": "GET_USES_INDICATIONS",
+      "description": "Get the indications, targeted diseases, and associated symptoms treated by a specific generic or brand antibiotic.",
+      "responses": [
+        {
+          "responseID": 8,
+          "condition": "multiple_indications",
+          "responseText": "{brand} (generic: {generic}) is an antibiotic prescribed to treat various bacterial infections. Based on my records, it is used for:",
+          "targetNodes": ["brand", "generic"]
+        },
+        {
+          "responseID": 9,
+          "condition": "single_indication",
+          "responseText": "{brand} (generic: {generic}) is an antibiotic prescribed to treat bacterial infections. One of its primary indications is for a {disease}. \n\n This type of infection typically involves the {disease_type} system and includes symptoms such as: ",
+          "targetNodes": ["brand", "generic", "disease", "disease_type"]
+        },
+        {
+          "responseID":10,
+          "condition": "generic_only",
+          "responseText": "{generic} is a generic antibiotic used to treat various bacterial infections. Here are the indications based on its available brands:",
+          "targetNodes": ["generic"]
+        }
+      ]
     }
 
   ]

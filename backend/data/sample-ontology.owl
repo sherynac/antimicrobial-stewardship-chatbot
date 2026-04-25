@@ -837,7 +837,85 @@
   <rdf:Description rdf:about="http://example.org/ontology#NotSpecified">
     <rdf:type rdf:resource="http://example.org/ontology#Severity"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/ontology#ProperUse">
+  <rdf:Description rdf:about="http://example.org/ontology#hasReferenceTitle">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Reference"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>has reference title</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Substance">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#SP001">
+    <rdf:type rdf:resource="http://example.org/ontology#Adherence"/>
+    <hasStewardshipDescription>Take at least 2 hr before or 2 hr after antacids containing Mg/Al, sucralfate, metal cations (eg, Fe), &amp; multivit prep w/ Zn.</hasStewardshipDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#anticoagulant">
+    <rdf:type rdf:resource="http://example.org/ontology#Drug"/>
+    <hasSubstanceDescription>Anticoagulant therapy</hasSubstanceDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasPresentation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Brand"/>
+    <rdfs:range rdf:resource="http://example.org/ontology#Presentation_Packing"/>
+    <rdfs:label>has presentation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#publishedIn">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Reference"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:label>published in</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Common">
+    <rdf:type rdf:resource="http://example.org/ontology#Pattern"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasWarningHeadline">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#Warning"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>has warning headline</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Interaction">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Tetracyclines">
+    <rdf:type rdf:resource="http://example.org/ontology#DrugClass"/>
+    <rdfs:label>Tetracyclines</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Presentation_Packing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#SP113">
+    <rdf:type rdf:resource="http://example.org/ontology#Storage"/>
+    <hasStewardshipDescription>Store at temperatures not exceeding 30°C. Protect from light</hasStewardshipDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#hasSideEffectName">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology#SideEffect"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>has side effect name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#SuspensionPowder">
+    <rdf:type rdf:resource="http://example.org/ontology#Presentation_Packing"/>
+    <rdfs:label>Suspension Powder</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#antacids">
+    <rdf:type rdf:resource="http://example.org/ontology#Drug"/>
+    <hasSubstanceDescription>Products containing aluminum, calcium, magnesium, and iron-containing preparations</hasSubstanceDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#DrugClass">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#AntimicrobialStewardship">
+    <rdf:type rdf:resource="http://example.org/ontology#MedicalTerm"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Antibiotic">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Indication">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology#Storage">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="http://example.org/ontology#StewardshipPrinciple"/>
   </rdf:Description>

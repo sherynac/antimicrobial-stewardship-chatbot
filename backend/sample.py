@@ -97,3 +97,16 @@ main("Will DOXYCYCLINE give me a DIARRHEA?") # generic, side effect (side effect
 # main("Do i need to keep DYNADOXY (DOXYCYCLINE) away from sunlight?")
 # main("Can i keep DOXYCYCLINE on my kitchen counter by the window?")
 
+# Testing for compare_brands
+# main("What is the difference between DOXIN and DOXYCLEN?") # 2 brands
+# main("What is the difference between DOXIN, DOXYCLEN and DYNADOXY?") # more than 2 brands
+# main("What is the difference between DOXIN and LEVOCIN?") # brands with not same generic
+# main("Compare the different brands of DOXYCYCLINE.") # generic
+# main("Compare DOXIN with other brands of DOXYCYCLINE.") # brand, generic
+
+# Testing for uses/indications
+# main("i was given DYNADOXY (DOXYCYCLINE), what is it for?") # single indication, brand, generic
+# main("i was given DOXIN (DOXYCYCLINE), what is it for?") # multiple indications, brand, generic
+# main("Why was i prescribed DYNADOXY?") # single indication, brand
+# main("Why was i prescribed DOXIN?") # multiple indications, brand
+# main("What are the clinical indications for DOXYCYCLINE?")

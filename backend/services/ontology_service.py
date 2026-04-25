@@ -1,7 +1,13 @@
 from rdflib import Graph
+
 from owlready2 import get_ontology, sync_reasoner_hermit
 from services.response_service import build_text_response, build_reference, build_reference_list
 from utils.helpers import add_space_to_pascal_case, is_name_match
+
+from owlready2 import get_ontology
+from services.response_service import build_text_response
+from utils.helpers import add_space_to_pascal_case
+
 
 def load_ontology():
     '''

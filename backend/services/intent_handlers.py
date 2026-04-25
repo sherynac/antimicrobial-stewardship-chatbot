@@ -17,6 +17,71 @@ def handle_antibiotic_info(entities, ontology, response_index):
     elif entities[0] in ["Doxycycline", "Paracetamol"]: # generic recognized
         generic_name = entities[0] if entities else None
         generic_obj = ontology_service.query_ontology(ontology, generic_name)
+
+from services.ontology_service import query_ontology, get_indication_severity_type
+
+def handle_antibiotic_info(entities, ontology, response_index):
+    if len(entities) > 1: # brand and generic recognized
+        isBrand = False
+        generic_name = entities[0] if entities else None
+        generic_obj = query_ontology(ontology, generic_name)
+
+        if isinstance(generic_obj, dict): # check if error
+            return generic_obj
+        
+        brand_name = entities[1] if entities else None
+        brand_obj = query_ontology(ontology, brand_name)
+
+        if isinstance(brand_obj, dict): # check if error
+            return brand_obj
+
+        if brand_obj.isBrandOf[0] == generic_obj:
+            isBrand = True
+        
+        presentation_obj = brand_obj.hasPresentation
+
+        template = response_service.get_response_template("GET_ANTIBIOTIC_INFO", "brand_and_generic", response_index)
+        response = template.format(
+            is_brand_of = is_yes_or_no(isBrand),
+            brand=brand_name,
+            generic=generic_name,
+            presentation= array_to_string(presentation_obj),
+        )
+        return response_service.build_text_response(response)
+
+    elif entities[0] in ["Doxin", "Dynadoxy", "Doxyclen", "Biogesic"]:        
+        brand_name = entities[0] if entities else None
+        brand_obj = query_ontology(ontology, brand_name)
+
+        if isinstance(brand_obj, dict): # check for errors
+            return brand_obj
+        
+        presentation_obj = brand_obj.hasPresentation
+
+        generic_obj = brand_obj.isBrandOf
+        brands = generic_obj[0].hasBrandName
+        brands.remove(brand_obj)
+        drug_class = generic_obj[0].hasDrugClass
+
+        template = response_service.get_response_template("GET_ANTIBIOTIC_INFO", "brand_only", response_index)
+        response = template.format(
+            brand=brand_name,
+            generic=generic_obj[0].name,
+            drug_class=drug_class[0].name,
+            presentation=array_to_string(presentation_obj),
+            other_brands=array_to_string(brands)
+        )
+
+        return response_service.build_text_response(response)
+    
+    elif entities[0] in ["Doxycycline", "Paracetamol"]:
+        generic_name = entities[0] if entities else None
+        generic_obj = query_ontology(ontology, generic_name)
+
+        if isinstance(generic_obj, dict):
+            return generic_obj
+        
+
         drug_class = generic_obj.hasDrugClass
         brands_obj = generic_obj.hasBrandName
 
@@ -79,6 +144,76 @@ def handle_compare_brands (entities, ontology, response_index):
 
         text_json = response_service.build_text_response(response_text)
         return response_service.build_composite_response(text_json, table_json, reference_list)
+=======
+<<<<<<< HEAD
+def handle_compare_brands (entities, ontology, response_index):
+    if entities[0] in ["Doxycycline", "Paracetamol"]:
+        generic_name = entities[0]
+        generic_obj = query_ontology(ontology, generic_name)
+
+        if isinstance(generic_obj, dict): # check errors
+            return generic_obj
+        
+        brands_obj = generic_obj.hasBrandName
+
+        template = response_service.get_response_template("COMPARE_BRANDS", "generic_only", response_index)
+
+        response = template.format(
+            generic = generic_name
+        )
+
+        columns = ["Brand Name", "Presentation/Packing"]
+        rows = []
+
+        for brand in brands_obj:
+            presentation_obj = brand.hasPresentation
+            for presentation in presentation_obj:
+                row = [brand.name, add_space_to_pascal_case(presentation.name)]
+                rows.append(row)
+
+        text_json = response_service.build_text_response(response)
+        table_json = response_service.build_table_response(columns, rows)
+        responses = [text_json, table_json]
+        return response_service.build_composite_response(responses)
+
+    elif len(entities) > 1 and entities[1] == "Doxycycline": # brand and generic recognized
+        brand_name = entities[0]
+        brand_obj = query_ontology(ontology, brand_name)
+
+        if isinstance(brand_obj, dict):
+            return brand_obj
+        
+        generic_name = entities[1]
+        generic_obj = query_ontology(ontology, generic_name)
+
+        if isinstance(generic_obj, dict):
+            return generic_obj
+        
+        brands_obj = generic_obj.hasBrandName
+        brands_obj.remove(brand_obj)
+        presentation_obj = brand_obj.hasPresentation
+        
+        template = response_service.get_response_template("COMPARE_BRANDS", "brand_and_generic", response_index)
+        
+        response = template.format(
+            brand = brand_name,
+            generic = generic_name,
+            presentation = array_to_string(presentation_obj)
+        )
+
+        columns = ["Brand Name", "Presentation/Packing"]
+        rows = []
+
+        for brand in brands_obj:
+            presentation_obj = brand.hasPresentation
+            for presentation in presentation_obj:
+                row = [brand.name, add_space_to_pascal_case(presentation.name)]
+                rows.append(row)
+
+        text_json = response_service.build_text_response(response)
+        table_json = response_service.build_table_response(columns, rows)
+        responses = [text_json, table_json]
+        return response_service.build_composite_response(responses)
 
     elif entities[0] in ["Doxin", "Dynadoxy", "Doxyclen", "Paracetamol"]: # multiple brands recognized
         if len(entities) < 2:
@@ -683,3 +818,4 @@ def _split_commas_to_bullets(list_item):
         bullets.append(bullet)
     
     return response_service.build_bulleted_response(bullets)
+
