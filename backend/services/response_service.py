@@ -124,19 +124,19 @@ def build_bullet (main_text="", description=""):
 
     return data
     
-def build_composite_response(responses):
+def build_composite_response(*responses):
     '''
     Builds composite response (combination of response types)
 
     args:
-        responses: array of built responses which have different types 
+        responses: responses which have different types 
     
     Returns:
         data: built JSON format from combining different response types
     '''
     data = {
         "type" : "composite",
-        "responses": responses
+        "responses": list(responses)
     }
 
     # Checking of payload
@@ -181,4 +181,34 @@ def build_reference_list(references):
     }
 
     return data
+
+def combine_reference_list(json_1, json_2):
+    '''
+    Combines two reference lists into a single reference list
+
+    args:
+        json_1 : json to combine
+        json_2 : second json to combine
     
+    Returns:
+        JSON containing combined reference list
+    '''
+    json_1_sources = json_1.get("sources", []) if json_1 else []
+    json_2_sources = json_2.get("sources", []) if json_2 else []
+
+    combined_sources = json_1_sources + json_2_sources
+
+    unique_sources_dict = {}
+    for source in combined_sources:
+        if 'url' in source:
+            unique_sources_dict[source['url']] = source
+            
+    unique_sources = list(unique_sources_dict.values())
+    
+    return {
+        "type": "reference_list",
+        "sources": unique_sources
+    }
+
+    return build_reference_list(combined_sources)
+

@@ -7,26 +7,22 @@
         {
           "responseID": 1,
           "condition": "generic_only",
-          "responseText": "{generic} (a {drug_class})is available in the following brands and forms: ",
+          "responseText": "{generic} (a {drug_class}) is available in the following brands and forms: ",
+          "columns": ["Brand", "Presentation", "Dosage", "Unit Price"],
           "targetNodes": ["generic", "drug_class"]
         },
         {
           "responseID": 2,
-          "condition": "brand_only",
-          "responseText": "{brand} (generic: {generic}) comes in {presentation}. Other brands include {other_brands}.",
-          "targetNodes": ["brand", "generic", "presentation", "other_brands"]
+          "condition": "brand_single",
+          "responseText": "{brand} is a brand of {generic}. Each {presentation} contains {dosage} and costs Php {unit_price}.",
+          "targetNodes": ["brand", "generic", "presentation", "dosage", "unit_price"]
         },
         {
           "responseID": 3,
-          "condition": "presentation_only_query",
-          "responseText": "{brand} comes in {presentation}.",
-          "targetNodes": ["brand", "presentation"]
-        },
-        {
-          "responseID": 4,
-          "condition": "brand_and_generic",
-          "responseText": "{is_brand_of}, {brand} is a brand of {generic}. It comes in {presentation}.",
-          "targetNodes" : ["is_brand_of", "brand", "generic", "presentation"]
+          "condition": "brand_multiple",
+          "responseText": "{brand} is a brand of {generic}. It is available in: ",
+          "columns" : ["Presentation", "Dosage", "Unit Price"],
+          "targetNodes" : ["brand", "generic"]
         }
       ]
     },
@@ -37,20 +33,30 @@
         {
           "responseID": 5,
           "condition": "multiple_brands",
-          "responseText": "{brands} are brands of the generic {generic}. However, they are supplied differently: .",
+          "responseText": "{brands} are brands of the generic {generic}. Here is a comparison of how they are supplied:",
+          "columns": ["Brand", "Presentation", "Dosage", "Unit Price"],
           "targetNodes": ["brands", "generic"]
         },
         {
           "responseID": 6,
           "condition": "generic_only",
           "responseText": "There are several brands available for the generic {generic}. Here is a comparison of how they are supplied:",
+          "columns" : ["Brand", "Presentation", "Dosage", "Unit Price"],
           "targetNodes": ["generic"]
         },
         {
           "responseID": 7,
-          "condition": "brand_and_generic",
-          "responseText": "{brand} is a specific brand of {generic} supplied as {presentation}. When compared to other brands of {generic}, here are the differences in available presentations:",
-          "targetNodes": ["brand", "generic", "presentation"]
+          "condition": "brand_and_generic_single",
+          "responseText": "{brand} is a specific brand of {generic} supplied as {presentation} ({dosage}) at {unit_price}. When compared to other brands of {generic}, here are the differences:",
+          "columns": ["Brand", "Presentation", "Dosage", "Unit Price"],
+          "targetNodes": ["brand", "generic", "presentation", "dosage", "unit_price"]
+        },
+        {
+          "responseID": 8,
+          "condition": "brand_and_generic_multiple",
+          "responseText": "{brand} is a specific brand of {generic} available in multiple forms. When compared to other brands of {generic}, here are the differences in available presentations, dosages, and pricing:",
+          "columns": ["Brand", "Presentation", "Dosage", "Unit Price"],
+          "targetNodes": ["brand", "generic"]
         }
       ]
     },
@@ -74,6 +80,7 @@
           "responseID":10,
           "condition": "generic_only",
           "responseText": "{generic} is a generic antibiotic used to treat various bacterial infections. Here are the indications based on its available brands:",
+          "columns": ["Brand Name", "Indications/Uses"],
           "targetNodes": ["generic"]
         }
       ]
@@ -157,6 +164,31 @@
           "descNoDuration": "{description}",
           "targetNodes": ["generic","brand", "side_effect, description"],
           "optionalNodes": ["pattern", "duration"]
+        }
+      ]
+    },
+    {
+      "intent": "GET_STORAGE_INSTRUCTIONS",
+      "description": "Get storage instructions for a specific generic or brand antibiotic.",
+      "responses": [
+        {
+            "responseID": 18,
+            "condition": "brand_only",
+            "responseText":"Here are the storage instructions associated with {brand} based on my records:",
+            "targetNodes": ["brand"]        
+        },
+        {
+          "responseID": 19,
+          "condition": "generic_brand",
+          "responseText":"Here are the storage instructions associated with {brand} ({generic}) based on my records:",
+          "targetNodes": ["brand", "generic"]        
+        },
+        {
+          "responseID": 20,
+          "condition": "generic_only",
+          "responseText":"Here are the storage instructions associated with {generic} based on my records:",
+          "columns":["Brand", "Storage Instruction"],
+          "targetNodes": ["generic"]        
         }
       ]
     }

@@ -211,6 +211,11 @@
     rdfs:range :StewardshipPrinciple;
     rdfs:label "managed by" .
 
+:hasStorageRule rdf:type owl:ObjectProperty ;
+    rdfs:domain :Brand ;
+    rdfs:range :StewardshipPrinciple;
+    rdfs:label "has storage rule" .
+
 :hasReference rdf:type owl:ObjectProperty ;
     rdfs:domain [ owl:unionOf (
         :Antibiotic 
@@ -402,11 +407,13 @@
 :SP111 rdf:type :Storage .
 :SP112 rdf:type :Storage .
 :SP113 rdf:type :Storage .
+:SP114 rdf:type :Storage .
 :SP000 rdf:type :ProperUse .
 :SP082 rdf:type :Monitoring .
 :SP001 rdf:type :Adherence .
 
 # References
+:R008 rdf:type :Reference .
 :R011 rdf:type :Reference .
 :R012 rdf:type :Reference .
 :R013 rdf:type :Reference .
@@ -424,6 +431,11 @@
 ###############################################################
 
 # REFERENCES
+:R008 :hasReferenceTitle "Levocin" .
+:R008 :hasAuthor "Monthly Index of Medical Specialties" .
+:R008 :publishedIn 2026.
+:R008 :retrievedFrom "https://www.mims.com/philippines/drug/info/levocin" .
+
 :R011 :hasReferenceTitle "Doxin".
 :R011 :hasAuthor "Monthly Index of Medical Specialties" .
 :R011 :publishedIn 2026.
@@ -469,7 +481,7 @@
 :R169 :publishedIn 2026 .
 :R169 :retrievedFrom "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/vomiting" .
 
-:R267 :hasReferenceTitle "Urinary Tract Infections" .
+:R267 :hasReferenceTitle "Genitourinary Tract Infection" .
 :R267 :hasAuthor "Cleveland Clinic" .
 :R267 :publishedIn 2023 .
 :R267 :retrievedFrom "https://my.clevelandclinic.org/health/diseases/9135-urinary-tract-infections".
@@ -485,6 +497,7 @@
 :Doxin :hasReference :R011 .
 :Doxyclen :hasReference :R012 .
 :Dynadoxy :hasReference :R013 .
+:Levocin :hasReference :R008 .
 
 # Presentation
 :Doxin :hasPresentation :A001 .
@@ -523,6 +536,7 @@
 :I034 :hasReference :R011 .
 :I034 :hasReference :R012 .
 :I034 :hasReference :R019 .
+:I034 :hasReference :R080 .
 
 :I035 :hasReference :R011 .
 :I035 :hasReference :R015 .
@@ -663,23 +677,37 @@
 :SP000 :hasStewardshipDescription "The bottle must be shaken well before taking each dose to ensure the medication is evenly distributed".
 :SP082 :hasStewardshipDescription "Maintain adequate fluid intake and urinary output to reduce the possibility of crystalluria. Periodic assessment of renal, hepatic, and hematopoietic functions is recommended during prolonged therapy." .
 :SP001 :hasStewardshipDescription "Take at least 2 hr before or 2 hr after antacids containing Mg/Al, sucralfate, metal cations (eg, Fe), & multivit prep w/ Zn.".
+
 :SP111 :hasStewardshipDescription "Store at temperatures not exceeding 30°C" .
-:Doxin :managedBy :SP111 .
+:SP112 :hasStewardshipDescription "Protect from light" .
+
+:Doxin :hasStorageRule :SP111 .
+:Doxin :hasStorageRule :SP112 .
+
 :Doxin :managedBy :SP000 .
 :Doxin :managedBy :SP001 .
 :Doxin :managedBy :SP082 .
 
 :SP000 :hasReference :R011 .
 :SP111 :hasReference :R011 .
+:SP112 :hasReference :R011 .
 :SP001 :hasReference :R011 .
 :SP082 :hasReference :R011 .
 
 # Doxyclen Stewardship Principle 
-:SP112 :hasStewardshipDescription "Store at temperatures not exceeding 30°C" .
-:Doxyclen :managedBy :SP112 .
-:SP112 :hasReference :R012 .
+:SP113 :hasStewardshipDescription "Store at temperatures not exceeding 30°C" .
+:Doxyclen :managedBy :SP113 .
+:SP113 :hasReference :R012 .
 
 # Dynadoxy Stewardship Principle
-:SP113 :hasStewardshipDescription "Store at temperatures not exceeding 30°C. Protect from light".
-:Dynadoxy :managedBy :SP113 .
-:SP113 :hasReference :R013 .
+:SP114 :hasStewardshipDescription "Store powder and reconstituted suspension at temperatures not exceeding 30°C. ".
+:SP115 :hasStewardshipDescription "Reconstituted suspension is stable for 14 days. " .
+:SP116 :hasStewardshipDescription "Do not refrigerate." .
+
+:Dynadoxy :hasStorageRule :SP114 .
+:Dynadoxy :hasStorageRule :SP115 .
+:Dynadoxy :hasStorageRule :SP116 .
+
+:SP114 :hasReference :R013 .
+:SP115 :hasReference :R013 .
+:SP116 :hasReference :R013 .

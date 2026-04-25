@@ -8,9 +8,11 @@ def classify_intent (question):
     TODO: 
         add elif for other intents, text preprocessing, embedding intent classification model
     '''
-    if question in ["How is DOXYCYCLINE supplied?",
+    if question in ["How is LEVOCIN supplied?",
         "How is DYNADOXY supplied?" ,
+        "How is DOXYCYCLINE supplied?",
         "What dosage forms are available for the generic antibiotic DOXYCYCLINE and the brand-name antibiotic DYNADOXY ?",
+        "What dosage forms are available for the generic antibiotic LEVOFLOXACIN and the brand-name antibiotic LEVOCIN ?",
         "How is PARACETAMOL supplied?",
         "How is BIOGESIC supplied?",
         "What dosage forms are available for the generic antibiotic PARACETAMOL and the brand-name antibiotic BIOGESIC ?"]:
@@ -21,9 +23,9 @@ def classify_intent (question):
         "Compare the different brands of DOXYCYCLINE.",
         "Compare DOXIN with other brands of DOXYCYCLINE."]:
         return "COMPARE_BRANDS"
-    elif question in ["i was given DYNADOXY (DOXYCYCLINE), what is it for?",
+    elif question in ["i was given DOXYCLEN (DOXYCYCLINE), what is it for?",
         "i was given DOXIN (DOXYCYCLINE), what is it for?",
-        "Why was i prescribed DYNADOXY?",
+        "Why was i prescribed DOXYCLEN?",
         "Why was i prescribed DOXIN?",
         "What are the clinical indications for DOXYCYCLINE?"]:
         return "GET_USES_INDICATIONS"
@@ -38,3 +40,9 @@ def classify_intent (question):
         "Will DYNADOXY (DOXYCYCLINE) give me a HEADACHE?",
         "Will DYNADOXY (DOXYCYCLINE) give me a DIARRHEA?"]:
         return "GET_SIDE_EFFECTS"
+    elif question in ["How do i keep DOXIN safe at home?",
+        "How do i keep DOXYCLEN safe at home?",
+        "Do i need to keep DYNADOXY (DOXYCYCLINE) away from sunlight?",
+        "How long is this DYNADOXY good for after the pharmacist mixed it?",
+        "Can i keep DOXYCYCLINE on my kitchen counter by the window?"]:
+        return "GET_STORAGE_INSTRUCTIONS"

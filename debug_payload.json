@@ -1,0 +1,10 @@
+{
+    "type": "composite",
+    "responses": [
+        "Yes, based on my records, Diarrhea is a known side effect of Doxycycline. \n\nIt is specifically reported for the brand(s): Doxin, Doxyclen and Dynadoxy.",
+        {
+            "type": "reference_list",
+            "sources": []
+        }
+    ]
+}
