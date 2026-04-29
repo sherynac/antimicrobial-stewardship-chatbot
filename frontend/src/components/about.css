@@ -36,7 +36,7 @@
 }
 
 .about-container {
-  @apply h-full overflow-y-auto my-10 mx-20;
+  @apply h-full overflow-y-auto my-10 mx-20 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none];
 }
 
 .cards-container {

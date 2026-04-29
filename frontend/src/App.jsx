@@ -19,46 +19,57 @@ function App() {
 
 // useState('chat') - chat UI ang landing
   const [activePage, setActivePage] = useState('chat') // 'chat', 'about', 'faqs'
+  const [navCollapsed, setNavCollapsed] = useState(false)
 
   return (
     <>
 
-      <div className="navbar">
+      <div className={`navbar ${navCollapsed ? 'navbar-collapsed' : ''}`}>
         <div className="first-row">
-          <div className="button-container" id="clear-chat-button">
-            <img src={clear_chat} alt="clear-icon" className="icons" />
-            <a href="" id="clear-chat">Clear Chat</a>
+
+          {/* Hide clear-chat-button when collapsed */}
+          {!navCollapsed && (
+            <div className="" id="clear-chat-button">
+              <img src={clear_chat} alt="clear-icon" className="icons" />
+              <a href="" id="clear-chat">Clear Chat</a>
+            </div>
+          )}
+
+          {/* Menu button — always visible, toggles collapse */}
+          <div 
+            className="menu-button-container" 
+            id="menu-button"
+            onClick={() => setNavCollapsed(!navCollapsed)}
+          >
+            <img src={menu} alt="menu-icon" id='menu-icon' className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
           </div>
-          <div className="menu-button-container" id="menu-button">
-            <img src={menu} alt="menu-icon" className="icons" />
-          </div>
-        </div>
-        
-        {/* chat */}
-        <div 
-          className={activePage === 'chat' ? "button-container-active" : "button-container"}
-          onClick={() => setActivePage('chat')}
-        >
-          <img src={chat_icon} alt="chat-icon" className="icons" />
-          <div className="nav-title">Chat</div>
         </div>
 
-        {/* about */}
-        <div 
-          className={activePage === 'about' ? "button-container-active" : "button-container"}
+        {/* Chat */}
+        <div
+          className={`${activePage === 'chat' ? "button-container-active" : "button-container"} ${navCollapsed ? 'collapsed' : ''}`}
+          onClick={() => setActivePage('chat')}
+        >
+          <img src={chat_icon} alt="chat-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
+          {!navCollapsed && <div className="nav-title">Chat</div>}
+        </div>
+
+        {/* About */}
+        <div
+          className={`${activePage === 'about' ? "button-container-active" : "button-container"} ${navCollapsed ? 'collapsed' : ''}`}
           onClick={() => setActivePage('about')}
         >
-          <img src={about_icon} alt="about-icon" className="icons" />
-          <div className="nav-title">About</div>
+          <img src={about_icon} alt="about-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
+          {!navCollapsed && <div className="nav-title">About</div>}
         </div>
 
         {/* FAQs */}
-        <div 
-          className={activePage === 'faqs' ? "button-container-active" : "button-container"}
+        <div
+          className={`${activePage === 'faqs' ? "button-container-active" : "button-container"} ${navCollapsed ? 'collapsed' : ''}`}
           onClick={() => setActivePage('faqs')}
         >
-          <img src={faqs_icon} alt="FAQs-icon" className="icons" />
-          <div className="nav-title">FAQs</div>
+          <img src={faqs_icon} alt="FAQs-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
+          {!navCollapsed && <div className="nav-title">FAQs</div>}
         </div>
       </div>
 
