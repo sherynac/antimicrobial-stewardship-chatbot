@@ -1,5 +1,0 @@
-flask
-gunicorn
-flask-cors
-whitenoise
-neo4j
