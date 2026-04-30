@@ -983,7 +983,7 @@ SE600,A004,epistaxis,Not Specified,Uncommon,lose blood from the tissue that line
 R235"
 SE601,A004,cardiac arrest,Not Specified,Uncommon,"your heart stops pumping blood, you become unconscious","R008
 R236"
-SE602,A004,palpitation,Not Specified,Uncommon,"can feel like pounding, flip-flopping or the wrong amount of heartbeats","R008
+SE602,A004,palpitations,Not Specified,Uncommon,"can feel like pounding, flip-flopping or the wrong amount of heartbeats","R008
 R237"
 SE603,A004,ventricular tachycardia,Not Specified,Uncommon,"fast, abnormal heart rhythm (arrhythmia) that comes from atypical electrical signals in your heart’s lower chambers","R008
 R238"
@@ -1091,7 +1091,7 @@ SE656,A005,epistaxis,Not Specified,Uncommon,lose blood from the tissue that line
 R235"
 SE657,A005,cardiac arrest,Not Specified,Uncommon,"your heart stops pumping blood, you become unconscious","R008
 R236"
-SE658,A005,palpitation,Not Specified,Uncommon,"can feel like pounding, flip-flopping or the wrong amount of heartbeats","R008
+SE658,A005,palpitations,Not Specified,Uncommon,"can feel like pounding, flip-flopping or the wrong amount of heartbeats","R008
 R237"
 SE659,A005,ventricular tachycardia,Not Specified,Uncommon,"fast, abnormal heart rhythm (arrhythmia) that comes from atypical electrical signals in your heart’s lower chambers","R008
 R238"
