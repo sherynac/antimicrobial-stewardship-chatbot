@@ -16,7 +16,7 @@ R026"
 S009,High-Fat Meal,Food,"A meal high in fat can reduce Fosfomycin peak blood levels and delay absorption, but overall urinary excretion is unchanged.",R024
 S010,Gentamicin,Drug,An aminoglycoside antibiotic that may affect kidney function.,R026
 S011,Vancomycin,Drug,"An antibiotic that may cause kidney strain, especially with other nephrotoxic drugs.",R026
-S012,Furosemide,Drug,"A diuretic (""water pill"") that lowers potassium levels.",R026
+S012,Furosemide,Drug,"A diuretic (water pill) that lowers potassium levels.",R026
 S013,Sodium Chloride IV Solution,Drug,"IV fluid containing sodium, which may increase total  sodium intake.",R026
 S014,Astemizole,Drug,"Astemizole is a long-acting, non-sedating second generation antihistamine used in the treatment of allergy symptoms.",R104
 S015,Cisapride,Drug,Cisapride is used to treat symptoms of nighttime heartburn in people who have not responded to other treatments.,R105

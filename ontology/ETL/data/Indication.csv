@@ -6,7 +6,7 @@ A013
 A021
 A030
 A031
-A036",Respiratory Tract Infection,respiratory,"""a cough that may bring up mucus (phlegm), sneezing a stuffy or runny nose, a sore throat, headaches, muscle aches, breathlessness, tight chest or wheezing, a high temperature, and feeling generally unwell""",Not Specified,"R018
+A036",Respiratory Tract Infection,respiratory,"a cough that may bring up mucus (phlegm), sneezing a stuffy or runny nose, a sore throat, headaches, muscle aches, breathlessness, tight chest or wheezing, a high temperature, and feeling generally unwell",Not Specified,"R018
 R031
 R038
 R091
@@ -111,16 +111,12 @@ R127
 R128
 R129
 R055"
-I013,A014,Non-gonococcal urethritis,urinary,"Men: Discharge from penis, pain while peeing (dysuria), pain while ejaculating (dysorgasmia or orgasmalgia), itching, irritation and/or tenderness, abdominal pain.
-
-Women: Vaginal discharge, pain while peeing, pain during sexual intercourse (dyspareunia), spotting or cramping throughout the month (irregular periods).",Not Specified,"R038
+I013,A014,Non-gonococcal urethritis,urinary,"Men: Discharge from penis, pain while peeing (dysuria), pain while ejaculating (dysorgasmia or orgasmalgia), itching, irritation and/or tenderness, abdominal pain. Women: Vaginal discharge, pain while peeing, pain during sexual intercourse (dyspareunia), spotting or cramping throughout the month (irregular periods).",Not Specified,"R038
 R045"
 I014,"A012
 A016
 A017
-A003",Urethritis,urinary,"Men: blood in the urine or semen, burning pain while urinating, discharge from penis, frequent urination, itching, tenderness, or swelling in penis, enlarged lymph nodes in the groin area, pain with intercourse or ejaculation
-
-Women: abdominal pain, burning pain while urinating, fever and chills, frequent urination, pelvic pain, pain with intercourse, vaginal discharge",Not Specified,"R003
+A003",Urethritis,urinary,"Men: blood in the urine or semen, burning pain while urinating, discharge from penis, frequent urination, itching, tenderness, or swelling in penis, enlarged lymph nodes in the groin area, pain with intercourse or ejaculation Women: abdominal pain, burning pain while urinating, fever and chills, frequent urination, pelvic pain, pain with intercourse, vaginal discharge",Not Specified,"R003
 R015
 R037
 R044"

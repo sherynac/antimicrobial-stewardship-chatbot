@@ -238,8 +238,7 @@ SE177,A034,Megaloblastic anaemia,Not specified,Very rare,"Megaloblastic anemia i
 R278"
 SE178,A034,Aplastic anaemia,Not specified,Very rare,"Aplastic anemia is a rare but serious blood disorder. It happens when something damages your bone marrow so it can’t make enough new blood cells and platelets. Left untreated, aplastic anemia is a life-threatening condition.","R035
 R279"
-SE179,A034,"haemolytic
-anaemia",Not specified,Very rare,"Hemolytic anemia is a blood disorder that typically happens when your red blood cells break down or die faster than your body can replace them with new blood cells. People may develop hemolytic anemia by inheriting genetic conditions that cause anemia, certain infections and certain medications. ","R035
+SE179,A034,"haemolytic anaemia",Not specified,Very rare,"Hemolytic anemia is a blood disorder that typically happens when your red blood cells break down or die faster than your body can replace them with new blood cells. People may develop hemolytic anemia by inheriting genetic conditions that cause anemia, certain infections and certain medications. ","R035
 R280"
 SE180,A034,methaemoglobinaemia,Not specified,Very rare,"Methemoglobinemia (MetHb) is a rare blood disorder that affects how red blood cells deliver oxygen throughout your body. Not everyone has symptoms, but nearly all people with this condition have skin, nails or lips that are a distinctive shade of blue or purple.","R035
 R281"
@@ -255,8 +254,7 @@ SE185,A034,anaphylactic reaction,Not specified,Very rare,"Anaphylaxis is when yo
 R283"
 SE186,A034,allergic myocarditis,Not specified,Very rare,"Myocarditis is inflammation of the heart muscle, or myocardium. This inflammation weakens your heart muscle, making it harder for your heart to pump. This can be caused by viral infections or inflammatory conditions.","R035
 R284"
-SE187,A034,"hypersensitivity vasculitis resembling Henoch-Schönlein-
-purpura",Not specified,Very rare,"Henoch-Schonlein purpura causes the small blood vessels in the skin, joints, intestines and kidneys to become inflamed and bleed. The most noticeable symptom of this form of vasculitis is a rash that often appears on the legs and feet. Henoch-Schonlein purpura also can cause belly pain and aching joints. Rarely, the condition may cause serious kidney damage.","R035
+SE187,A034,"hypersensitivity vasculitis resembling Henoch-Schönlein purpura",Not specified,Very rare,"Henoch-Schonlein purpura causes the small blood vessels in the skin, joints, intestines and kidneys to become inflamed and bleed. The most noticeable symptom of this form of vasculitis is a rash that often appears on the legs and feet. Henoch-Schonlein purpura also can cause belly pain and aching joints. Rarely, the condition may cause serious kidney damage.","R035
 R285"
 SE188,A034,periarteritis nodosa,Not specified,Very rare,Polyarteritis nodosa or PAN is a rare condition of inflamed blood vessels that hurt your organs. You can have symptoms in many parts of your body at one time. ,"R035
 R286"
@@ -264,15 +262,13 @@ SE189,A034,systemic lupus erythematosus,Not specified,Very rare,"Systemic lupus 
 R187"
 SE190,A034,haemophagocytic lymphohistiocytosis,Not specified,Very rare,Hemophagocytic lymphohistiocytosis is a rare and often life-threatening condition if left untreated. HLH causes your immune system to attack your body instead of a foreign invader like a virus. The condition is either acquired or genetic and there’s no way to prevent it.,"R035
 R287"
-SE191,A034,"Severe hypersensitivity reactions associated with
-Pneumocystis jirovecii pneumonia",Not specified,Very rare,"Pneumocystis carinii pneumonia (PCP), now referred to as Pneumocystis jirovecii pneumonia, is a fungal infection that most commonly affects the immunocompromised and, in some cases, can be severely life-threatening. Typically, patients at risk are those with underlying disease states that alter host immunity, such as cancer, human immunodeficiency virus, transplant recipients, or those taking immunosuppressive therapies and medications. Patients presenting with PCP may show signs of fever, cough, dyspnea, and, in severe cases, respiratory failure. ","R035
+SE191,A034,"Severe hypersensitivity reactions associated with Pneumocystis jirovecii pneumonia",Not specified,Very rare,"Pneumocystis carinii pneumonia (PCP), now referred to as Pneumocystis jirovecii pneumonia, is a fungal infection that most commonly affects the immunocompromised and, in some cases, can be severely life-threatening. Typically, patients at risk are those with underlying disease states that alter host immunity, such as cancer, human immunodeficiency virus, transplant recipients, or those taking immunosuppressive therapies and medications. Patients presenting with PCP may show signs of fever, cough, dyspnea, and, in severe cases, respiratory failure. ","R035
 R288"
 SE192,A034,thrombocytopenia,Not specified,Very rare,Thrombocytopenia occurs when your bone marrow doesn’t make enough platelets. Platelets are blood cells that form blood clots to help stop bleeding. People with this condition may bleed a lot and the bleeding may be hard to stop. Thrombocytopenia affects people with certain medical conditions like autoimmune disease or who take certain medications.,"R035
 R140"
 SE193,A034,Increased Hepatic Enzymes,Not specified,Very rare,"If your blood test showed high (elevated) levels of liver enzymes, you could have a medical condition. Elevated liver enzymes may also be temporary.","R035
 R247"
-SE194,A034,"
-hyperkalaemia",Not specified,Very rare,"Hyperkalemia is a condition in which you have high potassium levels in your blood. You may not have any symptoms, or they may be easy to dismiss. Severe symptoms may cause muscle weakness or affect your heart. ","R035
+SE194,A034,"hyperkalaemia",Not specified,Very rare,"Hyperkalemia is a condition in which you have high potassium levels in your blood. You may not have any symptoms, or they may be easy to dismiss. Severe symptoms may cause muscle weakness or affect your heart. ","R035
 R289"
 SE195,A034,hyponatraemia,Not specified,Very rare,"Hyponatremia is when the amount of sodium in your blood is too low. Common causes include heart, liver, kidney and brain diseases, hormone issues and medications.","R035
 R290"
@@ -347,12 +343,11 @@ R309"
 SE230,A034,angioedema,Not specified,Very rare,"Angioedema is swelling in the tissue under your skin. It’s most common in your lips, eyelids, tongue, genitals, hands and feet. Causes include allergies, medication side effects, vibrations, inherited gene changes and some health conditions. 
 ","R035
 R064"
-SE231,A034,fixed drug eruption,Not specified,Very rare,"The term fixed drug eruption (FDE) describes the development of one or more annular or oval erythematous patches as a result of systemic exposure to a drug. A vesicle or bulla may or may not occur at the center of  patch and these reactions normally resolve with hyperpigmentation and may recur at the same site with reexposure to the drug. Repeated exposure to the offending drug may also cause new lesions to develop in addition to ""lighting up"" the older hyperpigmented lesions. Lesions can occur anywhere on the body (ie, face, tongue, hands, feet, torso, extremities, and genitalia) but genitalia and oral muscosa are often favored.","R035
+SE231,A034,fixed drug eruption,Not specified,Very rare,"The term fixed drug eruption (FDE) describes the development of one or more annular or oval erythematous patches as a result of systemic exposure to a drug. A vesicle or bulla may or may not occur at the center of  patch and these reactions normally resolve with hyperpigmentation and may recur at the same site with reexposure to the drug. Repeated exposure to the offending drug may also cause new lesions to develop in addition to lighting up the older hyperpigmented lesions. Lesions can occur anywhere on the body (ie, face, tongue, hands, feet, torso, extremities, and genitalia) but genitalia and oral muscosa are often favored.","R035
 R310"
 SE232,A034,erythema multiforme,Not specified,Very rare,"Erythema multiforme is your body’s reaction to an illness, infection or medicine. This condition affects your skin and causes a painful, itchy rash that looks like a bulls-eye or a target.","R035
 R119"
-SE233,A034,"Stevens-Johnson
-syndrome",Not specified,Very rare,"Stevens-Johnson syndrome (SJS) is a rare, serious disorder of the skin and mucous membranes. It's usually a reaction to medication that starts with flu-like symptoms, followed by a painful rash that spreads and blisters. Then the top layer of affected skin dies, sheds and begins to heal after several days.","R035
+SE233,A034,"Stevens-Johnson syndrome",Not specified,Very rare,"Stevens-Johnson syndrome (SJS) is a rare, serious disorder of the skin and mucous membranes. It's usually a reaction to medication that starts with flu-like symptoms, followed by a painful rash that spreads and blisters. Then the top layer of affected skin dies, sheds and begins to heal after several days.","R035
 R120"
 SE234,A034,toxic epidermal necrolysis,Not specified,Very rare,"Toxic epidermal necrolysis (TEN) is a life-threatening skin condition. It causes peeling and blistering skin over much of the body, including the mouth, eyes, and genitals. TEN is the most severe form of Stevens-Johnson syndrome.","R035
 R121"
@@ -394,7 +389,7 @@ SE258,A032,Rash / Hives,1–3 days,During treatment,"Mild skin redness, itching,
 SE259,A032,Oral Thrush,3–5 days,During or after treatment,White patches in the mouth or on the tongue; a common fungal overgrowth.,R032
 SE260,A032,Sore Throat / Stuffy Nose,1–3 days,During treatment,Mild irritation of the upper respiratory tract.,R032
 SE261,A020,Tooth Discoloration,Reversible (via brushing),Mostly in pediatric patients,"Brown, yellow, or gray staining; can be reduced or eliminated with dental cleaning.",R016
-SE262,A020,Gastrointestinal Effects,Not specified,During or following discontinuance of amoxicillin,"Nausea, vomiting, diarrhea, black ""hairy"" tongue, Clostridioides difficile-associated disease and colitis; hemorrhagic colitis; acute, transient enterocolitis with severe abdominal pain and bloody diarrhea, and colitis; glossitis, stomatitis, epigastric distress, gastritis, flatulence, soft stools, loss of appetite, sore mouth or tongue, dry mouth, taste disturbances.",R016
+SE262,A020,Gastrointestinal Effects,Not specified,During or following discontinuance of amoxicillin,"Nausea, vomiting, diarrhea, black hairy tongue, Clostridioides difficile-associated disease and colitis; hemorrhagic colitis; acute, transient enterocolitis with severe abdominal pain and bloody diarrhea, and colitis; glossitis, stomatitis, epigastric distress, gastritis, flatulence, soft stools, loss of appetite, sore mouth or tongue, dry mouth, taste disturbances.",R016
 SE263,A020,Nervous System Effects,Reversible,Rare / at extremely high doses,"Agitation, anxiety, behavioral changes, confusion, convulsions, hyperactivity, and dizziness.",R016
 SE264,A020,Hemic and Lymphatic,Not specified,Not specified,"Anemia (including hemolytic), leukopenia, neutropenia, and thrombocytopenia.",R016
 SE265,A020,Hypersensitivity,Not specified,Not specified,"Anaphylaxis, exanthema, bullous dermatitis, Stevens-Johnson syndrome (SJS), and pruritus",R016
