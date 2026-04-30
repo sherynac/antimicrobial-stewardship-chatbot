@@ -1,7 +1,7 @@
 import os
 import re
 import pandas as pd
-from rdflib import Graph, Namespace, URIRef, Literal, RDF, RDFS, XSD
+from rdflib import Graph, Namespace, URIRef, Literal, RDF, RDFS, XSD, OWL
 
 # ------------------ Setup ------------------
 g = Graph()
@@ -10,7 +10,7 @@ g.bind(":", EX)
 
 # ------------------ Paths ------------------
 base_path = os.path.join(os.path.dirname(__file__), "data")
-output_path = os.path.join(os.path.dirname(__file__), "..", "ontologyETL.ttl")
+output_path = os.path.join(os.path.dirname(__file__), "..", "ontology_ETL.ttl")
 
 csv_files = {
     "Antibiotic": os.path.join(base_path, "Antibiotic.csv"),
@@ -24,6 +24,18 @@ csv_files = {
 }
 
 # ------------------ Helper Functions ------------------
+def clean_string(val):
+    """Escape characters that would break TTL parsing (for output only)."""
+    if val is None:
+        return ""
+    s = str(val)
+    # Escape backslashes first, then other characters
+    s = s.replace('\\', '\\\\')
+    s = s.replace('"', '\\"')
+    s = s.replace('\n', '\\n').replace('\r', '\\r')
+    s = s.replace('\t', '\\t')
+    return s.strip()
+
 def split_multivalue(val):
     """Split multi-value cells (newline-separated) and clean."""
     if pd.isna(val) or str(val).strip().lower() == "nan":
@@ -117,6 +129,9 @@ def side_effect_to_class(se_name):
     # Normalize multiple spaces
     import re
     name = re.sub(r'\s+', ' ', name).strip()
+    # Skip mapping if this name is also an indication condition (to avoid disjointness violation)
+    if name in indication_condition_names:
+        return "SideEffect"
     mapping = {
         "diarrhea": "Diarrhea",
         "nausea": "Nausea",
@@ -132,7 +147,6 @@ def side_effect_to_class(se_name):
         "vaginitis": "Vaginitis",
         "asthenia": "Asthenia",
         "dyspepsia": "Dyspepsia",
-        "pharyngitis": "Pharyngitis",
         "vertigo": "Vertigo",
         "somnolence": "Somnolence",
         "fatigue": "Fatigue",
@@ -145,7 +159,6 @@ def side_effect_to_class(se_name):
         "cholestatic jaundice": "CholestaticJaundice",
         "nephritis": "Nephritis",
         "candidiasis": "Candidiasis",
-        "pneumonia": "Pneumonia",
         "fungal infections": "FungalInfections",
         "gastroenteritis": "Gastroenteritis",
         "rhinitis": "Rhinitis",
@@ -394,17 +407,6 @@ def side_effect_to_class(se_name):
             return val
     return "SideEffect"
 
-def pattern_to_class(pattern_str):
-    """Map occurrence pattern to ontology class URI."""
-    p = pattern_str.strip().lower()
-    if "common" in p or "very common" in p or "frequent" in p:
-        return "Common"
-    elif "infrequent" in p or "uncommon" in p or "rare" in p or "occasionally" in p:
-        return "Infrequent"
-    elif "not specified" in p or "not reported" in p:
-        return "FrequencyNotReported"
-    return "Pattern"
-
 def stewardship_type_to_class(type_str):
     """Map stewardship principle type to ontology class URI."""
     t = type_str.strip().lower()
@@ -428,6 +430,14 @@ def stewardship_type_to_class(type_str):
 dfs = {}
 for name, path in csv_files.items():
     dfs[name] = pd.read_csv(path, dtype=str)
+
+# Build a set of indication condition names to avoid creating SideEffect subclasses with the same names
+indication_condition_names = set()
+if "Indication" in dfs:
+    for _, row in dfs["Indication"].iterrows():
+        condition_name = safe_str(row.get("Condition Name"))
+        if condition_name:
+            indication_condition_names.add(condition_name.strip().lower())
 
 # ------------------ Create Individuals & Relationships ------------------
 
@@ -712,16 +722,18 @@ for _, row in dfs["SideEffect"].iterrows():
 
     se_class = side_effect_to_class(se_name) if se_name else "SideEffect"
     se_uri = URIRef(EX[se_id])
-    add_individual(se_uri, EX[se_class], se_id)
+    add_individual(se_uri, EX[se_class], se_name)
 
     if description:
         add_literal(se_uri, EX.hasSideEffectDescription, description)
     if duration:
         add_literal(se_uri, EX.hasDuration, duration)
     if pattern:
-        pattern_class = pattern_to_class(pattern)
+        # Use raw pattern value from CSV as the class URI (normalized)
+        import re
+        pattern_class = re.sub(r"[^\w\-]", "_", pattern.strip())
         pattern_uri = URIRef(EX[pattern_class])
-        add_individual(pattern_uri, EX.Pattern, pattern_class)
+        add_individual(pattern_uri, EX.Pattern, pattern)
         g.add((se_uri, EX.whichIs, pattern_uri))
 
     for ref_id in ref_ids:
@@ -885,8 +897,9 @@ def generate_ttl_output():
                         label = str(o)
                         break
                 if label:
+                    escaped_label = clean_string(label)
                     lines.append(f":{str(subj).replace('http://example.org/ontology#', '')} rdf:type :{type_name};")
-                    lines.append(f'    rdfs:label "{label}".')
+                    lines.append(f'    rdfs:label "{escaped_label}".')
                 else:
                     lines.append(f":{str(subj).replace('http://example.org/ontology#', '')} rdf:type :{type_name}.")
             lines.append("")
@@ -903,8 +916,9 @@ def generate_ttl_output():
                         label = str(o)
                         break
                 if label:
+                    escaped_label = clean_string(label)
                     lines.append(f":{str(subj).replace('http://example.org/ontology#', '')} rdf:type :{type_name};")
-                    lines.append(f'    rdfs:label "{label}".')
+                    lines.append(f'    rdfs:label "{escaped_label}".')
                 else:
                     lines.append(f":{str(subj).replace('http://example.org/ontology#', '')} rdf:type :{type_name}.")
             lines.append("")
@@ -937,13 +951,13 @@ def generate_ttl_output():
                 obj_name = str(o).replace("http://example.org/ontology#", "")
                 lines.append(f":{subj_name} :{pred_name} :{obj_name} .")
             else:
-                # Check if it's an integer
                 if isinstance(o, Literal) and o.datatype and "integer" in str(o.datatype):
                     lines.append(f":{subj_name} :{pred_name} {int(o)} .")
                 elif isinstance(o, Literal) and o.datatype and "double" in str(o.datatype):
                     lines.append(f':{subj_name} :{pred_name} "{o}"^^xsd:double .')
                 else:
-                    lines.append(f':{subj_name} :{pred_name} "{o}" .')
+                    lit_value = clean_string(str(o))
+                    lines.append(f':{subj_name} :{pred_name} "{lit_value}" .')
         else:
             if isinstance(o, URIRef):
                 obj_name = str(o).replace("http://example.org/ontology#", "")
@@ -954,7 +968,8 @@ def generate_ttl_output():
                 elif isinstance(o, Literal) and o.datatype and "double" in str(o.datatype):
                     lines.append(f':{subj_name} :{pred_name} "{o}"^^xsd:double .')
                 else:
-                    lines.append(f':{subj_name} :{pred_name} "{o}" .')
+                    lit_value = clean_string(str(o))
+                    lines.append(f':{subj_name} :{pred_name} "{lit_value}" .')
 
     return "\n".join(lines)
 
