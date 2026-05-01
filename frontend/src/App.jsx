@@ -30,7 +30,7 @@ function App() {
           {/* Hide clear-chat-button when collapsed */}
           {!navCollapsed && (
             <div className="" id="clear-chat-button">
-              <img src={clear_chat} alt="clear-icon" className="icons" />
+              <img src={clear_chat} alt="clear-icon" id="clear-icon" className="icons" />
               <a href="" id="clear-chat">Clear Chat</a>
             </div>
           )}
@@ -68,7 +68,7 @@ function App() {
           className={`${activePage === 'faqs' ? "button-container-active" : "button-container"} ${navCollapsed ? 'collapsed' : ''}`}
           onClick={() => setActivePage('faqs')}
         >
-          <img src={faqs_icon} alt="FAQs-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
+          <img src={faqs_icon} alt="FAQs-icon" id="FAQs-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
           {!navCollapsed && <div className="nav-title">FAQs</div>}
         </div>
       </div>
@@ -88,7 +88,7 @@ function App() {
                   </div>
               </div>
 
-              <div className="main-chat">
+              <div className={`main-chat ${navCollapsed ? 'collapsed' : ''}`}>
                 <div className="message-container">
                   <div className="message-prompt">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
@@ -100,7 +100,7 @@ function App() {
                   </div>
                 </div>
               </div>
-              <div className="message-box">
+              <div className={`message-box ${navCollapsed ? 'collapsed' : ''}`}>
                 <form action="">
                   <input type="text" id="message" placeholder='Type your message here..'/>
                   <input type="image" src={send_button} alt="Submit"/>
@@ -109,9 +109,9 @@ function App() {
             </>
           )}
 
-          {activePage === 'about' && <About />}
+          {activePage === 'about' && <About navCollapsed={navCollapsed} />}
           
-          {activePage === 'faqs' && <FAQ />}
+          {activePage === 'faqs' && <FAQ navCollapsed={navCollapsed} />}
 
         </div>
       </div>

@@ -16,19 +16,23 @@
 }
 
 .navbar{
-  @apply flex flex-col gap-y-5 border-r-1 border-r-black/20 content-center h-dvh w-2xs pt-2 bg-[#F8F9FA] static transition-all ease-in-out duration-300
+  @apply flex flex-col gap-y-5 pt-4 border-r-1 border-r-black/20 content-center h-dvh w-2xs bg-[#F8F9FA] static transition-all ease-in-out duration-100
 }
 
 .navbar-collapsed{
-  @apply flex flex-col gap-y-5 border-r-1 border-r-black/20 content-center h-dvh w-16 pt-2 bg-white static transition-all ease-in-out duration-300
+  @apply flex flex-col gap-y-5 pt-4 border-r-1 border-r-black/20 content-center h-dvh w-16 bg-white static transition-all transition-discrete ease-linear duration-100
 }
 
 .first-row {
-  @apply flex mx-4 h-12 flex-row items-center
+  @apply flex mx-4 h-13 flex-row
 }
 
 .first-row #clear-chat-button{
-  @apply flex justify-start py-4 border-[#D4E9D7] rounded-xl bg-[#D4E9D7] w-5/6 h-full mt-1 items-center hover:bg-[#D9E3DC]
+  @apply flex justify-start py-4 border-[#D4E9D7] rounded-xl bg-[#D4E9D7] w-5/6 h-full  items-center hover:bg-[#D9E3DC] cursor-pointer
+}
+
+#clear-icon{
+  @apply w-9.5 h-7.5
 }
 
 #clear-chat {
@@ -36,7 +40,7 @@
 }
 
 .menu-button-container{
-  @apply flex content-center right-0 pr-0 h-12
+  @apply flex items-center right-0 pr-0 h-12 cursor-pointer
 }
 
 .main-container{
@@ -44,31 +48,35 @@
 }
 
 #menu-icon{
-  @apply w-11
+  @apply w-11 h-8
 }
 
 .button-container{
-  @apply flex justify-start mx-4 space-x-4 items-center hover:bg-white rounded-xl transition-colors ease-in-out duration-150
+  @apply flex justify-start mx-4 space-x-4 items-center hover:bg-white rounded-xl cursor-pointer
 }
 
 .button-container.collapsed{
-  @apply flex justify-start py-4 items-center hover:bg-[#F8F9FA] rounded-xl transition-colors ease-in-out duration-150
+  @apply flex justify-center mx-1 py-4 items-center hover:bg-[#F8F9FA] rounded-xl
 }
 
 .button-container-active{
-  @apply flex justify-start mx-4 space-x-4 items-center rounded-xl bg-white transition-colors ease-in-out duration-150
+  @apply flex justify-start mx-4 space-x-4 items-center rounded-xl bg-white cursor-pointer
 }
 
 .button-container-active.collapsed{
-  @apply flex justify-start py-4 items-center rounded-xl bg-[#F8F9FA] transition-colors ease-in-out duration-150
+  @apply flex justify-center mx-1 py-4 items-center  rounded-xl bg-[#F8F9FA]
 }
 
 .icons{
-  @apply pl-2 w-9
+  @apply pl-2 w-9 h-8
 }
 
 .icons.collapsed{
-  @apply pl-0 w-9
+  @apply pl-0 w-8 h-8
+}
+
+.icons#FAQs-icon{
+  @apply aspect-square
 }
 
 .nav-title{
@@ -100,11 +108,15 @@
 }
 
 .main-chat{
-  @apply h-22/25 w-[calc(100%-18rem)] flex flex-col items-start items-center
+  @apply h-full w-[calc(100%-18rem)] flex flex-col items-start items-center overflow-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]
+}
+
+.main-chat.collapsed{
+  @apply w-[calc(100%-4rem)]
 }
 
 .message-container{
-  @apply  w-full flex flex-row-reverse
+  @apply flex flex-row-reverse
 }
 
 .message-prompt{
@@ -124,22 +136,26 @@
 }
 
 .message-box{
-  @apply border-t-1 border-black/20 w-dvw h-20.5 flex flex-row items-center static
+  @apply border-t-1 border-black/20 w-[calc(100%-18rem)] h-20.5 flex flex-row items-center static
+}
+
+.message-box.collapsed{
+  @apply w-[calc(100%-4rem)]
 }
 
 form{
-  @apply w-11/13 h-11/13 flex flex-row ml-4 items-center
+  @apply w-full h-11/13 flex flex-row items-center gap-2 right-0
 }
 
 form input{
-  @apply h-3/4 bg-[#F8F9FA] rounded-md w-22/25 border-1 border-black/20
+  @apply h-3/4 ml-4 bg-[#F8F9FA] rounded-md w-24/25 border-1 border-black/20
 }
 
 form input[type=text]{
- @apply pl-4
+ @apply px-4
 }
 
 form input[type=image]{
-  @apply bg-[#D4E9D7] w-15 ml-3 p-2 object-center hover:bg-[#D9E3DC] transition-colors duration-200
+  @apply ml-0 mr-2 bg-[#D4E9D7] w-15 p-2 object-center hover:bg-[#D9E3DC] transition-colors duration-200
 }
 

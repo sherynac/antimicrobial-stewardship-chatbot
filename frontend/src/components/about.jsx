@@ -1,7 +1,7 @@
 import './about.css';
 import ophiuchus_logo from '../assets/ophiuchus_logo.svg'
 
-function About() {
+function About({ navCollapsed }) {
     const sampleQA = [
 
         {
@@ -50,7 +50,7 @@ function About() {
             </div>
 
             <div className="about-container">
-                <div className="cards-container">
+                <div className={`cards-container ${navCollapsed ? 'collapsed' : ''}`}>
                     {sampleQA.map((item, index) => (
                         <div className="qa-card" key={index}>
                             <div className="card-question">

@@ -1,7 +1,7 @@
 import './faq.css';
 import ophiuchus_logo from '../assets/ophiuchus_logo.svg'
 
-function FAQ() {
+function FAQ({ navCollapsed }) {
 
     const getReference = (reference) => {
         const urlMap = {
@@ -141,7 +141,7 @@ function FAQ() {
             </div>
 
             <div className="faq-container">
-                <div className="cards-container">
+                <div className={`cards-container ${navCollapsed ? 'collapsed' : ''}`}>
                     {sampleQA.map((item, index) => {
                         const referenceUrl = getReference(item.reference);
                         
