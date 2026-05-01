@@ -1,7 +1,8 @@
 import './about.css';
 import ophiuchus_logo from '../assets/ophiuchus_logo.svg'
+import ophiuchus_logo_dark from '../assets/ophiuchus_logo_dark.svg'
 
-function About({ navCollapsed }) {
+function About({ navCollapsed, darkMode }) {
     const sampleQA = [
 
         {
@@ -42,14 +43,19 @@ function About({ navCollapsed }) {
         <>
 
             <div className="header">
-                <img src={ophiuchus_logo} className="" alt="Ophiuchus logo" />
-                    <div className="title-container">
+                {!darkMode && (
+                    <img src={ophiuchus_logo} className="" alt="Ophiuchus logo" />
+                )}
+                {darkMode && (
+                    <img src={ophiuchus_logo_dark} className="" alt="Ophiuchus logo" />
+                )}
+                <div className="title-container">
                     <p className="title">About</p>
                     <p className="sub-title">Learn more about Ophiuchus</p>
-                    </div>
+                </div>
             </div>
 
-            <div className="about-container">
+            <div className={`about-container ${darkMode ? 'dark-mode' : ''}`}>
                 <div className={`cards-container ${navCollapsed ? 'collapsed' : ''}`}>
                     {sampleQA.map((item, index) => (
                         <div className="qa-card" key={index}>

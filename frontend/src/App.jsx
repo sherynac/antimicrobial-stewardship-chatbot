@@ -59,6 +59,7 @@ function App() {
     e.preventDefault()
     setMessages([])
     setInputValue('')
+    setActivePage('chat')
   }
 
   return (
@@ -68,8 +69,8 @@ function App() {
 
           {/* Hide clear-chat-button when collapsed */}
           {!navCollapsed && (
-            <div className="" id="clear-chat-button" onClick={handleClearChat}
-              onClick={() => setActivePage('chat')}
+            <div id="clear-chat-button"
+              onClick={(e) => { handleClearChat(e); setActivePage('chat'); }}
             >
               {!darkMode && (
                 <img src={clear_chat} alt="clear-icon" id="clear-icon" className="icons" />
@@ -233,9 +234,9 @@ function App() {
             </>
           )}
 
-          {activePage === 'about' && <About navCollapsed={navCollapsed, darkMode} />}
+          {activePage === 'about' && <About navCollapsed={navCollapsed} darkMode={darkMode} />}
 
-          {activePage === 'faqs' && <FAQ navCollapsed={navCollapsed, darkMode} />}
+          {activePage === 'faqs' && <FAQ navCollapsed={navCollapsed} darkMode={darkMode} />}
 
         </div>
       </div>

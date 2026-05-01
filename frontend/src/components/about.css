@@ -66,3 +66,23 @@
 .card-answer p {
   @apply text-black leading-relaxed font-[Figtree-Regular] flex-1;
 }
+
+.dark-mode .qa-card {
+  @apply bg-[#424242] text-white;
+}
+
+.dark-mode .card-question {
+  @apply bg-[#3B3B3B];
+}
+
+.dark-mode .card-question h3 {
+  @apply text-white;
+}
+
+.dark-mode .card-answer {
+  @apply bg-[#3B3B3B];
+}
+
+.dark-mode .card-answer p {
+  @apply text-white;
+}
