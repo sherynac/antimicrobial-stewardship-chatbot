@@ -1,13 +1,24 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import ophiuchus_logo from './assets/ophiuchus_logo.svg'
+import ophiuchus_logo_dark from './assets/ophiuchus_logo_dark.svg'
 import clear_chat from './assets/clear-chat.svg'
 import menu from './assets/menu.svg'
 import about_icon from './assets/about.svg'
 import chat_icon from './assets/chat.svg'
 import faqs_icon from './assets/FAQs.svg'
 import send_button from './assets/send-button.svg'
+import clear_chat_dark from './assets/clear-chat-dark.svg'
+import menu_dark from './assets/menu-dark.svg'
+import about_icon_dark from './assets/about-dark.svg'
+import chat_icon_dark from './assets/chat-dark.svg'
+import faqs_icon_dark from './assets/FAQs-dark.svg'
+import send_button_dark from './assets/send-button-dark.svg'
+
+import light_mode from './assets/light-mode.svg'
+import dark_mode from './assets/dark-mode.svg'
 
 import './App.css'
+import botResponses from './responses.json'
 
 import FAQ from './components/faq.jsx'
 import About from './components/about.jsx'
@@ -15,22 +26,30 @@ import About from './components/about.jsx'
 function App() {
   const [activePage, setActivePage] = useState('chat') // 'chat', 'about', 'faqs'
   const [navCollapsed, setNavCollapsed] = useState(false)
+  const [darkMode, setDarkMode] = useState(false)
 
   // Each entry: { role: 'user' | 'bot', text: string }
   const [messages, setMessages] = useState([])
   const [inputValue, setInputValue] = useState('')
+  const chatBottomRef = useRef(null)
+
+  useEffect(() => {
+    chatBottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages])
 
   const handleSubmit = (e) => {
     e.preventDefault()
     const trimmed = inputValue.trim()
     if (!trimmed) return
 
-    // Add user message
-    // TODO: replace the bot stub below with your actual API/backend call
+    const randomReply = botResponses.responses[
+      Math.floor(Math.random() * botResponses.responses.length)
+    ]
+
     setMessages(prev => [
       ...prev,
       { role: 'user', text: trimmed },
-      { role: 'bot', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' } // placeholder — swap with real response
+      { role: 'bot', text: randomReply }
     ])
 
     setInputValue('')
@@ -39,19 +58,26 @@ function App() {
   const handleClearChat = (e) => {
     e.preventDefault()
     setMessages([])
-    setInputValue([])
+    setInputValue('')
   }
 
   return (
     <>
-      <div className={`navbar ${navCollapsed ? 'navbar-collapsed' : ''}`}>
+      <div className={`navbar ${navCollapsed ? 'navbar-collapsed' : ''} ${darkMode ? 'dark-mode' : ''}`}>
         <div className="first-row">
 
           {/* Hide clear-chat-button when collapsed */}
           {!navCollapsed && (
-            <div className="" id="clear-chat-button">
-              <img src={clear_chat} alt="clear-icon" id="clear-icon" className="icons" />
-              <a href="" id="clear-chat" onClick={handleClearChat}>Clear Chat</a>
+            <div className="" id="clear-chat-button" onClick={handleClearChat}
+              onClick={() => setActivePage('chat')}
+            >
+              {!darkMode && (
+                <img src={clear_chat} alt="clear-icon" id="clear-icon" className="icons" />
+              )}
+              {darkMode && (
+                <img src={clear_chat_dark} alt="clear-icon" id="clear-icon-dark" className="icons" />
+              )}
+              <a href="" id="clear-chat">Clear Chat</a>
             </div>
           )}
 
@@ -61,7 +87,13 @@ function App() {
             id="menu-button"
             onClick={() => setNavCollapsed(!navCollapsed)}
           >
-            <img src={menu} alt="menu-icon" id='menu-icon' className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
+            {!darkMode && (
+              <img src={menu} alt="menu-icon" id='menu-icon' className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
+            )}
+            {darkMode && (
+              <img src={menu_dark} alt="menu-icon" id='menu-icon-dark' className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
+            )}
+
           </div>
         </div>
 
@@ -70,7 +102,13 @@ function App() {
           className={`${activePage === 'chat' ? "button-container-active" : "button-container"} ${navCollapsed ? 'collapsed' : ''}`}
           onClick={() => setActivePage('chat')}
         >
-          <img src={chat_icon} alt="chat-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
+          {!darkMode && (
+            <img src={chat_icon} alt="chat-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
+          )}
+          {darkMode && (
+            <img src={chat_icon_dark} alt="chat-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
+          )}
+
           {!navCollapsed && <div className="nav-title">Chat</div>}
         </div>
 
@@ -79,7 +117,13 @@ function App() {
           className={`${activePage === 'about' ? "button-container-active" : "button-container"} ${navCollapsed ? 'collapsed' : ''}`}
           onClick={() => setActivePage('about')}
         >
-          <img src={about_icon} alt="about-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
+          {!darkMode && (
+            <img src={about_icon} alt="about-icon-dark" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
+          )}
+          {darkMode && (
+            <img src={about_icon_dark} alt="about-icon-dark" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
+          )}
+
           {!navCollapsed && <div className="nav-title">About</div>}
         </div>
 
@@ -88,18 +132,46 @@ function App() {
           className={`${activePage === 'faqs' ? "button-container-active" : "button-container"} ${navCollapsed ? 'collapsed' : ''}`}
           onClick={() => setActivePage('faqs')}
         >
-          <img src={faqs_icon} alt="FAQs-icon" id="FAQs-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
+          {!darkMode && (
+            <img src={faqs_icon} alt="FAQs-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
+          )}
+          {darkMode && (
+            <img src={faqs_icon_dark} alt="FAQs-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
+          )}
+
           {!navCollapsed && <div className="nav-title">FAQs</div>}
         </div>
+
+        {!navCollapsed && (
+          <div
+            className={`theme-switch ${darkMode ? 'theme-switch-dark' : ''}`}
+            onClick={() => setDarkMode(!darkMode)}
+          >
+            {!darkMode && (
+              <img src={light_mode} alt="" />
+            )}
+            {darkMode && (
+              <img src={dark_mode} alt="" />
+            )}
+          </div>
+        )}
+        {/* Dark Mode */}
+
       </div>
 
-      <div className="main-container">
+      <div className={`main-container ${darkMode ? 'dark-mode' : ''}`}>
         <div className="main-content">
 
           {activePage === 'chat' && (
             <>
               <div className="header">
-                <img src={ophiuchus_logo} className="" alt="Ophiuchus logo" />
+                {!darkMode && (
+                  <img src={ophiuchus_logo} className="" alt="Ophiuchus logo" />
+                )}
+                {darkMode && (
+                  <img src={ophiuchus_logo_dark} className="" alt="Ophiuchus logo" />
+                )}
+
                 <div className="title-container">
                   <p className="title">Ophiuchus</p>
                   <p className="sub-title">Ask me anything</p>
@@ -134,6 +206,9 @@ function App() {
                   )
                 )}
 
+                {/* Scroll anchor */}
+                <div ref={chatBottomRef} />
+
               </div>
 
               <div className={`message-box ${navCollapsed ? 'collapsed' : ''}`}>
@@ -146,15 +221,21 @@ function App() {
                     onChange={(e) => setInputValue(e.target.value)}
                     autoComplete='off'
                   />
-                  <input type="image" src={send_button} alt="Submit" />
+                  {!darkMode && (
+                    <input type="image" src={send_button} alt="Submit" />
+                  )}
+                  {darkMode && (
+                    <input type="image" src={send_button_dark} alt="Submit" />
+                  )}
+
                 </form>
               </div>
             </>
           )}
 
-          {activePage === 'about' && <About navCollapsed={navCollapsed} />}
+          {activePage === 'about' && <About navCollapsed={navCollapsed, darkMode} />}
 
-          {activePage === 'faqs' && <FAQ navCollapsed={navCollapsed} />}
+          {activePage === 'faqs' && <FAQ navCollapsed={navCollapsed, darkMode} />}
 
         </div>
       </div>

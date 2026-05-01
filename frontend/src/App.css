@@ -14,24 +14,39 @@
   font-family: Figtree-Regular;
   src: url(./assets/Figtree-Regular.ttf);
 }
-
-.navbar{
+.navbar {
   @apply flex flex-col gap-y-5 pt-4 border-r-1 border-r-black/20 content-center h-dvh w-2xs bg-[#F8F9FA] static transition-all ease-in-out duration-100
 }
 
-.navbar-collapsed{
+.dark-mode.navbar {
+  @apply bg-[#232323] border-r-white/10 text-white
+}
+
+.navbar-collapsed {
   @apply flex flex-col gap-y-5 pt-4 border-r-1 border-r-black/20 content-center h-dvh w-16 bg-white static transition-all transition-discrete ease-linear duration-100
+}
+
+.dark-mode.navbar-collapsed {
+  @apply bg-[#333333]
 }
 
 .first-row {
   @apply flex mx-4 h-13 flex-row
 }
 
-.first-row #clear-chat-button{
-  @apply flex justify-start py-4 border-[#D4E9D7] rounded-xl bg-[#D4E9D7] w-5/6 h-full  items-center hover:bg-[#D9E3DC] cursor-pointer
+.first-row #clear-chat-button {
+  @apply flex justify-start py-4 border-[#D4E9D7] rounded-xl bg-[#D4E9D7] w-5/6 h-full items-center hover:bg-[#D9E3DC] cursor-pointer font-[Figtree-Regular]
 }
 
-#clear-icon{
+.dark-mode #clear-chat-button {
+  @apply bg-[#3B3B3B] hover:bg-[#424242]
+}
+
+#clear-icon {
+  @apply w-9.5 h-7.5
+}
+
+#clear-icon-dark {
   @apply w-9.5 h-7.5
 }
 
@@ -39,151 +54,214 @@
   @apply pl-2
 }
 
-.menu-button-container{
+.menu-button-container {
   @apply flex items-center right-0 pr-0 h-12 cursor-pointer
 }
 
-.main-container{
-  @apply flex flex-col justify-start w-dvw 
+.main-container {
+  @apply flex flex-col justify-start w-dvw transition-all ease-in-out duration-100
 }
 
-#menu-icon{
+.dark-mode.main-container {
+  @apply bg-[#333333] text-white transition-all ease-in-out duration-100
+}
+
+#menu-icon {
   @apply w-11 h-8
 }
 
-.button-container{
-  @apply flex justify-start mx-4 space-x-4 items-center hover:bg-white rounded-xl cursor-pointer
+#menu-icon-dark {
+  @apply w-11 h-8
 }
 
-.button-container.collapsed{
+.button-container {
+  @apply flex justify-start mx-4 space-x-4 items-center hover:bg-white rounded-xl cursor-pointer font-[Figtree-Regular]
+}
+
+.button-container.collapsed {
   @apply flex justify-center mx-1 py-4 items-center hover:bg-[#F8F9FA] rounded-xl
 }
 
-.button-container-active{
+.button-container-active {
   @apply flex justify-start mx-4 space-x-4 items-center rounded-xl bg-white cursor-pointer
 }
 
-.button-container-active.collapsed{
-  @apply flex justify-center mx-1 py-4 items-center  rounded-xl bg-[#F8F9FA]
+.button-container-active.collapsed {
+  @apply flex justify-center mx-2 py-4 items-center rounded-xl bg-[#F8F9FA]
 }
 
-.icons{
+.dark-mode .button-container{
+  @apply hover:bg-[#333333]
+}
+
+.dark-mode .button-container-active {
+  @apply bg-[#333333]
+}
+
+.dark-mode .button-container.collapsed{
+  @apply hover:bg-[#424242]
+}
+
+.dark-mode .button-container-active.collapsed{
+  @apply bg-[#424242]
+}
+
+.icons {
   @apply pl-2 w-9 h-8
 }
 
-.icons.collapsed{
+.icons.collapsed {
   @apply pl-0 w-8 h-8
 }
 
-.icons#FAQs-icon{
-  @apply aspect-square
+.theme-switch {
+  @apply flex w-10 h-10 rounded-3xl ml-4 mt-83 bg-[#D4E9D7] content-center justify-center
 }
 
-.nav-title{
+.dark-mode .theme-switch {
+  @apply bg-[#424242]
+}
+
+.theme-switch img {
+  @apply p-2
+}
+
+.nav-title {
   @apply py-5 font-[Figtree-Regular]
 }
 
-.header{
+.header {
   @apply flex justify-start items-center border-b-1 border-b-black/20 max-h-2/12 static
 }
 
-.header img{
+.dark-mode .header{
+  @apply border-b-white/20
+}
+
+.header img {
   @apply h-12 w-auto mr-1 ml-4
 }
 
-.title-container{
+.title-container {
   @apply flex flex-col p-3
 }
 
-.sub-title{
-  @apply text-xs pl-1
+.sub-title {
+  @apply text-xs pl-1 font-[Figtree-Regular]
 }
 
-.title{
+.title {
   @apply text-3xl font-[Cabin-Bold]
 }
 
-.main-content{
+.main-content {
   @apply flex flex-col h-dvh
 }
 
-.main-chat{
+.main-chat {
   @apply h-full w-[calc(100%-18rem)] flex flex-col items-start items-center overflow-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]
 }
 
-.main-chat.empty{
+.main-chat.empty {
   @apply justify-center text-center items-center
 }
 
-.main-chat.collapsed{
+.main-chat.collapsed {
   @apply w-[calc(100%-4rem)]
 }
 
-.welcome-message{
-  @apply flex flex-col w-3xl items-center
+.welcome-message {
+  @apply flex flex-col w-3xl items-center font-[Figtree-Regular]
 }
 
-#greeting{
-  @apply text-4xl
+#greeting {
+  @apply text-4xl font-[Figtree-Regular]
 }
 
-#greeting span{
+#greeting span {
   @apply font-[Cabin-Bold] text-[#02542D]
 }
 
-#intro{
-  @apply w-17/25 text-xl
+.dark-mode #greeting span{
+  @apply text-[#D4E9D7]
 }
 
-#disclaimer{
-  @apply w-11/25 text-xs text-[#8E8E93]
+#intro {
+  @apply w-17/25 text-xl font-[Figtree-Regular]
 }
 
-#disclaimer span{
+#disclaimer {
+  @apply w-11/25 text-xs text-[#8E8E93] font-[Figtree-Regular]
+}
+
+#disclaimer span {
   @apply font-[Cabin-Bold]
 }
 
-.message-container{
+.message-container {
   @apply w-full flex flex-row-reverse
 }
 
-.message-prompt{
+.message-prompt {
   @apply bg-[#D4E9D7] m-4 rounded-xl max-w-5/12
 }
 
-.reply-container{
+.dark-mode .message-prompt {
+  @apply bg-[#3B3B3B]
+}
+
+.reply-container {
   @apply w-full flex flex-row
 }
 
-.chatbot-reply{
+.chatbot-reply {
   @apply bg-[#F8F9FA] m-4 rounded-xl max-w-7/12
 }
 
-.main-chat p{
+.dark-mode .chatbot-reply{
+  @apply bg-[#232323]
+}
+
+.main-chat p {
   @apply p-3 font-[Figtree-Regular]
 }
 
-.message-box{
+.message-box {
   @apply border-t-1 border-black/20 w-[calc(100%-18rem)] h-20.5 flex flex-row items-center static
 }
 
-.message-box.collapsed{
+.dark-mode .message-box {
+  @apply border-white/10
+}
+
+.message-box.collapsed {
   @apply w-[calc(100%-4rem)]
 }
 
-form{
+form {
   @apply w-full h-11/13 flex flex-row items-center gap-2 right-0
 }
 
-form input{
+form input {
   @apply h-3/4 ml-4 bg-[#F8F9FA] rounded-md w-24/25 border-1 border-black/20
 }
 
-form input[type=text]{
- @apply px-4
+.dark-mode form input {
+  @apply bg-[#3B3B3B]
 }
 
-form input[type=image]{
+form input[type=text] {
+  @apply px-4 font-[Figtree-Regular]
+}
+
+.dark-mode form input[type=text]{
+  @apply text-[#F8F9FA]
+}
+
+form input[type=image] {
   @apply ml-0 mr-2 bg-[#D4E9D7] w-15 p-2 object-center hover:bg-[#D9E3DC] transition-colors duration-200
 }
 
+.dark-mode form input[type=image] {
+  @apply bg-[#232323] hover:bg-[#3B3B3B] transition-colors duration-200 fill-white
+}
