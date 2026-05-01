@@ -78,7 +78,7 @@ S061,Pyrimethamine,Drug,Antimalarial antifolate,R035
 S062,Digoxin,Drug,Cardiac glycoside,R035
 S063,ACE inhibitors / ARBs / potassium-sparing diuretics / prednisolone,Drug,Agents that increase potassium,R035
 S064,Tricyclic antidepressants,Drug,Antidepressants,R035
-S065,"Urinary acidifiers, oral anticoagulants, phenylbutazone, oxyphenbutazone, indomethacin",Drugs,Drugs increasing SMX levels,R035
+S065,"Urinary acidifiers, oral anticoagulants, phenylbutazone, oxyphenbutazone, indomethacin",Drug,Drugs increasing SMX levels,R035
 S066,CYP2C8 / CYP2C9 / OCT2 substrate drugs,Drug,Drugs metabolized/eliminated by these pathways,R035
 S067,Dofetilide,Drug,Class III antiarrhythmic,R035
 S068,cationic drugs,Drug,Cationic drugs excreted renally,R035

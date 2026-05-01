@@ -89,22 +89,42 @@ def condition_type_to_class(condition_type):
         return "UrinaryDisease"
     return None
 
-def presentation_to_class(presentation_str):
-    """Map presentation string to ontology class URI."""
+def map_presentation_to_ontology_class(presentation_str):
+    """Map CSV presentation string to ontology class URI."""
     p = presentation_str.strip().lower()
     if p == "capsule":
         return "Capsule"
-    elif p in ["tablet", "film coated tablet", "film-coated tablet", "fc tablet"]:
+    elif p == "tablet":
         return "Tablet"
-    elif p in ["iv injection", "iv infusion"]:
-        return "IVInjection"
+    elif p in ["film coated tablet", "film-coated tablet", "fc tablet"]:
+        return "FilmCoatedTablet"
+    elif p in ["iv injection", "im injection", "injection", "solution for injection"]:
+        return "IMInjection"
+    elif p == "powder for injection":
+        return "PowderForInjection"
+    elif p == "injection concentrate":
+        return "InjectionConcentrate"
+    elif p in ["iv infusion", "infusion"]:
+        return "IVInfusion"
+    elif p == "solution for infusion":
+        return "SolutionForInfusion"
+    elif p == "powder for iv infusion":
+        return "PowderForIVInfusion"
     elif p == "syrup":
         return "Syrup"
-    elif p == "suspension":
-        return "Suspension"
+    elif p == "oral suspension":
+        return "OralSuspension"
+    elif p == "oral drops":
+        return "OralDrops"
+    elif p == "powder for suspension":
+        return "PowderForSuspension"
+    elif p == "powder for oral suspension":
+        return "PowderForOralSuspension"
+    elif p == "granules for oral suspension":
+        return "GranulesForOralSuspension"
     elif p in ["ointment", "cream"]:
         return "Ointment"
-    return None
+    return "PresentationOrPacking"
 
 def warning_type_to_class(type_str):
     """Map warning type to ontology class URI."""
@@ -117,7 +137,7 @@ def warning_type_to_class(type_str):
         return "AgeRestriction"
     elif "condition" in t or "patient" in t or "renal" in t or "hepatic" in t or "cardiac" in t:
         return "PatientCondition"
-    elif "overdos" in t:
+    elif "overdosage" in t:
         return "Overdosage"
     elif "contraindication" in t:
         return "Contraindication"
@@ -501,12 +521,24 @@ for _, row in dfs["Antibiotic"].iterrows():
 
     # Create Brand individual (unique by brand name)
     brand_key = f"{generic_name}_{brand_name}"
+    brand_uri_id = make_safe_uri_label(brand_name)
+    brand_uri = URIRef(EX[brand_uri_id])
     if brand_key not in brands:
         brands[brand_key] = {"name": brand_name, "antibiotic_id": generic_name, "ab_uri": URIRef(EX[generic_name])}
-        brand_uri_id = make_safe_uri_label(brand_name)
-        brand_uri = URIRef(EX[brand_uri_id])
         add_individual(brand_uri, EX.Brand, brand_name)
         g.add((URIRef(EX[generic_name]), EX.hasBrandName, brand_uri))
+
+    # Process presentation for EVERY row (brands can have multiple presentations)
+    if presentation and ab_id:
+        # Create presentation individual using Antibiotic ID
+        pres_uri = URIRef(EX[ab_id])
+        # Map CSV presentation to ontology class
+        pres_class = map_presentation_to_ontology_class(presentation)
+        if pres_class:
+            add_individual(pres_uri, EX[pres_class], presentation)
+        else:
+            add_individual(pres_uri, EX.PresentationOrPacking, presentation)
+        g.add((brand_uri, EX.hasPresentation, pres_uri))
 
     # Link references to brand
     brand_uri_id = make_safe_uri_label(brand_name)
@@ -665,20 +697,13 @@ for _, row in dfs["Indication"].iterrows():
 
     for ab_id_str in antibiotic_ids:
         ab_id_clean = make_uri_id(ab_id_str)
-        if ab_id_clean and ab_id_clean in ab_id_to_brands:
-            for brand_name in ab_id_to_brands[ab_id_clean]:
-                brand_uri_id = make_safe_uri_label(brand_name)
-                brand_uri = URIRef(EX[brand_uri_id])
-                g.add((brand_uri, EX.treats, ind_uri))
+        if ab_id_clean:
+            g.add((URIRef(EX[ab_id_clean]), EX.treats, ind_uri))
 
 # ========== WARNINGS ==========
 for _, row in dfs["Warning"].iterrows():
     w_id = make_uri_id(row.get("Warning ID"))
-    brand_name = None
-    # Find the brand name from the Antibiotic ID
     ab_id = make_uri_id(row.get("Antibiotic ID"))
-    if ab_id and ab_id in ab_id_to_brands:
-        brand_name = ab_id_to_brands[ab_id][0]  # Use first brand
 
     type_str = safe_str(row.get("Type"))
     headline = safe_str(row.get("Headline"))
@@ -702,10 +727,8 @@ for _, row in dfs["Warning"].iterrows():
         if ref_uri_id:
             g.add((w_uri, EX.hasReference, URIRef(EX[ref_uri_id])))
 
-    if brand_name:
-        brand_uri_id = make_safe_uri_label(brand_name)
-        brand_uri = URIRef(EX[brand_uri_id])
-        g.add((brand_uri, EX.hasWarning, w_uri))
+    if ab_id:
+        g.add((URIRef(EX[ab_id]), EX.hasWarning, w_uri))
 
 # ========== SIDE EFFECTS ==========
 for _, row in dfs["SideEffect"].iterrows():
@@ -727,25 +750,22 @@ for _, row in dfs["SideEffect"].iterrows():
     if description:
         add_literal(se_uri, EX.hasSideEffectDescription, description)
     if duration:
-        add_literal(se_uri, EX.hasDuration, duration)
+        add_literal(se_uri, EX.hasDurationOf, duration)
     if pattern:
         # Use raw pattern value from CSV as the class URI (normalized)
         import re
         pattern_class = re.sub(r"[^\w\-]", "_", pattern.strip())
         pattern_uri = URIRef(EX[pattern_class])
         add_individual(pattern_uri, EX.Pattern, pattern)
-        g.add((se_uri, EX.whichIs, pattern_uri))
+        g.add((se_uri, EX.hasPattern, pattern_uri))
 
     for ref_id in ref_ids:
         ref_uri_id = make_uri_id(ref_id)
         if ref_uri_id:
             g.add((se_uri, EX.hasReference, URIRef(EX[ref_uri_id])))
 
-    if ab_id and ab_id in ab_id_to_brands:
-        for brand_name in ab_id_to_brands[ab_id]:
-            brand_uri_id = make_safe_uri_label(brand_name)
-            brand_uri = URIRef(EX[brand_uri_id])
-            g.add((brand_uri, EX.hasSideEffect, se_uri))
+    if ab_id:
+        g.add((URIRef(EX[ab_id]), EX.hasSideEffect, se_uri))
 
 # ========== SUBSTANCES ==========
 for _, row in dfs["Substance"].iterrows():
@@ -814,11 +834,8 @@ for _, row in dfs["Interaction"].iterrows():
             if sub_uri_id:
                 g.add((itn_uri, EX.interactsWith, URIRef(EX[sub_uri_id])))
 
-    if ab_id and ab_id in ab_id_to_brands:
-        for brand_name in ab_id_to_brands[ab_id]:
-            brand_uri_id = make_safe_uri_label(brand_name)
-            brand_uri = URIRef(EX[brand_uri_id])
-            g.add((brand_uri, EX.hasInteraction, itn_uri))
+    if ab_id:
+        g.add((URIRef(EX[ab_id]), EX.hasInteraction, itn_uri))
 
 # ========== STEWARDSHIP PRINCIPLES ==========
 for _, row in dfs["StewardshipPrinciple"].iterrows():
@@ -843,17 +860,15 @@ for _, row in dfs["StewardshipPrinciple"].iterrows():
         if ref_uri_id:
             g.add((sp_uri, EX.hasReference, URIRef(EX[ref_uri_id])))
 
-    if ab_id and ab_id in ab_id_to_brands:
-        for brand_name in ab_id_to_brands[ab_id]:
-            brand_uri_id = make_safe_uri_label(brand_name)
-            brand_uri = URIRef(EX[brand_uri_id])
-            # Determine which stewardship property to use
-            if sp_class == "Storage":
-                g.add((brand_uri, EX.hasStorageRule, sp_uri))
-            elif sp_class in ["AdministrationAndAdherence", "TherapeuticUseAndMonitoring", "FoodAndTiming"]:
-                g.add((brand_uri, EX.managedAs, sp_uri))
-            else:
-                g.add((brand_uri, EX.managedAs, sp_uri))
+    if ab_id:
+        if sp_class == "Storage":
+            g.add((URIRef(EX[ab_id]), EX.hasStorageRule, sp_uri))
+        elif sp_class == "AdministrationAndAdherence":
+            g.add((URIRef(EX[ab_id]), EX.hasAdministrationAndAdherenceRule, sp_uri))
+        elif sp_class == "FoodAndTiming":
+            g.add((URIRef(EX[ab_id]), EX.hasFoodAndTimingRule, sp_uri))
+        elif sp_class == "TherapeuticUseAndMonitoring":
+            g.add((URIRef(EX[ab_id]), EX.hasTherapeuticUseAndMonitoringRule, sp_uri))
 
 # ------------------ Generate Turtle Output ------------------
 def generate_ttl_output():

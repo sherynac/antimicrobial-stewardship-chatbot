@@ -4,7 +4,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-# MANUAL - Classes, Concepts, Subclasses, Object Properties, Data Type Properties, Disjointness Properties, Closed World Enumerations, differentFrom Assertions for Key Instances, OWL Restrictions
+# MANUAL  
 
 ##############################################################
 # Classes
@@ -42,23 +42,45 @@
 
 # PresentationOrPacking subclasses
 :Capsule rdf:type owl:Class ;
-    rdfs:subClassOf :PresentationOrPacking ;
-    rdfs:label "Capsule" .
+    rdfs:subClassOf :PresentationOrPacking .
 :Tablet rdf:type owl:Class ;
+    rdfs:subClassOf :PresentationOrPacking .
+:FilmCoatedTablet rdf:type owl:Class ;
     rdfs:subClassOf :PresentationOrPacking ;
-    rdfs:label "Tablet" .
-:IVInjection rdf:type owl:Class ;
+    rdfs:label "Film-Coated Tablet" .
+:OralDrops rdf:type owl:Class ;
     rdfs:subClassOf :PresentationOrPacking ;
-    rdfs:label "IV Injection" .
-:Syrup rdf:type owl:Class ;
+    rdfs:label "Oral Drops" .
+:OralSuspension rdf:type owl:Class ;
     rdfs:subClassOf :PresentationOrPacking ;
-    rdfs:label "Syrup" .
-:Suspension rdf:type owl:Class ;
+    rdfs:label "Oral Suspension" .
+:GranulesForOralSuspension rdf:type owl:Class ;
     rdfs:subClassOf :PresentationOrPacking ;
-    rdfs:label "Suspension" .
-:Ointment rdf:type owl:Class ;
+    rdfs:label "Granules for Oral Suspension" .
+:PowderForOralSuspension rdf:type owl:Class ;
     rdfs:subClassOf :PresentationOrPacking ;
-    rdfs:label "Ointment" .
+    rdfs:label "Powder for Oral Suspension" .
+:PowderForSuspension rdf:type owl:Class ;
+    rdfs:subClassOf :PresentationOrPacking ;
+    rdfs:label "Powder for Suspension" .
+:IMInjection rdf:type owl:Class ;
+    rdfs:subClassOf :PresentationOrPacking ;
+    rdfs:label "IM Injection" .
+:InjectionConcentrate rdf:type owl:Class ;
+    rdfs:subClassOf :PresentationOrPacking ;
+    rdfs:label "Injection Concentrate" .
+:PowderForInjection rdf:type owl:Class ;
+    rdfs:subClassOf :PresentationOrPacking ;
+    rdfs:label "Powder for Injection" .
+:IVInfusion rdf:type owl:Class ;
+    rdfs:subClassOf :PresentationOrPacking ;
+    rdfs:label "IV Infusion" .
+:PowderForIVInfusion rdf:type owl:Class ;
+    rdfs:subClassOf :PresentationOrPacking ;
+    rdfs:label "Powder for IV Infusion" .
+:SolutionForInfusion rdf:type owl:Class ;
+    rdfs:subClassOf :PresentationOrPacking ;
+    rdfs:label "Solution for Infusion" .
 
 # Brand
 :Brand rdf:type owl:Class .
@@ -558,7 +580,7 @@
     owl:inverseOf :hasBrandName .
 
 :hasPresentation rdf:type owl:ObjectProperty ;
-    rdfs:domain :Brand ;
+    rdfs:domain [ rdf:type owl:Class ; owl:unionOf ( :Brand :Antibiotic ) ] ;
     rdfs:range :PresentationOrPacking ;
     rdfs:label "has presentation" .
 
@@ -578,7 +600,7 @@
     rdfs:label "treats" .
 
 :hasWarning rdf:type owl:ObjectProperty ;
-    rdfs:domain :Brand ;
+    rdfs:domain [ rdf:type owl:Class ; owl:unionOf ( :Brand :Antibiotic ) ] ;
     rdfs:range :Warning ;
     rdfs:label "has warning" .
 
@@ -588,7 +610,7 @@
     rdfs:range :Brand .
 
 :hasSideEffect rdf:type owl:ObjectProperty ;
-    rdfs:domain :Brand ;
+    rdfs:domain [ rdf:type owl:Class ; owl:unionOf ( :Brand :PresentationOrPacking :Antibiotic ) ] ;
     rdfs:range :SideEffect ;
     rdfs:label "has side effect" ;
     rdfs:inverseOf :sideEffectOf .
@@ -600,7 +622,7 @@
     owl:inverseOf :hasSideEffect .
 
 :hasInteraction rdf:type owl:ObjectProperty ;
-    rdfs:domain :Brand ;
+    rdfs:domain [ rdf:type owl:Class ; owl:unionOf ( :Brand :Antibiotic ) ] ;
     rdfs:range :Interaction ;
     rdfs:label "has interaction" .
 
@@ -641,6 +663,11 @@
     rdfs:range :Storage;
     rdfs:label "has storage rule" .
 
+:hasPattern rdf:type owl:ObjectProperty ;
+    rdfs:domain :SideEffect ;
+    rdfs:range :Pattern;
+    rdfs:label "which is" .
+
 :hasReference rdf:type owl:ObjectProperty ;
     rdfs:domain [ owl:unionOf (
         :Antibiotic 
@@ -658,6 +685,21 @@
 
 
 ##############################################################
+# Property Chain Axioms
+##############################################################
+
+# Property Chain 1: Antibiotic → Brand → Presentation → SideEffect
+# If Antibiotic hasBrandName Y, Y hasPresentation Z, Z hasSideEffect A, then Antibiotic hasSideEffect A
+:hasSideEffect owl:propertyChainAxiom ( :hasBrandName :hasPresentation :hasSideEffect ) .
+
+# Property Chain 2: Antibiotic → Brand → Presentation → Warning
+:hasWarning owl:propertyChainAxiom ( :hasBrandName :hasPresentation :hasWarning ) .
+
+# Property Chain 3: Antibiotic → Brand → Presentation → Interaction
+:hasInteraction owl:propertyChainAxiom ( :hasBrandName :hasPresentation :hasInteraction ) .
+
+
+##############################################################
 # Data Type Properties
 ###############################################################
 :hasDrugClass rdf:type owl:DatatypeProperty ;
@@ -665,15 +707,15 @@
     rdfs:range xsd:string ;
     rdfs:label "has drug class" .
 
-:hasDosage rdf:type owl:DatatypeProperty ;
-    rdfs:domain :PresentationOrPacking ;
-    rdfs:range xsd:string ;
-    rdfs:label "has dosage" .
+# :hasDosage rdf:type owl:DatatypeProperty ;
+#    rdfs:domain :PresentationOrPacking ;
+#    rdfs:range xsd:string ;
+#    rdfs:label "has dosage" .
 
-:hasUnitPrice rdf:type owl:DatatypeProperty ;
-    rdfs:domain :PresentationOrPacking ;
-    rdfs:range xsd:double ;
-    rdfs:label "has unit price" .
+#:hasUnitPrice rdf:type owl:DatatypeProperty ;
+#    rdfs:domain :PresentationOrPacking ;
+#    rdfs:range xsd:double ;
+#    rdfs:label "has unit price" .
 
 :hasWarningHeadline rdf:type owl:DatatypeProperty ;
     rdfs:domain :Warning;
@@ -694,11 +736,6 @@
     rdfs:domain :SideEffect ;
     rdfs:range xsd:string ;
     rdfs:label "lasts for" .
-
-:hasPattern rdf:type owl:DatatypeProperty ;
-    rdfs:domain :SideEffect ;
-    rdfs:range xsd:string ;
-    rdfs:label "which is" .
 
 :hasClinicalEffects rdf:type owl:DatatypeProperty ;
     rdfs:domain :Interaction ;
@@ -767,11 +804,19 @@
 :FoodAndTiming owl:disjointWith :Storage .
 
 # Disjoint PresentationOrPacking subclasses
-:Capsule owl:disjointWith :Tablet, :IVInjection, :Syrup, :Suspension, :Ointment .
-:Tablet owl:disjointWith :IVInjection, :Syrup, :Suspension, :Ointment .
-:IVInjection owl:disjointWith :Syrup, :Suspension, :Ointment .
-:Syrup owl:disjointWith :Suspension, :Ointment .
-:Suspension owl:disjointWith :Ointment .
+:Capsule owl:disjointWith :FilmCoatedTablet, :Tablet, :OralDrops, :OralSuspension, :GranulesForOralSuspension, :PowderForOralSuspension, :PowderForSuspension, :IMInjection, :InjectionConcentrate, :PowderForInjection, :IVInfusion, :PowderForIVInfusion, :SolutionForInfusion .
+:FilmCoatedTablet owl:disjointWith :Tablet, :OralDrops, :OralSuspension, :GranulesForOralSuspension, :PowderForOralSuspension, :PowderForSuspension, :IMInjection, :InjectionConcentrate, :PowderForInjection, :IVInfusion, :PowderForIVInfusion, :SolutionForInfusion .
+:Tablet owl:disjointWith :OralDrops, :OralSuspension, :GranulesForOralSuspension, :PowderForOralSuspension, :PowderForSuspension, :IMInjection, :InjectionConcentrate, :PowderForInjection, :IVInfusion, :PowderForIVInfusion, :SolutionForInfusion .
+:OralDrops owl:disjointWith :OralSuspension, :GranulesForOralSuspension, :PowderForOralSuspension, :PowderForSuspension, :IMInjection, :InjectionConcentrate, :PowderForInjection, :IVInfusion, :PowderForIVInfusion, :SolutionForInfusion .
+:OralSuspension owl:disjointWith :GranulesForOralSuspension, :PowderForOralSuspension, :PowderForSuspension, :IMInjection, :InjectionConcentrate, :PowderForInjection, :IVInfusion, :PowderForIVInfusion, :SolutionForInfusion .
+:GranulesForOralSuspension owl:disjointWith :PowderForOralSuspension, :PowderForSuspension, :IMInjection, :InjectionConcentrate, :PowderForInjection, :IVInfusion, :PowderForIVInfusion, :SolutionForInfusion .
+:PowderForOralSuspension owl:disjointWith :PowderForSuspension, :IMInjection, :InjectionConcentrate, :PowderForInjection, :IVInfusion, :PowderForIVInfusion, :SolutionForInfusion .
+:PowderForSuspension owl:disjointWith :IMInjection, :InjectionConcentrate, :PowderForInjection, :IVInfusion, :PowderForIVInfusion, :SolutionForInfusion .
+:IMInjection owl:disjointWith :InjectionConcentrate, :PowderForInjection, :IVInfusion, :PowderForIVInfusion, :SolutionForInfusion .
+:InjectionConcentrate owl:disjointWith :PowderForInjection, :IVInfusion, :PowderForIVInfusion, :SolutionForInfusion .
+:PowderForInjection owl:disjointWith :IVInfusion, :PowderForIVInfusion, :SolutionForInfusion .
+:IVInfusion owl:disjointWith :PowderForIVInfusion, :SolutionForInfusion .
+:PowderForIVInfusion owl:disjointWith :SolutionForInfusion .
 
 # Disjoint Warning subclasses
 :PregnancyAndLactation owl:disjointWith :AgeRestriction, :PatientCondition, :Overdosage, :Contraindication .
@@ -818,7 +863,7 @@
 :PresentationOrPacking rdf:type owl:Class ;
     owl:equivalentClass [
         rdf:type owl:Class ;
-        owl:oneOf ( :Capsule :Tablet :IVInjection :Syrup :Suspension :Ointment )
+        owl:oneOf ( :Capsule :FilmCoatedTablet :Tablet :OralDrops :OralSuspension :GranulesForOralSuspension :PowderForOralSuspension :PowderForSuspension :IMInjection :InjectionConcentrate :PowderForInjection :IVInfusion :PowderForIVInfusion :SolutionForInfusion )
     ] .
 
 # Substance type enumeration
@@ -841,21 +886,19 @@
 :FoodAndTiming owl:differentFrom :Storage .
 
 # Presentation forms are all different
-:Capsule owl:differentFrom :Tablet .
-:Capsule owl:differentFrom :IVInjection .
-:Capsule owl:differentFrom :Syrup .
-:Capsule owl:differentFrom :Suspension .
-:Capsule owl:differentFrom :Ointment .
-:Tablet owl:differentFrom :IVInjection .
-:Tablet owl:differentFrom :Syrup .
-:Tablet owl:differentFrom :Suspension .
-:Tablet owl:differentFrom :Ointment .
-:IVInjection owl:differentFrom :Syrup .
-:IVInjection owl:differentFrom :Suspension .
-:IVInjection owl:differentFrom :Ointment .
-:Syrup owl:differentFrom :Suspension .
-:Syrup owl:differentFrom :Ointment .
-:Suspension owl:differentFrom :Ointment .
+:Capsule owl:differentFrom :FilmCoatedTablet, :Tablet, :OralDrops, :OralSuspension, :GranulesForOralSuspension, :PowderForOralSuspension, :PowderForSuspension, :IMInjection, :InjectionConcentrate, :PowderForInjection, :IVInfusion, :PowderForIVInfusion, :SolutionForInfusion .
+:FilmCoatedTablet owl:differentFrom :Tablet, :OralDrops, :OralSuspension, :GranulesForOralSuspension, :PowderForOralSuspension, :PowderForSuspension, :IMInjection, :InjectionConcentrate, :PowderForInjection, :IVInfusion, :PowderForIVInfusion, :SolutionForInfusion .
+:Tablet owl:differentFrom :OralDrops, :OralSuspension, :GranulesForOralSuspension, :PowderForOralSuspension, :PowderForSuspension, :IMInjection, :InjectionConcentrate, :PowderForInjection, :IVInfusion, :PowderForIVInfusion, :SolutionForInfusion .
+:OralDrops owl:differentFrom :OralSuspension, :GranulesForOralSuspension, :PowderForOralSuspension, :PowderForSuspension, :IMInjection, :InjectionConcentrate, :PowderForInjection, :IVInfusion, :PowderForIVInfusion, :SolutionForInfusion .
+:OralSuspension owl:differentFrom :GranulesForOralSuspension, :PowderForOralSuspension, :PowderForSuspension, :IMInjection, :InjectionConcentrate, :PowderForInjection, :IVInfusion, :PowderForIVInfusion, :SolutionForInfusion .
+:GranulesForOralSuspension owl:differentFrom :PowderForOralSuspension, :PowderForSuspension, :IMInjection, :InjectionConcentrate, :PowderForInjection, :IVInfusion, :PowderForIVInfusion, :SolutionForInfusion .
+:PowderForOralSuspension owl:differentFrom :PowderForSuspension, :IMInjection, :InjectionConcentrate, :PowderForInjection, :IVInfusion, :PowderForIVInfusion, :SolutionForInfusion .
+:PowderForSuspension owl:differentFrom :IMInjection, :InjectionConcentrate, :PowderForInjection, :IVInfusion, :PowderForIVInfusion, :SolutionForInfusion .
+:IMInjection owl:differentFrom :InjectionConcentrate, :PowderForInjection, :IVInfusion, :PowderForIVInfusion, :SolutionForInfusion .
+:InjectionConcentrate owl:differentFrom :PowderForInjection, :IVInfusion, :PowderForIVInfusion, :SolutionForInfusion .
+:PowderForInjection owl:differentFrom :IVInfusion, :PowderForIVInfusion, :SolutionForInfusion .
+:IVInfusion owl:differentFrom :PowderForIVInfusion, :SolutionForInfusion .
+:PowderForIVInfusion owl:differentFrom :SolutionForInfusion .
 
 # Severity levels are all different
 :NotSpecified owl:differentFrom :MildToModerate .
