@@ -111,12 +111,40 @@
   @apply h-full w-[calc(100%-18rem)] flex flex-col items-start items-center overflow-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]
 }
 
+.main-chat.empty{
+  @apply justify-center text-center items-center
+}
+
 .main-chat.collapsed{
   @apply w-[calc(100%-4rem)]
 }
 
+.welcome-message{
+  @apply flex flex-col w-3xl items-center
+}
+
+#greeting{
+  @apply text-4xl
+}
+
+#greeting span{
+  @apply font-[Cabin-Bold] text-[#02542D]
+}
+
+#intro{
+  @apply w-17/25 text-xl
+}
+
+#disclaimer{
+  @apply w-11/25 text-xs text-[#8E8E93]
+}
+
+#disclaimer span{
+  @apply font-[Cabin-Bold]
+}
+
 .message-container{
-  @apply flex flex-row-reverse
+  @apply w-full flex flex-row-reverse
 }
 
 .message-prompt{
