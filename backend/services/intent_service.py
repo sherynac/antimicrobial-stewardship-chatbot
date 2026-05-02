@@ -1,4 +1,6 @@
 from typing import List
+import services.ontology_service as ontology_service
+import services.intent_handler as intent_handler
 
 def identify_intent(words):
     if any(word in ['about_chatbot'] for word in words):
@@ -13,7 +15,7 @@ def identify_intent(words):
     elif any(word in ['uses_indications'] for word in words):
         return 'get_uses_indications'
     
-    elif any(word in ['side effects'] for word in words):
+    elif any(word in ['side_effects'] for word in words):
         return 'get_side_effects'
     
     elif any(word in ['substance_interaction'] for word in words):
@@ -53,25 +55,70 @@ def identify_entities_present(entity_types):
     generic_brand = ['Antibiotic', 'Brand']
     generic = ['Antibiotic']
     brand = ['Brand']
-    multiple_brands = ['Brand', 'Brand']
-    susbtance = ['Substance']
+    substance = ['Substance']
+    generic_substance = ['Antibiotic', 'Substance']
+    brand_substance = ['Brand', 'Substance']
     warning = ['Warning']
     generic_brand_side_effects = ['Antibiotic', 'Brand', 'SideEffect']
     generic_side_effects = ['Antibiotic', 'SideEffect']
 
-    if all (e in entity_types for e in generic_brand):
+    if all (e in entity_types for e in generic_substance):
+        return 'generic_substance'
+    elif all (e in entity_types for e in brand_substance):
+        return 'brand_substance'
+    elif all (e in entity_types for e in warning):
+        return 'warning'
+    elif all (e in entity_types for e in generic_brand_side_effects):
+        return 'generic_brand_side_effects'
+    elif all (e in entity_types for e in generic_side_effects):
+        return 'generic_side_effects'
+    elif all (e in entity_types for e in generic_brand):
         return 'generic_brand'
     elif all (e in entity_types for e in generic):
         return 'generic'
-    elif all (e in entity_types for e in brand):
+    elif all(e == 'Brand' for e in entity_types):
+        entity_types_list = list(entity_types)
+        if entity_types_list.count('Brand') > 1:
+            return 'multiple_brands'
         return 'brand'
-    elif all (e in entity_types for e in susbtance):
+    elif all (e in entity_types for e in substance):
         return 'substance'
-    elif all (e in entity_types for e in warning):
-        return 'warning'
-    elif all (e in entity_types for e in multiple_brands):
-        return 'multiple_brands'
-    elif all (e in entity_types for e in generic_brand_side_effects):
-        return 'generic_brand_side_effects'
     else:
         return 'unknown_entity_combination'
+    
+def handle_intent(onto, intent, query_type, question_entities):
+    if intent == 'get_about_chatbot':
+        return intent_handler.handle_about_chatbot()
+    elif intent == 'get_antibiotic_info':
+        return intent_handler.handle_antibiotic_info(onto, question_entities, query_type)
+    elif intent == 'compare_brands':
+        return intent_handler.handle_compare_brands(onto, question_entities, query_type)
+    elif intent == 'get_uses_indications':
+        return intent_handler.handle_uses_indications(onto, question_entities, query_type)
+    elif intent == 'get_side_effects':
+        return intent_handler.handle_side_effects(onto, question_entities, query_type)
+    elif intent == 'get_substance_interaction':
+        return intent_handler.handle_substance_interaction(onto, question_entities, query_type)
+    elif intent == 'get_warning_precautions':
+        return intent_handler.handle_warning_precautions(onto, question_entities, query_type)
+    elif intent == 'get_monitoring_instruction':
+        return intent_handler.handle_monitoring_instruction(onto, question_entities, query_type)
+    elif intent == 'get_storage_instruction':
+        return intent_handler.handle_storage_instruction(onto, question_entities, query_type)
+    elif intent == 'get_proper_use_of_medicine':
+        return intent_handler.handle_proper_use_of_medicine(onto, question_entities, query_type)
+    elif intent == 'get_antibiotic_adherence':
+        return intent_handler.handle_antibiotic_adherence(onto, question_entities, query_type)
+    elif intent == 'is_not_recognized':
+        return intent_handler.handle_is_not_recognized()
+    elif intent == 'redirect_medicine_query':
+        return intent_handler.handle_redirect_medicine_query()
+    elif intent == 'redirect_dosage_query':
+        return intent_handler.handle_redirect_dosage_query()
+    elif intent == 'get_general_answer':
+        return intent_handler.handle_general_answer(onto, query_type, question_entities)
+    else:
+        print("Sorry, I couldn't understand your question. Could you please rephrase it?")
+        return None
+    
+        

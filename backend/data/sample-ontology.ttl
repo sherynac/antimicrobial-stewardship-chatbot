@@ -193,7 +193,14 @@
 :hasInteraction rdf:type owl:ObjectProperty ;
     rdfs:domain :Brand ;
     rdfs:range :Interaction ;
-    rdfs:label "has interaction" .
+    rdfs:label "has interaction" ;
+    owl:inverseOf :isInteractionOf .
+
+:isInteractionOf rdf:type owl:ObjectProperty ;
+    rdfs:domain :Interaction ;
+    rdfs:range :Brand ;
+    rdfs:label "is interaction of" ;
+    rdfs:inverseOf :hasInteraction .
 
 :interactsWith rdf:type owl:ObjectProperty ;
     rdfs:domain :Interaction ;
