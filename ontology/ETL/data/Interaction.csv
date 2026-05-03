@@ -15,7 +15,7 @@ ITN003,A004,"GI absorption may be interfered resulting in lower systemic levels 
 ITN003,A005,Concurrent administration of levofloxacin with antacids containing magnesium or aluminum may interfere with the gastrointestinal absorption of levofloxacin resulting in systemic levels considerably lower than desired.,R005
 ITN003,A006,"Levofloxacin absorption is significantly reduced when iron salts, or magnesium- or aluminum-containing antacids are administered concomitantly with Levofloxacin tablets.",R006
 ITN003,A008,"Giving azithromycin with antacids containing aluminum or magnesium salts can reduce the rate, but not the extent, of its absorption; azithromycin should be given at least 1 hour before or 2 hours after the antacid.",R008
-ITN 003,A009,No effect on overall bioavailability was seen although peak serum concentrations were reduced by approximately 24%.,R009
+ITN003,A009,No effect on overall bioavailability was seen although peak serum concentrations were reduced by approximately 24%.,R009
 ITN003,A010,Azithromycin should be taken at least one hour before or two hours after administration of antacid preparations.,R010
 ITN004,A001,Barbiturates decrease the half-life of doxycycline.,R001
 ITN004,A002,Barbiturates decrease the half-life of doxycycline.,R002

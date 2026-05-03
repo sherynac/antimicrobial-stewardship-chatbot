@@ -1,4 +1,4 @@
-Indication ID,Antibiotic  ID,Severity Type,Symptoms,Reference ID
+Indication ID,Antibiotic ID,Severity Type,Symptoms,Reference ID
 I001,A001,Not Specified,Symptoms 1,"R001
 "
 I002,A001,Not Specified,Symptoms 2,R001
