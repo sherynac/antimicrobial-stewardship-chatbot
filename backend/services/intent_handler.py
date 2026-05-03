@@ -1,83 +1,110 @@
-import services.ontology_service as ontology_service
-from services.helpers import add_space_to_pascal_case
+from services.ontology_service import ontology_service
+from services.response_service import response_service
+from utils.helpers import add_space_to_pascal_case
 
 # Every method still needs to fetch the references and saving to a response
 
-def handle_about_chatbot():
-    return "Ophiuchus is an antimicrobial stewardship chatbot designed to provide information about antibiotics, their uses, side effects, interactions, and more. It aims to help users make informed decisions about antibiotic use and promote responsible stewardship."
-
-def handle_antibiotic_info(onto, entities, query_type):
+def handle_antibiotic_info(entities, query_type):
     
     if query_type == 'generic_brand':
         generic_name = entities.get('Antibiotic', [None])[0]
         brand_name = entities.get('Brand', [None])[0]
-        brand_obj = ontology_service.query_ontology(onto, brand_name)
-        generic_obj = ontology_service.query_ontology(onto, generic_name)
+        brand_obj = ontology_service.query_ontology(brand_name)
+        generic_obj = ontology_service.query_ontology(generic_name)
+        ontology_service.is_correct_generic(generic_name, brand_obj)
+
         presentation_obj = brand_obj.hasPresentation
-        print("Presentation Object: ", presentation_obj)
+        manufacturer = brand_obj.hasManufacturer
+        distributor = brand_obj.hasDistributor
+        content = brand_obj.hasContent
+        reference = ontology_service.get_reference_from_entity(brand_obj)
+
+        if len(presentation_obj) > 1:
+            brand_info = {
+                "brand" : brand_name, 
+                "generic" : generic_name, 
+                "manufacturer" : manufacturer[0], 
+                "distributor" : distributor[0], 
+                "content" : content[0], 
+            }
+            table_details = ontology_service.get_brand_presentations(presentation_obj)
+            return response_service.build_antibiotic_multiple(brand_info, table_details, reference)
         
-        presentation = presentation_obj[0].is_a
-        print("Generic: ", generic_name)
-        print("Brand: ", brand_name)
-        print("Presentation: ", presentation.name)
-    
+        elif len(presentation_obj) == 1:
+            presentation, dosage, unit_price = ontology_service.get_presentation_details(presentation_obj[0])
+            brand_info = {
+                "brand" : brand_name, 
+                "generic" : generic_name, 
+                "manufacturer" : manufacturer[0], 
+                "distributor" : distributor[0], 
+                "content" : content[0], 
+                "presentation" : presentation, 
+                "dosage" : dosage, 
+                "unit_price" : unit_price}
+            return response_service.build_antibiotic_single(brand_info, reference)
+        
+        else:
+            return response_service.build_text_response("No presentation data found.")
+
+
     elif query_type == 'generic':
         generic_name = entities.get('Antibiotic', [None])[0]
-        generic_obj = ontology_service.query_ontology(onto, generic_name)
+        generic_obj = ontology_service.query_ontology(generic_name)
         drug_class = generic_obj.hasDrugClass
         brands_obj = generic_obj.hasBrandName
-        presentations = []
+        reference_list = ontology_service.get_reference_from_entities(brands_obj)
+
+        generic_info = {
+            "generic" : generic_name,
+            "drug_class" :drug_class[0]
+        }
+
+        table_details = []
         for brand in brands_obj:
             presentation_obj = brand.hasPresentation
-            presentation = presentation_obj[0].is_a
-            presentations.append(presentation.name)
-        
-        print("Generic: ", generic_name)
-        print("Drug Class: ", drug_class)
-        print("Brands: ", brands_obj)
-        print("Presentations: ", presentations)
-            
+            table_details.append(ontology_service.get_brand_presentations(presentation_obj))
+
+        return response_service.build_antibiotic_generic(generic_info, table_details, reference_list)
+
     elif query_type == 'brand':
         brand_name = entities.get('Brand', [None])[0]
-        brand_obj = ontology_service.query_ontology(onto, brand_name)
+        brand_obj = ontology_service.query_ontology(brand_name)
         generic_obj = brand_obj.isBrandOf
         generic_name = generic_obj.name
         presentation_obj = brand_obj.hasPresentation
-        print("Presentation Object: ", presentation_obj)
-        presentation = presentation_obj[0].is_a
+
+        manufacturer = brand_obj.hasManufacturer
+        distributor = brand_obj.hasDistributor
+        content = brand_obj.hasContent
+        reference = ontology_service.get_reference_from_entity(brand_obj)
+
+        if len(presentation_obj) > 1:
+            brand_info = {
+                "brand" : brand_name, 
+                "generic" : generic_name, 
+                "manufacturer" : manufacturer[0], 
+                "distributor" : distributor[0], 
+                "content" : content[0], 
+            }
+            table_details = ontology_service.get_brand_presentations(presentation_obj)
+            return response_service.build_antibiotic_multiple(brand_info, table_details, reference)
         
-        print("Brand: ", brand_name)
-        print("Generic: ", generic_name)
-        print("Presentations: ", presentation.name)
-        
+        elif len(presentation_obj) == 1:
+            presentation, dosage, unit_price = ontology_service.get_presentation_details(presentation_obj[0])
+            brand_info = {
+                "brand" : brand_name, 
+                "generic" : generic_name, 
+                "manufacturer" : manufacturer[0], 
+                "distributor" : distributor[0], 
+                "content" : content[0], 
+                "presentation" : presentation, 
+                "dosage" : dosage, 
+                "unit_price" : unit_price}
+            return response_service.build_antibiotic_single(brand_info, reference)
+        else:
+            return response_service.build_text_response("No presentation data found.")
     else:
         return "Please specify the antibiotic name or brand for more information."
-
-# need checking of results
-def handle_compare_brands(onto, entities, query_type):
-    if query_type == 'generic_brand':
-        generic_name = entities.get('Antibiotic', [None])[0]
-        brand_name = entities.get('Brand', [None])[0]
-        brand_obj = ontology_service.query_ontology(onto, brand_name)
-        generic_obj = ontology_service.query_ontology(onto, generic_name)
-        
-        all_brands = list(generic_obj.hasBrandName)
-        other_brands = [brand for brand in all_brands if brand.name != brand_obj.name]
-        
-        presentation_obj = brand_obj.hasPresentation
-        
-    if query_type == 'generic':
-        generic_name = entities.get('Antibiotic', [None])[0]
-        generic_obj = ontology_service.query_ontology(onto, generic_name)
-        brands_obj = generic_obj.hasBrandName
-        
-          
-    if query_type == 'multiple_brands':
-        brand_names = entities.get('Brand', [0])[0:2]
-        brand_objs = [ontology_service.query_ontology(onto, name) for name in brand_names]
-        generic_objs = [brand.isBrandOf for brand in brand_objs]
-        
-    return "To compare antibiotic brands, please provide the names of the brands you want to compare."
 
 def handle_uses_indications(onto, entities, query_type):
     print(query_type)
@@ -193,8 +220,8 @@ def handle_side_effects(onto, entities, query_type):
         isFound = False
         
         for side_effect_instance in brand_obj.hasSideEffect:
-            ontology_side_effect = side_effect_instance.is_a[0].name
-            if target_side_effects.name.lower() == ontology_side_effect.lower():
+            ontology_service_side_effect = side_effect_instance.is_a[0].name
+            if target_side_effects.name.lower() == ontology_service_side_effect.lower():
                 isFound = True
                 
         if not(isFound):
@@ -306,9 +333,9 @@ def handle_side_effects(onto, entities, query_type):
         for brand in brands_obj:
             print("Brand_side_effects", brand.hasSideEffect)
             for side_effect_instance in brand.hasSideEffect:
-                ontology_side_effect = side_effect_instance.is_a[0].name
-                print("Ontology Side Effect: ", ontology_side_effect)
-                if target_side_effects.lower() == ontology_side_effect.lower():
+                ontology_service_side_effect = side_effect_instance.is_a[0].name
+                print("ontology_service Side Effect: ", ontology_service_side_effect)
+                if target_side_effects.lower() == ontology_service_side_effect.lower():
                     side_effects.append(side_effect_instance)
                     found_brands.append(brand)
         

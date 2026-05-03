@@ -1,0 +1,8 @@
+flask
+gunicorn
+flask-cors
+whitenoise
+neo4j
+rdflib
+owlready2
+

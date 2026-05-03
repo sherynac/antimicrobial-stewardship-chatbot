@@ -1,78 +1,154 @@
-import owlready2
 from rdflib import Graph
-
 from owlready2 import get_ontology, sync_reasoner_hermit
-from owlready2 import get_ontology
-from services.helpers import add_space_to_pascal_case
+from utils.helpers import add_space_to_pascal_case, is_name_match
 from typing import Optional
 
+class OntologyService:
+    def __init__(self):
+        self.onto = self.load_ontology()
 
-def load_ontology():
-    global onto
-    '''
-    Reads Turtle file (.ttl), converts it to OWL file (.owl), loads the ontology and returns the ontology
+    def load_ontology(self):
+        g = Graph()
+        g.parse("./backend/data/sample-ontology.ttl", format="turtle")
+        g.serialize(destination="./backend/data/sample-ontology.owl", format="xml")
 
-    Returns:
-        onto: the ontology knowledge base for the AMR chatbot
-    '''
-    # Load Turtle file
-    g = Graph()
-    g.parse("./backend/data/sample-ontology.ttl", format="turtle")
+        onto = get_ontology("./backend/data/sample-ontology.owl").load()
+        print(f"Loaded ontology with {len(list(onto.classes()))} classes")
+        # with onto:
+        #     sync_reasoner_hermit()
+        return onto
 
-    print ("AFTER GRAPH")
-    # Save as RDF/XML (.owl)
-    g.serialize(destination="./backend/data/sample-ontology.owl", format="xml")
-
-    onto = get_ontology("./backend/data/sample-ontology.owl").load()
-    print ("ONTO: ",onto)
-    print(f"Loaded ontology with {len(list(onto.classes()))} classes")
-    with onto:
-        sync_reasoner_hermit()
-    return onto
-
-def query_ontology(onto, entity):
-    result = onto.search_one(iri="*" + entity)
-    if result:
-        return result
-    else:
+    def query_ontology(self, entity):
+        result = self.onto.search_one(iri="*" + entity)  # ← self.onto
+        if result:
+            return result
         raise ValueError(f"Entity '{entity}' not found in the ontology.")
 
-def find_entities(onto, entity_name: str) -> list[str]:
-    """Find all instances including subclasses"""
-    entities = []
-    entity_class = onto.search_one(iri="*#" + entity_name)
+    def find_entities(self, entity_name: str) -> list[str]:
+        entities = []
+        entity_class = self.onto.search_one(iri="*#" + entity_name)  # ← self.onto
 
-    if entity_class:
-        for entity in entity_class.instances():
-            entity_name_clean = str(entity).split(".")[-1]
-            entities.append(entity_name_clean)
-    return sorted(set(entities))
+        if entity_class:
+            for entity in entity_class.instances():
+                entity_name_clean = str(entity).split(".")[-1]
+                entities.append(entity_name_clean)
+        return sorted(set(entities))
 
-def get_indication_severity_type(onto, indication):
-    indication_name = indication.is_a
-    severity = indication.hasSeverity
-    disease_type = indication_name[0].is_a
+    def is_correct_generic(self, generic_name, brand_obj):
+        generic_obj = brand_obj.isBrandOf
+        if (generic_obj.name != generic_name):
+            raise AssertionError(f"It seems that {brand_obj.name} is not a {generic_name}, but is actually a {generic_obj.name}.")
+
+    def get_indication_severity_type(self, indication):  # ← self added
+        indication_name = indication.is_a
+        severity = indication.hasSeverity
+        disease_type = indication_name[0].is_a
+
+        indication_name = add_space_to_pascal_case(indication_name[0].name)
+        severity_name = add_space_to_pascal_case(severity[0].name)
+        disease_type = add_space_to_pascal_case(disease_type[0].name)
+        disease_type = disease_type.replace("Disease", "")
+
+        if "Not Specified" in severity_name:
+            return indication_name, None, disease_type
+        return indication_name, severity_name, disease_type
+
+    def get_presentation_details(self, presentation_obj):
+        presentation = presentation_obj.is_a
+        dosage = presentation_obj.hasDosage
+        unit_price = presentation_obj.hasUnitPrice
+        return add_space_to_pascal_case(presentation[0].name), dosage[0], unit_price[0]
     
-    indication_name = add_space_to_pascal_case(indication_name[0].name)
-    severity_name = add_space_to_pascal_case(severity[0].name)
-    disease_type = add_space_to_pascal_case(disease_type[0].name)
-    disease_type = disease_type.replace("Disease", "")
-    
-    if "Not Specified" in severity_name:
-        return indication_name, None, disease_type
-    
-    return indication_name, severity_name, disease_type
+    def get_brand_presentations (self, presentation_obj):
+        '''
+        Retrieve all presentation, dosage and unit price for a brand
 
-def get_brand_info_details (presentation_obj):
-    brand_info = []
-    for presentation in presentation_obj:
-        presentation_name, dosage, unit_price =  get_presentation_details(presentation)
-        row = [presentation_name, dosage, f"Php {unit_price}"]
-        brand_info.append(row)
-    return brand_info
+        args:
+            presentation_obj: all presentations of a brand
+        Returns:
+            brand_info: array of brand info details
+        '''
+        brand_info = []
+        for presentation in presentation_obj:
+            presentation_name, dosage, unit_price = self.get_presentation_details(presentation)
+            row = [presentation_name, dosage, f"Php {unit_price}"]
+            brand_info.append(row)
+        return brand_info
 
-def get_presentation_details(presentation_obj):
-    presentation = presentation_obj.is_a
-    dosage = presentation.hasDosage
-    unit_price = presentation.hasUnitPrice
-    return add_space_to_pascal_case(presentation[0].name), dosage[0], unit_price[0]
+    def get_reference_details(self, reference_obj):
+        '''
+        Returns title and url of a reference
+        '''
+        reference_url = reference_obj.retrievedFrom
+        reference_title = reference_obj.hasReferenceTitle
+        return reference_title[0], reference_url[0]
+
+    def get_reference_from_entity(self, entity):
+        references = []
+        seen_urls = set()
+        references_obj = entity.hasReference
+
+        for reference in references_obj:
+            title, url = self.get_reference_details(reference)
+
+            if url in seen_urls:
+                continue
+
+            parent_class_names = [cls.name for cls in entity.INDIRECT_is_a if hasattr(cls, 'name')]
+            
+            if "Indication" in parent_class_names:
+                indication = entity.is_a
+                if is_name_match(add_space_to_pascal_case(indication[0].name), title):
+                    references.append({"name": reference.name, "title": title, "url": url})
+                    seen_urls.add(url)
+            elif "StewardshipPrinciple" in parent_class_names:
+                references.append({"name": reference.name, "title": title, "url": url})
+                seen_urls.add(url)
+            elif entity.name == title:
+                references.append({"name": reference.name, "title": title, "url": url})
+                seen_urls.add(url)
+
+        print("REFERENCE LIST:", references)
+        return references 
+
+    def get_reference_from_entities(self, entities):
+        '''
+        Building a reference list from multiple instances
+        args:
+            entities: object with multiple instances
+        
+        Returns:
+            references: raw list of reference dicts
+        '''
+        references = []
+        seen_urls = set()
+
+        for entity in entities:
+            references_obj = entity.hasReference
+            
+            for reference in references_obj:
+                title, url = self.get_reference_details(reference)  # ← self.
+                
+                if url in seen_urls:
+                    continue
+
+                parent_class_names = [cls.name for cls in entity.INDIRECT_is_a if hasattr(cls, 'name')]
+                
+                if "Indication" in parent_class_names:
+                    indication = entity.is_a
+                    if is_name_match(add_space_to_pascal_case(indication[0].name), title):
+                        references.append({"name": reference.name, "title": title, "url": url})
+                        seen_urls.add(url)
+
+                elif "StewardshipPrinciple" in parent_class_names:
+                    references.append({"name": reference.name, "title": title, "url": url})
+                    seen_urls.add(url)
+
+                elif entity.name == title:
+                    references.append({"name": reference.name, "title": title, "url": url})
+                    seen_urls.add(url)
+
+        return references
+
+
+ontology_service = OntologyService()

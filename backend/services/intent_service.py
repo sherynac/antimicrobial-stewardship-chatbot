@@ -86,29 +86,29 @@ def identify_entities_present(entity_types):
     else:
         return 'unknown_entity_combination'
     
-def handle_intent(onto, intent, query_type, question_entities):
+def handle_intent(intent, query_type, question_entities):
     if intent == 'get_about_chatbot':
         return intent_handler.handle_about_chatbot()
     elif intent == 'get_antibiotic_info':
-        return intent_handler.handle_antibiotic_info(onto, question_entities, query_type)
+        return intent_handler.handle_antibiotic_info(question_entities, query_type)
     elif intent == 'compare_brands':
-        return intent_handler.handle_compare_brands(onto, question_entities, query_type)
+        return intent_handler.handle_compare_brands(question_entities, query_type)
     elif intent == 'get_uses_indications':
-        return intent_handler.handle_uses_indications(onto, question_entities, query_type)
+        return intent_handler.handle_uses_indications(question_entities, query_type)
     elif intent == 'get_side_effects':
-        return intent_handler.handle_side_effects(onto, question_entities, query_type)
+        return intent_handler.handle_side_effects(question_entities, query_type)
     elif intent == 'get_substance_interaction':
-        return intent_handler.handle_substance_interaction(onto, question_entities, query_type)
+        return intent_handler.handle_substance_interaction(question_entities, query_type)
     elif intent == 'get_warning_precautions':
-        return intent_handler.handle_warning_precautions(onto, question_entities, query_type)
+        return intent_handler.handle_warning_precautions(question_entities, query_type)
     elif intent == 'get_monitoring_instruction':
-        return intent_handler.handle_monitoring_instruction(onto, question_entities, query_type)
+        return intent_handler.handle_monitoring_instruction(question_entities, query_type)
     elif intent == 'get_storage_instruction':
-        return intent_handler.handle_storage_instruction(onto, question_entities, query_type)
+        return intent_handler.handle_storage_instruction(question_entities, query_type)
     elif intent == 'get_proper_use_of_medicine':
-        return intent_handler.handle_proper_use_of_medicine(onto, question_entities, query_type)
+        return intent_handler.handle_proper_use_of_medicine(question_entities, query_type)
     elif intent == 'get_antibiotic_adherence':
-        return intent_handler.handle_antibiotic_adherence(onto, question_entities, query_type)
+        return intent_handler.handle_antibiotic_adherence(question_entities, query_type)
     elif intent == 'is_not_recognized':
         return intent_handler.handle_is_not_recognized()
     elif intent == 'redirect_medicine_query':
@@ -116,7 +116,7 @@ def handle_intent(onto, intent, query_type, question_entities):
     elif intent == 'redirect_dosage_query':
         return intent_handler.handle_redirect_dosage_query()
     elif intent == 'get_general_answer':
-        return intent_handler.handle_general_answer(onto, query_type, question_entities)
+        return intent_handler.handle_general_answer( query_type, question_entities)
     else:
         print("Sorry, I couldn't understand your question. Could you please rephrase it?")
         return None
