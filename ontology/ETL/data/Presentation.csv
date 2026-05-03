@@ -1,0 +1,53 @@
+Presentation ID,Antibiotic ID,Packing Type,Dosage,Unit Price,Reference ID
+P001,A001,Capsule,100 mg,₱103,R001
+P002,A002,Capsule,100 mg,Not Specified,R002
+P003,A003,Capsule,100 mg,Not Specified,R003
+P004,A004,Film-Coated Tablet,500 mg,₱54,R004
+P005,A005,Film-Coated Tablet,500 mg,₱95.4,R005
+P006,A005,Film-Coated Tablet,750 mg,₱139.392,R005
+P007,A005,IV Infusion,500 mg,"₱1,478.4",R005
+P008,A005,IV Infusion,750 mg,"₱1,958.88",R005
+P009,A006,Film-Coated Tablet,500 mg,₱49,R006
+P010,A007,Powder for Injection,1 g,₱675,R007
+P011,A008,Film-Coated Tablet,500 mg,Not Specified,R008
+P012,A009,Film-Coated Tablet,500 mg,₱137.838,R009
+P013,A010,Film-Coated Tablet,500 mg,Not Specified,R010
+P014,A010,Oral Suspension (15 mL),200 mg/5 mL,Not Specified,R010
+P015,A011,Capsule,500 mg,Not Specified,R011
+P016,A011,Oral Drops (20 mL),100 mg/mL,Not Specified,R011
+P017,A011,Powder for Oral Suspension (60 mL),250 mg/5 mL,Not Specified,R011
+P018,A012,Oral Drops (10 mL),100 mg/mL,₱84.5,R012
+P019,A012,Oral Suspension (60 mL),250 mg/5 mL,₱141.5,R012
+P020,A012,Oral Suspension (105 mL),250 mg/5 mL,₱157.5,R012
+P021,A013,Capsule,250 mg,₱5.5,R013
+P022,A013,Capsule,500 mg,₱7.5,R013
+P023,A014,Oral Suspension (70 mL),250 mg/5 mL,"₱1,172.08",R014
+P024,A014,Oral Suspension (35 mL),250 mg/5 mL,₱605.36,R014
+P025,A015,Tablet,500 mg,Not Specified,R015
+P026,A016,Powder for Oral Suspension (50 mL),250 mg/5 mL,₱679,R016
+P027,A016,Tablet,500 mg,₱57.55,R016
+P028,A017,Granules for Oral Suspension,3 g,Not Specified,R017
+P029,A018,Powder for Oral Suspension,3 g,Not Specified,R018
+P030,A019,Granules for Oral Suspension,3 g,₱461.44,R019
+P031,A020,Capsule,400 mg/80 mg,₱65,R020
+P032,A020,Oral Suspension (60 mL),400 mg/80 mg/5 mL,₱118,R020
+P033,A020,Oral Suspension (60 mL),200 mg/40 mg/5 mL,₱112,R020
+P034,A020,Tablet,800 mg/160 mg,₱90,R020
+P035,A021,Film-Coated Tablet,500 mg,₱46.3,R021
+P036,A022,Powder for Injection (10 mL),750 mg,Not Specified,R022
+P037,A022,Tablet,500 mg,Not Specified,R022
+P038,A023,Film-Coated Tablet,500 mg,₱54,R023
+P039,A024,Tablet,500 mg,Not Specified,R024
+P040,A025,Tablet,500 mg,₱23,R025
+P041,A025,Solution for Infusion (100 mL),2 mg/mL,₱35,R025
+P042,A026,Film-Coated Tablet,500 mg,Not Specified,R026
+P043,A027,Capsule,200 mg,₱90,R027
+P044,A028,Film-Coated Tablet,200 mg,₱94.45,R028
+P045,A028,Film-Coated Tablet,400 mg,₱148.4,R028
+P046,A028,Granules for Oral Suspension (30 mL),100 mg/5 mL,₱460.88,R028
+P047,A028,Granules for Oral Suspension (60 mL),100 mg/5 mL,₱694.68,R028
+P048,A028,Oral Drops (10 mL),20 mg/mL,₱262.2,R028
+P049,A029,Oral Drops (10 mL),20 mg/mL,₱296,R029
+P050,A029,Granules for Oral Suspension (60 mL),100 mg/5 mL,₱999,R029
+P051,A029,Granules for Oral Suspension (30 mL),100 mg/5 mL,₱706,R029
+P052,A030,Capsule,100 mg,Not Specified,R030

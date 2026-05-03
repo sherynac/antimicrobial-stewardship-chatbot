@@ -1,212 +1,363 @@
-Substance ID,Substance Name,Type,Description,Reference ID
-S001,Beer,Beverage,like san miguel,R001
-S002,Dairy Products,Food,like bearbrand,R001
-S003,Antacid,Drug,used for acid reflux,R001
-S004,Metoclopramide,Drug,"May lower serum concentration and urinary excretion of fosfomycin, reducing its effectiveness.","R022
-R023
+Interaction ID,Type,Substance Name,Substance Description,Reference ID
+ITN001,Drug,Anticoagulants,"Anticoagulants are medicines that increase the time it takes for blood to clot. They are commonly called blood thinners. 
+","R001
+R002
+R003
+R013
+R027
+R029
+R031"
+ITN002,Drug,Penicillin,"Penicillins are a group of antibiotics that fight bacteria and was originally developed from the Penicillium fungi. Penicillin V is one type of penicillin antibiotic and is used to treat a wide range of bacterial infections such as ear infections, throat infections, skin infections and preventing rheumatic fever.
+
+","R001
+R002
+R003
+R032"
+ITN003,Drug,Antacids,"Antacids are medicines that neutralize acid in the stomach. They contain ingredients such as aluminum, calcium, magnesium, or sodium bicarbonate which act as bases (alkalis) to counteract stomach acid and make its pH more neutral.","R001
+R002
+R003
+R004
+R005
+R006
+R008
+R009
+R010
+R033"
+ITN004,Drug,Barbiturates,"Barbiturates are a class of drugs that were used extensively in the 1960s and 1970s as a treatment for anxiety, insomnia, and seizure disorders. Apart from a few specific indications, they are not commonly prescribed these days, having been largely superseded by benzodiazepines, which are much safer, although still potentially addictive.","R001
+R002
+R003
+R034"
+ITN005,Drug,Carbamazepine,"Carbamazepine is an anticonvulsant. It works by decreasing nerve impulses that cause seizures and nerve pain, such as trigeminal neuralgia and diabetic neuropathy.","R001
+R002
+R003
+R009
+R010
+R014
+R016
+R027
+R029
+R035"
+ITN006,Drug,Phenytoin,"Phenytoin is an anti-epileptic drug, also called an anticonvulsant. Phenytoin works by slowing down impulses in the brain that cause seizures.","R001
+R002
+R003
+R014
+R016
+R020
+R036"
+ITN007,Drug,Methoxyflurane,"It is used to ease pain.","R001
+R037"
+ITN008,Drug,Oral Contraceptives,Contraceptives are the name given to medicines and other devices that are used to prevent unwanted pregnancy. Contraceptives may also be referred to as birth control. Hormonal contraceptives that contain both an estrogen and progestin are called combined oral contraceptives (COCs).,"R001
+R002
+R012
+R013
+R038"
+ITN009,Drug,Bismuth Subsalicylate,"Bismuth subsalicylate relieves diarrhea, travelers' diarrhea, nausea, heartburn, indigestion, gas, or upset stomach.","R001
+R002
+R003
+R039"
+ITN010,Drug,Aminoglycosides,"Aminoglycosides are a class of antibiotics used mainly in the treatment of aerobic gram-negative bacilli infections, although they are also effective against other bacteria including Staphylococci and Mycobacterium tuberculosis. They are often used in combination with other antibiotics.","R003
+R040"
+ITN011,Drug,Contraceptives,COCs prevent pregnancy by inhibiting the normal process of ovulation (the release of an egg from an ovary) and by altering the lining of the uterus (the endometrium) so that it is unable to support a fertilized egg. They also change the viscosity (stickiness) of mucus within the cervix to make it hard for sperm to travel to the uterus.,"R003
+R038"
+ITN012,Drug,Sucralfate,"Sucralfate works mainly in the lining of the stomach and is not highly absorbed into the body. sucralfate adheres to ulcer sites and protects them from acids, enzymes, and bile salts.","R004
+R005
+R006
+R026
+R041"
+ITN013,Drug,Didanosine,Didanosine is used in combination with other medicines for the treatment of human immunodeficiency virus (HIV) infection. HIV is the virus that causes acquired immune deficiency syndrome (AIDS).,"R004
+R009
+R042"
+ITN014,Food,Multivit Prep w/ Zn,Zinc is a naturally occurring mineral. Zinc is important for growth and for the development and health of body tissues.,"R004
+R005
+R043"
+ITN015,Drug,"Class IA (Quinidine, Procainamide)","Precise role in antiarrhythmic therapy has not been established. Some experts recommend that disopyramide be reserved for use as an alternative drug when lidocaine, quinidine, or procainamide is ineffective or adverse effects of these drugs are intolerable.","R004
+R044"
+ITN016,Drug,"Class III (Amiodarone, Sotalol)","Used to suppress and prevent recurrence of documented life-threatening ventricular arrhythmias (e.g., sustained ventricular tachycardia); designated an orphan drug by FDA for such use.","R004
+R045"
+ITN017,Drug,Fluoxetine,"Fluoxetine is a selective serotonin reuptake inhibitor (SSRI) antidepressant. Fluoxetine inhibits the uptake of serotonin by a nerve cells (neurons) and helps people with depression, panic, anxiety, or obsessive-compulsive symptoms.","R004
+R014
+R046"
+ITN018,Drug,Imipramine,Imipramine is a tricyclic antidepressant used to treat symptoms of depression. Imipramine is sometimes used to treat bed-wetting in children ages 6 and older.,"R004
+R047"
+ITN019,Drug,Antidiabetic Agent,"Antidiabetic agents refer to all the different types of medicine involved in the treatment of diabetes. Antidiabetic agents also prevent the development of, or slow the progression of, long-term complications of the disease, such as nephropathy (kidney disease), neuropathy (nerve damage), and retinopathy (damage to the retina of the eye).","R004
+R005
+R048"
+ITN020,Drug,Cyclosporine,"Cyclosporine weakens your body's immune system, to help keep it from ""rejecting"" a transplanted organ such as a kidney. Organ rejection happens when the immune system treats the new organ as an invader and attacks it.","R005
+R010
+R014
+R016
+R026
+R049"
+ITN021,Drug,Tacrolimus,"Tacrolimus is used together with other medicines in people who have had a heart, kidney, liver, or lung transplant.","R004
+R014
+R016
+R050"
+ITN022,Drug,Corticosteroids,Corticosteroids (adrenal cortical steroids) are natural hormones made by the adrenal cortex which are important in maintaining good health. ,"R004
+R010
+R051"
+ITN023,Drug,Fluconazole,"Fluconazole is a prescription azole antifungal medication that may be used to treat serious fungal or yeast infections including those that affect the vagina, mouth or throat, lungs, bladder, or blood.","R004
+R009
+R014
+R052"
+ITN024,Drug,Theophylline,"Theophylline is a bronchodilator that is used to treat symptoms of asthma, bronchitis, emphysema, and other breathing problems.","R004
+R005
+R006
+R009
+R010
+R014
+R016
 R024
-R026"
-S005,Cimetidine,Drug,Used for heartburn or ulcers. Does not affect Fosfomycin levels.,R024
-S006,Beer,Beverage,"An alcoholic beverage. No known interaction with Fosfomycin, but general caution with antibiotics is advised.","R024
-R026"
-S007,Wine,Beverage,"An alcoholic beverage. No known interaction with Fosfomycin, but general caution with antibiotics is advised.","R024
-R026"
-S008,Whiskey,Beverage,An alcoholic beverage. General caution advised.,"R024
-R026"
-S009,High-Fat Meal,Food,"A meal high in fat can reduce Fosfomycin peak blood levels and delay absorption, but overall urinary excretion is unchanged.",R024
-S010,Gentamicin,Drug,An aminoglycoside antibiotic that may affect kidney function.,R026
-S011,Vancomycin,Drug,"An antibiotic that may cause kidney strain, especially with other nephrotoxic drugs.",R026
-S012,Furosemide,Drug,"A diuretic (water pill) that lowers potassium levels.",R026
-S013,Sodium Chloride IV Solution,Drug,"IV fluid containing sodium, which may increase total  sodium intake.",R026
-S014,Astemizole,Drug,"Astemizole is a long-acting, non-sedating second generation antihistamine used in the treatment of allergy symptoms.",R104
-S015,Cisapride,Drug,Cisapride is used to treat symptoms of nighttime heartburn in people who have not responded to other treatments.,R105
-S016,Terfenadine,Drug,"Terfenadine, a piperidine derivative, is a non-sedating H1 receptor antagonist antihistamine",R106
-S017,Ethanol,Beverage,"Drinks containing ethanol, such as beer, wine, and spirits. Can affect liver and kidney function.","R027
-R028"
-S018,Warfarin,Drug,A blood thinner used to prevent blood clots.,"R027
-R028"
-S019,Aminoglycosides,Drug,"Antibiotics used to treat serious infections; can affect kidneys and hearing (e.g., gentamicin)","R027
-R028"
-S020,Calcium Supplements,Drug,Pills or liquids used to increase calcium intake.,R028
-S021,Dairy Products,Food,"Milk, cheese, yogurt, and other food containing calcium.",R028
-S022,Antacids,Drug,"Medications that reduce stomach acid, often contaiing magnesium or aluminum.",R028
-S023,Other Medications,Drug,"Antibiotics or other drugs may interact with fosfomycin, affecting effectiveness","R029
-R030"
-S024,Ethanol,Beverage,Drinking alcohol may increase risks of side effects like dizziness or nausea.,"R029
-R030"
-S025,Caffeine,Food,Can sometimes worsen side effects like dizziness or jitteriness.,"R029
-R030"
-S026,Caffeine,Drug,Can sometimes worsen side effects like dizziness or jitteriness.,"R029
-R030"
-S027,Nicotine,Drug,May affect drug metabolism and effectiveness.,"R029
-R030"
-S028,Probenecid,Drug,Reduces renal clearance of cefotaxime,R014
-S029,Mezlocillin,Drug,"Also known as Ureidopenicillins azlocillin, may reduce total body clearance of cefotaxime in patients with normal and reduced renal function.",R014
-S030,Ureidopenicillins azlocillin,Drug,"Also known as Mezlocillin, may reduce total body clearance of cefotaxime in patients with normal and reduced renal function.",R014
-S031,Thiazide diuretics,Drug,Diuretics for hypertension/fluid control.,R031
-S032,Pyrimethamine,Drug,Antimalarial antifolate agent.,R031
-S033,Oral hypoglycemics / anticoagulants (protein-bound),Drug,Highly protein-bound medications.,R031
-S034,Warfarin,Drug,Oral vitamin K antagonist anticoagulant.,R031
-S035,Phenytoin,Drug,Antiepileptic with narrow therapeutic index.,R031
-S036,Rifampicin,Drug,Potent enzyme-inducing antibiotic.,R031
-S037,Nelfinavir,Drug,Sample description,R001
-S038,Gentamicin / Amikacin,Drug,Aminoglycoside antibiotics. Increased risk of nephrotoxicity (kidney damage) and ototoxicity (hearing loss) when taken with Cephalosporins.,R032
-S039,Metoclopramide,Drug,"Used for nausea or to speed up stomach emptying. When taken with oral antibiotics, it may decrease their absorption and overall effectiveness.",R032
-S040,Probenecid,Drug,Medication often used for gout.,R015
-S041,Combined Oral Contraceptives,Drug,Hormonal birth control pills.,R015
-S042,Allopurinol,Drug,Medication used to lower uric acid.,R015
-S043,"Anticoagulants (e.g., Warfarin, Acenocoumarol)",Drug,Blood thinners used to prevent clots.,R015
-S044,Methotrexate (MTX),Drug,Cancer/autoimmune drug,R017
-S045,Probenecid,Drug,Gout medication,R017
-S046,Allopurinol,Drug,Uric acid medication,R017
-S047,Oral Contraceptives,Drug,Birth control pills,R017
-S048,Food,Food,"	
-Meals/Diet",R017
-S049,Methotrexate,Drug,Cancer treatment,R017
-S050,Probenecid,Drug,Gout treatment,R017
-S051,Allopurinol,Drug,Uric acid drug,R017
-S052,Oral Contraceptives,Drug,Birth control,R017
-S053,Food,Food,Standard diet,R017
-S054,Methotrexate,Drug,Antifolate chemotherapy/immunosuppressant,R035
-S055,Para‑aminobenzoic acid (PABA) / derivatives,Drug,Folate precursor,R035
-S056,Warfarin / Anticoagulants,Drug,Vitamin K antagonist,R035
-S057,Phenytoin,Drug,Antiepileptic,R035
-S058,Sulphonylureas,Drug,Oral hypoglycemics,R035
-S059,Diuretics (thiazides),Drug,Diuretics in elderly,R035
-S060,Cyclosporin,Drug,Immunosuppressant,R035
-S061,Pyrimethamine,Drug,Antimalarial antifolate,R035
-S062,Digoxin,Drug,Cardiac glycoside,R035
-S063,ACE inhibitors / ARBs / potassium-sparing diuretics / prednisolone,Drug,Agents that increase potassium,R035
-S064,Tricyclic antidepressants,Drug,Antidepressants,R035
-S065,"Urinary acidifiers, oral anticoagulants, phenylbutazone, oxyphenbutazone, indomethacin",Drug,Drugs increasing SMX levels,R035
-S066,CYP2C8 / CYP2C9 / OCT2 substrate drugs,Drug,Drugs metabolized/eliminated by these pathways,R035
-S067,Dofetilide,Drug,Class III antiarrhythmic,R035
-S068,cationic drugs,Drug,Cationic drugs excreted renally,R035
-S069,Allopurinol,Drug,Gout medication,R016
-S070,Anticoagulants,Drug,Blood thinners,R016
-S071,Bacteriostatic Agents,Drug,"e.g., Tetracyclines, Macrolides",R016
-S072,Digoxin,Drug,Heart medication,R016
-S073,Methotrexate (MTX),Drug,Cancer/autoimmune drug,R016
-S074,Oral Contraceptives,Drug,Birth control pills,R016
-S075,Probenecid,Drug,Gout/Renal agent,R016
-S076,Aminoglycosides (Gentamicin / Amikacin),Drug,Increased risk of nephrotoxicity (kidney damage) and ototoxicity (hearing loss) when taken with Cephalosporins.,R047
-S077,Anticoagulants (Warfarin),Drug,Oral vitamin K antagonist; interaction increases bleeding risk (elevated INR).,R047
-S078,Antiepileptics (Phenytoin),Drug,Medication with a narrow therapeutic index; requires careful monitoring.,R047
-S079,Ureidopenicillins (Azlocillin),Drug,Penicillin-class antibiotic that may decrease renal clearance of other drugs.,R047
-S080,Thiazide diuretics,Drug,Used for hypertension/fluid control; may affect renal drug excretion.,R047
-S081,Allopurinol,Drug,Used to lower uric acid (Gout); may increase incidence of skin rashes.,R047
-S082,Pyrimethamine,Drug,Antimalarial antifolate agent.,R047
-S083,Rifampicin,Drug,Potent enzyme-inducing antibiotic; may reduce effectiveness of concurrent meds.,R047
-S084,Milk,Beverage,Dairy product,R018
-S085,Fluoxetine,Drug,Antidepressant,R018
-S086,Zidovudine,Drug,HIV medication,R018
-S087,Ritonavir / HIV-PIs,Drug,Protease Inhibitors,R018
-S088,Theophylline,Drug,Asthma medication,R018
-S089,Carbamazepine,Drug,Seizure medication,R018
-S090,Oral Anticoagulants,Drug,Blood thinners,R018
-S091,Digoxin,Drug,Heart medication,R018
-S092,Colchicine,Drug,Gout medication,R018
-S093,Quinidine / Disopyramide,Drug,Heart rhythm drug,R018
-S094,"Statins (e.g., Lovastatin)",Drug,Cholesterol drug,R018
-S095,anticoagulant,Drug,Anticoagulant therapy,R011
-S096,penicillin,Drug,Bactericidal antibiotic,R011
-S097,antacids,Drug,"Products containing aluminum, calcium, magnesium, and iron-containing preparations",R011
-S098,Bismuth Subsalicylate,Drug,Treats occasional diarrhea,R048
-S099,Barbiturates,Drug,Sedative-hypnotic medications,R049
-S100,Carbamazepine,Drug,Controls seizures in people with epilepsy,R050
-S101,Phenytoin,Drug,Antiepileptic medication,R051
-S102,Methoxyflurane,Drug,Inhalation anesthetic,R052
-S103,Oral Contraceptives,Drug,pills preventing pregnancy,R053
-S104,Quetiapine,Drug,An atypical antipsychotic medication.,R001
-S105,Cisapride / Pimozide / Astemizole / Terfenadine,Drug,Various drugs metabolized by the cytochrome P-450 system.,R001
-S106,Oral Hypoglycemic Agents / Insulin,Drug,Medications used to manage blood sugar in diabetes.,R001
-S107,"Calcium Channel Blockers (e.g., Verapamil)",Drug,Medications used for high blood pressure or heart conditions.,R001
-S108,Food,Food,Dietary intake consumed during or near dose administration.,R019
-S109,Theophylline,Drug,A bronchodilator used for respiratory diseases.,R019
-S110,Carbamazepine,Drug,An anticonvulsant and mood-stabilizing drug.,R019
-S111,Ritonavir,Drug,An antiretroviral medication used to treat HIV.,R019
-S112,Zidovudine,Drug,An antiretroviral medication for HIV-infected patients.,R019
-S113,"Ototoxic Drugs (e.g., Aminoglycosides)",Drug,Drugs that can cause hearing or balance damage.,R019
-S114,Food,Food,Dietary intake consumed during or near dose administration.,R019
-S115,Warfarin / Oral Anticoagulants,Drug,Medications used to prevent blood clots.,R019
-S116,Simvastatin / Lovastatin,Drug,HMG-CoA reductase inhibitors used to lower cholesterol.,R019
-S117,Quetiapine,Drug,An atypical antipsychotic medication.,R019
-S118,Cisapride / Pimozide / Astemizole / Terfenadine,Drug,Various drugs metabolized by the cytochrome P-450 system.,R019
-S119,Oral Hypoglycemic Agents / Insulin,Drug,Medications used to manage blood sugar in diabetes.,R019
-S120,"Calcium Channel Blockers (e.g., Verapamil)",Drug,Medications used for high blood pressure or heart conditions.,R019
-S121,Food,Food,Dietary intake.,R020
-S122,"Cisapride, Pimozide, Astemizole, Terfenadine",Drug,"GI motility, antipsychotic, and antihistamines.",R020
-S123,"Ergot alkaloids (e.g., Ergotamine)",Drug,Migraine medications.,R020
-S124,Ticagrelor or Ranolazine,Drug,Antiplatelet or anti-anginal.,R020
-S125,Oral Midazolam,Drug,Sedative.,R020
-S126,Zidovudine,Drug,An antiretroviral medication for HIV-infected patients.,R054
-S127,"Ototoxic Drugs (e.g., Aminoglycosides)",Drug,Drugs that can cause hearing or balance damage.,R054
-S128,Food,Food,Dietary intake consumed during or near dose administration.,R054
-S129,Warfarin / Oral Anticoagulants,Drug,Medications used to prevent blood clots.,R054
-S130,Simvastatin / Lovastatin,Drug,HMG-CoA reductase inhibitors used to lower cholesterol.,R054
-S131,Quetiapine,Drug,An atypical antipsychotic medication.,R054
-S132,Cisapride / Pimozide / Astemizole / Terfenadine,Drug,Various drugs metabolized by the cytochrome P-450 system.,R054
-S133,Oral Hypoglycemic Agents / Insulin,Drug,Medications used to manage blood sugar in diabetes.,R054
-S134,"Calcium Channel Blockers (e.g., Verapamil)",Drug,Medications used for high blood pressure or heart conditions.,R054
-S135,Food,Food,Dietary intake.,R054
-S136,"Cisapride, Pimozide, Astemizole, Terfenadine",Drug,"GI motility, antipsychotic, and antihistamines.",R054
-S137,"Ergot alkaloids (e.g., Ergotamine)",Drug,Migraine medications.,R054
-S138,Nonsteroidal Anti-inflammatory Drugs (NSAIDs),Drug,"medications that reduce inflammation, pain and fever.",R008
-S139,Antidiabetic Agents,Drug,chemically and pharmacologically heterogeneous group of drugs,R008
-S140,"Antacids, Sucralfate, Metal Cations, Multivitamins",Drug,"Antacids containing magnesium or aluminum, as well as sucralfate metal cations such as iron and multivitamin preparations with zinc",R008
-S141,Multivalent cations,Drug,solution containing multivalent cations,R008
-S142,fluoroquinolones,Drug,"a class of potent, broad-spectrum antibiotics",R009
-S143,"Iron salts, magnesium- or aluminum-containin",Drug,Antacids,R010
-S144,Sucralfate,Drug,Sucralfate tablet,R010
-S145,"Theophylline, fenbufen or similar non-steroidal anti-inflammatory drugs",Drug,,R010
-S146,Probenecid and cimetidine,Drug,drugs that affect the tubular renal secretion,R010
-S147,Ciclosporin,Drug,,R010
-S148,Vitamin K antagonists,Drug,vitamin K antagonist (e.g. warfarin).,R010
-S149,Corticosteroid,Drug,"Corticosteroids can treat many causes of inflammation in your body. They’re also known as glucocorticoids or the shortened name steroids. It can be administered via an injection, a cream for your skin or orally.",R107
-S150,Sample Food,Food,Sample Description,R001
-S151,Ribafutin,Drug,An antibiotic used to treat infections caused by bacteria called mycobacteria which cannot be destroyed by usual antibiotics,R108
-S152,Coumarin-type oral anticoagulants,Drug,Potent anticoagulants that inhibit the cofactor function of vitamin K.,R110
-S153,Macrolide antibiotics,Drug,"Macrolides are a class of antibiotics that treat a wide range of bacterial infections, including walking pneumonia, whooping cough and strep throat. Commonly prescribed macrolides include azithromycin, clarithromycin, erythromycin, and fidaxomicin.",R109
-S154,Alcohol,Beverage,"Any drink that contains alcohol like beer, wine, vodka, and others",R093
-S155,Antacids,Drug,Medicines that relieve heartburn specifically those that contain magnesium hydroxide or aluminum hydroxide,R092
-S156,Naproxen and chloroquine,Drug,"Naproxen helps relieve inflammation and pain associated with muscle, joint or tendon disorders.; Chloroquine is used to prevent and treat malaria. It is also used to treat liver infection caused by protozoa (extraintestinal amebiasis).","R111
+R025
+R026
+R053"
+ITN025,Drug,Warfarin,"Warfarin is an anticoagulant (blood thinner). Warfarin reduces the formation of blood clots. Warfarin is used to treat or prevent blood clots in veins or arteries, which can reduce the risk of stroke, heart attack, or other serious conditions.
+","R004
+R005
+R009
+R010
+R011
+R020
+R027
+R029
+R054"
+ITN026,Drug,Nonsteroidal Anti-Inflammatory Drugs (NSAIDs),Nonsteroidal anti-inflammatories (usually abbreviated to NSAIDs) are a class of medicines that relieve pain and fever and reduce inflammation.,"R005
+R006
+R055"
+ITN027,Drug,Digoxin,"Digoxin is derived from the leaves of a digitalis plant. Digoxin helps make the heart beat stronger and with a more regular rhythm.
+","R005
+R006
+R009
+R010
+R013
+R014
+R020
+R056"
+ITN028,Drug,Probenecid,Probenecid is used to treat gout and gouty arthritis. probenecid reduces the amount of uric acid in your body by causing it to be passed in your urine.,"R005
+R006
+R007
+R011
+R012
+R013
+R021
+R022
+R023
+R026
+R027
+R029
+R030
+R057"
+ITN029,Drug,Cimetidine,"Cimetidine is a stomach acid reducer that is used to treat and prevent certain types of stomach ulcer. Cimetidine is also used to treat gastroesophageal reflux disease (GERD), when stomach acid backs up into the esophagus and causes heartburn.","R005
+R006
+R009
+R014
+R058"
+ITN031,Drug,Iron Salts,Iron dextran is used to treat iron deficiencies and iron deficiency anemia (low red blood cells).,"R006
+R026
+R060"
+ITN032,Drug,Calcium Carbonate,Calcium carbonate is used to prevent or to treat a calcium deficiency.,"R006
+R061"
+ITN033,Drug,Ranitidine,"Ranitidine is used to treat and prevent ulcers in the stomach and intestines. It is also used to treat conditions in which the stomach produces too much acid, such as Zollinger-Ellison syndrome.","R006
+R062"
+ITN034,Food,Meals,Regularly scheduled eating occasions consisting of a combination of foods and beverages.,"R006
+"
+ITN035,Drug,Mezlocillin,"Used in treatment of Cesarean Section, Gonococcal Infection, Surgical Prophylaxis, Urinary Tract Infection.","R007
+R063"
+ITN036,Drug,Astemizole,Astemizole was withdrawn from U.S. market in 1999.,"R008
+R015
+R016
+R064"
+ITN037,Drug,Cisapride,"Cisapride is used for the symptomatic (e.g., nocturnal heartburn) relief of gastroesophageal reflux. Drug therapy (e.g., antacids, alginic acid, prokinetic agents, histamine H2-receptor antagonists, proton-pump inhibitors) for gastroesophageal reflux is used in adults who are unresponsive to conventional nondrug therapy alone, including changes in lifestyle, habits, and/or diet that may be contributing factors, and weight reduction in obese patients.","R008
+R015
+R016
+R017
+R065"
+ITN038,Drug,Terfenadine,Terfenadine was withdrawn from the U.S. market in 1998.,"R008
+R009
+R014
+R015
+R016
+R066"
+ITN039,Drug,Cetirizine,"Cetirizine is also used to treat an allergic reaction, itching and swelling caused by chronic urticaria (hives) and minimizes or eliminates the symptoms of perennial allergic rhinitis, seasonal allergic rhinitis, chronic idiopathic urticaria, allergic asthma, physical urticaria, and atopic dermatitis.","R009
+R067"
+ITN040,Drug,Colchicine,"Colchicine is an oral, plant-based prescription alkaloid derived from the dried seeds of the autumn crocus or meadow saffron (Colchicum autumnale) that, depending on the brand or generic, may be used to treat and prevent gout flares in adults.","R009
+R014
+R068"
+ITN041,Drug,Zidovudine,"Zidovudine is an antiviral medicine used to treat HIV, the virus that can cause acquired immunodeficiency syndrome (AIDS). Zidovudine is also given during pregnancy to prevent an HIV-infected woman from passing the virus to her baby. Zidovudine is not a cure for HIV or AIDS.","R009
+R014
+R016
+R020
+R069"
+ITN042,Drug,Atorvastatin,"Atorvastatin is a prescription medicine used to treat high cholesterol and to reduce the risk of heart attack, stroke, angina, and to decrease the chance that heart surgery will be needed in people who have heart disease or who are at risk of developing heart disease.","R009
+R070"
+ITN043,Drug,Efavirenz,"Efavirenz is used to treat HIV, the virus that can cause acquired immunodeficiency syndrome (AIDS). Efavirenz is for adults and children who are at least 3 months old and weigh at least 8 pounds. Efavirenz is not a cure for HIV or AIDS.","R009
+R014
+R071"
+ITN044,Drug,Indinavir,Indinavir is used alone or in combination with other anti-HIV medicines to treat infection caused by the human immunodeficiency virus (HIV). HIV is the virus that causes acquired immune deficiency syndrome (AIDS).,"R009
+R072"
+ITN045,Drug,Methylprednisolone,Methylprednisolone is a corticosteroid medicine that prevents the release of substances in the body that cause inflammation.,"R009
+R014
+R073"
+ITN046,Drug,Midazolam,"Midazolam is a benzodiazepine (ben-zoe-dye-AZE-eh-peen) that is used to help you relax before having a minor surgery, dental work, or other medical procedure.","R009
+R014
+R026
+R074"
+ITN047,Drug,Nelfinavir,Nelfinavir is an antiviral medicine that is used to treat HIV (human immunodeficiency virus). HIV can cause acquired immunodeficiency syndrome (AIDS). Nelfinavir is not a cure for HIV or AIDS.,"R009
+R010
+R075"
+ITN048,Drug,Rifabutin,Rifabutin is used to prevent mycobacterium avium complex (MAC) in people with HIV (human immunodeficiency virus) infection. Rifabutin is also used with other medicines to treat tuberculosis in people with HIV.,"R009
+R014
+R016
+R076"
+ITN049,Drug,Sildenafil,"Sildenafil is used to treat erectile dysfunction (ED) in adult men or pulmonary arterial hypertension (PAH) in adults and children, depending on the brand or formulation.","R009
+R014
+R077"
+ITN050,Drug,Triazolam,Triazolam is a benzodiazepine that is used short term (7 to 10 days) to treat insomnia (trouble falling or staying asleep).,"R009
+R014
+R078"
+ITN051,Drug,Sulfamethoxazole/Trimethoprim (Co-trimoxazole),"Sulfamethoxazole and trimethoprim is a combination antibiotic used to treat ear infections, urinary tract infections, bronchitis, traveler's diarrhea, shigellosis, and Pneumocystis jiroveci pneumonia.","R009
+R018
+R019
+R079"
+ITN052,Drug,Lincomycin,Lincomycin is an antibiotic that is used to treat severe bacterial infections in people who cannot use penicillin antibiotics.,"R009
+R080"
+ITN053,Drug,Clindamycin,Clindamycin is an antibiotic that fights bacteria in the body. Clindamycin is used to treat serious infections caused by bacteria.,"R009
+R081"
+ITN054,Food,Food,Any substance consumed by humans to provide nutritional support.,"R010
+R017
+R018
+R025"
+ITN055,Drug,Combined Oral Contraceptives,"Combined oral contraceptives (COCs) contain an estrogen and a progestin to prevent ovulation (the release of an egg from an ovary), thin the uterine lining, and thicken cervical mucus making it impenetrable to sperm.","R011
+R038"
+ITN056,Drug,Allopurinol,"Allopurinol is used to treat gout (a type of arthritis in which uric acid, a naturally occurring substance in the body, builds up in the joints and causes sudden attacks of redness, swelling, pain, and heat in one or more joints). Allopurinol is used to prevent gout attacks, not to treat them once they occur. Allopurinol does not need to be stopped during an acute flare.","R011
+R012
+R013
+R082"
+ITN057,Drug,Acenocoumarol,"Acenocoumarol is not approved for marketing in the United States by the U.S. Food and Drug Administration, but is available in Canada and other countries. Because of the low levels of acenocoumarol in breastmilk, amounts ingested by the infant are small.","R011
+R083"
+ITN058,Drug,Methotrexate,"Methotrexate interferes with the growth of certain cells of the body, especially cells that reproduce quickly, such as cancer cells, bone marrow cells, and skin cells. Methotrexate is used to treat leukemia and certain types of cancer of the breast, skin, head and neck, lung, or uterus.","R012
+R013
+R020
+R084"
+ITN059,Drug,Chloramphenicol,"It is used to treat bacterial infections.","R013
+R027
+R029
+R085"
+ITN060,Drug,Macrolides,"Macrolides inhibit protein synthesis in bacteria by reversibly binding to the P site of the 50S unit of the ribosome. Macrolides mainly affect gram-positive cocci and intracellular pathogens such as mycoplasma, chlamydia, and legionella. Erythromycin was the first macrolide discovered; other macrolides include azithromycin, clarithromycin, and roxithromycin.","R013
+R018
+R019
+R086"
+ITN061,Drug,Sulfonamides,Sulfonamides (sulphonamides) are a group of man-made (synthetic) medicines that contain the sulfonamide chemical group. They may also be called sulfa drugs.,"R013
+R087"
+ITN062,Drug,Tetracyclines,"Tetracyclines are a class of antibiotics that may be used to treat infections caused by susceptible microorganisms such as gram positive and gram negative bacteria, chlamydiae, mycoplasma, protozoans, or rickettsiae.","R013
+R088"
+ITN063,Drug,Estriol/Estrone/Estradiol Conjugates,"Estradiol, estrone, and estriol are excreted in the urine along with glucuronide and sulfate conjugates.","R013
+R089"
+ITN064,Drug,Ritonavir,"Ritonavir is an antiviral medicine that prevents human immunodeficiency virus (HIV) from multiplying in your body. Ritonavir is used together with other antiviral medicines to treat HIV, the virus that can cause acquired immunodeficiency syndrome (AIDS). Ritonavir is not a cure for HIV or AIDS.","R014
+R016
+R090"
+ITN065,Drug,Omeprazole,"Omeprazole is used to treat excess stomach acid in conditions such as non cancerous stomach ulcers, gastroesophageal reflux disease (GERD), active duodenal ulcer, Zollinger-Ellison syndrome and erosive esophagitis. Omeprazole works by blocking gastric acid production and is from the group of medicines called proton pump inhibitors.","R014
+R091"
+ITN066,Drug,Ethambutol,"Ethambutol is an antibiotic that prevents growth of the tuberculous bacteria in the body. Ethambutol is used to treat tuberculosis (TB), and is usually given together with at least one other tuberculosis medicine.","R014
+R092"
+ITN067,Drug,Isoniazid,Isoniazid is an antibiotic that fights bacteria. Isoniazid is used to treat and to prevent tuberculosis (TB).,"R014
+R093"
+ITN068,Drug,Pyrazinamide,Pyrazinamide is an antibiotic that fights bacteria. Pyrazinamide is used to treat tuberculosis (TB) in adults and children.,"R014
+R094"
+ITN069,Drug,Oral Anticoagulants,Anticoagulants are medicines that increase the time it takes for blood to clot. They are commonly called blood thinners. ,"R014
+R016
+R020
+R031"
+ITN070,Drug,Quinidine,"Quinidine is used to help keep the heart beating normally in people with certain heart rhythm disorders, usually after other treatments have failed. Quinidine has not been proven to lower the risks of stroke or death.","R014
+R095"
+ITN071,Drug,Disopyramide,Disopyramide affects the way that your heart beats. Disopyramide is used to treat life-threatening irregular heartbeat patterns.,"R014
+R016
+R096"
+ITN072,Drug,Ergotamine,Ergotamine is an ergot alkaloid medicine that is used to treat a vascular headache (such as a migraine or cluster headache).,"R014
+R097"
+ITN073,Drug,Dihydroergotamine,Dihydroergotamine is an ergot alkaloid medicine that is used to treat a migraine or cluster headache attack. dihydroergotamine will not prevent headaches or reduce the number of attacks.,"R014
+R098"
+ITN074,Drug,Alprazolam,"Alprazolam is a benzodiazepine. It is thought that it works by enhancing the activity of certain neurotransmitters in the brain. Alprazolam is used to treat anxiety disorders, panic disorders, and anxiety caused by depression. It is dangerous to purchase alprazolam on the Internet or outside the United States. ","R014
+R099"
+ITN075,Drug,Lovastatin,"Lovastatin is used to lower the risk of stroke, heart attack, and other heart complications in adults with diabetes, coronary heart disease, or other risk factors.","R014
+R016
+R100"
+ITN076,Drug,Simvastatin,"Simvastatin is also used to lower the risk of stroke, heart attack, and other heart complications in people with diabetes, coronary heart disease, or other risk factors.","R014
+R016
+R101"
+ITN077,Drug,Alfentanil,Alfentanil injection is given together with other medicines to relieve pain during surgery. It is also used as a primary anesthesia (numbing medicine) for patients undergoing general surgery.,"R014 
+R016
+R102"
+ITN078,Drug,Cilostazol,Cilostazol is a vasodilator that works by relaxing the muscles in your blood vessels to help them dilate (widen). Cilostazol dilates arteries that supply blood to your legs. Cilostazol also improves circulation by keeping platelets in the blood from sticking together and clotting.,"R014
+R103"
+ITN079,Drug,Bromocriptine,"The Parlodel brand of bromocriptine is used to treat certain conditions caused by a hormone imbalance in which there is too much prolactin in the blood (hyperprolactinemia). High prolactin levels may cause sexual problems, hot flashes, menstrual problems or infertility in women, muscle loss in men, breast enlargement in men and women, and lack of sexual development in adolescents. Parlodel is also used to treat these disorders when they are caused by a noncancerous tumor of the pituitary gland that can overproduce prolactin.","R014
+R016
+R104"
+ITN080,Drug,Valproate,Valproate Sodium Injection is indicated as an intravenous alternative in patients in whom oral administration of valproate products is temporarily not feasible in the following conditions:,"R014
+R016
+R105"
+ITN081,Drug,Pimozide,Pimozide works by changing the actions of chemicals in the brain. Pimozide is used in people with Tourette's syndrome. Pimozide suppresses the physical (motor) and vocal (phonic) symptoms of tics when these symptoms interfere with daily life function.,"R015
+R016
+R106"
+ITN082,Drug,Metoclopramide,Metoclopramide increases muscle contractions in the upper digestive tract. This speeds up the rate at which the stomach empties into the intestines.,"R017
+R018
+R019
+R107"
+ITN083,Drug,Bethanechol,"Bethanechol is used to treat urinary retention (trouble urinating) that may be caused by surgery, delivering a baby, or other conditions.","R017
+R108"
+ITN084,Drug,Domperidone,"Domperidone is an antiemetic (anti-sickness) and prokinetic drug. It belongs to a group of drugs called dopamine antagonists. It is used to treat stomach-related issues, such as nausea and vomiting, as well as stomach pain and discomfort caused by decreased movement of the stomach and upper gastrointestinal (GI) tract. It is also used to boost breastmilk supply.","R017
+R109"
+ITN085,Drug,Laxatives,"Laxatives are medicines that help resolve constipation or empty the bowel of fecal matter before procedures or surgery involving the lower bowel. There are several different types available (see differences below) and each type works in a particular way. Some soften or loosen up the stool, while others increase how frequently the large colon contracts which helps move the stool along the bowel.","R017
+R110"
+ITN086,Drug,Fluoroquinolones," One of the classes, called fluoroquinolones, was derived from quinolones by adding a fluorine atom to nalidixic acid. This enhanced its activity against bacteria, and improved its absorption, metabolism, and excretion characteristics.","R018
+R019
+R111"
+ITN087,Drug,Cephalosporins,"Cephalosporins are bactericidal (kill bacteria) and work in a similar way to penicillins. They bind to and block the activity of enzymes responsible for making peptidoglycan, an important component of the bacterial cell wall. ","R018
+R019
 R112"
-S157,Opioid Analgesics,Drug,"Opioids are common, effective painkillers. But healthcare providers use them cautiously because of the possible side effects. Examples of common opioid medications include codeine, fentanyl, and hydrocodone.",R113
-S158,Ethacrinic Acid,Drug,"ETHACRYNIC ACID reduces swelling related to heart, kidney, liver, or lung disease. It may also be used to reduce swelling caused by cancer. It helps your kidneys remove more fluid and salt from your blood through the urine. It belongs to a group of medications called diuretics.",R145
-S159,Furosemide,Drug,"FUROSEMIDE treats high blood pressure. It may also be used to reduce swelling related to heart, kidney, or liver disease. It helps your kidneys remove more fluid and salt from your blood through the urine. It belongs to a group of medications called diuretics.",R148
-S160,Coumarin Drugs,Drug,"(warfarin, dicumarol, phenprocoumon, acenocumarol), interfering with vitamin K-dependent coagulation factors, are of benefit in the prevention of thromboembolic events when indicated, but concomitantly increase hemorrhagic risk.",R150
-S161,Carbamazepine,Drug,"used to manage and treat epilepsy, trigeminal neuralgia, and acute manic and mixed episodes in bipolar I disorder.",R151
-S162,Chloramphenicol,Drug,An antibiotic medication used to treat a variety of serious infections caused by bacteria but carries a high risk of causing serious bone marrow problems and is not frequently used.,R152
-S163,Nifedipine,Drug,A medication used to manage high blood pressure and to relieve chest pain.,R153
-S164,Warfarin and other anticoagulants,Drug,are a family of medications that stop your blood from clotting too easily.,R154
-S165,Probenecid,Drug,"Probenecid is a medicine commonly used to treat gout by reducing uric acid in the body. It can affect how the kidneys remove other medicines, including Macrodantin. Taking them together may reduce the amount of nitrofurantoin that is cleared from the body, which can increase the drug levels and potentially casuse side effects.",R158
-S166,Magnesium Antacids,Drug,"Antacids that contain magnesium, such as Gaviscon, are used to reduce stomach acidity and relieve heartburn or indigestion. When taken with Macrodantin, these antacids may reduce how much of the antibiotic is absorbed into the body, making it less effective in treating infections.",R157
-S167,Food,Food,"Taking Macrodantin with food helps the medicine to be absorbed better into the bloodstream and reduces stomach irritation. Eating meals or snacks at the same time as the medicine can also help prevent nausea or vomiting, making the treatment easier to tolerate.",R157
-S168,Magnesium Trisilicate,Drug,Medicine used to reduce stomach acid; can reduce Macrobid absorption.,R161
-S169,Probenecid,Drug,Heps remove uric acid from body; can affect Macrobid effectiveness and safety.,R161
-S170,Magnesium Trisilicate,Drug,"Found in some antacids, can reduce Furadantin absorption.","R163
-R164"
-S171,Probenecid,Drug,"Used for gout, can raise Furadantin blood levels.",R163
-S172,Sulfinpyrazone,Drug,"Used for gout, may increase Furadantin levels in blood.",R163
-S173,Propantheline,Drug,"Anticholinergic medicine, may slightly change Furadantin absorption.",R163
-S174,Probenecid,Drug,A medicine commonly used to treat gout. It works by helping the body remove uric acid through the urine. It affects how the kidneys handle certain medicines.,R165
-S175,Sulfinpyrazone,Drug,A medicine used to treat gout and certain blood clotting conditions. It helps remove uric aced from the body by acting on the kidneys.,R165
-S176,Magnesium Trisilicate,Drug,"A type of antacid used to relieve stomach pain, heartburn, and indigestion. It works by neutralizing stomach acid.",R165
-S177,Quinolone Antibacterials,Drug,A group of antibiotics used to treat different bacterial infections. They work by stopping bacteria from multiplying and spreading in the body.,R165
-S178,Carbonic Anhydrase,Drug,"A group of medicines that reduce aced production in the body and may change urine acidity. They are used for conditions like glaucoma, seizures, or fluid retention.",R165
-S179,Urinary Alkalinisers,Drug,Medicines that make the urine less acidic (more alkaline). They are sometimes used to relieve burning during urination or certain kidney conditions.,R165
-S180,Paminobenzoic Acid and its Derivatives,Drug,Folate precursor compounds.,R166
-S181,Procaine group of local Anesthetics,Drug,Ester local anesthetics derived from PABA.,R166
-S182,Oral Anticoagulants,Drug,Blood-thinning medications.,R166
-S183,Methotrexate,Drug,Antifolate chemotherapy/immunosuppressant.,R166
-S184,Phenytoin,Drug,Antiepileptic.,R166
-S185,Digoxin,Drug,Cardiac glycoside.,R166
-S186,Procainamide,Drug,Antiarrhythmic excreted renally.,R166
-S187,Rosiglitazone,Drug,Oral antidiabetic (CYP2C8 substrate).,R166
-S188,Repaglinidine,Drug,Oral antidiabetic (CYP2C8 substrate).,R166
-S189,Warfarin,Drug,Vitamin K antagonist anticoagulant.,R166
-S190,Zidovudine,Drug,Antiretroviral (NRTI).,R166
-S191,Zalcitabine,Drug,Antiretroviral (NRTI).,R166
-S192,Lamivudine,Drug,Antiretroviral (NRTI).,R166
-S193,Dapsone,Drug,Antimicrobial used in leprosy.,R166
-S194,Rifampicin,Drug,Enzyme-inducing antitubercular antibiotic.,R166
+ITN088,Drug,Potassium Aminobenzoate,"Potassium aminobenzoate is possibly effective in treating fibrosis or a certain type of inflammation, which can cause skin or tissues to harden. These conditions occur in people with scleroderma, dermatomyositis, morphea, pemphigus, or Peyronie's disease.","R020
+R113"
+ITN089,Drug,Procaine (Local Anesthesia),"Penicillin G procaine, a natural penicillin, is a β-lactam antibiotic. The drug is the procaine monohydrate salt of penicillin G and is a long-acting formulation of penicillin G.","R020
+R114"
+ITN090,Drug,Procainamide,Procainamide is used to help keep the heart beating normally in people with certain heart rhythm disorders of the ventricles (the lower chambers of the heart that allow blood to flow out of the heart).,"R020
+R115"
+ITN091,Drug,Rosiglitazone,Rosiglitazone is used to treat a type of diabetes mellitus called type 2 diabetes. It may be used alone or with other medicines such as metformin or sulfonylurea agents. Rosiglitazone is used together with a proper diet and exercise to help control blood sugar levels. It does this by helping your body use insulin better.,"R020
+R116"
+ITN092,Drug,Zalcitabine,Zalcitabine can cause severe peripheral neuropathy and should be used with extreme caution in patients with preexisting neuropathy. ,"R020
+R117"
+ITN093,Drug,Lamivudine,Lamivudine is an antiviral medicine that prevents human immunodeficiency virus (HIV) or hepatitis B virus from multiplying in your body.,"R020
+R118"
+ITN094,Drug,Dapsone,Dapsone is an anti-infective medicine that fights bacteria. Dapsone is used to treat dermatitis herpetiformis (a skin condition) and leprosy.,"R020
+R119"
+ITN095,Drug,Progesterone Contraceptives,"Progestin-only contraceptives (POPs) contain just one hormone, progestin. Most work by thickening cervical mucus, preventing sperm from entering the uterus.  ","R021
+R022
+R038"
+ITN096,Drug,Magnesium Hydroxide (Antacids),"Magnesium is a naturally occurring mineral. Magnesium hydroxide reduces stomach acid, and increases water in the intestines which may induce bowel movements. Magnesium hydroxide is used as a laxative to relieve occasional constipation.","R025
+R026
+R120"
+ITN097,Drug,Aluminum Hydroxide (Antacids),"Aluminum hydroxide is used to treat heartburn, upset stomach, sour stomach, or acid indigestion. Aluminum hydroxide is also used to reduce phosphate levels in people with certain kidney conditions.","R025
+R026
+R121"
+ITN098,Drug,Metronidazole,"Metronidazole is an antibiotic that may be used to treat certain infections of the vagina, stomach, liver, skin, joints, brain and spinal cord, lungs, heart, or bloodstream.","R025
+R122"
+ITN099,Drug,Caffeine,"Caffeine is a central nervous system stimulant. It works by stimulating the brain. Caffeine is found naturally in foods and beverages such as coffee, tea, colas, energy and chocolate. Botanical sources of caffeine include kola nuts, guarana, and yerba mate. Caffeine is also available in prescription and non-prescription medications.","R025
+R026
+R123"
+ITN100,Food,Dairy Products (High Calcium Content),"Food derived drom milk that are rich in calcium, such as milk, cheese, yogurt, and butter.",R026
+ITN101,Drug,H2 Antagonists,"H2 antagonists block histamine-induced gastric acid secretion from the parietal cells of the gastric mucosa (lining of the stomach). H2 antagonists are used to treat gastroesophageal reflux disease (GERD), gastrointestinal ulcers and other gastrointestinal hypersecretory conditions.","R026
+R124"
+ITN102,Drug,Naproxen,"Naproxen is a nonsteroidal anti-inflammatory drug (NSAID). It works by reducing hormones that cause inflammation and pain in the body. Naproxen is used to treat pain or inflammation caused by conditions such as arthritis, ankylosing spondylitis, tendinitis, bursitis, gout, or menstrual cramps. It can also be used to treat acute pain caused by other conditions not listed in this medication guide.","R026
+R125"
+ITN103,Drug,Chloroquine,"Chloroquine is used to treat or prevent malaria, a disease caused by parasites that enter the body through the bite of a mosquito. Chloroquine is not effective against all strains of malaria, or against malaria in areas where the infection has been resistant to a similar drug called hydroxychloroquine.","R026
+R126"
+ITN104,Drug,Opioid Analgesics,"Opioid analgesics have been one of the most widely used analgesics for pain relief; however, they have been overused, overprescribed, and misused. According to the NCDAS, more than 9 million people misuse opioids every year. ","R026
+R127"
+ITN105,Drug,Nifedipine,Nifedipine is in a group of drugs called calcium channel blockers. It works by relaxing the muscles of your heart and blood vessels. Nifedipine is used to treat hypertension (high blood pressure) and angina (chest pain).,"R027
+R029
+R128"
+ITN106,Drug,Aspirin (Salicylates),"Aspirin is a salicylate. It works by reducing substances in the body that cause pain, fever, and inflammation. Aspirin is used to treat pain, and reduce fever or inflammation. It is sometimes used to treat or prevent heart attacks, strokes, and chest pain (angina).","R027
+R029
+R129"
+ITN107,Drug,Sulfinpyrazone,"Sulfinpyrazone is used in the treatment of chronic gout (gouty arthritis), which is caused by too much uric acid in the blood. The medicine works by removing the extra uric acid from the body. Sulfinpyrazone does not cure gout, but after you have been taking it for a few months it may help prevent gout attacks.","R030
+R130"
+ITN108,Drug,Carbonic Anhydrase Inhibitors,"Carbonic anhydrase inhibitors reduce the activity of carbonic anhydrase, an enzyme responsible for catalyzing the reaction between carbon dioxide and water into carbonic acid and then bicarbonate. This reduces the resorption of bicarbonate from the proximal tubule in the kidneys, which causes a direct increase in bicarbonate excretion and mild increases in sodium, and potassium excretion. ","R030
+R131"

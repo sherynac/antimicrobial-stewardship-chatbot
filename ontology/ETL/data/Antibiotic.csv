@@ -1,59 +1,31 @@
-Antibiotic ID,Generic Name,Brand Name,Drug Class,Presentation/Packing,Reference ID
-A001,Doxycycline,Doxin,Tetracyclines,Capsule,R011
-A002,Doxycycline,Doxyclen,Tetracyclines,Capsule,R012
-A003,Doxycycline,Dynadoxy,Tetracyclines,Capsule,R013
-A004,Levofloxacin,Levocin,Quinolones,Film-Coated Tablet,R008
-A005,Levofloxacin,Levocin,Quinolones,IV Infusion,R008
-A006,Levofloxacin,RiteMED Levofloxacin,Quinolones,Tablet,R009
-A007,Levofloxacin,RiteMED Levofloxacin,Quinolones,IV Infusion,R009
-A008,Levofloxacin,Omnivox,Quinolones,Tablet,R010
-A009,Cefotaxime,Ximvex,Cephalosporins,IV Infusion,R014
-A010,Cefotaxime,Ximvex,Cephalosporins,Powder for Injection,R014
-A012,Azithromycin,Azcotil,Macrolides,Film-Coated Tablet,R037
-A013,Azithromycin,Zithrocare 500,Macrolides,Film-Coated Tablet,R038
-A014,Azithromycin,Zithrocare 200,Macrolides,Powder for Suspension,R038
-A015,Azithromycin,Zenith,Macrolides,Film-Coated Tablet,R039
-A016,Amoxicillin,Amoxil,Penicillins,Capsule,R015
-A017,Amoxicillin,Amoxil,Penicillins,Oral Drops,R015
-A018,Amoxicillin,Pediamox,Penicillins,Oral Drops,R017
-A019,Amoxicillin,Pediamox,Penicillins,Oral Suspension,R017
-A020,Amoxicillin,RiteMED Amoxicillin,Penicillins,Capsule,R016
-A021,Clarithromycin,Klaryth,Macrolides,Granules for Oral Suspension,R018
-A022,Clarithromycin,RiteMED Clarithromycin,Macrolides,Powder for Oral Suspension,R019
-A023,Clarithromycin,RiteMED Clarithromycin,Macrolides,Tablet,R019
-A024,Clarithromycin,Kracid,Macrolides,Film-Coated Tablet,R020
-A025,Fosfomycin,Monurol,Phosphonic Acid,Powder for Oral Suspension,"R021
-"
-A026,Fosfomycin,Fosfomycin Tromethamine,Phosphonic Acid,Powder for Oral Suspension,"R021
-"
-A027,Fosfomycin,Ivozfo,Phosphonic Acid,Powder for IV Infusion,R021
-A028,Fosfomycin,Contepo,Phosphonic Acid,Powder for IV Infusion,R021
-A029,Fosfomycin,Jamp-Fosfomycin,Phosphonic Acid,Powder for Oral Suspension,R021
-A030,Trimethoprim-sulfamethoxazole,Comazole,Sulfonamide,Oral Suspension,R031
-A031,Trimethoprim-sulfamethoxazole,Comazole,Sulfonamide,Tablet,R031
-A032,Cefuroxime,Cefumax,Cephalosporins,Powder for Injection,R032
-A033,Cefuroxime,Cefumax,Cephalosporins,Tablet,R032
-A034,Trimethoprim-sulfamethoxazole,DBL Sulfamethoxazole and Trimethoprim ,Sulfonamide,Injection Concentrate,R035
-A035,Cefuroxime,Altacef,Cephalosporins,Tablet,R047
-A036,Trimethoprim-sulfamethoxazole,Zolmed,Sulfonamide,Capsule,R166
-A037,Cefuroxime,Zefur,Cephalosporins,Tablet,R054
-A038,Ciprofloxacin,Ciflomed,Quinolones,Tablet,R091
-A039,Ciprofloxacin,Xypen,Quinolones,Film-Coated Tablet,R092
-A040,Ciprofloxacin,Xypen,Quinolones,Solution for Infusion,R092
-A041,Ciprofloxacin,Ziprocap,Quinolones,Film-Coated Tablet,R093
-A042,Cefixime,Triocef,Cephalosporins,Film-Coated Tablet,R127
-A043,Cefixime,Triocef,Cephalosporins,Granules for Oral Suspension,R127
-A044,Cefixime,RiteMED Cefixime,Cephalosporins,Tablet,R128
-A045,Cefixime,Ultraxime,Cephalosporins,Granules for Oral Suspension,R129
-A046,Cefotaxime,Cefotax,Cephalosporins,Powder for Injection,R133
-A047,Cefotaxime,Cefotax,Cephalosporins,IM Injection,R133
-A048,Cefotaxime,Haxim,Cephalosporins,Powder for Injection,R133
-A049,Cefotaxime,Haxim,Cephalosporins,IM Injection,R133
-A050,Nitrofurantoin,Macrodantin,Nitrofuran,Capsule,R156
-A051,Nitrofurantoin,Macrobid,Nitrofuran,tablet,R156
-A052,Nitrofurantoin,Furadantin,Nitrofuran,Oral Suspension,R156
-A053,Nitrofurantoin,Nitro,Nitrofuran,Capsule,R158
-A054,Amoxicillin,Amoxil,Penicilins,Oral Suspension,R015
-A055,Trimethoprim-sulfamethoxazole,Zolmed,Sulfonamide,Oral Suspension,R166
-A056,Trimethoprim-sulfamethoxazole,Zolmed,Sulfonamide,Tablet,R166
-A057,Cefixime,Ultraxime,Cephalosporins,Oral Drops,R129
+Antibiotic ID,Generic Name,Brand Name,Drug Class,Contents,Manufacturers,Distributors,Reference ID
+A001,Doxycycline,Doxin,Tetracyclines,Doxycycline Hyclate,"BIOFEMME, Inc","UNILAB, Inc",R001
+A002,Doxycycline,Doxyclen,Tetracyclines,Doxycycline Hyclate,Llyod Laboratories Inc,"Nurturemed Pharma, Inc",R002
+A003,Doxycycline,Dynadoxy,Tetracyclines,Doxycycline Hyclate,"Swiss Pharmaceutical Co., LTD",Crisdy-Na Drug Corp,R003
+A004,Levofloxacin,RiteMED Levofloxacin,Quinolones,Levofloxacin Hemihydrate,"RiteMed Phils, Inc",United Laboratories,R004
+A005,Levofloxacin,Levocin,Quinolones,Levofloxacin Hemihydrate,"Getz Pharma (Phils.,) Inc","Getz Bros Phils, Inc",R005
+A006,Levofloxacin,Omnivox,Quinolones,Levofloxacin Hemihydrate,Mepro Pharmaceutical Ltd,Bell-Kenz Pharma Inc,R006
+A007,Cefotaxime,Ximvex,Cephalosporins,Cefotaxime,North China Pharmaceutical Co Ltd,Sannovex Pharmaceuticals,R007
+A008,Azithromycin,Azcotil,Macrolides,Azithromycin Dihydrate,"Interphil Laboratories, Inc","Interphil Laboratories, Inc",R008
+A009,Azithromycin,Zenith,Macrolides,Azithromycin Monohydrate,"UNILAB, Inc","UNILAB, Inc",R009
+A010,Azithromycin,Zithrocare,Macrolides,Azithromycin Dihydrate,Meyer Organics Pvt. Ltd,"Khriz Pharma Trading, Inc",R010
+A011,Amoxicillin,Amoxil,Penicillins,Amoxicillin,"Glaxosmithkline Philippines, Inc",Zuellig Pharma Corporation,R011
+A012,Amoxicillin,Pediamox,Penicillins,Amoxicillin Trihydrate,"UNILAB, Inc","UNILAB, Inc",R012
+A013,Amoxicillin,RiteMED Amoxicillin,Penicillins,Amoxicillin Trihydrate,"RiteMed Phils, Inc",United Laboratories,R013
+A014,Clarithromycin,Klaryth,Macrolides,Clarithromycin,"The Cathay Yss Distributors Co, Inc","The Cathay Yss Distributors Co, Inc",R014
+A015,Clarithromycin,Kracid,Macrolides,Clarithromycin,Fredun Pharmaceuticals Ltd,"Khriz Pharma Trading, Inc",R015
+A016,Clarithromycin,RiteMED Clarithromycin,Macrolides,Clarithromycin,"RiteMed Phils, Inc","RiteMed Phils, Inc",R016
+A017,Fosfomycin,Exelfos,Other Antibiotics,Fosfomycin Trometamol,"Labiana Pharmaceuticals, SLU","Exeltis International Philippines, Inc",R017
+A018,Fosfomycin,Fosfostal,Other Antibiotics,Fosfomycin Trometamol,Stallion Labs,"Scriptmed, Inc",R018
+A019,Fosfomycin,Monurol,Other Antibiotics,Fosfomycin Trometamol,Zambon Group,"The Cathay Drug Co, Inc",R019
+A020,Trimethoprim-sulfamethoxazole,Zolmed,Antimicrobial Combinations,Co-trimoxazole: Sulfamethoxazole,Medhaus Pharma Inc,Medhaus Pharma Inc,R020
+A021,Cefuroxime,Altacef,Cephalosporins,Cefuroxime Axetil,"Glenmark Philippines, Inc","Glenmark Philippines, Inc",R021
+A022,Cefuroxime,Cefumax,Cephalosporins,Cefuroxime Axetil,"Nutramedica, Inc","Nutramedica, Inc",R022
+A023,Cefuroxime,Zefur,Cephalosporins,Cefuroxime Axetil,Llyod Laboratories Inc,Innogen Pharmaceuticals Inc,R023
+A024,Ciprofloxacin,Ciflomed,Quinolones,Ciprofloxacin,Flamingo,Trumed Pharmaceuticals,R024
+A025,Ciprofloxacin,Xypen,Quinolones,Ciprofloxacin HCI,Medhaus Pharma Inc,Medhaus Pharma Inc,R025
+A026,Ciprofloxacin,Ziprocap,Quinolones,Ciprofloxacin HCI,"Nutramedica, Inc","Nutramedica, Inc",R026
+A027,Cefixime,RiteMED Cefixime,Cephalosporins,Cefixime,"RiteMed Phils, Inc",United Laboratories,R027
+A028,Cefixime,Triocef,Cephalosporins,Cefixime Trihydrate,"The Cathay Drug Co, Inc","The Cathay Drug Co, Inc",R028
+A029,Cefixime,Ultraxime,Cephalosporins,Cefixime,"UNILAB, Inc","UNILAB, Inc",R029
+A030,Nitrofurantoin,Nitro,Nitrofuran Derivative Antibacterials,Nitrofurantoin,West-Coast Pharmaceutical Works Ltd,"Scriptmed, Inc",R030

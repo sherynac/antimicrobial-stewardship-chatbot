@@ -1,208 +1,134 @@
-Stewardship ID,Antibiotic ID,"Principle Type
-(Proper Use- Administration, Proper Use - Food & Timing, Proper Use - Preparation, Adherence, Monitoring,Storage)",Principle Description,Reference ID
-SP111,A001,Storage,Store at temperatures not exceeding 30°C,R011
-SP112,A002,Storage,Store at temperatures not exceeding 30°C,R012
-SP113,A003,Storage,Store at temperatures not exceeding 30°C. Protect from light,R013
-SP114,A004,Storage,Store at temperatures not exceeding 30°C. Protect from sunlight and moisture.,R008
-SP115,A005,Storage,Store at temperatures not exceeding 30°C,R008
-SP116,A005,Proper Use - Food & Timing,"May be taken with or without food: May be taken during or between meals. Swallow whole, do not crush.",R008
-SP117,A005,Adherence,"Take at least 2 hr before or 2 hr after antacids containing Mg/Al, sucralfate, metal cations (eg, Fe), & multivit prep w/ Zn.",R008
-SP118,A007,Storage,"Store at temperatures not exceeding 30°C, Protect from sunlight and moisture.",R009
-SP119,A007,Proper Use - Food & Timing,May be taken with or without food,R009
-SP120,A007,Adherence,"Take at least 2 hr before or 2 hr after antacids containing Ca/Mg/Al, after sucralfate or metal cations (eg, Fe), multivit prep w/ Zn, or didanosine.",R009
-SP122,A007,Proper Use - Food & Timing,"May be taken with or without food: May be taken during or between meals. Swallow whole, do not chew",R010
-SP123,A007,Adherence,Dosage is according to doctor's instructions only,R010
-SP053,A009,Storage,Store at temperatures not exceeding 30°C,R014
-SP055,A009,Storage,Protect from light,R014
-SP121,A009,Storage,Store at temperatures not exceeding 30°C,A010
-SP054,A010,Storage,Store at temperatures not exceeding 30°C,R014
-SP056,A010,Storage,Protect from light,R014
-SP013,A012,Storage,Store at temperatures not exceeding 30°C,R037
-SP029,A012,Proper Use - Food & Timing,May be taken with meals to reduce gastrointestinal discomfort,R037
-SP036,A012,Proper Use - Food & Timing,May be taken with or without meals,R037
-SP046,A012,Storage,Protect from light,R037
-SP039,A013,Proper Use - Administration,For oral administration and should be administered as a single daily dose.,R038
-SP041,A013,Proper Use - Food & Timing,May be taken with or without food,R038
-SP043,A013,Proper Use - Food & Timing,May be taken with meals to reduce gastrointestinal discomfort,R038
-SP047,A013,Storage,Store at temperatures not exceeding 30°C,R038
-SP049,A013,Storage,Protect from light,R038
-SP124,A013,Proper Use - Food & Timing,Azithromycin should be taken at least one hour before or two hours after administration of food and antacid preparations,R038
-SP034,A014,Proper Use - Administration,"For people with advanced HIV infection, to prevent a serious illness called Mycobacterium avium complex (MAC) disease, it can be taken by itself or together with another drug called rifabutin (at the recommended dose)",R038
-SP035,A014,Proper Use - Administration,"For people with advanced HIV infection, to treat a serious illness called Mycobacterium avium complex (MAC) disease, it is taken with another drug called ethambutol (at the recommended dose)",R038
-SP040,A014,Proper Use - Administration,For oral administration and should be administered as a single daily dose.,R038
-SP042,A014,Proper Use - Food & Timing,May be taken with or without food,R038
-SP044,A014,Proper Use - Food & Timing,May be taken with meals to reduce gastrointestinal discomfort,R038
-SP048,A014,Storage,Store at temperatures not exceeding 30°C,R038
-SP050,A014,Storage,Protect from light,R038
-SP037,A015,Proper Use - Administration,Should be swallowed whole with liquid as a single daily dose. Do not chew or crush when taking.,R039
-SP038,A015,Proper Use - Food & Timing,May be taken with or without food,R039
-SP045,A015,Storage,Store at temperatures not exceeding 30°C,R039
-SP051,A015,Monitoring,"Observation for sign of superinfection with non-susceptible organisms, including fungi.",R039
-SP052,A015,Proper Use - Administration,"Azithromycin is not intended to treat suitable severe infections where fast high blood concentrations of antibiotic have to be achieved,",R039
-SP104,A015,Proper Use - Administration,"Use for treating tonsillitis, pharyngitis and acute otitis media (ear infection) for patients with hypersensitivity to beta-lactam antibiotics or when such treatment is not suitable for other reasons.",R039
-SP059,A016,Proper Use,Administered orally as a solid dosage form. General medical practice for antibiotics involves taking the medication for the full prescribed duration even if symptoms improve.,R015
-SP060,A016,Storage,Store the capsules in a dry place at temperatures not exceeding 25°C,R015
-SP061,A016,Monitoring,"Monitor for common side effects such as skin rash, nausea, and diarrhea. If taking anticoagulants, prothrombin time or INR should be carefully monitored when starting or stopping treatment.",R015
-SP062,A016,Adherence,Ensure doses are taken at regular intervals as prescribed to maintain effective blood levels.,R015
-SP063,A017,Proper Use - Preparation,"Reconstitution is required before use: 1. Loosen powder by shaking. 2. Add water up to 2/3 of the mark on the label. 3. Shake well for 1 minute, then let stand for 1 minute. 4. Add water exactly to the mark and shake well for 30 seconds",R015
-SP064,A017,Proper Use - Preparation,The bottle must be shaken well before taking each dose to ensure the medication is evenly distributed,R015
-SP065,A017,Storage,"Before the water is added, the powder should be stored in a dry place at temperatures not exceeding 25°C",R015
-SP066,A017,Storage,"Once water is added (reconstituted), the drops must be stored at refrigerated temperatures (between 2-8°C). The medicine will retain its potency for 7 days under these conditions",R015
-SP067,A017,Monitoring,"Monitor for superficial tooth discoloration, a side effect specific to the liquid forms; this can often be prevented by maintaining good oral hygiene",R015
-SP068,A017,Adherence,Complete the full 7-day potency period as prescribed; any remaining reconstituted liquid should be discarded after 7 days,R015
-SP071,A018,Proper Use,Administer via dropper. Can be taken with or without food; taking with meals can reduce Gastrointestinal discomfort.,R017
-SP072,A018,Adherence,Doses should be given every 8 or 12 hours for neonates/infants < 3 months.,R017
-SP073,A018,Storage,Store in a dry place at temperatures not exceeding 30°C and protect from light.,R017
-SP074,A018,Monitoring,Monitor for allergic manifestations and maintain adequate fluid intake to prevent crystalluria.,R017
-SP075,A019,Proper Use - Administration,Administer as a liquid suspension (typically 5 mL per dose). Can be taken w/ meals for better absorption & to reduce Gastrointestinal discomfort.,R017
-SP076,A019,Adherence,Usual duration is 5 to 14 days; must complete the course as prescribed.,R017
-SP077,A019,Storage,Store powder and reconstituted suspension in a dry place below 30°C; protect from light.,R017
-SP078,A019,Monitoring,Monitor for superinfections during prolonged use and observe for renal output in overdose cases.,R017
-SP079,A020,Proper Use - Administration,Administered orally. May be taken with or without food. Prescribe only for proven or strongly suspected bacterial infections to prevent the development of drug-resistant bacteria.,R016
-SP080,A020,Adherence,Usual duration is 5 to 14 days. Continue treatment for at least 48 to 72 hours after becoming asymptomatic. Take for at least 10 days for β-hemolytic streptococcal infections to prevent rheumatic fever.,R016
-SP081,A020,Storage,Store in a dry place at temperatures not exceeding 30°C. Protect from light to ensure optimal shelf-life.,R016
-SP082,A020,Monitoring,"Maintain adequate fluid intake and urinary output to reduce the possibility of crystalluria. Periodic assessment of renal, hepatic, and hematopoietic functions is recommended during prolonged therapy.",R016
-SP087,A021,Proper Use - Food & Timing,"Reconstitution: For 250mg/5mL 35mL, add 25mL water; for 70mL, add 51mL water. Shake well before each use. May be taken with or without food.",R018
-SP088,A021,Adherence,Usual duration of treatment is 5 to 10 days depending on severity. Ensure zidovudine and Klaryth doses are separated as advised to maintain efficacy.,R018
-SP089,A021,Storage,Store powder and reconstituted suspension at temperatures not exceeding 30°C. Reconstituted suspension is stable for 14 days. Do not refrigerate.,R018
-SP090,A021,Monitoring,"Monitor for the development of diarrhea, which may indicate pseudomembranous colitis. Regularly check blood levels for theophylline, digoxin, or carbamazepine if used concurrently.",R018
-SP091,A021,Prevention,Only prescribe Klaryth for proven or strongly suspected bacterial infections to reduce the risk of drug-resistant bacteria developing.,R018
-SP092,A022,Proper Use - Preparation,Preparation: Add half the water and shake vigorously; then add the remaining water and shake again. Shake well before each use. Can be taken with milk.,R019
-SP093,A022,Adherence,Dosage: The usual recommended daily dosage for children is 15 mg/kg/day divided every 12 hours for 10 days.,R019
-SP094,A022,Storage,Store reconstituted suspension at 15°C to 25°C and use within 14 days. Do not refrigerate. Protect from moisture and keep tightly closed.,R019
-SP095,A022,Monitoring,"If used with other ototoxic drugs (like aminoglycosides), monitor vestibular and auditory function",R019
-SP096,A023,Proper Use - Administration,Tablets should be swallowed whole and can be taken with or without food. Take every 12 hours as prescribed.,R019
-SP097,A023,Adherence,"For respiratory infections, the usual duration is 7-14 days. Dosage for renal impairment (CrCl <30 mL/min) should be reduced by half.",R019
-SP098,A023,Storage,Store at temperatures not exceeding 30°C and protect from light.,R019
-SP099,A023,Monitoring,"Monitor for signs of hepatitis (jaundice, dark urine, tender abdomen) and discontinue immediately if they occur",R019
-SP100,A024,Proper Use - Administration,"The usual dose is 250 mg twice daily, though this may be increased to 500 mg twice daily for severe infections.",R020
-SP101,A024,Adherence,"Treatment usually lasts 6 to 14 days. For patients with renal impairment (CrCl <30 mL/min), the dose should be halved and not continue beyond 14 days.",R020
-SP102,A024,Storage,Store at temperatures not exceeding 30°C. The shelf life is 36 months.,R020
-SP103,A024,Monitoring,"Monitor for signs of hepatic failure, especially in those with pre-existing liver disease. Also, monitor for the development of drug-resistant organisms during H. pylori therapy.",R020
-SP001,A025,Proper Use - Administration,Use Monurol only for confirmed uncomplicated urinary tract infections in adult women. Do not use for kidney infections or perinephric abscess.,"R022
-R023"
-SP002,A025,Prevention,Avoid unnecessary use to prevent deveopment of antibiotic-resistant bacteria.,"R022
-R023"
-SP003,A025,Adherence,Take the full single-dose as instructed. Do not repeat the dose unless prescribed by a doctor.,"R022
-R023"
-SP004,A025,Monitoring,"Contact your doctor if symptoms do not improve within 2-3 days. Watch for severe diarrhea, allergic reactions, or worsening urinary symptoms.","R022
-R023"
-SP005,A025,Proper Use - Administration,Do not use in children under 12 years old.,"R022
-R023"
-SP006,A025,Monitoring,Pregnant or breastfeeding women should consult their doctor before taking Monurol.,"R022
-R023"
-SP007,A026,Proper Use - Administration,Fosfomycin Tromethamine  should be used only for uncomplicated urinary tract infections caused by E.coli or Enterococcus faecalis. Do not use for pyelonephritis or other infections.,R024
-SP008,A026,Proper Use - Administration,Only a single oral dose is recommended. Repeating daily doses does not improve effectiveness and increases side effects.,R024
-SP009,A026,Prevention,Obtain urine culture before treatment to ensure the bacteria are susceptible.,R024
-SP010,A026,Adherence,Patients should take the full dose as instructed and dissolve the powder in water before drinking.,R024
-SP011,A026,Monitoring,"Monitor symptoms; if they do not improve within 2-3 days or if they return, contact a healthcare provider for further evaluation",R024
-SP012,A026,Monitoring,"Monitor for diarrhea or water or bloody stools after antibiotic use, which could indicate C. difficile infection.",R024
-SP014,A027,Proper Use,Use IV fosfomycin only for confirmed or strongly suspected bacterial infections. It should not be used for viral infections.,R026
-SP015,A027,Proper Use,Reserve IV fosfomycin for serious infections or resistant bacteriawhen other antibiotics are not effective.,R026
-SP016,A027,Proper Use,Adjust dose based on kidney function to avoid toxicity.,R026
-SP017,A027,Monitoring,"Monitor kidney function during treatment, especially in patients with renal impairment.",R026
-SP018,A027,Monitoring,Check electrolyte levels (especially potassium) during prolonged therapy.,R026
-SP019,A027,Monitoring,"Monitor sodium levels in patients with heart failure, hypertension, or fluid retention.",R026
-SP020,A027,Monitoring,Watch for severe diarrhea that may indicate C. difficile infection.,R026
-SP021,A027,Monitoring,Observe for signs of allergic reactions during and after infusion.,R026
-SP022,A027,Adherence,Complete the full prescribed duration even if symptoms improve early.,R026
-SP023,A027,Prevention,Use proper infection control practices in hospital settings to prevent the spread of resistant bacteria.,R026
-SP024,A027,Prevention,Avoid unnecessary combination with other nephrotoxic drugs unless clearly needed.,R026
-SP025,A028,Proper Use - Administration,Only use Contepo when prescribed by a healthcare professional for a confirmed infection. Avoid using for viral infections like colds or flu. ,"R027
-R028"
-SP026,A028,Prevention,Take infection control measures such as hand hygiene and avoiding contact with sick individuals to prevent the spread of infection.,"R027
-R028"
-SP027,A028,Adherence,Complete the full course of Contepo even if you feel better to prevent bacterial resistance. Do not skip doses.,"R027
-R028"
-SP028,A028,Monitoring,Report any severe side effects or unusual symptoms to your healthcare provider. Kidney and liver function may need monitorng during treatment.,"R027
-R028"
-SP030,A029,Proper Use,Only use for prescribed bacterial infections (uncomplicated UTIs). Avoid for viral infections.,"R029
-R030"
-SP031,A029,Prevention,Practice good hygiene to reduce infection spread; drink enough fluids.,"R029
-R030"
-SP032,A029,Adherence,"Take the full single-dose treatment exactly as prescribed, even if symptoms improve quickly.","R029
-R030"
-SP033,A029,Monitoring,Contact your doctor if severe side effects occur. Kidney function may require monitoring.,"R029
-R030"
-SP057,A030,Storage,"Store at temperatures below 30C, in a tight, light resistant container, protect from light.",R031
-SP058,A031,Storage,"Store at temperatures below 30C, in a tight, light resistant container, protect from light.",R031
-SP069,A032,Proper Use,Must be reconstituted correctly and administered by a healthcare professional via IV or IM to ensure correct dosage and effectiveness.,R032
-SP070,A033,Adherence,"Must be taken orally at prescribed intervals, completing the full course to fully treat infection and prevent resistance.",R032
-SP083,A035,Proper Use,"Liquid Suspension: Typically administered as $5\text{ mL}$ per dose. Can be taken with meals to improve absorption and reduce GI discomfort.
-
-",R047
-SP084,A035,Adherence,"Full Course: Complete the entire prescribed course, even if symptoms improve, to prevent bacterial resistance.
-",R047
-SP085,A035,Monitoring,"Allergic Reactions: Watch for rashes, itching, or swelling (anaphylaxis).
-
-",R047
-SP086,A035,Storage,Store at temperatures not exceeding 25°C. Protect from moisture and light,R047
-SP179,A036,Storage,Store at temperature not exceeding 30°C.,R166
-SP105,A037,Proper Use - Administration,"Oral administration: The usual dose is 250 mg twice daily, though this may be increased to 500 mg twice daily for severe infections.",R054
-SP106,A037,Adherence,"Dosage & Duration: Treatment usually lasts 6 to 14 days. For patients with renal impairment ($CrCl < 30$ mL/min), the dose should be halved and not continue beyond 14 days.",R054
-SP107,A037,Storage,Store at temperatures not exceeding 30°C.,R054
-SP108,A037,Monitoring,"Patient Safety: Monitor for signs of hepatic failure, especially in those with pre-existing liver disease. Also, monitor for the development of drug-resistant organisms during H. pylori therapy.",R054
-SP109,A037,Proper Use,"Use for treating tonsillitis, pharyngitis and acute otitis media (ear infection) for patients with hypersensitivity to beta-lactam antibiotics or when such treatment is not suitable for other reasons.",R054
-SP110,A037,Monitoring,Monitor for symptoms such as tender abdomen and discontinue treatment immediately if they occur.,R054
-SP125,A038,Proper Use - Food & Timing,May be taken with or without food; Preferably taken 2hrs after meals,R091
-SP126,A038,Storage,Store at temperatures not exceeding 30°C,R091
-SP127,A038,Storage,Protect from light,R091
-SP145,A038,Proper Use - Food & Timing,Do not use Ciprofloxacin simulataneously with antacid preparations containing Magnesium Hydroxide or Aluminum Hydrocide. An interval of at least 2 hours must be respected between the administration of an antacid and Ciprofloxacin.,R091
-SP146,A038,Proper Use - Monitoring,Patients receiving Ciprofloxacin must be well hydrated to prevent crystalluria. Excessive alkalinisation of urine should be avoided.,R091
-SP128,A039,Storage,Store at temperatures not exceeding 30°C,R092
-SP130,A039,Storage,"Store in cool, dry place.",R092
-SP132,A039,Proper Use - Food & Timing,May be taken with or without food,R092
-SP133,A039,Proper Use - Food & Timing,May be taken with meals to minimize gastrointestinal discomfort,R092
-SP134,A039,Proper Use - Food & Timing,"Do not take with antacids, iron or dairy products",R092
-SP143,A039,Adherence,"In the event of acute overdosage, reversible renal toxicity has been reported in some cases. It is recommended to monitor renal function and to administer magnesium- or calcium-containing antacids which reduce the absorption of ciprofloxacin.",R092
-SP147,A039,Monitoring,Avoid excessive sunlight,R092
-SP129,A040,Storage,Store at temperatures not exceeding 30°C,R092
-SP131,A040,Storage,Protect from light,R092
-SP135,A040,Proper Use - Storage,"Store in cool, dry place.",R092
-SP136,A040,Proper Use - Food & Timing,May be taken with meals to minimize gastrointestinal discomfort,R092
-SP137,A040,Proper Use - Food & Timing,"Do not take with antacids, iron or dairy products",R092
-SP144,A040,Adherence,"In the event of acute overdosage, reversible renal toxicity has been reported in some cases. It is recommended to monitor renal function and to administer magnesium- or calcium-containing antacids which reduce the absorption of ciprofloxacin.",R092
-SP148,A040,Monitoring,Avoid excessive sunlight,R092
-SP138,A041,Proper Use - Food & Timing,May be taken with or without food,R093
-SP139,A041,Proper Use - Food & Timing,May be taken with meals to minimize gastrointestinal discomfort,R093
-SP140,A041,Proper Use - Food & Timing,"Do not take with antacids, iron or dairy products",R093
-SP141,A041,Storage,Store at temperatures not exceeding 25°C,R093
-SP142,A041,Storage,Protect from direct light including sunlamps,R093
-SP149,A042,Proper Use - Food & Timing,May be taken without food.,R127
-SP150,A042,Proper Use - Food & Timing,May be taken with food or milk to reduce GI discomfort,R127
-SP151,A043,Proper Use - Food & Timing,May be taken without food.,R127
-SP152,A043,Proper Use - Food & Timing,May be taken with food or milk to reduce GI discomfort,R127
-SP153,A044,Proper Use - Food & Timing,May be taken with or without food.,R128
-SP154,A044,Proper Use - Food & Timing,May be given without regard to meals.,R128
-SP155,A044,Storage,Store at temperatures not exceeding 30°C,R128
-SP156,A044,Storage,Protect from light.,R128
-SP157,A045,Proper Use - Food & Timing,May be taken with or without food.,R129
-SP158,A045,Storage,Store at temperatures not exceeding 30°C,R129
-SP159,A050,Proper Use,"Only take nitrofurantoin if a healthcare provider confirms or strongly suspects a urinary tract infection. Avoid using it for viral infections or other conditions where it won't help, to prevent antibiotic resistance and side effects.",R157
-SP160,A050,Adherence,"Always finish the full prescribed course of nitrofurantoin, even if you start feeling better. Stopping early can allow bacteria to survive, potentially causing the infection to come back and increasing the chance of resistance.",R158
-SP161,A050,Monitoring,"Keep track of any unusual symptoms such as breathing difficulties, chest pain, cough, or numbness and tingling in the hands or feet. Report these promptly to a healthcare provider to prevent serious complicaions.",R159
-SP162,A050,Prevention,"Do not share your nitrofurantoin with other people, even if they have similar symptoms. Using someone else's medicine can be unsafe and may contribute to ineffective treatment or antibiotic resistance.",R158
-SP163,A050,Storage,"Store nitrofurantoin in a cool, dry place at room temperature, away from direct sunlight, moisture, or heat. Proper storage helps maintain the effectiveness and safety of the medication throughout its shelf life.",R157
-SP164,A051,Proper Use,Take Macrobid only for urinary infections proven or strongly suspected; do not use for colds or other viruses.,R160
-SP165,A051,Prevention,"Complete the full course of medicine even if symptoms improve, to prevent infection from coming back and bacteria from becoming resistant.",R160
-SP166,A051,Adherence,"Take the medicine exactly as prescribed, at the correct times, with food; skipping doses reduces effectiveness.",R160
-SP167,A051,Monitoring,"Watch for side effects such as breathing problems, numbness, or yellow skin; report to doctor promptly.",R162
-SP168,A051,Storage,"Keep at room temperature, away from moisture, heat, and light; do not freeze or expose to extreme temperatures.",R161
-SP169,A052,Proper Use ,"Take Furadantin only for urinary tract infections, do not use for colds or other viral infections.","R163
-R164"
-SP170,A052,Prevention,"Complete full course even if you feel better, to prevent bacteria from coming back.","R163
-R164"
-SP171,A052,Adherence,Take doses with food and at the same time each day; measure liquid carefully.,"R163
-R164"
-SP172,A052,Monitoring,"Watch for side effects like lung problems, liver issues, or nerve problems, especially with long-term use.",R163
-SP173,A052,Storage,"Store at room temperature (20-25 degrees celcius), protect from light and freezing, use within 30 days after opening.",R163
-SP174,A053,Proper Use,Nitrofurantoin should only be used to treat urinary tract infections caused by bacteria that are sensitive to the medicine. It should not be used for viral infections or infections outside the urinary tract. Using the medicine only when needed helps prevent bacteria from becoming resistant and keeps the drug effective in the future.,R165
-SP175,A053,Adherence,"The medicine should be taken exactly as prescribed by the doctor. Adults should take 50–100 mg every 6 hours with meals, and children should take the prescribed dose based on body weight. Taking it with food helps improve absorption and reduces stomach upset. Do not skip doses and complete the full course even if symptoms improve early.",R165
-SP176,A053,Monitoring,"During prolonged therapy, especially in elderly patients, liver and lung function should be checked regularly. Patients with existing lung, liver, nerve, or kidney problems should be monitored closely. If symptoms such as breathing difficulty, numbness, tingling, or weakness occur, the medicine should be stopped and medical advice sought immediately.",R165
-SP177,A053,Prevention,"To reduce the risk of side effects, avoid use in patients with contraindications such as anuria, oliguria, hepatitis, late pregnancy, or infants under 1 month old. Careful patient selection helps prevent serious complications.",R165
-SP178,A053,Storage,Store Nitrofurantoin at temperatures not exceeding 30°C. Keep it in a dry place away from direct heat and moisture. Proper storage ensures that the medicine remains stable and effective until its expiration date.,R165
-SP179,A005,Storage,Do not refrigerate.,R008
-SP180,A005,Storage,Protect from light.,R008
-SP181,A005,Storage,Keep in the pack until required.,R008
-SP182,A005,Storage,"Once the vial is removed from the carton, the infusion solution must be used within three days.",R008
-SP183,A005,Storage,"Once the vial has been opened, the infusion solution must be used within three hrs.",R008
+Stewardship ID,Antibiotic ID,"Principle Type (Therapeutic Use & Monitoring, Administration & Adherence, Food & Timing, Storage)",Principle Description,Reference ID
+SP001,A001,Food & Timing,Should be taken with food: Take w/ meals to avoid GI irritation.,R001
+SP002,A001,Administration & Adherence,Drink plenty of fluids to reduce risk of esophageal irritation & ulceration.,R001
+SP003,A001,Storage,Store at temperatures not exceeding 30°C.,R001
+SP004,A002,Food & Timing,May be taken with or without food.,R002
+SP005,A002,Storage ,Store at temperatures not exceeding 30°C.,R002
+SP006,A002,Administration & Adherence,"All patients taking doxycycline should be advised: to avoid excessive sunlight or artificial ultraviolet light while receiving doxycycline and to discontinue therapy if phototoxicity (e.g., skin eruption, etc.) occurs. Sunscreen or sunblock should be considered.",R002
+SP007,A003,Administration & Adherence,"Doxycycline (Dynadoxy) 100 mg capsule, usual adult dose: 2 capsules or 200 mg on first day in single or divided doses of 1 capsule every 12 hours; then 1 capsule a day thereafter. For severe infections: 1 capsule every 12 hours. Or as prescribed by the physician.",R003
+SP008,A003,Administration & Adherence,"For acute gonococcal infections: 200 mg at once and 100 mg at bedtime on the first day, followed by 100 mg twice a day for three days.",R003
+SP009,A003,Administration & Adherence,"As an alternative single visit dose, administer 300 mg at once followed in one hour by a second 300 mg dose.",R003
+SP010,A003,Food & Timing,"The dose may be administered with food, including milk or carbonated beverage as required.",R003
+SP011,A003,Administration & Adherence,Primary and secondary syphilis: 300 mg a day in divided doses for at least 10 days. Treatment should be continued even after the time that symptoms and fever have subsided.,R003
+SP012,A003,Administration & Adherence,"When used in streptococcal infections, therapy should be continued for 10 days. If gastric irritation occurs, it is recommended that Doxycycline be given with food or milk.",R003
+SP013,A003,Storage,Store at temperatures not exceeding 30°C. Protect from light.,R003
+SP014,A003,Food & Timing,May be taken with or without food.,R003
+SP015,A003,Administration & Adherence,Take w/ a full glass of water & remain upright for at least 30 min. Take w/ food or milk if GI irritation occurs.,R003
+SP016,A004,Administration & Adherence,Patients receiving oral or intravenous (IV) levofloxacin should be well hydrated to prevent formation of highly concentrated urine. Crystalluria and cylindruria have been reported with quinolones.,R004
+SP017,A004,Administration & Adherence,Levofloxacin should be given or taken at the same time each day.,R004
+SP018,A004,Food & Timing,"Levofloxacin tablet can be taken with or without food. Administer dose at least 2 hours before or 2 hours after antacids containing calcium, magnesium or aluminum, after sucralfate or metal cations such as iron, multivitamin preparations with zinc, or didanosine.",R004
+SP019,A004,Administration & Adherence,"Levofloxacin solution for infusion should only be administered by IV infusion. It is NOT for intramuscular, intrathecal, intraperitoneal, or subcutaneous administration.",R004
+SP020,A004,Administration & Adherence,Rapid or bolus IV infusion must be avoided because it may result to hypotension.,R004
+SP021,A004,Administration & Adherence,"As with other parenteral antibiotic therapy in general, administration of levofloxacin solution for infusion should be continued for a minimum of 48 to 72 hours after the patient has become afebrile or evidence of bacterial eradication has been obtained.",R004
+SP022,A004,Administration & Adherence,"It is usually possible to switch from initial IV treatment to the oral route after a few days, depending on the patient's condition and the physician's discretion.",R004
+SP023,A004,Administration & Adherence,Observe strict aseptic technique when inserting the cannula of the infusion set into the spout of levofloxacin solution for infusion.,R004
+SP024,A004,Administration & Adherence,The cannula of the infusion set should be inserted fully and not halfway into the spout of the levofloxacin solution for infusion container to avoid leakage.,R004
+SP025,A004,Administration & Adherence,"If the same IV line is used for sequential infusion of several different drugs, the line should be flushed before and after infusion of levofloxacin IV with an infusion solution compatible with levofloxacin IV and with any other drugs administered via this common line.",R004
+SP026,A004,Storage,Store at temperatures not exceeding 30°C. Protect from light and moisture.,R004
+SP027,A005,Administration & Adherence,Levofloxacin (Levocin) tablets are administered once or twice daily.,R005
+SP028,A005,Administration & Adherence,Levofloxacin (Levocin) should be swallowed without crushing and with sufficient amount of liquid.,R005
+SP029,A005,Food & Timing,The tablets may be taken during meals or between meals.,R005
+SP030,A005,Food & Timing,"Levofloxacin (Levocin) tablets should be administered at least two hours before or two hours after antacids containing magnesium, aluminum, as well as sucralfate, metal cations such as iron, and multivitamin preparations with zinc.",R005
+SP031,A005,Administration & Adherence,Rapid or bolus intravenous infusion must be avoided.,R005
+SP032,A005,Administration & Adherence,Administered by slow infusion over 60 minutes every 24 hours or 750 mg administered by slow infusion over 90 minutes every 24 hours.,R005
+SP033,A005,Administration & Adherence,"Levofloxacin (Levocin) I.V. Infusion should not be mixed with heparin or alkaline solutions (e.g., sodium hydrogen carbonate).",R005
+SP034,A005,Administration & Adherence,"Swallow whole, do not crush.",R005
+SP035,A005,Storage,Store at temperatures not exceeding 30°C.,R005
+SP036,A005,Storage,"If Film-coated Tablet, protect from sunlight and moisture.",R005
+SP037,A005,Storage,"If IV Infusion, do not refrigerate.",R005
+SP038,A005,Storage,Protect from light.,R005
+SP039,A005,Storage,Keep in the pack until required.,R005
+SP040,A005,Storage,"Once the vial is removed from the carton, the infusion solution must be used within three days.",R005
+SP041,A005,Storage,"Once the vial has been opened, the infusion solution must be used within three hours.",R005
+SP042,A006,Storage,Store at temperatures not exceeding 30°C.,R006
+SP043,A006,Administration & Adherence,Dosage is according to doctor's instructions only.,R006
+SP044,A006,Administration & Adherence,Do not exceed the recommended dosage.,R006
+SP045,A006,Administration & Adherence,Do not chew. Swallow the medicine with a glass of water.,R006
+SP046,A006,Food & Timing,"May be taken with or without food: Take w/ or between meals. Swallow w/ a glass of water, do not chew.",R006
+SP047,A006,Administration & Adherence,"Missed Dose: If the patient misses a dose of this medicine, take it as soon as remembered. However, if it is almost time for the next dose, skip the missed dose and go back to the regular dosing schedule. Do not double doses.",R006
+SP048,A007,Storage,Store at temperatures not exceeding 30°C. Protect from light.,R007
+SP049,A007,Administration & Adherence,Cefotaxime is given as the sodium salt by deep intramuscular (IM) injection or intravenously (IV) by slow injection over 3 to 5 minutes or by infusion over 20 to 60 minutes.,R007
+SP050,A007,Administration & Adherence,Cefotaxime sodium has been reported to be incompatible with alkaline solutions such as sodium bicarbonate.,R007
+SP051,A007,Administration & Adherence,The manufacturers recommend that it should be administered separately from aminoglycosides.,R007
+SP052,A008,Food & Timing,May be taken with or without food. May be taken w/ meals to reduce GI discomfort.,R008
+SP053,A008,Storage,Store at temperatures not exceeding 30°C. Protect from light.,R008
+SP054,A009,Food & Timing,"May be taken with or without food: Swallow whole, do not chew or crush.",R009
+SP055,A009,Storage,Store at temperatures not exceeding 30°C.,R009
+SP056,A009,Administration & Adherence,Azithromycin should be swallowed whole with liquid as a single daily dose.,R009
+SP057,A010,Food & Timing,May be taken with or without food: May be taken w/ meals to reduce GI discomfort.,R010
+SP058,A010,Storage,Store at temperatures not exceeding 30°C. Protect from light.,R010
+SP059,A010,Administration & Adherence,Azithromycin suspension/tablets are for oral administration and should be administered as a single daily dose. The period of dosing with regard to infection is given as follows.,R010
+SP060,A011,Food & Timing,May be taken with or without food: May be taken w/ meals to reduce GI discomfort.,R011
+SP061,A011,Storage,Store at temperatures not exceeding 25°C.,R011
+SP062,A011,Storage,"The reconstituted Amoxil 100 mg/mL oral drops, 125 mg/5 mL powder for oral suspension and Amoxil Forte 250 mg/5 mL powder for oral suspension will retain its potency for 7 days when stored at refrigerated temperatures (between 2-8°C).",R011
+SP063,A012,Food & Timing,May be taken with or without food: May be taken w/ meals for better absorption & to reduce GI discomfort.,R012
+SP064,A012,Storage,Store at temperatures not exceeding 30°C. Protect from light.,R012
+SP065,A013,Food & Timing,May be taken with or without food: May be taken w/o regard to meals.,R013
+SP066,A013,Storage,Store at temperatures not exceeding 30°C. Protect from light.,R013
+SP067,A014,Food & Timing,May be taken with or without food: May be taken w/ milk.,R014
+SP068,A014,Storage,Store at temperatures not exceeding 30°C.,R014
+SP069,A014,Administration & Adherence,"To make a 35 mL suspension, add 25 mL of water to the granules in the bottle.",R014
+SP070,A014,Administration & Adherence,"To make a 70 mL suspension, add 51 mL of water to the granules in the bottle.",R014
+SP071,A014,Administration & Adherence,Shake well until the contents are evenly suspended.,R014
+SP072,A014,Storage,The reconstituted suspension can be used up to 14 days when stored at temperatures not exceeding 30°C.,R014
+SP073,A014,Storage,"After mixing, store at temperatures not exceeding 30°C.",R014
+SP074,A014,Administration & Adherence,Shake well before each use.,R014
+SP075,A014,Storage,Keep tightly closed.,R014
+SP076,A014,Storage,Do not refrigerate.,R014
+SP077,A015,Food & Timing,May be taken with or without food.,R015
+SP078,A015,Storage,Store at temperatures not exceeding 30°C.,R015
+SP079,A015,Storage,Shelf life: 36 months.,R015
+SP080,A015,Food & Timing,Clarithromycin may be given without regard to meals as food does not affect the extent of bioavailability.,R015
+SP081,A015,Administration & Adherence,Administered orally.,R015
+SP082,A016,Food & Timing,May be taken with or without food.,R016
+SP083,A016,Storage,Store at temperatures not exceeding 30°C. Protect from light.,R016
+SP084,A016,Storage,Store at temperatures not exceeding 25°C. Reconstituted suspension should be used within 14 days if stored between 15°C to 25°C. Protect from moisture.,R016
+SP085,A016,Food & Timing,"Clarithromycin granules (clarithromycin for oral suspension, USP) may be given with or without food.",R016
+SP086,A016,Administration & Adherence,Add half volume of water to the bottle and shake vigorously.,R016
+SP087,A016,Administration & Adherence,Add the remainder of water to the bottle and shake.,R016
+SP088,A016,Administration & Adherence,Shake well before each use.,R016
+SP089,A016,Storage,Keep tightly closed.,R016
+SP090,A016,Storage,Do not refrigerate.,R016
+SP091,A016,Food & Timing,Clarithromycin tablets and oral suspension can be taken with or without food and can be taken with milk.,R016
+SP092,A017,Storage,This medicinal product does not require any special storage conditions.,R017
+SP093,A017,Storage,Single use only.,R017
+SP094,A017,Storage,Store at temperatures not exceeding 30°C.,R017
+SP095,A017,Administration & Adherence,Fosfomycin trometamol is administrated as oral solution.,R017
+SP096,A017,Administration & Adherence,"The contents of each sachet, of fosfomycin should be dissolved in half a glass of water (at least 50 mL) and drink it immediately preferably before the night resting, after voiding the bladder.",R017
+SP097,A017,Food & Timing,"Should be taken on an empty stomach: Dissolve in 1⁄2 glass of water (at least 50 mL) & drink it immediately preferably prior the night resting, after voiding bladder.",R017
+SP098,A017,Food & Timing,Take 1 hr prior to or 2 hr after food ingestion.,R017
+SP099,A018,Storage,Store at temperatures not exceeding 30°C.,R018
+SP100,A018,Food & Timing,Should be taken on an empty stomach.,R018
+SP101,A018,Administration & Adherence,"Take on an empty stomach or about 2-3 hr after meals, preferably before bedtime & after emptying the bladder.",R018
+SP102,A018,Administration & Adherence,Dissolve in a glass of water (50-75 mL) or in favorite non-alcoholic drink & consume soon after dissolving.,R018
+SP103,A019,Administration & Adherence,Should be taken on an empty stomach.,R019
+SP104,A019,Food & Timing,Take 2-3 hr apart from meals.,R019
+SP105,A020,Storage,Store at temperatures not exceeding 30°C.,R020
+SP106,A020,Food & Timing,Should be taken with food.,R020
+SP107,A020,Administration & Adherence,800/160 mg Tablet: One (1) tablet every 12 hours after meals.,R020
+SP108,A020,Administration & Adherence,400 mg/80 mg capsule: one (1) to two (2) capsule every 12 hours after meals or as prescribed by the physician.,R020
+SP109,A021,Food & Timing,May be taken with or without food.,R021
+SP110,A021,Storage,Store at temperatures not exceeding 25°C.,R021
+SP111,A021,Storage,Protect from moisture and light.,R021
+SP112,A022,Food & Timing,Should be taken with food. Take w/ meals for optimum absorption.,R022
+SP113,A022,Storage,Store at temperature not exceeding 30°C. Protect from light.,R022
+SP114,A023,Food & Timing,Should be taken with food.,R023
+SP115,A023,Storage,Store at temperature not exceeding 30°C.,R023
+SP116,A024,Food & Timing,May be taken with or without food: Preferably taken 2 hr after meals.,R024
+SP117,A024,Storage,Store at temperature not exceeding 30°C.,R024
+SP118,A024,Storage,Protect from light.,R024
+SP119,A025,Storage,Store at temperature not exceeding 30°C.,R025
+SP120,A025,Storage,"Store in a cool, dry place.",R025
+SP121,A025,Food & Timing,May be taken with or without food: May be taken w/ meals to minimize GI discomfort.,R025
+SP122,A025,Food & Timing,"Do not take w/ antacids, Fe or dairy products.",R025
+SP123,A026,Food & Timing,May be taken with or without food: May be taken w/ meals to minimize GI discomfort.,R026
+SP124,A026,Food & Timing,"Do not take w/ antacids, Fe or dairy products.",R026
+SP125,A026,Storage,Store at temperature not exceeding 25°C.,R026
+SP126,A026,Storage,Protect from direct light including sunlamps.,R026
+SP127,A027,Food & Timing,May be taken with or without food: May be given w/o regard to meals.,R027
+SP128,A027,Storage,Store at temperature not exceeding 30°C. Protect from light.,R027
+SP129,A028,Food & Timing,May be taken with or without food: May be taken w/ food or milk to reduce GI discomfort.,R028
+SP130,A029,Food & Timing,May be taken with or without food.,R029
+SP131,A029,Storage,Store at temperature not exceeding 30°C.,R029
+SP132,A030,Food & Timing,Should be taken with food.,R030
+SP133,A030,Storage,Store at temperature not exceeding 30°C.,R030
