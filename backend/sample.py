@@ -54,3 +54,9 @@ if __name__ == "__main__":
     # terminal_test("levofloxacin antibiotic_info")
 
     # test for all possible cases for get_uses_indications
+    terminal_test("doxycycline doxyclen uses_indications") 
+    terminal_test("doxycycline levocin uses_indications") 
+    terminal_test("doxycycline doxin uses_indications")
+    terminal_test("doxyclen uses_indications")
+    terminal_test("doxin uses_indications")
+    terminal_test("doxycycline uses_indications")

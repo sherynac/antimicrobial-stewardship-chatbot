@@ -1,6 +1,6 @@
 from services.ontology_service import ontology_service
 from services.response_service import response_service
-from utils.helpers import add_space_to_pascal_case
+from utils.helpers import add_space_to_pascal_case, split_commas
 
 # Every method still needs to fetch the references and saving to a response
 
@@ -106,48 +106,64 @@ def handle_antibiotic_info(entities, query_type):
     else:
         return "Please specify the antibiotic name or brand for more information."
 
-def handle_uses_indications(onto, entities, query_type):
-    print(query_type)
+def handle_uses_indications(entities, query_type):
     if query_type == 'generic_brand':
         print("Handling uses and indications for generic_brand query type")
         generic_name = entities.get('Antibiotic', [None])[0]
         brand_name = entities.get('Brand', [None])[0]
-        brand_obj = ontology_service.query_ontology(onto, brand_name)
-        generic_obj = ontology_service.query_ontology(onto, generic_name)
+        brand_obj = ontology_service.query_ontology(brand_name)
+        generic_obj = ontology_service.query_ontology(generic_name)
+        ontology_service.is_correct_generic(generic_name, brand_obj)
         indication_obj = brand_obj.treats
+        brand_ref = ontology_service.get_reference_from_entity(brand_obj)
         
-        print(len(indication_obj))
         if len(indication_obj) == 1:
-            print("Single indication found.")
-            
-            indication, severity, disease_type = ontology_service.get_indication_severity_type(onto, indication_obj[0])
-            
+            indication, severity, disease_type = ontology_service.get_indication_severity_type(indication_obj[0])
+            indication_ref = ontology_service.get_reference_from_entity(indication_obj[0])
+            reference_list = ontology_service.combine_references(brand_ref, indication_ref)
+
             if severity:
                 indication_final = f"{severity} {indication}"
             else:
                 indication_final = indication
                 
             symptoms_obj = indication_obj[0].hasSymptoms
+            indication_info = {
+                "brand" : brand_name,
+                "generic" : generic_name,
+                "disease" : indication_final,
+            }
+
+            symptoms_obj = indication_obj[0].hasSymptoms
+            symptoms_array = split_commas(symptoms_obj)
+
+            return response_service.build_indications_single(indication_info, symptoms_array, reference_list)
+        
         else:
-            print("Multiple indications found.")
             indication_final = []
             symptoms_obj = []
+            indication_ref = ontology_service.get_reference_from_entities(indication_obj)
+            reference_list = ontology_service.combine_references(brand_ref, indication_ref)
+
             for indication in indication_obj:
-                indication_name, severity, disease_type = ontology_service.get_indication_severity_type(onto, indication)
+                indication_name, severity, disease_type = ontology_service.get_indication_severity_type(indication)
                 if severity:
                     indication_name = f"{severity} {indication_name}"
                 indication_final.append(indication_name)
-                symptoms_obj.append(indication.hasSymptoms)
-                
-        print("Generic: ", generic_name)
-        print("Brand: ", brand_name)
-        print("Indications: ", indication_final)
-        print("Disease Types: ", disease_type)
-        print("Symptoms: ", symptoms_obj)
+                symptoms = indication.hasSymptoms
+                symptoms_obj.append(symptoms[0])
+
+            indication_info = {
+                "generic" : generic_name,
+                "brand" :brand_name
+            }
+            
+            return response_service.build_indications_multiple(indication_info, indication_final, symptoms_obj, reference_list)
         
     elif query_type == 'brand':
         brand_name = entities.get('Brand', [None])[0]
-        brand_obj = ontology_service.query_ontology(onto, brand_name)
+        brand_obj = ontology_service.query_ontology(brand_name)
+        brand_ref = ontology_service.get_reference_from_entity(brand_obj)
         
         generic_obj = brand_obj.isBrandOf
         generic_name = generic_obj.name
@@ -157,7 +173,9 @@ def handle_uses_indications(onto, entities, query_type):
         if len(indication_obj) == 1:
             print("Single indication found.")
             
-            indication, severity, disease_type = ontology_service.get_indication_severity_type(onto, indication_obj[0])
+            indication, severity, disease_type = ontology_service.get_indication_severity_type(indication_obj[0])
+            indication_ref = ontology_service.get_reference_from_entity(indication_obj[0])
+            reference_list = ontology_service.combine_references(brand_ref, indication_ref)
             
             if severity:
                 indication_final = f"{severity} {indication}"
@@ -165,47 +183,70 @@ def handle_uses_indications(onto, entities, query_type):
                 indication_final = indication
                 
             symptoms_obj = indication_obj[0].hasSymptoms
+
+            indication_info = {
+                "brand" : brand_name,
+                "generic" : generic_name,
+                "disease" : indication_final,
+            }
+
+            symptoms_obj = indication_obj[0].hasSymptoms
+            symptoms_array = split_commas(symptoms_obj)
+
+            return response_service.build_indications_single(indication_info, symptoms_array, reference_list)
             
         else:
             print("Multiple indications found.")
             indication_final = []
             symptoms_obj = []
+            indication_ref = ontology_service.get_reference_from_entities(indication_obj)
+            reference_list = ontology_service.combine_references(brand_ref, indication_ref)
+
             for indication in indication_obj:
-                indication_name, severity, disease_type = ontology_service.get_indication_severity_type(onto, indication)
+                indication_name, severity, disease_type = ontology_service.get_indication_severity_type(indication)
                 if severity:
                     indication_name = f"{severity} {indication_name}"
                 indication_final.append(indication_name)
                 symptoms_obj.extend(indication.hasSymptoms)
-        
-        print("Brand: ", brand_name)
-        print("Generic: ", generic_name)
-        print("Indications: ", indication_final)
-        print("Disease Types: ", disease_type)
-        print("Symptoms: ", symptoms_obj)
+
+            indication_info = {
+                "generic" : generic_name,
+                "brand" :brand_name
+            }
+            
+            return response_service.build_indications_multiple(indication_info, indication_final, symptoms_obj, reference_list)
     
     elif query_type == 'generic':
         generic_name = entities.get('Antibiotic', [None])[0]
-        generic_obj = ontology_service.query_ontology(onto, generic_name)
+        generic_obj = ontology_service.query_ontology(generic_name)
         
         brands_obj = generic_obj.hasBrandName
         indication_final = []
         symptoms_obj = []
+        table_details = []
+        reference_list = ontology_service.get_reference_from_entities(brands_obj)
         
-        print("Generic: ", generic_name)
         for brand in brands_obj:
-            print("Brand: ", brand.name)
             indication_obj = brand.treats
             for indication in indication_obj:
-                indication_name, severity, disease_type = ontology_service.get_indication_severity_type(onto, indication)
+                indication_name, severity, disease_type = ontology_service.get_indication_severity_type(indication)
+                indication_ref = ontology_service.get_reference_from_entity(indication)
+                reference_list = ontology_service.combine_references(reference_list, indication_ref)
+
+                table_details.append([
+                    indication_name,
+                    disease_type,
+                    severity or "N/A",
+                    ", ".join(indication.hasSymptoms)
+                ])
+
                 if severity:
                     indication_name = f"{severity} {indication_name}"
-                    
-                print("Indication: ", indication_name)
-                print("Disease Type: ", disease_type)
-                print("Symptoms: ", indication.hasSymptoms)
-                
+
                 indication_final.append(indication_name)
                 symptoms_obj.extend(indication.hasSymptoms)
+
+        return response_service.build_indications_generic(generic_name, table_details, reference_list)
         
     return "To get information about the uses and indications of an antibiotic, please specify the antibiotic name or brand."
 
@@ -293,7 +334,7 @@ def handle_side_effects(onto, entities, query_type):
                 duration_str = side_effect.lastsFor
                 description = side_effect.hasSideEffectDescription
             
-                if "FreqruencyNotReported" in pattern_object[0].name:
+                if "FrequencyNotReported" in pattern_object[0].name:
                     pattern = "Frequency not reported"
                 else:
                     side_effect = side_effect_class[0].name

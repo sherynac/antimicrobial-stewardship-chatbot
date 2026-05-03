@@ -44,6 +44,9 @@ class ResponseService:
     def build_reference(self, name: str, title: str, url: str) -> dict:
         return {"type":"reference", "name": name, "title": title, "url": url}
 
+    def build_bullet(self, description:str, main_text: str = "") -> dict:
+        return {"type": "bullet", "main_text": main_text, "description": description}
+
 
     # ─── Composite Builder ────────────────────────────────────────────
 
@@ -56,6 +59,15 @@ class ResponseService:
             "sources": [
                 self.build_reference(ref["name"], ref["title"], ref["url"])
                 for ref in references
+            ]
+        }
+
+    def build_bullet_list(self, list: list) -> dict:
+        return {
+            "type": "bullet_list",
+            "items": [
+                self.build_bullet(item)
+                for item in list
             ]
         }
 
@@ -105,7 +117,7 @@ class ResponseService:
         ])
     
     def build_antibiotic_generic(self, generic_info, table_details, reference):
-        print("SINGLE GET ANTIBIOTIC INFO")
+        print("GENERIC GET ANTIBIOTIC INFO")
         template = self.get_response_template("GET_ANTIBIOTIC_INFO", "generic_only")
         response_text = random.choice(template['responseTexts'])
 
@@ -121,6 +133,68 @@ class ResponseService:
             self.build_table_response(template['columns'], table_details),
             reference_json
         ])
+    
+    def build_indications_single(self, indication_info, symptoms_array, reference):
+        print("SINGLE INDICATION")
+        template = self.get_response_template("GET_USES_INDICATIONS", "single_indication")
+        response_text = random.choice(template['responseTexts'])
 
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            brand = indication_info['brand'],
+            generic = indication_info['generic'],
+            disease = indication_info['disease']
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            self.build_bullet_list(symptoms_array),
+            reference_json
+        ])
+    
+    def build_indications_multiple(self, indication_info, indication_final, symptoms_obj, reference):
+        print("MULTIPLE INDICATIONS")
+        template = self.get_response_template("GET_USES_INDICATIONS", "multiple_indications")
+        response_text = random.choice(template['responseTexts'])
+        bullet_template = template['itemFormat']
+
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            brand=indication_info['brand'],
+            generic=indication_info['generic'],
+        )
+
+        bullet_list = self.build_bullet_list([
+            self.build_bullet(
+                main_text=indication,
+                description=bullet_template['description'].format(symptoms=symptoms)
+            )
+            for indication, symptoms in zip(indication_final, symptoms_obj)
+        ])
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            bullet_list,
+            reference_json
+        ])
+
+    def build_indications_generic(self, generic_name, table_details, reference):
+        print("GENERIC INDICATIONS")
+        template = self.get_response_template("GET_USES_INDICATIONS", "generic_only")
+        response_text = random.choice(template['responseTexts'])
+
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            generic=generic_name,
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            self.build_table_response(template['columns'], table_details),
+            reference_json
+        ])
     
 response_service = ResponseService('./backend/data/VRB.json')

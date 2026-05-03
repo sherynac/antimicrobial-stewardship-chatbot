@@ -70,3 +70,7 @@ def get_splitted_question(question):
     words = re.findall(r'\b\w+\b', question)
     # print(f"Splitted question: {words}")
     return words
+
+def split_commas(sentence):
+    items_array = sentence[0].split(',')
+    return items_array

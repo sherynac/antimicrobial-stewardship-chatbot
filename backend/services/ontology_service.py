@@ -149,6 +149,16 @@ class OntologyService:
                     seen_urls.add(url)
 
         return references
+    
+    def combine_references(self, *entity_groups):
+        seen_urls = set()
+        combined = []
+        for refs in entity_groups:
+            for ref in refs:
+                if ref["url"] not in seen_urls:
+                    combined.append(ref)
+                    seen_urls.add(ref["url"])
+        return combined
 
 
 ontology_service = OntologyService()

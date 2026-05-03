@@ -3,14 +3,9 @@ import services.ontology_service as ontology_service
 import services.intent_handler as intent_handler
 
 def identify_intent(words):
-    if any(word in ['about_chatbot'] for word in words):
-        return 'get_about_chatbot'
     
-    elif any(word in ['antibiotic_info'] for word in words):
+    if any(word in ['antibiotic_info'] for word in words):
         return 'get_antibiotic_info'
-    
-    elif any(word in ['compare'] for word in words):
-        return 'compare_brands'
     
     elif any(word in ['uses_indications'] for word in words):
         return 'get_uses_indications'

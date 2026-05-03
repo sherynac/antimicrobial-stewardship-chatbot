@@ -53,25 +53,21 @@
           "condition": "multiple_indications",
           "responseTexts": [
             "{brand} (generic: {generic}) is an antibiotic prescribed to treat various bacterial infections. Based on available data, it is used for:",
-            "{generic} is used to treat multiple bacterial infections. These include:",
-            "The antibiotic {generic} has several indications listed below:"
+            "{brand} ({generic}) is used to treat multiple bacterial infections. These include:",
+            "The antibiotic {brand} ({generic}) has several indications listed below:"
           ],
           "itemFormat": {
-            "primary": "• **{disease}**: {symptoms}"
+            "description": "Symptoms include {symptoms}"
           }
         },
         {
           "responseID": 5,
           "condition": "single_indication",
           "responseTexts": [
-            "{generic} is indicated for the following condition:",
-            "Based on available data, {generic} is used for:",
-            "The antibiotic {generic} has the following indication:"
-          ],
-          "itemFormat": {
-            "primary": "• **{disease}**",
-            "details": "⁃ {hasSymptoms}"
-          }
+            "{brand} ({generic}) is indicated for the {disease} that has symptoms of :",
+            "Based on available data, {brand} ({generic}) is used for {disease} with the following symptoms:",
+            "The antibiotic brand ({generic}) treats {disease}, which can manifest with the following symptoms:"
+          ]
         },
         {
           "responseID": 6,
