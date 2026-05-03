@@ -65,10 +65,7 @@ class ResponseService:
     def build_bullet_list(self, list: list) -> dict:
         return {
             "type": "bullet_list",
-            "items": [
-                self.build_bullet(item)
-                for item in list
-            ]
+            "items": list
         }
 
     # ─── High-Level Intent Builders ───────────────────────────────────
@@ -197,4 +194,184 @@ class ResponseService:
             reference_json
         ])
     
+    def build_side_effect_all_match(self, isFound, side_effect_info, reference):
+        print("GENERIC, BRAND, SIDE EFFECT MATCH")
+
+        if not(isFound):
+            template = self.get_response_template("GET_SIDE_EFFECTS", "generic_brand_verify_no_match")
+        else:
+            template = self.get_response_template("GET_SIDE_EFFECTS", "generic_brand_verify_match")
+
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            generic=side_effect_info['generic'],
+            brand = side_effect_info['brand'],
+            side_effect = side_effect_info['side_effect']
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            reference_json
+        ])
+    
+    def build_side_effect_brand_match(self, isFound, side_effect_info, reference):
+        print("BRAND, SIDE EFFECT MATCH")
+
+        if not(isFound):
+            template = self.get_response_template("GET_SIDE_EFFECTS", "brand_verify_no_match")
+        else:
+            template = self.get_response_template("GET_SIDE_EFFECTS", "brand_verify_match")
+
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            brand = side_effect_info['brand'],
+            side_effect = side_effect_info['side_effect']
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            reference_json
+        ])
+    
+    def build_side_effect_generic_match(self, isFound, side_effect_info, reference):
+        print("GENERIC, SIDE EFFECT MATCH")
+
+        if not(isFound):
+            template = self.get_response_template("GET_SIDE_EFFECTS", "generic_verify_no_match")
+        else:
+            template = self.get_response_template("GET_SIDE_EFFECTS", "generic_verify_match")
+
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            generic = side_effect_info['generic'],
+            brands = side_effect_info['brands'],
+            side_effect = side_effect_info['side_effect']
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            reference_json
+        ])
+
+    def build_side_effect_generic_brand(self, info, side_effect_list, reference): 
+        print("GENERIC, BRAND SIDE EFFECT")
+        template = self.get_response_template("GET_SIDE_EFFECTS", "generic_brand_only")
+        response_text = random.choice(template['responseTexts'])
+
+        text = response_text.format(
+            generic = info['generic'],
+            brand = info['brand']
+        )
+
+        bullet_template = template['groupFormat']
+        formatted_effects = []
+
+        for se in side_effect_list:
+            if se['pattern']:
+                main_text = bullet_template['mainWithPattern'].format(
+                    side_effect=se['side_effect'],
+                    pattern=se['pattern']
+                )
+            else:
+                main_text = bullet_template['mainNoPattern'].format(
+                    side_effect=se['side_effect']
+                )
+            
+            formatted_effects.append(
+                self.build_bullet(
+                    main_text=main_text,  
+                    description=se['description']
+                )
+            )
+
+        reference_json = self.build_reference_list(reference)
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            self.build_bullet_list(formatted_effects),
+            reference_json
+        ])
+    
+    def build_side_effect_generic(self, side_effect_info: dict, reference: list):
+        print("GENERIC, SIDE EFFECTS")
+        template = self.get_response_template("GET_SIDE_EFFECTS", "generic_only")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(generic=side_effect_info['generic'])
+
+        # build a section per brand
+        brand_sections = []
+        for brand_data in side_effect_info['brands']:
+            bullets = []
+            for se in brand_data['side_effects']:
+                if se['pattern']:
+                    main_text = template['groupFormat']['mainWithPattern'].format(
+                        side_effect=se['side_effect'],
+                        pattern=se['pattern']
+                    )
+                else:
+                    main_text = template['groupFormat']['mainNoPattern'].format(
+                        side_effect=se['side_effect']
+                    )
+                bullets.append(self.build_bullet(
+                    main_text=main_text,
+                    description=se['description']
+                ))
+
+            brand_sections.append({
+                "type": "section",
+                "title": brand_data['brand'],  # "Doxin"
+                "items": bullets               # list of bullets
+            })
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            *brand_sections,
+            reference_json
+        ])
+
+    def build_side_effect_brand(self, brand, side_effect_list, reference):
+        print("BRAND SIDE EFFECT")
+        template = self.get_response_template("GET_SIDE_EFFECTS", "brand_only")
+        response_text = random.choice(template['responseTexts'])
+
+        text = response_text.format(
+            brand = brand
+        )
+
+        bullet_template = template['itemFormat']
+        formatted_effects = []
+
+        for se in side_effect_list:
+            if se['pattern']:
+                main_text = bullet_template['mainWithPattern'].format(
+                    side_effect=se['side_effect'],
+                    pattern=se['pattern']
+                )
+            else:
+                main_text = bullet_template['mainNoPattern'].format(
+                    side_effect=se['side_effect']
+                )
+            
+            formatted_effects.append(
+                self.build_bullet(
+                    main_text=main_text,  
+                    description=se['description']
+                )
+            )
+
+        reference_json = self.build_reference_list(reference)
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            self.build_bullet_list(formatted_effects),
+            reference_json
+        ])
 response_service = ResponseService('./backend/data/VRB.json')

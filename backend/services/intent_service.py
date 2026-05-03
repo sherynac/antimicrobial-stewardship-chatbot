@@ -55,6 +55,7 @@ def identify_entities_present(entity_types):
     brand_substance = ['Brand', 'Substance']
     warning = ['Warning']
     generic_brand_side_effects = ['Antibiotic', 'Brand', 'SideEffect']
+    brand_side_effects = ['Brand', 'SideEffect']
     generic_side_effects = ['Antibiotic', 'SideEffect']
 
     if all (e in entity_types for e in generic_substance):
@@ -65,6 +66,8 @@ def identify_entities_present(entity_types):
         return 'warning'
     elif all (e in entity_types for e in generic_brand_side_effects):
         return 'generic_brand_side_effects'
+    elif all (e in entity_types for e in brand_side_effects):
+        return 'brand_side_effects'
     elif all (e in entity_types for e in generic_side_effects):
         return 'generic_side_effects'
     elif all (e in entity_types for e in generic_brand):
@@ -82,12 +85,8 @@ def identify_entities_present(entity_types):
         return 'unknown_entity_combination'
     
 def handle_intent(intent, query_type, question_entities):
-    if intent == 'get_about_chatbot':
-        return intent_handler.handle_about_chatbot()
-    elif intent == 'get_antibiotic_info':
+    if intent == 'get_antibiotic_info':
         return intent_handler.handle_antibiotic_info(question_entities, query_type)
-    elif intent == 'compare_brands':
-        return intent_handler.handle_compare_brands(question_entities, query_type)
     elif intent == 'get_uses_indications':
         return intent_handler.handle_uses_indications(question_entities, query_type)
     elif intent == 'get_side_effects':

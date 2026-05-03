@@ -291,11 +291,6 @@
     rdfs:range xsd:string ;
     rdfs:label "is described as" .
 
-:lastsFor rdf:type owl:DatatypeProperty ;
-    rdfs:domain :SideEffect ;
-    rdfs:range xsd:string ;
-    rdfs:label "lasts for" .
-
 :hasClinicalEffects rdf:type owl:DatatypeProperty ;
     rdfs:domain :Interaction ;
     rdfs:range xsd:string ;
@@ -623,13 +618,11 @@
 
 # Doxin Side Effects
 :SE310 :hasSideEffectDescription "May occur after a patient stop taking doxycycline" .
-:SE310 :lastsFor "2 months" .
 :SE310 :whichIs :FrequencyNotReported .
 :SE310 :hasReference :R011 .
 :SE310 :hasReference :R077 .
 
 :SE312 :hasSideEffectDescription "a feeling of sickness or discomfort in the stomach" .
-:SE312 :lastsFor "Not Specified" .
 :SE312 :whichIs :Common .
 :SE312 :hasReference :R011 .
 :SE312 :hasReference :R077 .
@@ -648,7 +641,6 @@
 
 # Doxyclen Side Effects
 :SE338 :hasSideEffectDescription "May occur after a patient stop taking doxycycline" .
-:SE338 :lastsFor "2 months" .
 :SE338 :whichIs :Infrequent .
 :SE338 :hasReference :R012 .
 :SE338 :hasReference :R077 .
@@ -657,7 +649,6 @@
 
 # Dynadoxy Side Effects
 :SE371 :hasSideEffectDescription "May occur after a patient stop taking doxycycline" .
-:SE371 :lastsFor "2 months" .
 :SE371 :whichIs :Infrequent .
 :SE371 :hasReference :R012 .
 :SE371 :hasReference :R077 .
@@ -666,7 +657,6 @@
 
 # Levocin Side Effects (sample)
 :SE000 :hasSideEffectDescription "Sample description for headaches" .
-:SE000 :lastsFor "Not Specified" .
 :SE000 :whichIs :FrequencyNotReported .
 
 :Levocin :hasSideEffect :SE000 .

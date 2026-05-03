@@ -54,9 +54,22 @@ if __name__ == "__main__":
     # terminal_test("levofloxacin antibiotic_info")
 
     # test for all possible cases for get_uses_indications
-    terminal_test("doxycycline doxyclen uses_indications") 
-    terminal_test("doxycycline levocin uses_indications") 
-    terminal_test("doxycycline doxin uses_indications")
-    terminal_test("doxyclen uses_indications")
-    terminal_test("doxin uses_indications")
-    terminal_test("doxycycline uses_indications")
+    # terminal_test("doxycycline doxyclen uses_indications") 
+    # terminal_test("doxycycline levocin uses_indications") 
+    # terminal_test("doxycycline doxin uses_indications")
+    # terminal_test("doxyclen uses_indications")
+    # terminal_test("doxin uses_indications")
+    # terminal_test("doxycycline uses_indications")
+
+    # test for all possible cases for get_side_effects
+    # terminal_test("doxycycline doxyclen headache side_effects")
+    # terminal_test("doxycycline doxyclen diarrhea side_effects") 
+    # terminal_test("doxycycline levocin side_effects") 
+    # terminal_test("doxycycline doxin side_effects")
+    # terminal_test("doxyclen headache side_effects")
+    # terminal_test("doxyclen diarrhea side_effects")
+    # terminal_test("doxin side_effects")
+    # terminal_test("doxycycline nausea side_effects")
+    # terminal_test("doxycycline headache side_effects")
+    # terminal_test("doxycycline side_effects")
+

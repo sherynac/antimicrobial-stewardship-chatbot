@@ -34,6 +34,15 @@ class OntologyService:
                 entities.append(entity_name_clean)
         return sorted(set(entities))
 
+    def find_subclasses(self, entity_name: str) -> list[str]:
+        entity_class = self.onto.search_one(iri="*#" + entity_name)
+        subclasses = []
+
+        if entity_class:
+            for subclass in entity_class.subclasses():
+                subclasses.append(subclass.name)
+        return sorted(set(subclasses))
+    
     def is_correct_generic(self, generic_name, brand_obj):
         generic_obj = brand_obj.isBrandOf
         if (generic_obj.name != generic_name):

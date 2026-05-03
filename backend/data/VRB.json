@@ -107,27 +107,17 @@
           ],
           "groupFormat": {
             "brandHeaderText": "{brand}",
-            "bulletWithPattern": "⁃ **{side_effect}** ({pattern})",
-            "bulletNoPattern": "⁃ **{side_effect}**",
-            "descWithDuration": "Note: May last for {duration}. {side_effect_description}",
-            "descNoDuration": "{side_effect_description}"
-          },
-          "optionalNodes": [
-            "pattern",
-            "duration"
-          ]
+            "mainWithPattern": "{side_effect} ({pattern})",
+            "mainNoPattern": "{side_effect}"
+          }
         },
         {
           "responseID": 9,
           "condition": "generic_verify_match",
           "responseTexts": [
-            "Yes, {side_effect} is a known side effect of {generic}. It is associated with the following brands: {brand}.",
-            "{generic} is associated with {side_effect}. The brands that report this side effect include: {brand}.",
-            "Based on records, {generic} can cause {side_effect}. This is observed in the following brands: {brand}."
-          ],
-          "targetNodes": [
-            "causes",
-            "hasBrandName"
+            "Yes, {side_effect} is a known side effect of {generic}. It is associated with the following brands: {brands}.",
+            "{generic} is associated with {side_effect}. The brands that report this side effect include: {brands}.",
+            "Based on records, {generic} can cause {side_effect}. This is observed in the following brands: {brands}."
           ]
         },
         {
@@ -143,13 +133,13 @@
           "responseID": 11,
           "condition": "brand_only",
           "responseTexts": [
-            "**{brand}**",
-            "Here are the side effects associated with **{brand}**:",
-            "**{brand}** may cause the following side effects:",
-            "Based on ontology data, these are the side effects linked to **{brand}**."
+            "Here are the side effects associated with {brand}",
+            "{brand} may cause the following side effects:",
+            "Based on ontology data, these are the side effects linked to {brand}."
           ],
           "itemFormat": {
-            "primary": "⁃ **{side_effect}** ({pattern}): Note: {side_effect_description}"
+            "mainWithPattern": "{side_effect} ({pattern})",
+            "mainNoPattern": "{side_effect}"
           }
         },
         {
@@ -179,8 +169,8 @@
             "Based on ontology data, these are the side effects of {brand} ({generic})."
           ],
           "groupFormat": {
-            "primary": "**{brand} ({generic})**",
-            "itemFormat": "⁃ **{side_effect}** ({pattern}): {side_effect_description}"
+            "mainWithPattern": "{side_effect} ({pattern})",
+            "mainNoPattern": "{side_effect}"
           }
         },
         {

@@ -1,6 +1,8 @@
 from services.ontology_service import ontology_service
 from services.response_service import response_service
-from utils.helpers import add_space_to_pascal_case, split_commas
+from utils.helpers import add_space_to_pascal_case, split_commas, array_to_string
+
+# TODO: check referencing for side effect (once data is finished)
 
 # Every method still needs to fetch the references and saving to a response
 
@@ -250,183 +252,195 @@ def handle_uses_indications(entities, query_type):
         
     return "To get information about the uses and indications of an antibiotic, please specify the antibiotic name or brand."
 
-def handle_side_effects(onto, entities, query_type):
+def handle_side_effects(entities, query_type):
     if query_type == 'generic_brand_side_effects':
         generic_name = entities.get('Antibiotic', [None])[0]
         brand_name = entities.get('Brand', [None])[0]
-        target_side_effects = entities.get('SideEffect', [None])[0]
-        brand_obj = ontology_service.query_ontology(onto, brand_name)
-        generic_obj = ontology_service.query_ontology(onto, generic_name)
-        
+        target_side_effect = entities.get('SideEffect', [None])[0]
+        brand_obj = ontology_service.query_ontology(brand_name)
+        generic_obj = ontology_service.query_ontology(generic_name)
+        reference_list = ontology_service.get_reference_from_entity(brand_obj)
+
         isFound = False
-        
+        side_effect_info = {
+            "side_effect" : target_side_effect,
+            "brand" : brand_name,
+            "generic" : generic_name
+        }
+
         for side_effect_instance in brand_obj.hasSideEffect:
             ontology_service_side_effect = side_effect_instance.is_a[0].name
-            if target_side_effects.name.lower() == ontology_service_side_effect.lower():
+            if target_side_effect.lower() == ontology_service_side_effect.lower():
+                side_effect_ref = ontology_service.get_reference_from_entity(side_effect_instance)
+                reference_list = ontology_service.combine_references(reference_list, side_effect_ref)
                 isFound = True
-                
-        if not(isFound):
-            print("NOT FOUND")
-            side_effect = target_side_effects
-            generic = generic_name
-            brand = brand_name
             
-        print("Generic: ", generic_name)
-        print("Brand: ", brand_name)
-        print("Side Effect Queried: ", target_side_effects)
-        print("Side Effect Found: ", isFound)
+        return response_service.build_side_effect_all_match(isFound, side_effect_info, reference_list)
             
     elif query_type == 'generic_brand':
         generic_name = entities.get('Antibiotic', [None])[0]
         brand_name = entities.get('Brand', [None])[0]
-        brand_obj = ontology_service.query_ontology(onto, brand_name)
-        generic_obj = ontology_service.query_ontology(onto, generic_name)
-        
+        brand_obj = ontology_service.query_ontology(brand_name)
+        generic_obj = ontology_service.query_ontology(generic_name)
+        ontology_service.is_correct_generic(generic_name, brand_obj)
+        brand_ref = ontology_service.get_reference_from_entity(brand_obj)
+
         side_effects = brand_obj.hasSideEffect
+        side_effect_ref = ontology_service.get_reference_from_entities(side_effects)
+        reference_list = ontology_service.combine_references(brand_ref, side_effect_ref)
         side_effects_list = []
         
         for side_effect in side_effects:
             side_effect_class = side_effect.is_a
             pattern_object = side_effect.whichIs
-            duration_str = side_effect.lastsFor
             description = side_effect.hasSideEffectDescription
-        
-            if "FreqruencyNotReported" in pattern_object[0].name:
-                pattern = "Frequency not reported"
-            else:
-                side_effect = side_effect_class[0].name
-                pattern = pattern_object[0].name
-                
-            if "Not Specified" in duration_str[0]:
-                description = description[0]
-            else:
-                description = description[0]
-                duration = add_space_to_pascal_case(duration_str[0])
-                
-            print("Generic: ", generic_name)
-            print("Brand: ", brand_name)
-            print("Side Effect: ", side_effect)
-            print("Pattern: ", pattern)
-            print("Duration: ", duration)
-            print("Description: ", description)
             
+            if "FrequencyNotReported" in pattern_object[0].name:
+                pattern = None
+            else:
+                pattern = pattern_object[0].name
+
+            side_effect = side_effect_class[0].name
             side_effects_list.append({
                 "side_effect": side_effect,
                 "pattern": pattern,
-                "duration": duration,
-                "description": description
+                "description": description[0]
             })
+
+        info = {
+            "brand": brand_name,
+            "generic": generic_name,
+        }
+
+        return response_service.build_side_effect_generic_brand(info, side_effects_list, reference_list)
 
     elif query_type == 'generic':
         generic_name = entities.get('Antibiotic', [None])[0]
-        generic_obj = ontology_service.query_ontology(onto, generic_name)
+        generic_obj = ontology_service.query_ontology(generic_name)
         
         brands_obj = generic_obj.hasBrandName
-        side_effects_list = []
-        
-        print("Generic: ", generic_name)
-        print("Brands: ", brands_obj)
+        reference_list = ontology_service.get_reference_from_entities(brands_obj)
+        brands_side_effects = []  # ← list of brands, each with their side effects
+
         for brand in brands_obj:
             brand_side_effects = brand.hasSideEffect
+            side_effects_list = []
+
+            side_effect_ref = ontology_service.get_reference_from_entities(brand_side_effects)
+            reference_list = ontology_service.combine_references(reference_list, side_effect_ref)
+
             for side_effect in brand_side_effects:
                 side_effect_class = side_effect.is_a
                 pattern_object = side_effect.whichIs
-                duration_str = side_effect.lastsFor
                 description = side_effect.hasSideEffectDescription
             
                 if "FrequencyNotReported" in pattern_object[0].name:
-                    pattern = "Frequency not reported"
+                    pattern = None
                 else:
-                    side_effect = side_effect_class[0].name
                     pattern = pattern_object[0].name
-                    
-                if "Not Specified" in duration_str[0]:
-                    description = description[0]
-                else:
-                    description = description[0]
-                    duration = add_space_to_pascal_case(duration_str[0])
-                    
+                
+                side_effect = side_effect_class[0].name
                 side_effects_list.append({
                     "side_effect": side_effect,
                     "pattern": pattern,
-                    "duration": duration,
-                    "description": description
+                    "description": description[0]
                 })
+
+            brands_side_effects.append({
+            "brand": brand.name,
+            "side_effects": side_effects_list
+            })
+
+        # what you pass to response_service
+        side_effect_info = {
+            "generic": generic_name,
+            "brands": brands_side_effects  # ← grouped by brand
+        }
+
+        return response_service.build_side_effect_generic(side_effect_info, reference_list)
                 
-                print("Generic: ", generic_name)
-                print("Brand: ", brand.name)
-                print("Side Effect: ", side_effect)
-                print("Pattern: ", pattern)
-                print("Duration: ", duration)
-                print("Description: ", description)
     
-    # have not yet tested , error in creating side_effect entities
     elif query_type == 'generic_side_effects':# have not tested
         generic_name = entities.get('Antibiotic', [None])[0]
-        generic_obj = ontology_service.query_ontology(onto, generic_name)
-        target_side_effects = entities.get('SideEffect', [None])[0]
+        generic_obj = ontology_service.query_ontology(generic_name)
+        target_side_effect = entities.get('SideEffect', [None])[0]
         
         brands_obj = generic_obj.hasBrandName
+        reference_list = ontology_service.get_reference_from_entities(brands_obj)
         side_effects = []
         found_brands = []
-        
+        isFound = False
     
         for brand in brands_obj:
             print("Brand_side_effects", brand.hasSideEffect)
             for side_effect_instance in brand.hasSideEffect:
                 ontology_service_side_effect = side_effect_instance.is_a[0].name
                 print("ontology_service Side Effect: ", ontology_service_side_effect)
-                if target_side_effects.lower() == ontology_service_side_effect.lower():
+                if target_side_effect.lower() == ontology_service_side_effect.lower():
+                    isFound= True
+                    side_effect_ref = ontology_service.get_reference_from_entity(side_effect_instance)
+                    reference_list = ontology_service.combine_references(reference_list, side_effect_ref)
                     side_effects.append(side_effect_instance)
                     found_brands.append(brand)
         
-        print("Generic: ", generic_name)
-        print("Side Effect Queried: ", target_side_effects)
-        print("Found in Brands: ", found_brands)
-        print("Side Effects Found: ", side_effects)
+        side_effect_info = {
+            "generic" :generic_name,
+            "brands" : array_to_string(found_brands),
+            "side_effect": target_side_effect
+        }
+
+        return response_service.build_side_effect_generic_match(isFound, side_effect_info, reference_list )
 
     elif query_type == 'brand':
         brand_name = entities.get('Brand', [None])[0]
-        brand_obj = ontology_service.query_ontology(onto, brand_name)
-        target_side_effects = entities.get('SideEffect', [None])[0]
-        generic_obj = brand_obj.isBrandOf
-        generic_name = generic_obj.name
-        
-        brand_side_effects = brand_obj.hasSideEffect
+        brand_obj = ontology_service.query_ontology(brand_name)
+        brand_ref = ontology_service.get_reference_from_entity(brand_obj)
+
+        side_effects = brand_obj.hasSideEffect
+        side_effect_ref = ontology_service.get_reference_from_entities(side_effects)
+        reference_list = ontology_service.combine_references(brand_ref, side_effect_ref)
         side_effects_list = []
         
-        for side_effect_instance in brand_side_effects:
-            side_effect_class = side_effect_instance.is_a
-            pattern_object = side_effect_instance.whichIs
-            duration_str = side_effect_instance.lastsFor
-            description = side_effect_instance.hasSideEffectDescription
+        for side_effect in side_effects:
+            side_effect_class = side_effect.is_a
+            pattern_object = side_effect.whichIs
+            description = side_effect.hasSideEffectDescription
             
-            if "FreqruencyNotReported" in pattern_object[0].name:
-                pattern = "Frequency not reported"
+            if "FrequencyNotReported" in pattern_object[0].name:
+                pattern = None
             else:
-                side_effect = side_effect_class[0].name
                 pattern = pattern_object[0].name
-                    
-            if "Not Specified" in duration_str[0]:
-                description = description[0]
-            else:
-                description = description[0]
-                duration = add_space_to_pascal_case(duration_str[0])
-                    
+
+            side_effect = side_effect_class[0].name
             side_effects_list.append({
                 "side_effect": side_effect,
                 "pattern": pattern,
-                "duration": duration,
-                "description": description
+                "description": description[0]
             })
+
+        return response_service.build_side_effect_brand(brand_name, side_effects_list, reference_list)
+
+    elif query_type == 'brand_side_effects':
+        brand_name = entities.get('Brand', [None])[0]
+        target_side_effect = entities.get('SideEffect', [None])[0]
+        brand_obj = ontology_service.query_ontology(brand_name)
+        reference_list = ontology_service.get_reference_from_entity(brand_obj)
+
+        isFound = False
+        side_effect_info = {
+            "side_effect" : target_side_effect,
+            "brand" : brand_name,
+        }
+
+        for side_effect_instance in brand_obj.hasSideEffect:
+            ontology_service_side_effect = side_effect_instance.is_a[0].name
+            if target_side_effect.lower() == ontology_service_side_effect.lower():
+                side_effect_ref = ontology_service.get_reference_from_entity(side_effect_instance)
+                reference_list = ontology_service.combine_references(reference_list, side_effect_ref)
+                isFound = True
             
-            print("Generic: ", generic_name)
-            print("Brand: ", brand_name)
-            print("Side Effect: ", side_effect)
-            print("Pattern: ", pattern)
-            print("Duration: ", duration)
-            print("Description: ", description)
-            
+        return response_service.build_side_effect_brand_match(isFound, side_effect_info, reference_list)
+    
     return "To get information about the side effects of an antibiotic, please specify the antibiotic name or brand."
 
 def handle_substance_interaction(onto, entities, query_type):

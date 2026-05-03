@@ -8,15 +8,7 @@ def fill_entities():
     
     antibiotics = ontology_service.find_entities(entity_name= "Antibiotic")
     brands = ontology_service.find_entities(entity_name="Brand")
-    side_effect = ontology_service.find_entities(entity_name="SideEffect")
-    
-    ## For side effects, we want to get the class names instead of the instance names
-    
-    # side_effects = []
-    # for side_effect_instance in side_effect:
-    #     side_effect_class = side_effect_instance.is_a
-    #     side_effect_class_name = side_effect_class[0].name
-    #     side_effects.append(side_effect_class_name)
+    side_effect = ontology_service.find_subclasses(entity_name="SideEffect")
     
     substances = []
     for substance_type in ["Drug", "Food", "Beverage"]:
@@ -29,7 +21,7 @@ def fill_entities():
     entities['SideEffect'].extend(side_effect)
     entities['Substance'].extend(substances)
     # entities['Warning'].extend(warning)
-    # print(f"Filled entities: {entities}")
+    print(f"Filled entities: {entities}")
     return entities
 
 def look_up_entity(words):
