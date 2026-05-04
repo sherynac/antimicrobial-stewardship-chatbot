@@ -1,3 +1,4 @@
+import os
 from rdflib import Graph
 from owlready2 import get_ontology, sync_reasoner_hermit
 from utils.helpers import add_space_to_pascal_case, is_name_match
@@ -8,11 +9,17 @@ class OntologyService:
         self.onto = self.load_ontology()
 
     def load_ontology(self):
-        g = Graph()
-        g.parse("./backend/data/sample-ontology.ttl", format="turtle")
-        g.serialize(destination="./backend/data/sample-ontology.owl", format="xml")
+        owl_path = "./backend/data/FinalOntology.owl"
 
-        onto = get_ontology("./backend/data/sample-ontology.owl").load()
+        if not os.path.exists(owl_path):
+            print("Converting TTL to OWL...")
+            g = Graph()
+            g.parse("./backend/data/FinalOntology.ttl", format="turtle")
+            g.serialize(destination=owl_path, format="xml")
+            print("Conversion done, saved to .owl")
+
+        # always load from .owl directly
+        onto = get_ontology(owl_path).load()
         print(f"Loaded ontology with {len(list(onto.classes()))} classes")
         # with onto:
         #     sync_reasoner_hermit()
@@ -66,7 +73,8 @@ class OntologyService:
         presentation = presentation_obj.is_a
         dosage = presentation_obj.hasDosage
         unit_price = presentation_obj.hasUnitPrice
-        return add_space_to_pascal_case(presentation[0].name), dosage[0], unit_price[0]
+        unit_price_value = unit_price[0] if unit_price else "Not specified"
+        return add_space_to_pascal_case(presentation[0].name), dosage[0], unit_price_value
     
     def get_brand_presentations (self, presentation_obj):
         '''
@@ -117,7 +125,6 @@ class OntologyService:
                 references.append({"name": reference.name, "title": title, "url": url})
                 seen_urls.add(url)
 
-        print("REFERENCE LIST:", references)
         return references 
 
     def get_reference_from_entities(self, entities):

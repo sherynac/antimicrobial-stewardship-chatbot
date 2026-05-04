@@ -2,7 +2,7 @@ from services.ontology_service import ontology_service
 from services.response_service import response_service
 from utils.helpers import add_space_to_pascal_case, split_commas, array_to_string
 
-# TODO: check referencing for side effect (once data is finished)
+# TODO: check referencing for side effect (once data is finished), price when not specified
 
 # Every method still needs to fetch the references and saving to a response
 
@@ -64,7 +64,7 @@ def handle_antibiotic_info(entities, query_type):
         table_details = []
         for brand in brands_obj:
             presentation_obj = brand.hasPresentation
-            table_details.append(ontology_service.get_brand_presentations(presentation_obj))
+            table_details.extend(ontology_service.get_brand_presentations(presentation_obj))
 
         return response_service.build_antibiotic_generic(generic_info, table_details, reference_list)
 
@@ -292,10 +292,10 @@ def handle_side_effects(entities, query_type):
         
         for side_effect in side_effects:
             side_effect_class = side_effect.is_a
-            pattern_object = side_effect.whichIs
+            pattern_object = side_effect.hasPattern
             description = side_effect.hasSideEffectDescription
             
-            if "FrequencyNotReported" in pattern_object[0].name:
+            if not pattern_object:
                 pattern = None
             else:
                 pattern = pattern_object[0].name
@@ -331,10 +331,11 @@ def handle_side_effects(entities, query_type):
 
             for side_effect in brand_side_effects:
                 side_effect_class = side_effect.is_a
-                pattern_object = side_effect.whichIs
+                pattern_object = side_effect.hasPattern
+
                 description = side_effect.hasSideEffectDescription
             
-                if "FrequencyNotReported" in pattern_object[0].name:
+                if not pattern_object:
                     pattern = None
                 else:
                     pattern = pattern_object[0].name
@@ -403,10 +404,10 @@ def handle_side_effects(entities, query_type):
         
         for side_effect in side_effects:
             side_effect_class = side_effect.is_a
-            pattern_object = side_effect.whichIs
+            pattern_object = side_effect.hasPattern
             description = side_effect.hasSideEffectDescription
             
-            if "FrequencyNotReported" in pattern_object[0].name:
+            if not pattern_object:
                 pattern = None
             else:
                 pattern = pattern_object[0].name
@@ -746,13 +747,69 @@ def handle_food_and_timing(entities, query_type):
         return response_service.build_food_and_timing_none(antibiotic_info, reference_list)
 
 def handle_administration_instructions(entities, query_type):
-    return "To get information about antibiotic adherence, please specify the antibiotic name or brand."
+    if query_type == 'generic':
+        generic_name = entities.get('Antibiotic', [None])[0]
+        generic_obj = ontology_service.query_ontology(generic_name)
+        brands_obj = generic_obj.hasBrandName
+        reference_list = []
+        brands_administration = []
+
+        for brand in brands_obj:
+            administration_rules = []
+            for administration_id in brand.hasAdministrationAndAdherenceRule:
+                administration_rule = administration_id.hasStewardshipDescription
+                administration_rules.append(administration_rule[0] if isinstance(administration_rule, list) else administration_rule)
+            
+            brands_administration.append({
+                "brand": brand.name,
+                "administration_rules": administration_rules  # ← empty list if no rules
+            })
+            reference_list.extend(ontology_service.get_reference_from_entity(brand))
+
+        administration_info = {"generic": generic_name, "brands": brands_administration}
+        return response_service.build_administration_generic(administration_info, reference_list)
+            
+    elif query_type == 'generic_brand':
+        generic_name = entities.get('Antibiotic', [None])[0]
+        brand_name = entities.get('Brand', [None])[0]
+        brand_obj = ontology_service.query_ontology(brand_name)
+        ontology_service.is_correct_generic(generic_name, brand_obj)
+        administration_rules = []
+        
+        reference_list = ontology_service.get_reference_from_entities(brand_obj.hasAdministrationAndAdherenceRule)
+        for administration_id in brand_obj.hasAdministrationAndAdherenceRule:
+            administration_rule = administration_id.hasStewardshipDescription
+            administration_rules.append(administration_rule[0])
+        
+    elif query_type == 'brand':
+        brand_name = entities.get('Brand', [None])[0]
+        brand_obj = ontology_service.query_ontology(brand_name)
+        generic_obj = brand_obj.isBrandOf
+        generic_name = generic_obj.name
+        administration_rules = []
+        
+        reference_list = ontology_service.get_reference_from_entities(brand_obj.hasAdministrationAndAdherenceRule)
+        for administration_id in brand_obj.hasAdministrationAndAdherenceRule:
+            administration_rule = administration_id.hasStewardshipDescription
+            administration_rules.append(administration_rule[0])
+    
+    else:
+        return "To get administration guidelines for an antibiotic, please specify the antibiotic name or brand."
+
+    antibiotic_info = {
+        "generic": generic_name,
+        "brand" : brand_name
+    }
+    if len(administration_rules) > 1:
+        return response_service.build_administration_multiple(antibiotic_info, administration_rules, reference_list)
+    elif len(administration_rules) == 1:
+        return response_service.build_administration_single(antibiotic_info, administration_rules, reference_list)
+    else:
+        reference_list = ontology_service.get_reference_from_entity(brand_obj)
+        return response_service.build_administration_none(antibiotic_info, reference_list)
 
 def handle_is_not_recognized():
     return "Sorry, I didn't understand your question. Please try rephrasing it or ask about a specific antibiotic or brand."
 
 def handle_redirect_medicine_query():
     return "Redirecting to medicine query handler..."
-
-def handle_get_general_answer():
-    return "To get a general answer, please ask a specific question about antibiotics, their uses, side effects, interactions, or any other related topic."

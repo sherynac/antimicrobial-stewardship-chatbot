@@ -44,16 +44,16 @@ def terminal_test(question):
 
 if __name__ == "__main__":
     # test for all possible cases for get_antibiotic_info
-    # terminal_test("doxycycline doxin antibiotic_info")
-    # terminal_test("levofloxacin levocin antibiotic_info")
-    # terminal_test("levofloxacin doxin antibiotic_info")
-    # terminal_test("doxycycline levocin antibiotic_info")
-    # terminal_test("levocin antibiotic_info")
-    # terminal_test("doxin antibiotic_info")
-    # terminal_test("doxycycline antibiotic_info")
-    # terminal_test("levofloxacin antibiotic_info")
+    terminal_test("doxycycline doxin antibiotic_info")
+    terminal_test("levofloxacin levocin antibiotic_info")
+    terminal_test("levofloxacin doxin antibiotic_info")
+    terminal_test("doxycycline levocin antibiotic_info")
+    terminal_test("levocin antibiotic_info")
+    terminal_test("doxin antibiotic_info")
+    terminal_test("doxycycline antibiotic_info")
+    terminal_test("levofloxacin antibiotic_info")
 
-    # test for all possible cases for get_uses_indications
+    # # test for all possible cases for get_uses_indications
     # terminal_test("doxycycline doxyclen uses_indications") 
     # terminal_test("doxycycline levocin uses_indications") 
     # terminal_test("doxycycline doxin uses_indications")
@@ -61,7 +61,7 @@ if __name__ == "__main__":
     # terminal_test("doxin uses_indications")
     # terminal_test("doxycycline uses_indications")
 
-    # test for all possible cases for get_side_effects
+    # # test for all possible cases for get_side_effects
     # terminal_test("doxycycline doxyclen headache side_effects")
     # terminal_test("doxycycline doxyclen diarrhea side_effects") 
     # terminal_test("doxycycline levocin side_effects") 
@@ -73,7 +73,7 @@ if __name__ == "__main__":
     # terminal_test("doxycycline headache side_effects")
     # terminal_test("doxycycline side_effects")
 
-    # test for all possible cases for get_storage_instructions
+    # # test for all possible cases for get_storage_instructions
     # terminal_test("doxycycline dynadoxy storage_instruction") # multiple
     # terminal_test("doxycycline doxin storage_instruction") # Single
     # terminal_test("doxycycline doxyclen storage_instruction") # none
@@ -82,7 +82,7 @@ if __name__ == "__main__":
     # terminal_test("doxyclen storage_instruction") # none
     # terminal_test("doxycycline storage_instruction")
 
-    # test for all possible cases for get_food_and_timing
+    # # test for all possible cases for get_food_and_timing
     # terminal_test("doxycycline dynadoxy food_and_timing")
     # terminal_test("doxycycline doxin food_and_timing") 
     # terminal_test("doxycycline doxyclen food_and_timing") 
@@ -91,7 +91,14 @@ if __name__ == "__main__":
     # terminal_test("doxyclen food_and_timing")
     # terminal_test("doxycycline food_and_timing")
 
-
+    # test for all possible cases for get_administration
+    # terminal_test("doxycycline dynadoxy administration")
+    # terminal_test("doxycycline doxin administration") 
+    # terminal_test("doxycycline doxyclen administration") 
+    # terminal_test("dynadoxy administration") 
+    # terminal_test("doxin administration") 
+    # terminal_test("doxyclen administration")
+    # terminal_test("doxycycline administration")
 
 
 

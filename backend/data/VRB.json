@@ -501,91 +501,46 @@
       ]
     },
     {
-      "intent": "GET_THERAPEUTIC_MONITORING",
-      "description": "Get therapeutic use and monitoring instructions for an antibiotic.",
-      "responses": [
-        {
-          "responseID": 45,
-          "condition": "generic_multiple",
-          "responseTexts": [
-            "Here are the therapeutic use and monitoring guidelines for {generic}:",
-            "{generic} has multiple therapeutic and monitoring instructions listed below:",
-            "The following are the recommended therapeutic use and monitoring guidelines for {generic}."
-          ],
-          "columns": [
-            "Therapeutic & Monitoring Instruction"
-          ]
-        },
-        {
-          "responseID": 46,
-          "condition": "generic_single",
-          "responseTexts": [
-            "Therapeutic and monitoring instruction for {generic}: {stewardship_description}",
-            "{generic} should be monitored and used as follows: {stewardship_description}",
-            "Recommended therapeutic/monitoring guideline for {generic}: {stewardship_description}"
-          ]
-        },
-        {
-          "responseID": 47,
-          "condition": "generic_verify_match",
-          "responseTexts": [
-            "Yes, therapeutic and monitoring guidelines exist for {generic}.",
-            "{generic} has documented therapeutic use and monitoring instructions.",
-            "Therapeutic and monitoring information is available for {generic}."
-          ]
-        },
-        {
-          "responseID": 48,
-          "condition": "generic_verify_no_match",
-          "responseTexts": [
-            "No therapeutic or monitoring instructions are available for {generic}.",
-            "There is no therapeutic/monitoring information for {generic}.",
-            "Therapeutic use and monitoring guidelines for {generic} are not found in the system."
-          ]
-        }
-      ]
-    },
-    {
-      "intent": "GET_ADMINISTRATION_ADHERENCE",
+      "intent": "GET_ADMINISTRATION_INSTRUCTIONS",
       "description": "Get administration and adherence instructions for an antibiotic.",
       "responses": [
         {
           "responseID": 49,
-          "condition": "generic_multiple",
+          "condition": "generic_only",
           "responseTexts": [
             "Here are the administration and adherence instructions for {generic}:",
             "{generic} has multiple administration and adherence guidelines listed below:",
             "The following are the recommended administration and adherence instructions for {generic}."
-          ],
-          "columns": [
-            "Administration & Adherence Instruction"
           ]
         },
         {
           "responseID": 50,
-          "condition": "generic_single",
+          "condition": "single_administration",
           "responseTexts": [
-            "Administration and adherence instruction for {generic}: {stewardship_description}",
-            "{generic} should be taken as follows: {stewardship_description}",
-            "Recommended administration/adherence guideline for {generic}: {stewardship_description}"
+            "Administration and adherence instruction for {brand} ({generic}): {stewardship_description}",
+            "{brand} ({generic}) should be taken as follows: {stewardship_description}",
+            "Recommended administration/adherence guideline for {brand} ({generic}): {stewardship_description}"
           ]
         },
         {
           "responseID": 51,
-          "condition": "generic_verify_match",
+          "condition": "multiple_administration",
           "responseTexts": [
-            "Yes, administration and adherence instructions exist for {generic}.",
-            "{generic} has documented administration and adherence guidelines.",
-            "Administration and adherence information is available for {generic}."
-          ]
+            "Here are the administration and adherence instructions for {brand} ({generic}):",
+            "{brand} ({generic}) has multiple administration and adherence guidelines listed below:",
+            "The following are the recommended administration and adherence instructions for {brand} ({generic})."
+          ],
+          "itemFormat": {
+            "primary": "{hasStewardshipDescription}"
+          }
         },
         {
           "responseID": 52,
-          "condition": "generic_verify_no_match",
+          "condition": "no_match",
           "responseTexts": [
-            "No administration or adherence instructions are available for {generic}.",
-            "There is no administration/adherence information for {generic}.",
-            "Administration and adherence guidelines for {generic} are not found in the system."
+            "No administration or adherence instructions are available for {brand} ({generic}).",
+            "There is no administration/adherence information for {brand} (generic: {generic}).",
+            "Administration and adherence guidelines for {brand}, a {generic} are not found in the system."
           ]
         }
       ]

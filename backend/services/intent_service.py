@@ -25,8 +25,8 @@ def identify_intent(words):
     elif any(word in ['food_and_timing'] for word in words):
         return 'get_food_and_timing'
     
-    elif any(word in ['antibiotic adherence'] for word in words):
-        return 'get_antibiotic_adherence'
+    elif any(word in ['administration'] for word in words):
+        return 'get_administration_instruction'
     
     elif any(word in ['not_recognized'] for word in words):
         return 'is_not_recognized'
@@ -96,8 +96,8 @@ def handle_intent(intent, query_type, question_entities):
         return intent_handler.handle_storage_instruction(question_entities, query_type)
     elif intent == 'get_food_and_timing':
         return intent_handler.handle_food_and_timing(question_entities, query_type)
-    elif intent == 'get_antibiotic_adherence':
-        return intent_handler.handle_antibiotic_adherence(question_entities, query_type)
+    elif intent == 'get_administration_instruction':
+        return intent_handler.handle_administration_instructions(question_entities, query_type)
     elif intent == 'is_not_recognized':
         return intent_handler.handle_is_not_recognized()
     elif intent == 'redirect_medicine_query':
