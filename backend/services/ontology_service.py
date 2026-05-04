@@ -73,7 +73,7 @@ class OntologyService:
         presentation = presentation_obj.is_a
         dosage = presentation_obj.hasDosage
         unit_price = presentation_obj.hasUnitPrice
-        unit_price_value = unit_price[0] if unit_price else "Not specified"
+        unit_price_value = f"Php {unit_price[0]}" if unit_price else "-"  # ← fixed
         return add_space_to_pascal_case(presentation[0].name), dosage[0], unit_price_value
     
     def get_brand_presentations (self, presentation_obj):
@@ -88,7 +88,7 @@ class OntologyService:
         brand_info = []
         for presentation in presentation_obj:
             presentation_name, dosage, unit_price = self.get_presentation_details(presentation)
-            row = [presentation_name, dosage, f"Php {unit_price}"]
+            row = [presentation_name, dosage, unit_price]
             brand_info.append(row)
         return brand_info
 

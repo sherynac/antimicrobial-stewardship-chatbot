@@ -96,6 +96,7 @@ class ResponseService:
         response_text = random.choice(template['responseTexts'])
 
         reference_json = self.build_reference_list(reference)
+        unit_price_text = f" and costs Php {brand_info['unit_price']}" if brand_info['unit_price'] != "Not specified" else ""
 
         text = response_text.format(
             brand=brand_info["brand"], 
@@ -105,7 +106,7 @@ class ResponseService:
             content=brand_info["content"],
             presentation=brand_info["presentation"],
             dosage=brand_info["dosage"],
-            unit_price=brand_info["unit_price"]
+            unit_price_text=unit_price_text
         )
 
         return self.build_composite_response([

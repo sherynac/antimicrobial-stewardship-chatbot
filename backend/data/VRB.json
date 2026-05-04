@@ -23,9 +23,9 @@
           "responseID": 2,
           "condition": "brand_single",
           "responseTexts": [
-            "{brand} is a brand of {generic}, manufactured by {manufacturer} and distributed by {distributor}. It contains {content} available in {presentation} with dosage {dosage} and price Php {unit_price}.",
-            "{brand} (a {generic}), which contains {content}, comes in the form {presentation} with {dosage} and costs Php {unit_price}. It is manufactured by {manufacturer} and distributed by {distributor}. ",
-            "The brand {brand} (generic: {generic}) is available in {presentation} contains {content}, with a dosage of {dosage} and price Php {unit_price}. It is manufactured {manufacturer} and distributed by {distributor}."
+              "{brand} is a brand of {generic}, manufactured by {manufacturer} and distributed by {distributor}. It contains {content} available in {presentation} with dosage {dosage}{unit_price_text}.",
+              "{brand} (a {generic}), which contains {content}, comes in the form {presentation} with {dosage}{unit_price_text}. It is manufactured by {manufacturer} and distributed by {distributor}.",
+              "The brand {brand} (generic: {generic}) is available in {presentation}, contains {content}, with a dosage of {dosage}{unit_price_text}. It is manufactured by {manufacturer} and distributed by {distributor}."
           ]
         },
         {

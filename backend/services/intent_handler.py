@@ -42,7 +42,8 @@ def handle_antibiotic_info(entities, query_type):
                 "content" : content[0], 
                 "presentation" : presentation, 
                 "dosage" : dosage, 
-                "unit_price" : unit_price}
+                "unit_price" : unit_price
+                }
             return response_service.build_antibiotic_single(brand_info, reference)
         
         else:
