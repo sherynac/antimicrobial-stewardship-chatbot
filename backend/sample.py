@@ -40,7 +40,10 @@ def terminal_test(question):
         print(error_json)   
     except AssertionError as e: 
         error_json = response_service.build_text_response(str(e))
-        print(error_json)  
+        print(error_json)
+    except Exception as e:
+        error_json = response_service.build_text_response("Sorry, there seems to be a problem retrieving the response. Please try again.")
+        print(error_json)
 
 if __name__ == "__main__":
     # test for all possible cases for get_antibiotic_info
@@ -72,4 +75,9 @@ if __name__ == "__main__":
     # terminal_test("doxycycline nausea side_effects")
     # terminal_test("doxycycline headache side_effects")
     # terminal_test("doxycycline side_effects")
+
+    # test for all possible cases for get_storage_instructions
+    terminal_test("doxycycline storage_instructions")
+    terminal_test("doxycycline doxin storage_instructions")
+
 

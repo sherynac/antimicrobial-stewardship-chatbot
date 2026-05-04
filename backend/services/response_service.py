@@ -374,4 +374,7 @@ class ResponseService:
             self.build_bullet_list(formatted_effects),
             reference_json
         ])
+    
+    def build_storage_single(self, ):
+        
 response_service = ResponseService('./backend/data/VRB.json')

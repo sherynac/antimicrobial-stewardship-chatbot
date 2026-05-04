@@ -620,10 +620,6 @@ def handle_warning_precautions(onto, entities, query_type):
     
     return "To get information about warnings and precautions for an antibiotic, please specify the antibiotic name or brand."
 
-def handle_monitoring_instruction(onto, entities, query_type):
-
-    return "To get monitoring instructions for an antibiotic, please specify the antibiotic name or brand."
-
 # need checking of results
 def handle_storage_instruction(onto, entities, query_type):
         if query_type == 'generic_brand':
@@ -635,7 +631,7 @@ def handle_storage_instruction(onto, entities, query_type):
             storage_rules = []
             
             for storage_id in storage_rules_id:
-                storage_rule = storage_id.HasStewardhipDescription
+                storage_rule = storage_id.HasStewardshipDescription
                 storage_rules.append(storage_rule)
         
         elif query_type == 'brand':
@@ -660,7 +656,7 @@ def handle_storage_instruction(onto, entities, query_type):
                 storage_rules_id = brand.hasStorageRule
                 
             for storage_id in storage_rules_id:
-                storage_rule = storage_id.HasStewardhipDescription
+                storage_rule = storage_id.HasStewardshipDescription
                 storage_rules.append(storage_rule)
         
         return "To get storage instructions for an antibiotic, please specify the antibiotic name or brand."
