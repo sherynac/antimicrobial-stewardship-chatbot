@@ -256,17 +256,17 @@
     rdfs:range xsd:double ;
     rdfs:label "has unit price" .
 
-:hasDistributor rdf:type owl:DatatypeProperty ;
+:hasDistributors rdf:type owl:DatatypeProperty ;
     rdfs:domain :Brand ;
     rdfs:range xsd:string ;
     rdfs:label "has distributor" .
 
-:hasManufacturer rdf:type owl:DatatypeProperty ;
+:hasManufacturers rdf:type owl:DatatypeProperty ;
     rdfs:domain :Brand ;
     rdfs:range xsd:string ;
     rdfs:label "has manufacturer" .
 
-:hasContent rdf:type owl:DatatypeProperty ;
+:hasContents rdf:type owl:DatatypeProperty ;
     rdfs:domain :Brand ;
     rdfs:range xsd:string ;
     rdfs:label "has content" .
@@ -511,21 +511,21 @@
 :Levofloxacin :hasDrugClass "Quinolones" .
 :Levofloxacin :hasBrandName :Levocin .
 
-:Doxin :hasManufacturer "BIOFEMME, Inc" .
-:Doxin :hasDistributor "UNILAB, Inc" .
-:Doxin :hasContent "Doxycycline hyclate" .
+:Doxin :hasManufacturers "BIOFEMME, Inc" .
+:Doxin :hasDistributors "UNILAB, Inc" .
+:Doxin :hasContents "Doxycycline hyclate" .
 
-:Doxyclen :hasManufacturer "Lloyd" .
-:Doxyclen :hasDistributor "Nurturemed" .
-:Doxyclen :hasContent "Doxycycline hyclate" .
+:Doxyclen :hasManufacturers "Lloyd" .
+:Doxyclen :hasDistributors "Nurturemed" .
+:Doxyclen :hasContents "Doxycycline hyclate" .
 
-:Dynadoxy :hasManufacturer "Swiss Pharmaceutical" .
-:Dynadoxy :hasDistributor "Crisdy-Na" .
-:Doxyclen :hasContent "Doxycycline hyclate" .
+:Dynadoxy :hasManufacturers "Swiss Pharmaceutical" .
+:Dynadoxy :hasDistributors "Crisdy-Na" .
+:Doxyclen :hasContents "Doxycycline hyclate" .
 
-:Levocin :hasManufacturer "Getz Pharma" .
-:Levocin :hasDistributor "Getz Bros" .
-:Levocin :hasContent "Levofloxacin hemihydrate" .
+:Levocin :hasManufacturers "Getz Pharma" .
+:Levocin :hasDistributors "Getz Bros" .
+:Levocin :hasContents "Levofloxacin hemihydrate" .
 
 :Doxin :hasReference :R011 .
 :Doxyclen :hasReference :R012 .
@@ -710,7 +710,6 @@
 :SP112 :hasStewardshipDescription "Protect from light" .
 
 :Doxin :hasStorageRule :SP111 .
-:Doxin :hasStorageRule :SP112 .
 
 :Doxin :managedBy :SP000 .
 :Doxin :managedBy :SP001 .

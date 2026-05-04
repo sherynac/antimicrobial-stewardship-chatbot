@@ -50,7 +50,7 @@ class OntologyService:
 
     def get_indication_severity_type(self, indication):  # ← self added
         indication_name = indication.is_a
-        severity = indication.hasSeverity
+        severity = indication.hasSeverityType
         disease_type = indication_name[0].is_a
 
         indication_name = add_space_to_pascal_case(indication_name[0].name)

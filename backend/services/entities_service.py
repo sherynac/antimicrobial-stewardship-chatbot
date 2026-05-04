@@ -21,7 +21,7 @@ def fill_entities():
     entities['SideEffect'].extend(side_effect)
     entities['Substance'].extend(substances)
     # entities['Warning'].extend(warning)
-    print(f"Filled entities: {entities}")
+    # print(f"Filled entities: {entities}")
     return entities
 
 def look_up_entity(words):

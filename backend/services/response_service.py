@@ -375,6 +375,94 @@ class ResponseService:
             reference_json
         ])
     
-    def build_storage_single(self, ):
-        
+    def build_storage_single(self, antibiotic_info, storage_rule, reference):
+        print("Storage Single")
+        template = self.get_response_template("GET_STORAGE_INSTRUCTIONS", "single_storage")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            generic = antibiotic_info['generic'],
+            brand = antibiotic_info['brand'],
+            stewardship_description = storage_rule[0]
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            reference_json
+        ])
+
+    def build_storage_multiple(self, antibiotic_info, storage_rules, reference):
+        print("Storage Multiple")
+        template = self.get_response_template("GET_STORAGE_INSTRUCTIONS", "multiple_storage")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            generic = antibiotic_info['generic'],
+            brand = antibiotic_info['brand'],
+        )
+
+        bullets = [
+        self.build_bullet(description=rule[0] if isinstance(rule, list) else rule)
+        for rule in storage_rules
+        ]
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            self.build_bullet_list(bullets),
+            reference_json
+        ])
+
+    def build_storage_none(self, antibiotic_info, reference):
+        print("Storage Single")
+        template = self.get_response_template("GET_STORAGE_INSTRUCTIONS", "no_match")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            generic = antibiotic_info['generic'],
+            brand = antibiotic_info['brand'],
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            reference_json
+        ])
+    
+    def build_storage_generic(self, storage_info: dict, reference: list):
+        print("Storage Generic")
+        template = self.get_response_template("GET_STORAGE_INSTRUCTIONS", "generic_only")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(generic=storage_info['generic'])
+
+        brand_sections = []
+        for brand_data in storage_info['brands']:
+            if brand_data['storage_rules']:
+                bullets = [
+                    self.build_bullet(description=rule)
+                    for rule in brand_data['storage_rules']
+                ]
+            else:
+                # ← no storage rules — say so in the bullet
+                bullets = [
+                    self.build_bullet(
+                        description=f"{brand_data['brand']} has no specified storage instructions"
+                    )
+                ]
+
+            brand_sections.append({
+                "type": "section",
+                "title": brand_data['brand'],
+                "items": bullets
+            })
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            *brand_sections,
+            reference_json
+        ])
+
 response_service = ResponseService('./backend/data/VRB.json')

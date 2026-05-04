@@ -19,9 +19,6 @@ def identify_intent(words):
     elif any(word in ['warning_precautions'] for word in words):
         return 'get_warning_precautions'
     
-    elif any(word in ['monitoring_instruction'] for word in words):
-        return 'get_monitoring_instruction'
-    
     elif any(word in ['storage_instruction'] for word in words):
         return 'get_storage_instruction'
     

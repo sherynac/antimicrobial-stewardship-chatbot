@@ -16,9 +16,9 @@ def handle_antibiotic_info(entities, query_type):
         ontology_service.is_correct_generic(generic_name, brand_obj)
 
         presentation_obj = brand_obj.hasPresentation
-        manufacturer = brand_obj.hasManufacturer
-        distributor = brand_obj.hasDistributor
-        content = brand_obj.hasContent
+        manufacturer = brand_obj.hasManufacturers
+        distributor = brand_obj.hasDistributors
+        content = brand_obj.hasContents
         reference = ontology_service.get_reference_from_entity(brand_obj)
 
         if len(presentation_obj) > 1:
@@ -75,9 +75,9 @@ def handle_antibiotic_info(entities, query_type):
         generic_name = generic_obj.name
         presentation_obj = brand_obj.hasPresentation
 
-        manufacturer = brand_obj.hasManufacturer
-        distributor = brand_obj.hasDistributor
-        content = brand_obj.hasContent
+        manufacturer = brand_obj.hasManufacturers
+        distributor = brand_obj.hasDistributors
+        content = brand_obj.hasContents
         reference = ontology_service.get_reference_from_entity(brand_obj)
 
         if len(presentation_obj) > 1:
@@ -620,46 +620,67 @@ def handle_warning_precautions(onto, entities, query_type):
     
     return "To get information about warnings and precautions for an antibiotic, please specify the antibiotic name or brand."
 
-# need checking of results
-def handle_storage_instruction(onto, entities, query_type):
-        if query_type == 'generic_brand':
-            generic_name = entities.get('Antibiotic', [None])[0]
-            brand_name = entities.get('Brand', [None])[0]
-            brand_obj = ontology_service.query_ontology(onto, brand_name)
-            generic_obj = ontology_service.query_ontology(onto, generic_name)
-            storage_rules_id = brand_obj.hasStorageRule
+def handle_storage_instruction(entities, query_type):
+    if query_type == 'generic':
+        generic_name = entities.get('Antibiotic', [None])[0]
+        generic_obj = ontology_service.query_ontology(generic_name)
+        brands_obj = generic_obj.hasBrandName
+        reference_list = []
+        brands_storage = []
+
+        for brand in brands_obj:
             storage_rules = []
+            for storage_id in brand.hasStorageRule:
+                storage_rule = storage_id.hasStewardshipDescription
+                storage_rules.append(storage_rule[0] if isinstance(storage_rule, list) else storage_rule)
             
-            for storage_id in storage_rules_id:
-                storage_rule = storage_id.HasStewardshipDescription
-                storage_rules.append(storage_rule)
+            brands_storage.append({
+                "brand": brand.name,
+                "storage_rules": storage_rules  # ← empty list if no rules
+            })
+            reference_list.extend(ontology_service.get_reference_from_entity(brand))
+
+        storage_info = {"generic": generic_name, "brands": brands_storage}
+        return response_service.build_storage_generic(storage_info, reference_list)
+            
+    elif query_type == 'generic_brand':
+        generic_name = entities.get('Antibiotic', [None])[0]
+        brand_name = entities.get('Brand', [None])[0]
+        brand_obj = ontology_service.query_ontology(brand_name)
+        ontology_service.is_correct_generic(generic_name, brand_obj)
+        storage_rules = []
         
-        elif query_type == 'brand':
-            brand_name = entities.get('Brand', [None])[0]
-            brand_obj = ontology_service.query_ontology(onto, brand_name)
-            storage_rules_id = brand_obj.hasStorageRule
-            storage_rules = []
-            
-            for storage_id in storage_rules_id:
-                storage_rule = storage_id.HasStewardhipDescription
-                storage_rules.append(storage_rule)
-                
-        elif query_type == 'generic':
-            generic_name = entities.get('Antibiotic', [None])[0]
-            generic_obj = ontology_service.query_ontology(onto, generic_name)
-            brands_obj = generic_obj.hasBrandName
-            storage_rules_id = generic_obj.hasStorageRule
-            storage_rules = []
-            
-            for brand in brands_obj:
-                brand_name = brand.name
-                storage_rules_id = brand.hasStorageRule
-                
-            for storage_id in storage_rules_id:
-                storage_rule = storage_id.HasStewardshipDescription
-                storage_rules.append(storage_rule)
+        reference_list = ontology_service.get_reference_from_entities(brand_obj.hasStorageRule)
+        for storage_id in brand_obj.hasStorageRule:
+            storage_rule = storage_id.hasStewardshipDescription
+            storage_rules.append(storage_rule[0])
         
+    elif query_type == 'brand':
+        brand_name = entities.get('Brand', [None])[0]
+        brand_obj = ontology_service.query_ontology(brand_name)
+        generic_obj = brand_obj.isBrandOf
+        generic_name = generic_obj.name
+        storage_rules = []
+        
+        reference_list = ontology_service.get_reference_from_entities(brand_obj.hasStorageRule)
+        for storage_id in brand_obj.hasStorageRule:
+            storage_rule = storage_id.hasStewardshipDescription
+            storage_rules.append(storage_rule[0])
+    
+    else:
         return "To get storage instructions for an antibiotic, please specify the antibiotic name or brand."
+
+    antibiotic_info = {
+        "generic": generic_name,
+        "brand" : brand_name
+    }
+    if len(storage_rules) > 1:
+        return response_service.build_storage_multiple(antibiotic_info, storage_rules, reference_list)
+    elif len(storage_rules) == 1:
+        return response_service.build_storage_single(antibiotic_info, storage_rules, reference_list)
+    else:
+        reference_list = ontology_service.get_reference_from_entity(brand_obj)
+        return response_service.build_storage_none(antibiotic_info, reference_list)
 
 def handle_proper_use_of_medicine():
     return "To get information about the proper use of an antibiotic, please specify the antibiotic name or brand."

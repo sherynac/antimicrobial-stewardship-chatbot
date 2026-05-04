@@ -418,9 +418,9 @@
           "responseID": 38,
           "condition": "single_storage",
           "responseTexts": [
-            "Storage instruction for {brand}{generic}: {stewardship_description}",
-            "{brand}{generic} should be stored as follows: {stewardship_description}",
-            "Recommended storage condition for {brand}{generic}: {stewardship_description}"
+            "Storage instruction for {brand} ({generic}): {stewardship_description}",
+            "{brand} ({generic}) should be stored as follows: {stewardship_description}",
+            "Recommended storage condition for {brand} ({generic}): {stewardship_description}"
           ]
         },
         {
@@ -432,16 +432,25 @@
             "The following are the recommended storage conditions for {brand} ({generic})."
           ],
           "itemFormat": {
-            "primary": "⁃ {hasStewardshipDescription}"
+            "primary": "{hasStewardshipDescription}"
           }
         },
         {
           "responseID": 40,
           "condition": "no_match",
           "responseTexts": [
-            "No storage instructions are available for {brand}{generic}.",
-            "There is no storage information for {brand}{generic}.",
-            "Storage guidelines for {brand}{generic} are not found in the system."
+            "No storage instructions are available for {brand} ({generic}).",
+            "There is no storage information for {brand} (generic: {generic}).",
+            "Storage guidelines for {brand}, a {generic} are not found in the system."
+          ]
+        },
+        {
+          "responseID" : 99,
+          "condition": "generic_only",
+          "responseTexts": [
+            "These are the storage instructions for {generic}: .",
+            "{generic} has multiple storage requirements listed below: ",
+            "Recommended storage condition for {generic} are:"
           ]
         }
       ]
