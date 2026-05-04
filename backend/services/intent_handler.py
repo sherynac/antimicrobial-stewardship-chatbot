@@ -682,10 +682,70 @@ def handle_storage_instruction(entities, query_type):
         reference_list = ontology_service.get_reference_from_entity(brand_obj)
         return response_service.build_storage_none(antibiotic_info, reference_list)
 
-def handle_proper_use_of_medicine():
-    return "To get information about the proper use of an antibiotic, please specify the antibiotic name or brand."
+def handle_food_and_timing(entities, query_type):
+    if query_type == 'generic':
+        generic_name = entities.get('Antibiotic', [None])[0]
+        generic_obj = ontology_service.query_ontology(generic_name)
+        brands_obj = generic_obj.hasBrandName
+        reference_list = []
+        brands_food_and_timing= []
 
-def handle_antibiotic_adherence():
+        for brand in brands_obj:
+            food_and_timing_rules = []
+            for food_timing_id in brand.hasFoodAndTimingRule:
+                food_and_timing_rule = food_timing_id.hasStewardshipDescription
+                food_and_timing_rules.append(food_and_timing_rule[0] if isinstance(food_and_timing_rule, list) else food_and_timing_rule)
+            
+            brands_food_and_timing.append({
+                "brand": brand.name,
+                "food_and_timing_rules": food_and_timing_rules
+            })
+            reference_list.extend(ontology_service.get_reference_from_entity(brand))
+
+        food_and_timing_info = {"generic": generic_name, "brands": brands_food_and_timing}
+        return response_service.build_food_and_timing_generic(food_and_timing_info, reference_list)
+            
+    elif query_type == 'generic_brand':
+        generic_name = entities.get('Antibiotic', [None])[0]
+        brand_name = entities.get('Brand', [None])[0]
+        brand_obj = ontology_service.query_ontology(brand_name)
+        ontology_service.is_correct_generic(generic_name, brand_obj)
+        food_and_timing_rules = []
+        
+        reference_list = ontology_service.get_reference_from_entities(brand_obj.hasFoodAndTimingRule)
+        for food_timing_id in brand_obj.hasFoodAndTimingRule:
+            food_and_timing_rule = food_timing_id.hasStewardshipDescription
+            food_and_timing_rules.append(food_and_timing_rule[0])
+        
+    elif query_type == 'brand':
+        brand_name = entities.get('Brand', [None])[0]
+        brand_obj = ontology_service.query_ontology(brand_name)
+        generic_obj = brand_obj.isBrandOf
+        generic_name = generic_obj.name
+        food_and_timing_rules = []
+        
+        reference_list = ontology_service.get_reference_from_entities(brand_obj.hasFoodAndTimingRule)
+        for food_timing_id in brand_obj.hasFoodAndTimingRule:
+            food_and_timing_rule = food_timing_id.hasStewardshipDescription
+            food_and_timing_rules.append(food_and_timing_rule[0])
+    
+    else:
+        return "To get food and timing for an antibiotic, please specify the antibiotic name or brand."
+
+    antibiotic_info = {
+        "generic": generic_name,
+        "brand" : brand_name
+    }
+    if len(food_and_timing_rules) > 1:
+        return response_service.build_food_and_timing_multiple(antibiotic_info, food_and_timing_rules, reference_list)
+    elif len(food_and_timing_rules) == 1:
+        print(reference_list)
+        return response_service.build_food_and_timing_single(antibiotic_info, food_and_timing_rules, reference_list)
+    else:
+        reference_list = ontology_service.get_reference_from_entity(brand_obj)
+        return response_service.build_food_and_timing_none(antibiotic_info, reference_list)
+
+def handle_administration_instructions(entities, query_type):
     return "To get information about antibiotic adherence, please specify the antibiotic name or brand."
 
 def handle_is_not_recognized():

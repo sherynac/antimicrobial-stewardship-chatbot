@@ -456,46 +456,46 @@
       ]
     },
     {
-      "intent": "GET_FOOD_TIMING",
+      "intent": "GET_FOOD_AND_TIMING",
       "description": "Get food-related and timing instructions for an antibiotic.",
       "responses": [
         {
           "responseID": 41,
-          "condition": "generic_multiple",
+          "condition": "generic_only",
           "responseTexts": [
             "Here are the food and timing instructions for {generic}:",
             "{generic} has multiple food-related and timing guidelines listed below:",
             "The following are the recommended food and timing instructions for {generic}."
-          ],
-          "columns": [
-            "Food & Timing Instruction"
           ]
         },
         {
           "responseID": 42,
-          "condition": "generic_single",
+          "condition": "single_food_and_timing",
           "responseTexts": [
-            "Food and timing instruction for {generic}: {stewardship_description}",
-            "{generic} should be taken as follows: {stewardship_description}",
-            "Recommended food/timing guideline for {generic}: {stewardship_description}"
+            "Food and timing instruction for {brand} ({generic}): {stewardship_description}",
+            "{brand} ({generic}) should be taken as follows: {stewardship_description}",
+            "Recommended food/timing guideline for {brand} ({generic}): {stewardship_description}"
           ]
         },
         {
           "responseID": 43,
-          "condition": "generic_verify_match",
+          "condition": "multiple_food_and_timing",
           "responseTexts": [
-            "Yes, food and timing instructions exist for {generic}.",
-            "{generic} has documented food and timing guidelines.",
-            "Food and timing information is available for {generic}."
-          ]
+            "Here are the food and timing instructions for {brand} ({generic}):",
+            "{brand} ({generic}) has multiple food-related and timing guidelines listed below:",
+            "The following are the recommended food and timing instructions for {brand} ({generic})."
+          ],
+          "itemFormat": {
+            "primary": "{hasStewardshipDescription}"
+          }
         },
         {
           "responseID": 44,
-          "condition": "generic_verify_no_match",
+          "condition": "no_match",
           "responseTexts": [
-            "No food or timing instructions are available for {generic}.",
-            "There is no food/timing information for {generic}.",
-            "Food and timing guidelines for {generic} are not found in the system."
+            "No food or timing instructions are available for {brand} ({generic}).",
+            "There is no food/timing information for {brand} (generic: {generic}).",
+            "Food and timing guidelines for {brand}, a {generic} are not found in the system."
           ]
         }
       ]

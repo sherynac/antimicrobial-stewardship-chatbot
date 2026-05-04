@@ -66,11 +66,12 @@
 
 # StewardshipPrinciple
 :StewardshipPrinciple rdf:type owl:Class .
-:ProperUse rdf:type owl:Class ; rdfs:subClassOf :StewardshipPrinciple .
-:Adherence rdf:type owl:Class ; rdfs:subClassOf :StewardshipPrinciple .
-:Storage rdf:type owl:Class ; rdfs:subClassOf :StewardshipPrinciple .
-:Monitoring rdf:type owl:Class ; rdfs:subClassOf :StewardshipPrinciple .
-:Prevention rdf:type owl:Class ; rdfs:subClassOf :StewardshipPrinciple .
+:AdministrationAndAdherence rdf:type owl:Class ; 
+    rdfs:subClassOf :StewardshipPrinciple .
+:FoodAndTiming rdf:type owl:Class ; 
+    rdfs:subClassOf :StewardshipPrinciple .
+:Storage rdf:type owl:Class ; 
+    rdfs:subClassOf :StewardshipPrinciple .
 
 # Interaction
 :Interaction rdf:type owl:Class .
@@ -213,10 +214,15 @@
     owl:inverseOf :interactsWith ;
     rdfs:label "is involved in".
 
-:managedBy rdf:type owl:ObjectProperty ;
+:hasAdministrationAndAdherenceRule rdf:type owl:ObjectProperty ;
     rdfs:domain :Brand ;
-    rdfs:range :StewardshipPrinciple;
-    rdfs:label "managed by" .
+    rdfs:range :AdministrationAndAdherence;
+    rdfs:label "has administration & adherence rule" .
+
+:hasFoodAndTimingRule rdf:type owl:ObjectProperty ;
+    rdfs:domain :Brand ;
+    rdfs:range :FoodAndTiming;
+    rdfs:label "has food and timing rule" .
 
 :hasStorageRule rdf:type owl:ObjectProperty ;
     rdfs:domain :Brand ;
@@ -425,9 +431,14 @@
 :SP112 rdf:type :Storage .
 :SP113 rdf:type :Storage .
 :SP114 rdf:type :Storage .
-:SP000 rdf:type :ProperUse .
-:SP082 rdf:type :Monitoring .
-:SP001 rdf:type :Adherence .
+
+:SP100 rdf:type :FoodAndTiming .
+:SP101 rdf:type :FoodAndTiming .
+:SP102 rdf:type :FoodAndTiming .
+
+:SP201 rdf:type :AdministrationAndAdherence .
+:SP202 rdf:type :AdministrationAndAdherence .
+:SP203 rdf:type :AdministrationAndAdherence .
 
 # References
 :R008 rdf:type :Reference .
@@ -702,29 +713,35 @@
 :ITN174 :hasReference :R013 .
 
 # Doxin Stewardship Principle
-:SP000 :hasStewardshipDescription "The bottle must be shaken well before taking each dose to ensure the medication is evenly distributed".
-:SP082 :hasStewardshipDescription "Maintain adequate fluid intake and urinary output to reduce the possibility of crystalluria. Periodic assessment of renal, hepatic, and hematopoietic functions is recommended during prolonged therapy." .
-:SP001 :hasStewardshipDescription "Take at least 2 hr before or 2 hr after antacids containing Mg/Al, sucralfate, metal cations (eg, Fe), & multivit prep w/ Zn.".
-
 :SP111 :hasStewardshipDescription "Store at temperatures not exceeding 30°C" .
-:SP112 :hasStewardshipDescription "Protect from light" .
+:SP100 :hasStewardshipDescription "Should be taken with food: Take w/ meals to avoid GI irritation." .
+:SP101 :hasStewardshipDescription "Do not take w/ antacids, Fe or dairy products." .
+:SP201 :hasStewardshipDescription "Doxin should be swallowed without crushing and with sufficient amount of liquid." .
 
 :Doxin :hasStorageRule :SP111 .
 
-:Doxin :managedBy :SP000 .
-:Doxin :managedBy :SP001 .
-:Doxin :managedBy :SP082 .
+:Doxin :hasFoodAndTimingRule :SP100 .
+:Doxin :hasFoodAndTimingRule :SP101 .
 
-:SP000 :hasReference :R011 .
+:Doxin :hasAdministrationAndAdherenceRule :SP201 .
+
+:SP201 :hasReference :R011 .
 :SP111 :hasReference :R011 .
-:SP112 :hasReference :R011 .
-:SP001 :hasReference :R011 .
-:SP082 :hasReference :R011 .
+:SP100 :hasReference :R011 .
+:SP101 :hasReference :R011 .
 
 # Doxyclen Stewardship Principle 
-:SP113 :hasStewardshipDescription "Store at temperatures not exceeding 30°C" .
-:Doxyclen :managedBy :SP113 .
-:SP113 :hasReference :R012 .
+:SP102 :hasStewardshipDescription "The tablets may be taken during meals or between meals." .
+:SP202 :hasStewardshipDescription "swallowed without crushing and with sufficient amount of liquid." .
+:SP203 :hasStewardshipDescription "administered once or twice daily." .
+
+:Doxyclen :hasFoodAndTimingRule :SP102 .
+:Doxyclen :hasAdministrationAndAdherenceRule :SP202 .
+:Doxyclen :hasAdministrationAndAdherenceRule :SP203 .
+
+:SP102 :hasReference :R012 .
+:SP202 :hasReference :R012 .    
+:SP203 :hasReference :R012 .
 
 # Dynadoxy Stewardship Principle
 :SP114 :hasStewardshipDescription "Store powder and reconstituted suspension at temperatures not exceeding 30°C. ".

@@ -83,7 +83,13 @@ if __name__ == "__main__":
     # terminal_test("doxycycline storage_instruction")
 
     # test for all possible cases for get_food_and_timing
-    
+    # terminal_test("doxycycline dynadoxy food_and_timing")
+    # terminal_test("doxycycline doxin food_and_timing") 
+    # terminal_test("doxycycline doxyclen food_and_timing") 
+    # terminal_test("dynadoxy food_and_timing") 
+    # terminal_test("doxin food_and_timing") 
+    # terminal_test("doxyclen food_and_timing")
+    # terminal_test("doxycycline food_and_timing")
 
 
 
