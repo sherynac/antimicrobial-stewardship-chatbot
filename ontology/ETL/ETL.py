@@ -114,22 +114,15 @@ def format_presentation_label(brand_name, dosage, packing_type):
     return " ".join(parts)
 
 def warning_type_to_class(type_str, headline="", description=""):
-    """Map warning type to ontology class, searching Type/Headline/Description fields."""
-    search_text = f"{type_str} {headline} {description}".strip().lower()
-    if not search_text:
-        return "PatientCondition"  # Default to specific subclass, not generic Warning
-    
-    t = search_text
-    if any(kw in t for kw in ["contraindication", "hypersensitivity", "allergy", "allergic"]):
-        return "Contraindication"
-    elif any(kw in t for kw in ["pregnancy", "lactation", "breastfeed", "breast feed", "breast-feeding"]):
-        return "PregnancyAndLactation"
-    elif any(kw in t for kw in ["age", "pediatric", "children", "infant", "newborn", "geriatric", "elderly", "adult"]):
-        return "AgeRestriction"
-    elif any(kw in t for kw in ["overdose", "overdos"]):
-        return "Overdosage"
-    else:
-        return "PatientCondition"
+    """Map CSV Warning Type column directly to ontology class."""
+    type_map = {
+        "Pregnancy & Lactation": "PregnancyAndLactation",
+        "Age Restriction": "AgeRestriction",
+        "Overdosage": "Overdosage",
+        "Contraindication": "Contraindication",
+        "Patient Condition": "PatientCondition"
+    }
+    return type_map.get(type_str.strip(), "PatientCondition")
 
 def side_effect_to_class(se_name):
     """Map side effect name to ontology class URI using dynamic naming."""
@@ -226,6 +219,7 @@ for _, row in dfs["Antibiotic"].iterrows():
         add_individual(ab_uri, EX.Antibiotic, generic_name)
         if drug_class:
             add_literal(ab_uri, EX.hasDrugClass, drug_class)
+    
     # Create Brand individual (unique by brand name)
     brand_key = f"{generic_name}_{brand_name}"
     if brand_key not in brands:
@@ -244,6 +238,12 @@ for _, row in dfs["Antibiotic"].iterrows():
         # hasDistributors: exact CSV value as literal (moved to Brand, no URI creation)
         if distributors and distributors != "Not Specified":
             g.add((brand_uri, EX.hasDistributors, Literal(distributors)))
+        
+        # FIX: Add hasReference to brand from Antibiotic.csv Reference ID
+        for ref_id in ref_ids:
+            ref_uri_id = make_uri_id(ref_id)
+            if ref_uri_id:
+                g.add((brand_uri, EX.hasReference, URIRef(EX[ref_uri_id])))
 
 # Build Antibiotic ID → Brand Names mapping
 ab_id_to_brands = {}

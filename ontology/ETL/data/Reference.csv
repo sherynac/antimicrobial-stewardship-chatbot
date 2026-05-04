@@ -129,4 +129,74 @@ R128,Nifedipine,Monthly Index of Medical Specialties,2024,https://www.drugs.com/
 R129,Aspirin ,Monthly Index of Medical Specialties,2024,https://www.drugs.com/aspirin.html
 R130,Sulfinpyrazone,Monthly Index of Medical Specialties,2025,https://www.drugs.com/cons/sulfinpyrazone.html
 R131,Carbonic Anhydrase Inhibitors,Monthly Index of Medical Specialties,2026,https://www.drugs.com/drug-class/carbonic-anhydrase-inhibitors.html
-R132,,,,
+R132,Anorexia,Monthly Index of Medical Specialties,2024,https://medlineplus.gov/ency/article/000362.htm
+R133,Nausea amd Vomiting,Monthly Index of Medical Specialties,2024,https://medlineplus.gov/nauseaandvomiting.html
+R134,Diarrhea,Monthly Index of Medical Specialties,2025,https://medlineplus.gov/diarrhea.html
+R135,Glossitis,Monthly Index of Medical Specialties,2025,https://medlineplus.gov/ency/article/001053.htm
+R136,Dysphagia,Monthly Index of Medical Specialties,,https://medlineplus.gov/lab-tests/dysphagia-tests/
+R137,Esophagitis,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/001153.htm
+R138,Ehrlichiosis,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/001381.htm
+R139,Erythroderma,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/001610.htm
+R140,BUN (Blood Urea Nitrogen),Monthly Index of Medical Specialties,,https://medlineplus.gov/lab-tests/bun-blood-urea-nitrogen/
+R141,Hives,Monthly Index of Medical Specialties,,https://medlineplus.gov/hives.html
+R142,Angioedema,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000846.htm
+R143,Anaphylaxis,Monthly Index of Medical Specialties,,https://medlineplus.gov/anaphylaxis.html
+R144,Serum Sickness,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000820.htm
+R145,Pericarditis,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000182.htm
+R146,Systemic Lupus Erythematosus,Monthly Index of Medical Specialties,,https://medlineplus.gov/genetics/condition/systemic-lupus-erythematosus/
+R147,Hemolytic Anemia,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000571.htm
+R148,Immune Hemolytic Anemia,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000576.htm
+R149,Thrombocytopenia,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000586.htm
+R150,Neutropenia,Monthly Index of Medical Specialties,,https://medlineplus.gov/genetics/condition/severe-congenital-neutropenia/
+R151,Eosinophilia Disorders,Monthly Index of Medical Specialties,,https://medlineplus.gov/eosinophilicdisorders.html
+R152,Pancreatitis,Monthly Index of Medical Specialties,,https://medlineplus.gov/pancreatitis.html
+R153,Stevens-Johnson syndrome/toxic epidermal necrolysis,Monthly Index of Medical Specialties,,https://medlineplus.gov/genetics/condition/stevens-johnson-syndrome-toxic-epidermal-necrolysis/
+R154,Erythema Multiforme,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000851.htm
+R155,Skin Hyperpigmentation,Monthly Index of Medical Specialties,,https://medlineplus.gov/skinpigmentationdisorders.html
+R156,Cockayne Syndrome,Monthly Index of Medical Specialties,,https://medlineplus.gov/genetics/condition/cockayne-syndrome/
+R157,Increased intracranial pressure,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000793.htm
+R158,Insomnia,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000805.htm
+R159,Headache,Monthly Index of Medical Specialties,,https://medlineplus.gov/headache.html
+R160,Dizziness and Vertigo,Monthly Index of Medical Specialties,,https://medlineplus.gov/dizzinessandvertigo.html
+R161,Breathing Problems,Monthly Index of Medical Specialties,,https://medlineplus.gov/breathingproblems.html
+R162,Constipation,Monthly Index of Medical Specialties,,https://medlineplus.gov/constipation.html
+R163,Abdominal Pain,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003120.htm
+R164,Dyspepsia,Monthly Index of Medical Specialties,,https://medlineplus.gov/indigestion.html
+R165,Rashes,Monthly Index of Medical Specialties,,https://medlineplus.gov/rashes.html
+R166,Itching,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003217.htm
+R167,Vaginitis,Monthly Index of Medical Specialties,,https://medlineplus.gov/vaginitis.html
+R168,Edema,Monthly Index of Medical Specialties,,https://medlineplus.gov/edema.html
+R169,Hyperglycemia,Monthly Index of Medical Specialties,,https://medlineplus.gov/hyperglycemia.html
+R170,Hypoglycemia,Monthly Index of Medical Specialties,,https://medlineplus.gov/hypoglycemia.html
+R171,Anxiety,Monthly Index of Medical Specialties,,https://medlineplus.gov/anxiety.html
+R172,Agitation,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003212.htm
+R173,Confusion,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003205.htm
+R174,Tremor,Monthly Index of Medical Specialties,,https://medlineplus.gov/tremor.html
+R175,Numbness and Tingling,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003206.htm
+R176,Walkig Abnormalities,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003199.htm
+R177,Drowsiness,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003208.htm
+R178,Fainting,Monthly Index of Medical Specialties,,https://medlineplus.gov/fainting.html
+R179,Nosebleed,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003106.htm
+R180,Cardiac Arrest,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/007640.htm
+R181,Heart Palpitations,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003081.htm
+R182,Ventricular Tachycardia,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000187.htm
+R183,Low Blood Pressure,Monthly Index of Medical Specialties,,https://medlineplus.gov/lowbloodpressure.html
+R184,Oral Candidiasis,Monthly Index of Medical Specialties,,https://vsearch.nlm.nih.gov/vivisimo/cgi-bin/query-meta?v%3Aproject=medlineplus&v%3Asources=medlineplus-bundle&query=Oral+Candidiasis&_ga=2.54371499.2000033850.1777773884-1356854841.1777773884&_gl=1*1xfzppj*_ga*MTM1Njg1NDg0MS4xNzc3NzczODg0*_ga_7147EPK006*czE3Nzc4NTgxOTMkbzQkZzEkdDE3Nzc4NjcxODckajYwJGwwJGgw*_ga_P1FPTH9PL4*czE3Nzc4NTgxOTMkbzQkZzEkdDE3Nzc4NjcwNjMkajUyJGwwJGgw
+R185,Hepatic Lipase Deficiency,Monthly Index of Medical Specialties,,https://medlineplus.gov/genetics/condition/hepatic-lipase-deficiency/
+R186,Venticular Fibrillation,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/007200.htm
+R187,Gastritis,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/001150.htm
+R188,Herpetic Stomatitis,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/001383.htm
+R189,Chest Pain,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003079.htm
+R190,Anemia,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000560.htm
+R191,Joint Pain,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003261.htm
+R192,Acute Kidney Failure,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000501.htm
+R193,Yeast Infections,Monthly Index of Medical Specialties,,https://medlineplus.gov/yeastinfections.html
+R194,High Potassium Level,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/001179.htm
+R195,Depression,Monthly Index of Medical Specialties,,https://medlineplus.gov/depression.html
+R196,Hallucinations,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003258.htm
+R197,Nightmares,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003209.htm
+R198,Sleep Disorders,Monthly Index of Medical Specialties,,https://medlineplus.gov/sleepdisorders.html
+R199,Seizures,Monthly Index of Medical Specialties,,https://medlineplus.gov/seizures.html
+R200,Hereditary Hyperekplexia,Monthly Index of Medical Specialties,,https://medlineplus.gov/genetics/condition/hereditary-hyperekplexia/
+R201,Gastroenteritis,Monthly Index of Medical Specialties,,https://medlineplus.gov/gastroenteritis.html
+R202,Thrombophlebitis,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/001108.htm
