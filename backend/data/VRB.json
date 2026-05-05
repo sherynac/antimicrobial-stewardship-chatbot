@@ -1,0 +1,549 @@
+{
+  "IntentDefinitions": [
+    {
+      "intent": "GET_ANTIBIOTIC_INFO",
+      "description": "Get brands, drug class, and presentations for an antibiotic",
+      "responses": [
+        {
+          "responseID": 1,
+          "condition": "generic_only",
+          "responseTexts": [
+            "{generic} (a {drug_class}) belongs to the antibiotic class. Available brands and forms will be shown below.",
+            "{generic}, which is a {drug_class} antibiotic, has several brands and presentations listed.",
+            "The antibiotic {generic} is classified under {drug_class} and comes in different brands and forms."
+          ],
+          "columns": [
+            "Brand",
+            "Presentation",
+            "Dosage",
+            "Unit Price"
+          ]
+        },
+        {
+          "responseID": 2,
+          "condition": "brand_single",
+          "responseTexts": [
+              "{brand} is a brand of {generic}, manufactured by {manufacturer} and distributed by {distributor}. It contains {content} available in {presentation} with dosage {dosage}{unit_price_text}.",
+              "{brand} (a {generic}), which contains {content}, comes in the form {presentation} with {dosage}{unit_price_text}. It is manufactured by {manufacturer} and distributed by {distributor}.",
+              "The brand {brand} (generic: {generic}) is available in {presentation}, contains {content}, with a dosage of {dosage}{unit_price_text}. It is manufactured by {manufacturer} and distributed by {distributor}."
+          ]
+        },
+        {
+          "responseID": 3,
+          "condition": "brand_multiple",
+          "responseTexts": [
+            "{brand} is a brand of {generic}, manufactured by {manufacturer} and distributed by {distributor}. It contains {content} and is available in multiple presentations listed below.",
+            "The brand {brand} (a {generic}), containing {content}, is manufactured by {manufacturer} and distributed by {distributor}. It comes in several forms and dosages shown in the table.",
+            "{brand} (generic: {generic}) created by {manufacturer} and distributed by {distributor} that has {content}. It has different presentations, dosages, and prices listed below."
+          ],
+          "columns": [
+            "Presentation",
+            "Dosage",
+            "Unit Price"
+          ]
+        }
+      ]
+    },
+    {
+      "intent": "GET_USES_INDICATIONS",
+      "description": "Get indications, severity levels, symptoms, and perform disease class and disease validation for an antibiotic.",
+      "responses": [
+        {
+          "responseID": 4,
+          "condition": "multiple_indications",
+          "responseTexts": [
+            "{brand} (generic: {generic}) is an antibiotic prescribed to treat various bacterial infections. Based on available data, it is used for:",
+            "{brand} ({generic}) is used to treat multiple bacterial infections. These include:",
+            "The antibiotic {brand} ({generic}) has several indications listed below:"
+          ],
+          "itemFormat": {
+            "description": "Symptoms include {symptoms}"
+          }
+        },
+        {
+          "responseID": 5,
+          "condition": "single_indication",
+          "responseTexts": [
+            "{brand} ({generic}) is indicated for the {disease} that has symptoms of :",
+            "Based on available data, {brand} ({generic}) is used for {disease} with the following symptoms:",
+            "The antibiotic brand ({generic}) treats {disease}, which can manifest with the following symptoms:"
+          ]
+        },
+        {
+          "responseID": 6,
+          "condition": "generic_only",
+          "responseTexts": [
+            "{generic} is a broad-spectrum antibiotic used for multiple bacterial infections.",
+            "Based on ontology mapping, {generic} treats various disease classes.",
+            "{generic} works on infections with different severity levels."
+          ],
+          "columns": [
+            "Disease",
+            "Disease Class",
+            "Severity",
+            "Symptoms"
+          ]
+        }
+      ]
+    },
+    {
+      "intent": "GET_SIDE_EFFECTS",
+      "description": "Get possible side effects of an antibiotic including severity, pattern, duration, and description. Supports filtering by severity and grouping by generic or brand.",
+      "filters": {
+        "hasSeverityType": "{severity_level}"
+      },
+      "settings": {
+        "resultLimit": 7,
+        "groupBy": "generic"
+      },
+      "responses": [
+        {
+          "responseID": 8,
+          "condition": "generic_only",
+          "responseTexts": [
+            "Here are the brands associated with {generic} and their known side effects based on my records:",
+            "Below are the brands linked to {generic} along with reported side effects:",
+            "Based on ontology data, the following brands are associated with {generic} and their side effects:"
+          ],
+          "groupFormat": {
+            "brandHeaderText": "{brand}",
+            "mainWithPattern": "{side_effect} ({pattern})",
+            "mainNoPattern": "{side_effect}"
+          }
+        },
+        {
+          "responseID": 9,
+          "condition": "generic_verify_match",
+          "responseTexts": [
+            "Yes, {side_effect} is a known side effect of {generic}. It is associated with the following brands: {brands}.",
+            "{generic} is associated with {side_effect}. The brands that report this side effect include: {brands}.",
+            "Based on records, {generic} can cause {side_effect}. This is observed in the following brands: {brands}."
+          ]
+        },
+        {
+          "responseID": 10,
+          "condition": "generic_verify_no_match",
+          "responseTexts": [
+            "{side_effect} is not listed as a known side effect of {generic}.",
+            "There is no record of {generic} causing {side_effect}.",
+            "Based on available data, {side_effect} is not associated with {generic}."
+          ]
+        },
+        {
+          "responseID": 11,
+          "condition": "brand_only",
+          "responseTexts": [
+            "Here are the side effects associated with {brand}",
+            "{brand} may cause the following side effects:",
+            "Based on ontology data, these are the side effects linked to {brand}."
+          ],
+          "itemFormat": {
+            "mainWithPattern": "{side_effect} ({pattern})",
+            "mainNoPattern": "{side_effect}"
+          }
+        },
+        {
+          "responseID": 12,
+          "condition": "brand_verify_match",
+          "responseTexts": [
+            "Yes, {side_effect} is a known side effect of {brand}.",
+            "{brand} is associated with {side_effect}.",
+            "Based on records, {brand} can cause {side_effect}."
+          ]
+        },
+        {
+          "responseID": 13,
+          "condition": "brand_verify_no_match",
+          "responseTexts": [
+            "{side_effect} is not listed as a known side effect of {brand}.",
+            "There is no record of {brand} causing {side_effect}.",
+            "Based on available data, {side_effect} is not associated with {brand}."
+          ]
+        },
+        {
+          "responseID": 14,
+          "condition": "generic_brand_only",
+          "responseTexts": [
+            "Here are the side effects associated with {brand} ({generic}):",
+            "{brand}, which contains {generic}, may cause the following side effects:",
+            "Based on ontology data, these are the side effects of {brand} ({generic})."
+          ],
+          "groupFormat": {
+            "mainWithPattern": "{side_effect} ({pattern})",
+            "mainNoPattern": "{side_effect}"
+          }
+        },
+        {
+          "responseID": 15,
+          "condition": "generic_brand_verify_match",
+          "responseTexts": [
+            "Yes, {side_effect} is a known side effect of {brand} ({generic}).",
+            "{brand}, which contains {generic}, is associated with {side_effect}.",
+            "Based on records, {brand} ({generic}) can cause {side_effect}."
+          ]
+        },
+        {
+          "responseID": 16,
+          "condition": "generic_brand_verify_no_match",
+          "responseTexts": [
+            "{side_effect} is not listed as a known side effect of {brand} ({generic}).",
+            "There is no record of {brand} ({generic}) causing {side_effect}.",
+            "Based on available data, {side_effect} is not associated with {brand} ({generic})."
+          ]
+        }
+      ]
+    },
+    {
+      "intent": "GET_SUBSTANCE_INTERACTION",
+      "description": "Get substance interactions of an antibiotic including interacting substances, substance types, clinical effects, and interaction descriptions.",
+      "responses": [
+        {
+          "responseID": 18,
+          "condition": "generic_only",
+          "responseTexts": [
+            "Here are the known substance interactions of {generic}:",
+            "{generic} interacts with the following substances listed below.",
+            "Based on ontology data, these substances interact with {generic}."
+          ],
+          "columns": [
+            "Substance",
+            "Substance Type",
+            "Clinical Effect"
+          ]
+        },
+        {
+          "responseID": 19,
+          "condition": "substance_description",
+          "responseTexts": [
+            "Here are descriptions of substances that interact with {generic}:",
+            "These substances are categorized based on ontology classification:",
+            "Below are substance details related to interactions with {generic}:"
+          ],
+          "columns": [
+            "Substance",
+            "Substance Type",
+            "Substance Description"
+          ]
+        },
+        {
+          "responseID": 20,
+          "condition": "interaction_description",
+          "responseTexts": [
+            "Here are the clinical effects of interactions involving {generic}:",
+            "These describe how {generic} interacts with different substances:",
+            "Below are interaction effects and clinical outcomes:"
+          ],
+          "columns": [
+            "Substance",
+            "Interaction Type",
+            "Clinical Effect Description"
+          ]
+        },
+        {
+          "responseID": 21,
+          "condition": "generic_substance_grouped",
+          "responseTexts": [
+            "Here are grouped substance interactions for {generic}:",
+            "{generic} interacts with substances categorized as Food, Beverage, and Drug.",
+            "These are categorized interaction effects of {generic}."
+          ],
+          "columns": [
+            "Substance",
+            "Category",
+            "Interaction Effect",
+            "Clinical Effect Description"
+          ]
+        },
+        {
+          "responseID": 22,
+          "condition": "substance_verify_match",
+          "responseTexts": [
+            "Yes, {substance} interacts with {generic}.",
+            "{substance} is a known interacting substance with {generic}.",
+            "Interaction exists between {generic} and {substance}."
+          ]
+        },
+        {
+          "responseID": 23,
+          "condition": "substance_verify_no_match",
+          "responseTexts": [
+            "{substance} does not interact with {generic}.",
+            "No interaction is recorded between {generic} and {substance}.",
+            "Based on ontology records, no interaction exists."
+          ]
+        }
+      ]
+    },
+    {
+      "intent": "GET_WARNING_PRECAUTIONS",
+      "description": "Get warning precautions for an antibiotic including pregnancy & lactation, age restriction, overdose, contraindications, and patient condition warnings.",
+      "responses": [
+        {
+          "responseID": 24,
+          "condition": "generic_only",
+          "responseTexts": [
+            "Here are the warning precautions for {generic}:",
+            "The following safety warnings apply to {generic}:",
+            "{generic} has multiple safety considerations listed below."
+          ],
+          "columns": [
+            "Warning Type",
+            "Warning Headline",
+            "Warning Description"
+          ]
+        },
+        {
+          "responseID": 25,
+          "condition": "pregnancy_lactation",
+          "responseTexts": [
+            "{generic} has pregnancy and lactation-related warnings.",
+            "Safety precautions for pregnancy and breastfeeding when using {generic} are listed below.",
+            "These are pregnancy & lactation warnings for {generic}."
+          ],
+          "columns": [
+            "Warning Type",
+            "Warning Headline",
+            "Warning Description"
+          ]
+        },
+        {
+          "responseID": 26,
+          "condition": "age_restriction",
+          "responseTexts": [
+            "{generic} has age-related restrictions for certain patients.",
+            "Pediatric and elderly usage warnings for {generic} are shown below.",
+            "Age restriction precautions for {generic} are listed here."
+          ],
+          "columns": [
+            "Age Group",
+            "Warning Headline",
+            "Warning Description"
+          ]
+        },
+        {
+          "responseID": 27,
+          "condition": "overdosage",
+          "responseTexts": [
+            "Overdose warnings for {generic} are listed below.",
+            "Excess intake of {generic} may lead to serious effects.",
+            "These are overdose precautions for {generic}."
+          ],
+          "columns": [
+            "Warning Type",
+            "Warning Headline",
+            "Warning Description"
+          ]
+        },
+        {
+          "responseID": 28,
+          "condition": "contraindication",
+          "responseTexts": [
+            "{generic} has contraindications that must be considered before use.",
+            "Do not use {generic} under the conditions listed below.",
+            "Contraindication warnings for {generic} are shown here."
+          ],
+          "columns": [
+            "Warning Type",
+            "Warning Headline",
+            "Warning Description"
+          ]
+        },
+        {
+          "responseID": 29,
+          "condition": "patient_condition",
+          "responseTexts": [
+            "{generic} may not be suitable for patients with certain conditions.",
+            "Patient-specific precautions for {generic} are listed below.",
+            "These warnings apply based on patient conditions for {generic}."
+          ],
+          "columns": [
+            "Patient Condition",
+            "Warning Headline",
+            "Warning Description"
+          ]
+        },
+        {
+          "responseID": 30,
+          "condition": "generic_verify_match",
+          "responseTexts": [
+            "Yes, {warning} is a known warning for {generic}.",
+            "{generic} has this warning recorded in the system.",
+            "Based on ontology data, {warning} is associated with {generic}."
+          ]
+        },
+        {
+          "responseID": 31,
+          "condition": "generic_verify_no_match",
+          "responseTexts": [
+            "{warning} is not listed as a warning for {generic}.",
+            "No record of this warning exists for {generic}.",
+            "Based on available data, {generic} does not include this warning."
+          ]
+        },
+        {
+          "responseID": 32,
+          "condition": "brand_only",
+          "responseTexts": [
+            "Here are the warning precautions for {brand}:",
+            "{brand} has safety warnings listed below.",
+            "These warnings apply to {brand}."
+          ],
+          "columns": [
+            "Warning Type",
+            "Warning Headline",
+            "Warning Description"
+          ]
+        },
+        {
+          "responseID": 33,
+          "condition": "generic_brand_only",
+          "responseTexts": [
+            "Here are the warning precautions for {brand} ({generic}):",
+            "{brand}, which contains {generic}, has safety warnings listed below.",
+            "These warnings apply to {brand} ({generic})."
+          ],
+          "columns": [
+            "Warning Type",
+            "Warning Headline",
+            "Warning Description"
+          ]
+        }
+      ]
+    },
+    {
+      "intent": "GET_STORAGE_INSTRUCTIONS",
+      "description": "Get proper storage instructions for an antibiotic.",
+      "responses": [
+        {
+          "responseID": 38,
+          "condition": "single_storage",
+          "responseTexts": [
+            "Storage instruction for {brand} ({generic}): {stewardship_description}",
+            "{brand} ({generic}) should be stored as follows: {stewardship_description}",
+            "Recommended storage condition for {brand} ({generic}): {stewardship_description}"
+          ]
+        },
+        {
+          "responseID": 39,
+          "condition": "multiple_storage",
+          "responseTexts": [
+            "Here are the storage instructions for {brand} ({generic}):",
+            "{brand} ({generic}) has multiple storage requirements listed below:",
+            "The following are the recommended storage conditions for {brand} ({generic})."
+          ],
+          "itemFormat": {
+            "primary": "{hasStewardshipDescription}"
+          }
+        },
+        {
+          "responseID": 40,
+          "condition": "no_match",
+          "responseTexts": [
+            "No storage instructions are available for {brand} ({generic}).",
+            "There is no storage information for {brand} (generic: {generic}).",
+            "Storage guidelines for {brand}, a {generic} are not found in the system."
+          ]
+        },
+        {
+          "responseID" : 99,
+          "condition": "generic_only",
+          "responseTexts": [
+            "These are the storage instructions for {generic}: .",
+            "{generic} has multiple storage requirements listed below: ",
+            "Recommended storage condition for {generic} are:"
+          ]
+        }
+      ]
+    },
+    {
+      "intent": "GET_FOOD_AND_TIMING",
+      "description": "Get food-related and timing instructions for an antibiotic.",
+      "responses": [
+        {
+          "responseID": 41,
+          "condition": "generic_only",
+          "responseTexts": [
+            "Here are the food and timing instructions for {generic}:",
+            "{generic} has multiple food-related and timing guidelines listed below:",
+            "The following are the recommended food and timing instructions for {generic}."
+          ]
+        },
+        {
+          "responseID": 42,
+          "condition": "single_food_and_timing",
+          "responseTexts": [
+            "Food and timing instruction for {brand} ({generic}): {stewardship_description}",
+            "{brand} ({generic}) should be taken as follows: {stewardship_description}",
+            "Recommended food/timing guideline for {brand} ({generic}): {stewardship_description}"
+          ]
+        },
+        {
+          "responseID": 43,
+          "condition": "multiple_food_and_timing",
+          "responseTexts": [
+            "Here are the food and timing instructions for {brand} ({generic}):",
+            "{brand} ({generic}) has multiple food-related and timing guidelines listed below:",
+            "The following are the recommended food and timing instructions for {brand} ({generic})."
+          ],
+          "itemFormat": {
+            "primary": "{hasStewardshipDescription}"
+          }
+        },
+        {
+          "responseID": 44,
+          "condition": "no_match",
+          "responseTexts": [
+            "No food or timing instructions are available for {brand} ({generic}).",
+            "There is no food/timing information for {brand} (generic: {generic}).",
+            "Food and timing guidelines for {brand}, a {generic} are not found in the system."
+          ]
+        }
+      ]
+    },
+    {
+      "intent": "GET_ADMINISTRATION_INSTRUCTIONS",
+      "description": "Get administration and adherence instructions for an antibiotic.",
+      "responses": [
+        {
+          "responseID": 49,
+          "condition": "generic_only",
+          "responseTexts": [
+            "Here are the administration and adherence instructions for {generic}:",
+            "{generic} has multiple administration and adherence guidelines listed below:",
+            "The following are the recommended administration and adherence instructions for {generic}."
+          ]
+        },
+        {
+          "responseID": 50,
+          "condition": "single_administration",
+          "responseTexts": [
+            "Administration and adherence instruction for {brand} ({generic}): {stewardship_description}",
+            "{brand} ({generic}) should be taken as follows: {stewardship_description}",
+            "Recommended administration/adherence guideline for {brand} ({generic}): {stewardship_description}"
+          ]
+        },
+        {
+          "responseID": 51,
+          "condition": "multiple_administration",
+          "responseTexts": [
+            "Here are the administration and adherence instructions for {brand} ({generic}):",
+            "{brand} ({generic}) has multiple administration and adherence guidelines listed below:",
+            "The following are the recommended administration and adherence instructions for {brand} ({generic})."
+          ],
+          "itemFormat": {
+            "primary": "{hasStewardshipDescription}"
+          }
+        },
+        {
+          "responseID": 52,
+          "condition": "no_match",
+          "responseTexts": [
+            "No administration or adherence instructions are available for {brand} ({generic}).",
+            "There is no administration/adherence information for {brand} (generic: {generic}).",
+            "Administration and adherence guidelines for {brand}, a {generic} are not found in the system."
+          ]
+        }
+      ]
+    }
+  ]
+}

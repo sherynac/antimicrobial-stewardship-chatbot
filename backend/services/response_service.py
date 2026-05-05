@@ -1,214 +1,646 @@
 import json
 import os
+import random
 
-def build_response_index():
-    '''
-    Reads JSON vetted response bank and builds a nested dictionary for retrieving responses/templates
-    With nested dictionary (similar to multi-dimensional array) but makes use of string keys
+# response_service.py
+
+class ResponseService:
     
-    Sample: 
-        ["GET_ANTIBIOTIC_INFO"]["generic_only"]= "this is the response for getting antibiotic info with generic only"
+    def __init__(self, path):
+        self.index = self._load_response_index(path)
+
+    def _load_response_index(self, path):
+
+        with open(path, 'r', encoding='utf-8') as file:
+            response_bank = json.load(file)
+            print("Loaded JSON vetted response bank")
+
+        index = {}
+
+        for intent_obj in response_bank["IntentDefinitions"]:
+            intent = intent_obj["intent"]
+            index[intent] = {}
+
+            for response in intent_obj["responses"]:
+                condition = response["condition"]
+                index[intent][condition] = response
     
-    Returns:
-        index: nested dictionary for response templates
-    '''
+        return index
 
-    with open('./backend/data/vetted_response.json', 'r') as file:
-        response_bank = json.load(file)
-        print("Loaded JSON vetted response bank")
 
-    index = {}
-
-    for intent_obj in response_bank["IntentDefinitions"]:
-        intent = intent_obj["intent"]
-        index[intent] = {}
-
-        for response in intent_obj["responses"]:
-            condition = response["condition"]
-            index[intent][condition] = response 
-
-    print(index)
-    return index
-
-def get_response_template(intent, condition, response_index):
-    '''
-    Retrieves corresponding response template given intent and condition
-
-    args:
-        intent: classified intent
-        condition: depends on recognized entities from initial question
-        response_index: loaded nested dictionary
-
-    Returns:
-        response template based on the intent and condition
-    '''
-    return response_index.get(intent, {}).get(condition)
-
-def build_text_response(response):
-    '''
-    Builds JSON format for plain text responses
-
-    args:
-        response: built response from response template and querying
+    # ─── Template Fetching ────────────────────────────────────────────
     
-    Returns:
-        data: JSON format of a plain text response
-    '''
-    data = {
-        "type": "text",
-        "response": response
-    }
-    return data
+    def get_response_template(self, intent: str, variant: str) -> dict:
+        return self.index[intent][variant]
 
-def build_header_response(response):
-    '''
-    Builds JSON format for headers (in bold)
+    # ─── Primitive Builders ───────────────────────────────────────────
 
-    args:
-        response: built response from response template and querying
+    def build_text_response(self, text: str) -> dict:
+        return {"type": "text", "content": text}
+
+    def build_table_response(self, columns: list, rows: list) -> dict:
+        return {"type": "table", "columns": columns, "rows": rows}
+
+    def build_reference(self, name: str, title: str, url: str) -> dict:
+        return {"type":"reference", "name": name, "title": title, "url": url}
+
+    def build_bullet(self, description:str, main_text: str = "") -> dict:
+        return {"type": "bullet", "main_text": main_text, "description": description}
+
+
+    # ─── Composite Builder ────────────────────────────────────────────
+
+    def build_composite_response(self, responses: list[dict]) -> dict:
+        return {"type": "composite", "responses": responses}
     
-    Returns:
-        data: JSON format of a header
-    '''
-    data = {
-        "type": "header",
-        "response": response
-    }
-    return data
+    def build_reference_list(self, references: list) -> dict:
+        return {
+            "type": "reference_list",
+            "sources": [
+                self.build_reference(ref["name"], ref["title"], ref["url"])
+                for ref in references
+            ]
+        }
 
-def build_table_response(columns, rows):
-    '''
-    Builds JSON format for table responses 
+    def build_bullet_list(self, list: list) -> dict:
+        return {
+            "type": "bullet_list",
+            "items": list
+        }
 
-    args:
-        columns: column headers
-        rows: refers to the data to be displayed in a row
+    # ─── High-Level Intent Builders ───────────────────────────────────
+
+    def build_antibiotic_multiple(self, brand_info, table_details, reference):
+        print("MULTIPLE GET ANTIBIOTIC INFO")
+        template = self.get_response_template("GET_ANTIBIOTIC_INFO", "brand_multiple")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            brand=brand_info["brand"], 
+            generic=brand_info["generic"], 
+            manufacturer=brand_info["manufacturer"],
+            distributor=brand_info["distributor"],
+            content=brand_info["content"]
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            self.build_table_response(template['columns'], table_details),
+            reference_json
+        ])
+
+    def build_antibiotic_single(self, brand_info, reference):
+        print("SINGLE GET ANTIBIOTIC INFO")
+        template = self.get_response_template("GET_ANTIBIOTIC_INFO", "brand_single")
+        response_text = random.choice(template['responseTexts'])
+
+        reference_json = self.build_reference_list(reference)
+        unit_price_text = f" and costs Php {brand_info['unit_price']}" if brand_info['unit_price'] != "Not specified" else ""
+
+        text = response_text.format(
+            brand=brand_info["brand"], 
+            generic=brand_info["generic"], 
+            manufacturer=brand_info["manufacturer"],
+            distributor=brand_info["distributor"],
+            content=brand_info["content"],
+            presentation=brand_info["presentation"],
+            dosage=brand_info["dosage"],
+            unit_price_text=unit_price_text
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            reference_json
+        ])
     
-    Returns:
-        data: JSON format of a table response
-    '''
-    data = {
-        "type" : "table",
-        "columns": columns,
-        "rows": rows
-    }
-    return data
+    def build_antibiotic_generic(self, generic_info, table_details, reference):
+        print("GENERIC GET ANTIBIOTIC INFO")
+        template = self.get_response_template("GET_ANTIBIOTIC_INFO", "generic_only")
+        response_text = random.choice(template['responseTexts'])
 
-def build_bulleted_response(responses):
-    '''
-    Builds the JSON format of a bulleted response
+        reference_json = self.build_reference_list(reference)
 
-    args:
-        response: array containing the responses to be placed in bullet form
-    '''
+        text = response_text.format(
+            generic=generic_info["generic"], 
+            drug_class=generic_info["drug_class"]
+        )
 
-    data = {
-        "type" : "bulleted",
-        "bullets": responses
-    }
-    return data
-
-def build_bullet (main_text="", description=""):
-    '''
-    Build the JSON format of a bullet
-
-    args:
-        main_text: main text/point of a bullet usually in bold
-        description: details for expounding main text of the bullet
-    '''
-    data = {
-        "type" : "bullet",
-        "main_text" : main_text,
-        "description" : description,
-    }
-
-    return data
+        return self.build_composite_response([
+            self.build_text_response(text),
+            self.build_table_response(template['columns'], table_details),
+            reference_json
+        ])
     
-def build_composite_response(*responses):
-    '''
-    Builds composite response (combination of response types)
+    def build_indications_single(self, indication_info, symptoms_array, reference):
+        print("SINGLE INDICATION")
+        template = self.get_response_template("GET_USES_INDICATIONS", "single_indication")
+        response_text = random.choice(template['responseTexts'])
 
-    args:
-        responses: responses which have different types 
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            brand = indication_info['brand'],
+            generic = indication_info['generic'],
+            disease = indication_info['disease']
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            self.build_bullet_list(symptoms_array),
+            reference_json
+        ])
     
-    Returns:
-        data: built JSON format from combining different response types
-    '''
-    data = {
-        "type" : "composite",
-        "responses": list(responses)
-    }
+    def build_indications_multiple(self, indication_info, indication_final, symptoms_obj, reference):
+        print("MULTIPLE INDICATIONS")
+        template = self.get_response_template("GET_USES_INDICATIONS", "multiple_indications")
+        response_text = random.choice(template['responseTexts'])
+        bullet_template = template['itemFormat']
 
-    # Checking of payload
-    with open('debug_payload.json', 'w') as file:
-        json.dump(data, file, indent=4)
+        reference_json = self.build_reference_list(reference)
 
-    return data         
+        text = response_text.format(
+            brand=indication_info['brand'],
+            generic=indication_info['generic'],
+        )
 
-def build_reference(id, title, url):
-    '''
-    Builds JSON format of a single reference
+        bullet_list = self.build_bullet_list([
+            self.build_bullet(
+                main_text=indication,
+                description=bullet_template['description'].format(symptoms=symptoms)
+            )
+            for indication, symptoms in zip(indication_final, symptoms_obj)
+        ])
 
-    args:
-        id: refers to the id of the reference
-        title: refers to the title of the reference
-        url: refers to the exact url reference was retrieved from
+        return self.build_composite_response([
+            self.build_text_response(text),
+            bullet_list,
+            reference_json
+        ])
+
+    def build_indications_generic(self, generic_name, table_details, reference):
+        print("GENERIC INDICATIONS")
+        template = self.get_response_template("GET_USES_INDICATIONS", "generic_only")
+        response_text = random.choice(template['responseTexts'])
+
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            generic=generic_name,
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            self.build_table_response(template['columns'], table_details),
+            reference_json
+        ])
     
-    Return:
-        data: built JSON format of a reference
-    '''
-    data = {
-        "type": "reference",
-        "id": id,
-        "title": title,
-        "url":url
-    }
-    return data
+    def build_side_effect_all_match(self, isFound, side_effect_info, reference):
+        print("GENERIC, BRAND, SIDE EFFECT MATCH")
 
-def build_reference_list(references):
-    '''
-    Builds JSON format of a reference list
+        if not(isFound):
+            template = self.get_response_template("GET_SIDE_EFFECTS", "generic_brand_verify_no_match")
+        else:
+            template = self.get_response_template("GET_SIDE_EFFECTS", "generic_brand_verify_match")
 
-    args:
-        references: refers to the list of references
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            generic=side_effect_info['generic'],
+            brand = side_effect_info['brand'],
+            side_effect = side_effect_info['side_effect']
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            reference_json
+        ])
     
-    Returns:
-        data: built JSON format of a reference list
-    '''
-    data = {
-        "type": "reference_list",
-        "sources": references
-    }
+    def build_side_effect_brand_match(self, isFound, side_effect_info, reference):
+        print("BRAND, SIDE EFFECT MATCH")
 
-    return data
+        if not(isFound):
+            template = self.get_response_template("GET_SIDE_EFFECTS", "brand_verify_no_match")
+        else:
+            template = self.get_response_template("GET_SIDE_EFFECTS", "brand_verify_match")
 
-def combine_reference_list(json_1, json_2):
-    '''
-    Combines two reference lists into a single reference list
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
 
-    args:
-        json_1 : json to combine
-        json_2 : second json to combine
+        text = response_text.format(
+            brand = side_effect_info['brand'],
+            side_effect = side_effect_info['side_effect']
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            reference_json
+        ])
     
-    Returns:
-        JSON containing combined reference list
-    '''
-    json_1_sources = json_1.get("sources", []) if json_1 else []
-    json_2_sources = json_2.get("sources", []) if json_2 else []
+    def build_side_effect_generic_match(self, isFound, side_effect_info, reference):
+        print("GENERIC, SIDE EFFECT MATCH")
 
-    combined_sources = json_1_sources + json_2_sources
+        if not(isFound):
+            template = self.get_response_template("GET_SIDE_EFFECTS", "generic_verify_no_match")
+        else:
+            template = self.get_response_template("GET_SIDE_EFFECTS", "generic_verify_match")
 
-    unique_sources_dict = {}
-    for source in combined_sources:
-        if 'url' in source:
-            unique_sources_dict[source['url']] = source
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            generic = side_effect_info['generic'],
+            brands = side_effect_info['brands'],
+            side_effect = side_effect_info['side_effect']
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            reference_json
+        ])
+
+    def build_side_effect_generic_brand(self, info, side_effect_list, reference): 
+        print("GENERIC, BRAND SIDE EFFECT")
+        template = self.get_response_template("GET_SIDE_EFFECTS", "generic_brand_only")
+        response_text = random.choice(template['responseTexts'])
+
+        text = response_text.format(
+            generic = info['generic'],
+            brand = info['brand']
+        )
+
+        bullet_template = template['groupFormat']
+        formatted_effects = []
+
+        for se in side_effect_list:
+            if se['pattern']:
+                main_text = bullet_template['mainWithPattern'].format(
+                    side_effect=se['side_effect'],
+                    pattern=se['pattern']
+                )
+            else:
+                main_text = bullet_template['mainNoPattern'].format(
+                    side_effect=se['side_effect']
+                )
             
-    unique_sources = list(unique_sources_dict.values())
+            formatted_effects.append(
+                self.build_bullet(
+                    main_text=main_text,  
+                    description=se['description']
+                )
+            )
+
+        reference_json = self.build_reference_list(reference)
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            self.build_bullet_list(formatted_effects),
+            reference_json
+        ])
     
-    return {
-        "type": "reference_list",
-        "sources": unique_sources
-    }
+    def build_side_effect_generic(self, side_effect_info: dict, reference: list):
+        print("GENERIC, SIDE EFFECTS")
+        template = self.get_response_template("GET_SIDE_EFFECTS", "generic_only")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
 
-    return build_reference_list(combined_sources)
+        text = response_text.format(generic=side_effect_info['generic'])
 
+        # build a section per brand
+        brand_sections = []
+        for brand_data in side_effect_info['brands']:
+            bullets = []
+            for se in brand_data['side_effects']:
+                if se['pattern']:
+                    main_text = template['groupFormat']['mainWithPattern'].format(
+                        side_effect=se['side_effect'],
+                        pattern=se['pattern']
+                    )
+                else:
+                    main_text = template['groupFormat']['mainNoPattern'].format(
+                        side_effect=se['side_effect']
+                    )
+                bullets.append(self.build_bullet(
+                    main_text=main_text,
+                    description=se['description']
+                ))
+
+            brand_sections.append({
+                "type": "section",
+                "title": brand_data['brand'],  # "Doxin"
+                "items": bullets               # list of bullets
+            })
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            *brand_sections,
+            reference_json
+        ])
+
+    def build_side_effect_brand(self, brand, side_effect_list, reference):
+        print("BRAND SIDE EFFECT")
+        template = self.get_response_template("GET_SIDE_EFFECTS", "brand_only")
+        response_text = random.choice(template['responseTexts'])
+
+        text = response_text.format(
+            brand = brand
+        )
+
+        bullet_template = template['itemFormat']
+        formatted_effects = []
+
+        for se in side_effect_list:
+            if se['pattern']:
+                main_text = bullet_template['mainWithPattern'].format(
+                    side_effect=se['side_effect'],
+                    pattern=se['pattern']
+                )
+            else:
+                main_text = bullet_template['mainNoPattern'].format(
+                    side_effect=se['side_effect']
+                )
+            
+            formatted_effects.append(
+                self.build_bullet(
+                    main_text=main_text,  
+                    description=se['description']
+                )
+            )
+
+        reference_json = self.build_reference_list(reference)
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            self.build_bullet_list(formatted_effects),
+            reference_json
+        ])
+    
+    def build_storage_single(self, antibiotic_info, storage_rule, reference):
+        print("Storage Single")
+        template = self.get_response_template("GET_STORAGE_INSTRUCTIONS", "single_storage")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            generic = antibiotic_info['generic'],
+            brand = antibiotic_info['brand'],
+            stewardship_description = storage_rule[0]
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            reference_json
+        ])
+
+    def build_storage_multiple(self, antibiotic_info, storage_rules, reference):
+        print("Storage Multiple")
+        template = self.get_response_template("GET_STORAGE_INSTRUCTIONS", "multiple_storage")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            generic = antibiotic_info['generic'],
+            brand = antibiotic_info['brand'],
+        )
+
+        bullets = [
+        self.build_bullet(description=rule[0] if isinstance(rule, list) else rule)
+        for rule in storage_rules
+        ]
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            self.build_bullet_list(bullets),
+            reference_json
+        ])
+
+    def build_storage_none(self, antibiotic_info, reference):
+        print("Storage Single")
+        template = self.get_response_template("GET_STORAGE_INSTRUCTIONS", "no_match")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            generic = antibiotic_info['generic'],
+            brand = antibiotic_info['brand'],
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            reference_json
+        ])
+    
+    def build_storage_generic(self, storage_info: dict, reference: list):
+        print("Storage Generic")
+        template = self.get_response_template("GET_STORAGE_INSTRUCTIONS", "generic_only")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(generic=storage_info['generic'])
+
+        brand_sections = []
+        for brand_data in storage_info['brands']:
+            if brand_data['storage_rules']:
+                bullets = [
+                    self.build_bullet(description=rule)
+                    for rule in brand_data['storage_rules']
+                ]
+            else:
+                bullets = [
+                    self.build_bullet(
+                        description=f"{brand_data['brand']} has no specified storage instructions"
+                    )
+                ]
+
+            brand_sections.append({
+                "type": "section",
+                "title": brand_data['brand'],
+                "items": bullets
+            })
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            *brand_sections,
+            reference_json
+        ])
+
+    def build_food_and_timing_single(self, antibiotic_info, food_and_timing_rule, reference):
+        print("Food and Timing Single")
+        template = self.get_response_template("GET_FOOD_AND_TIMING", "single_food_and_timing")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            generic = antibiotic_info['generic'],
+            brand = antibiotic_info['brand'],
+            stewardship_description =food_and_timing_rule[0]
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            reference_json
+        ])
+
+    def build_food_and_timing_multiple(self, antibiotic_info, food_and_timing_rules, reference):
+        print("Food and Timing Multiple")
+        template = self.get_response_template("GET_FOOD_AND_TIMING", "multiple_food_and_timing")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            generic = antibiotic_info['generic'],
+            brand = antibiotic_info['brand'],
+        )
+
+        bullets = [
+        self.build_bullet(description=rule[0] if isinstance(rule, list) else rule)
+        for rule in food_and_timing_rules
+        ]
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            self.build_bullet_list(bullets),
+            reference_json
+        ])
+
+    def build_food_and_timing_none(self, antibiotic_info, reference):
+        print("Food and Timing None")
+        template = self.get_response_template("GET_FOOD_AND_TIMING", "no_match")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            generic = antibiotic_info['generic'],
+            brand = antibiotic_info['brand'],
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            reference_json
+        ])
+    
+    def build_food_and_timing_generic(self, food_and_timing_info: dict, reference: list):
+        print("Food and timing Generic")
+        template = self.get_response_template("GET_FOOD_AND_TIMING", "generic_only")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(generic=food_and_timing_info['generic'])
+
+        brand_sections = []
+        for brand_data in food_and_timing_info['brands']:
+            if brand_data['food_and_timing_rules']:
+                bullets = [
+                    self.build_bullet(description=rule)
+                    for rule in brand_data['food_and_timing_rules']
+                ]
+            else:
+                bullets = [
+                    self.build_bullet(
+                        description=f"{brand_data['brand']} has no specified food and timing instructions"
+                    )
+                ]
+
+            brand_sections.append({
+                "type": "section",
+                "title": brand_data['brand'],
+                "items": bullets
+            })
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            *brand_sections,
+            reference_json
+        ])
+
+    def build_administration_single(self, antibiotic_info, administration_rule, reference):
+        print("Administration Single")
+        template = self.get_response_template("GET_ADMINISTRATION_INSTRUCTIONS", "single_administration")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            generic = antibiotic_info['generic'],
+            brand = antibiotic_info['brand'],
+            stewardship_description =administration_rule[0]
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            reference_json
+        ])
+
+    def build_administration_multiple(self, antibiotic_info, administration_rules, reference):
+        print("Administration Multiple")
+        template = self.get_response_template("GET_ADMINISTRATION_INSTRUCTIONS", "multiple_administration")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            generic = antibiotic_info['generic'],
+            brand = antibiotic_info['brand'],
+        )
+
+        bullets = [
+        self.build_bullet(description=rule[0] if isinstance(rule, list) else rule)
+        for rule in administration_rules
+        ]
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            self.build_bullet_list(bullets),
+            reference_json
+        ])
+
+    def build_administration_none(self, antibiotic_info, reference):
+        print("Administration None")
+        template = self.get_response_template("GET_ADMINISTRATION_INSTRUCTIONS", "no_match")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            generic = antibiotic_info['generic'],
+            brand = antibiotic_info['brand'],
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            reference_json
+        ])
+    
+    def build_administration_generic(self, administration_info: dict, reference: list):
+        print("Administration Generic")
+        template = self.get_response_template("GET_ADMINISTRATION_INSTRUCTIONS", "generic_only")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(generic=administration_info['generic'])
+
+        brand_sections = []
+        for brand_data in administration_info['brands']:
+            if brand_data['administration_rules']:
+                bullets = [
+                    self.build_bullet(description=rule)
+                    for rule in brand_data['administration_rules']
+                ]
+            else:
+                bullets = [
+                    self.build_bullet(
+                        description=f"{brand_data['brand']} has no specified administration and adherence instructions"
+                    )
+                ]
+
+            brand_sections.append({
+                "type": "section",
+                "title": brand_data['brand'],
+                "items": bullets
+            })
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            *brand_sections,
+            reference_json
+        ])
+
+response_service = ResponseService('./backend/data/VRB.json')

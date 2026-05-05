@@ -1,3 +1,5 @@
+import re
+
 def array_to_string (array):
     '''
     Method for transforming an array to a string
@@ -61,3 +63,14 @@ def is_name_match(user_string, db_string):
     
     return user_words.issubset(db_words)
 
+def get_splitted_question(question):
+    question = question.lower()
+    question = re.sub(r'\s+', ' ', question)
+    question = question.strip()
+    words = re.findall(r'\b\w+\b', question)
+    # print(f"Splitted question: {words}")
+    return words
+
+def split_commas(sentence):
+    items_array = sentence[0].split(',')
+    return items_array

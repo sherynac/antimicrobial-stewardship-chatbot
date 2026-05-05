@@ -63,14 +63,16 @@
 :Headache rdf:type owl:Class;
     rdfs:subClassOf :SideEffect .
 :Pattern rdf:type owl:Class .
+:Duration rdf:type owl:Class .
 
 # StewardshipPrinciple
 :StewardshipPrinciple rdf:type owl:Class .
-:ProperUse rdf:type owl:Class ; rdfs:subClassOf :StewardshipPrinciple .
-:Adherence rdf:type owl:Class ; rdfs:subClassOf :StewardshipPrinciple .
-:Storage rdf:type owl:Class ; rdfs:subClassOf :StewardshipPrinciple .
-:Monitoring rdf:type owl:Class ; rdfs:subClassOf :StewardshipPrinciple .
-:Prevention rdf:type owl:Class ; rdfs:subClassOf :StewardshipPrinciple .
+:AdministrationAndAdherence rdf:type owl:Class ; 
+    rdfs:subClassOf :StewardshipPrinciple .
+:FoodAndTiming rdf:type owl:Class ; 
+    rdfs:subClassOf :StewardshipPrinciple .
+:Storage rdf:type owl:Class ; 
+    rdfs:subClassOf :StewardshipPrinciple .
 
 # Interaction
 :Interaction rdf:type owl:Class .
@@ -193,7 +195,14 @@
 :hasInteraction rdf:type owl:ObjectProperty ;
     rdfs:domain :Brand ;
     rdfs:range :Interaction ;
-    rdfs:label "has interaction" .
+    rdfs:label "has interaction" ;
+    owl:inverseOf :isInteractionOf .
+
+:isInteractionOf rdf:type owl:ObjectProperty ;
+    rdfs:domain :Interaction ;
+    rdfs:range :Brand ;
+    rdfs:label "is interaction of" ;
+    rdfs:inverseOf :hasInteraction .
 
 :interactsWith rdf:type owl:ObjectProperty ;
     rdfs:domain :Interaction ;
@@ -206,10 +215,15 @@
     owl:inverseOf :interactsWith ;
     rdfs:label "is involved in".
 
-:managedBy rdf:type owl:ObjectProperty ;
+:hasAdministrationAndAdherenceRule rdf:type owl:ObjectProperty ;
     rdfs:domain :Brand ;
-    rdfs:range :StewardshipPrinciple;
-    rdfs:label "managed by" .
+    rdfs:range :AdministrationAndAdherence;
+    rdfs:label "has administration & adherence rule" .
+
+:hasFoodAndTimingRule rdf:type owl:ObjectProperty ;
+    rdfs:domain :Brand ;
+    rdfs:range :FoodAndTiming;
+    rdfs:label "has food and timing rule" .
 
 :hasStorageRule rdf:type owl:ObjectProperty ;
     rdfs:domain :Brand ;
@@ -248,6 +262,21 @@
     rdfs:domain :PresentationPacking ;
     rdfs:range xsd:double ;
     rdfs:label "has unit price" .
+
+:hasDistributors rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Brand ;
+    rdfs:range xsd:string ;
+    rdfs:label "has distributor" .
+
+:hasManufacturers rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Brand ;
+    rdfs:range xsd:string ;
+    rdfs:label "has manufacturer" .
+
+:hasContents rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Brand ;
+    rdfs:range xsd:string ;
+    rdfs:label "has content" .
 
 :hasSymptoms rdf:type owl:DatatypeProperty ;
     rdfs:domain :Indication;
@@ -323,6 +352,10 @@
 # Individuals
 ###############################################################
 
+# Medical Terms
+:AntibioticResistance rdf:type :MedicalTerm .
+:AntimicrobialStewardship rdf:type :MedicalTerm.
+
 # Antibiotic
 :Doxycycline rdf:type :Antibiotic;
     rdfs:label "Doxycycline".
@@ -385,8 +418,17 @@
 :SE000 rdf:type :Headache .
 
 # Occurrence Pattern
+:SE310 rdf:type :Diarrhea .
+:SE312 rdf:type :Nausea .
+:SE313 rdf:type :Vomiting .
+:SE338 rdf:type :Diarrhea .
+:SE371 rdf:type :Diarrhea .
+:SE000 rdf:type :Headache .
+
+# Occurrence Pattern
 :Common rdf:type :Pattern .
 :Infrequent rdf:type :Pattern .
+:FrequencyNotReported rdf:type :Pattern .
 :FrequencyNotReported rdf:type :Pattern .
 
 # Interaction
@@ -408,9 +450,14 @@
 :SP112 rdf:type :Storage .
 :SP113 rdf:type :Storage .
 :SP114 rdf:type :Storage .
-:SP000 rdf:type :ProperUse .
-:SP082 rdf:type :Monitoring .
-:SP001 rdf:type :Adherence .
+
+:SP100 rdf:type :FoodAndTiming .
+:SP101 rdf:type :FoodAndTiming .
+:SP102 rdf:type :FoodAndTiming .
+
+:SP201 rdf:type :AdministrationAndAdherence .
+:SP202 rdf:type :AdministrationAndAdherence .
+:SP203 rdf:type :AdministrationAndAdherence .
 
 # References
 :R008 rdf:type :Reference .
@@ -494,9 +541,60 @@
 :Levofloxacin :hasDrugClass "Quinolones" .
 :Levofloxacin :hasBrandName :Levocin .
 
+:Doxin :hasManufacturers "BIOFEMME, Inc" .
+:Doxin :hasDistributors "UNILAB, Inc" .
+:Doxin :hasContents "Doxycycline hyclate" .
+
+:Doxyclen :hasManufacturers "Lloyd" .
+:Doxyclen :hasDistributors "Nurturemed" .
+:Doxyclen :hasContents "Doxycycline hyclate" .
+
+:Dynadoxy :hasManufacturers "Swiss Pharmaceutical" .
+:Dynadoxy :hasDistributors "Crisdy-Na" .
+:Doxyclen :hasContents "Doxycycline hyclate" .
+
+:Levocin :hasManufacturers "Getz Pharma" .
+:Levocin :hasDistributors "Getz Bros" .
+:Levocin :hasContents "Levofloxacin hemihydrate" .
+
 :Doxin :hasReference :R011 .
 :Doxyclen :hasReference :R012 .
 :Dynadoxy :hasReference :R013 .
+:Levocin :hasReference :R008 .
+
+# Presentation
+:Doxin :hasPresentation :A001 .
+:Doxyclen :hasPresentation :A002 .
+:Dynadoxy :hasPresentation :A003 .
+:Levocin :hasPresentation :A004 .
+:Levocin :hasPresentation :A005 .
+:Levocin :hasPresentation :A006 .
+:Levocin :hasPresentation :A007 .
+
+:A001 :hasDosage "100mg" .
+:A002 :hasDosage "100mg" .
+:A003 :hasDosage "100mg" .
+:A004 :hasDosage "500mg" .
+:A005 :hasDosage "750mg" .
+:A006 :hasDosage "500mg" .
+:A007 :hasDosage "750mg" .
+
+:A001 :hasUnitPrice "103.00"^^xsd:double .
+:A002 :hasUnitPrice "110.00"^^xsd:double .
+:A003 :hasUnitPrice "115.00"^^xsd:double .
+:A004 :hasUnitPrice "95.04"^^xsd:double .
+:A005 :hasUnitPrice "139.392"^^xsd:double .
+:A006 :hasUnitPrice "1478.4"^^xsd:double .
+:A007 :hasUnitPrice "1958.88"^^xsd:double .
+
+# Indications
+:I034 :hasSeverity :Mild .
+:I004 :hasSeverity :Mild .
+:I035 :hasSeverity :NotSpecified .
+
+:I034 :hasSymptoms "Sore throat, extreme tiredness, chest pain, low-grade fever, mild chills, cough, sneezing, headache" .
+:I004 :hasSymptoms "facial pain, a stuffy or runny nose, and sometimes a fever" .
+:I035 :hasSymptoms "needing to pee often, pain while peeing and pain in your side or lower back". 
 :Levocin :hasReference :R008 .
 
 # Presentation
@@ -546,6 +644,19 @@
 :Doxin :treats :I035.
 :Doxyclen :treats :I034 .
 :Dynadoxy :treats :I004 .
+:I034 :hasReference :R011 .
+:I034 :hasReference :R012 .
+:I034 :hasReference :R019 .
+:I034 :hasReference :R080 .
+
+:I035 :hasReference :R011 .
+:I035 :hasReference :R015 .
+:I035 :hasReference :R267 .
+
+:Doxin :treats :I034 .
+:Doxin :treats :I035.
+:Doxyclen :treats :I034 .
+:Dynadoxy :treats :I004 .
 
 # Doxin Warnings
 :W143 :hasWarningHeadline "Hypersensitivity" .
@@ -555,9 +666,11 @@
 :W145 :hasWarningHeadline "Pregnancy" .
 :W145 :hasWarningText "Category D. do not use tetracycline during pregnancy. Tetracyclines readily cross the placenta, are found in fetal tissues and can have toxic effects on the developing fetus (retardation of skeletal development). Evidence of embryotoxicity has also been noted in animals treated early in pregnancy." .
 :W145 :hasReference :R011 .
+:W145 :hasReference :R011 .
 
 :W146 :hasWarningHeadline "Pediatric Use" .
 :W146 :hasWarningText "The use of drugs of the tetracycline class during tooth development (last half of pregnancy, infancy and childhood to the age of 8 years) may cause permanent discoloration of the teeth (yellow-gray-brown)." .
+:W146 :hasReference :R011 .
 :W146 :hasReference :R011 .
 
 :Doxin :hasWarning :W143 .
@@ -584,8 +697,8 @@
 :Dynadoxy :hasWarning :W175.
 
 # Doxin Side Effects
+:SE310 :hasSideEffectName "Diarrhea" .
 :SE310 :hasSideEffectDescription "May occur after a patient stop taking doxycycline" .
-:SE310 :lastsFor "2 months" .
 :SE310 :whichIs :FrequencyNotReported .
 :SE310 :hasReference :R011 .
 :SE310 :hasReference :R077 .
@@ -593,6 +706,9 @@
 :SE312 :hasSideEffectDescription "a feeling of sickness or discomfort in the stomach" .
 :SE312 :lastsFor "Not Specified" .
 :SE312 :whichIs :Common .
+:SE312 :hasReference :R011 .
+:SE312 :hasReference :R077 .
+:SE312 :hasReference :R168 .
 :SE312 :hasReference :R011 .
 :SE312 :hasReference :R077 .
 :SE312 :hasReference :R168 .
@@ -610,16 +726,17 @@
 
 # Doxyclen Side Effects
 :SE338 :hasSideEffectDescription "May occur after a patient stop taking doxycycline" .
-:SE338 :lastsFor "2 months" .
 :SE338 :whichIs :Infrequent .
+:SE338 :hasReference :R012 .
+:SE338 :hasReference :R077 .
 :SE338 :hasReference :R012 .
 :SE338 :hasReference :R077 .
 
 :Doxyclen :hasSideEffect :SE338 .
 
 # Dynadoxy Side Effects
+:SE371 :hasSideEffectName "Diarrhea" .
 :SE371 :hasSideEffectDescription "May occur after a patient stop taking doxycycline" .
-:SE371 :lastsFor "2 months" .
 :SE371 :whichIs :Infrequent .
 :SE371 :hasReference :R012 .
 :SE371 :hasReference :R077 .
@@ -628,7 +745,6 @@
 
 # Levocin Side Effects (sample)
 :SE000 :hasSideEffectDescription "Sample description for headaches" .
-:SE000 :lastsFor "Not Specified" .
 :SE000 :whichIs :FrequencyNotReported .
 
 :Levocin :hasSideEffect :SE000 .
@@ -672,32 +788,38 @@
 :ITN174 :hasClinicalEffects "Decreased absorption" .
 :ITN174 :hasManagementAdvice "Avoid taking together" .
 :ITN174 :hasReference :R013 .
+:ITN174 :hasReference :R013 .
 
 # Doxin Stewardship Principle
-:SP000 :hasStewardshipDescription "The bottle must be shaken well before taking each dose to ensure the medication is evenly distributed".
-:SP082 :hasStewardshipDescription "Maintain adequate fluid intake and urinary output to reduce the possibility of crystalluria. Periodic assessment of renal, hepatic, and hematopoietic functions is recommended during prolonged therapy." .
-:SP001 :hasStewardshipDescription "Take at least 2 hr before or 2 hr after antacids containing Mg/Al, sucralfate, metal cations (eg, Fe), & multivit prep w/ Zn.".
-
 :SP111 :hasStewardshipDescription "Store at temperatures not exceeding 30°C" .
-:SP112 :hasStewardshipDescription "Protect from light" .
+:SP100 :hasStewardshipDescription "Should be taken with food: Take w/ meals to avoid GI irritation." .
+:SP101 :hasStewardshipDescription "Do not take w/ antacids, Fe or dairy products." .
+:SP201 :hasStewardshipDescription "Doxin should be swallowed without crushing and with sufficient amount of liquid." .
 
 :Doxin :hasStorageRule :SP111 .
-:Doxin :hasStorageRule :SP112 .
 
-:Doxin :managedBy :SP000 .
-:Doxin :managedBy :SP001 .
-:Doxin :managedBy :SP082 .
+:Doxin :hasFoodAndTimingRule :SP100 .
+:Doxin :hasFoodAndTimingRule :SP101 .
 
-:SP000 :hasReference :R011 .
+:Doxin :hasAdministrationAndAdherenceRule :SP201 .
+
+:SP201 :hasReference :R011 .
 :SP111 :hasReference :R011 .
-:SP112 :hasReference :R011 .
-:SP001 :hasReference :R011 .
-:SP082 :hasReference :R011 .
+:SP100 :hasReference :R011 .
+:SP101 :hasReference :R011 .
 
 # Doxyclen Stewardship Principle 
-:SP113 :hasStewardshipDescription "Store at temperatures not exceeding 30°C" .
-:Doxyclen :managedBy :SP113 .
-:SP113 :hasReference :R012 .
+:SP102 :hasStewardshipDescription "The tablets may be taken during meals or between meals." .
+:SP202 :hasStewardshipDescription "swallowed without crushing and with sufficient amount of liquid." .
+:SP203 :hasStewardshipDescription "administered once or twice daily." .
+
+:Doxyclen :hasFoodAndTimingRule :SP102 .
+:Doxyclen :hasAdministrationAndAdherenceRule :SP202 .
+:Doxyclen :hasAdministrationAndAdherenceRule :SP203 .
+
+:SP102 :hasReference :R012 .
+:SP202 :hasReference :R012 .    
+:SP203 :hasReference :R012 .
 
 # Dynadoxy Stewardship Principle
 :SP114 :hasStewardshipDescription "Store powder and reconstituted suspension at temperatures not exceeding 30°C. ".

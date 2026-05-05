@@ -1,48 +1,118 @@
-def classify_intent (question):
-    '''
-    Method that uses an NER model to classify the intent of a question
-    If confidence level is below a certain threshold it will re-classify to NOT_RECOGNIZED intent
+from typing import List
+import services.ontology_service as ontology_service
+import services.intent_handler as intent_handler
 
-    Args:
-        question: refers to the question inputted by the user 
-    TODO: 
-        add elif for other intents, text preprocessing, embedding intent classification model
-    '''
-    if question in ["How is LEVOCIN supplied?",
-        "How is DYNADOXY supplied?" ,
-        "How is DOXYCYCLINE supplied?",
-        "What dosage forms are available for the generic antibiotic DOXYCYCLINE and the brand-name antibiotic DYNADOXY ?",
-        "What dosage forms are available for the generic antibiotic LEVOFLOXACIN and the brand-name antibiotic LEVOCIN ?",
-        "How is PARACETAMOL supplied?",
-        "How is BIOGESIC supplied?",
-        "What dosage forms are available for the generic antibiotic PARACETAMOL and the brand-name antibiotic BIOGESIC ?"]:
-        return "GET_ANTIBIOTIC_INFO"
-    elif question in ["What is the difference between DOXIN and DOXYCLEN?",
-        "What is the difference between DOXIN, DOXYCLEN and DYNADOXY?",
-        "What is the difference between DOXIN and LEVOCIN?",
-        "Compare the different brands of DOXYCYCLINE.",
-        "Compare DOXIN with other brands of DOXYCYCLINE."]:
-        return "COMPARE_BRANDS"
-    elif question in ["i was given DOXYCLEN (DOXYCYCLINE), what is it for?",
-        "i was given DOXIN (DOXYCYCLINE), what is it for?",
-        "Why was i prescribed DOXYCLEN?",
-        "Why was i prescribed DOXIN?",
-        "What are the clinical indications for DOXYCYCLINE?"]:
-        return "GET_USES_INDICATIONS"
-    elif question in ["What are the side effects of DOXYCYCLINE?",
-        "What are the common side effects of DYNADOXY?",
-        "What are the common side effects of DOXIN?",
-        "What are the side effects of DYNADOXY (DOXYCYCLINE)?",
-        "Will DOXYCYCLINE give me a HEADACHE?",
-        "Will DOXYCYCLINE give me a DIARRHEA?",
-        "Will DYNADOXY give me a HEADACHE?",
-        "Will DYNADOXY give me a DIARRHEA?",
-        "Will DYNADOXY (DOXYCYCLINE) give me a HEADACHE?",
-        "Will DYNADOXY (DOXYCYCLINE) give me a DIARRHEA?"]:
-        return "GET_SIDE_EFFECTS"
-    elif question in ["How do i keep DOXIN safe at home?",
-        "How do i keep DOXYCLEN safe at home?",
-        "Do i need to keep DYNADOXY (DOXYCYCLINE) away from sunlight?",
-        "How long is this DYNADOXY good for after the pharmacist mixed it?",
-        "Can i keep DOXYCYCLINE on my kitchen counter by the window?"]:
-        return "GET_STORAGE_INSTRUCTIONS"
+def identify_intent(words):
+    
+    if any(word in ['antibiotic_info'] for word in words):
+        return 'get_antibiotic_info'
+    
+    elif any(word in ['uses_indications'] for word in words):
+        return 'get_uses_indications'
+    
+    elif any(word in ['side_effects'] for word in words):
+        return 'get_side_effects'
+    
+    elif any(word in ['substance_interaction'] for word in words):
+        return 'get_substance_interaction'
+    
+    elif any(word in ['warning_precautions'] for word in words):
+        return 'get_warning_precautions'
+    
+    elif any(word in ['storage_instruction'] for word in words):
+        return 'get_storage_instruction'
+    
+    elif any(word in ['food_and_timing'] for word in words):
+        return 'get_food_and_timing'
+    
+    elif any(word in ['administration'] for word in words):
+        return 'get_administration_instruction'
+    
+    elif any(word in ['not_recognized'] for word in words):
+        return 'is_not_recognized'
+    
+    elif any(word in ['medicine query'] for word in words):
+        return 'redirect_medicine_query'
+    
+    elif any(word in ['dosage_query'] for word in words):
+        return 'redirect_dosage_query'
+    
+    elif any(word in ['general_answer'] for word in words):
+        return 'get_general_answer'
+    
+    else:
+        return 'unknown_intent'
+    
+def identify_entities_present(entity_types):
+    generic_brand = ['Antibiotic', 'Brand']
+    generic = ['Antibiotic']
+    substance = ['Substance']
+    generic_substance = ['Antibiotic', 'Substance']
+    brand_substance = ['Brand', 'Substance']
+    warning = ['Warning']
+    generic_brand_side_effects = ['Antibiotic', 'Brand', 'SideEffect']
+    brand_side_effects = ['Brand', 'SideEffect']
+    generic_side_effects = ['Antibiotic', 'SideEffect']
+    generic_warning = ['Antibiotic', 'Warning']
+    brand_warning = ['Brand', 'Warning']
+
+    if all (e in entity_types for e in generic_substance):
+        return 'generic_substance'
+    elif all (e in entity_types for e in brand_substance):
+        return 'brand_substance'
+    elif all (e in entity_types for e in generic_warning):
+        return 'generic_warning'
+    elif all (e in entity_types for e in brand_warning):
+        return 'brand_warning'
+    elif all (e in entity_types for e in warning):
+        return 'warning'
+    elif all (e in entity_types for e in generic_brand_side_effects):
+        return 'generic_brand_side_effects'
+    elif all (e in entity_types for e in brand_side_effects):
+        return 'brand_side_effects'
+    elif all (e in entity_types for e in generic_side_effects):
+        return 'generic_side_effects'
+    elif all (e in entity_types for e in generic_brand):
+        return 'generic_brand'
+    elif all (e in entity_types for e in generic):
+        return 'generic'
+    elif all(e == 'Brand' for e in entity_types):
+        entity_types_list = list(entity_types)
+        if entity_types_list.count('Brand') > 1:
+            return 'multiple_brands'
+        return 'brand'
+    elif all (e in entity_types for e in substance):
+        return 'substance'
+    else:
+        return 'unknown_entity_combination'
+    
+def handle_intent(intent, query_type, question_entities):
+    if intent == 'get_antibiotic_info':
+        return intent_handler.handle_antibiotic_info(question_entities, query_type)
+    elif intent == 'get_uses_indications':
+        return intent_handler.handle_uses_indications(question_entities, query_type)
+    elif intent == 'get_side_effects':
+        return intent_handler.handle_side_effects(question_entities, query_type)
+    elif intent == 'get_substance_interaction':
+        return intent_handler.handle_substance_interaction(question_entities, query_type)
+    elif intent == 'get_warning_precautions':
+        return intent_handler.handle_warning_precautions(question_entities, query_type)
+    elif intent == 'get_storage_instruction':
+        return intent_handler.handle_storage_instruction(question_entities, query_type)
+    elif intent == 'get_food_and_timing':
+        return intent_handler.handle_food_and_timing(question_entities, query_type)
+    elif intent == 'get_administration_instruction':
+        return intent_handler.handle_administration_instructions(question_entities, query_type)
+    elif intent == 'is_not_recognized':
+        return intent_handler.handle_is_not_recognized()
+    elif intent == 'redirect_medicine_query':
+        return intent_handler.handle_redirect_medicine_query()
+    elif intent == 'redirect_dosage_query':
+        return intent_handler.handle_redirect_dosage_query()
+    elif intent == 'get_general_answer':
+        return intent_handler.handle_general_answer( query_type, question_entities)
+    else:
+        print("Sorry, I couldn't understand your question. Could you please rephrase it?")
+        return None
+    
+        
