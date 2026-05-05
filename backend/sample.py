@@ -103,7 +103,7 @@ if __name__ == "__main__":
 
     # test for all possible cases for get_substance_interaction
     # terminal_test("doxycycline doxin substance_interaction")
-    # terminal_test("doxycycline substance_interaction")
+    terminal_test("doxycycline substance_interaction")
     # terminal_test("doxin substance_interaction")
     # terminal_test("doxycycline beer substance_interaction")
     # terminal_test("doxycycline penicillin substance_interaction")

@@ -461,25 +461,28 @@ def handle_substance_interaction(entities, query_type):
         brand_obj = ontology_service.query_ontology(brand_name)
         generic_obj = ontology_service.query_ontology(generic_name)
         interaction_ids = brand_obj.hasInteraction
-        
+
+        brand_ref = ontology_service.get_reference_from_entity(brand_obj)
+        interaction_refs = ontology_service.get_reference_from_entities(interaction_ids)
+        reference_list = ontology_service.combine_references(brand_ref, interaction_refs)
         print("Generic Name: ", generic_name)
         print("Brand Name: ", brand_name)
 
         interactions = []
         for interaction_id in interaction_ids:
             substance = interaction_id.interactsWith
+            substance_ref = ontology_service.get_reference_from_entity(substance[0])
+            reference_list = ontology_service.combine_references(reference_list, substance_ref)
             substance_name = substance[0].name
             substance_type = substance[0].is_a[0].name
             interaction_description = interaction_id.hasInteractionDescription
-            clinical_effects = interaction_id.hasClinicalEffects
-            management_advice = interaction_id.hasManagementAdvice
             
             print("Substance: ", substance_name)
             print("Substance Type: ", substance_type)
             print("Substance_description: ", substance[0].hasSubstanceDescription)
             print("Interaction Description: ", interaction_description)
-            print("Clinical_effects", clinical_effects)
-            print("Management Advice:", management_advice)
+
+        print("Reference List: ", reference_list)
             
         
     elif query_type == 'generic':
@@ -487,6 +490,7 @@ def handle_substance_interaction(entities, query_type):
         generic_obj = ontology_service.query_ontology(generic_name)
         brands_obj = generic_obj.hasBrandName
         brands = [brand.name for brand in brands_obj]
+        reference_list = ontology_service.get_reference_from_entities(brands_obj)
         interactions = []
         print("Generic Name: ", generic_name)
         for brand in brands_obj:
@@ -494,56 +498,56 @@ def handle_substance_interaction(entities, query_type):
             print("Brand Name: ", brand_name)
             brand_obj = ontology_service.query_ontology(brand_name)
             interaction_ids = brand_obj.hasInteraction
+            reference_list = ontology_service.combine_references(reference_list, ontology_service.get_reference_from_entities(interaction_ids))
             for interaction_id in interaction_ids:
                 substance = interaction_id.interactsWith
                 substance_name = substance[0].name
                 substance_type = substance[0].is_a[0].name
                 interaction_description = interaction_id.hasInteractionDescription
-                clinical_effects = interaction_id.hasClinicalEffects
-                management_advice = interaction_id.hasManagementAdvice
-                
+                reference_list = ontology_service.combine_references(reference_list, ontology_service.get_reference_from_entity(substance[0]))
+
                 print("Substance: ", substance_name)
                 print("Substance Type: ", substance_type)
                 print("Substance_description: ", substance[0].hasSubstanceDescription)
                 print("Interaction Description: ", interaction_description)
-                print("Clinical_effects", clinical_effects)
-                print("Management Advice:", management_advice)
                 
     elif query_type == 'brand':
         brand_name = entities.get('Brand', [None])[0]
         brand_obj = ontology_service.query_ontology(brand_name)
         generic_obj = brand_obj.isBrandOf
         generic_name = generic_obj.name
+        reference_list = ontology_service.get_reference_from_entity(brand_obj)
         interaction_ids = brand_obj.hasInteraction
+        reference_list = ontology_service.combine_references(reference_list, ontology_service.get_reference_from_entities(interaction_ids))
         interactions = []
         
         print("Generic: ", generic_name)
         print("Brand: ", brand_name)
         for interaction_id in interaction_ids:
             substance = interaction_id.interactsWith
+            reference_list = ontology_service.combine_references(reference_list, ontology_service.get_reference_from_entity(substance[0]))
             substance_name = substance[0].name
             substance_type = substance[0].is_a[0].name
             interaction_description = interaction_id.hasInteractionDescription
-            clinical_effects = interaction_id.hasClinicalEffects
-            management_advice = interaction_id.hasManagementAdvice
                 
             print("Substance: ", substance_name)
             print("Substance Type: ", substance_type)
             print("Substance_description: ", substance[0].hasSubstanceDescription)
             print("Interaction Description: ", interaction_description)
-            print("Clinical_effects", clinical_effects)
-            print("Management Advice:", management_advice)
             
     elif query_type == 'substance':
         substance = entities.get('Substance', [None])[0]
         substance_obj = ontology_service.query_ontology(substance)
         interaction_ids = substance_obj.isInvolvedIn
+        reference_list = ontology_service.get_reference_from_entity(substance_obj)
+        reference_list = ontology_service.combine_references(reference_list, ontology_service.get_reference_from_entities(interaction_ids))
         interactions = []
         brands = []
         for interaction_id in interaction_ids:
             interaction = interaction_id.interactsWith
             interactions.append(interaction)
             brands_obj = interaction_id.isInteractionOf
+            reference_list = ontology_service.combine_references(reference_list, ontology_service.get_reference_from_entities(brands_obj))
             for brand in brands_obj:
                 brand_name = brand.hasBrandName
                 brands.append(brand_name)
@@ -567,10 +571,11 @@ def handle_substance_interaction(entities, query_type):
                 substance_type = substance[0].is_a[0].name
                 found = False
                 if target_substance.lower() == substance[0].name.lower():
+                    reference_list = ontology_service.get_reference_from_entity(brand_obj)
+                    reference_list = ontology_service.combine_references(reference_list, ontology_service.get_reference_from_entity(substance[0]))
+                    reference_list = ontology_service.combine_references(reference_list, ontology_service.get_reference_from_entity(interaction_id))
                     found = True
                     interaction_description = interaction_id.hasInteractionDescription
-                    clinical_effects = interaction_id.hasClinicalEffects
-                    management_advice = interaction_id.hasManagementAdvice
                     
                     print("Interaction Found in Brand: ", brand_name)
                     print("Generic: ", generic_name)
@@ -579,8 +584,6 @@ def handle_substance_interaction(entities, query_type):
                     print("Substance Type: ", substance_type)
                     print("Substance_description: ", substance[0].hasSubstanceDescription)
                     print("Interaction Description: ", interaction_description)
-                    print("Clinical_effects", clinical_effects)
-                    print("Management Advice:", management_advice)
                 else:
                     print("Interaction Not Found in Brand: ", brand_name)
                     
@@ -600,10 +603,11 @@ def handle_substance_interaction(entities, query_type):
                 substance_type = substance[0].is_a[0].name
                 found = False
                 if target_substance.lower() == substance[0].name.lower():
+                    reference_list = ontology_service.get_reference_from_entity(brand_obj)
+                    reference_list = ontology_service.combine_references(reference_list, ontology_service.get_reference_from_entity(substance[0]))
+                    reference_list = ontology_service.combine_references(reference_list, ontology_service.get_reference_from_entity(interaction_id))
                     found = True
                     interaction_description = interaction_id.hasInteractionDescription
-                    clinical_effects = interaction_id.hasClinicalEffects
-                    management_advice = interaction_id.hasManagementAdvice
                     
                     print("Interaction Found in Brand: ", brand_name)
                     print("Generic: ", generic_name)
@@ -612,8 +616,6 @@ def handle_substance_interaction(entities, query_type):
                     print("Substance Type: ", substance_type)
                     print("Substance_description: ", substance[0].hasSubstanceDescription)
                     print("Interaction Description: ", interaction_description)
-                    print("Clinical_effects", clinical_effects)
-                    print("Management Advice:", management_advice)
                 else:
                     print("Interaction Not Found in Brand: ", brand_name)
     
