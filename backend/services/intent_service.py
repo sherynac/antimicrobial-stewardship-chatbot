@@ -49,7 +49,6 @@ def identify_intent(words):
 def identify_entities_present(entity_types):
     generic_brand = ['Antibiotic', 'Brand']
     generic = ['Antibiotic']
-    brand = ['Brand']
     substance = ['Substance']
     generic_substance = ['Antibiotic', 'Substance']
     brand_substance = ['Brand', 'Substance']
@@ -57,11 +56,17 @@ def identify_entities_present(entity_types):
     generic_brand_side_effects = ['Antibiotic', 'Brand', 'SideEffect']
     brand_side_effects = ['Brand', 'SideEffect']
     generic_side_effects = ['Antibiotic', 'SideEffect']
+    generic_warning = ['Antibiotic', 'Warning']
+    brand_warning = ['Brand', 'Warning']
 
     if all (e in entity_types for e in generic_substance):
         return 'generic_substance'
     elif all (e in entity_types for e in brand_substance):
         return 'brand_substance'
+    elif all (e in entity_types for e in generic_warning):
+        return 'generic_warning'
+    elif all (e in entity_types for e in brand_warning):
+        return 'brand_warning'
     elif all (e in entity_types for e in warning):
         return 'warning'
     elif all (e in entity_types for e in generic_brand_side_effects):

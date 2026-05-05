@@ -31,7 +31,7 @@ def terminal_test(question):
         intent = intent_service.identify_intent(words)
         print(f"Identified intent: {intent}")
         query_type = intent_service.identify_entities_present(raw_entities.values())
-        print(f"Identified query type: {query_type}")
+        print(f"Identified query type: {query_type}", end="\n\n")
             
         response = intent_service.handle_intent(intent, query_type, question_entities)
         print(response)
@@ -73,3 +73,17 @@ if __name__ == "__main__":
     # terminal_test("doxycycline headache side_effects")
     # terminal_test("doxycycline side_effects")
 
+    # test for all possible cases for get_substance_interaction
+    # terminal_test("doxycycline doxin substance_interaction")
+    # terminal_test("doxycycline substance_interaction")
+    # terminal_test("doxin substance_interaction")
+    # terminal_test("doxycycline beer substance_interaction")
+    # terminal_test("doxycycline penicillin substance_interaction")
+    # terminal_test("doxin penicillin substance_interaction")
+
+    # test for all possible cases for get_warning_precautions
+    # terminal_test("doxycycline doxin warning_precautions")
+    # terminal_test("doxycycline warning_precautions")
+    # terminal_test("doxin warning_precautions")
+    # terminal_test("doxycycline pregnancyandlactation warning_precautions")
+    # terminal_test("doxin pregnancyandlactation warning_precautions")

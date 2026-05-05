@@ -443,78 +443,98 @@ def handle_side_effects(entities, query_type):
     
     return "To get information about the side effects of an antibiotic, please specify the antibiotic name or brand."
 
-def handle_substance_interaction(onto, entities, query_type):
+def handle_substance_interaction(entities, query_type):
+    ##
+    # Needed outputs
+    # - Generic
+    # - Substance
+    # - Substance Type
+    # - Clinical Effects
+    # - Substance Description
+    # - Interaction Description
+    ##
     if query_type == 'generic_brand':
         generic_name = entities.get('Antibiotic', [None])[0]
         brand_name = entities.get('Brand', [None])[0]
-        brand_obj = ontology_service.query_ontology(onto, brand_name)
-        generic_obj = ontology_service.query_ontology(onto, generic_name)
+        brand_obj = ontology_service.query_ontology(brand_name)
+        generic_obj = ontology_service.query_ontology(generic_name)
         interaction_ids = brand_obj.hasInteraction
         
         print("Generic Name: ", generic_name)
         print("Brand Name: ", brand_name)
 
-
         interactions = []
         for interaction_id in interaction_ids:
             substance = interaction_id.interactsWith
-            description = interaction_id.hasInteractionDescription
+            substance_name = substance[0].name
+            substance_type = substance[0].is_a[0].name
+            interaction_description = interaction_id.hasInteractionDescription
             clinical_effects = interaction_id.hasClinicalEffects
             management_advice = interaction_id.hasManagementAdvice
             
-            print("Substance: ", substance)
-            print("Description: ", description)
+            print("Substance: ", substance_name)
+            print("Substance Type: ", substance_type)
+            print("Substance_description: ", substance[0].hasSubstanceDescription)
+            print("Interaction Description: ", interaction_description)
             print("Clinical_effects", clinical_effects)
             print("Management Advice:", management_advice)
             
         
     elif query_type == 'generic':
         generic_name = entities.get('Antibiotic', [None])[0]
-        generic_obj = ontology_service.query_ontology(onto, generic_name)
+        generic_obj = ontology_service.query_ontology(generic_name)
         brands_obj = generic_obj.hasBrandName
+        brands = [brand.name for brand in brands_obj]
         interactions = []
         print("Generic Name: ", generic_name)
         for brand in brands_obj:
             brand_name = brand.name
             print("Brand Name: ", brand_name)
-            brand_obj = ontology_service.query_ontology(onto, brand_name)
+            brand_obj = ontology_service.query_ontology(brand_name)
             interaction_ids = brand_obj.hasInteraction
             for interaction_id in interaction_ids:
                 substance = interaction_id.interactsWith
-                description = interaction_id.hasInteractionDescription
+                substance_name = substance[0].name
+                substance_type = substance[0].is_a[0].name
+                interaction_description = interaction_id.hasInteractionDescription
                 clinical_effects = interaction_id.hasClinicalEffects
                 management_advice = interaction_id.hasManagementAdvice
                 
-                print("Substance: ", substance)
-                print("Description: ", description)
+                print("Substance: ", substance_name)
+                print("Substance Type: ", substance_type)
+                print("Substance_description: ", substance[0].hasSubstanceDescription)
+                print("Interaction Description: ", interaction_description)
                 print("Clinical_effects", clinical_effects)
                 print("Management Advice:", management_advice)
                 
     elif query_type == 'brand':
         brand_name = entities.get('Brand', [None])[0]
-        brand_obj = ontology_service.query_ontology(onto, brand_name)
+        brand_obj = ontology_service.query_ontology(brand_name)
         generic_obj = brand_obj.isBrandOf
         generic_name = generic_obj.name
         interaction_ids = brand_obj.hasInteraction
         interactions = []
         
         print("Generic: ", generic_name)
-        print("Brnad", brand)
+        print("Brand: ", brand_name)
         for interaction_id in interaction_ids:
-                substance = interaction_id.interactsWith
-                description = interaction_id.hasInteractionDescription
-                clinical_effects = interaction_id.hasClinicalEffects
-                management_advice = interaction_id.hasManagementAdvice
+            substance = interaction_id.interactsWith
+            substance_name = substance[0].name
+            substance_type = substance[0].is_a[0].name
+            interaction_description = interaction_id.hasInteractionDescription
+            clinical_effects = interaction_id.hasClinicalEffects
+            management_advice = interaction_id.hasManagementAdvice
                 
-                print("Substance: ", substance)
-                print("Description: ", description)
-                print("Clinical_effects", clinical_effects)
-                print("Management Advice:", management_advice)
+            print("Substance: ", substance_name)
+            print("Substance Type: ", substance_type)
+            print("Substance_description: ", substance[0].hasSubstanceDescription)
+            print("Interaction Description: ", interaction_description)
+            print("Clinical_effects", clinical_effects)
+            print("Management Advice:", management_advice)
             
-    # not yet done
     elif query_type == 'substance':
         substance = entities.get('Substance', [None])[0]
-        substance_obj = ontology_service.query_ontology(onto, substance)
+        substance_obj = ontology_service.query_ontology(substance)
         interaction_ids = substance_obj.isInvolvedIn
         interactions = []
         brands = []
@@ -530,107 +550,202 @@ def handle_substance_interaction(onto, entities, query_type):
     elif query_type == 'generic_substance':
         generic_name = entities.get('Antibiotic', [None])[0]
         target_substance = entities.get('Substance', [None])[0]
-        generic_obj = ontology_service.query_ontology(onto, generic_name)
+        generic_obj = ontology_service.query_ontology(generic_name)
         brands_obj = generic_obj.hasBrandName
         interactions = []
         brands = []
-        
-        print("Generic: ", generic_name)
 
         for brand in brands_obj:
             brand_name = brand.name
-            brand_obj = ontology_service.query_ontology(onto, brand_name)
+            brand_obj = ontology_service.query_ontology(brand_name)
             interaction_ids = brand_obj.hasInteraction
             for interaction_id in interaction_ids:
                 substance = interaction_id.interactsWith
+                substance_name = substance[0].name
+                substance_type = substance[0].is_a[0].name
+                found = False
                 if target_substance.lower() == substance[0].name.lower():
-                    description = interaction_id.hasInteractionDescription
+                    found = True
+                    interaction_description = interaction_id.hasInteractionDescription
                     clinical_effects = interaction_id.hasClinicalEffects
                     management_advice = interaction_id.hasManagementAdvice
                     
-                    print("Brand: ", brand_name)
-                    print("Substance: ", substance)
-                    print("Description: ", description)
+                    print("Interaction Found in Brand: ", brand_name)
+                    print("Generic: ", generic_name)
+                    print("Brand : ", brand_name)
+                    print("Substance: ", substance_name)
+                    print("Substance Type: ", substance_type)
+                    print("Substance_description: ", substance[0].hasSubstanceDescription)
+                    print("Interaction Description: ", interaction_description)
                     print("Clinical_effects", clinical_effects)
                     print("Management Advice:", management_advice)
+                else:
+                    print("Interaction Not Found in Brand: ", brand_name)
                     
+
     elif query_type == 'brand_substance':
         brand_name = entities.get('Brand', [None])[0]
         target_substance = entities.get('Substance', [None])[0]
-        brand_obj = ontology_service.query_ontology(onto, brand_name)
+        brand_obj = ontology_service.query_ontology(brand_name)
         generic_obj = brand_obj.isBrandOf
         generic_name = generic_obj.name
         interaction_ids = brand_obj.hasInteraction
         interactions = []
         
-        print("Generic: ", generic_name)
         for interaction_id in interaction_ids:
                 substance = interaction_id.interactsWith
+                substance_name = substance[0].name
+                substance_type = substance[0].is_a[0].name
+                found = False
                 if target_substance.lower() == substance[0].name.lower():
-                    description = interaction_id.hasInteractionDescription
+                    found = True
+                    interaction_description = interaction_id.hasInteractionDescription
                     clinical_effects = interaction_id.hasClinicalEffects
                     management_advice = interaction_id.hasManagementAdvice
                     
-                    print("Brand: ", brand_name)
-                    print("Substance: ", substance)
-                    print("Description: ", description)
+                    print("Interaction Found in Brand: ", brand_name)
+                    print("Generic: ", generic_name)
+                    print("Brand : ", brand_name)
+                    print("Substance: ", substance_name)
+                    print("Substance Type: ", substance_type)
+                    print("Substance_description: ", substance[0].hasSubstanceDescription)
+                    print("Interaction Description: ", interaction_description)
                     print("Clinical_effects", clinical_effects)
                     print("Management Advice:", management_advice)
-    
+                else:
+                    print("Interaction Not Found in Brand: ", brand_name)
     
     else:
         return "To get information about substance interactions with an antibiotic, please specify the antibiotic name or brand."
 
 # need checking of results
-def handle_warning_precautions(onto, entities, query_type):
+def handle_warning_precautions(entities, query_type):
+    # Needed outputs
+    # - Generic
+    # - Brand
+    # - Warning type
+    # - Warning Headline
+    # - Warning Description
+
     if query_type == 'generic_brand':
         generic_name = entities.get('Antibiotic', [None])[0]
         brand_name = entities.get('Brand', [None])[0]
-        brand_obj = ontology_service.query_ontology(onto, brand_name)
-        generic_obj = ontology_service.query_ontology(onto, generic_name)
+        brand_obj = ontology_service.query_ontology(brand_name)
+        generic_obj = ontology_service.query_ontology(generic_name)
         
         warning_ids = brand_obj.hasWarning
         warnings = []
+        print("Generic Name: ", generic_name)
+        print("Brand Name: ", brand_name)
         for warning_id in warning_ids:
-            warning = warning_id.HasWarningHeadline
-            warnings.append(warning)
+            warning_type = warning_id.is_a[0].name
+            warning_headline = warning_id.hasWarningHeadline
+            warning_text = warning_id.hasWarningText
+            warnings.append(warning_id)
+
+            print("Warning Type: ", warning_type)
+            print("Warning Headline: ", warning_headline)
+            print("Warning Text: ", warning_text)
         
         
     elif query_type == 'generic':
         generic_name = entities.get('Antibiotic', [None])[0]
-        generic_obj = ontology_service.query_ontology(onto, generic_name)
+        generic_obj = ontology_service.query_ontology(generic_name)
         brands_obj = generic_obj.hasBrandName
         warnings = []
+        print("Generic Name: ", generic_name)
         for brand in brands_obj:
             brand_name = brand.name
-            brand_obj = ontology_service.query_ontology(onto, brand_name)
+            brand_obj = ontology_service.query_ontology(brand_name)
             warning_ids = brand_obj.hasWarning
+            print("Brand Name: ", brand_name)
             for warning_id in warning_ids:
-                warning = warning_id.HasWarningHeadline
-                warnings.append(warning)
+                warning_type = warning_id.is_a[0].name
+                warning_headline = warning_id.hasWarningHeadline
+                warning_text = warning_id.hasWarningText
+                warnings.append(warning_id)
+
+                print("Warning Type: ", warning_type)
+                print("Warning Headline: ", warning_headline)
+                print("Warning Text: ", warning_text)
                 
     elif query_type == 'brand':
         brand_name = entities.get('Brand', [None])[0]
-        brand_obj = ontology_service.query_ontology(onto, brand_name)
+        brand_obj = ontology_service.query_ontology(brand_name)
+        generic_obj= brand_obj.isBrandOf
+        generic_name = generic_obj.name
         warning_ids = brand_obj.hasWarning
         warnings = []
+        print("Generic Name: ", generic_name)
+        print("Brand Name: ", brand_name)
         for warning_id in warning_ids:
-            warning = warning_id.HasWarningHeadline
-            warnings.append(warning)
-    
-    return "To get information about warnings and precautions for an antibiotic, please specify the antibiotic name or brand."
+            warning_type = warning_id.is_a[0].name
+            warning_headline = warning_id.hasWarningHeadline
+            warning_text = warning_id.hasWarningText
+            warnings.append(warning_id)
 
-def handle_monitoring_instruction(onto, entities, query_type):
+            print("Warning Type: ", warning_type)
+            print("Warning Headline: ", warning_headline)
+            print("Warning Text: ", warning_text)
+
+    elif query_type == 'generic_warning':
+        target_warning_type = entities.get('Warning', [None])[0]
+        generic_name = entities.get('Antibiotic', [None])[0]
+        generic_obj = ontology_service.query_ontology(generic_name)
+        brands_obj = generic_obj.hasBrandName
+        found = False
+        
+        for brand in brands_obj:
+            brand_name = brand.name
+            brand_obj = ontology_service.query_ontology(brand_name)
+            warning_ids = brand_obj.hasWarning
+            for warning_id in warning_ids:
+                ontology_warning_type = warning_id.is_a[0].name
+                if target_warning_type.lower() == ontology_warning_type.lower():
+                    found = True
+                    warning_headline = warning_id.hasWarningHeadline
+                    warning_text = warning_id.hasWarningText
+                    print("Warning Found in Brand: ", brand_name)
+                    print("Generic Name: ", generic_name)
+                    print("Brand Name: ", brand_name)
+                    print("Warning Type: ", ontology_warning_type)
+                    print("Warning Headline: ", warning_headline)
+                    print("Warning Text: ", warning_text)
+    
+    elif query_type == 'brand_warning':
+        target_warning_type = entities.get('Warning', [None])[0]
+        brand_name = entities.get('Brand', [None])[0]
+        brand_obj = ontology_service.query_ontology(brand_name)
+        generic_obj = brand_obj.isBrandOf
+        generic_name = generic_obj.name
+        warning_ids = brand_obj.hasWarning
+        found = False
+        
+        for warning_id in warning_ids:
+            ontology_warning_type = warning_id.is_a[0].name
+            if target_warning_type.lower() == ontology_warning_type.lower():
+                found = True
+                warning_headline = warning_id.hasWarningHeadline
+                warning_text = warning_id.hasWarningText
+                print("Warning Found in Brand: ", brand_name)
+                print("Generic Name: ", generic_name)
+                print("Brand Name: ", brand_name)
+                print("Warning Type: ", ontology_warning_type)
+                print("Warning Headline: ", warning_headline)
+                print("Warning Text: ", warning_text)
+    
+
+def handle_monitoring_instruction(entities, query_type):
 
     return "To get monitoring instructions for an antibiotic, please specify the antibiotic name or brand."
 
 # need checking of results
-def handle_storage_instruction(onto, entities, query_type):
+def handle_storage_instruction(entities, query_type):
         if query_type == 'generic_brand':
             generic_name = entities.get('Antibiotic', [None])[0]
             brand_name = entities.get('Brand', [None])[0]
-            brand_obj = ontology_service.query_ontology(onto, brand_name)
-            generic_obj = ontology_service.query_ontology(onto, generic_name)
+            brand_obj = ontology_service.query_ontology(brand_name)
+            generic_obj = ontology_service.query_ontology(generic_name)
             storage_rules_id = brand_obj.hasStorageRule
             storage_rules = []
             
@@ -640,7 +755,7 @@ def handle_storage_instruction(onto, entities, query_type):
         
         elif query_type == 'brand':
             brand_name = entities.get('Brand', [None])[0]
-            brand_obj = ontology_service.query_ontology(onto, brand_name)
+            brand_obj = ontology_service.query_ontology(brand_name)
             storage_rules_id = brand_obj.hasStorageRule
             storage_rules = []
             
@@ -650,7 +765,7 @@ def handle_storage_instruction(onto, entities, query_type):
                 
         elif query_type == 'generic':
             generic_name = entities.get('Antibiotic', [None])[0]
-            generic_obj = ontology_service.query_ontology(onto, generic_name)
+            generic_obj = ontology_service.query_ontology(generic_name)
             brands_obj = generic_obj.hasBrandName
             storage_rules_id = generic_obj.hasStorageRule
             storage_rules = []
