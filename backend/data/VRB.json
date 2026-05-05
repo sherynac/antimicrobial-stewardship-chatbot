@@ -23,9 +23,9 @@
           "responseID": 2,
           "condition": "brand_single",
           "responseTexts": [
-            "{brand} is a brand of {generic}, manufactured by {manufacturer} and distributed by {distributor}. It contains {content} available in {presentation} with dosage {dosage} and price Php {unit_price}.",
-            "{brand} (a {generic}), which contains {content}, comes in the form {presentation} with {dosage} and costs Php {unit_price}. It is manufactured by {manufacturer} and distributed by {distributor}. ",
-            "The brand {brand} (generic: {generic}) is available in {presentation} contains {content}, with a dosage of {dosage} and price Php {unit_price}. It is manufactured {manufacturer} and distributed by {distributor}."
+              "{brand} is a brand of {generic}, manufactured by {manufacturer} and distributed by {distributor}. It contains {content} available in {presentation} with dosage {dosage}{unit_price_text}.",
+              "{brand} (a {generic}), which contains {content}, comes in the form {presentation} with {dosage}{unit_price_text}. It is manufactured by {manufacturer} and distributed by {distributor}.",
+              "The brand {brand} (generic: {generic}) is available in {presentation}, contains {content}, with a dosage of {dosage}{unit_price_text}. It is manufactured by {manufacturer} and distributed by {distributor}."
           ]
         },
         {
@@ -411,72 +411,6 @@
       ]
     },
     {
-      "intent": "COMPARE_BRANDS",
-      "description": "Compare different brands of the same generic antibiotic in terms of available presentations, dosages, and pricing to highlight their differences and similarities.",
-      "responses": [
-        {
-          "responseID": 34,
-          "condition": "multiple_brands",
-          "responseTexts": [
-            "{brands} are brands of the generic {generic}. Here is a comparison of their available forms.",
-            "The following brands belong to {generic}. Below is a comparison of their presentations and pricing.",
-            "Multiple brands exist for {generic}. Their differences in dosage, form, and price are shown below."
-          ],
-          "columns": [
-            "Brand",
-            "Presentation",
-            "Dosage",
-            "Unit Price"
-          ]
-        },
-        {
-          "responseID": 35,
-          "condition": "generic_only",
-          "responseTexts": [
-            "There are several brands available for {generic}. Here is a comparison of their forms and pricing.",
-            "{generic} has multiple brand alternatives with different presentations and dosages.",
-            "Different brands of {generic} are available. Their variations are shown below."
-          ],
-          "columns": [
-            "Brand",
-            "Presentation",
-            "Dosage",
-            "Unit Price"
-          ]
-        },
-        {
-          "responseID": 36,
-          "condition": "brand_and_generic_single",
-          "responseTexts": [
-            "{brand} is a brand of {generic}, available as {presentation} with {dosage} at Php {unit_price}. Comparison with other brands is shown below.",
-            "{brand}, containing {generic}, comes in {presentation} ({dosage}) priced at Php {unit_price}. Below is its comparison with similar brands.",
-            "The brand {brand} ({generic}) is supplied as {presentation} with dosage {dosage} and price Php {unit_price}."
-          ],
-          "columns": [
-            "Brand",
-            "Presentation",
-            "Dosage",
-            "Unit Price"
-          ]
-        },
-        {
-          "responseID": 37,
-          "condition": "brand_and_generic_multiple",
-          "responseTexts": [
-            "{brand} is a brand of {generic} available in multiple forms. Comparison of its variations is shown below.",
-            "{brand}, which contains {generic}, has multiple presentations and dosages listed in the table.",
-            "Different formulations of {brand} ({generic}) are available with varying prices and dosages."
-          ],
-          "columns": [
-            "Brand",
-            "Presentation",
-            "Dosage",
-            "Unit Price"
-          ]
-        }
-      ]
-    },
-    {
       "intent": "GET_STORAGE_INSTRUCTIONS",
       "description": "Get proper storage instructions for an antibiotic.",
       "responses": [
@@ -484,9 +418,9 @@
           "responseID": 38,
           "condition": "single_storage",
           "responseTexts": [
-            "Storage instruction for {brand}{generic}: {stewardship_description}",
-            "{brand}{generic} should be stored as follows: {stewardship_description}",
-            "Recommended storage condition for {brand}{generic}: {stewardship_description}"
+            "Storage instruction for {brand} ({generic}): {stewardship_description}",
+            "{brand} ({generic}) should be stored as follows: {stewardship_description}",
+            "Recommended storage condition for {brand} ({generic}): {stewardship_description}"
           ]
         },
         {
@@ -498,151 +432,115 @@
             "The following are the recommended storage conditions for {brand} ({generic})."
           ],
           "itemFormat": {
-            "primary": "⁃ {hasStewardshipDescription}"
+            "primary": "{hasStewardshipDescription}"
           }
         },
         {
           "responseID": 40,
           "condition": "no_match",
           "responseTexts": [
-            "No storage instructions are available for {brand}{generic}.",
-            "There is no storage information for {brand}{generic}.",
-            "Storage guidelines for {brand}{generic} are not found in the system."
+            "No storage instructions are available for {brand} ({generic}).",
+            "There is no storage information for {brand} (generic: {generic}).",
+            "Storage guidelines for {brand}, a {generic} are not found in the system."
+          ]
+        },
+        {
+          "responseID" : 99,
+          "condition": "generic_only",
+          "responseTexts": [
+            "These are the storage instructions for {generic}: .",
+            "{generic} has multiple storage requirements listed below: ",
+            "Recommended storage condition for {generic} are:"
           ]
         }
       ]
     },
     {
-      "intent": "GET_FOOD_TIMING",
+      "intent": "GET_FOOD_AND_TIMING",
       "description": "Get food-related and timing instructions for an antibiotic.",
       "responses": [
         {
           "responseID": 41,
-          "condition": "generic_multiple",
+          "condition": "generic_only",
           "responseTexts": [
             "Here are the food and timing instructions for {generic}:",
             "{generic} has multiple food-related and timing guidelines listed below:",
             "The following are the recommended food and timing instructions for {generic}."
-          ],
-          "columns": [
-            "Food & Timing Instruction"
           ]
         },
         {
           "responseID": 42,
-          "condition": "generic_single",
+          "condition": "single_food_and_timing",
           "responseTexts": [
-            "Food and timing instruction for {generic}: {stewardship_description}",
-            "{generic} should be taken as follows: {stewardship_description}",
-            "Recommended food/timing guideline for {generic}: {stewardship_description}"
+            "Food and timing instruction for {brand} ({generic}): {stewardship_description}",
+            "{brand} ({generic}) should be taken as follows: {stewardship_description}",
+            "Recommended food/timing guideline for {brand} ({generic}): {stewardship_description}"
           ]
         },
         {
           "responseID": 43,
-          "condition": "generic_verify_match",
+          "condition": "multiple_food_and_timing",
           "responseTexts": [
-            "Yes, food and timing instructions exist for {generic}.",
-            "{generic} has documented food and timing guidelines.",
-            "Food and timing information is available for {generic}."
-          ]
+            "Here are the food and timing instructions for {brand} ({generic}):",
+            "{brand} ({generic}) has multiple food-related and timing guidelines listed below:",
+            "The following are the recommended food and timing instructions for {brand} ({generic})."
+          ],
+          "itemFormat": {
+            "primary": "{hasStewardshipDescription}"
+          }
         },
         {
           "responseID": 44,
-          "condition": "generic_verify_no_match",
+          "condition": "no_match",
           "responseTexts": [
-            "No food or timing instructions are available for {generic}.",
-            "There is no food/timing information for {generic}.",
-            "Food and timing guidelines for {generic} are not found in the system."
+            "No food or timing instructions are available for {brand} ({generic}).",
+            "There is no food/timing information for {brand} (generic: {generic}).",
+            "Food and timing guidelines for {brand}, a {generic} are not found in the system."
           ]
         }
       ]
     },
     {
-      "intent": "GET_THERAPEUTIC_MONITORING",
-      "description": "Get therapeutic use and monitoring instructions for an antibiotic.",
-      "responses": [
-        {
-          "responseID": 45,
-          "condition": "generic_multiple",
-          "responseTexts": [
-            "Here are the therapeutic use and monitoring guidelines for {generic}:",
-            "{generic} has multiple therapeutic and monitoring instructions listed below:",
-            "The following are the recommended therapeutic use and monitoring guidelines for {generic}."
-          ],
-          "columns": [
-            "Therapeutic & Monitoring Instruction"
-          ]
-        },
-        {
-          "responseID": 46,
-          "condition": "generic_single",
-          "responseTexts": [
-            "Therapeutic and monitoring instruction for {generic}: {stewardship_description}",
-            "{generic} should be monitored and used as follows: {stewardship_description}",
-            "Recommended therapeutic/monitoring guideline for {generic}: {stewardship_description}"
-          ]
-        },
-        {
-          "responseID": 47,
-          "condition": "generic_verify_match",
-          "responseTexts": [
-            "Yes, therapeutic and monitoring guidelines exist for {generic}.",
-            "{generic} has documented therapeutic use and monitoring instructions.",
-            "Therapeutic and monitoring information is available for {generic}."
-          ]
-        },
-        {
-          "responseID": 48,
-          "condition": "generic_verify_no_match",
-          "responseTexts": [
-            "No therapeutic or monitoring instructions are available for {generic}.",
-            "There is no therapeutic/monitoring information for {generic}.",
-            "Therapeutic use and monitoring guidelines for {generic} are not found in the system."
-          ]
-        }
-      ]
-    },
-    {
-      "intent": "GET_ADMINISTRATION_ADHERENCE",
+      "intent": "GET_ADMINISTRATION_INSTRUCTIONS",
       "description": "Get administration and adherence instructions for an antibiotic.",
       "responses": [
         {
           "responseID": 49,
-          "condition": "generic_multiple",
+          "condition": "generic_only",
           "responseTexts": [
             "Here are the administration and adherence instructions for {generic}:",
             "{generic} has multiple administration and adherence guidelines listed below:",
             "The following are the recommended administration and adherence instructions for {generic}."
-          ],
-          "columns": [
-            "Administration & Adherence Instruction"
           ]
         },
         {
           "responseID": 50,
-          "condition": "generic_single",
+          "condition": "single_administration",
           "responseTexts": [
-            "Administration and adherence instruction for {generic}: {stewardship_description}",
-            "{generic} should be taken as follows: {stewardship_description}",
-            "Recommended administration/adherence guideline for {generic}: {stewardship_description}"
+            "Administration and adherence instruction for {brand} ({generic}): {stewardship_description}",
+            "{brand} ({generic}) should be taken as follows: {stewardship_description}",
+            "Recommended administration/adherence guideline for {brand} ({generic}): {stewardship_description}"
           ]
         },
         {
           "responseID": 51,
-          "condition": "generic_verify_match",
+          "condition": "multiple_administration",
           "responseTexts": [
-            "Yes, administration and adherence instructions exist for {generic}.",
-            "{generic} has documented administration and adherence guidelines.",
-            "Administration and adherence information is available for {generic}."
-          ]
+            "Here are the administration and adherence instructions for {brand} ({generic}):",
+            "{brand} ({generic}) has multiple administration and adherence guidelines listed below:",
+            "The following are the recommended administration and adherence instructions for {brand} ({generic})."
+          ],
+          "itemFormat": {
+            "primary": "{hasStewardshipDescription}"
+          }
         },
         {
           "responseID": 52,
-          "condition": "generic_verify_no_match",
+          "condition": "no_match",
           "responseTexts": [
-            "No administration or adherence instructions are available for {generic}.",
-            "There is no administration/adherence information for {generic}.",
-            "Administration and adherence guidelines for {generic} are not found in the system."
+            "No administration or adherence instructions are available for {brand} ({generic}).",
+            "There is no administration/adherence information for {brand} (generic: {generic}).",
+            "Administration and adherence guidelines for {brand}, a {generic} are not found in the system."
           ]
         }
       ]

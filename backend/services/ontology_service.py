@@ -1,3 +1,4 @@
+import os
 from rdflib import Graph
 from owlready2 import get_ontology, sync_reasoner_hermit
 from utils.helpers import add_space_to_pascal_case, is_name_match
@@ -8,11 +9,17 @@ class OntologyService:
         self.onto = self.load_ontology()
 
     def load_ontology(self):
-        g = Graph()
-        g.parse("./backend/data/sample-ontology.ttl", format="turtle")
-        g.serialize(destination="./backend/data/sample-ontology.owl", format="xml")
+        owl_path = "./backend/data/FinalOntology.owl"
 
-        onto = get_ontology("./backend/data/sample-ontology.owl").load()
+        if not os.path.exists(owl_path):
+            print("Converting TTL to OWL...")
+            g = Graph()
+            g.parse("./backend/data/FinalOntology.ttl", format="turtle")
+            g.serialize(destination=owl_path, format="xml")
+            print("Conversion done, saved to .owl")
+
+        # always load from .owl directly
+        onto = get_ontology(owl_path).load()
         print(f"Loaded ontology with {len(list(onto.classes()))} classes")
         # with onto:
         #     sync_reasoner_hermit()
@@ -50,7 +57,7 @@ class OntologyService:
 
     def get_indication_severity_type(self, indication):  # ← self added
         indication_name = indication.is_a
-        severity = indication.hasSeverity
+        severity = indication.hasSeverityType
         disease_type = indication_name[0].is_a
 
         indication_name = add_space_to_pascal_case(indication_name[0].name)
@@ -66,7 +73,8 @@ class OntologyService:
         presentation = presentation_obj.is_a
         dosage = presentation_obj.hasDosage
         unit_price = presentation_obj.hasUnitPrice
-        return add_space_to_pascal_case(presentation[0].name), dosage[0], unit_price[0]
+        unit_price_value = f"Php {unit_price[0]}" if unit_price else "-"  # ← fixed
+        return add_space_to_pascal_case(presentation[0].name), dosage[0], unit_price_value
     
     def get_brand_presentations (self, presentation_obj):
         '''
@@ -80,7 +88,7 @@ class OntologyService:
         brand_info = []
         for presentation in presentation_obj:
             presentation_name, dosage, unit_price = self.get_presentation_details(presentation)
-            row = [presentation_name, dosage, f"Php {unit_price}"]
+            row = [presentation_name, dosage, unit_price]
             brand_info.append(row)
         return brand_info
 
@@ -117,7 +125,6 @@ class OntologyService:
                 references.append({"name": reference.name, "title": title, "url": url})
                 seen_urls.add(url)
 
-        print("REFERENCE LIST:", references)
         return references 
 
     def get_reference_from_entities(self, entities):
