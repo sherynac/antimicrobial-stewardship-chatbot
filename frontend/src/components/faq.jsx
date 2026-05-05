@@ -1,7 +1,8 @@
 import './faq.css';
 import ophiuchus_logo from '../assets/ophiuchus_logo.svg'
+import ophiuchus_logo_dark from '../assets/ophiuchus_logo_dark.svg'
 
-function FAQ() {
+function FAQ({ navCollapsed, darkMode }) {
 
     const getReference = (reference) => {
         const urlMap = {
@@ -133,18 +134,23 @@ function FAQ() {
     return (
         <>
             <div className="header">
-                <img src={ophiuchus_logo} className="" alt="Ophiuchus logo" />
-                    <div className="title-container">
+                {!darkMode && (
+                    <img src={ophiuchus_logo} className="" alt="Ophiuchus logo" />
+                )}
+                {darkMode && (
+                    <img src={ophiuchus_logo_dark} className="" alt="Ophiuchus logo" />
+                )}
+                <div className="title-container">
                     <p className="title">FAQs</p>
                     <p className="sub-title">Find answers to common questions</p>
-                    </div>
+                </div>
             </div>
 
-            <div className="faq-container">
-                <div className="cards-container">
+            <div className={`faq-container ${darkMode ? 'dark-mode' : ''}`}>
+                <div className={`cards-container ${navCollapsed ? 'collapsed' : ''}`}>
                     {sampleQA.map((item, index) => {
                         const referenceUrl = getReference(item.reference);
-                        
+
                         return (
                             <div className="qa-card" key={index}>
                                 <div className="card-question">
@@ -159,9 +165,9 @@ function FAQ() {
                                 <div className="card-reference">
                                     {referenceUrl ? (
                                         <p>
-                                            <a 
-                                                href={referenceUrl} 
-                                                target="_blank" 
+                                            <a
+                                                href={referenceUrl}
+                                                target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="reference-link"
                                             >

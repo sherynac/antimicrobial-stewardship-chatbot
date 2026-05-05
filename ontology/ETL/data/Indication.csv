@@ -1,242 +1,191 @@
-indicationID,conditionName,conditionType,symptoms,conditionSeverity,referenceID,validatorID
-I001,Respiratory Tract Infection,respiratory,"a cough that may bring up mucus (phlegm), sneezing a stuffy or runny nose, a sore throat, headaches, muscle aches, breathlessness, tight chest or wheezing, a high temperature, and feeling generally unwell",Not Specified,"R018
-R031
-R038
-R091
-R092
-R166
-R039
-R095
-R096
-",
-I002,Acute Bacterial Exacerbations of COPD,respiratory,"increased wheezing, fever without another identified cause, or an increase in heart rate or respiratory rate greater than 20% from baseline.",Mild to Moderate,"R037
-R040",
-I003,Acute Bacterial Sinusitis,respiratory,"Colored, thick mucus (from nose or down throat), stuffy, blocked nose, face feels full, pressured, or painful, can't smell things well (or at all), fever",Mild to Moderate,"R037
-R013",
-I004,Sinus Infection (Sinusitis),respiratory,"facial pain, a stuffy or runny nose, and sometimes a fever",Mild,"R020
-R054
-R128
-R129
-R138",
-I005,Acute Bacterial Sinusitis,respiratory,an infection in your sinuses that typically lasts seven to 10 days,Not Specified,"R039
-R092
-R261",
-I006,Acute Bacterial Sinusitis,respiratory,can cause toothache with tenderness over the molar region,Mild to Severe,"R008
-R009
-R261",
-I007,Acute Maxillary Sinusitis,respiratory,an infection in your sinuses that typically lasts seven to 10 days,Not Specified,"R008
-R018
-R019
-R262",
-I008,Acute Maxillary Sinusitis,respiratory,an infection in your sinuses that typically lasts seven to 10 days,Mild to Moderate,"R010
-R019
-R047
-R262",
-I009,Community-Acquired Pneumonia (CAP),respiratory,"Cough, greenish/yellowish mucus, mild or high fever, shaking, chills, shortness of breath when you exert yourself ",Mild to Moderate,"R019
-R037
-R039
-R042
-",
-I010,Community-Acquired Pneumonia (CAP),respiratory,"symptoms may include shortness of breath, coughing, heavy sputum, fever and chills, chest pain that is worse when you breathe or cough, upper belly (abdomen) pain with nausea, vomiting, or diarrhea",Mild to Severe,"R008
-R009
-R263",
-I011,Tonsillitis,respiratory,"Sore throat, swollen tonsils, trouble swallowing, white or yellow coating on the tonsils, swollen glands in the neck. fever, bad breath",Not Specified,"R018
-R019
-R032
-R037
-R039
-R047
-R128
-R129
-R043",
-I012,Pharyngitis,respiratory,"Sore throat, fever, headache, joint pain and muscle aches, skin rashes, swollen lymph nodes (glands) in the neck",Not Specified,"R003
-R018
-R019
-R020
-R032
-R037
-R039
-R047
-R054
-R127
-R128
-R129
-R055",
-I013,Non-gonococcal urethritis,urinary,"Men: Discharge from penis, pain while peeing (dysuria), pain while ejaculating (dysorgasmia or orgasmalgia), itching, irritation and/or tenderness, abdominal pain.
-
-Women: Vaginal discharge, pain while peeing, pain during sexual intercourse (dyspareunia), spotting or cramping throughout the month (irregular periods).",Not Specified,"R038
-R045",
-I014,Urethritis,urinary,"Men: blood in the urine or semen, burning pain while urinating, discharge from penis, frequent urination, itching, tenderness, or swelling in penis, enlarged lymph nodes in the groin area, pain with intercourse or ejaculation
-
-Women: abdominal pain, burning pain while urinating, fever and chills, frequent urination, pelvic pain, pain with intercourse, vaginal discharge",Not Specified,"R003
-R015
-R037
-R044",
-I015,Genital Ulcer Disease for Men,urinary,"Burning sensation, fever, itchy genitals,painful urination or sexual intercourse",Not Specified,"R037
-R046",
-I016,Acute Cystitis,urinary,"Painful urination, frequent urination, urgency, lower abdominal pain",Mild to Moderate,"R022
-R023
-R024
-R157
-R160",
-I017,Complicated Urinary Tract Infection (cUTI),urinary,"Painful urination, frequent urination, fever, lower abdominal pain, cloudy or foul-smelling urine.",Moderate to Severe,"R026
-R027
-R028",
-I018,Uncomplicated Urinary Tract Infection (UTI),urinary,"Painful or frequent urination, lower abdominal pain, back pain, urgency to urinate, cloudy urine, strong urine smell.",Mild to Moderate,"R032
-R029
-R030
-R158
-R163
-R164",
-I019,Uncomplicated Urinary Tract Infection (UTI),urinary,"urinary frequency, urgency, dysuria, and suprapubic discomfort.",Not Specified,"R008
-R264",
-I020,Uncomplicated Urinary Tract Infection (UTI),urinary,"urinary frequency, urgency, dysuria, and suprapubic discomfort.",Mild to Severe,"R009
-R264",
-I021,Acute Uncomplicated Urinary Tract Infection (UTI),urinary,"Strong and frequent urge to urinate, burning or painful feeling when urinating, urine may look cloudy, dark, or have a strong bad smell; Some people may feel mild lower belly pain or discomfort.",Not Specified,"R092
-R165",
-I022,Disseminated Mycobacterium avium complex (MAC) disease,respiratory,"Fever, night sweats, weight loss, fatigue, diarrhea, abdominal pain, anemia and elevated liver alkaline phosphatase levels.",Not Specified,"R019
-R038
-R094
-R038",
-I023,Acute Pyelonephritis,urinary,"High fever, flank or back pain, chills, nausea, vomiting, painful urination",Severe,"R026
-R027
-R028",
-I024,Hospital-Acquired Pneumonia (HAP),respiratory,"Cough, fever, shortness of breath, chest pain, thick mucus",Severe,R026,
-I025,Ventilator-Associated Pneumonia (VAP),respiratory,"Fever, worsening breathing, increased secretions, low oxygen levels",Severe,R026,
-I026,Acute exacerbation of chronic bronchitis,respiratory,"Increased cough, More sputum, Change in sputum color, Worsening shortness of breath, Chest tightness or wheezing, Fatigue and Low-grade fever",Not Specified,"R015
-R019
-R039
-R128
-R032
-R039
-R097",
-I027,Chronic Bronchitis,respiratory,,Not Specified,"R018
-R020",
-I030,Lower Respiratory Tract Infection,respiratory,"cough, that might include mucus, shortness of breath, tight chest, or wheezing, sneezing, sore throat, blocked nose, change or loss of taste and smell, headache",Not Specified,"R014
-R015
-R016
-R017
-R019
-R020
-R093
-R127
-R133
-R137
-",
-I031,Upper Respiratory Tract Infection,respiratory,"a runny or stuffy nose, sore throat or headache",Not Specified,"R015
-R016
-R019
-R020
-R265",
-I032,Upper Urinary Tract Infection,urinary,"pain in the lower back or side, fever or chills, nausea or vomiting, brain fog or overall restlessness and bloody urine",Not Specified,"R031
-",
-I033,Lower Urinary Tract Infection,urinary,"more frequent urination, pain, burning, or other discomfort during urination, a sudden urge to urinate (even if you just went), feeling unable to empty the bladder fully, urine that’s cloudy or slightly colored with blood, urine that smells more pungent than usual, and abdominal or pelvic pain",Not Specified,"R031
-R266",
-I034,Atypical pneumonia,respiratory,"Sore throat, extreme tiredness, chest pain, low-grade fever, mild chills, cough, sneezing, headache",Mild,"R011
-R012
-R019
-R080
-R266",
-I035,Genitourinary Tract Infection,urinary,"needing to pee often, pain while peeing and pain in your side or lower back",Not Specified,"R003
-R014
-R015
-R017
-R016
-R267",
-I036,Single pneumonia,respiratory,"High fever, cough, tiredness, rapid breathing or heart rate, shortness of breath",Mild to severe,"R003
-R020
-R081",
-I037,Lobar pneumonia,respiratory,"persistent cough, high-grade fever with chills, confusion or delirium, pleuritic chest pain, shortness of breath, vomiting, abdominal pain, tiredness or fatigue",Severe,"R011
-R012
-R015
-R082
-",
-I038,Bronchopneumonia,respiratory,"fever, cough, shortness of breath, chest pain, rapid breathing, sweating, chills, headaches, muscle aches, pleurisy, fatigue, confusion or delirium",Mild to severe,"R015
-R083",
-I039,Acute bronchitis,respiratory,"cough, chest soreness, feeling tired and achy, back and muscle pain, headache, runny nose, slight fever, shortness of breath, sore throat, watery eyes, wheezing",Mild to Moderate,"R011
-R012
-R128
-R129
-R319
-R320
-R084",
-I040,Lung Abscess,respiratory,"mimic pneumonia, including fever, chills cough, night sweats, and chest pain, with a productive cough developing as a hallmark sign",Not Specified,"R003
-R086",
-I041,Bronchitis,respiratory,"shortness of breath, fever, runny nose, tiredness",Not Specified,"R003
-R019
-R127
-R087",
-I042,Bronchiectasis,respiratory,"cough with lots of mucus and pus, repeated colds, bad-smelling mucus, shortness of breath, wheezing, coughing up blood",Not Specified,"R003
-R128
-R088",
-I043,Tracheobronchitis,respiratory,"coughing, mild headaches, soreness in the chest, a sore throat, tiredness, mild body aches",Severe,"R012
-R320
-R089",
-I045,Pneumonia,respiratory,"High fever, cough, tiredness, rapid breathing or heart rate, shortness of breath",Not Specified,"R014
-R018
-R020
-R081
-R128
-R129",
-I046,Community Acquired Respiratory Infections,respiratory,,Initial therapy,"R020
-R020",
-I047,Chronic Bacterial Prostatis,urinary,"Fever, chills, painful and frequent urination or have trouble urinating, ",Mild to Severe,"R009
-R071",
-I048,Chronic Bacterial Prostatis,urinary,"Fever, chills, painful and frequent urination or have trouble urinating, ",Not Specified,"R008
-R071
-R092",
-I049,Urinary Tract Infections,urinary,"Pain in your flank, abdomen, pelvic area or lower back, pressure in the lower part of your pelvis, cloudy, foul-smelling pee, urinary incontinence, frequent urination, urge incontinence, pain when you pee (dysuria), and blood in your pee (hematuria).",Not Specified,"R010
-R054
-R091
-R092
-R093
-R127
-R129
-R165
-R166
-R098
-",
-I050,Inhalation Anthrax,respiratory,"Fever and chills, heavy sweats, chest pain, cough, or shortness of breath, confusion or dizziness, nausea, vomiting, or stomach pains, headache or body aches, and extreme tiredness",Not Specified,"R092
-R099",
-I051,Legionnaire's disease,respiratory,"symptoms similar to pneumonia, cough, fever, headaches, muscle aches, shortness of breath",Not Specified,"R093
-R101",
-I052,Q Fever,respiratory,"fever, fatigue, headache, malaise, myalgia, chills or sweats, cough, nausea, vomiting, diarrhea
-",Mild to Severe,"R093
-R102",
-I053,Tuberculosis,respiratory,"A bad cough that lasts 3 weeks or longer, pain in the chest, coughing up blood or sputum (phlegm) from deep inside the lungs",Not Specified,"R093
-R103",
-I054,Secondary infections in chronic respiratory diseases,respiratory,"cough, increased sputum production, or dyspnea",Not Specified,R129,
-I055,Pyelonephritis,urinary,"fever, pain in lower back, chills, pain when peeing, bloody or cloudy pee that might smell bad, urgent or frequent need to pee",Mild to Severe,"R003
-R015
-R129
-R130",
-I056,Uncomplicated Gonorrhea,urinary,"Often, gonorrhea doesn’t cause symptoms, especially in women.",Not Specified,"R014
-R032
-R047
-R128
-R129
-R136",
-I057,Gonorrhea,urinary,,Not Specified,"R054
-R091
-R092
-R093
-R133",
-I058,Recurrent Urinary Tract Infection,urinary,"Repeated bladder infections, urgency to urinate, discomfort in lower abdomen.",Mild,"R159
-R161
-R162",
-I059,Bladder Infection,urinary,Pain or pressure in the lower abdomen and a burning feeling during urination. The person may need to urinate very often. Urine may appear cloudy and sometimes may have small amounts of blood.,Mild to Moderate,R165,
-I060,Recurrent Urinary Tract Infection,urinary,"Repeated episodes of urinary burning, urgency, and discomfort that happen several times over a period of months. Symptoms are similar to previous bladder infections.",Mild to Moderate (can worsen if untreated),R165,
-I061,Genital Infections,urinary,"Burning or itching, discharge or odor, pain around the pelvis, burning and pain when passing urine or with bowel movements, having to go to the bathroom often, and sores, bumps or blisters on genital, anus or mouth",Not Specified,"R166
-R269",
-I062,Acute Bacterial Exacerbation of Chronic Bronchitis,respiratory,"persistent cough that lasts one to three weeks, shortness of breath, fever, runny nose, and tiredness",Mild to Severe,"R008
-R009
-R270",
-I063,Complicated Urinary Tract Infection (cUTI),urinary,"fever or chills, pain in the lower back or side, and overall malaise",Not Specified,"R008
-R271",
-I064,Acute Pyelonephritis,urinary,"fever, chills, pain in your lower back or side, pain when you pee (urinate), bloody or, cloudy pee (hematuria or pyuria) that might smell bad, urgent or frequent need to pee",Not Specified,"R008
-R272",
-I065,Complicated Urinary Tract Infection (cUTI),urinary,"fever or chills, pain in the lower back or side, and overall malaise",Mild to Severe,"R009
-R271",
-I066,Acute Bacterial Exacerbations of Chronic Bronchitis,respiratory,"persistent cough that lasts one to three weeks, shortness of breath, fever, runny nose, and tiredness",Mild to Moderate,"R032
-R047
-R270",
+Indication ID,Condition Type,Condition Name,Reference ID
+I001,urinary,Urinary Tract Infection (Enterobacter Aerogenes),R001
+I002,urinary,Urinary Tract Infection (Klebsiella Spp),R001
+I003,urinary,Urinary Tract Infection (Acinetobacter Spp),R001
+I004,respiratory,Respiratory Tract Infection (Mycoplasma Pneumoniae),R001
+I005,respiratory,Respiratory Tract Infection (Haemophilus Influenzae),R001
+I006,respiratory,Respiratory Tract Infection (Streptococcus Pneumoniae),R001
+I007,respiratory,Respiratory Tract Infection (Klebsiella Spp),R001
+I008,respiratory,Respiratory Tract Infection (Mycoplasma Pneumoniae),R002
+I009,respiratory,Respiratory Tract Infection (Haemophilus Influenzae),R002
+I010,respiratory,Upper Respiratory Infections (Streptococcus Pneumoniae),R002
+I011,urinary,Urinary Tract Infection (Klebsiella Species),R002
+I012,respiratory,Pneumonia,R003
+I013,respiratory,Lung Abscess,R003
+I014,respiratory,Bronchitis,R003
+I015,respiratory,Bronchiectasis,R003
+I016,respiratory,Pharyngitis,R003
+I017,respiratory,Psittacosis,R003
+I018,respiratory,Mycoplasma Pneumoniae,R003
+I019,urinary,Urethritis,R003
+I020,urinary,Cystitis,R003
+I021,urinary,Pyelonephritis,R003
+I022,urinary,Nephritis,R003
+I023,urinary,Prostatitis,R003
+I024,urinary,Trigonitis,R003
+I025,respiratory,Acute Bacterial Sinusitis,R004
+I026,respiratory,Acute Bacterial Exacerbation of Chronic Bronchitis,R004
+I027,respiratory,Community-acquired Pneumonia,R004
+I028,respiratory,Healthcare-associated Pneumonia,R004
+I029,urinary,Complicated Urinary Tract Infections,R004
+I030,urinary,Acute Pyelonephritis,R004
+I031,urinary,Chronic Bacterial Prostatitis,R004
+I032,urinary,Uncomplicated Urinary Tract Infections,R004
+I033,respiratory,Acute Bacterial Sinusitis,R005
+I034,respiratory,Acute Bacterial Exacerbation of Chronic Bronchitis,R005
+I035,respiratory,Community-acquired Pneumonia and Nosocomial Pneumonia,R005
+I036,respiratory,Acute Maxillary Sinusitis,R005
+I037,urinary,Complicated Urinary Tract Infections,R005
+I038,urinary,Acute Pyelonephritis,R005
+I039,urinary,Chronic Bacterial Prostatitis,R005
+I040,respiratory,Lung Infections,R006
+I041,respiratory,Sinus Infections,R006
+I042,urinary,Urinary Tract Infections,R006
+I043,respiratory,Pneumonia,R007
+I044,urinary,Uncomplicated Gonorrhea,R007
+I045,respiratory,Acute Bacterial Exacerbation of Chronic Bronchitis Pulmonary Disease,R008
+I046,respiratory,Acute Bacterial Sinusitis,R008
+I047,respiratory,Community-acquired Pneumonia,R008
+I048,respiratory,Pneumonia,R008
+I049,respiratory,Pharyngitis/Tonsillitis,R008
+I050,urinary,Urethritis,R008
+I051,urinary,Cervicitis,R008
+I052,respiratory,Community-acquired Pneumonia,R009
+I053,respiratory,Acute Exacerbation of Chronic Bronchitis,R009
+I054,respiratory,Acute Bacterial Sinusitis,R009
+I055,respiratory,Tonsillitis,R009
+I056,respiratory,Pharyngitis,R009
+I057,respiratory,Acute Otitis Media,R009
+I058,urinary,Uncomplicated Genital Infections,R009
+I059,respiratory,Respiratory Tract Infections,R010
+I060,respiratory,Otitis Media,R010
+I061,urinary,Non-gonococcal Urethritis,R010
+I062,urinary,Cervicitis,R010
+I063,respiratory,Upper Respiratory Infections,R011
+I064,respiratory,Lower Respiratory Tract Infections,R011
+I065,respiratory,Otitis Media,R011
+I066,urinary,Cystitis,R011
+I067,urinary,Pyelonephritis,R011
+I068,urinary,Bacteriuria in Pregnancy,R011
+I069,urinary,Septic Abortion,R011
+I070,urinary,Puerperal Sepsis,R011
+I071,respiratory,"Ear, Nose, Throat Infections",R012
+I072,respiratory,Acute Otitis Media,R012
+I073,respiratory,Lower Respiratory Tract Infections,R012
+I074,urinary,Genitourinary Tract Infections,R012
+I075,respiratory,Upper Respiratory Tract Infections,R013
+I076,respiratory,Acute Otitis Media,R013
+I077,respiratory,Lower Respiratory Tract Infections,R013
+I078,urinary,Genitourinary Tract Infections,R013
+I079,respiratory,Pharyngitis/Tonsillitis,R014
+I080,respiratory,Acute Maxillary Sinusitis,R014
+I081,respiratory,Chronic Bronchitis,R014
+I082,respiratory,Pneumonia,R014
+I083,respiratory,Otitis Media,R014
+I084,respiratory,Lower Respiratory Tract Infections (Acute Bronchitis),R015
+I085,respiratory,Lower Respiratory Tract Infections (Chronic Bronchitis),R015
+I086,respiratory,Lower Respiratory Tract Infections (Pneumonia),R015
+I087,respiratory,Upper Respiratory Tract Infections (Sinusitis),R015
+I088,respiratory,Upper Respiratory Tract Infections (Pharyngitis),R015
+I089,respiratory,Community-acquired Respiratory Infections,R015
+I090,respiratory,Legionella Pneumophila Infection,R015
+I091,respiratory,Bordetella Pertussis Infection,R015
+I092,respiratory,Mycoplasma Pneumoniae Infection,R015
+I093,respiratory,Ureaplasma Urealyticum Infection,R015
+I094,respiratory,Chlamydia TRachomatis Infection,R015
+I095,respiratory,Mycobacterium Avium Infection,R015
+I096,respiratory,Mycobacterium Leprae Infection,R015
+I097,respiratory,Campylobacter Jejuni Infection,R015
+I098,respiratory,Neisseria Gonorrhoeae Infection,R015
+I099,respiratory,Moraxella Catarrhalis Infection,R015
+I100,respiratory,Streptococcus Pneumoniae Infection,R015
+I101,respiratory,Staphylococcus Aureus Infection,R015
+I102,respiratory,Skin and Soft Tissue Infection,R015
+I103,respiratory,H. Pylori-associated Duodenal Ulcer Infection,R015
+I104,respiratory,Upper Respiratory Tract Infections (Streptococcal),R016
+I105,respiratory,Upper Respiratory Tract Infections (Pharyngitis),R016
+I106,respiratory,Upper Respiratory Tract Infections (Tonsillitis),R016
+I107,respiratory,Acute Maxillary Sinusitis,R016
+I108,respiratory,Lower Respiratory Tract Infections (Atypical Pneumonia),R016
+I109,respiratory,Lower Respiratory Tract Infectiosn (Bronchitis),R016
+I110,respiratory,Acute Bacterial Exacerbation of Chronic Bronchitis,R016
+I111,respiratory,"Community-Acquired Pneumonia due to Haemophilus influenzae, Mycoplasma pneumoniae, Streptococcus pneumoniae, or Chlamydia pneumoniae (TWAR)",R016
+I112,respiratory,"Community-acquired pneumonia due to Mycoplasma pneumoniae, Streptococcus pneumoniae, or Chlamydia pneumoniae (TWAR)",R016
+I113,respiratory,"Acute maxillary sinusitis due to Haemophilus influenzae, Moraxella catarrhalis, or Streptococcus pneumoniae",R016
+I114,urinary,Acute Bacterial Cystitis,R017
+I115,urinary,Acute Episodes of Recurrent Bacterial Cystitis,R017
+I116,urinary,Acute Bacterial Urethro-Vesical Syndrome,R017
+I117,urinary,Aspecific Bacterial Urethritis,R017
+I118,urinary,Relevant Asymptomatic Bacteriuria (Pregnancy),R017
+I119,urinary,Post-operative Urinary Tract Infections,R017
+I120,urinary,Prophylaxis of Urine Tract Infections,R017
+I121,urinary,Prophylaxis of Urinary Tract Infections During Surgery and Trans-urethral Diagnostic Maneuvers,R017
+I122,urinary,Acute Uncomplicated Lower Urinary Tract Infections (Acute Cystitis),R018
+I123,urinary,Acute Bacterial Cystitis,R019
+I124,urinary,Acute Episodes of Recurrent Bacterial Cystitis,R019
+I125,urinary,Acute Bacterial Urethro-Vesical Syndrome,R019
+I126,urinary,Nonspecific Bacterial Urethritis,R019
+I127,urinary,Significant Asymptomatic Bacteriuria,R019
+I128,urinary,Post-operative Urinary Tract Infections,R019
+I129,urinary,Prophylaxis of UTI in Surgical or Diagnostic Procedure,R019
+I130,urinary,Urinary Tract Infections,R020
+I131,urinary,Respiratory Tract Infections,R020
+I132,respiratory,Pharyngitis/Tonsillitis,R021
+I133,respiratory,Acute Bacterial Otitis Media,R021
+I134,respiratory,Acute Bacterial Maxillary Sinusitis,R021
+I135,respiratory,Acute Bacterial Exacerbations of Chronic Bronchitis and Secondary Bacterial Infections of Acute Bronchitis,R021
+I136,urinary,Uncomplicated Urinary Tract Infections,R021
+I137,respiratory,Pharyngitis/Tonsillitis,R022
+I138,respiratory,Acute Bacterial Otitis Media,R022
+I139,respiratory,Acute Bacterial Maxillary Sinusitis,R022
+I140,respiratory,Acute Bacterial Exacerbations of Chronic Bronchitis and Secondary Bacterial Infections of Acute Bronchitis,R022
+I141,urinary,Uncomplicated Urinary Tract Infections,R022
+I142,respiratory,Early Lyme Disease (Erythema Migrans),R022
+I143,respiratory,Bronchitis,R023
+I144,respiratory,Otitis Media,R023
+I145,respiratory,Pharyngitis,R023
+I146,respiratory,Sinusitis,R023
+I147,urinary,Urinary Tract Infections,R023
+I148,respiratory,Respiratry Tract Infections,R024
+I149,urinary,Urinary Tract Infections,R024
+I150,urinary,Acute Uncomplicated Urinary Tract Infection,R025
+I151,respiratory,Lower Respiratory Tract Infection,R025
+I152,respiratory,Acute Sinusitis,R025
+I153,respiratory,Respiratory Tract Infections,R025
+I154,urinary,Urinary Tract Infections,R025
+I155,respiratory,Lower Respiratory Tract Infections,R026
+I156,respiratory,Legionnaire's Disease,R026
+I157,respiratory,Tuberculosis,R026
+I158,urinary,Urinary Tract Infection,R026
+I159,respiratory,Acute Bronchitis,R027
+I160,respiratory,Acute Exacerbation of Chronic Bronchitis,R027
+I161,respiratory,Bronchiectasis with Infection,R027
+I162,respiratory,Secondary Infections in Chronic Respiratory Tract Diseases,R027
+I163,respiratory,Pneumonia,R027
+I164,urinary,Urinary Tract Infections,R027
+I165,urinary,Pyelonephritis,R027
+I166,urinary,Cystitis,R027
+I167,urinary,Cystourethritis,R027
+I168,respiratory,Sinusitis,R027
+I169,respiratory,Tonsillitis,R027
+I170,respiratory,Pharyngitis,R027
+I171,respiratory,Otitis Media,R027
+I172,respiratory,Otitis Media,R028
+I173,respiratory,Pharyngitis,R028
+I174,respiratory,Lower Respiratory Tract Infections,R028
+I175,respiratory,Bronchitis,R028
+I176,urinary,Urinary Tract Infections,R028
+I177,respiratory,Acute Bronchitis,R029
+I178,respiratory,Acute Exacerbation of Chronic Bronchitis,R029
+I179,respiratory,Bronchiectasis with Infection,R029
+I180,respiratory,Secondary Infections in Chronic Respiratory Tract Diseases,R029
+I181,respiratory,Pneumonia,R029
+I182,urinary,Urinary Tract Infections,R029
+I183,urinary,Pyelonephritis,R029
+I184,urinary,Cystitis,R029
+I185,urinary,Cystourethritis,R029
+I186,respiratory,Sinusitis,R029
+I187,respiratory,Tonsillitis,R029
+I188,respiratory,Pharyngitis,R029
+I189,respiratory,Otitis Media,R029
+I190,urinary,Urinary Tract Infections,R030

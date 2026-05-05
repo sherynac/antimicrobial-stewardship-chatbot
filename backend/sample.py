@@ -14,6 +14,7 @@ def terminal_test(question):
         print("=" * 10)
 
         print("\nAsk a question: ", end="")
+        print("\nAsk a question: ", end="")
 
         # question = input()
         words = get_splitted_question(question)

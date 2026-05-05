@@ -36,23 +36,23 @@
 }
 
 .about-container {
-  @apply h-full overflow-y-auto my-10 mx-20;
+  @apply h-full justify-center overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]
 }
 
 .cards-container {
-  @apply flex flex-col items-center gap-6;
-  width: calc(100% - 15rem);
+  @apply h-auto w-[calc(100%-18rem)] py-3 flex flex-col items-center gap-6 
+}
+
+.cards-container.collapsed {
+ @apply w-[calc(100%-4rem)]
 }
 
 .qa-card {
-  @apply bg-[#F8F9FA] rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1;
-  height: auto;
-  width: calc(100% - 15rem);
+  @apply h-auto w-[calc(100%-15rem)] bg-[#F8F9FA] rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1
 }
 
 .card-question {
-  @apply bg-[#F8F9FA] px-6 pt-6 flex items-start gap-1;
-  height: auto;
+  @apply h-auto bg-[#F8F9FA] px-6 pt-6 flex items-start gap-1;
 }
 
 .card-question h3 {
@@ -60,10 +60,29 @@
 }
 
 .card-answer {
-  @apply px-6 pb-6 pt-2 flex items-start gap-1 bg-[#F8F9FA];
-  height: auto;
+  @apply h-auto px-6 pb-6 pt-2 flex items-start gap-1 bg-[#F8F9FA];
 }
 
 .card-answer p {
   @apply text-black leading-relaxed font-[Figtree-Regular] flex-1;
+}
+
+.dark-mode .qa-card {
+  @apply bg-[#424242] text-white;
+}
+
+.dark-mode .card-question {
+  @apply bg-[#3B3B3B];
+}
+
+.dark-mode .card-question h3 {
+  @apply text-white;
+}
+
+.dark-mode .card-answer {
+  @apply bg-[#3B3B3B];
+}
+
+.dark-mode .card-answer p {
+  @apply text-white;
 }
