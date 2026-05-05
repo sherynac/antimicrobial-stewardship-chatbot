@@ -44,14 +44,14 @@ def terminal_test(question):
 
 if __name__ == "__main__":
     # test for all possible cases for get_antibiotic_info
-    terminal_test("doxycycline doxin antibiotic_info")
-    terminal_test("levofloxacin levocin antibiotic_info")
-    terminal_test("levofloxacin doxin antibiotic_info")
-    terminal_test("doxycycline levocin antibiotic_info")
-    terminal_test("levocin antibiotic_info")
-    terminal_test("doxin antibiotic_info")
-    terminal_test("doxycycline antibiotic_info")
-    terminal_test("levofloxacin antibiotic_info")
+    # terminal_test("doxycycline doxin antibiotic_info")
+    # terminal_test("levofloxacin levocin antibiotic_info")
+    # terminal_test("levofloxacin doxin antibiotic_info")
+    # terminal_test("doxycycline levocin antibiotic_info")
+    # terminal_test("levocin antibiotic_info")
+    # terminal_test("doxin antibiotic_info")
+    # terminal_test("doxycycline antibiotic_info")
+    # terminal_test("levofloxacin antibiotic_info")
 
     # # test for all possible cases for get_uses_indications
     # terminal_test("doxycycline doxyclen uses_indications") 
