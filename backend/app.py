@@ -91,10 +91,14 @@ def chat():
         result = intent_service.handle_intent(intent, query_type, question_entities)
 
         if result is None:
+            # No result — return a plain string reply
             reply = "Sorry, I couldn't understand your question. Could you please rephrase it?"
-        elif isinstance(result, dict):
-            reply = result.get("text") or str(result)
+        elif isinstance(result, (dict, list)):
+            # Structured response (composite, reference_list, etc.) — pass as-is
+            # so jsonify serializes it properly instead of str() producing Python syntax
+            reply = result
         else:
+            # Scalar (int, float, etc.) — safe to stringify
             reply = str(result)
 
     except (ValueError, AssertionError) as e:

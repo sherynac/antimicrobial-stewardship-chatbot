@@ -16,8 +16,18 @@
 }
 
 @keyframes bounce {
-  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
-  40% { transform: scale(1); opacity: 1; }
+
+  0%,
+  80%,
+  100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .navbar {
@@ -96,7 +106,7 @@
   @apply flex justify-center mx-2 py-4 items-center rounded-xl bg-[#F8F9FA]
 }
 
-.dark-mode .button-container{
+.dark-mode .button-container {
   @apply hover:bg-[#333333]
 }
 
@@ -104,11 +114,11 @@
   @apply bg-[#333333]
 }
 
-.dark-mode .button-container.collapsed{
+.dark-mode .button-container.collapsed {
   @apply hover:bg-[#424242]
 }
 
-.dark-mode .button-container-active.collapsed{
+.dark-mode .button-container-active.collapsed {
   @apply bg-[#424242]
 }
 
@@ -140,7 +150,7 @@
   @apply flex justify-start items-center border-b-1 border-b-black/20 max-h-2/12 static
 }
 
-.dark-mode .header{
+.dark-mode .header {
   @apply border-b-white/20
 }
 
@@ -188,7 +198,7 @@
   @apply font-[Cabin-Bold] text-[#02542D]
 }
 
-.dark-mode #greeting span{
+.dark-mode #greeting span {
   @apply text-[#D4E9D7]
 }
 
@@ -224,7 +234,7 @@
   @apply bg-[#F8F9FA] m-4 rounded-xl max-w-7/12
 }
 
-.dark-mode .chatbot-reply{
+.dark-mode .chatbot-reply {
   @apply bg-[#232323]
 }
 
@@ -233,11 +243,16 @@
 }
 
 .dot {
-  @apply w-2 h-2 rounded-4xl bg-current animate-bounce duration-1200 ease-in-out 
+  @apply w-2 h-2 rounded-4xl bg-current animate-bounce duration-1200 ease-in-out
 }
 
-.dot:nth-child(2) { animation-delay: 0.2s; }
-.dot:nth-child(3) { animation-delay: 0.4s; }
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
 
 .main-chat p {
   @apply p-3 font-[Figtree-Regular]
@@ -260,7 +275,7 @@ form {
 }
 
 form input {
-  @apply h-3/4 ml-4 bg-[#F8F9FA] rounded-md w-24/25 border-1 border-black/20
+  @apply h-3/4 ml-4 bg-[#F8F9FA] rounded-md w-24/25 border-1 border-black/20 focus-visible:outline-0
 }
 
 .dark-mode form input {
@@ -271,7 +286,7 @@ form input[type=text] {
   @apply px-4 font-[Figtree-Regular]
 }
 
-.dark-mode form input[type=text]{
+.dark-mode form input[type=text] {
   @apply text-[#F8F9FA]
 }
 
@@ -281,4 +296,45 @@ form input[type=image] {
 
 .dark-mode form input[type=image] {
   @apply bg-[#232323] hover:bg-[#3B3B3B] transition-colors duration-200 fill-white
+}
+
+.bot-composite {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bot-text {
+  margin: 0;
+}
+
+.bot-references {
+  margin-bottom: 1rem;
+}
+
+p.bot-references-label {
+  font-weight: 600;
+  padding-bottom: 0px;
+}
+
+.bot-references ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.bot-references a {
+  color: #02542D;
+  text-decoration: underline;
+}
+
+.bot-references a:hover {
+  opacity: 0.75;
+}
+
+.bot-text-line {
+  display: block;
+}
+
+.bot-text-line+.bot-text-line {
+  margin-top: 4px;
 }

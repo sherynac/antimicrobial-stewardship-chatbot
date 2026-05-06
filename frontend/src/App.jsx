@@ -27,10 +27,107 @@ import About from './components/about.jsx'
 // In production, replace with your deployed backend URL.
 const API_BASE_URL = '/api'
 
+// Generates a UUID v4 to uniquely identify a chat session.
+const generateSessionId = () => crypto.randomUUID()
+
+// Retrieves the existing session ID from sessionStorage, or creates and stores a new one.
+// sessionStorage is automatically cleared when the tab is closed, which naturally
+// triggers a fresh session on the next visit.
+const getOrCreateSessionId = () => {
+  let sessionId = sessionStorage.getItem('ophiuchus_session_id')
+  if (!sessionId) {
+    sessionId = generateSessionId()
+    sessionStorage.setItem('ophiuchus_session_id', sessionId)
+  }
+  return sessionId
+}
+
+// ---------------------------------------------------------------------------
+// BotMessage — renders a structured bot reply from the backend.
+//
+// The backend returns either:
+//   • A plain string  →  rendered as a simple paragraph
+//   • A composite object:
+//     {
+//       type: 'composite',
+//       responses: [
+//         { type: 'text',           content: '...' },
+//         { type: 'reference_list', sources: [{ name, title, url }] }
+//       ]
+//     }
+// ---------------------------------------------------------------------------
+// Splits a drug info sentence into multiple lines at known field labels.
+// e.g. "...Doxycycline Hyclate. Manufacturer: BIOFEMME. Distributor: UNILAB. Price: Php 103."
+// becomes three separate <span> lines inside the same <p>.
+function formatDrugText(text) {
+  const FIELD_LABELS = ['Manufacturer:', 'Distributor:', 'Price:']
+  const regex = new RegExp(`(?=${FIELD_LABELS.join('|')})`, 'g')
+  const parts = text.split(regex).map(s => s.trim()).filter(Boolean)
+
+  if (parts.length <= 1) return <p className="bot-text">{text}</p>
+
+  return (
+    <p className="bot-text">
+      {parts.map((part, i) => (
+        <span key={i} className="bot-text-line">{part}</span>
+      ))}
+    </p>
+  )
+}
+
+function BotMessage({ payload }) {
+  // If the payload is a plain string, just render it as-is
+  if (typeof payload === 'string') {
+    return <p>{payload}</p>
+  }
+
+  // Composite response — iterate over each block
+  if (payload?.type === 'composite' && Array.isArray(payload.responses)) {
+    return (
+      <div className="bot-composite">
+        {payload.responses.map((block, i) => {
+          if (block.type === 'text') {
+            return <div key={i}>{formatDrugText(block.content)}</div>
+          }
+
+          if (block.type === 'reference_list' && Array.isArray(block.sources)) {
+            return (
+              <div key={i} className="bot-references">
+                <p className="bot-references-label">References</p>
+                <ul>
+                  {block.sources.map((src, j) => (
+                    <li key={j}>
+                      <a href={src.url} target="_blank" rel="noopener noreferrer">
+                        {src.title || src.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          }
+
+          // Fallback for unknown block types — render raw content if available
+          return block.content
+            ? <p key={i} className="bot-text">{block.content}</p>
+            : null
+        })}
+      </div>
+    )
+  }
+
+  // Absolute fallback — stringify whatever came through
+  return <p>{JSON.stringify(payload)}</p>
+}
+
 function App() {
   const [activePage, setActivePage] = useState('chat') // 'chat', 'about', 'faqs'
   const [navCollapsed, setNavCollapsed] = useState(false)
   const [darkMode, setDarkMode] = useState(false)
+
+  // Session ID — loaded from sessionStorage on mount, or freshly generated.
+  // Stored in state so React re-renders reflect the current session.
+  const [sessionId, setSessionId] = useState(() => getOrCreateSessionId())
 
   // Each entry: { role: 'user' | 'bot', text: string }
   const [messages, setMessages] = useState([])
@@ -58,7 +155,7 @@ function App() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: trimmed }),
+        body: JSON.stringify({ message: trimmed, session_id: sessionId }),
       })
 
       if (!response.ok) {
@@ -71,15 +168,43 @@ function App() {
 
       const data = await response.json()
 
-      // Expects the Flask backend to return: { "reply": "..." }
+      // The backend may return a plain string or a structured composite object.
+      // Store the raw value — BotMessage handles rendering both shapes.
       const botReply = data.reply ?? 'Sorry, I did not receive a valid response.'
 
-      setMessages(prev => [...prev, { role: 'bot', text: botReply }])
+      // Parse the reply into an object if needed.
+      // The backend may send a Python dict stringified with single quotes instead of
+      // valid JSON double quotes (e.g. "{'type': 'composite', ...}"). We handle both.
+      let parsedReply
+      if (typeof botReply === 'string') {
+        // First, try standard JSON.parse (handles properly serialized responses)
+        try {
+          parsedReply = JSON.parse(botReply)
+        } catch {
+          // Fallback: convert Python dict syntax → valid JSON, then parse again.
+          // Swaps single-quoted strings to double-quoted, and converts
+          // Python's None/True/False to JSON null/true/false.
+          try {
+            const asJson = botReply
+              .replace(/'/g, '"')
+              .replace(/\bNone\b/g, 'null')
+              .replace(/\bTrue\b/g, 'true')
+              .replace(/\bFalse\b/g, 'false')
+            parsedReply = JSON.parse(asJson)
+          } catch {
+            parsedReply = botReply  // genuinely plain text — keep as-is
+          }
+        }
+      } else {
+        parsedReply = botReply  // already an object
+      }
+
+      setMessages(prev => [...prev, { role: 'bot', payload: parsedReply }])
 
     } catch (err) {
       // Push the error as a bot message so it persists in chat history
       const errorText = err.message || 'Something went wrong. Please try again.'
-      setMessages(prev => [...prev, { role: 'bot', text: `⚠️ ${errorText}`, isError: true }])
+      setMessages(prev => [...prev, { role: 'bot', payload: `⚠️ ${errorText}`, isError: true }])
     } finally {
       setIsLoading(false)
     }
@@ -90,6 +215,12 @@ function App() {
     setMessages([])
     setInputValue('')
     setActivePage('chat')
+
+    // Invalidate the current session and start a fresh one.
+    // The new ID is stored in sessionStorage so a page refresh stays on the same session.
+    const newSessionId = generateSessionId()
+    sessionStorage.setItem('ophiuchus_session_id', newSessionId)
+    setSessionId(newSessionId)
   }
 
   return (
@@ -230,7 +361,7 @@ function App() {
                   ) : (
                     <div className="reply-container" key={index}>
                       <div className={`chatbot-reply ${msg.isError ? 'error' : ''}`}>
-                        <p>{msg.text}</p>
+                        <BotMessage payload={msg.payload} />
                       </div>
                     </div>
                   )
