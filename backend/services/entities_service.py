@@ -16,14 +16,14 @@ def fill_entities():
 
     # get all subclass of Warning and add to entities
     warning = ontology_service.find_subclasses(entity_name="Warning")
-    print("Retrieved warnings from ontology:" + str(warning))
+    # print("Retrieved warnings from ontology:" + str(warning))
     
     entities['Antibiotic'].extend(antibiotics)
     entities['Brand'].extend(brands)
     entities['SideEffect'].extend(side_effect)
     entities['Substance'].extend(substances)
     entities['Warning'].extend(warning)
-    print(f"Filled entities: {entities}")
+    # print(f"Filled entities: {entities}")
     return entities
 
 def look_up_entity(words):
@@ -34,5 +34,5 @@ def look_up_entity(words):
             if word in [name.lower() for name in names]:
                 found_entities[word] = entity_type
 
-    print(f"Found entities: {found_entities}")
+    # print(f"Found entities: {found_entities}")
     return found_entities

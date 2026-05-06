@@ -6,17 +6,15 @@ from utils.helpers import get_splitted_question
 entities = entities_service.fill_entities()
 
 def terminal_test():
-    try:
-        # print(entities)
-        print("\n")
-        print("=" * 10)
-        print("Welcome to Ophiuchus!")
-        print("=" * 10)
-        print("Type 'exit' to quit.\n")
+    print("\n")
+    print("=" * 10)
+    print("Welcome to Ophiuchus!")
+    print("=" * 10)
+    print("Type 'exit' to quit.\n")
 
-        while True:
+    while True:
+        try:
             print("\nAsk a question: ", end="")
-
             question = input()
 
             if question.lower() == "exit":
@@ -42,12 +40,15 @@ def terminal_test():
                 
             response = intent_service.handle_intent(intent, query_type, question_entities)
             print(response)
-    except ValueError as e:
-        error_json = response_service.build_text_response(str(e))
-        print(error_json)   
-    except AssertionError as e: 
-        error_json = response_service.build_text_response(str(e))
-        print(error_json)
+
+        except ValueError as e:
+            error_json = response_service.build_text_response(str(e))
+            print(error_json)
+        except AssertionError as e:
+            error_json = response_service.build_text_response(str(e))
+            print(error_json)
+        # except Exception as e:
+        #     print(f"Unexpected error: {e}")  # catch anything else so loop never dies
 
 if __name__ == "__main__":
     terminal_test()
@@ -107,7 +108,6 @@ if __name__ == "__main__":
     # terminal_test("doxin administration") 
     # terminal_test("doxyclen administration")
     # terminal_test("doxycycline administration")
-
 
     # test for all possible cases for get_substance_interaction
     # terminal_test("doxycycline doxin substance_interaction")

@@ -72,5 +72,11 @@ def get_splitted_question(question):
     return words
 
 def split_commas(sentence):
-    items_array = sentence[0].split(',')
-    return items_array
+    string = sentence[0]  # → "headache, dizziness, tiredness"
+    return [s.strip() for s in string.split(',') if s.strip()]
+
+def unwrap(value, default="Not specified"):
+    """Returns first element if non-empty list, otherwise returns value or default."""
+    if isinstance(value, list):
+        return value[0] if len(value) > 0 else default
+    return value if value else default
