@@ -1,0 +1,4 @@
+backend/models/distilbert
+*.safetensors
+*.pt
+*.bin

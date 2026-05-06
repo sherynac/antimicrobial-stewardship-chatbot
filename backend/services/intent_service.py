@@ -1,48 +1,102 @@
 from typing import List
 import services.ontology_service as ontology_service
 import services.intent_handler as intent_handler
+import os
 
-def identify_intent(words):
-    
-    if any(word in ['antibiotic_info'] for word in words):
-        return 'get_antibiotic_info'
-    
-    elif any(word in ['uses_indications'] for word in words):
-        return 'get_uses_indications'
-    
-    elif any(word in ['side_effects'] for word in words):
-        return 'get_side_effects'
-    
-    elif any(word in ['substance_interaction'] for word in words):
-        return 'get_substance_interaction'
-    
-    elif any(word in ['warning_precautions'] for word in words):
-        return 'get_warning_precautions'
-    
-    elif any(word in ['storage_instruction'] for word in words):
-        return 'get_storage_instruction'
-    
-    elif any(word in ['food_and_timing'] for word in words):
-        return 'get_food_and_timing'
-    
-    elif any(word in ['administration'] for word in words):
-        return 'get_administration_instruction'
-    
-    elif any(word in ['not_recognized'] for word in words):
+import torch
+import pickle
+import numpy as np
+from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassification
+
+EXPORT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "models/distilbert")
+EXPORT_DIR = os.path.normpath(EXPORT_DIR)
+MAX_LEN    = 128
+DEVICE     = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+_model     = DistilBertForSequenceClassification.from_pretrained(EXPORT_DIR).to(DEVICE)
+_tokenizer = DistilBertTokenizerFast.from_pretrained(EXPORT_DIR)
+_model.eval()
+
+with open(os.path.join(EXPORT_DIR, "label_encoder.pkl"), "rb") as f:
+    _le = pickle.load(f)
+
+print(f"Intent model loaded on {DEVICE}")
+
+INTENT_THRESHOLDS = {
+    'get_antibiotic_info':          0.70, # adjusted
+    'get_uses_indications':         0.50,
+    'get_side_effects':             0.85,  # adjusted
+    'get_substance_interaction':    0.90,  # adjusted
+    'get_warning_precautions':      0.90,  # adjusted
+    'get_storage_instruction':      0.75, # adjusted
+    'get_food_and_timing':          0.75, # adjusted
+    'get_administration_instruction': 0.75, # adjusted
+    'redirect_medicine_query':      0.40
+}
+
+def identify_intent(text: str) -> str:
+    encoding = _tokenizer(
+        text,
+        max_length=MAX_LEN,
+        padding="max_length",
+        truncation=True,
+        return_tensors="pt"
+    )
+
+    input_ids      = encoding["input_ids"].to(DEVICE)
+    attention_mask = encoding["attention_mask"].to(DEVICE)
+
+    with torch.no_grad():
+        logits = _model(input_ids=input_ids, attention_mask=attention_mask).logits
+
+    probs      = torch.softmax(logits, dim=1).squeeze().cpu().numpy()
+    top_idx    = int(np.argmax(probs))
+    confidence = float(probs[top_idx])
+    intent     = _le.inverse_transform([top_idx])[0]
+
+    # Look up the threshold for this specific predicted label
+    threshold = INTENT_THRESHOLDS.get(intent)
+
+    print(f"[Intent] '{intent}' | confidence: {confidence:.2f} | threshold: {threshold}")
+
+    if confidence < threshold:
         return 'is_not_recognized'
-    
-    elif any(word in ['medicine query'] for word in words):
-        return 'redirect_medicine_query'
-    
-    elif any(word in ['dosage_query'] for word in words):
-        return 'redirect_dosage_query'
-    
-    elif any(word in ['general_answer'] for word in words):
-        return 'get_general_answer'
-    
-    else:
-        return 'unknown_intent'
-    
+
+    return intent
+
+
+# ── Replace keyword matching with model prediction ────────────────────────────
+def identify_intent(text: str, confidence_threshold: float = 0.4) -> str:
+    """
+    Takes the raw user question (string) and returns the predicted intent label.
+    Falls back to 'unknown_intent' if confidence is too low.
+    """
+    encoding = _tokenizer(
+        text,
+        max_length=MAX_LEN,
+        padding="max_length",
+        truncation=True,
+        return_tensors="pt"
+    )
+
+    input_ids      = encoding["input_ids"].to(DEVICE)
+    attention_mask = encoding["attention_mask"].to(DEVICE)
+
+    with torch.no_grad():
+        logits = _model(input_ids=input_ids, attention_mask=attention_mask).logits
+
+    probs      = torch.softmax(logits, dim=1).squeeze().cpu().numpy()
+    top_idx    = int(np.argmax(probs))
+    confidence = float(probs[top_idx])
+    intent     = _le.inverse_transform([top_idx])[0]
+
+    print(f"[Intent] '{intent}' ({confidence:.2f})")  # helpful for debugging
+
+    if confidence < confidence_threshold:
+        return 'is_not_recognized'
+
+    return intent
+
 def identify_entities_present(entity_types):
     generic_brand = ['Antibiotic', 'Brand']
     generic = ['Antibiotic']
@@ -87,30 +141,27 @@ def identify_entities_present(entity_types):
         return 'unknown_entity_combination'
     
 def handle_intent(intent, query_type, question_entities):
-    if intent == 'get_antibiotic_info':
+    if intent == 'GET_ANTIBIOTIC_INFO':
+        print("TO ROUTE IN INTENT HANDLER")
         return intent_handler.handle_antibiotic_info(question_entities, query_type)
-    elif intent == 'get_uses_indications':
+    elif intent == 'GET_USES_INDICATIONS':
         return intent_handler.handle_uses_indications(question_entities, query_type)
-    elif intent == 'get_side_effects':
+    elif intent == 'GET_SIDE_EFFECTS':
         return intent_handler.handle_side_effects(question_entities, query_type)
-    elif intent == 'get_substance_interaction':
+    elif intent == 'GET_SUBSTANCE_INTERACTION':
         return intent_handler.handle_substance_interaction(question_entities, query_type)
-    elif intent == 'get_warning_precautions':
+    elif intent == 'GET_WARNING_PRECAUTIONS':
         return intent_handler.handle_warning_precautions(question_entities, query_type)
-    elif intent == 'get_storage_instruction':
+    elif intent == 'GET_STORAGE_INSTRUCTIONS':
         return intent_handler.handle_storage_instruction(question_entities, query_type)
-    elif intent == 'get_food_and_timing':
+    elif intent == 'GET_FOOD_AND_TIMING':
         return intent_handler.handle_food_and_timing(question_entities, query_type)
-    elif intent == 'get_administration_instruction':
+    elif intent == 'GET_ADMINISTRATION_INSTRUCTION':
         return intent_handler.handle_administration_instructions(question_entities, query_type)
-    elif intent == 'is_not_recognized':
+    elif intent == 'IS_NOT_RECOGNIZED':
         return intent_handler.handle_is_not_recognized()
-    elif intent == 'redirect_medicine_query':
+    elif intent == 'REDIRECT_MEDICINE_QUER':
         return intent_handler.handle_redirect_medicine_query()
-    elif intent == 'redirect_dosage_query':
-        return intent_handler.handle_redirect_dosage_query()
-    elif intent == 'get_general_answer':
-        return intent_handler.handle_general_answer( query_type, question_entities)
     else:
         print("Sorry, I couldn't understand your question. Could you please rephrase it?")
         return None

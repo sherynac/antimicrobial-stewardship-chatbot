@@ -5,37 +5,43 @@ from services.response_service import response_service
 from utils.helpers import get_splitted_question
 entities = entities_service.fill_entities()
 
-def terminal_test(question):
+def terminal_test():
     try:
         # print(entities)
         print("\n")
         print("=" * 10)
         print("Welcome to Ophiuchus!")
         print("=" * 10)
+        print("Type 'exit' to quit.\n")
 
-        print("\nAsk a question: ", end="")
-        print("\nAsk a question: ", end="")
+        while True:
+            print("\nAsk a question: ", end="")
 
-        # question = input()
-        words = get_splitted_question(question)
-        raw_entities = entities_service.look_up_entity(words)
-        print(f"RAW question entities: {raw_entities}")
-        
-        question_entities = {}
-        for word, entity_type in raw_entities.items():
-            if entity_type not in question_entities:
-                question_entities[entity_type] = []
-            question_entities[entity_type].append(word.capitalize())
+            question = input()
+
+            if question.lower() == "exit":
+                print("Goodbye!")
+                break
+
+            words = get_splitted_question(question)
+            raw_entities = entities_service.look_up_entity(words)
+            print(f"RAW question entities: {raw_entities}")
             
-        print(f"Processed question entities: {question_entities}")
-        
-        intent = intent_service.identify_intent(words)
-        print(f"Identified intent: {intent}")
-        query_type = intent_service.identify_entities_present(raw_entities.values())
-        print(f"Identified query type: {query_type}", end="\n\n")
+            question_entities = {}
+            for word, entity_type in raw_entities.items():
+                if entity_type not in question_entities:
+                    question_entities[entity_type] = []
+                question_entities[entity_type].append(word.capitalize())
+                
+            print(f"Processed question entities: {question_entities}")
             
-        response = intent_service.handle_intent(intent, query_type, question_entities)
-        print(response)
+            intent = intent_service.identify_intent(question)
+            print(f"Identified intent: {intent}")
+            query_type = intent_service.identify_entities_present(raw_entities.values())
+            print(f"Identified query type: {query_type}", end="\n\n")
+                
+            response = intent_service.handle_intent(intent, query_type, question_entities)
+            print(response)
     except ValueError as e:
         error_json = response_service.build_text_response(str(e))
         print(error_json)   
@@ -44,6 +50,7 @@ def terminal_test(question):
         print(error_json)
 
 if __name__ == "__main__":
+    terminal_test()
     # test for all possible cases for get_antibiotic_info
     # terminal_test("doxycycline doxin antibiotic_info")
     # terminal_test("levofloxacin levocin antibiotic_info")
@@ -104,7 +111,7 @@ if __name__ == "__main__":
 
     # test for all possible cases for get_substance_interaction
     # terminal_test("doxycycline doxin substance_interaction")
-    terminal_test("doxycycline substance_interaction")
+    # terminal_test("doxycycline substance_interaction")
     # terminal_test("doxin substance_interaction")
     # terminal_test("doxycycline beer substance_interaction")
     # terminal_test("doxycycline penicillin substance_interaction")
