@@ -22,7 +22,7 @@ def terminal_test():
                 break
 
             words = get_splitted_question(question)
-            raw_entities = entities_service.look_up_entity(words)
+            raw_entities = entities_service.look_up_entity(words, question)
             print(f"RAW question entities: {raw_entities}")
             
             question_entities = {}
@@ -53,14 +53,15 @@ def terminal_test():
 if __name__ == "__main__":
     terminal_test()
     # test for all possible cases for get_antibiotic_info
+    # terminal_test("doxycycline antibiotic_info")
+    # terminal_test("levofloxacin antibiotic_info")
     # terminal_test("doxycycline doxin antibiotic_info")
     # terminal_test("levofloxacin levocin antibiotic_info")
     # terminal_test("levofloxacin doxin antibiotic_info")
     # terminal_test("doxycycline levocin antibiotic_info")
     # terminal_test("levocin antibiotic_info")
     # terminal_test("doxin antibiotic_info")
-    # terminal_test("doxycycline antibiotic_info")
-    # terminal_test("levofloxacin antibiotic_info")
+
 
     # # test for all possible cases for get_uses_indications
     # terminal_test("doxycycline doxyclen uses_indications") 

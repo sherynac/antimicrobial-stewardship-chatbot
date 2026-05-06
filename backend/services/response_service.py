@@ -90,9 +90,12 @@ class ResponseService:
             content=brand_info["content"]
         )
 
+        postText = template['postText']
+
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_table_response(template['columns'], table_details),
+            self.build_text_response(postText),
             reference_json
         ])
 
@@ -102,7 +105,7 @@ class ResponseService:
         response_text = random.choice(template['responseTexts'])
 
         reference_json = self.build_reference_list(reference)
-        unit_price_text = f" and costs Php {brand_info['unit_price']}" if brand_info['unit_price'] != "Not specified" else ""
+        unit_price_text = f"Php {brand_info['unit_price']}" if brand_info['unit_price'] != "Not specified" else ""
 
         text = response_text.format(
             brand=brand_info["brand"], 
@@ -112,11 +115,14 @@ class ResponseService:
             content=brand_info["content"],
             presentation=brand_info["presentation"],
             dosage=brand_info["dosage"],
-            unit_price_text=unit_price_text
+            unit_price=unit_price_text
         )
+        
+        postText = template['postText']
 
         return self.build_composite_response([
             self.build_text_response(text),
+            self.build_text_response(postText),
             reference_json
         ])
     
@@ -132,9 +138,12 @@ class ResponseService:
             drug_class=generic_info["drug_class"]
         )
 
+        postText = template['postText']
+
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_table_response(template['columns'], table_details),
+            self.build_text_response(postText),
             reference_json
         ])
     
@@ -153,9 +162,12 @@ class ResponseService:
 
         bullets = [self.build_bullet(description=symptom) for symptom in symptoms_array]
 
+        post_text = template['postText']
+
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_bullet_list(bullets),
+            self.build_text_response(post_text),
             reference_json
         ])
     
@@ -163,7 +175,7 @@ class ResponseService:
         print("MULTIPLE INDICATIONS")
         template = self.get_response_template("GET_USES_INDICATIONS", "multiple_indications")
         response_text = random.choice(template['responseTexts'])
-        bullet_template = template['itemFormat']
+        bullet_template = template['bulletFormat']
 
         reference_json = self.build_reference_list(reference)
 
@@ -174,15 +186,17 @@ class ResponseService:
 
         bullet_list = self.build_bullet_list([
             self.build_bullet(
-                main_text=indication,
-                description=bullet_template['description'].format(symptoms=symptoms)
+                main_text=bullet_template['headline'].format(disease=indication),
+                description=bullet_template['details'].format(symptoms=symptoms)
             )
             for indication, symptoms in zip(indication_final, symptoms_obj)
         ])
 
+        post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
             bullet_list,
+            self.build_text_response(post_text),
             reference_json
         ])
 
@@ -197,9 +211,12 @@ class ResponseService:
             generic=generic_name,
         )
 
+        post_text = template['postText']
+
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_table_response(template['columns'], table_details),
+            self.build_text_response(post_text),
             reference_json
         ])
     
@@ -278,7 +295,7 @@ class ResponseService:
             brand = info['brand']
         )
 
-        bullet_template = template['groupFormat']
+        bullet_template = template['bulletFormat']
         formatted_effects = []
 
         for se in side_effect_list:
@@ -320,26 +337,31 @@ class ResponseService:
             bullets = []
             for se in brand_data['side_effects']:
                 if se['pattern']:
-                    main_text = template['groupFormat']['mainWithPattern'].format(
+                    main_text = template['bulletFormat']['bulletWithPattern'].format(
                         side_effect=se['side_effect'],
                         pattern=se['pattern']
                     )
                 else:
-                    main_text = template['groupFormat']['mainNoPattern'].format(
+                    main_text = template['bulletFormat']['bulletNoPattern'].format(
                         side_effect=se['side_effect']
                     )
+                description_tmp = template['bulletFormat']['description']
                 bullets.append(self.build_bullet(
                     main_text=main_text,
-                    description=se['description']
+                    description= description_tmp.format(side_effect_description = se['description'])
                 ))
+            
+            section = template['bulletFormat']['brandHeaderText']
+            brand_sections.append(self.build_section(section.format(brand = brand_data['brand']), bullets))  # ← cleaner
 
-            brand_sections.append(self.build_section(brand_data['brand'], bullets))  # ← cleaner
-
+        postText = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
             *brand_sections,
+            self.build_text_response(postText),
             reference_json
         ])
+    
     def build_side_effect_brand(self, brand, side_effect_list, reference):
         print("BRAND SIDE EFFECT")
         template = self.get_response_template("GET_SIDE_EFFECTS", "brand_only")
