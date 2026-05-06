@@ -5,4 +5,7 @@ whitenoise
 neo4j
 rdflib
 owlready2
-
+torch
+numpy
+transformers
+scikit-learn

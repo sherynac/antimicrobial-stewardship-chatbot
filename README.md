@@ -3,9 +3,14 @@
 2. Place it at `backend/models/distilbert/`
 3. Run `pip install -r requirements.txt`
 
-## How to Run in Docker
+## How to Run (terminal)
 
-1. Launch Docker Desktop
-2. Open Cloned Repository Folder
-3. Build Docker image by running "docker build -t test-bot ." in Command Prompt
-4. After building, run "docker run -p 10000:10000 test-bot"
+1. Lunch frontend
+    - go to frontend directory
+    - run "npm install"
+    - run "npm run dev"
+
+2. Lunch Backend
+    - go to backend directory
+    - run "pip install -r requirements.txt"
+    - run "python app.py"

@@ -785,4 +785,4 @@ class ResponseService:
             self.build_text_response(text),
             reference_json
         ])
-response_service = ResponseService('./backend/data/VRB.json')
+response_service = ResponseService('./data/VRB.json')
