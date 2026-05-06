@@ -29,174 +29,457 @@ R027,RiteMED Cefixime,Monthly Index of Medical Specialties,2026,https://www.mims
 R028,Triocef,Monthly Index of Medical Specialties,2026,https://www.mims.com/philippines/drug/info/triocef
 R029,Ultraxime,Monthly Index of Medical Specialties,2026,https://www.mims.com/philippines/drug/info/ultraxime
 R030,Nitro,Monthly Index of Medical Specialties,2026,https://www.mims.com/philippines/drug/info/nitro
-R031,Anticoagulants,Monthly Index of Medical Specialties,2024,https://www.drugs.com/drug-class/anticoagulants.html
-R032,Penicillin,Monthly Index of Medical Specialties,2024,https://www.drugs.com/penicillin.html
-R033,Antacids,Monthly Index of Medical Specialties,2023,https://www.drugs.com/drug-class/antacids.html
-R034,Barbiturates,Monthly Index of Medical Specialties,2023,https://www.drugs.com/drug-class/barbiturates.html
-R035,Carbamazepine,Monthly Index of Medical Specialties,2023,https://www.drugs.com/carbamazepine.html
-R036,Phenytoin,Monthly Index of Medical Specialties,2023,https://www.drugs.com/phenytoin.html
-R037,Methoxyflurane,Monthly Index of Medical Specialties,2026,https://www.drugs.com/cdi/methoxyflurane.html
-R038,Contraceptives,Monthly Index of Medical Specialties,2023,https://www.drugs.com/drug-class/contraceptives.html
-R039,Bismuth Subsalicylate,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/bismuth-subsalicylate.html
-R040,Aminoglycosides,Monthly Index of Medical Specialties,2026,https://www.drugs.com/drug-class/aminoglycosides.html
-R041,Sucralfate,Monthly Index of Medical Specialties,2026,https://www.drugs.com/mtm/sucralfate.html
-R042,Didanosine,Monthly Index of Medical Specialties,2025,https://www.drugs.com/cons/didanosine.html
-R043,Zinc,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/zinc-220.html
-R044,"Class IA (Quinidine, Procainamide)",Monthly Index of Medical Specialties,2025,https://www.drugs.com/monograph/disopyramide.html
-R045,Sotalol (Monograph),Monthly Index of Medical Specialties,2026,https://www.drugs.com/monograph/sotalol.html
-R046,Fluoxetine,Monthly Index of Medical Specialties,2024,https://www.drugs.com/fluoxetine.html
-R047,Imipramine,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/imipramine.html
-R048,Antidiabetic Agent,Monthly Index of Medical Specialties,2026,https://www.drugs.com/drug-class/antidiabetic-agents.html
-R049,Ciclosporine,Monthly Index of Medical Specialties,2026,https://www.drugs.com/mtm/cyclosporine-oral-injection.html
-R050,Tacrolimus,Monthly Index of Medical Specialties,2026,https://www.drugs.com/mtm/tacrolimus-oral-and-injection.html
-R051,Corticosteroids,Monthly Index of Medical Specialties,2026,https://www.drugs.com/drug-class/adrenal-cortical-steroids.html
-R052,Fluconazole,Monthly Index of Medical Specialties,2024,https://www.drugs.com/fluconazole.html
-R053,Theophylline,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/theophylline.html
-R054,Warfarin,Monthly Index of Medical Specialties,2024,https://www.drugs.com/warfarin.html
-R055,Nonsteroidal Anti-Inflammatory Drugs (NSAIDs),Monthly Index of Medical Specialties,2026,https://www.drugs.com/drug-class/nonsteroidal-anti-inflammatory-agents.html
-R056,Digoxin,Monthly Index of Medical Specialties,2023,https://www.drugs.com/digoxin.html
-R057,Probenecid,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/probenecid.html
-R058,Cimetidine,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/cimetidine.html
-R060,Iron Salts,Monthly Index of Medical Specialties,2026,https://www.drugs.com/mtm/iron-dextran.html
-R061,Calcium Carbonate,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/calcium-carbonate.html
-R062,Ranitidine,Monthly Index of Medical Specialties,2025,https://www.drugs.com/ranitidine.html
-R063,Mezlocillin,Monthly Index of Medical Specialties,2026,https://www.drugs.com/ingredient/mezlocillin.html
-R064,Astemizole,Monthly Index of Medical Specialties,2026,https://www.drugs.com/sfx/astemizole-side-effects.html
-R065,Cisapride,Monthly Index of Medical Specialties,2026,https://www.drugs.com/monograph/cisapride.html
-R066,Terfenadine,Monthly Index of Medical Specialties,2026,https://www.drugs.com/dosage/pseudoephedrine-terfenadine.html
-R067,Cetirizine,Monthly Index of Medical Specialties,2025,https://www.drugs.com/cetirizine-hcl.html
-R068,Colchicine,Monthly Index of Medical Specialties,2025,https://www.drugs.com/colchicine.html
-R069,Zidovudine,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/zidovudine-oral-injection.html
-R070,Atorvastatin,Monthly Index of Medical Specialties,2025,https://www.drugs.com/atorvastatin.html
-R071,Efavirenz,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/efavirenz.html
-R072,Indinavir,Monthly Index of Medical Specialties,2025,https://www.drugs.com/cons/indinavir.html
-R073,Methylprednisolone,Monthly Index of Medical Specialties,2024,https://www.drugs.com/methylprednisolone.html
-R074,Midazolam,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/midazolam.html
-R075,Nelfinavir,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/nelfinavir.html
-R076,Rifabutin,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/rifabutin.html
-R077,Sildenafil,Monthly Index of Medical Specialties,2026,https://www.drugs.com/sildenafil.html
-R078,Triazolam,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/triazolam.html
-R079,Sulfamethoxazole/Trimethoprim,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/sulfamethoxazole-and-trimethoprim.html
-R080,Lincomycin,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/lincomycin.html
-R081,Clindamycin,Monthly Index of Medical Specialties,2024,https://www.drugs.com/clindamycin.html
-R082,Allopurinol,Monthly Index of Medical Specialties,2024,https://www.drugs.com/allopurinol.html
-R083,Acenocoumarol,Monthly Index of Medical Specialties,2026,https://www.drugs.com/breastfeeding/acenocoumarol.html
-R084,Methotrexate,Monthly Index of Medical Specialties,2024,https://www.drugs.com/methotrexate.html
-R085,Chloramphenicol,Monthly Index of Medical Specialties,2026,https://www.drugs.com/cdi/chloramphenicol.html
-R086,Macrolides,Monthly Index of Medical Specialties,2026,https://www.drugs.com/drug-class/macrolides.html
-R087,Sulfonamides,Monthly Index of Medical Specialties,2023,https://www.drugs.com/drug-class/sulfonamides.html
-R088,Tetracyclines,Monthly Index of Medical Specialties,2023,https://www.drugs.com/drug-class/tetracyclines.html
-R089,Estropipate: Package Insert / Prescribing Info,Monthly Index of Medical Specialties,2026,https://www.drugs.com/pro/estropipate.html
-R090,Ritonavir,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/ritonavir.html
-R091,Omeprazole,Monthly Index of Medical Specialties,2024,https://www.drugs.com/omeprazole.html
-R092,Ethambutol,Monthly Index of Medical Specialties,2026,https://www.drugs.com/mtm/ethambutol.html
-R093,Isoniazid,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/isoniazid.html
-R094,Pyrazinamide,Monthly Index of Medical Specialties,2026,https://www.drugs.com/mtm/pyrazinamide.html
-R095,Quinidine,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/quinidine.html
-R096,Disopyramide,Monthly Index of Medical Specialties,2026,https://www.drugs.com/mtm/disopyramide.html
-R097,Ergotamine,Monthly Index of Medical Specialties,2023,https://www.drugs.com/ergotamine.html
-R098,Dihydroergotamine,Monthly Index of Medical Specialties,2025,https://www.drugs.com/dihydroergotamine-injection.html
-R099,Alprazolam,Monthly Index of Medical Specialties,2023,https://www.drugs.com/alprazolam.html
-R100,Lovastatin,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/lovastatin.html
-R101,Simvastatin,Monthly Index of Medical Specialties,2024,https://www.drugs.com/simvastatin.html
-R102,Alfentanil,Monthly Index of Medical Specialties,2025,https://www.drugs.com/cons/alfentanil.html
-R103,Cilostazol,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/cilostazol.html
-R104,Bromocriptine,Monthly Index of Medical Specialties,2026,https://www.drugs.com/mtm/bromocriptine.html
-R105,Valproate,Monthly Index of Medical Specialties,2025,https://www.drugs.com/pro/valproate.html
-R106,Pimozide,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/pimozide.html
-R107,Metoclopramide,Monthly Index of Medical Specialties,2023,https://www.drugs.com/metoclopramide.html
-R108,Bethanechol,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/bethanechol.html
-R109,Domperidone,Monthly Index of Medical Specialties,2025,https://www.drugs.com/domperidone.html
-R110,Laxatives,Monthly Index of Medical Specialties,2023,https://www.drugs.com/drug-class/laxatives.html
-R111,Quinolones and Fluoroquinolones,Monthly Index of Medical Specialties,2026,https://www.drugs.com/drug-class/quinolones.html
-R112,Cephalosporins,Monthly Index of Medical Specialties,2023,https://www.drugs.com/drug-class/cephalosporins.html
-R113,Potassium Aminobenzoate,Monthly Index of Medical Specialties,2026,https://www.drugs.com/mtm/potassium-aminobenzoate.html
-R114,Penicillin G Procaine,Monthly Index of Medical Specialties,2025,https://www.drugs.com/monograph/penicillin-g-procaine.html
-R115,Procainamide,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/procainamide-injection.html
-R116,Rosiglitazone,Monthly Index of Medical Specialties,2025,https://www.drugs.com/cons/rosiglitazone.html
-R117,Zalcitabine,Monthly Index of Medical Specialties,2026,https://www.drugs.com/sfx/zalcitabine-side-effects.html
-R118,Lamivudine,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/lamivudine.html
-R119,Dapsone,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/dapsone.html
-R120,Magnesium Hydroxide,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/magnesium-hydroxide.html
-R121,Aluminum Hydroxide,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/aluminum-hydroxide.html
-R122,Metronidazole,Monthly Index of Medical Specialties,2023,https://www.drugs.com/metronidazole.html
-R123,Caffeine,Monthly Index of Medical Specialties,2025,https://www.drugs.com/caffeine.html
-R124,H2 Antagonists,Monthly Index of Medical Specialties,2026,https://www.drugs.com/drug-class/h2-antagonists.html
-R125,Naproxen,Monthly Index of Medical Specialties,2024,https://www.drugs.com/naproxen.html
-R126,Chloroquine,Monthly Index of Medical Specialties,2025,https://www.drugs.com/mtm/chloroquine.html
-R127,Opioid,Monthly Index of Medical Specialties,2026,https://www.drugs.com/drug-class/narcotic-analgesics.html
-R128,Nifedipine,Monthly Index of Medical Specialties,2024,https://www.drugs.com/nifedipine.html
-R129,Aspirin ,Monthly Index of Medical Specialties,2024,https://www.drugs.com/aspirin.html
-R130,Sulfinpyrazone,Monthly Index of Medical Specialties,2025,https://www.drugs.com/cons/sulfinpyrazone.html
-R131,Carbonic Anhydrase Inhibitors,Monthly Index of Medical Specialties,2026,https://www.drugs.com/drug-class/carbonic-anhydrase-inhibitors.html
-R132,Anorexia,Monthly Index of Medical Specialties,2024,https://medlineplus.gov/ency/article/000362.htm
-R133,Nausea amd Vomiting,Monthly Index of Medical Specialties,2024,https://medlineplus.gov/nauseaandvomiting.html
-R134,Diarrhea,Monthly Index of Medical Specialties,2025,https://medlineplus.gov/diarrhea.html
-R135,Glossitis,Monthly Index of Medical Specialties,2025,https://medlineplus.gov/ency/article/001053.htm
-R136,Dysphagia,Monthly Index of Medical Specialties,,https://medlineplus.gov/lab-tests/dysphagia-tests/
-R137,Esophagitis,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/001153.htm
-R138,Ehrlichiosis,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/001381.htm
-R139,Erythroderma,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/001610.htm
-R140,BUN (Blood Urea Nitrogen),Monthly Index of Medical Specialties,,https://medlineplus.gov/lab-tests/bun-blood-urea-nitrogen/
-R141,Hives,Monthly Index of Medical Specialties,,https://medlineplus.gov/hives.html
-R142,Angioedema,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000846.htm
-R143,Anaphylaxis,Monthly Index of Medical Specialties,,https://medlineplus.gov/anaphylaxis.html
-R144,Serum Sickness,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000820.htm
-R145,Pericarditis,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000182.htm
-R146,Systemic Lupus Erythematosus,Monthly Index of Medical Specialties,,https://medlineplus.gov/genetics/condition/systemic-lupus-erythematosus/
-R147,Hemolytic Anemia,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000571.htm
-R148,Immune Hemolytic Anemia,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000576.htm
-R149,Thrombocytopenia,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000586.htm
-R150,Neutropenia,Monthly Index of Medical Specialties,,https://medlineplus.gov/genetics/condition/severe-congenital-neutropenia/
-R151,Eosinophilia Disorders,Monthly Index of Medical Specialties,,https://medlineplus.gov/eosinophilicdisorders.html
-R152,Pancreatitis,Monthly Index of Medical Specialties,,https://medlineplus.gov/pancreatitis.html
-R153,Stevens-Johnson syndrome/toxic epidermal necrolysis,Monthly Index of Medical Specialties,,https://medlineplus.gov/genetics/condition/stevens-johnson-syndrome-toxic-epidermal-necrolysis/
-R154,Erythema Multiforme,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000851.htm
-R155,Skin Hyperpigmentation,Monthly Index of Medical Specialties,,https://medlineplus.gov/skinpigmentationdisorders.html
-R156,Cockayne Syndrome,Monthly Index of Medical Specialties,,https://medlineplus.gov/genetics/condition/cockayne-syndrome/
-R157,Increased intracranial pressure,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000793.htm
-R158,Insomnia,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000805.htm
-R159,Headache,Monthly Index of Medical Specialties,,https://medlineplus.gov/headache.html
-R160,Dizziness and Vertigo,Monthly Index of Medical Specialties,,https://medlineplus.gov/dizzinessandvertigo.html
-R161,Breathing Problems,Monthly Index of Medical Specialties,,https://medlineplus.gov/breathingproblems.html
-R162,Constipation,Monthly Index of Medical Specialties,,https://medlineplus.gov/constipation.html
-R163,Abdominal Pain,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003120.htm
-R164,Dyspepsia,Monthly Index of Medical Specialties,,https://medlineplus.gov/indigestion.html
-R165,Rashes,Monthly Index of Medical Specialties,,https://medlineplus.gov/rashes.html
-R166,Itching,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003217.htm
-R167,Vaginitis,Monthly Index of Medical Specialties,,https://medlineplus.gov/vaginitis.html
-R168,Edema,Monthly Index of Medical Specialties,,https://medlineplus.gov/edema.html
-R169,Hyperglycemia,Monthly Index of Medical Specialties,,https://medlineplus.gov/hyperglycemia.html
-R170,Hypoglycemia,Monthly Index of Medical Specialties,,https://medlineplus.gov/hypoglycemia.html
-R171,Anxiety,Monthly Index of Medical Specialties,,https://medlineplus.gov/anxiety.html
-R172,Agitation,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003212.htm
-R173,Confusion,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003205.htm
-R174,Tremor,Monthly Index of Medical Specialties,,https://medlineplus.gov/tremor.html
-R175,Numbness and Tingling,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003206.htm
-R176,Walkig Abnormalities,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003199.htm
-R177,Drowsiness,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003208.htm
-R178,Fainting,Monthly Index of Medical Specialties,,https://medlineplus.gov/fainting.html
-R179,Nosebleed,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003106.htm
-R180,Cardiac Arrest,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/007640.htm
-R181,Heart Palpitations,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003081.htm
-R182,Ventricular Tachycardia,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000187.htm
-R183,Low Blood Pressure,Monthly Index of Medical Specialties,,https://medlineplus.gov/lowbloodpressure.html
-R184,Oral Candidiasis,Monthly Index of Medical Specialties,,https://vsearch.nlm.nih.gov/vivisimo/cgi-bin/query-meta?v%3Aproject=medlineplus&v%3Asources=medlineplus-bundle&query=Oral+Candidiasis&_ga=2.54371499.2000033850.1777773884-1356854841.1777773884&_gl=1*1xfzppj*_ga*MTM1Njg1NDg0MS4xNzc3NzczODg0*_ga_7147EPK006*czE3Nzc4NTgxOTMkbzQkZzEkdDE3Nzc4NjcxODckajYwJGwwJGgw*_ga_P1FPTH9PL4*czE3Nzc4NTgxOTMkbzQkZzEkdDE3Nzc4NjcwNjMkajUyJGwwJGgw
-R185,Hepatic Lipase Deficiency,Monthly Index of Medical Specialties,,https://medlineplus.gov/genetics/condition/hepatic-lipase-deficiency/
-R186,Venticular Fibrillation,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/007200.htm
-R187,Gastritis,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/001150.htm
-R188,Herpetic Stomatitis,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/001383.htm
-R189,Chest Pain,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003079.htm
-R190,Anemia,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000560.htm
-R191,Joint Pain,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003261.htm
-R192,Acute Kidney Failure,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/000501.htm
-R193,Yeast Infections,Monthly Index of Medical Specialties,,https://medlineplus.gov/yeastinfections.html
-R194,High Potassium Level,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/001179.htm
-R195,Depression,Monthly Index of Medical Specialties,,https://medlineplus.gov/depression.html
-R196,Hallucinations,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003258.htm
-R197,Nightmares,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/003209.htm
-R198,Sleep Disorders,Monthly Index of Medical Specialties,,https://medlineplus.gov/sleepdisorders.html
-R199,Seizures,Monthly Index of Medical Specialties,,https://medlineplus.gov/seizures.html
-R200,Hereditary Hyperekplexia,Monthly Index of Medical Specialties,,https://medlineplus.gov/genetics/condition/hereditary-hyperekplexia/
-R201,Gastroenteritis,Monthly Index of Medical Specialties,,https://medlineplus.gov/gastroenteritis.html
-R202,Thrombophlebitis,Monthly Index of Medical Specialties,,https://medlineplus.gov/ency/article/001108.htm
+R031,Anticoagulants,"Carmen Pope, Senior Medical Editor, B. Pharm",2024,https://www.drugs.com/drug-class/anticoagulants.html
+R032,Penicillin,"Melisa Puckey, BPharm",2024,https://www.drugs.com/penicillin.html
+R033,Antacids,"Carmen Pope, Senior Medical Editor, B. Pharm",2023,https://www.drugs.com/drug-class/antacids.html
+R034,Barbiturates,"Carmen Pope, Senior Medical Editor, B. Pharm",2023,https://www.drugs.com/drug-class/barbiturates.html
+R035,Carbamazepine,"Sophia Entringer, PharmD",2023,https://www.drugs.com/carbamazepine.html
+R036,Phenytoin,"Philip Thornton, DipPharm",2023,https://www.drugs.com/phenytoin.html
+R037,Methoxyflurane,Drugs.com,2026,https://www.drugs.com/cdi/methoxyflurane.html
+R038,Contraceptives,"Carmen Pope, Senior Medical Editor, B. Pharm",2023,https://www.drugs.com/drug-class/contraceptives.html
+R039,Bismuth Subsalicylate,Cerner Multum,2025,https://www.drugs.com/mtm/bismuth-subsalicylate.html
+R040,Aminoglycosides,Drugs.com,2026,https://www.drugs.com/drug-class/aminoglycosides.html
+R041,Sucralfate,Cerner Multum,2026,https://www.drugs.com/mtm/sucralfate.html
+R042,Didanosine,Drugs.com,2025,https://www.drugs.com/cons/didanosine.html
+R043,Zinc,Cerner Multum,2025,https://www.drugs.com/mtm/zinc-220.html
+R044,"Class IA (Quinidine, Procainamide)",ASHP,2025,https://www.drugs.com/monograph/disopyramide.html
+R045,Sotalol (Monograph),ASHP,2026,https://www.drugs.com/monograph/sotalol.html
+R046,Fluoxetine,"Kaci Durbin, MD",2024,https://www.drugs.com/fluoxetine.html
+R047,Imipramine,Cerner Multum,2025,https://www.drugs.com/mtm/imipramine.html
+R048,Antidiabetic Agent,Drugs.com,2026,https://www.drugs.com/drug-class/antidiabetic-agents.html
+R049,Ciclosporine,Cerner Multum,2026,https://www.drugs.com/mtm/cyclosporine-oral-injection.html
+R050,Tacrolimus,Cerner Multum,2026,https://www.drugs.com/mtm/tacrolimus-oral-and-injection.html
+R051,Corticosteroids,Drugs.com,2026,https://www.drugs.com/drug-class/adrenal-cortical-steroids.html
+R052,Fluconazole,"Carmen Pope, Senior Medical Editor, B. Pharm",2024,https://www.drugs.com/fluconazole.html
+R053,Theophylline,Cerner Multum,2025,https://www.drugs.com/mtm/theophylline.html
+R054,Warfarin,"Melisa Puckey, BPharm",2024,https://www.drugs.com/warfarin.html
+R055,Nonsteroidal Anti-Inflammatory Drugs (NSAIDs),"Carmen Pope, Senior Medical Editor, B. Pharm",2026,https://www.drugs.com/drug-class/nonsteroidal-anti-inflammatory-agents.html
+R056,Digoxin,"Philip Thornton, DipPharm",2023,https://www.drugs.com/digoxin.html
+R057,Probenecid,Cerner Multum,2025,https://www.drugs.com/mtm/probenecid.html
+R058,Cimetidine,Cerner Multum,2025,https://www.drugs.com/mtm/cimetidine.html
+R060,Iron Salts,Cerner Multum,2026,https://www.drugs.com/mtm/iron-dextran.html
+R061,Calcium Carbonate,Cerner Multum,2025,https://www.drugs.com/mtm/calcium-carbonate.html
+R062,Ranitidine,"Sanjai Sinha, MD",2025,https://www.drugs.com/ranitidine.html
+R063,Mezlocillin,Drugs.com,2026,https://www.drugs.com/ingredient/mezlocillin.html
+R064,Astemizole,Drugs.com,2026,https://www.drugs.com/sfx/astemizole-side-effects.html
+R065,Cisapride,ASHP,2026,https://www.drugs.com/monograph/cisapride.html
+R066,Terfenadine,Drugs.com,2026,https://www.drugs.com/dosage/pseudoephedrine-terfenadine.html
+R067,Cetirizine,"Philip Thornton, DipPharm",2025,https://www.drugs.com/cetirizine-hcl.html
+R068,Colchicine,"Carmen Pope, Senior Medical Editor, B. Pharm",2025,https://www.drugs.com/colchicine.html
+R069,Zidovudine,Cerner Multum,2025,https://www.drugs.com/mtm/zidovudine-oral-injection.html
+R070,Atorvastatin,"Melisa Puckey, BPharm",2025,https://www.drugs.com/atorvastatin.html
+R071,Efavirenz,Cerner Multum,2025,https://www.drugs.com/mtm/efavirenz.html
+R072,Indinavir,Drugs.com,2025,https://www.drugs.com/cons/indinavir.html
+R073,Methylprednisolone,"Melisa Puckey, BPharm",2024,https://www.drugs.com/methylprednisolone.html
+R074,Midazolam,Cerner Multum,2025,https://www.drugs.com/mtm/midazolam.html
+R075,Nelfinavir,Cerner Multum,2025,https://www.drugs.com/mtm/nelfinavir.html
+R076,Rifabutin,Cerner Multum,2025,https://www.drugs.com/mtm/rifabutin.html
+R077,Sildenafil,"Carmen Pope, Senior Medical Editor, B. Pharm",2026,https://www.drugs.com/sildenafil.html
+R078,Triazolam,Cerner Multum,2025,https://www.drugs.com/mtm/triazolam.html
+R079,Sulfamethoxazole/Trimethoprim,Cerner Multum,2025,https://www.drugs.com/mtm/sulfamethoxazole-and-trimethoprim.html
+R080,Lincomycin,Cerner Multum,2025,https://www.drugs.com/mtm/lincomycin.html
+R081,Clindamycin,"Carmen Pope, Senior Medical Editor, B. Pharm",2024,https://www.drugs.com/clindamycin.html
+R082,Allopurinol,"Sanjai Sinha, MD",2024,https://www.drugs.com/allopurinol.html
+R083,Acenocoumarol,Drugs.com,2026,https://www.drugs.com/breastfeeding/acenocoumarol.html
+R084,Methotrexate,"Sophia Entringer, PharmD",2024,https://www.drugs.com/methotrexate.html
+R085,Chloramphenicol,Drugs.com,2026,https://www.drugs.com/cdi/chloramphenicol.html
+R086,Macrolides,Drugs.com,2026,https://www.drugs.com/drug-class/macrolides.html
+R087,Sulfonamides,"Carmen Pope, Senior Medical Editor, B. Pharm",2023,https://www.drugs.com/drug-class/sulfonamides.html
+R088,Tetracyclines,"Carmen Pope, Senior Medical Editor, B. Pharm",2023,https://www.drugs.com/drug-class/tetracyclines.html
+R089,Estropipate: Package Insert / Prescribing Info,Drugs.com,2026,https://www.drugs.com/pro/estropipate.html
+R090,Ritonavir,Cerner Multum,2025,https://www.drugs.com/mtm/ritonavir.html
+R091,Omeprazole,"Melisa Puckey, BPharm",2024,https://www.drugs.com/omeprazole.html
+R092,Ethambutol,Cerner Multum,2026,https://www.drugs.com/mtm/ethambutol.html
+R093,Isoniazid,Cerner Multum,2025,https://www.drugs.com/mtm/isoniazid.html
+R094,Pyrazinamide,Cerner Multum,2026,https://www.drugs.com/mtm/pyrazinamide.html
+R095,Quinidine,Cerner Multum,2025,https://www.drugs.com/mtm/quinidine.html
+R096,Disopyramide,Cerner Multum,2026,https://www.drugs.com/mtm/disopyramide.html
+R097,Ergotamine,Drugs.com,2023,https://www.drugs.com/ergotamine.html
+R098,Dihydroergotamine,"Philip Thornton, DipPharm",2025,https://www.drugs.com/dihydroergotamine-injection.html
+R099,Alprazolam,"Sophia Entringer, PharmD",2023,https://www.drugs.com/alprazolam.html
+R100,Lovastatin,Cerner Multum,2025,https://www.drugs.com/mtm/lovastatin.html
+R101,Simvastatin,"Sanjai Sinha, MD",2024,https://www.drugs.com/simvastatin.html
+R102,Alfentanil,Drugs.com,2025,https://www.drugs.com/cons/alfentanil.html
+R103,Cilostazol,Cerner Multum,2025,https://www.drugs.com/mtm/cilostazol.html
+R104,Bromocriptine,Cerner Multum,2026,https://www.drugs.com/mtm/bromocriptine.html
+R105,Valproate,Drugs.com,2025,https://www.drugs.com/pro/valproate.html
+R106,Pimozide,Cerner Multum,2025,https://www.drugs.com/mtm/pimozide.html
+R107,Metoclopramide,"Philip Thornton, DipPharm",2023,https://www.drugs.com/metoclopramide.html
+R108,Bethanechol,Cerner Multum,2025,https://www.drugs.com/mtm/bethanechol.html
+R109,Domperidone,"Philip Thornton, DipPharm",2025,https://www.drugs.com/domperidone.html
+R110,Laxatives,"Carmen Pope, Senior Medical Editor, B. Pharm",2023,https://www.drugs.com/drug-class/laxatives.html
+R111,Quinolones and Fluoroquinolones,"Carmen Pope, Senior Medical Editor, B. Pharm",2026,https://www.drugs.com/drug-class/quinolones.html
+R112,Cephalosporins,"Carmen Pope, Senior Medical Editor, B. Pharm",2023,https://www.drugs.com/drug-class/cephalosporins.html
+R113,Potassium Aminobenzoate,Cerner Multum,2026,https://www.drugs.com/mtm/potassium-aminobenzoate.html
+R114,Penicillin G Procaine,ASHP,2025,https://www.drugs.com/monograph/penicillin-g-procaine.html
+R115,Procainamide,Cerner Multum,2025,https://www.drugs.com/mtm/procainamide-injection.html
+R116,Rosiglitazone,Drugs.com,2025,https://www.drugs.com/cons/rosiglitazone.html
+R117,Zalcitabine,Drugs.com,2026,https://www.drugs.com/sfx/zalcitabine-side-effects.html
+R118,Lamivudine,Cerner Multum,2025,https://www.drugs.com/mtm/lamivudine.html
+R119,Dapsone,Cerner Multum,2025,https://www.drugs.com/mtm/dapsone.html
+R120,Magnesium Hydroxide,Cerner Multum,2025,https://www.drugs.com/mtm/magnesium-hydroxide.html
+R121,Aluminum Hydroxide,Cerner Multum,2025,https://www.drugs.com/mtm/aluminum-hydroxide.html
+R122,Metronidazole,"Carmen Pope, Senior Medical Editor, B. Pharm",2023,https://www.drugs.com/metronidazole.html
+R123,Caffeine,"Philip Thornton, DipPharm",2025,https://www.drugs.com/caffeine.html
+R124,H2 Antagonists,Drugs.com,2026,https://www.drugs.com/drug-class/h2-antagonists.html
+R125,Naproxen,"Kaci Durbin, MD",2024,https://www.drugs.com/naproxen.html
+R126,Chloroquine,Cerner Multum,2025,https://www.drugs.com/mtm/chloroquine.html
+R127,Opioid,"Carmen Pope, Senior Medical Editor, B. Pharm",2026,https://www.drugs.com/drug-class/narcotic-analgesics.html
+R128,Nifedipine,"Sanjai Sinha, MD",2024,https://www.drugs.com/nifedipine.html
+R129,Aspirin ,"Melisa Puckey, BPharm",2024,https://www.drugs.com/aspirin.html
+R130,Sulfinpyrazone,Drugs.com,2025,https://www.drugs.com/cons/sulfinpyrazone.html
+R131,Carbonic Anhydrase Inhibitors,Drugs.com,2026,https://www.drugs.com/drug-class/carbonic-anhydrase-inhibitors.html
+R132,Anorexia,"Fred K. Berger, MD, addiction and forensic psychiatrist,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2024,https://medlineplus.gov/ency/article/000362.htm
+R133,Nausea amd Vomiting,Medline Plus,2024,https://medlineplus.gov/nauseaandvomiting.html
+R134,Diarrhea,Medline Plus,2025,https://medlineplus.gov/diarrhea.html
+R135,Glossitis,"Ashutosh Kacer, MD,
+David C, Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2025,https://medlineplus.gov/ency/article/001053.htm
+R136,Dysphagia,Medline Plus,2024,https://medlineplus.gov/lab-tests/dysphagia-tests/
+R137,Esophagitis,"Jenifer K. Lehrer, MD, Gastroenterologist,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/001153.htm
+R138,Ehrlichiosis,"Jatin M. Vyas, MD, PhD,
+David C. Dugdale, MD, Medical Director",2025,https://medlineplus.gov/ency/article/001381.htm
+R139,Erythroderma,"Elika Hoss, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2024,https://medlineplus.gov/ency/article/001610.htm
+R140,BUN (Blood Urea Nitrogen),Medline Plus,2024,https://medlineplus.gov/lab-tests/bun-blood-urea-nitrogen/
+R141,Hives,Medline Plus,2025,https://medlineplus.gov/hives.html
+R142,Angioedema,"Deborah Pedersen, MD, MS,
+David C. Dugdale, MD, Medical Director",2024,https://medlineplus.gov/ency/article/000846.htm
+R143,Anaphylaxis,Medline Plus,2025,https://medlineplus.gov/anaphylaxis.html
+R144,Serum Sickness,"Deborah Pedersen, MD, MS,
+David C. Dugdale, MD, Medical Director",2024,https://medlineplus.gov/ency/article/000820.htm
+R145,Pericarditis,"Thomas S. Metkus, MD,
+David C. Dugdale, MD, Medical Director",2024,https://medlineplus.gov/ency/article/000182.htm
+R146,Systemic Lupus Erythematosus,Medline Plus,2022,https://medlineplus.gov/genetics/condition/systemic-lupus-erythematosus/
+R147,Hemolytic Anemia,"Warren Brenner, MD, Oncologist,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/000571.htm
+R148,Immune Hemolytic Anemia,"Todd Gersten, MD,
+David C, Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2024,https://medlineplus.gov/ency/article/000576.htm
+R149,Thrombocytopenia,"Todd Gersten, MD,
+David C, Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2024,https://medlineplus.gov/ency/article/000586.htm
+R150,Neutropenia,Medline Plus,2022,https://medlineplus.gov/genetics/condition/severe-congenital-neutropenia/
+R151,Eosinophilia Disorders,Medline Plus,2025,https://medlineplus.gov/eosinophilicdisorders.html
+R152,Pancreatitis,Medline Plus,2024,https://medlineplus.gov/pancreatitis.html
+R153,Stevens-Johnson syndrome/toxic epidermal necrolysis,Medline Plus,2020,https://medlineplus.gov/genetics/condition/stevens-johnson-syndrome-toxic-epidermal-necrolysis/
+R154,Erythema Multiforme,"Ramin Fathi, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",,https://medlineplus.gov/ency/article/000851.htm
+R155,Skin Hyperpigmentation,Medline Plus,2025,https://medlineplus.gov/skinpigmentationdisorders.html
+R156,Cockayne Syndrome,Medline Plus,2016,https://medlineplus.gov/genetics/condition/cockayne-syndrome/
+R157,Increased intracranial pressure,"Joseph V. Campellone, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/000793.htm
+R158,Insomnia,Medline Plus,2024,https://medlineplus.gov/ency/article/000805.htm
+R159,Headache,Medline Plus,2025,https://medlineplus.gov/headache.html
+R160,Dizziness and Vertigo,Medline Plus,2026,https://medlineplus.gov/dizzinessandvertigo.html
+R161,Breathing Problems,Medline Plus,2025,https://medlineplus.gov/breathingproblems.html
+R162,Constipation,Medline Plus,2025,https://medlineplus.gov/constipation.html
+R163,Abdominal Pain,"Jenifer K. Lehrer, MD, Gastroenterologist,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/003120.htm
+R164,Dyspepsia,Medline Plus,2025,https://medlineplus.gov/indigestion.html
+R165,Rashes,Medline Plus,2024,https://medlineplus.gov/rashes.html
+R166,Itching,"Elika Hoss, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",,https://medlineplus.gov/ency/article/003217.htm
+R167,Vaginitis,Medline Plus,2024,https://medlineplus.gov/vaginitis.html
+R168,Edema,Medline Plus,2025,https://medlineplus.gov/edema.html
+R169,Hyperglycemia,Medline Plus,2024,https://medlineplus.gov/hyperglycemia.html
+R170,Hypoglycemia,Medline Plus,2023,https://medlineplus.gov/hypoglycemia.html
+R171,Anxiety,Medline Plus,2023,https://medlineplus.gov/anxiety.html
+R172,Agitation,"Fred K. Berger, MD, addiction and forensic psychiatrist,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2024,https://medlineplus.gov/ency/article/003212.htm
+R173,Confusion,"Joseph V. Campellone, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/003205.htm
+R174,Tremor,Medline Plus,2023,https://medlineplus.gov/tremor.html
+R175,Numbness and Tingling,"Joseph V. Campellone, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/003206.htm
+R176,Walkig Abnormalities,"Joseph V. Campellone, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/003199.htm
+R177,Drowsiness,"Linda J. Vorvick, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/003208.htm
+R178,Fainting,Medline Plus,2025,https://medlineplus.gov/fainting.html
+R179,Nosebleed,"Ashutosh Kacer, MD,
+David C, Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2025,https://medlineplus.gov/ency/article/003106.htm
+R180,Cardiac Arrest,"Michael A. Chen, MD, PhD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/007640.htm
+R181,Heart Palpitations,"Frank D. Brodkey, MD
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/003081.htm
+R182,Ventricular Tachycardia,"Michael A. Chen, MD, PhD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/000187.htm
+R183,Low Blood Pressure,Medline Plus,2019,https://medlineplus.gov/lowbloodpressure.html
+R184,Oral Candidiasis,Medline Plus,2026,https://vsearch.nlm.nih.gov/vivisimo/cgi-bin/query-meta?v%3Aproject=medlineplus&v%3Asources=medlineplus-bundle&query=Oral+Candidiasis&_ga=2.54371499.2000033850.1777773884-1356854841.1777773884&_gl=1*1xfzppj*_ga*MTM1Njg1NDg0MS4xNzc3NzczODg0*_ga_7147EPK006*czE3Nzc4NTgxOTMkbzQkZzEkdDE3Nzc4NjcxODckajYwJGwwJGgw*_ga_P1FPTH9PL4*czE3Nzc4NTgxOTMkbzQkZzEkdDE3Nzc4NjcwNjMkajUyJGwwJGgw
+R185,Hepatic Lipase Deficiency,Medline Plus,2015,https://medlineplus.gov/genetics/condition/hepatic-lipase-deficiency/
+R186,Venticular Fibrillation,"Michael A. Chen, MD, PhD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/007200.htm
+R187,Gastritis,"Jenifer K. Lehrer, MD, Gastroenterologist,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/001150.htm
+R188,Herpetic Stomatitis,"Charles I. Schwartz, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/001383.htm
+R189,Chest Pain,"Thomas S. Metkus, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2024,https://medlineplus.gov/ency/article/003079.htm
+R190,Anemia,Medline Plus,2025,https://medlineplus.gov/ency/article/000560.htm
+R191,Joint Pain,"Neil J. Gonter, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/003261.htm
+R192,Acute Kidney Failure,"Walead Latif, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/000501.htm
+R193,Yeast Infections,Medline Plus,2025,https://medlineplus.gov/yeastinfections.html
+R194,High Potassium Level,"Frank D. Brodkey, MD
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/001179.htm
+R195,Depression,Medline Plus,2025,https://medlineplus.gov/depression.html
+R196,Hallucinations,"Fred K. Berger, MD, addiction and forensic psychiatrist,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2024,https://medlineplus.gov/ency/article/003258.htm
+R197,Nightmares,"Frank D. Brodkey, MD
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/003209.htm
+R198,Sleep Disorders,Medline Plus,2025,https://medlineplus.gov/sleepdisorders.html
+R199,Seizures,Medline Plus,2017,https://medlineplus.gov/seizures.html
+R200,Hereditary Hyperekplexia,Medline Plus,2018,https://medlineplus.gov/genetics/condition/hereditary-hyperekplexia/
+R201,Gastroenteritis,Medline Plus,2022,https://medlineplus.gov/gastroenteritis.html
+R202,Thrombophlebitis,"Linda J. Vorvick, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/001108.htm
+R203,Pseudomembranous colitis,"Jenifer K. Lehrer, MD, Gastroenterologist,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/000259.htm
+R204,Tendinitis,Medline Plus,2017,https://medlineplus.gov/tendinitis.html
+R205,Ataxia-pancytopenia syndrome,Medline Plus,2017,https://medlineplus.gov/genetics/condition/ataxia-pancytopenia-syndrome/
+R206,Sunitinib,Medline Plus,2022,https://medlineplus.gov/druginfo/meds/a607052.html
+R207,Hoarseness,"Ashutosh Kacer, MD,
+David C, Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2024,https://medlineplus.gov/ency/article/003054.htm
+R208,EEG,"Luc Jasmin, MD,
+David C, Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2025,https://medlineplus.gov/ency/article/003931.htm
+R209,STXBP1 encephalopathy,Medline Plus,2020,https://medlineplus.gov/genetics/condition/stxbp1-encephalopathy/#description
+R210,Peripheral Neuropathy,"Joseph V. Campellone, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/000593.htm
+R211,Rhabdomyolysis,"Walead Latif, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/000473.htm
+R212,Fever,Medline Plus,2025,https://medlineplus.gov/fever.html
+R213,Gas,Medline Plus,2023,https://medlineplus.gov/ency/article/003124.htm
+R214,Black or Tarry Stools,"Jenifer K. Lehrer, MD, Gastroenterologist,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/003130.htm
+R215,Vaginal Yeast Infection,"LaQuita Martinez, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/001511.htm
+R216,Arrythmia,Medline Plus,2025,https://medlineplus.gov/arrhythmia.html
+R217,Interstitial Nephritis,"Walead Latif, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/000464.htm
+R218,Fatigue,Medline Plus,2024,https://medlineplus.gov/fatigue.html
+R219,Pneumonia,Medline Plus,2023,https://medlineplus.gov/pneumonia.html
+R220,Fungal Infections,Medline Plus,2025,https://medlineplus.gov/fungalinfections.html
+R221,Bacterial Infection,Medline Plus,2024,https://medlineplus.gov/bacterialinfections.html
+R222,Pharyngitis - Sore Throat,"Linda J. Vorvick, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/000655.htm
+R223,Nonallergic rhinopathy,"Ashutosh Kacer, MD,
+David C, Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2025,https://medlineplus.gov/ency/article/001648.htm
+R224,White Blood Count (WBC),Medline Plus,2024,https://medlineplus.gov/lab-tests/white-blood-count-wbc/
+R225,Allergy,Medline Plus,2025,https://medlineplus.gov/allergy.html
+R226,Delirium,Medline Plus,2023,https://medlineplus.gov/delirium.html
+R227,Kallmann Syndrome,Medline Plus,2016,https://medlineplus.gov/genetics/condition/kallmann-syndrome/
+R228,Smell - impaired,"Ashutosh Kacer, MD,
+David C, Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2025,https://medlineplus.gov/ency/article/003052.htm
+R229,Myasthenia Gravis,Medline Plus,2024,https://medlineplus.gov/myastheniagravis.html
+R230,Vision Problems,"Franklin W. Lusby, MD, Ophthalmologist,
+David C, Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2024,https://medlineplus.gov/ency/article/003029.htm
+R231,Ear Disorders,Medline Plus,2026,https://medlineplus.gov/eardisorders.html
+R232,Estrogen Injection,Medline Plus,2010,https://medlineplus.gov/druginfo/meds/a606004.html
+R233,Dry Mouth,Medline Plus,2024,https://medlineplus.gov/drymouth.html
+R234,Mouth Ulcers,"Linda J. Vorvick, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/001448.htm
+R235,Dry Skin,"Ramin Fathi, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/000835.htm
+R236,Hyperhidrosis,"Ramin Fathi, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/007259.htm
+R237,Osteoarthritis,Medline Plus,2024,https://medlineplus.gov/osteoarthritis.html
+R238,Back Pain,Medline Plus,2025,https://medlineplus.gov/backpain.html
+R239,Neck Pain,"Linda J. Vorvick, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/003025.htm
+R240,Urination - Painful,"Kelly L. Stratton, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/003145.htm
+R241,Testicular Disorders,Medline Plus,2016,https://medlineplus.gov/testiculardisorders.html
+R242,Malaise,"Linda J. Vorvick, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/003089.htm
+R243,Pain,Medline Plus,2025,https://medlineplus.gov/pain.html
+R244,Aspartate aminotransferase (AST) blood test,"Frank D. Brodkey, MD
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/003472.htm
+R245,Alanine transaminase (ALT) blood test,"Frank D. Brodkey, MD
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/003473.htm
+R246,Bili Lights,"Neil K. Kaneshiro, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/002394.htm
+R247,Low Blood Potassium,"Jacob Berman, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/000479.htm
+R248,Cerebrospinal Fluid (CFS) Collection,"Joseph V. Campellone, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/003428.htm
+R249,Post-splenectomy Complications,"Warren Brenner, MD, Oncologist,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/001290.htm
+R250,Hearing Disorders and Deafness,Medline Plus,2021,https://medlineplus.gov/hearingdisordersanddeafness.html
+R251,Tinnitus,Medline Plus,2025,https://medlineplus.gov/tinnitus.html
+R252,Hepatitis,Medline Plus,2023,https://medlineplus.gov/hepatitis.html
+R253,Hypersensitivity Vasculitis,"Diane M. Horowitz, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/000874.htm
+R254,Familial Candidiasis,Medline Plus,2016,https://medlineplus.gov/genetics/condition/familial-candidiasis/
+R255,Black Hairy Tongue,"Ashutosh Kacer, MD,
+David C, Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2025,https://medlineplus.gov/ency/imagepages/1909.htm
+R256,Agranulocytosis,"Todd Gersten, MD,
+David C, Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2024,https://medlineplus.gov/ency/article/001295.htm
+R257,Apetite - decreased,"Linda J. Vorvick, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/003121.htm
+R258,Tooth - abnormal colors,"Michael Kapner, DDS,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/003065.htm
+R259,Cellulitis,Medline Plus,2025,https://medlineplus.gov/cellulitis.html
+R260,Erysipelas,"Ramin Fathi, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/000618.htm
+R261,Erythrasma,"Elika Hoss, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2024,https://medlineplus.gov/ency/article/001470.htm
+R262,Psychotic Disorders,Medline Plus,2024,https://medlineplus.gov/psychoticdisorders.html
+R263,Dyskinesia,"Joseph V. Campellone, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/000685.htm
+R264,Unconsciousness - first aid,"Jesse Borke, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2025,https://medlineplus.gov/ency/article/000022.htm
+R265,Asthma,Medline Plus,2024,https://medlineplus.gov/asthma.html
+R266,Cough,Medline Plus,2025,https://medlineplus.gov/cough.html
+R267,Pulmonary Embolism,Medline Plus,2024,https://medlineplus.gov/pulmonaryembolism.html
+R268,GERD,Medline Plus,2025,https://medlineplus.gov/gerd.html
+R269,Cholestasis,"Jenifer K. Lehrer, MD, Gastroenterologist,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/000215.htm
+R270,Jaundice,Medline Plus,2025,https://medlineplus.gov/jaundice.html
+R271,Acne,Medline Plus,2024,https://medlineplus.gov/acne.html
+R272,Alport Syndrome,Medline Plus,2023,https://medlineplus.gov/genetics/condition/alport-syndrome/
+R273,Period Pain,Medline Plus,2024,https://medlineplus.gov/periodpain.html
+R274,Aplastic Anemia,Medline Plus,2023,https://medlineplus.gov/aplasticanemia.html
+R275,Bleeding,Medline Plus,2024,https://medlineplus.gov/bleeding.html
+R276,Indigestion,Medline Plus,2025,https://medlineplus.gov/indigestion.html
+R277,Chills,"Linda J. Vorvick, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/003091.htm
+R278,Coombs Test,"Todd Gersten, MD,
+David C, Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2024,https://medlineplus.gov/ency/article/003344.htm
+R279,Hypersensitivity Pneumonitis,"Allen J. Blaivas, DO,
+David C, Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2025,https://medlineplus.gov/ency/article/000109.htm
+R280,Vasculitis,Medline Plus,2024,https://medlineplus.gov/vasculitis.html
+R281,Gynecomastia,"Sandeep K. Dhaliwal, MD,
+David C, Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2024,https://medlineplus.gov/ency/imagepages/9359.htm
+R282,Sweat,Medline Plus,2024,https://medlineplus.gov/sweat.html
+R283,Tenesmus,"Jenifer K. Lehrer, MD, Gastroenterologist,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/003131.htm
+R284,Heartburn,Medline Plus,2024,https://medlineplus.gov/heartburn.html
+R285,Pleural Disorders,Medline Plus,2025,https://medlineplus.gov/pleuraldisorders.html
+R286,H influenzae meningitis,"Jatin M. Vyas, MD, PhD,
+David C. Dugdale, MD, Medical Director",2024,https://medlineplus.gov/ency/article/000612.htm
+R287,Mycoplasma pneumonia,"Allen J. Blaivas, DO,
+David C, Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2024,https://medlineplus.gov/ency/article/000082.htm
+R288,Bronchiectasis,"Allen J. Blaivas, DO,
+David C, Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2024,https://medlineplus.gov/ency/article/000144.htm
+R289,Psittacosis,"Allen J. Blaivas, DO,
+David C, Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2024,https://medlineplus.gov/ency/article/000088.htm
+R290,Urethritis,"Kelly L. Stratton, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/000439.htm
+R291,Cystitis,"Linda J. Vorvick, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/000526.htm
+R292,Pyelonephritis,"Linda J. Vorvick, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/000521.htm
+R293,Prostatitis,"Kelly L. Stratton, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/000519.htm
+R294,Sinusitis,Medline Plus,2025,https://medlineplus.gov/sinusitis.html
+R295,Chronic Bronchitis,Medline Plus,2024,https://medlineplus.gov/chronicbronchitis.html
+R296,Gonorrhea,Medline Plus,2024,https://medlineplus.gov/gonorrhea.html
+R297,Cervicitis,"LaQuita Martinez, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/001495.htm
+R298,Tonsilitis,Medline Plus,2025,https://medlineplus.gov/tonsillitis.html
+R299,Ear Infection - acute,"Charles I. Schwartz, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2025,https://medlineplus.gov/ency/article/000638.htm
+R300,Urinary Tract Infections,Medline Plus,2025,https://medlineplus.gov/urinarytractinfections.html
+R301,Legionnaires' Disease,Medline Plus,2024,https://medlineplus.gov/legionnairesdisease.html
+R302,Tuberculosis,Medline Plus,2024,https://medlineplus.gov/tuberculosis.html
+R303,Acute Bronchitis,Medline Plus,2025,https://medlineplus.gov/ency/article/001087.htm
+R304,Whooping Cough Tests,Medline Plus,2025,https://medlineplus.gov/lab-tests/whooping-cough-diagnosis/
+R305,Chlamydia Infections,Medline Plus,2024,https://medlineplus.gov/chlamydiainfections.html
+R306,Leprosy,Medline Plus,2018,https://medlineplus.gov/genetics/condition/leprosy/
+R307,Campylobacter infection,"Jatin M. Vyas, MD, PhD,
+David C. Dugdale, MD, Medical Director",2024,https://medlineplus.gov/ency/article/000224.htm
+R308,Methicillin-resistant Staphylococcus aureus (MRSA),Medline Plus,2025,https://medlineplus.gov/ency/article/007261.htm
+R309,Atypical Pneumonia,Medline Plus,2026,https://medlineplus.gov/ency/article/000079.htm
+R310,Asymptomatic bacteriuria,"Linda J. Vorvick, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M. Editorial team",2024,https://medlineplus.gov/ency/article/000520.htm
+R311,Lyme disease,Medline Plus,2018,https://medlineplus.gov/genetics/condition/lyme-disease/
+R312,Donovanosis (granuloma inguinale),"Jatin M. Vyas, MD, PhD,
+David C. Dugdale, MD, Medical Director",2025,https://medlineplus.gov/ency/article/000636.htm
+R313,Streptococcal Infections,Medline Plus,2026,https://medlineplus.gov/streptococcalinfections.html
+R314,Clarithromycin,Medline Plus,2020,https://medlineplus.gov/druginfo/meds/a692005.html
+R315,Necrotizing soft tissue infection,"Elika Hoss, MD,
+David C. Dugdale, MD, Medical Director,
+A.D.A.M Editorial team",2023,https://medlineplus.gov/ency/article/001443.htm
+R316,Peptic Ulcer,Medline Plus,2024,https://medlineplus.gov/pepticulcer.html
+R317,Common Cold,Medline Plus,2024,https://medlineplus.gov/commoncold.html
+R318,Respiratory Syncytial Virus Infections,Medline Plus,2025,https://medlineplus.gov/respiratorysyncytialvirusinfections.html

@@ -289,13 +289,17 @@ if "Presentation" in dfs and not dfs["Presentation"].empty:
         if dosage and dosage != "Not Specified":
             add_literal(pres_uri, EX.hasDosage, dosage)
         
-        if unit_price and unit_price != "Not Specified":
-            price_clean = str(unit_price).replace("₱", "").replace(",", "").strip()
-            try:
-                price_float = float(price_clean)
-                g.add((pres_uri, EX.hasUnitPrice, Literal(price_float, datatype=XSD.double)))
-            except:
-                pass
+        if unit_price:
+            if unit_price == "Not Specified":
+                g.add((pres_uri, EX.hasUnitPrice, Literal("Not Specified")))
+            else:
+                price_clean = str(unit_price).replace("₱", "").replace(",", "").strip()
+                try:
+                    price_float = float(price_clean)
+                    g.add((pres_uri, EX.hasUnitPrice, Literal(price_float, datatype=XSD.double)))
+                except:
+                    if price_clean:
+                        g.add((pres_uri, EX.hasUnitPrice, Literal(price_clean)))
         
         for ref_id in ref_ids:
             ref_uri_id = make_uri_id(ref_id)
@@ -443,7 +447,8 @@ for _, row in dfs["SideEffect"].iterrows():
     add_individual(se_uri, EX[se_class], se_name if se_name else se_id)
     if description and description != "Not Specified":
         add_literal(se_uri, EX.hasSideEffectDescription, description)
-    if pattern and pattern != "Not Specified":
+   
+    if pattern and str(pattern).strip().lower() != "nan":
         pattern_uri_id = sanitize_ttl_name(pattern)
         if pattern_uri_id:
             pattern_uri = URIRef(EX[pattern_uri_id])
@@ -451,6 +456,7 @@ for _, row in dfs["SideEffect"].iterrows():
                 pattern_individuals.add(pattern_uri_id)
                 add_individual(pattern_uri, EX.Pattern, pattern)
             g.add((se_uri, EX.hasPattern, pattern_uri))
+
     for ref_id in ref_ids:
         ref_uri_id = make_uri_id(ref_id)
         if ref_uri_id:
@@ -462,68 +468,76 @@ for _, row in dfs["SideEffect"].iterrows():
             g.add((brand_uri, EX.hasSideEffect, se_uri))
 
 # ========== INTERACTIONS ==========
-itn_to_substances = {}
+substances_by_id = {}
 if "Substance" in dfs and not dfs["Substance"].empty:
     for _, row in dfs["Substance"].iterrows():
-        itn_id = make_uri_id(row.get("Interaction ID"))
+        sub_id = make_uri_id(row.get("Substance ID"))
         substance_name = safe_str(row.get("Substance Name"))
         substance_type = safe_str(row.get("Type"))
         substance_desc = safe_str(row.get("Substance Description"))
         ref_ids = split_multivalue(row.get("Reference ID"))
-        if not itn_id:
+        if not sub_id or not substance_name:
             continue
-        if itn_id not in itn_to_substances:
-            itn_to_substances[itn_id] = []
-        
-        substance_uri_id = make_safe_uri_label(substance_name) if substance_name else None
+        substance_uri_id = make_safe_uri_label(substance_name)
         if substance_uri_id:
-            itn_to_substances[itn_id].append({
+            substances_by_id[sub_id] = {
                 "uri_id": substance_uri_id,
                 "name": substance_name,
                 "type": substance_type,
                 "desc": substance_desc,
                 "ref_ids": ref_ids
-            })
+            }
 
 for _, row in dfs["Interaction"].iterrows():
     itn_id = make_uri_id(row.get("Interaction ID"))
+    sub_id = make_uri_id(row.get("Substance ID"))  # NEW: Get Substance ID
     ab_id = make_uri_id(row.get("Antibiotic ID"))
     description = safe_str(row.get("Interaction Description"))
     ref_ids = split_multivalue(row.get("Reference ID"))
+    
     if not itn_id:
         continue
+    
     itn_uri = URIRef(EX[itn_id])
     add_individual(itn_uri, EX.Interaction, itn_id)
+    
     if description and description != "Not Specified":
         add_literal(itn_uri, EX.hasInteractionDescription, description)
+    
     for ref_id in ref_ids:
         ref_uri_id = make_uri_id(ref_id)
         if ref_uri_id:
             g.add((itn_uri, EX.hasReference, URIRef(EX[ref_uri_id])))
-    if itn_id in itn_to_substances:
-        for sub in itn_to_substances[itn_id]:
-            sub_uri_id = sub["uri_id"]
-            sub_name = sub["name"]
-            sub_type = sub["type"]
-            sub_desc = sub["desc"]
-            sub_refs = sub["ref_ids"]
-            sub_uri = URIRef(EX[sub_uri_id])
-            if sub_uri_id not in created_uris:
-                if sub_type.lower() == "drug":
-                    add_individual(sub_uri, EX.Drug, sub_name)
-                elif sub_type.lower() == "food":
-                    add_individual(sub_uri, EX.Food, sub_name)
-                elif sub_type.lower() == "beverage":
-                    add_individual(sub_uri, EX.Beverage, sub_name)
-                else:
-                    add_individual(sub_uri, EX.Substance, sub_name)
-                if sub_desc and sub_desc != "Not Specified":
-                    add_literal(sub_uri, EX.hasSubstanceDescription, sub_desc)
-                for ref_id in sub_refs:
-                    ref_uri_id = make_uri_id(ref_id)
-                    if ref_uri_id:
-                        g.add((sub_uri, EX.hasReference, URIRef(EX[ref_uri_id])))
-            g.add((itn_uri, EX.interactsWith, sub_uri))
+    
+    # NEW: Link to substance using substances_by_id dict
+    if sub_id and sub_id in substances_by_id:
+        sub = substances_by_id[sub_id]
+        sub_uri_id = sub["uri_id"]
+        sub_name = sub["name"]
+        sub_type = sub["type"]
+        sub_desc = sub["desc"]
+        sub_refs = sub["ref_ids"]
+        
+        sub_uri = URIRef(EX[sub_uri_id])
+        if sub_uri_id not in created_uris:
+            if sub_type.lower() == "drug":
+                add_individual(sub_uri, EX.Drug, sub_name)
+            elif sub_type.lower() == "food":
+                add_individual(sub_uri, EX.Food, sub_name)
+            elif sub_type.lower() == "beverage":
+                add_individual(sub_uri, EX.Beverage, sub_name)
+            else:
+                add_individual(sub_uri, EX.Substance, sub_name)
+            if sub_desc and sub_desc != "Not Specified":
+                add_literal(sub_uri, EX.hasSubstanceDescription, sub_desc)
+            for ref_id in sub_refs:
+                ref_uri_id = make_uri_id(ref_id)
+                if ref_uri_id:
+                    g.add((sub_uri, EX.hasReference, URIRef(EX[ref_uri_id])))
+        
+        g.add((itn_uri, EX.interactsWith, sub_uri))
+    
+    # Link to brand (existing code stays the same)
     if ab_id and ab_id in ab_id_to_brands:
         for brand_name in ab_id_to_brands[ab_id]:
             brand_uri_id = make_safe_uri_label(brand_name)
@@ -570,16 +584,16 @@ def generate_ttl_output():
     """Generate a clean Turtle file matching ontology_ETL.ttl format."""
     lines = []
     
-    # Read manual.ttl contents
+    # Read OntologyManual.ttl contents
     manual_ttl_path = os.path.join(os.path.dirname(__file__), "..", "OntologyManual.ttl")
     if os.path.exists(manual_ttl_path):
         with open(manual_ttl_path, "r") as f:
             manual_contents = f.read().splitlines()  # Split into lines without newlines
-        lines.extend(manual_contents)  # Add all lines from manual.ttl
-        lines.append("")  # Add a newline separator after manual.ttl contents
+        lines.extend(manual_contents)  # Add all lines from OntologyManual.ttl
+        lines.append("")  # Add a newline separator after OntologyManual.ttl contents
     else:
-        print(f"Warning: manual.ttl not found at {manual_ttl_path}")
-    #TO DO: now add code inhere which will print or place the contents of the manual.ttl
+        print(f"Warning: OntologyManual.ttl not found at {manual_ttl_path}")
+    #TO DO: now add code inhere which will print or place the contents of the OntologyManual.ttl
     lines.append("")
     lines.append("##############################################################")
     lines.append("# Individuals")

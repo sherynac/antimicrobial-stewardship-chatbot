@@ -1,226 +1,371 @@
 Indication ID,Antibiotic ID,Severity Type,Symptoms,Reference ID
-I001,A001,Not Specified,Sample Symptoms 1,"R001
-R132"
-I002,A001,Not Specified,Sample Symptoms 2,"R001
-R132"
-I003,A001,Not Specified,Sample Symptoms 3,"R001
-R132"
-I004,A001,Not Specified,Sample Symptoms 4,R001
-I005,A001,Not Specified,Sample Symptoms 5,R001
-I006,A001,Not Specified,Sample Symptoms 6,R001
-I007,A001,Not Specified,Sample Symptoms 7,R001
-I008,A002,Not Specified,Sample Symptoms 8,R002
-I009,A002,Not Specified,Sample Symptoms 9,"R002
-R035"
-I010,A002,Not Specified,Sample Symptoms 10,"R002
-R036"
-I011,A002,Not Specified,Sample Symptoms 11,"R002
-R032"
-I012,A003,Not Specified,Sample Symptoms 12,"R003
-R037"
-I013,A003,Not Specified,Sample Symptoms 13,R003
-I014,A003,Not Specified,Sample Symptoms 14,"R003
-R039"
-I015,A003,Not Specified,Sample Symptoms 15,"R003
-R040"
-I016,A003,Not Specified,Sample Symptoms 16,"R003
-R041"
-I017,A003,Not Specified,Sample Symptoms 17,"R003
-R042"
-I018,A003,Not Specified,Sample Symptoms 18,"R003
-R034"
-I019,A003,Not Specified,Sample Symptoms 19,"R003
-R043"
-I020,A003,Not Specified,Sample Symptoms 20,"R003
-R044"
-I021,A003,Not Specified,Sample Symptoms 21,"R003
-R045"
-I022,A003,Not Specified,Sample Symptoms 22,"R003
-R046"
-I023,A003,Not Specified,Sample Symptoms 23,"R003
-R047"
-I024,A003,Not Specified,Sample Symptoms 24,"R003
-R048"
-I025,A004,Mild,Sample Symptoms 25,"R004
-R049"
-I025,A004,Moderate,Sample Symptoms 26,"R004
-R039"
-I025,A004,Severe,Sample Symptoms 27,"R004
-R039"
-I026,A004,Mild ,Sample Symptoms 28,R004
-I026,A004,Moderate,Sample Symptoms 29,R004
-I026,A004,Severe,Sample Symptoms 30,R004
-I027,A004,Mild ,Sample Symptoms 31,R004
-I027,A004,Moderate,Sample Symptoms 32,R004
-I027,A004,Severe,Sample Symptoms 33,R004
-I028,A004,Mild,Sample Symptoms 34,R004
-I028,A004,Moderate,Sample Symptoms 35,R004
-I028,A004,Severe,Sample Symptoms 36,R004
-I029,A004,Mild to Moderate,Sample Symptoms 37,R004
-I030,A004,Mild to Moderate,Sample Symptoms 38,R004
-I031,A004,Mild to Moderate,Sample Symptoms 39,R004
-I032,A004,Mild to Moderate,Sample Symptoms 40,R004
-I033,A005,Mild,Sample Symptoms 41,R005
-I033,A005,Moderate,Sample Symptoms 42,R005
-I033,A005,Severe,Sample Symptoms 43,R005
-I034,A005,Mild ,Sample Symptoms 44,R005
-I034,A005,Moderate,Sample Symptoms 45,R005
-I034,A005,Severe,Sample Symptoms 46,R005
-I035,A005,Mild,Sample Symptoms 47,R005
-I035,A005,Moderate,Sample Symptoms 48,R005
-I035,A005,Severe,Sample Symptoms 49,R005
-I036,A005,Not Specified,Sample Symptoms 50,R005
-I037,A005,Not Specified,Sample Symptoms 51,R005
-I038,A005,Not Specified,Sample Symptoms 52,R005
-I039,A005,Not Specified,Sample Symptoms 53,R005
-I040,A006,Not Specified,Sample Symptoms 54,R006
-I041,A006,Not Specified,Sample Symptoms 55,R006
-I042,A006,Not Specified,Sample Symptoms 56,R006
-I043,A007,Not Specified,Sample Symptoms 57,R007
-I044,A007,Not Specified,Sample Symptoms 58,R007
-I045,A008,Mild to Moderate,Sample Symptoms 59,R008
-I046,A008,Not Specified,Sample Symptoms 60,R008
-I047,A008,Mild to Moderate,Sample Symptoms 61,R008
-I048,A008,Mild to Moderate,Sample Symptoms 62,R008
-I049,A008,Not Specified,Sample Symptoms 63,R008
-I050,A008,Not Specified,Sample Symptoms 64,R008
-I051,A008,Not Specified,Sample Symptoms 65,R008
-I052,A009,Mild to Moderate,Sample Symptoms 66,R009
-I053,A009,Not Specified,Sample Symptoms 67,R009
-I054,A009,Not Specified,Sample Symptoms 68,R009
-I055,A009,Not Specified,Sample Symptoms 69,R009
-I056,A009,Not Specified,Sample Symptoms 70,R009
-I057,A009,Not Specified,Sample Symptoms 71,R009
-I058,A009,Not Specified,Sample Symptoms 72,R009
-I059,A010,Not Specified,Sample Symptoms 73,R010
-I060,A010,Not Specified,Sample Symptoms 74,R010
-I061,A010,Mild to Moderate,Sample Symptoms 75,R010
-I062,A010,Mild,Sample Symptoms 76,R010
-I063,A011,Not Specified,Sample Symptoms 77,R011
-I064,A011,Not Specified,Sample Symptoms 78,R011
-I065,A011,Not Specified,Sample Symptoms 79,R011
-I066,A011,Not Specified,Sample Symptoms 80,R011
-I067,A011,Not Specified,Sample Symptoms 81,R011
-I068,A011,Not Specified,Sample Symptoms 82,R011
-I069,A011,Not Specified,Sample Symptoms 83,R011
-I070,A011,Not Specified,Sample Symptoms 84,R011
-I071,A012,Not Specified,Sample Symptoms 85,R012
-I072,A012,Not Specified,Sample Symptoms 86,R012
-I073,A012,Not Specified,Sample Symptoms 87,R012
-I074,A012,Not Specified,Sample Symptoms 88,R012
-I075,A013,Not Specified,Sample Symptoms 89,R013
-I076,A013,Not Specified,Sample Symptoms 90,R013
-I077,A013,Not Specified,Sample Symptoms 91,R013
-I078,A013,Not Specified,Sample Symptoms 92,R013
-I079,A014,Not Specified,Sample Symptoms 93,R014
-I080,A014,Not Specified,Sample Symptoms 94,R014
-I081,A014,Not Specified,Sample Symptoms 95,R014
-I082,A014,Not Specified,Sample Symptoms 96,R014
-I083,A014,Not Specified,Sample Symptoms 97,R014
-I084,A015,Not Specified,Sample Symptoms 98,R015
-I085,A015,Not Specified,Sample Symptoms 99,R015
-I086,A015,Not Specified,Sample Symptoms 100,R015
-I087,A015,Not Specified,Sample Symptoms 101,R015
-I088,A015,Not Specified,Sample Symptoms 102,R015
-I089,A015,Not Specified,Sample Symptoms 103,R015
-I090,A015,Not Specified,Sample Symptoms 104,R015
-I091,A015,Not Specified,Sample Symptoms 105,R015
-I092,A015,Not Specified,Sample Symptoms 106,R015
-I093,A015,Not Specified,Sample Symptoms 107,R015
-I094,A015,Not Specified,Sample Symptoms 108,R015
-I095,A015,Not Specified,Sample Symptoms 109,R015
-I096,A015,Not Specified,Sample Symptoms 110,R015
-I097,A015,Not Specified,Sample Symptoms 111,R015
-I098,A015,Not Specified,Sample Symptoms 112,R015
-I099,A015,Not Specified,Sample Symptoms 113,R015
-I100,A015,Not Specified,Sample Symptoms 114,R015
-I101,A015,Not Specified,Sample Symptoms 115,R015
-I102,A015,Not Specified,Sample Symptoms 116,R015
-I103,A015,Not Specified,Sample Symptoms 117,R015
-I104,A016,Not Specified,Sample Symptoms 118,R016
-I105,A016,Not Specified,Sample Symptoms 119,R016
-I106,A016,Not Specified,Sample Symptoms 120,R016
-I107,A016,Not Specified,Sample Symptoms 121,R016
-I108,A016,Not Specified,Sample Symptoms 122,R016
-I109,A016,Not Specified,Sample Symptoms 123,R016
-I110,A016,Not Specified,Sample Symptoms 124,R016
-I111,A016,Not Specified,Sample Symptoms 125,R016
-I112,A016,Not Specified,Sample Symptoms 126,R016
-I113,A016,Not Specified,Sample Symptoms 127,R016
-I114,A017,Not Specified,Sample Symptoms 128,R017
-I115,A017,Not Specified,Sample Symptoms 129,R017
-I116,A017,Not Specified,Sample Symptoms 130,R017
-I117,A017,Not Specified,Sample Symptoms 131,R017
-I118,A017,Not Specified,Sample Symptoms 132,R017
-I119,A017,Not Specified,Sample Symptoms 133,R017
-I120,A017,Not Specified,Sample Symptoms 134,R017
-I121,A017,Not Specified,Sample Symptoms 135,R017
-I122,A018,Not Specified,Sample Symptoms 136,R018
-I123,A019,Not Specified,Sample Symptoms 137,R019
-I124,A019,Not Specified,Sample Symptoms 138,R019
-I125,A019,Not Specified,Sample Symptoms 139,R019
-I126,A019,Not Specified,Sample Symptoms 140,R019
-I127,A019,Not Specified,Sample Symptoms 141,R019
-I128,A019,Not Specified,Sample Symptoms 142,R019
-I129,A019,Not Specified,Sample Symptoms 143,R019
-I130,A020,Not Specified,Sample Symptoms 144,R020
-I131,A20,Not Specified,Sample Symptoms 145,R020
-I132,A021,Not Specified,Sample Symptoms 146,R021
-I133,A021,Not Specified,Sample Symptoms 147,R021
-I134,A021,Not Specified,Sample Symptoms 148,R021
-I135,A021,Not Specified,Sample Symptoms 149,R021
-I136,A021,Not Specified,Sample Symptoms 150,R021
-I137,A022,Not Specified,Sample Symptoms 151,R022
-I138,A022,Not Specified,Sample Symptoms 152,R022
-I139,A022,Not Specified,Sample Symptoms 153,R022
-I140,A022,Not Specified,Sample Symptoms 154,R022
-I141,A022,Not Specified,Sample Symptoms 155,R022
-I142,A022,Not Specified,Sample Symptoms 156,R022
-I143,A023,Not Specified,Sample Symptoms 157,R023
-I144,A023,Not Specified,Sample Symptoms 158,R023
-I145,A023,Not Specified,Sample Symptoms 159,R023
-I146,A023,Not Specified,Sample Symptoms 160,R023
-I147,A023,Not Specified,Sample Symptoms 161,R023
-I148,A024,Not Specified,Sample Symptoms 162,R024
-I149,A024,Not Specified,Sample Symptoms 163,R024
-I150,A025,Not Specified,Sample Symptoms 164,R025
-I151,A025,Not Specified,Sample Symptoms 165,R025
-I152,A025,Not Specified,Sample Symptoms 166,R025
-I153,A025,Not Specified,Sample Symptoms 167,R025
-I154,A025,Not Specified,Sample Symptoms 168,R025
-I155,A026,Not Specified,Sample Symptoms 169,R026
-I156,A026,Not Specified,Sample Symptoms 170,R026
-I157,A026,Not Specified,Sample Symptoms 171,R026
-I158,A026,Not Specified,Sample Symptoms 172,R026
-I159,A027,Not Specified,Sample Symptoms 173,R027
-I160,A027,Not Specified,Sample Symptoms 174,R027
-I161,A027,Not Specified,Sample Symptoms 175,R027
-I162,A027,Not Specified,Sample Symptoms 176,R027
-I163,A027,Not Specified,Sample Symptoms 177,R027
-I164,A027,Not Specified,Sample Symptoms 178,R027
-I165,A027,Not Specified,Sample Symptoms 179,R027
-I166,A027,Not Specified,Sample Symptoms 180,R027
-I167,A027,Not Specified,Sample Symptoms 181,R027
-I168,A027,Not Specified,Sample Symptoms 182,R027
-I169,A027,Not Specified,Sample Symptoms 183,R027
-I170,A027,Not Specified,Sample Symptoms 184,R027
-I171,A027,Not Specified,Sample Symptoms 185,R027
-I172,A028,Not Specified,Sample Symptoms 186,R028
-I173,A028,Not Specified,Sample Symptoms 187,R028
-I174,A028,Not Specified,Sample Symptoms 188,R028
-I175,A028,Not Specified,Sample Symptoms 189,R028
-I176,A028,Not Specified,Sample Symptoms 190,R028
-I177,A029,Not Specified,Sample Symptoms 191,R029
-I178,A029,Not Specified,Sample Symptoms 192,R029
-I179,A029,Not Specified,Sample Symptoms 193,R029
-I180,A029,Not Specified,Sample Symptoms 194,R029
-I181,A029,Not Specified,Sample Symptoms 195,R029
-I182,A029,Not Specified,Sample Symptoms 196,R029
-I183,A029,Not Specified,Sample Symptoms 197,R029
-I184,A029,Not Specified,Sample Symptoms 198,R029
-I185,A029,Not Specified,Sample Symptoms 199,R029
-I186,A029,Not Specified,Sample Symptoms 200,R029
-I187,A029,Not Specified,Sample Symptoms 201,R029
-I188,A029,Not Specified,Sample Symptoms 202,R029
-I189,A029,Not Specified,Sample Symptoms 203,R029
-I190,A030,Not Specified,Sample Symptoms 204,R030
+I001,A001,Not Specified,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R001
+R300
+"
+I002,A001,Not Specified,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R001
+R300
+"
+I003,A001,Not Specified,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R001
+R300
+"
+I004,A001,Not Specified,"Symptoms of Mycoplasma Pneumonia are often mild and appear over 1 to 3 weeks. They may become more severe in some people. Common symptoms include any of the following: chest pain, chills, cough (usually dry and not bloody), excessive sweating, fever (may be high), headache, and sore throat. Lesson common symptoms include ear pain, soreness, muscle aches and joint stiffness, neck lump, rapid breathing, and rash.","R001
+R287"
+I005,A001,Not Specified,"Symptoms for Haemophilus Influenzae usually come on quickly, and may include fever and chills, mental status and changes, nausea and vomiting, sensitivity to light, severe headache, and stiff neck. Other symptoms that can onccur include agitation, bulging fontanelles in infants, decreased consciousness, poor feeding and irritability in children, rapid breathing, and unsual posture with the head and neck arched backwards.","R001
+R286"
+I006,A001,Not Specified,"Symptoms of Streptococcus infection depend on the type and may include a sore, red throat with swollen tonsils and white spots (strep throat), a red rash on the body (scarlet fever), skin infection (impetigo), and in more severe cases blood infections, pneumonia, meningitis, and urinary tract infections.","R001
+R313"
+I007,A001,Not Specified,"Symptoms of Klebsiella (Respiratory) include sores in the anal area, small beefy-red bumps on the genitals or around the anus that may develop into raised, velvety red nodules (granulation tissue), lesions that bleed easily but are often painless, slow destruction of genital tissue, possible spread to the groin, and loss of skin color around the affected areas.","R001
+R312"
+I008,A002,Not Specified,"Symptoms of Mycoplasma Pneumonia are often mild and appear over 1 to 3 weeks. They may become more severe in some people. Common symptoms include any of the following: chest pain, chills, cough (usually dry and not bloody), excessive sweating, fever (may be high), headache, and sore throat. Lesson common symptoms include ear pain, soreness, muscle aches and joint stiffness, neck lump, rapid breathing, and rash.","R002
+R287"
+I009,A002,Not Specified,"Symptoms for Haemophilus Influenzae usually come on quickly, and may include fever and chills, mental status and changes, nausea and vomiting, sensitivity to light, severe headache, and stiff neck. Other symptoms that can onccur include agitation, bulging fontanelles in infants, decreased consciousness, poor feeding and irritability in children, rapid breathing, and unsual posture with the head and neck arched backwards.","R002
+R286"
+I010,A002,Not Specified,"Symptoms of Streptococcus infection depend on the type and may include a sore, red throat with swollen tonsils and white spots (strep throat), a red rash on the body (scarlet fever), skin infection (impetigo), and in more severe cases blood infections, pneumonia, meningitis, and urinary tract infections.","R002
+R313"
+I011,A002,Not Specified,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R002
+R300"
+I012,A003,Not Specified,"Symptoms of Pneumonia can range from mild to severe and include fever, chills, cough (usually with phlegm), shortness of breath, chest pain when you breathe or cough, nausea and/or vomiting, and diarrhea.","R003
+R219"
+I014,A003,Not Specified,"Symptoms of acute bronchitis include chest discomfort, a cough that produces mucus (which may be clear or yellow-green), fatigue, low-grade fever, shortness of breath that worsens with activity, and wheezing in people with asthma. After the infection clears, a dry, nagging cough may persist for 1 to 4 weeks.","R003
+R303"
+I015,A003,Not Specified,"Symptoms of Bronchiectasis include a long-term (chronic) cough with large amounts of foul-smelling sputum, along with breath odor, coughing up blood (less common in children), fatigue, paleness, shortness of breath that worsens with exercise, weight loss, wheezing, low-grade fever, night sweats, and, in rare cases, clubbing of the fingers depending on the underlying cause.","R003
+R288"
+I016,A003,Not Specified,"Symptoms of Pharyngitis is sore throat. Other symptoms may include fever, headache, joint pain and muscle aches, skin rashes, and swollen lymph nodes (glands) in the neck.","R003
+R222"
+I017,A003,Not Specified,"Symptoms of Psittacosis include a 5 to 15 day incubation period followed by symptoms such as blood-tinged sputum, dry cough, fatigue, fever and chills, headache, joint aches, muscle aches (most often in the head and neck), shortness of breath, diarrhea, swelling in the back of the throat (pharyngitis), inflammation of the liver, and confusion.","R003
+R289"
+I018,A003,Not Specified,"Symptoms of Mycoplasma Pneumonia are often mild and appear over 1 to 3 weeks. They may become more severe in some people. Common symptoms include any of the following: chest pain, chills, cough (usually dry and not bloody), excessive sweating, fever (may be high), headache, and sore throat. Lesson common symptoms include ear pain, soreness, muscle aches and joint stiffness, neck lump, rapid breathing, and rash.","R003
+R287"
+I019,A003,Not Specified,"Symptoms of urethritis in men include blood in the urine or semen, burning pain while urinating (dysuria), discharge from the penis, fever (rare), frequent or urgent urination, itching, tenderness or swelling in the penis, enlarged lymph nodes in the groin area, and pain during intercourse or ejaculation. In women, symptoms may include abdominal pain, burning pain while urinating, fever and chills, frequent or urgent urination, pelvic pain, pain during intercourse, and vaginal discharge.","R003
+R290"
+I020,A003,Not Specified,"Symptoms of Cystitis include cloudy or bloody urine, strong or foul-smelling urine, low fever (most people will not have a fever), pain or burning with urination, pressure or cramping in the lower middle abdomen or back, and strong need to urinate often, even right after the bladder has been emptied. ","R003
+R291"
+I021,A003,Not Specified,"Symptoms of Pyelonephritis include cloudy or bloody urine which may have a fould or strong odor, low grade fever in some people, pain or burning with urination, pressure or cramping in the lower abdomen or back, and strong need to urinate often even right after the bladd has been emptied. If the infection spread to your kidneys, symptoms may include chills and shaking, fatigue and generally ill feeling, fever above 38.3°C, pain (side, back, or groin), flushed, warmed, or reddened skin, confusion, nausea and vomiting, and sometime severe abdominal pain.","R003
+R292"
+I022,A003,Not Specified,"Symptoms of interstitial nephritis may range from mild to severe kidney problems, including acute kidney failure, and in about half of cases may involve decreased urine output and other signs of kidney failure; these symptoms include blood in the urine, fever, increased or decreased urine output, mental status changes (such as drowsiness, confusion, or coma), nausea and vomiting, rash, swelling in any area of the body, and weight gain due to fluid retention.","R003
+R217"
+I023,A003,Not Specified,"Symptoms of prostatitis can start suddenly with chills, fever, flushing of the skin, lower abdominal tenderness, and body aches, while chronic prostatitis presents with similar but milder symptoms that develop more slowly and may have symptom-free periods between episodes; urinary symptoms include blood in the urine, burning or pain during urination, difficulty starting urination or emptying the bladder, foul-smelling urine, and a weak urine stream, while other symptoms may include pain or aching in the lower abdomen above the pubic bone, lower back, perineum, or testicles, pain with ejaculation or blood in the semen, and pain during bowel movements, and in some cases may be associated with infection in or around the testicles (epididymitis).","R003
+R293"
+I025,A004,Mild,"Symptoms of sinusitis can include fever, weakness, fatigue, cough, and congestion. There may also be mucus drainage in the back of the throat, called postnasal drip.","R004
+R294"
+I025,A004,Moderate,"Symptoms of sinusitis can include fever, weakness, fatigue, cough, and congestion. There may also be mucus drainage in the back of the throat, called postnasal drip.","R004
+R294"
+I025,A004,Severe,"Symptoms of sinusitis can include fever, weakness, fatigue, cough, and congestion. There may also be mucus drainage in the back of the throat, called postnasal drip.","R004
+R294"
+I026,A004,Mild ,"Symptoms of chronic bronchitis may be mild or absent at first but typically worsen over time, and can include frequent coughing or a cough that produces a lot of mucus, wheezing, a whistling or squeaky sound when breathing, shortness of breath especially during physical activity, and a feeling of tightness in the chest; some individuals may also experience frequent respiratory infections such as colds and the flu, and in severe cases, weight loss, weakness in the lower muscles, and swelling in the ankles, feet, or legs.","R004
+R295"
+I026,A004,Moderate,"Symptoms of chronic bronchitis can include frequent coughing or a cough that produces a lot of mucus, wheezing, a whistling or squeaky sound when breathing, shortness of breath especially during physical activity, and a feeling of tightness in the chest; some individuals may also experience frequent respiratory infections such as colds and the flu, and in severe cases, weight loss, weakness in the lower muscles, and swelling in the ankles, feet, or legs.","R004
+R295"
+I026,A004,Severe,"Symptoms of chronic bronchitis can include frequent coughing or a cough that produces a lot of mucus, wheezing, a whistling or squeaky sound when breathing, shortness of breath especially during physical activity, and a feeling of tightness in the chest; some individuals may also experience frequent respiratory infections such as colds and the flu, and in severe cases, weight loss, weakness in the lower muscles, and swelling in the ankles, feet, or legs.","R004
+R295"
+I027,A004,Mild ,"Symptoms of Pneumonia includes fever, chills, cough (usually with phlegm), shortness of breath, chest pain when you breathe or cough, nausea and/or vomiting, and diarrhea.","R004
+R219"
+I027,A004,Moderate,"Symptoms of Pneumonia includes fever, chills, cough (usually with phlegm), shortness of breath, chest pain when you breathe or cough, nausea and/or vomiting, and diarrhea.","R004
+R219"
+I027,A004,Severe,"Symptoms of Pneumonia includes fever, chills, cough (usually with phlegm), shortness of breath, chest pain when you breathe or cough, nausea and/or vomiting, and diarrhea.","R004
+R219"
+I029,A004,Mild to Moderate,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R004
+R300"
+I030,A004,Mild to Moderate,"Symptoms of Pyelonephritis include cloudy or bloody urine which may have a fould or strong odor, low grade fever in some people, pain or burning with urination, pressure or cramping in the lower abdomen or back, and strong need to urinate often even right after the bladd has been emptied. If the infection spread to your kidneys, symptoms may include chills and shaking, fatigue and generally ill feeling, fever above 38.3°C, pain (side, back, or groin), flushed, warmed, or reddened skin, confusion, nausea and vomiting, and sometime severe abdominal pain.","R004
+R292"
+I031,A004,Mild to Moderate,"Symptoms of prostatitis can start suddenly with chills, fever, flushing of the skin, lower abdominal tenderness, and body aches, while chronic prostatitis presents with similar but milder symptoms that develop more slowly and may have symptom-free periods between episodes; urinary symptoms include blood in the urine, burning or pain during urination, difficulty starting urination or emptying the bladder, foul-smelling urine, and a weak urine stream, while other symptoms may include pain or aching in the lower abdomen above the pubic bone, lower back, perineum, or testicles, pain with ejaculation or blood in the semen, and pain during bowel movements, and in some cases may be associated with infection in or around the testicles (epididymitis).","R004
+R293"
+I032,A004,Mild to Moderate,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R004
+R300"
+I033,A005,Mild,"Symptoms of sinusitis can include fever, weakness, fatigue, cough, and congestion. There may also be mucus drainage in the back of the throat, called postnasal drip.","R005
+R294"
+I033,A005,Moderate,"Symptoms of sinusitis can include fever, weakness, fatigue, cough, and congestion. There may also be mucus drainage in the back of the throat, called postnasal drip.","R005
+R294"
+I033,A005,Severe,"Symptoms of sinusitis can include fever, weakness, fatigue, cough, and congestion. There may also be mucus drainage in the back of the throat, called postnasal drip.","R005
+R294"
+I034,A005,Mild ,"Symptoms of chronic bronchitis may be mild or absent at first but typically worsen over time, and can include frequent coughing or a cough that produces a lot of mucus, wheezing, a whistling or squeaky sound when breathing, shortness of breath especially during physical activity, and a feeling of tightness in the chest; some individuals may also experience frequent respiratory infections such as colds and the flu, and in severe cases, weight loss, weakness in the lower muscles, and swelling in the ankles, feet, or legs.","R005
+R295"
+I034,A005,Moderate,"Symptoms of chronic bronchitis can include frequent coughing or a cough that produces a lot of mucus, wheezing, a whistling or squeaky sound when breathing, shortness of breath especially during physical activity, and a feeling of tightness in the chest; some individuals may also experience frequent respiratory infections such as colds and the flu, and in severe cases, weight loss, weakness in the lower muscles, and swelling in the ankles, feet, or legs.","R005
+R295"
+I034,A005,Severe,"Symptoms of chronic bronchitis can include frequent coughing or a cough that produces a lot of mucus, wheezing, a whistling or squeaky sound when breathing, shortness of breath especially during physical activity, and a feeling of tightness in the chest; some individuals may also experience frequent respiratory infections such as colds and the flu, and in severe cases, weight loss, weakness in the lower muscles, and swelling in the ankles, feet, or legs.","R005
+R295"
+I035,A005,Mild,"Symptoms of Pneumonia includes fever, chills, cough (usually with phlegm), shortness of breath, chest pain when you breathe or cough, nausea and/or vomiting, and diarrhea.","R005
+R219"
+I035,A005,Moderate,"Symptoms of Pneumonia includes fever, chills, cough (usually with phlegm), shortness of breath, chest pain when you breathe or cough, nausea and/or vomiting, and diarrhea.","R005
+R219"
+I035,A005,Severe,"Symptoms of Pneumonia includes fever, chills, cough (usually with phlegm), shortness of breath, chest pain when you breathe or cough, nausea and/or vomiting, and diarrhea.","R005
+R219"
+I036,A005,Not Specified,"Symptoms of sinusitis can include fever, weakness, fatigue, cough, and congestion. There may also be mucus drainage in the back of the throat, called postnasal drip.","R005
+R294"
+I037,A005,Not Specified,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R005
+R300"
+I038,A005,Not Specified,"Symptoms of Pyelonephritis include cloudy or bloody urine which may have a fould or strong odor, low grade fever in some people, pain or burning with urination, pressure or cramping in the lower abdomen or back, and strong need to urinate often even right after the bladd has been emptied. If the infection spread to your kidneys, symptoms may include chills and shaking, fatigue and generally ill feeling, fever above 38.3°C, pain (side, back, or groin), flushed, warmed, or reddened skin, confusion, nausea and vomiting, and sometime severe abdominal pain.","R005
+R292"
+I039,A005,Not Specified,"Symptoms of prostatitis can start suddenly with chills, fever, flushing of the skin, lower abdominal tenderness, and body aches, while chronic prostatitis presents with similar but milder symptoms that develop more slowly and may have symptom-free periods between episodes; urinary symptoms include blood in the urine, burning or pain during urination, difficulty starting urination or emptying the bladder, foul-smelling urine, and a weak urine stream, while other symptoms may include pain or aching in the lower abdomen above the pubic bone, lower back, perineum, or testicles, pain with ejaculation or blood in the semen, and pain during bowel movements, and in some cases may be associated with infection in or around the testicles (epididymitis).","R005
+R293"
+I041,A006,Not Specified,"Symptoms of sinusitis can include fever, weakness, fatigue, cough, and congestion. There may also be mucus drainage in the back of the throat, called postnasal drip.","R006
+R294"
+I042,A006,Not Specified,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R006
+R300"
+I043,A007,Not Specified,"Symptoms of Pneumonia can range from mild to severe and include fever, chills, cough (usually with phlegm), shortness of breath, chest pain when you breathe or cough, nausea and/or vomiting, and diarrhea.","R007
+R219"
+I044,A007,Not Specified,"Symptoms of gonorrhea may not always be present; in men, it can cause pain when urinating and discharge from the penis, while in women, early symptoms are often mild but may include bleeding between periods, pain when urinating, and increased vaginal discharge.","R007
+R296"
+I045,A008,Mild to Moderate,"Symptoms of chronic bronchitis may be mild or absent at first but typically worsen over time, and can include frequent coughing or a cough that produces a lot of mucus, wheezing, a whistling or squeaky sound when breathing, shortness of breath especially during physical activity, and a feeling of tightness in the chest; some individuals may also experience frequent respiratory infections such as colds and the flu, and in severe cases, weight loss, weakness in the lower muscles, and swelling in the ankles, feet, or legs.","R008
+R295"
+I046,A008,Not Specified,"Symptoms of sinusitis can include fever, weakness, fatigue, cough, and congestion. There may also be mucus drainage in the back of the throat, called postnasal drip.","R008
+R294"
+I048,A008,Mild to Moderate,"Symptoms of Pneumonia can range from mild to severe and include fever, chills, cough (usually with phlegm), shortness of breath, chest pain when you breathe or cough, nausea and/or vomiting, and diarrhea.","R008
+R219"
+I049,A008,Not Specified,"Symptoms of Pharyngitis is sore throat. Other symptoms may include fever, headache, joint pain and muscle aches, skin rashes, and swollen lymph nodes (glands) in the neck.","R008
+R222"
+I050,A008,Not Specified,"Symptoms of urethritis in men include blood in the urine or semen, burning pain while urinating (dysuria), discharge from the penis, fever (rare), frequent or urgent urination, itching, tenderness or swelling in the penis, enlarged lymph nodes in the groin area, and pain during intercourse or ejaculation. In women, symptoms may include abdominal pain, burning pain while urinating, fever and chills, frequent or urgent urination, pelvic pain, pain during intercourse, and vaginal discharge.","R008
+R290"
+I051,A008,Not Specified,"Symptoms of cervicitis may include abnormal vaginal bleeding after intercourse or between periods, unusual vaginal discharge that may be gray, white, or yellow in color, painful sexual intercourse, vaginal pain, pressure or heaviness in the pelvis, painful urination, and vaginal itching, although in some cases there may be no symptoms at all.","R008
+R297"
+I052,A009,Mild to Moderate,"Symptoms of Pneumonia can range from mild to severe and include fever, chills, cough (usually with phlegm), shortness of breath, chest pain when you breathe or cough, nausea and/or vomiting, and diarrhea.","R009
+R219"
+I053,A009,Not Specified,"Symptoms of chronic bronchitis may be mild or absent at first but typically worsen over time, and can include frequent coughing or a cough that produces a lot of mucus, wheezing, a whistling or squeaky sound when breathing, shortness of breath especially during physical activity, and a feeling of tightness in the chest; some individuals may also experience frequent respiratory infections such as colds and the flu, and in severe cases, weight loss, weakness in the lower muscles, and swelling in the ankles, feet, or legs.","R009
+R295"
+I054,A009,Not Specified,"Symptoms of sinusitis can include fever, weakness, fatigue, cough, and congestion. There may also be mucus drainage in the back of the throat, called postnasal drip.","R009
+R294"
+I055,A009,Not Specified,"Symptoms of tonsillitis include a sore throat that may be severe, red and swollen tonsils, difficulty swallowing, a white or yellow coating on the tonsils, swollen glands in the neck, fever, and bad breath.","R009
+R298"
+I056,A009,Not Specified,"Symptoms of Pharyngitis is sore throat. Other symptoms may include fever, headache, joint pain and muscle aches, skin rashes, and swollen lymph nodes (glands) in the neck.","R009
+R222"
+I057,A009,Not Specified,"Symptoms of acute otitis media vary by age. In infants, the main signs may include irritability or inconsolable crying, fever, and trouble sleeping, while in older children and adults symptoms can include ear pain, fullness in the ear, general feeling of illness, nasal congestion, cough, lethargy, vomiting, diarrhea, hearing loss in the affected ear, drainage of fluid from the ear, and loss of appetite.","R009
+R299"
+I059,A010,Not Specified,"Symptoms of lower respiratory tract infection (such as RSV infection) include runny nose, decreased appetite, cough, sneezing, fever, and wheezing.","R010
+R318"
+I060,A010,Not Specified,"Symptoms of acute otitis media vary by age. In infants, the main signs may include irritability or inconsolable crying, fever, and trouble sleeping, while in older children and adults symptoms can include ear pain, fullness in the ear, general feeling of illness, nasal congestion, cough, lethargy, vomiting, diarrhea, hearing loss in the affected ear, drainage of fluid from the ear, and loss of appetite.","R010
+R299"
+I061,A010,Mild to Moderate,"Symptoms of urethritis in men include blood in the urine or semen, burning pain while urinating (dysuria), discharge from the penis, fever (rare), frequent or urgent urination, itching, tenderness or swelling in the penis, enlarged lymph nodes in the groin area, and pain during intercourse or ejaculation. In women, symptoms may include abdominal pain, burning pain while urinating, fever and chills, frequent or urgent urination, pelvic pain, pain during intercourse, and vaginal discharge.","R010
+R290"
+I062,A010,Mild,"Symptoms of cervicitis may include abnormal vaginal bleeding after intercourse or between periods, unusual vaginal discharge that may be gray, white, or yellow in color, painful sexual intercourse, vaginal pain, pressure or heaviness in the pelvis, painful urination, and vaginal itching, although in some cases there may be no symptoms at all.","R010
+R297"
+I063,A011,Not Specified,"Symptoms of upper respiratory tract infection include sneezing, a stuffy or congested nose, runny nose, sore throat, coughing, and headache.","R011
+R317"
+I064,A011,Not Specified,"Symptoms of lower respiratory tract infection (such as RSV infection) include runny nose, decreased appetite, cough, sneezing, fever, and wheezing.","R011
+R318"
+I065,A011,Not Specified,"Symptoms of acute otitis media vary by age. In infants, the main signs may include irritability or inconsolable crying, fever, and trouble sleeping, while in older children and adults symptoms can include ear pain, fullness in the ear, general feeling of illness, nasal congestion, cough, lethargy, vomiting, diarrhea, hearing loss in the affected ear, drainage of fluid from the ear, and loss of appetite.","R011
+R299"
+I066,A011,Not Specified,"Symptoms of Cystitis include cloudy or bloody urine, strong or foul-smelling urine, low fever (most people will not have a fever), pain or burning with urination, pressure or cramping in the lower middle abdomen or back, and strong need to urinate often, even right after the bladder has been emptied. ","R011
+R291"
+I067,A011,Not Specified,"Symptoms of Pyelonephritis include cloudy or bloody urine which may have a fould or strong odor, low grade fever in some people, pain or burning with urination, pressure or cramping in the lower abdomen or back, and strong need to urinate often even right after the bladd has been emptied. If the infection spread to your kidneys, symptoms may include chills and shaking, fatigue and generally ill feeling, fever above 38.3°C, pain (side, back, or groin), flushed, warmed, or reddened skin, confusion, nausea and vomiting, and sometime severe abdominal pain.","R011
+R292"
+I068,A011,Not Specified,"Symptoms of asymptomatic bacteriuria include no symptoms at all; however, burning during urination, increased urgency to urinate, and increased frequency of urination are not present in this condition and instead suggest a urinary tract infection.","R011
+R310"
+I071,A012,Not Specified,"Symptoms of acute ear infection include irritability or inconsolable crying in infants, fever, trouble sleeping, and ear tugging (not always present), while in older children and adults symptoms may include ear pain, fullness in the ear, general feeling of illness, nasal congestion, cough, lethargy, vomiting, diarrhea, hearing loss in the affected ear, drainage of fluid from the ear, and loss of appetite, and in some cases sudden yellow or green ear discharge may indicate a ruptured eardrum.","R012
+R299"
+I072,A012,Not Specified,"Symptoms of acute otitis media vary by age. In infants, the main signs may include irritability or inconsolable crying, fever, and trouble sleeping, while in older children and adults symptoms can include ear pain, fullness in the ear, general feeling of illness, nasal congestion, cough, lethargy, vomiting, diarrhea, hearing loss in the affected ear, drainage of fluid from the ear, and loss of appetite.","R012
+R299"
+I073,A012,Not Specified,"Symptoms of lower respiratory tract infection (such as RSV infection) include runny nose, decreased appetite, cough, sneezing, fever, and wheezing.","R012
+R318"
+I074,A012,Not Specified,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R012
+R300"
+I075,A013,Not Specified,"Symptoms of upper respiratory tract infection include sneezing, a stuffy or congested nose, runny nose, sore throat, coughing, and headache.","R013
+R317"
+I076,A013,Not Specified,"Symptoms of acute otitis media vary by age. In infants, the main signs may include irritability or inconsolable crying, fever, and trouble sleeping, while in older children and adults symptoms can include ear pain, fullness in the ear, general feeling of illness, nasal congestion, cough, lethargy, vomiting, diarrhea, hearing loss in the affected ear, drainage of fluid from the ear, and loss of appetite.","R013
+R299"
+I077,A013,Not Specified,"Symptoms of lower respiratory tract infection (such as RSV infection) include runny nose, decreased appetite, cough, sneezing, fever, and wheezing.","R013
+R318"
+I078,A013,Not Specified,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R013
+R300"
+I079,A014,Not Specified,"Symptoms of Pharyngitis is sore throat. Other symptoms may include fever, headache, joint pain and muscle aches, skin rashes, and swollen lymph nodes (glands) in the neck.","R014
+R222"
+I080,A014,Not Specified,"Symptoms of sinusitis can include fever, weakness, fatigue, cough, and congestion. There may also be mucus drainage in the back of the throat, called postnasal drip.","R014
+R294"
+I081,A014,Not Specified,"Symptoms of chronic bronchitis may be mild or absent at first but typically worsen over time, and can include frequent coughing or a cough that produces a lot of mucus, wheezing, a whistling or squeaky sound when breathing, shortness of breath especially during physical activity, and a feeling of tightness in the chest; some individuals may also experience frequent respiratory infections such as colds and the flu, and in severe cases, weight loss, weakness in the lower muscles, and swelling in the ankles, feet, or legs.","R014
+R295"
+I082,A014,Not Specified,"Symptoms of Pneumonia can range from mild to severe and include fever, chills, cough (usually with phlegm), shortness of breath, chest pain when you breathe or cough, nausea and/or vomiting, and diarrhea.","R014
+R219"
+I083,A014,Not Specified,"Symptoms of acute otitis media vary by age. In infants, the main signs may include irritability or inconsolable crying, fever, and trouble sleeping, while in older children and adults symptoms can include ear pain, fullness in the ear, general feeling of illness, nasal congestion, cough, lethargy, vomiting, diarrhea, hearing loss in the affected ear, drainage of fluid from the ear, and loss of appetite.","R014
+R299"
+I084,A015,Not Specified,"Symptoms of acute bronchitis include chest discomfort, a cough that produces mucus (which may be clear or yellow-green), fatigue, low-grade fever, shortness of breath that worsens with activity, and wheezing in people with asthma. After the infection clears, a dry, nagging cough may persist for 1 to 4 weeks.","R015
+R303"
+I085,A015,Not Specified,"Symptoms of chronic bronchitis may be mild or absent at first but typically worsen over time, and can include frequent coughing or a cough that produces a lot of mucus, wheezing, a whistling or squeaky sound when breathing, shortness of breath especially during physical activity, and a feeling of tightness in the chest; some individuals may also experience frequent respiratory infections such as colds and the flu, and in severe cases, weight loss, weakness in the lower muscles, and swelling in the ankles, feet, or legs.","R015
+R295"
+I086,A015,Not Specified,"Symptoms of Pneumonia can range from mild to severe and include fever, chills, cough (usually with phlegm), shortness of breath, chest pain when you breathe or cough, nausea and/or vomiting, and diarrhea.","R015
+R219"
+I087,A015,Not Specified,"Symptoms of sinusitis can include fever, weakness, fatigue, cough, and congestion. There may also be mucus drainage in the back of the throat, called postnasal drip.","R015
+R294"
+I088,A015,Not Specified,"Symptoms of Pharyngitis is sore throat. Other symptoms may include fever, headache, joint pain and muscle aches, skin rashes, and swollen lymph nodes (glands) in the neck.","R015
+R222"
+I089,A015,Not Specified,,R015
+I090,A015,Not Specified,"Symptoms of Legionella pneumophila infection (Legionnaires’ disease) usually appear 2 to 14 days after exposure and include cough, high fever, chills, headache, chest pain, shortness of breath, fatigue, nausea and vomiting, diarrhea, and confusion.","R015
+R301"
+I091,A015,Not Specified,"Symptoms of Bordetella pertussis infection (whooping cough) usually occur in three stages. In the first stage, symptoms are similar to a common cold and may include a runny nose, mild fever, mild cough, and in infants, pauses in breathing (apnea). In the second stage, symptoms become more severe and include intense coughing fits followed by a high-pitched “whoop” sound, vomiting after coughing, and extreme fatigue after coughing episodes. In the third stage, the symptoms begin to improve, with a milder and less frequent cough during recovery.","R015
+R304"
+I092,A015,Not Specified,"Symptoms of Mycoplasma Pneumonia are often mild and appear over 1 to 3 weeks. They may become more severe in some people. Common symptoms include any of the following: chest pain, chills, cough (usually dry and not bloody), excessive sweating, fever (may be high), headache, and sore throat. Lesson common symptoms include ear pain, soreness, muscle aches and joint stiffness, neck lump, rapid breathing, and rash.","R015
+R287"
+I094,A015,Not Specified,"Symptoms of Chlamydia trachomatis infection often do not appear, so many people may not realize they are infected. When symptoms do occur, they may appear several weeks after exposure. In women, symptoms can include abnormal vaginal discharge that may have a strong smell, a burning sensation when urinating, and if the infection spreads, lower abdominal pain, pain during sex, nausea, and fever. In men, symptoms may include discharge from the penis, a burning sensation when urinating, and pain or swelling in one or both testicles (less common). If the infection affects the rectum, it can cause rectal pain, discharge, and bleeding in both men and women.","R015
+R305"
+I095,A015,Not Specified,"Symptoms of Mycobacterium avium complex (MAC) infection are not specifically listed in the text, but it is described as a type of lung infection that often affects people with HIV.","R015
+R314"
+I096,A015,Not Specified,"Symptoms of Mycobacterium leprae infection include skin lesions or damaged skin areas, loss of sensation in affected areas, nerve damage causing numbness (especially in the hands and feet), muscle weakness, and in severe cases vision problems, nasal tissue damage, and shortening or loss of fingers or toes, with some patients also experiencing fever and painful nodules during reaction episodes.","R015
+R306"
+I097,A015,Not Specified,"Symptoms of Campylobacter infection typically start 2 to 4 days after exposure and may last about a week, and include cramping abdominal pain, fever, nausea and vomiting, and watery diarrhea that may sometimes be bloody.","R015
+R307"
+I098,A015,Not Specified,"Symptoms of gonorrhea may not always be present; in men, it can cause pain when urinating and discharge from the penis, while in women, early symptoms are often mild but may include bleeding between periods, pain when urinating, and increased vaginal discharge.","R015
+R296"
+I100,A015,Not Specified,"Symptoms of Streptococcus infection depend on the type and may include a sore, red throat with swollen tonsils and white spots (strep throat), a red rash on the body (scarlet fever), skin infection (impetigo), and in more severe cases blood infections, pneumonia, meningitis, and urinary tract infections.","R015
+R313"
+I101,A015,Not Specified,"Symptoms of Methicillin-resistant Staphylococcus aureus (MRSA) include a red, swollen, and painful area on the skin that may drain pus or other fluids and look like a boil, especially where the skin has been cut or rubbed, and in more severe infections (often in health care settings) symptoms may include chest pain, cough or shortness of breath, fatigue, fever and chills, general ill feeling, headache, rash, and wounds that do not heal.","R015
+R308"
+I102,A015,Not Specified,"Symptoms of soft tissue infection may include a small, red, painful lump or bump on the skin that spreads, a rapidly enlarging bruise-like area that may develop within an hour, a center that becomes dark, dusky, and then black as the tissue dies, and skin that may break open and ooze fluid. Other symptoms may include feeling ill, fever, sweating, chills, nausea, dizziness, weakness, and shock.","R015
+R315"
+I103,A015,Not Specified,"Symptoms of duodenal ulcer include a burning stomach pain that often starts between meals or during the night, may briefly improve after eating or taking antacids, lasts for minutes to hours, and can come and go for several days or weeks.","R015
+R316"
+I104,A016,Not Specified,"Symptoms of Streptococcus infection depend on the type and may include a sore, red throat with swollen tonsils and white spots (strep throat), a red rash on the body (scarlet fever), skin infection (impetigo), and in more severe cases blood infections, pneumonia, meningitis, and urinary tract infections.","R016
+R313"
+I105,A016,Not Specified,"Symptoms of Pharyngitis is sore throat. Other symptoms may include fever, headache, joint pain and muscle aches, skin rashes, and swollen lymph nodes (glands) in the neck.","R016
+R222"
+I106,A016,Not Specified,"Symptoms of tonsillitis include a sore throat that may be severe, red and swollen tonsils, difficulty swallowing, a white or yellow coating on the tonsils, swollen glands in the neck, fever, and bad breath.","R016
+R298"
+I107,A016,Not Specified,"Symptoms of sinusitis can include fever, weakness, fatigue, cough, and congestion. There may also be mucus drainage in the back of the throat, called postnasal drip.","R016
+R294"
+I108,A016,Not Specified,"Symptoms of atypical pneumonia include chills, cough (which may produce bloody mucus in Legionella pneumonia), fever that may be mild or high, and shortness of breath that may occur mainly with exertion. Other symptoms include chest pain that worsens with deep breathing or coughing, confusion (especially in older adults or those with Legionella pneumonia), headache, loss of appetite, low energy and fatigue, muscle aches and joint stiffness, sweating and clammy skin, and in some cases diarrhea and vomiting, ear pain, eye pain or soreness, neck lump, rash, and sore throat (more commonly seen with Mycoplasma pneumonia).","R016
+R309"
+I109,A016,Not Specified,"Symptoms of acute bronchitis include chest discomfort, a cough that produces mucus (which may be clear or yellow-green), fatigue, low-grade fever, shortness of breath that worsens with activity, and wheezing in people with asthma. After the infection clears, a dry, nagging cough may persist for 1 to 4 weeks.","R016
+R303"
+I110,A016,Not Specified,"Symptoms of chronic bronchitis may be mild or absent at first but typically worsen over time, and can include frequent coughing or a cough that produces a lot of mucus, wheezing, a whistling or squeaky sound when breathing, shortness of breath especially during physical activity, and a feeling of tightness in the chest; some individuals may also experience frequent respiratory infections such as colds and the flu, and in severe cases, weight loss, weakness in the lower muscles, and swelling in the ankles, feet, or legs.","R016
+R295"
+I111,A016,Not Specified,"Symptoms for Haemophilus Influenzae usually come on quickly, and may include fever and chills, mental status and changes, nausea and vomiting, sensitivity to light, severe headache, and stiff neck. Other symptoms that can onccur include agitation, bulging fontanelles in infants, decreased consciousness, poor feeding and irritability in children, rapid breathing, and unsual posture with the head and neck arched backwards.","R016
+R286"
+I112,A016,Not Specified,"Symptoms of Mycoplasma Pneumonia are often mild and appear over 1 to 3 weeks. They may become more severe in some people. Common symptoms include any of the following: chest pain, chills, cough (usually dry and not bloody), excessive sweating, fever (may be high), headache, and sore throat. Lesson common symptoms include ear pain, soreness, muscle aches and joint stiffness, neck lump, rapid breathing, and rash.","R016
+R287"
+I113,A016,Not Specified,"Symptoms of Streptococcus infection depend on the type and may include a sore, red throat with swollen tonsils and white spots (strep throat), a red rash on the body (scarlet fever), skin infection (impetigo), and in more severe cases blood infections, pneumonia, meningitis, and urinary tract infections.","R016
+R313"
+I114,A017,Not Specified,"Symptoms of Cystitis include cloudy or bloody urine, strong or foul-smelling urine, low fever (most people will not have a fever), pain or burning with urination, pressure or cramping in the lower middle abdomen or back, and strong need to urinate often, even right after the bladder has been emptied. ","R017
+R291"
+I117,A017,Not Specified,"Symptoms of urethritis in men include blood in the urine or semen, burning pain while urinating (dysuria), discharge from the penis, fever (rare), frequent or urgent urination, itching, tenderness or swelling in the penis, enlarged lymph nodes in the groin area, and pain during intercourse or ejaculation. In women, symptoms may include abdominal pain, burning pain while urinating, fever and chills, frequent or urgent urination, pelvic pain, pain during intercourse, and vaginal discharge.","R017
+R290"
+I118,A017,Not Specified,"Symptoms of asymptomatic bacteriuria include no symptoms at all; however, burning during urination, increased urgency to urinate, and increased frequency of urination are not present in this condition and instead suggest a urinary tract infection.","R017
+R310"
+I119,A017,Not Specified,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R017
+R300"
+I122,A018,Not Specified,"Symptoms of Cystitis include cloudy or bloody urine, strong or foul-smelling urine, low fever (most people will not have a fever), pain or burning with urination, pressure or cramping in the lower middle abdomen or back, and strong need to urinate often, even right after the bladder has been emptied. ","R018
+R291"
+I126,A019,Not Specified,"Symptoms of urethritis in men include blood in the urine or semen, burning pain while urinating (dysuria), discharge from the penis, fever (rare), frequent or urgent urination, itching, tenderness or swelling in the penis, enlarged lymph nodes in the groin area, and pain during intercourse or ejaculation. In women, symptoms may include abdominal pain, burning pain while urinating, fever and chills, frequent or urgent urination, pelvic pain, pain during intercourse, and vaginal discharge.","R019
+R290"
+I127,A019,Not Specified,"Symptoms of asymptomatic bacteriuria include no symptoms at all; however, burning during urination, increased urgency to urinate, and increased frequency of urination are not present in this condition and instead suggest a urinary tract infection.","R019
+R310"
+I128,A019,Not Specified,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R019
+R300"
+I130,A020,Not Specified,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R020
+R300"
+I131,A20,Not Specified,"Symptoms of lower respiratory tract infection (such as RSV infection) include runny nose, decreased appetite, cough, sneezing, fever, and wheezing.","R020
+R318"
+I132,A021,Not Specified,"Symptoms of Pharyngitis is sore throat. Other symptoms may include fever, headache, joint pain and muscle aches, skin rashes, and swollen lymph nodes (glands) in the neck.","R021
+R222"
+I133,A021,Not Specified,"Symptoms of acute otitis media vary by age. In infants, the main signs may include irritability or inconsolable crying, fever, and trouble sleeping, while in older children and adults symptoms can include ear pain, fullness in the ear, general feeling of illness, nasal congestion, cough, lethargy, vomiting, diarrhea, hearing loss in the affected ear, drainage of fluid from the ear, and loss of appetite.","R021
+R299"
+I134,A021,Not Specified,"Symptoms of sinusitis can include fever, weakness, fatigue, cough, and congestion. There may also be mucus drainage in the back of the throat, called postnasal drip.","R021
+R294"
+I135,A021,Not Specified,"Symptoms of chronic bronchitis may be mild or absent at first but typically worsen over time, and can include frequent coughing or a cough that produces a lot of mucus, wheezing, a whistling or squeaky sound when breathing, shortness of breath especially during physical activity, and a feeling of tightness in the chest; some individuals may also experience frequent respiratory infections such as colds and the flu, and in severe cases, weight loss, weakness in the lower muscles, and swelling in the ankles, feet, or legs.","R021
+R295"
+I136,A021,Not Specified,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R021
+R300"
+I137,A022,Not Specified,"Symptoms of Pharyngitis is sore throat. Other symptoms may include fever, headache, joint pain and muscle aches, skin rashes, and swollen lymph nodes (glands) in the neck.","R022
+R222"
+I138,A022,Not Specified,"Symptoms of acute otitis media vary by age. In infants, the main signs may include irritability or inconsolable crying, fever, and trouble sleeping, while in older children and adults symptoms can include ear pain, fullness in the ear, general feeling of illness, nasal congestion, cough, lethargy, vomiting, diarrhea, hearing loss in the affected ear, drainage of fluid from the ear, and loss of appetite.","R022
+R299"
+I139,A022,Not Specified,"Symptoms of sinusitis can include fever, weakness, fatigue, cough, and congestion. There may also be mucus drainage in the back of the throat, called postnasal drip.","R022
+R294"
+I140,A022,Not Specified,"Symptoms of chronic bronchitis may be mild or absent at first but typically worsen over time, and can include frequent coughing or a cough that produces a lot of mucus, wheezing, a whistling or squeaky sound when breathing, shortness of breath especially during physical activity, and a feeling of tightness in the chest; some individuals may also experience frequent respiratory infections such as colds and the flu, and in severe cases, weight loss, weakness in the lower muscles, and swelling in the ankles, feet, or legs.","R022
+R295"
+I141,A022,Not Specified,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R022
+R300"
+I142,A022,Not Specified,"Symptoms of Lyme disease include a slowly expanding red rash (often bull’s-eye shaped) at the site of the tick bite, flu-like symptoms, enlarged lymph nodes, additional skin rashes, fatigue, headache, muscle and joint aches, facial paralysis, numbness or weakness in the hands or feet, difficulty concentrating or memory problems, heart palpitations or irregular heartbeat, and joint pain and swelling, especially in the knees.","R022
+R311"
+I143,A023,Not Specified,"Symptoms of acute bronchitis include chest discomfort, a cough that produces mucus (which may be clear or yellow-green), fatigue, low-grade fever, shortness of breath that worsens with activity, and wheezing in people with asthma. After the infection clears, a dry, nagging cough may persist for 1 to 4 weeks.","R023
+R303"
+I144,A023,Not Specified,"Symptoms of acute otitis media vary by age. In infants, the main signs may include irritability or inconsolable crying, fever, and trouble sleeping, while in older children and adults symptoms can include ear pain, fullness in the ear, general feeling of illness, nasal congestion, cough, lethargy, vomiting, diarrhea, hearing loss in the affected ear, drainage of fluid from the ear, and loss of appetite.","R023
+R299"
+I145,A023,Not Specified,"Symptoms of Pharyngitis is sore throat. Other symptoms may include fever, headache, joint pain and muscle aches, skin rashes, and swollen lymph nodes (glands) in the neck.","R023
+R222"
+I146,A023,Not Specified,"Symptoms of sinusitis can include fever, weakness, fatigue, cough, and congestion. There may also be mucus drainage in the back of the throat, called postnasal drip.","R023
+R294"
+I147,A023,Not Specified,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R023
+R300"
+I148,A024,Not Specified,"Symptoms of lower respiratory tract infection (such as RSV infection) include runny nose, decreased appetite, cough, sneezing, fever, and wheezing.","R024
+R318"
+I149,A024,Not Specified,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R024
+R300"
+I150,A025,Not Specified,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R025
+R300"
+I151,A025,Not Specified,"Symptoms of lower respiratory tract infection (such as RSV infection) include runny nose, decreased appetite, cough, sneezing, fever, and wheezing.","R025
+R318"
+I152,A025,Not Specified,"Symptoms of sinusitis can include fever, weakness, fatigue, cough, and congestion. There may also be mucus drainage in the back of the throat, called postnasal drip.","R025
+R294"
+I153,A025,Not Specified,"Symptoms of upper respiratory tract infection include sneezing, a stuffy or congested nose, runny nose, sore throat, coughing, and headache.","R025
+R317"
+I154,A025,Not Specified,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R025
+R300"
+I155,A026,Not Specified,"Symptoms of lower respiratory tract infection (such as RSV infection) include runny nose, decreased appetite, cough, sneezing, fever, and wheezing.","R026
+R318"
+I156,A026,Not Specified,"Symptoms of Legionella pneumophila infection (Legionnaires’ disease) usually appear 2 to 14 days after exposure and include cough, high fever, chills, headache, chest pain, shortness of breath, fatigue, nausea and vomiting, diarrhea, and confusion.","R026
+R301"
+I157,A026,Not Specified,"Symptoms of tuberculosis (TB) include a persistent cough, sometimes lasting weeks, chest pain, shortness of breath, fatigue, and fever. In more severe cases, TB can also cause chills, night sweats, weight loss, and coughing up blood.","R026
+R302"
+I158,A026,Not Specified,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R026
+R300"
+I159,A027,Not Specified,"Symptoms of acute bronchitis include chest discomfort, a cough that produces mucus (which may be clear or yellow-green), fatigue, low-grade fever, shortness of breath that worsens with activity, and wheezing in people with asthma. After the infection clears, a dry, nagging cough may persist for 1 to 4 weeks.","R027
+R303"
+I160,A027,Not Specified,"Symptoms of chronic bronchitis may be mild or absent at first but typically worsen over time, and can include frequent coughing or a cough that produces a lot of mucus, wheezing, a whistling or squeaky sound when breathing, shortness of breath especially during physical activity, and a feeling of tightness in the chest; some individuals may also experience frequent respiratory infections such as colds and the flu, and in severe cases, weight loss, weakness in the lower muscles, and swelling in the ankles, feet, or legs.","R027
+R295"
+I161,A027,Not Specified,"Symptoms of Bronchiectasis include a long-term (chronic) cough with large amounts of foul-smelling sputum, along with breath odor, coughing up blood (less common in children), fatigue, paleness, shortness of breath that worsens with exercise, weight loss, wheezing, low-grade fever, night sweats, and, in rare cases, clubbing of the fingers depending on the underlying cause.","R027
+R288"
+I162,A027,Not Specified,"Symptoms of upper respiratory tract infection include sneezing, a stuffy or congested nose, runny nose, sore throat, coughing, and headache.","R027
+R317"
+I163,A027,Not Specified,"Symptoms of Pneumonia can range from mild to severe and include fever, chills, cough (usually with phlegm), shortness of breath, chest pain when you breathe or cough, nausea and/or vomiting, and diarrhea.","R027
+R219"
+I164,A027,Not Specified,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R027
+R300"
+I165,A027,Not Specified,"Symptoms of Pyelonephritis include cloudy or bloody urine which may have a fould or strong odor, low grade fever in some people, pain or burning with urination, pressure or cramping in the lower abdomen or back, and strong need to urinate often even right after the bladd has been emptied. If the infection spread to your kidneys, symptoms may include chills and shaking, fatigue and generally ill feeling, fever above 38.3°C, pain (side, back, or groin), flushed, warmed, or reddened skin, confusion, nausea and vomiting, and sometime severe abdominal pain.","R027
+R292"
+I166,A027,Not Specified,"Symptoms of Cystitis include cloudy or bloody urine, strong or foul-smelling urine, low fever (most people will not have a fever), pain or burning with urination, pressure or cramping in the lower middle abdomen or back, and strong need to urinate often, even right after the bladder has been emptied. ","R027
+R291"
+I167,A027,Not Specified,"Symptoms of urethritis in men include blood in the urine or semen, burning pain while urinating (dysuria), discharge from the penis, fever (rare), frequent or urgent urination, itching, tenderness or swelling in the penis, enlarged lymph nodes in the groin area, and pain during intercourse or ejaculation. In women, symptoms may include abdominal pain, burning pain while urinating, fever and chills, frequent or urgent urination, pelvic pain, pain during intercourse, and vaginal discharge.","R027
+R290"
+I168,A027,Not Specified,"Symptoms of sinusitis can include fever, weakness, fatigue, cough, and congestion. There may also be mucus drainage in the back of the throat, called postnasal drip.","R027
+R294"
+I169,A027,Not Specified,"Symptoms of tonsillitis include a sore throat that may be severe, red and swollen tonsils, difficulty swallowing, a white or yellow coating on the tonsils, swollen glands in the neck, fever, and bad breath.","R027
+R298"
+I170,A027,Not Specified,"Symptoms of Pharyngitis is sore throat. Other symptoms may include fever, headache, joint pain and muscle aches, skin rashes, and swollen lymph nodes (glands) in the neck.","R027
+R222"
+I171,A027,Not Specified,"Symptoms of acute otitis media vary by age. In infants, the main signs may include irritability or inconsolable crying, fever, and trouble sleeping, while in older children and adults symptoms can include ear pain, fullness in the ear, general feeling of illness, nasal congestion, cough, lethargy, vomiting, diarrhea, hearing loss in the affected ear, drainage of fluid from the ear, and loss of appetite.","R027
+R299"
+I172,A028,Not Specified,"Symptoms of acute otitis media vary by age. In infants, the main signs may include irritability or inconsolable crying, fever, and trouble sleeping, while in older children and adults symptoms can include ear pain, fullness in the ear, general feeling of illness, nasal congestion, cough, lethargy, vomiting, diarrhea, hearing loss in the affected ear, drainage of fluid from the ear, and loss of appetite.","R028
+R299"
+I173,A028,Not Specified,"Symptoms of Pharyngitis is sore throat. Other symptoms may include fever, headache, joint pain and muscle aches, skin rashes, and swollen lymph nodes (glands) in the neck.","R028
+R222"
+I174,A028,Not Specified,"Symptoms of lower respiratory tract infection (such as RSV infection) include runny nose, decreased appetite, cough, sneezing, fever, and wheezing.","R028
+R318"
+I175,A028,Not Specified,"Symptoms of acute bronchitis include chest discomfort, a cough that produces mucus (which may be clear or yellow-green), fatigue, low-grade fever, shortness of breath that worsens with activity, and wheezing in people with asthma. After the infection clears, a dry, nagging cough may persist for 1 to 4 weeks.","R028
+R303"
+I176,A028,Not Specified,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R028
+R300"
+I177,A029,Not Specified,"Symptoms of acute bronchitis include chest discomfort, a cough that produces mucus (which may be clear or yellow-green), fatigue, low-grade fever, shortness of breath that worsens with activity, and wheezing in people with asthma. After the infection clears, a dry, nagging cough may persist for 1 to 4 weeks.","R029
+R303"
+I178,A029,Not Specified,"Symptoms of chronic bronchitis may be mild or absent at first but typically worsen over time, and can include frequent coughing or a cough that produces a lot of mucus, wheezing, a whistling or squeaky sound when breathing, shortness of breath especially during physical activity, and a feeling of tightness in the chest; some individuals may also experience frequent respiratory infections such as colds and the flu, and in severe cases, weight loss, weakness in the lower muscles, and swelling in the ankles, feet, or legs.","R029
+R295"
+I179,A029,Not Specified,"Symptoms of Bronchiectasis include a long-term (chronic) cough with large amounts of foul-smelling sputum, along with breath odor, coughing up blood (less common in children), fatigue, paleness, shortness of breath that worsens with exercise, weight loss, wheezing, low-grade fever, night sweats, and, in rare cases, clubbing of the fingers depending on the underlying cause.","R029
+R288"
+I180,A029,Not Specified,"Symptoms of upper respiratory tract infection include sneezing, a stuffy or congested nose, runny nose, sore throat, coughing, and headache.","R029
+R318"
+I181,A029,Not Specified,"Symptoms of Pneumonia can range from mild to severe and include fever, chills, cough (usually with phlegm), shortness of breath, chest pain when you breathe or cough, nausea and/or vomiting, and diarrhea.","R029
+R219"
+I182,A029,Not Specified,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R029
+R300"
+I183,A029,Not Specified,"Symptoms of Pyelonephritis include cloudy or bloody urine which may have a fould or strong odor, low grade fever in some people, pain or burning with urination, pressure or cramping in the lower abdomen or back, and strong need to urinate often even right after the bladd has been emptied. If the infection spread to your kidneys, symptoms may include chills and shaking, fatigue and generally ill feeling, fever above 38.3°C, pain (side, back, or groin), flushed, warmed, or reddened skin, confusion, nausea and vomiting, and sometime severe abdominal pain.","R029
+R292"
+I184,A029,Not Specified,"Symptoms of Cystitis include cloudy or bloody urine, strong or foul-smelling urine, low fever (most people will not have a fever), pain or burning with urination, pressure or cramping in the lower middle abdomen or back, and strong need to urinate often, even right after the bladder has been emptied. ","R029
+R291"
+I185,A029,Not Specified,"Symptoms of urethritis in men include blood in the urine or semen, burning pain while urinating (dysuria), discharge from the penis, fever (rare), frequent or urgent urination, itching, tenderness or swelling in the penis, enlarged lymph nodes in the groin area, and pain during intercourse or ejaculation. In women, symptoms may include abdominal pain, burning pain while urinating, fever and chills, frequent or urgent urination, pelvic pain, pain during intercourse, and vaginal discharge.","R029
+R290"
+I186,A029,Not Specified,"Symptoms of sinusitis can include fever, weakness, fatigue, cough, and congestion. There may also be mucus drainage in the back of the throat, called postnasal drip.","R029
+R294"
+I187,A029,Not Specified,"Symptoms of tonsillitis include a sore throat that may be severe, red and swollen tonsils, difficulty swallowing, a white or yellow coating on the tonsils, swollen glands in the neck, fever, and bad breath.","R029
+R298"
+I188,A029,Not Specified,"Symptoms of Pharyngitis is sore throat. Other symptoms may include fever, headache, joint pain and muscle aches, skin rashes, and swollen lymph nodes (glands) in the neck.","R029
+R222"
+I189,A029,Not Specified,"Symptoms of acute otitis media vary by age. In infants, the main signs may include irritability or inconsolable crying, fever, and trouble sleeping, while in older children and adults symptoms can include ear pain, fullness in the ear, general feeling of illness, nasal congestion, cough, lethargy, vomiting, diarrhea, hearing loss in the affected ear, drainage of fluid from the ear, and loss of appetite.","R029
+R299"
+I190,A030,Not Specified,"Symptoms of urinary tract infection include pain or burning when urinating, fever, tiredness or shakiness, an urge to urinate often, pressure in the lower abdomen, urine that smells bad or looks cloudy or reddish, and pain in the back or side below the ribs.","R030
+R300"

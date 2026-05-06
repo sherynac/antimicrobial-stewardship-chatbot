@@ -152,13 +152,13 @@ def generate_owl_restrictions(presentation_values, sideeffect_values, urinary_va
 def main():
     base_path = os.path.join(SCRIPT_DIR, "data")
     ONTOLOGY_DIR = os.path.dirname(SCRIPT_DIR)
-    manual_ttl_path = os.path.join(ONTOLOGY_DIR, 'manual.ttl')
+    manual_ttl_path = os.path.join(ONTOLOGY_DIR, 'OntologyManual.ttl')
     
     try:
         with open(manual_ttl_path, 'r', encoding='utf-8') as f:
             content = f.read()
     except FileNotFoundError:
-        print("manual.ttl not found in", ONTOLOGY_DIR, file=sys.stderr)
+        print("OntologyManual.ttl not found in", ONTOLOGY_DIR, file=sys.stderr)
         sys.exit(1)
     
     print("Generating classes from CSV data...", file=sys.stderr)
@@ -190,7 +190,7 @@ def main():
     se_section += generate_disjointness_section("SideEffect", sideeffect_values)
     se_section += '\n# End of Disjoint SideEffect subclasses'  # Add end marker
     
-    # Urinary Disease section (add matching end marker to manual.ttl too)
+    # Urinary Disease section (add matching end marker to OntologyManual.ttl too)
     urin_section = '# Urinary Disease subclasses\n# Generated from CSV\n'
     urin_section += '\n'.join(generate_class_ttl(urinary_values, "UrinaryDisease")) + '\n'
     urin_section += generate_disjointness_section("UrinaryDisease", urinary_values)
@@ -299,7 +299,7 @@ def main():
     if start_idx != -1 and end_idx != -1:
         content = content[:start_idx] + owl_restrictions + '\n\n' + content[end_idx:]
     
-    output_path = os.path.join(SCRIPT_DIR, "..", "manual.ttl")
+    output_path = os.path.join(SCRIPT_DIR, "..", "OntologyManual.ttl")
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(content)
     print("Successfully updated {}".format(output_path), file=sys.stderr)

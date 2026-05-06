@@ -1,253 +1,253 @@
-Interaction ID,Antibiotic ID,Interaction Description,Reference ID
-ITN001,A001,"Because tetracyclines depress plasma prothrombin activity, patients who are on anticoagulant therapy may require reduction of their anticoagulant dosage.",R001
-ITN001,A002,"Because tetracyclines depress plasma prothrombin activity, patients who are on anticoagulant therapy may require reduction of their anticoagulant dosage.",R002
-ITN001,A003,Concomitant therapy of tetracycline with anticoagulants may result to prolongation of prothrombin time. Reduction of dose may be necessary.,R003
-ITN001,A013,Prolongation of prothrombin time has been reported rarely in patients receiving amoxicillin. Appropriate monitoring should be undertaken when anticoagulants are prescribed concomitantly.,R013
-ITN001,A027,"Increased prothrombin time, with or without clinical bleeding, has been reported.",R027
-ITN001,A029,"Increased prothrombin time, with or without clinical bleeding reported.",R029
-ITN002,A001,"Since bacteriostatic drugs interfere with the bactericidal action of penicillin, it is advisable to avoid giving tetracyclines in conjunction with penicillin. ",R001
-ITN002,A002,"Since bacteriostatic drugs interfere with the bactericidal action of penicillin, it is advisable to avoid giving tetracyclines in conjunction with penicillin. ",R002
-ITN002,A003,Bacteriostatic drugs may interfere with the bactericidal action of penicillin.,R003
-ITN003,A001,"Absorption of tetracyclines is impaired by and antacids containing aluminum, calcium, or magnesium and iron-containing preparations.",R001
-ITN003,A002,"Absorption of tetracyclines is impaired by antacids containing aluminum, calcium, or magnesium and iron-containing preparations.",R002
-ITN003,A003,"Absorption of tetracyclines is impaired by antacids containing aluminum, calcium, or magnesium, zinc and iron-containing preparations.",R003
-ITN003,A004,"GI absorption may be interfered resulting in lower systemic levels by antacids containing Ca, Mg, or AI, sucralfate, didanosine, metal cations (eg, Fe), & multivit prep w/ Zn or any products containing these components.",R004
-ITN003,A005,Concurrent administration of levofloxacin with antacids containing magnesium or aluminum may interfere with the gastrointestinal absorption of levofloxacin resulting in systemic levels considerably lower than desired.,R005
-ITN003,A006,"Levofloxacin absorption is significantly reduced when iron salts, or magnesium- or aluminum-containing antacids are administered concomitantly with Levofloxacin tablets.",R006
-ITN003,A008,"Giving azithromycin with antacids containing aluminum or magnesium salts can reduce the rate, but not the extent, of its absorption; azithromycin should be given at least 1 hour before or 2 hours after the antacid.",R008
-ITN003,A009,No effect on overall bioavailability was seen although peak serum concentrations were reduced by approximately 24%.,R009
-ITN003,A010,Azithromycin should be taken at least one hour before or two hours after administration of antacid preparations.,R010
-ITN004,A001,Barbiturates decrease the half-life of doxycycline.,R001
-ITN004,A002,Barbiturates decrease the half-life of doxycycline.,R002
-ITN004,A003,"Concomitant use of barbiturates, carbamazepine, phenytoin and other hepatic enzyme inducers may decrease the serum half-life of doxycycline.",R003
-ITN005,A001,Carbamazepine decrease the half-life of doxycycline.,R001
-ITN005,A002,Carbamazepine decrease the half-life of doxycycline.,R002
-ITN005,A003,"Concomitant use of barbiturates, carbamazepine, phenytoin and other hepatic enzyme inducers may decrease the serum half-life of doxycycline.",R003
-ITN005,A009,No significant effect on plasma levels of carbamazepine or its active metabolite.,R009
-ITN005,A010,Caution is advised while using azithromycin in conjunction with carbamazepine.,R010
-ITN005,A014,Concurrent use resulted in increased plasma concentrations of carbamazepine.,R014
-ITN005,A016,Concomitant administration of single doses of Clarithromycin has been shown to result in increased plasma concentrations of Carbamazepine.,R016
-ITN005,A027,Elevated carbamazepine levels have been reported when administered concomitantly with cefixime.,R027
-ITN005,A029,Elevated carbamazepine levels have been reported when administered concomitantly with cefixime.,R029
-ITN006,A001,Phenytoin decrease the half-life of doxycycline.,R001
-ITN006,A002,May prolong refractoriness and increase risk of QT interval prolongation.,R002
-ITN006,A003,"Concomitant use of barbiturates, carbamazepine, phenytoin and other hepatic enzyme inducers may decrease the serum half-life of doxycycline.",R003
-ITN006,A014,"There have been reports of interaction of Clarithromycin with drugs not thought to be metabolized by CYP3A, including hexobarbital, phenytoin and valproate.",R014
-ITN006,A016,There have been reports of interactions of erythromycin and/or Clarithromycin with phenytoin.,R016
-ITN006,A020,Sulfamethoxazole may potentiate the effects of phenytoin; trimethoprim may increase serum concentrations of phenytoin.,R020
-ITN007,A001,Concurrent use of tetracycline and methoxyflurane has been reported to result in fatal renal toxicity.,R001
-ITN008,A001,Concurrent use of tetracycline may render oral contraceptives less effective.,R001
-ITN008,A002,Concurrent use of tetracycline may render oral contraceptives less effective.,R002
-ITN008,A012,Concomitant use of penicillins with oral contraceptives may cause breakthrough bleeding.,R012
-ITN008,A013,"Amoxicillin may affect the gut flora, leading to lower estrogen reabsorption and reduced efficacy of combined oral estrogen/progesterone contraceptives.",R013
-ITN009,A001,Absorption of tetracyclines is impaired by bismuth subsalicylate.,R001
-ITN009,A002,Absorption of tetracyclines is impaired by bismuth subsalicylate.,R002
-ITN009,A003,Bismuth Subsalicylate may impair doxycycline absorption.,R003
-ITN010,A003,Bacteriostatic drugs may interfere with the bactericidal action of Aminoglycosides.,R003
-ITN011,A003,Doxycycline may decrease efficacy of contraceptives.,R003
-ITN012,A004,"GI absorption may be interfered resulting in lower systemic levels by antcids containing Ca, Mg, or Al, sucralfate, didanosine, metal cations (eg, Fe) & multivit prep w/ Zn or any products containing these components.",R004
-ITN012,A005,Concurrent administration of sucralfate may interfere with the gastrointestinal absorption of levofloxacin resulting in systemic levels considerably lower than desired.,R005
-ITN012,A006,The bioavailability of levofloxacin tablets is significantly reduced when administered together with sucralfate.,R006
-ITN012,A026,May reduce absorption of ciprofloxacin due to aluminum ion release.,R026
-ITN013,A004,"GI absorption may be interfered resulting in lower systemic levels by antcids containing Ca, Mg, or Al, sucralfate, didanosine, metal cations (eg, Fe) & multivit prep w/ Zn or any products containing these components.",R004
-ITN013,A009,Co-administration did not appear to affect the steady-state pharmacokinetics of didanosine as compared with placebo.,R009
-ITN014,A004,"GI absorption may be interfered resulting in lower systemic levels by antcids containing Ca, Mg, or Al, sucralfate, didanosine, metal cations (eg, Fe) & multivit prep w/ Zn or any products containing these components.",R004
-ITN014,A005,Concurrent administration of levofloxacin with multivitamin preparations (zinc) may interfere with the gastrointestinal absorption of levofloxacin resulting in systemic levels considerably lower than desired.,R005
-ITN015,A004,Additive effects on QT interval prolongation.,R004
-ITN016,A004,Additive effects on QT interval prolongation.,R004
-ITN017,A004,Additive effects on QT interval prolongation.,R004
-ITN017,A014,Report of delirium following concurrent use with fluoxetine.,R014
-ITN018,A004,Additive effects on QT interval prolongation.,R004
-ITN019,A004,Disturbances of blood glucose including hyperglycemia & hypoglycemia w/ antidiabetic agent.,R004
-ITN019,A005,"Disturbances of blood glucose, including hyperglycemia and hypoglycemia have been reported in patients treated concomitantly with quinolones and an antidiabetic agent (e.g., glyburide/glibenclamide) or insulin.",R005
-ITN020,A005,"No significant effect of levofloxacin on the plasma concentrations, AUC and other disposition parameters for cyclosporine was detected in a clinical study.",R005
-ITN020,A010,Caution is advised while using azithromycin in conjunction with cyclosporine.,R010
-ITN020,A014,There have been published reports of CYP3A based interactions of Clarithromycin with cyclosporine.,R014
-ITN020,A016,There have been reports of interactions of erythromycin and/or Clarithromycin with cyclosporine.,R016
-ITN020,A026,Enhanced nephrotoxicity reported with concomitant use.,R026
-ITN021,A004,Increased AUC of immunosuppresive agent.,R004
-ITN021,A014,There have been published reports of CYP3A based interactions of Clarithromycin with tacrolimus.,R014
-ITN021,A016,There have been reports of interactions of erythromycin and/or Clarithromycin with tacrolimus.,R016
-ITN022,A004,May increase risk of tendon rupture particularly in the elderly.,R004
-ITN022,A010,Caution is advised while using azithromycin in conjunction with corticosteroids.,R010
-ITN023,A004,Prolonged QT interval.,R004
-ITN023,A009,No significant change in azithromycin exposure; slight decrease in Cmax (18%).,R009
-ITN023,A014,Increased Clarithromycin Cmin and AUC.,R014
-ITN024,A004,"Prolonged elimination t1/2, elevated serum levels & increased risk of adverse reactions.",R004
-ITN024,A005,"No significant effect of levofloxacin on the plasma concentrations, AUC and other disposition parameters for theophylline was detected in a clinical study.",R005
-ITN024,A006,"A pronounced lowering of the cerebral seizure threshold may occur when quinolones are given concurrently with theophylline, non-steroidal anti-inflammatory drugs, or other agents which lower the seizure threshold.",R006
-ITN024,A009,No evidence of clinically significant pharmacokinetic interaction.,R009
-ITN024,A010,Caution is advised while using azithromycin in conjunction with theophylline.,R010
-ITN024,A014,Use may be associated with an increase of serum theophylline concentrations.,R014
-ITN024,A016,Clarithromycin use in patients who are receiving theophylline may be associated with an increase of serum theophylline concentrations.,R016
-ITN024,A024,Raised plasma levels of theophylline.,R024
-ITN024,A025,Decreases clearance of theophylline resulting in elevated serum levels.,R025
-ITN024,A026,Ciprofloxacin may interfere with clearance of drugs metabolized by the liver such as theophylline due to inhibition of hepatic metabolism.,R026
-ITN025,A004,Enhanced effects of Warfarin.,R004
-ITN025,A005,There have been no reports during the post marketing experience in patients that levofloxacin enhances the effects of warfarin.,R005
-ITN025,A009,"Azithromycin did not alter anticoagulant effect, but reports of potentiated anticoagulation exist.",R009
-ITN025,A010,Concomitant administration of azithromycin may potentiate the effects of oral anticoagulants such as warfarin.,R010
-ITN025,A011,Rare cases of increased INR in patients maintained on warfarin and prescribed amoxicillin.,R011
-ITN025,A020,Trimethoprim may potentiate the effects of warfarin.,R020
-ITN025,A027,"Increased prothrombin time, with or without clinical bleeding, has been reported.",R027
-ITN025,A029,"Increased prothrombin time, with or without clinical bleeding, reported.",R029
-ITN026,A005,"Concomitant administration of NSAIDs with a quinolone, including levofloxacin.",R005
-ITN026,A006,"A pronounced lowering of the cerebral seizure threshold may occur when quinolones are given concurrently with theophylline, non-steroidal anti-inflammatory drugs, or other agents which lower the seizure threshold.",R006
-ITN027,A005,"No significant effect of levofloxacin on the plasma concentrayions, AUD and other disposition parameters for digoxin was detected in a clinical study.",R005
-ITN027,A006,"Pharmacokinetics of levofloxacin is not affected when coadministered with the following drugs: calcium carbonate, digoxin, glibenclamide, ranitidine.",R006
-ITN027,A009,"Concomitant administration of macrolide antibiotics, including azithromycin, with P-glycoprotein substrates has been reported to result in increased serum levels of the P-glycoprotein substrate.",R009
-ITN027,A010,Caution is advised while using azithromycin in conjunction with digoxin.,R010
-ITN027,A013,Concurrent administration with amoxicillin may result in increased absorption of digoxin.,R013
-ITN027,A014,Increased digoxin serum concentrations when co-administered.,R014
-ITN027,A020,Trimethoprim may increase serum concentrations of digoxin.,R020
-ITN028,A005,"No significant effect of levofloxacin on the plasma concentrations, AUC and other disposition parameters for probenecid was detected in a clinical study.",R005
-ITN028,A006,Probenecid and cimetidine has statistically significant effect on the elimination of levofloxacin.,R006
-ITN028,A007,"Reduces the renal clearance of cefotaxime, resulting in higher and prolonged plasma concentrations of cefotaxime and its desacetyl metabolite.",R007
-ITN028,A011,Decreases the renal tubular secretion of amoxicillin.,R011
-ITN028,A012,Oral probenecid administered shortly before or simultaneously with aminopenicillins slows the rate of renal tubular secretions of penicillins and produces higher and prolonged serum concentrations of the drugs.,R012
-ITN028,A013,Concurrent use of amoxicillin and probenecid may result in increased and prolonged blood levels of amoxicillin.,R013
-ITN028,A021,Increases area under serum concentration-time curve and increases peak serum cefuroxime concentration.,R021
-ITN028,A022,Concomitant administration increases area under serum concentration versus time curve by 50%; increases peak serum cefuroxime concentration.,R022
-ITN028,A023,Reduced renal clearance with probenecid.,R023
-ITN028,A026,Reduces urinary excretion of ciprofloxacin without increasing plasma concentration.,R026
-ITN028,A027,Increases Cmax and AUC of cefixime and decreases renal clearance and volume of distribution.,R027
-ITN028,A029,Increases Cmax and AUC of cefixime and decreases renal clearance and volume of distribution.,R029
-ITN028,A030,Reduced excretion with probenecid.,R030
-ITN029,A005,"No significant effect of levofloxacin on the plasma concentrations, AUC and other disposition parameters for cimetidine was detected in a clinical study.",R005
-ITN029,A006,Probenecid and cimetidine has statistically significant effect on the elimination of levofloxacin.,R006
-ITN029,A009,No alteration of azithromycin pharmacokinetics was seen.,R009
-ITN029,A014,Administration of cimetidine with Clarithromycin may alter some of the pharmacokinetic parameters of Clarithromycin.,R014
-ITN031,A006,"Levofloxacin absorption is significantly reduced when iron salts, or magnesium- or aluminum-containing antacids are administered concomitantly with Levofloxacin tablets.",R006
-ITN031,A026,Ciprofloxacin should not be administered within 4 hours of iron-containing preparations due to reduced absorption.,R026
-ITN032,A006,No interaction was found with calcium carbonate.,R006
-ITN033,A006,"Pharmacokinetics of levofloxacin is not affected when coadministered with the following drugs: calcium carbonate, digoxin, glibenclamide, ranitidine.",R006
-ITN034,A006,There is no clinically relevant interaction with food.,R006
-ITN035,A007,The total body clearance of cefotaxime has been reduced in patients with normal and reduced renal function by the ureidopenicillins azlocillin or mezlocillin.,R007
-ITN036,A008,"Azithromycin, unlike erythromycin and most macrolides, have little or no effect on hepatic cytochrome P450 isoenzymes, hence, may or may not exhibit adverse effects with astemizole.",R008
-ITN036,A015,Similar effects have been observed with concomitant administration of astemizole and other macrolides.,R015
-ITN036,A016,There have been reports of interaction of erythromycin and/or Clarithromycin with astemizole.,R016
-ITN037,A008,"Azithromycin, unlike erythromycin and most macrolides, have little or no effect on hepatic cytochrome P450 isoenzymes, hence, may or may not exhibit adverse effects with cisapride.",R008
-ITN037,A015,Elevated cisapride levels have been reported in patients receiving clarithromycin and cisapride concomitantly.,R015
-ITN037,A016,There have been reports of interaction of erythromycin and/or Clarithromycin with cisapride.,R016
-ITN037,A017,Medicines that increase the movement of the stomach or intestines may also reduce the effect of the antibiotic.,R017
-ITN038,A008,"Azithromycin, unlike erythromycin and most macrolides, have little or no effect on hepatic cytochrome P450 isoenzymes, hence, may or may not exhibit adverse effects with terfenadine.",R008
-ITN038,A009,No evidence of interaction; rare cases could not be entirely excluded.,R009
-ITN038,A014,"Co-administered, plasma concentrations of the active acid metabolite of terfenadine were threefold higher.",R014
-ITN038,A015,Macrolides have been reported to alter the metabolism of terfenadine resulting in increased levels of terfenadine.,R015
-ITN038,A016,Concomitant administration increases the plasma concentration of active acid metabolite of terfenadine by three-fold.,R016
-ITN039,A009,Co-administration resulted in no pharmacokinetic interaction and no significant changes in the QT interval.,R009
-ITN040,A009,"Concomitant administration of macrolide antibiotics, including azithromycin, with P-glycoprotein substrates has been reported to result in increased serum levels of the P-glycoprotein substrate.",R009
-ITN040,A014,"Colchicine have been reported with concomitant use of Clarithromycin and colchicine, especially, in the elderly, some of which occurred in patients with renal insufficiency.",R014
-ITN041,A009,Little effect on plasma pharmacokinetics or urinary excretion; increased concentrations of phosphorylated zidovudine in peripheral blood mononuclear cells.,R009
-ITN041,A014,Decreased concentrations of zidovudine have been reported in patients also taking Clarithromycin.,R014
-ITN041,A016,Simultaneous oral administration resulted in decreased steady state Zidovudine concentration.,R016
-ITN041,A020,Trimethoprim reduces renal excretion and increases blood concentrations of zidovudine.,R020
-ITN042,A009,Did not alter plasma concentrations; post-marketing cases of rhabdomyolysis have been reported.,R009
-ITN043,A009,No clinically significant pharmacokinetic interactions.,R009
-ITN043,A014,Concurrent use of efavirenz with Clarithromycin has resulted in decrease in the plasma concentration of Clarithromycin and increases in its hydroxyl metabolite.,R014
-ITN044,A009,No statistically significant effect on pharmacokinetics.,R009
-ITN045,A009,No significant effect on pharmacokinetics.,R009
-ITN045,A014,There have been published reports of CYP3A based interactions of Clarithromycin with methylprednisolone.,R014
-ITN046,A009,No clinically significant changes in pharmacokinetics and pharmacodynamics.,R009
-ITN046,A014,"Drug interactions and CNS effects (e.g., somnolence and confusion) have been reported with the concomitant use of Clarithromycin and triazolobenzodiazepines (such as triazolam and alprazolam) and other related benzodiazepines (such as midazolam).",R014
-ITN046,A026,Plasma concentration increases when administered with ciprofloxacin.,R026
-ITN047,A009,Increased azithromycin concentrations; no clinically significant adverse effects.,R009
-ITN047,A010,Co-administration of nelfinavir at steady-state with a single oral dose of azithromycin resulted in increased azithromycin serum concentration.,R010
-ITN048,A009,No effect on serum concentrations; neutropenia observed.,R009
-ITN048,A014,Increased rifabutin toxicity has been reported in patients receiving Clarithromycin and rifabutin.,R014
-ITN048,A016,There have been reports of interaction of erythromycin and/or Clarithromycin with rifabutin.,R016
-ITN049,A009,No effect on AUC and Cmax.,R009
-ITN049,A014,Clarithromycin has been reported to increase the systematic exposure (AUC) of slidenafil. ,R014
-ITN050,A009,No significant effect on pharmacokinetic variables.,R009
-ITN050,A014,"Drug interactions and CNS effects (e.g., somnolence and confusion) have been reported with the concomitant use of Clarithromycin and triazolobenzodiazepines (such as triazolam and alprazolam) and other related benzodiazepines (such as midazolam).",R014
-ITN051,A009,"No significant effect on peak concentrations, exposure or urinary excretion.",R009
-ITN051,A018,Certain classes of antibiotics are more frequently involved in INR alteration.,R018
-ITN051,A019,Associated with increased anti-vitamin K antagonists activity.,R019
-ITN052,A009,Concomitant use not recommended due to possible co-resistance.,R009
-ITN053,A009,Concomitant use not recommended due to possible co-resistance.,R009
-ITN054,A010,Azithromycin should be taken at least one hour before or two hours after administration of food.,R010
-ITN054,A017,Food may delay the absorption of Fosfomycin trometamol.,R017
-ITN054,A018,"If Fosfomycin trometamol is taken with food, the plasma and urinary levels of Fosfomycin decrease.",R018
-ITN054,A025,Delay in absorption of Ciprofloxacin; peak concentrations occur closer to 2 hours after dosing rather than 1 hour; overall absorption not substantially affected.,R025
-ITN055,A011,"May affect the gut flora, leading to lower estrogen reabsorption.",R011
-ITN056,A011,Concurrent administration during treatment with amoxicillin can increase the likelihood of allergic skin reactions.,R011
-ITN056,A012,"May increase the possibility of skin rash, particularly in hyperuricemic patients.",R012
-ITN056,A013,An increased incidence of skin rashes reportedly occurs in hyperuricemic patients who are concomitantly receiving allopurinol and amoxicillin compared with those receiving amoxicillin or allopurinol alone.,R013
-ITN057,A011,Rare cases of increased INR in patients maintained on acenocoumarol and prescribed amoxicillin.,R011
-ITN058,A012,Concomitant use of penicillins may decrease renal clearance of methotrexate by inhibiting renal tubular secretion amoxicillin.,R012
-ITN058,A013,"Concomitant use of penicillins may decrease the renal clearance of methotrexate, presumably by inhibiting renal tubular secretion of the drug.",R013
-ITN058,A020,Sulfamethoxazole may potentiate the effects of methotrexate.,R020
-ITN059,A013,These antibacterial agents may interfere with the bactericidal effects of penicillin.,R013
-ITN059,A027,In vitro and in vivo antagonism have been noted between cephalosporins and chloramphenicol; combined therapy should be avoided.,R027
-ITN059,A029,In vitro and in vivo antagonism noted between cephalosporins and chloramphenicol; combined therapy should be avoided.,R029
-ITN060,A013,These antibacterial agents may interfere with the bactericidal effects of penicillin.,R013
-ITN060,A018,Certain classes of antibiotics are more frequently involved in INR alteration.,R018
-ITN060,A019,Associated with increased anti-vitamin K antagonists activity.,R019
-ITN061,A013,These antibacterial agents may interfere with the bactericidal effects of penicillin.,R013
-ITN062,A013,These antibacterial agents may interfere with the bactericidal effects of penicillin.,R013
-ITN063,A013,"Administration of ampicillin to pregnant women may result in a transient decrease in plasma concentrations of total conjugated estriol, estriol-glucuronide, conjugated estrone, and estradiol; this effect may also occur with amoxicillin.",R013
-ITN064,A014,Inhibit the metabolism of Clarithromycin producing elevated plasma concentrations and a prolonged half-life.,R014
-ITN064,A016,Concomitant administration resulted in 77% increase in Clarithromycin AUC and 100% decrease in the AUC 14-OH Clarithromycin.,R016
-ITN065,A014,Concomitant administration resulted in increased concentrations of Clarithromycin and its active metabolite and increased and prolonged plasma concentrations of omeprazole.,R014
-ITN066,A014,Clarithromycin has been reported to enhance the activity.,R014
-ITN067,A014,Clarithromycin has been reported to enhance the activity.,R014
-ITN068,A014,Clarithromycin has been reported to enhance the activity.,R014
-ITN069,A014,May potentiate the effects of the oral anticoagulants.,R014
-ITN069,A016,Concomitant administration may potentiate the effects of the oral anticoagulants.,R016
-ITN069,A020,Sulfamethoxazole may potentiate the effects of oral anticoagulants.,R020
-ITN070,A014,There have been published reports of CYP3A based interactions of Clarithromycin with quinidine.,R014
-ITN071,A014,There have been published reports of CYP3A based interactions of Clarithromycin with disopyramide.,R014
-ITN071,A016,There have been reports of interactions of erythromycin and/or Clarithromycin with disopyramide.,R016
-ITN072,A014,Post-marking reports indicate that co-administration of Clarithromycin with ergotamine has been associated with acute toxicity characterized by vasospasm and ischemia of the extremities and other tissues including the central nervous system.,R014
-ITN073,A014,Post-marking reports indicate that co-administration of Clarithromycin with dihydroergotamine has been associated with acute toxicity characterized by vasospasm and ischemia of the extremities and other tissues including the central nervous system.,R014
-ITN074,A014,"Drug interactions and CNS effects (e.g., somnolence and confusion) have been reported with the concomitant use of Clarithromycin and triazolobenzodiazepines (such as triazolam and alprazolam) and other related benzodiazepines (such as midazolam).",R014
-ITN075,A014,"Clarithromycin has been reported to increase concentrations of HMG-CoA reductase inhibitors (e.g., lovastatin and simvastatin). ",R014
-ITN075,A016,Clarithromycin has been reported to increase concentrations.,R016
-ITN076,A014,"Clarithromycin has been reported to increase concentrations of HMG-CoA reductase inhibitors (e.g., lovastatin and simvastatin). ",R014
-ITN076,A016,Clarithromycin has been reported to increase concentration.,R016
-ITN077,A014,There have been published reports of CYP3A based interactions of Clarithromycin with alfentanil.,R014
-ITN077,A016,There have been reports of interactions of erythromycin and/or Clarithromycin with alfentanil.,R016
-ITN078,A014,There have been published reports of CYP3A based interactions of Clarithromycin with cilostazol.,R014
-ITN079,A014,There have been published reports of CYP3A based interactions of Clarithromycin with bromocriptine.,R014
-ITN079,A016,There have been reports of interaction of erythromycin and/or Clarithromycin with bromocriptine.,R016
-ITN080,A014,"There have been reports of interaction of Clarithromycin with drugs not thought to be metabolized by CYP3A, including hexobarbital, phenytoin and valproate.",R014
-ITN080,A016,There have been reports of interaction of erythromycin and/or Clarithromycin with valproate.,R016
-ITN081,A015,Similar effects have been observed in patients taking clarithromycin and pimozide concomitantly.,R015
-ITN081,A016,There have been reports of interaction of erythromycin and/or Clarithromycin with pimozide.,R016
-ITN082,A017,The concomitant administration of metoclopramide reduces the oral absorption of fosfomycin trometamol.,R017
-ITN082,A018,"When co-administered with Fosfomycin, metoclopramide significantly lowers the therapeutically effective serum and urine concentrations of Fosfomycin.",R018
-ITN082,A019,Lowered serum & urine concentration with metoclopramide.,R019
-ITN083,A017,Medicines that increase the movement of the stomach or intestines may also reduce the effect of the antibiotic.,R017
-ITN084,A017,Medicines that increase the movement of the stomach or intestines may also reduce the effect of the antibiotic.,R017
-ITN085,A017,Medicines that increase the movement of the stomach or intestines may also reduce the effect of the antibiotic.,R017
-ITN086,A018,Certain classes of antibiotics are more frequently involved in INR alteration.,R018
-ITN086,A019,Associated with increased anti-vitamin K antagonists activity.,R019
-ITN087,A018,Certain classes of antibiotics are more frequently involved in INR alteration.,R018
-ITN087,A019,Associated with increased anti-vitamin K antagonists activity.,R019
-ITN088,A020,The action of sulfonamides may be antagonized by potassium aminobenzoate.,R020
-ITN089,A020,The action of sulfonamides may be antagonized by procaine group of local anesthetics.,R020
-ITN090,A020,Trimethoprim may increase serum concentrations of procainamide.,R020
-ITN091,A020,Trimethoprim may increase serum concentrations of rosiglitazone.,R020
-ITN092,A020,Trimethoprim reduces renal excretion and increases blood concentrations of zalcitabine.,R020
-ITN093,A020,Trimethoprim reduces renal excretion and increases blood concentrations of lamivudine.,R020
-ITN094,A020,Trimethoprim and dapsone increase each other's serum concentrations.,R020
-ITN095,A021,Antibiotic may affect gut flora leading to lower estrogen reabsorption and reduced efficacy.,R021
-ITN095,A022,May affect gut flora leading to lower estrogen reabsorption.,R022
-ITN096,A025,May reduce bioavailability of ciprofloxacin by as much as 90%.,R025
-ITN096,A026,Ciprofloxacin should not be administered orally within 4 hours of magnesium-containing antacids due to reduced absorption.,R026
-ITN097,A025,May reduce bioavailability of ciprofloxacin by as much as 90%.,R025
-ITN097,A026,Ciprofloxacin should not be administered orally within 4 hours of aluminum-containing antacids due to reduced absorption.,R026
-ITN098,A025,Serum concentrations of ciprofloxacin and metronidazole were not altered when given concomitantly.,R025
-ITN099,A025,Decreases caffeine clearance and inhibits formation of paraxanthine after caffeine administration.,R025
-ITN099,A026,Ciprofloxacin may interfere with clearance of caffeine due to inhibition of hepatic metabolism.,R026
-ITN100,A026,May interfere with absorption of fluoroquinolones including ciprofloxacin.,R026
-ITN101,A026,Affect pharmacokinetics of ciprofloxacin but clinical effect is insignificant.,R026
-ITN102,A026,Associated with adverse neurological effects when combined with ciprofloxacin.,R026
-ITN103,A026,Associated with adverse neurological effects when combined with ciprofloxacin.,R026
-ITN104,A026,Concomitant use not recommended in surgical infection prophylaxis due to reduced peak serum ciprofloxacin concentration.,R026
-ITN105,A027,Concomitant administration increases oral bioavailability of cefixime as a result of higher Cmax and AUC.,R027
-ITN105,A029,Increases oral bioavailability of cefixime due to higher Cmax and AUC.,R029
-ITN106,A027,May result in a 20 to 25% decrease in Cmax and AUC of cefixime.,R027
-ITN106,A029,May decrease Cmax and AUC of cefixime by 20–25%.,R029
-ITN107,A030,Reduced excretion with sulfinpyrazone.,R030
-ITN108,A030,Reduced effects with urinary alkalinisers.,R030
+Interaction ID,Substance ID,Antibiotic ID,Interaction Description,Reference ID
+ITN001,SUB001,A001,"Because tetracyclines depress plasma prothrombin activity, patients who are on anticoagulant therapy may require reduction of their anticoagulant dosage.",R001
+ITN002,SUB001,A002,"Because tetracyclines depress plasma prothrombin activity, patients who are on anticoagulant therapy may require reduction of their anticoagulant dosage.",R002
+ITN003,SUB001,A003,Concomitant therapy of tetracycline with anticoagulants may result to prolongation of prothrombin time. Reduction of dose may be necessary.,R003
+ITN004,SUB001,A013,Prolongation of prothrombin time has been reported rarely in patients receiving amoxicillin. Appropriate monitoring should be undertaken when anticoagulants are prescribed concomitantly.,R013
+ITN005,SUB001,A027,"Increased prothrombin time, with or without clinical bleeding, has been reported.",R027
+ITN006,SUB001,A029,"Increased prothrombin time, with or without clinical bleeding reported.",R029
+ITN007,SUB002,A001,"Since bacteriostatic drugs interfere with the bactericidal action of penicillin, it is advisable to avoid giving tetracyclines in conjunction with penicillin. ",R001
+ITN008,SUB002,A002,"Since bacteriostatic drugs interfere with the bactericidal action of penicillin, it is advisable to avoid giving tetracyclines in conjunction with penicillin. ",R002
+ITN009,SUB002,A003,Bacteriostatic drugs may interfere with the bactericidal action of penicillin.,R003
+ITN010,SUB003,A001,"Absorption of tetracyclines is impaired by and antacids containing aluminum, calcium, or magnesium and iron-containing preparations.",R001
+ITN011,SUB003,A002,"Absorption of tetracyclines is impaired by antacids containing aluminum, calcium, or magnesium and iron-containing preparations.",R002
+ITN012,SUB003,A003,"Absorption of tetracyclines is impaired by antacids containing aluminum, calcium, or magnesium, zinc and iron-containing preparations.",R003
+ITN013,SUB003,A004,"GI absorption may be interfered resulting in lower systemic levels by antacids containing Ca, Mg, or AI, sucralfate, didanosine, metal cations (eg, Fe), & multivit prep w/ Zn or any products containing these components.",R004
+ITN014,SUB003,A005,Concurrent administration of levofloxacin with antacids containing magnesium or aluminum may interfere with the gastrointestinal absorption of levofloxacin resulting in systemic levels considerably lower than desired.,R005
+ITN015,SUB003,A006,"Levofloxacin absorption is significantly reduced when iron salts, or magnesium- or aluminum-containing antacids are administered concomitantly with Levofloxacin tablets.",R006
+ITN016,SUB003,A008,"Giving azithromycin with antacids containing aluminum or magnesium salts can reduce the rate, but not the extent, of its absorption; azithromycin should be given at least 1 hour before or 2 hours after the antacid.",R008
+ITN017,SUB003,A009,No effect on overall bioavailability was seen although peak serum concentrations were reduced by approximately 24%.,R009
+ITN018,SUB003,A010,Azithromycin should be taken at least one hour before or two hours after administration of antacid preparations.,R010
+ITN019,SUB004,A001,Barbiturates decrease the half-life of doxycycline.,R001
+ITN020,SUB004,A002,Barbiturates decrease the half-life of doxycycline.,R002
+ITN021,SUB004,A003,"Concomitant use of barbiturates, carbamazepine, phenytoin and other hepatic enzyme inducers may decrease the serum half-life of doxycycline.",R003
+ITN022,SUB005,A001,Carbamazepine decrease the half-life of doxycycline.,R001
+ITN023,SUB005,A002,Carbamazepine decrease the half-life of doxycycline.,R002
+ITN024,SUB005,A003,"Concomitant use of barbiturates, carbamazepine, phenytoin and other hepatic enzyme inducers may decrease the serum half-life of doxycycline.",R003
+ITN025,SUB005,A009,No significant effect on plasma levels of carbamazepine or its active metabolite.,R009
+ITN026,SUB005,A010,Caution is advised while using azithromycin in conjunction with carbamazepine.,R010
+ITN027,SUB005,A014,Concurrent use resulted in increased plasma concentrations of carbamazepine.,R014
+ITN028,SUB005,A016,Concomitant administration of single doses of Clarithromycin has been shown to result in increased plasma concentrations of Carbamazepine.,R016
+ITN029,SUB005,A027,Elevated carbamazepine levels have been reported when administered concomitantly with cefixime.,R027
+ITN030,SUB005,A029,Elevated carbamazepine levels have been reported when administered concomitantly with cefixime.,R029
+ITN031,SUB006,A001,Phenytoin decrease the half-life of doxycycline.,R001
+ITN032,SUB006,A002,May prolong refractoriness and increase risk of QT interval prolongation.,R002
+ITN033,SUB006,A003,"Concomitant use of barbiturates, carbamazepine, phenytoin and other hepatic enzyme inducers may decrease the serum half-life of doxycycline.",R003
+ITN034,SUB006,A014,"There have been reports of interaction of Clarithromycin with drugs not thought to be metabolized by CYP3A, including hexobarbital, phenytoin and valproate.",R014
+ITN035,SUB006,A016,There have been reports of interactions of erythromycin and/or Clarithromycin with phenytoin.,R016
+ITN036,SUB006,A020,Sulfamethoxazole may potentiate the effects of phenytoin; trimethoprim may increase serum concentrations of phenytoin.,R020
+ITN037,SUB007,A001,Concurrent use of tetracycline and methoxyflurane has been reported to result in fatal renal toxicity.,R001
+ITN038,SUB008,A001,Concurrent use of tetracycline may render oral contraceptives less effective.,R001
+ITN039,SUB008,A002,Concurrent use of tetracycline may render oral contraceptives less effective.,R002
+ITN040,SUB008,A012,Concomitant use of penicillins with oral contraceptives may cause breakthrough bleeding.,R012
+ITN041,SUB008,A013,"Amoxicillin may affect the gut flora, leading to lower estrogen reabsorption and reduced efficacy of combined oral estrogen/progesterone contraceptives.",R013
+ITN042,SUB009,A001,Absorption of tetracyclines is impaired by bismuth subsalicylate.,R001
+ITN043,SUB009,A002,Absorption of tetracyclines is impaired by bismuth subsalicylate.,R002
+ITN044,SUB009,A003,Bismuth Subsalicylate may impair doxycycline absorption.,R003
+ITN045,SUB010,A003,Bacteriostatic drugs may interfere with the bactericidal action of Aminoglycosides.,R003
+ITN046,SUB011,A003,Doxycycline may decrease efficacy of contraceptives.,R003
+ITN047,SUB012,A004,"GI absorption may be interfered resulting in lower systemic levels by antcids containing Ca, Mg, or Al, sucralfate, didanosine, metal cations (eg, Fe) & multivit prep w/ Zn or any products containing these components.",R004
+ITN048,SUB012,A005,Concurrent administration of sucralfate may interfere with the gastrointestinal absorption of levofloxacin resulting in systemic levels considerably lower than desired.,R005
+ITN049,SUB012,A006,The bioavailability of levofloxacin tablets is significantly reduced when administered together with sucralfate.,R006
+ITN050,SUB012,A026,May reduce absorption of ciprofloxacin due to aluminum ion release.,R026
+ITN051,SUB013,A004,"GI absorption may be interfered resulting in lower systemic levels by antcids containing Ca, Mg, or Al, sucralfate, didanosine, metal cations (eg, Fe) & multivit prep w/ Zn or any products containing these components.",R004
+ITN052,SUB013,A009,Co-administration did not appear to affect the steady-state pharmacokinetics of didanosine as compared with placebo.,R009
+ITN053,SUB014,A004,"GI absorption may be interfered resulting in lower systemic levels by antcids containing Ca, Mg, or Al, sucralfate, didanosine, metal cations (eg, Fe) & multivit prep w/ Zn or any products containing these components.",R004
+ITN054,SUB014,A005,Concurrent administration of levofloxacin with multivitamin preparations (zinc) may interfere with the gastrointestinal absorption of levofloxacin resulting in systemic levels considerably lower than desired.,R005
+ITN055,SUB015,A004,Additive effects on QT interval prolongation.,R004
+ITN056,SUB016,A004,Additive effects on QT interval prolongation.,R004
+ITN057,SUB017,A004,Additive effects on QT interval prolongation.,R004
+ITN058,SUB017,A014,Report of delirium following concurrent use with fluoxetine.,R014
+ITN059,SUB018,A004,Additive effects on QT interval prolongation.,R004
+ITN060,SUB019,A004,Disturbances of blood glucose including hyperglycemia & hypoglycemia w/ antidiabetic agent.,R004
+ITN061,SUB019,A005,"Disturbances of blood glucose, including hyperglycemia and hypoglycemia have been reported in patients treated concomitantly with quinolones and an antidiabetic agent (e.g., glyburide/glibenclamide) or insulin.",R005
+ITN062,SUB020,A005,"No significant effect of levofloxacin on the plasma concentrations, AUC and other disposition parameters for cyclosporine was detected in a clinical study.",R005
+ITN063,SUB020,A010,Caution is advised while using azithromycin in conjunction with cyclosporine.,R010
+ITN064,SUB020,A014,There have been published reports of CYP3A based interactions of Clarithromycin with cyclosporine.,R014
+ITN065,SUB020,A016,There have been reports of interactions of erythromycin and/or Clarithromycin with cyclosporine.,R016
+ITN066,SUB020,A026,Enhanced nephrotoxicity reported with concomitant use.,R026
+ITN067,SUB021,A004,Increased AUC of immunosuppresive agent.,R004
+ITN068,SUB021,A014,There have been published reports of CYP3A based interactions of Clarithromycin with tacrolimus.,R014
+ITN069,SUB021,A016,There have been reports of interactions of erythromycin and/or Clarithromycin with tacrolimus.,R016
+ITN070,SUB022,A004,May increase risk of tendon rupture particularly in the elderly.,R004
+ITN071,SUB022,A010,Caution is advised while using azithromycin in conjunction with corticosteroids.,R010
+ITN072,SUB023,A004,Prolonged QT interval.,R004
+ITN073,SUB023,A009,No significant change in azithromycin exposure; slight decrease in Cmax (18%).,R009
+ITN074,SUB023,A014,Increased Clarithromycin Cmin and AUC.,R014
+ITN075,SUB024,A004,"Prolonged elimination t1/2, elevated serum levels & increased risk of adverse reactions.",R004
+ITN076,SUB024,A005,"No significant effect of levofloxacin on the plasma concentrations, AUC and other disposition parameters for theophylline was detected in a clinical study.",R005
+ITN077,SUB024,A006,"A pronounced lowering of the cerebral seizure threshold may occur when quinolones are given concurrently with theophylline, non-steroidal anti-inflammatory drugs, or other agents which lower the seizure threshold.",R006
+ITN078,SUB024,A009,No evidence of clinically significant pharmacokinetic interaction.,R009
+ITN079,SUB024,A010,Caution is advised while using azithromycin in conjunction with theophylline.,R010
+ITN080,SUB024,A014,Use may be associated with an increase of serum theophylline concentrations.,R014
+ITN081,SUB024,A016,Clarithromycin use in patients who are receiving theophylline may be associated with an increase of serum theophylline concentrations.,R016
+ITN082,SUB024,A024,Raised plasma levels of theophylline.,R024
+ITN083,SUB024,A025,Decreases clearance of theophylline resulting in elevated serum levels.,R025
+ITN084,SUB024,A026,Ciprofloxacin may interfere with clearance of drugs metabolized by the liver such as theophylline due to inhibition of hepatic metabolism.,R026
+ITN085,SUB025,A004,Enhanced effects of Warfarin.,R004
+ITN086,SUB025,A005,There have been no reports during the post marketing experience in patients that levofloxacin enhances the effects of warfarin.,R005
+ITN087,SUB025,A009,"Azithromycin did not alter anticoagulant effect, but reports of potentiated anticoagulation exist.",R009
+ITN088,SUB025,A010,Concomitant administration of azithromycin may potentiate the effects of oral anticoagulants such as warfarin.,R010
+ITN089,SUB025,A011,Rare cases of increased INR in patients maintained on warfarin and prescribed amoxicillin.,R011
+ITN090,SUB025,A020,Trimethoprim may potentiate the effects of warfarin.,R020
+ITN091,SUB025,A027,"Increased prothrombin time, with or without clinical bleeding, has been reported.",R027
+ITN092,SUB025,A029,"Increased prothrombin time, with or without clinical bleeding, reported.",R029
+ITN093,SUB026,A005,"Concomitant administration of NSAIDs with a quinolone, including levofloxacin.",R005
+ITN094,SUB026,A006,"A pronounced lowering of the cerebral seizure threshold may occur when quinolones are given concurrently with theophylline, non-steroidal anti-inflammatory drugs, or other agents which lower the seizure threshold.",R006
+ITN095,SUB027,A005,"No significant effect of levofloxacin on the plasma concentrayions, AUD and other disposition parameters for digoxin was detected in a clinical study.",R005
+ITN096,SUB027,A006,"Pharmacokinetics of levofloxacin is not affected when coadministered with the following drugs: calcium carbonate, digoxin, glibenclamide, ranitidine.",R006
+ITN097,SUB027,A009,"Concomitant administration of macrolide antibiotics, including azithromycin, with P-glycoprotein substrates has been reported to result in increased serum levels of the P-glycoprotein substrate.",R009
+ITN098,SUB027,A010,Caution is advised while using azithromycin in conjunction with digoxin.,R010
+ITN099,SUB027,A013,Concurrent administration with amoxicillin may result in increased absorption of digoxin.,R013
+ITN100,SUB027,A014,Increased digoxin serum concentrations when co-administered.,R014
+ITN101,SUB027,A020,Trimethoprim may increase serum concentrations of digoxin.,R020
+ITN102,SUB028,A005,"No significant effect of levofloxacin on the plasma concentrations, AUC and other disposition parameters for probenecid was detected in a clinical study.",R005
+ITN103,SUB028,A006,Probenecid and cimetidine has statistically significant effect on the elimination of levofloxacin.,R006
+ITN104,SUB028,A007,"Reduces the renal clearance of cefotaxime, resulting in higher and prolonged plasma concentrations of cefotaxime and its desacetyl metabolite.",R007
+ITN105,SUB028,A011,Decreases the renal tubular secretion of amoxicillin.,R011
+ITN106,SUB028,A012,Oral probenecid administered shortly before or simultaneously with aminopenicillins slows the rate of renal tubular secretions of penicillins and produces higher and prolonged serum concentrations of the drugs.,R012
+ITN107,SUB028,A013,Concurrent use of amoxicillin and probenecid may result in increased and prolonged blood levels of amoxicillin.,R013
+ITN108,SUB028,A021,Increases area under serum concentration-time curve and increases peak serum cefuroxime concentration.,R021
+ITN109,SUB028,A022,Concomitant administration increases area under serum concentration versus time curve by 50%; increases peak serum cefuroxime concentration.,R022
+ITN110,SUB028,A023,Reduced renal clearance with probenecid.,R023
+ITN111,SUB028,A026,Reduces urinary excretion of ciprofloxacin without increasing plasma concentration.,R026
+ITN112,SUB028,A027,Increases Cmax and AUC of cefixime and decreases renal clearance and volume of distribution.,R027
+ITN113,SUB028,A029,Increases Cmax and AUC of cefixime and decreases renal clearance and volume of distribution.,R029
+ITN114,SUB028,A030,Reduced excretion with probenecid.,R030
+ITN115,SUB029,A005,"No significant effect of levofloxacin on the plasma concentrations, AUC and other disposition parameters for cimetidine was detected in a clinical study.",R005
+ITN116,SUB029,A006,Probenecid and cimetidine has statistically significant effect on the elimination of levofloxacin.,R006
+ITN117,SUB029,A009,No alteration of azithromycin pharmacokinetics was seen.,R009
+ITN118,SUB029,A014,Administration of cimetidine with Clarithromycin may alter some of the pharmacokinetic parameters of Clarithromycin.,R014
+ITN119,SUB031,A006,"Levofloxacin absorption is significantly reduced when iron salts, or magnesium- or aluminum-containing antacids are administered concomitantly with Levofloxacin tablets.",R006
+ITN120,SUB031,A026,Ciprofloxacin should not be administered within 4 hours of iron-containing preparations due to reduced absorption.,R026
+ITN121,SUB032,A006,No interaction was found with calcium carbonate.,R006
+ITN122,SUB033,A006,"Pharmacokinetics of levofloxacin is not affected when coadministered with the following drugs: calcium carbonate, digoxin, glibenclamide, ranitidine.",R006
+ITN123,SUB034,A006,There is no clinically relevant interaction with food.,R006
+ITN124,SUB035,A007,The total body clearance of cefotaxime has been reduced in patients with normal and reduced renal function by the ureidopenicillins azlocillin or mezlocillin.,R007
+ITN125,SUB036,A008,"Azithromycin, unlike erythromycin and most macrolides, have little or no effect on hepatic cytochrome P450 isoenzymes, hence, may or may not exhibit adverse effects with astemizole.",R008
+ITN126,SUB036,A015,Similar effects have been observed with concomitant administration of astemizole and other macrolides.,R015
+ITN127,SUB036,A016,There have been reports of interaction of erythromycin and/or Clarithromycin with astemizole.,R016
+ITN128,SUB037,A008,"Azithromycin, unlike erythromycin and most macrolides, have little or no effect on hepatic cytochrome P450 isoenzymes, hence, may or may not exhibit adverse effects with cisapride.",R008
+ITN129,SUB037,A015,Elevated cisapride levels have been reported in patients receiving clarithromycin and cisapride concomitantly.,R015
+ITN130,SUB037,A016,There have been reports of interaction of erythromycin and/or Clarithromycin with cisapride.,R016
+ITN131,SUB037,A017,Medicines that increase the movement of the stomach or intestines may also reduce the effect of the antibiotic.,R017
+ITN132,SUB038,A008,"Azithromycin, unlike erythromycin and most macrolides, have little or no effect on hepatic cytochrome P450 isoenzymes, hence, may or may not exhibit adverse effects with terfenadine.",R008
+ITN133,SUB038,A009,No evidence of interaction; rare cases could not be entirely excluded.,R009
+ITN134,SUB038,A014,"Co-administered, plasma concentrations of the active acid metabolite of terfenadine were threefold higher.",R014
+ITN135,SUB038,A015,Macrolides have been reported to alter the metabolism of terfenadine resulting in increased levels of terfenadine.,R015
+ITN136,SUB038,A016,Concomitant administration increases the plasma concentration of active acid metabolite of terfenadine by three-fold.,R016
+ITN137,SUB039,A009,Co-administration resulted in no pharmacokinetic interaction and no significant changes in the QT interval.,R009
+ITN138,SUB040,A009,"Concomitant administration of macrolide antibiotics, including azithromycin, with P-glycoprotein substrates has been reported to result in increased serum levels of the P-glycoprotein substrate.",R009
+ITN139,SUB040,A014,"Colchicine have been reported with concomitant use of Clarithromycin and colchicine, especially, in the elderly, some of which occurred in patients with renal insufficiency.",R014
+ITN140,SUB041,A009,Little effect on plasma pharmacokinetics or urinary excretion; increased concentrations of phosphorylated zidovudine in peripheral blood mononuclear cells.,R009
+ITN141,SUB041,A014,Decreased concentrations of zidovudine have been reported in patients also taking Clarithromycin.,R014
+ITN142,SUB041,A016,Simultaneous oral administration resulted in decreased steady state Zidovudine concentration.,R016
+ITN143,SUB041,A020,Trimethoprim reduces renal excretion and increases blood concentrations of zidovudine.,R020
+ITN144,SUB042,A009,Did not alter plasma concentrations; post-marketing cases of rhabdomyolysis have been reported.,R009
+ITN145,SUB043,A009,No clinically significant pharmacokinetic interactions.,R009
+ITN146,SUB043,A014,Concurrent use of efavirenz with Clarithromycin has resulted in decrease in the plasma concentration of Clarithromycin and increases in its hydroxyl metabolite.,R014
+ITN147,SUB044,A009,No statistically significant effect on pharmacokinetics.,R009
+ITN148,SUB045,A009,No significant effect on pharmacokinetics.,R009
+ITN149,SUB045,A014,There have been published reports of CYP3A based interactions of Clarithromycin with methylprednisolone.,R014
+ITN150,SUB046,A009,No clinically significant changes in pharmacokinetics and pharmacodynamics.,R009
+ITN151,SUB046,A014,"Drug interactions and CNS effects (e.g., somnolence and confusion) have been reported with the concomitant use of Clarithromycin and triazolobenzodiazepines (such as triazolam and alprazolam) and other related benzodiazepines (such as midazolam).",R014
+ITN152,SUB046,A026,Plasma concentration increases when administered with ciprofloxacin.,R026
+ITN153,SUB047,A009,Increased azithromycin concentrations; no clinically significant adverse effects.,R009
+ITN154,SUB047,A010,Co-administration of nelfinavir at steady-state with a single oral dose of azithromycin resulted in increased azithromycin serum concentration.,R010
+ITN155,SUB048,A009,No effect on serum concentrations; neutropenia observed.,R009
+ITN156,SUB048,A014,Increased rifabutin toxicity has been reported in patients receiving Clarithromycin and rifabutin.,R014
+ITN157,SUB048,A016,There have been reports of interaction of erythromycin and/or Clarithromycin with rifabutin.,R016
+ITN158,SUB049,A009,No effect on AUC and Cmax.,R009
+ITN159,SUB049,A014,Clarithromycin has been reported to increase the systematic exposure (AUC) of slidenafil. ,R014
+ITN160,SUB050,A009,No significant effect on pharmacokinetic variables.,R009
+ITN161,SUB050,A014,"Drug interactions and CNS effects (e.g., somnolence and confusion) have been reported with the concomitant use of Clarithromycin and triazolobenzodiazepines (such as triazolam and alprazolam) and other related benzodiazepines (such as midazolam).",R014
+ITN162,SUB051,A009,"No significant effect on peak concentrations, exposure or urinary excretion.",R009
+ITN163,SUB051,A018,Certain classes of antibiotics are more frequently involved in INR alteration.,R018
+ITN164,SUB051,A019,Associated with increased anti-vitamin K antagonists activity.,R019
+ITN165,SUB052,A009,Concomitant use not recommended due to possible co-resistance.,R009
+ITN166,SUB053,A009,Concomitant use not recommended due to possible co-resistance.,R009
+ITN167,SUB054,A010,Azithromycin should be taken at least one hour before or two hours after administration of food.,R010
+ITN168,SUB054,A017,Food may delay the absorption of Fosfomycin trometamol.,R017
+ITN169,SUB054,A018,"If Fosfomycin trometamol is taken with food, the plasma and urinary levels of Fosfomycin decrease.",R018
+ITN170,SUB054,A025,Delay in absorption of Ciprofloxacin; peak concentrations occur closer to 2 hours after dosing rather than 1 hour; overall absorption not substantially affected.,R025
+ITN171,SUB055,A011,"May affect the gut flora, leading to lower estrogen reabsorption.",R011
+ITN172,SUB056,A011,Concurrent administration during treatment with amoxicillin can increase the likelihood of allergic skin reactions.,R011
+ITN173,SUB056,A012,"May increase the possibility of skin rash, particularly in hyperuricemic patients.",R012
+ITN174,SUB056,A013,An increased incidence of skin rashes reportedly occurs in hyperuricemic patients who are concomitantly receiving allopurinol and amoxicillin compared with those receiving amoxicillin or allopurinol alone.,R013
+ITN175,SUB057,A011,Rare cases of increased INR in patients maintained on acenocoumarol and prescribed amoxicillin.,R011
+ITN176,SUB058,A012,Concomitant use of penicillins may decrease renal clearance of methotrexate by inhibiting renal tubular secretion amoxicillin.,R012
+ITN177,SUB058,A013,"Concomitant use of penicillins may decrease the renal clearance of methotrexate, presumably by inhibiting renal tubular secretion of the drug.",R013
+ITN178,SUB058,A020,Sulfamethoxazole may potentiate the effects of methotrexate.,R020
+ITN179,SUB059,A013,These antibacterial agents may interfere with the bactericidal effects of penicillin.,R013
+ITN180,SUB059,A027,In vitro and in vivo antagonism have been noted between cephalosporins and chloramphenicol; combined therapy should be avoided.,R027
+ITN181,SUB059,A029,In vitro and in vivo antagonism noted between cephalosporins and chloramphenicol; combined therapy should be avoided.,R029
+ITN182,SUB060,A013,These antibacterial agents may interfere with the bactericidal effects of penicillin.,R013
+ITN183,SUB060,A018,Certain classes of antibiotics are more frequently involved in INR alteration.,R018
+ITN184,SUB060,A019,Associated with increased anti-vitamin K antagonists activity.,R019
+ITN185,SUB061,A013,These antibacterial agents may interfere with the bactericidal effects of penicillin.,R013
+ITN186,SUB062,A013,These antibacterial agents may interfere with the bactericidal effects of penicillin.,R013
+ITN187,SUB063,A013,"Administration of ampicillin to pregnant women may result in a transient decrease in plasma concentrations of total conjugated estriol, estriol-glucuronide, conjugated estrone, and estradiol; this effect may also occur with amoxicillin.",R013
+ITN188,SUB064,A014,Inhibit the metabolism of Clarithromycin producing elevated plasma concentrations and a prolonged half-life.,R014
+ITN189,SUB064,A016,Concomitant administration resulted in 77% increase in Clarithromycin AUC and 100% decrease in the AUC 14-OH Clarithromycin.,R016
+ITN190,SUB065,A014,Concomitant administration resulted in increased concentrations of Clarithromycin and its active metabolite and increased and prolonged plasma concentrations of omeprazole.,R014
+ITN191,SUB066,A014,Clarithromycin has been reported to enhance the activity.,R014
+ITN192,SUB067,A014,Clarithromycin has been reported to enhance the activity.,R014
+ITN193,SUB068,A014,Clarithromycin has been reported to enhance the activity.,R014
+ITN194,SUB069,A014,May potentiate the effects of the oral anticoagulants.,R014
+ITN195,SUB069,A016,Concomitant administration may potentiate the effects of the oral anticoagulants.,R016
+ITN196,SUB069,A020,Sulfamethoxazole may potentiate the effects of oral anticoagulants.,R020
+ITN197,SUB070,A014,There have been published reports of CYP3A based interactions of Clarithromycin with quinidine.,R014
+ITN198,SUB071,A014,There have been published reports of CYP3A based interactions of Clarithromycin with disopyramide.,R014
+ITN199,SUB071,A016,There have been reports of interactions of erythromycin and/or Clarithromycin with disopyramide.,R016
+ITN200,SUB072,A014,Post-marking reports indicate that co-administration of Clarithromycin with ergotamine has been associated with acute toxicity characterized by vasospasm and ischemia of the extremities and other tissues including the central nervous system.,R014
+ITN201,SUB073,A014,Post-marking reports indicate that co-administration of Clarithromycin with dihydroergotamine has been associated with acute toxicity characterized by vasospasm and ischemia of the extremities and other tissues including the central nervous system.,R014
+ITN202,SUB074,A014,"Drug interactions and CNS effects (e.g., somnolence and confusion) have been reported with the concomitant use of Clarithromycin and triazolobenzodiazepines (such as triazolam and alprazolam) and other related benzodiazepines (such as midazolam).",R014
+ITN203,SUB075,A014,"Clarithromycin has been reported to increase concentrations of HMG-CoA reductase inhibitors (e.g., lovastatin and simvastatin). ",R014
+ITN204,SUB075,A016,Clarithromycin has been reported to increase concentrations.,R016
+ITN205,SUB076,A014,"Clarithromycin has been reported to increase concentrations of HMG-CoA reductase inhibitors (e.g., lovastatin and simvastatin). ",R014
+ITN206,SUB076,A016,Clarithromycin has been reported to increase concentration.,R016
+ITN207,SUB077,A014,There have been published reports of CYP3A based interactions of Clarithromycin with alfentanil.,R014
+ITN208,SUB077,A016,There have been reports of interactions of erythromycin and/or Clarithromycin with alfentanil.,R016
+ITN209,SUB078,A014,There have been published reports of CYP3A based interactions of Clarithromycin with cilostazol.,R014
+ITN210,SUB079,A014,There have been published reports of CYP3A based interactions of Clarithromycin with bromocriptine.,R014
+ITN211,SUB079,A016,There have been reports of interaction of erythromycin and/or Clarithromycin with bromocriptine.,R016
+ITN212,SUB080,A014,"There have been reports of interaction of Clarithromycin with drugs not thought to be metabolized by CYP3A, including hexobarbital, phenytoin and valproate.",R014
+ITN213,SUB080,A016,There have been reports of interaction of erythromycin and/or Clarithromycin with valproate.,R016
+ITN214,SUB081,A015,Similar effects have been observed in patients taking clarithromycin and pimozide concomitantly.,R015
+ITN215,SUB081,A016,There have been reports of interaction of erythromycin and/or Clarithromycin with pimozide.,R016
+ITN216,SUB082,A017,The concomitant administration of metoclopramide reduces the oral absorption of fosfomycin trometamol.,R017
+ITN217,SUB082,A018,"When co-administered with Fosfomycin, metoclopramide significantly lowers the therapeutically effective serum and urine concentrations of Fosfomycin.",R018
+ITN218,SUB082,A019,Lowered serum & urine concentration with metoclopramide.,R019
+ITN219,SUB083,A017,Medicines that increase the movement of the stomach or intestines may also reduce the effect of the antibiotic.,R017
+ITN220,SUB084,A017,Medicines that increase the movement of the stomach or intestines may also reduce the effect of the antibiotic.,R017
+ITN221,SUB085,A017,Medicines that increase the movement of the stomach or intestines may also reduce the effect of the antibiotic.,R017
+ITN222,SUB086,A018,Certain classes of antibiotics are more frequently involved in INR alteration.,R018
+ITN223,SUB086,A019,Associated with increased anti-vitamin K antagonists activity.,R019
+ITN224,SUB087,A018,Certain classes of antibiotics are more frequently involved in INR alteration.,R018
+ITN225,SUB087,A019,Associated with increased anti-vitamin K antagonists activity.,R019
+ITN226,SUB088,A020,The action of sulfonamides may be antagonized by potassium aminobenzoate.,R020
+ITN227,SUB089,A020,The action of sulfonamides may be antagonized by procaine group of local anesthetics.,R020
+ITN228,SUB090,A020,Trimethoprim may increase serum concentrations of procainamide.,R020
+ITN229,SUB091,A020,Trimethoprim may increase serum concentrations of rosiglitazone.,R020
+ITN230,SUB092,A020,Trimethoprim reduces renal excretion and increases blood concentrations of zalcitabine.,R020
+ITN231,SUB093,A020,Trimethoprim reduces renal excretion and increases blood concentrations of lamivudine.,R020
+ITN232,SUB094,A020,Trimethoprim and dapsone increase each other's serum concentrations.,R020
+ITN233,SUB095,A021,Antibiotic may affect gut flora leading to lower estrogen reabsorption and reduced efficacy.,R021
+ITN234,SUB095,A022,May affect gut flora leading to lower estrogen reabsorption.,R022
+ITN235,SUB096,A025,May reduce bioavailability of ciprofloxacin by as much as 90%.,R025
+ITN236,SUB096,A026,Ciprofloxacin should not be administered orally within 4 hours of magnesium-containing antacids due to reduced absorption.,R026
+ITN237,SUB097,A025,May reduce bioavailability of ciprofloxacin by as much as 90%.,R025
+ITN238,SUB097,A026,Ciprofloxacin should not be administered orally within 4 hours of aluminum-containing antacids due to reduced absorption.,R026
+ITN239,SUB098,A025,Serum concentrations of ciprofloxacin and metronidazole were not altered when given concomitantly.,R025
+ITN240,SUB099,A025,Decreases caffeine clearance and inhibits formation of paraxanthine after caffeine administration.,R025
+ITN241,SUB099,A026,Ciprofloxacin may interfere with clearance of caffeine due to inhibition of hepatic metabolism.,R026
+ITN242,SUB100,A026,May interfere with absorption of fluoroquinolones including ciprofloxacin.,R026
+ITN243,SUB101,A026,Affect pharmacokinetics of ciprofloxacin but clinical effect is insignificant.,R026
+ITN244,SUB102,A026,Associated with adverse neurological effects when combined with ciprofloxacin.,R026
+ITN245,SUB103,A026,Associated with adverse neurological effects when combined with ciprofloxacin.,R026
+ITN246,SUB104,A026,Concomitant use not recommended in surgical infection prophylaxis due to reduced peak serum ciprofloxacin concentration.,R026
+ITN247,SUB105,A027,Concomitant administration increases oral bioavailability of cefixime as a result of higher Cmax and AUC.,R027
+ITN248,SUB105,A029,Increases oral bioavailability of cefixime due to higher Cmax and AUC.,R029
+ITN249,SUB106,A027,May result in a 20 to 25% decrease in Cmax and AUC of cefixime.,R027
+ITN250,SUB106,A029,May decrease Cmax and AUC of cefixime by 20–25%.,R029
+ITN251,SUB107,A030,Reduced excretion with sulfinpyrazone.,R030
+ITN252,SUB108,A030,Reduced effects with urinary alkalinisers.,R030
