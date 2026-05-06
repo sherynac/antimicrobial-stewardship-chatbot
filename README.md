@@ -1,3 +1,8 @@
+## Setup
+1. Download the model from [Google Drive](https://drive.google.com/drive/u/0/folders/1vXI6tYWkE0fMq5VB4CoxZyXnTZ7cxxcr)
+2. Place it at `backend/models/distilbert/`
+3. Run `pip install -r requirements.txt`
+
 ## How to Run in Docker
 
 1. Launch Docker Desktop
