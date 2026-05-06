@@ -64,9 +64,12 @@ def handle_antibiotic_info(entities, query_type):
 
         table_details = []
         for brand in brands_obj:
+            brand_name = brand.name
             presentation_obj = brand.hasPresentation
-            table_details.extend(ontology_service.get_brand_presentations(presentation_obj))
-
+            presentations = ontology_service.get_brand_presentations(presentation_obj)
+            
+            for row in presentations:
+                table_details.append([brand_name] + row)
         return response_service.build_antibiotic_generic(generic_info, table_details, reference_list)
 
     elif query_type == 'brand':
@@ -102,7 +105,8 @@ def handle_antibiotic_info(entities, query_type):
                 "content" : content[0], 
                 "presentation" : presentation, 
                 "dosage" : dosage, 
-                "unit_price" : unit_price}
+                "unit_price" : unit_price
+                }
             return response_service.build_antibiotic_single(brand_info, reference)
         else:
             return response_service.build_text_response("No presentation data found.")
@@ -307,7 +311,7 @@ def handle_side_effects(entities, query_type):
             side_effects_list.append({
                 "side_effect": side_effect,
                 "pattern": pattern,
-                "description": description[0]
+                "description": unwrap(description, "No description available")
             })
 
         info = {
@@ -347,7 +351,7 @@ def handle_side_effects(entities, query_type):
                 side_effects_list.append({
                     "side_effect": side_effect,
                     "pattern": pattern,
-                    "description": description[0]
+                    "description": unwrap(description, default="No description available")
                 })
 
             brands_side_effects.append({
@@ -363,7 +367,6 @@ def handle_side_effects(entities, query_type):
 
         return response_service.build_side_effect_generic(side_effect_info, reference_list)
                 
-    
     elif query_type == 'generic_side_effects':# have not tested
         generic_name = entities.get('Antibiotic', [None])[0]
         generic_obj = ontology_service.query_ontology(generic_name)
