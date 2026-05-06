@@ -54,48 +54,39 @@ def identify_intent(text: str) -> str:
     confidence = float(probs[top_idx])
     intent     = _le.inverse_transform([top_idx])[0]
 
-    # Look up the threshold for this specific predicted label
-    threshold = INTENT_THRESHOLDS.get(intent)
-
+    threshold = INTENT_THRESHOLDS.get(intent.lower())
     print(f"[Intent] '{intent}' | confidence: {confidence:.2f} | threshold: {threshold}")
 
     if confidence < threshold:
         return 'is_not_recognized'
 
-    return intent
+    return intent.lower()
 
-
-# ── Replace keyword matching with model prediction ────────────────────────────
-def identify_intent(text: str, confidence_threshold: float = 0.4) -> str:
-    """
-    Takes the raw user question (string) and returns the predicted intent label.
-    Falls back to 'unknown_intent' if confidence is too low.
-    """
-    encoding = _tokenizer(
-        text,
-        max_length=MAX_LEN,
-        padding="max_length",
-        truncation=True,
-        return_tensors="pt"
-    )
-
-    input_ids      = encoding["input_ids"].to(DEVICE)
-    attention_mask = encoding["attention_mask"].to(DEVICE)
-
-    with torch.no_grad():
-        logits = _model(input_ids=input_ids, attention_mask=attention_mask).logits
-
-    probs      = torch.softmax(logits, dim=1).squeeze().cpu().numpy()
-    top_idx    = int(np.argmax(probs))
-    confidence = float(probs[top_idx])
-    intent     = _le.inverse_transform([top_idx])[0]
-
-    print(f"[Intent] '{intent}' ({confidence:.2f})")  # helpful for debugging
-
-    if confidence < confidence_threshold:
-        return 'is_not_recognized'
-
-    return intent
+def handle_intent(intent, query_type, question_entities):
+    if intent == 'is_not_recognized':
+        return intent_handler.handle_is_not_recognized()
+    elif intent == 'get_antibiotic_info':
+        return intent_handler.handle_antibiotic_info(question_entities, query_type)
+    elif intent == 'get_uses_indications':
+        return intent_handler.handle_uses_indications(question_entities, query_type)
+    elif intent == 'get_side_effects':
+        return intent_handler.handle_side_effects(question_entities, query_type)
+    elif intent == 'get_substance_interaction':
+        print("TO INTERACTION HANDLER")
+        return intent_handler.handle_substance_interaction(question_entities, query_type)
+    elif intent == 'get_warning_precautions':
+        return intent_handler.handle_warning_precautions(question_entities, query_type)
+    elif intent == 'get_storage_instruction':
+        return intent_handler.handle_storage_instruction(question_entities, query_type)
+    elif intent == 'get_food_and_timing':
+        return intent_handler.handle_food_and_timing(question_entities, query_type)
+    elif intent == 'get_administration_instruction':
+        return intent_handler.handle_administration_instructions(question_entities, query_type)
+    elif intent == 'redirect_medicine_query':
+        return intent_handler.handle_redirect_medicine_query()
+    else:
+        print("Sorry, I couldn't understand your question. Could you please rephrase it?")
+        return None
 
 def identify_entities_present(entity_types):
     generic_brand = ['Antibiotic', 'Brand']
@@ -103,6 +94,7 @@ def identify_entities_present(entity_types):
     substance = ['Substance']
     generic_substance = ['Antibiotic', 'Substance']
     brand_substance = ['Brand', 'Substance']
+    generic_brand_substance = ['Antibiotic', 'Brand', 'Substance']
     warning = ['Warning']
     generic_brand_side_effects = ['Antibiotic', 'Brand', 'SideEffect']
     brand_side_effects = ['Brand', 'SideEffect']
@@ -110,7 +102,9 @@ def identify_entities_present(entity_types):
     generic_warning = ['Antibiotic', 'Warning']
     brand_warning = ['Brand', 'Warning']
 
-    if all (e in entity_types for e in generic_substance):
+    if all (e in entity_types for e in generic_brand_substance):
+        return 'generic_brand_substance'
+    elif all (e in entity_types for e in generic_substance):
         return 'generic_substance'
     elif all (e in entity_types for e in brand_substance):
         return 'brand_substance'
@@ -140,30 +134,3 @@ def identify_entities_present(entity_types):
     else:
         return 'unknown_entity_combination'
     
-def handle_intent(intent, query_type, question_entities):
-    if intent == 'GET_ANTIBIOTIC_INFO':
-        print("TO ROUTE IN INTENT HANDLER")
-        return intent_handler.handle_antibiotic_info(question_entities, query_type)
-    elif intent == 'GET_USES_INDICATIONS':
-        return intent_handler.handle_uses_indications(question_entities, query_type)
-    elif intent == 'GET_SIDE_EFFECTS':
-        return intent_handler.handle_side_effects(question_entities, query_type)
-    elif intent == 'GET_SUBSTANCE_INTERACTION':
-        return intent_handler.handle_substance_interaction(question_entities, query_type)
-    elif intent == 'GET_WARNING_PRECAUTIONS':
-        return intent_handler.handle_warning_precautions(question_entities, query_type)
-    elif intent == 'GET_STORAGE_INSTRUCTIONS':
-        return intent_handler.handle_storage_instruction(question_entities, query_type)
-    elif intent == 'GET_FOOD_AND_TIMING':
-        return intent_handler.handle_food_and_timing(question_entities, query_type)
-    elif intent == 'GET_ADMINISTRATION_INSTRUCTION':
-        return intent_handler.handle_administration_instructions(question_entities, query_type)
-    elif intent == 'IS_NOT_RECOGNIZED':
-        return intent_handler.handle_is_not_recognized()
-    elif intent == 'REDIRECT_MEDICINE_QUER':
-        return intent_handler.handle_redirect_medicine_query()
-    else:
-        print("Sorry, I couldn't understand your question. Could you please rephrase it?")
-        return None
-    
-        

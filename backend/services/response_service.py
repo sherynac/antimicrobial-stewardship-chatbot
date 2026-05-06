@@ -27,7 +27,6 @@ class ResponseService:
     
         return index
 
-
     # ─── Template Fetching ────────────────────────────────────────────
     
     def get_response_template(self, intent: str, variant: str) -> dict:
@@ -68,6 +67,13 @@ class ResponseService:
             "items": list
         }
 
+    def build_section(self, title:str, items: list) -> dict:
+        return {
+            "type": "section",
+            "title": title,
+            "items": items
+        }
+    
     # ─── High-Level Intent Builders ───────────────────────────────────
 
     def build_antibiotic_multiple(self, brand_info, table_details, reference):
@@ -145,9 +151,11 @@ class ResponseService:
             disease = indication_info['disease']
         )
 
+        bullets = [self.build_bullet(description=symptom) for symptom in symptoms_array]
+
         return self.build_composite_response([
             self.build_text_response(text),
-            self.build_bullet_list(symptoms_array),
+            self.build_bullet_list(bullets),
             reference_json
         ])
     
@@ -307,7 +315,6 @@ class ResponseService:
 
         text = response_text.format(generic=side_effect_info['generic'])
 
-        # build a section per brand
         brand_sections = []
         for brand_data in side_effect_info['brands']:
             bullets = []
@@ -326,18 +333,13 @@ class ResponseService:
                     description=se['description']
                 ))
 
-            brand_sections.append({
-                "type": "section",
-                "title": brand_data['brand'],  # "Doxin"
-                "items": bullets               # list of bullets
-            })
+            brand_sections.append(self.build_section(brand_data['brand'], bullets))  # ← cleaner
 
         return self.build_composite_response([
             self.build_text_response(text),
             *brand_sections,
             reference_json
         ])
-
     def build_side_effect_brand(self, brand, side_effect_list, reference):
         print("BRAND SIDE EFFECT")
         template = self.get_response_template("GET_SIDE_EFFECTS", "brand_only")
@@ -643,4 +645,144 @@ class ResponseService:
             reference_json
         ])
 
+    def build_interaction_single(self, interaction_info, reference):
+        print("Interaction Single")
+        template = self.get_response_template("GET_SUBSTANCE_INTERACTION", "single_interaction")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        header = response_text.format(
+            brand=interaction_info['brand'],
+            generic=interaction_info['generic']
+        )
+
+        section = self.build_section(
+            title=f"{interaction_info['substance_name']} ({interaction_info['substance_type']})",
+            items=[
+                self.build_bullet(main_text="About", description=interaction_info['substance_description']),
+                self.build_bullet(main_text="Interaction", description=interaction_info['interaction_description'])
+            ]
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(header),
+            section,
+            reference_json
+        ])
+
+    def build_interaction_multiple(self, interaction_info, interactions, reference):
+        print("Interaction Multiple")
+        template = self.get_response_template("GET_SUBSTANCE_INTERACTION", "multiple_interactions")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        header = response_text.format(
+            brand=interaction_info['brand'],
+            generic=interaction_info['generic']
+        )
+
+        rows = [
+            [
+                f"{i['substance_name']} ({i['substance_type']})",
+                i['substance_description'],
+                i['interaction_description']
+            ]
+            for i in interactions
+        ]
+
+        return self.build_composite_response([
+            self.build_text_response(header),
+            self.build_table_response(
+                columns=["Substance", "Substance Description", "Interaction"],
+                rows=rows
+            ),
+            reference_json
+        ])
+
+    def build_interaction_none(self, interaction_info, reference):
+        print("Interaction Brand None")
+        template = self.get_response_template("GET_SUBSTANCE_INTERACTION", "substance_no_match")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            brand=interaction_info['brand'],
+            generic=interaction_info['generic']
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            reference_json
+        ])
+
+    def build_interaction_match(self, interaction_info, interactions, reference):
+        print("Interaction Match")
+        template = self.get_response_template("GET_SUBSTANCE_INTERACTION", "substance_verify_match")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            substance=interaction_info['substance'],
+            generic=interaction_info['generic'],
+        )
+
+        sections = [
+            self.build_section(
+                title=i['brand_name'],
+                items=[
+                    self.build_bullet(main_text="About", description=i['substance_description']),
+                    self.build_bullet(main_text="Interaction", description=i['interaction_description'])
+                ]
+            )
+            for i in interactions
+        ]
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            *sections,
+            reference_json
+        ])
+
+    def build_interaction_generic(self, generic_name, interactions, reference):
+        print("Interaction Generic")
+        template = self.get_response_template("GET_SUBSTANCE_INTERACTION", "generic_only")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        header = response_text.format(generic=generic_name)
+
+        rows = [
+            [
+                f"{i['brand_name']}",
+                f"{i['substance_name']} ({i['substance_type']})",
+                i['substance_description'],
+                i['interaction_description']
+            ]
+            for i in interactions
+        ]
+
+        return self.build_composite_response([
+            self.build_text_response(header),
+            self.build_table_response(
+                columns=template['columns'],
+                rows=rows
+            ),
+            reference_json
+        ])
+
+    def build_interaction_generic_none(self, interaction_info, reference):
+        print("Interaction Generic None")
+        template = self.get_response_template("GET_SUBSTANCE_INTERACTION", "generic_no_match")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        text = response_text.format(
+            generic=interaction_info['generic'],
+            substance = interaction_info['substance']
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            reference_json
+        ])
 response_service = ResponseService('./backend/data/VRB.json')

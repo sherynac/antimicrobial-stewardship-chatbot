@@ -66,7 +66,7 @@
           "responseTexts": [
             "{brand} ({generic}) is indicated for the {disease} that has symptoms of :",
             "Based on available data, {brand} ({generic}) is used for {disease} with the following symptoms:",
-            "The antibiotic brand ({generic}) treats {disease}, which can manifest with the following symptoms:"
+            "The antibiotic brand {brand} ({generic}) treats {disease}, which can manifest with the following symptoms:"
           ]
         },
         {
@@ -193,69 +193,70 @@
         }
       ]
     },
-    {
-      "intent": "GET_SUBSTANCE_INTERACTION",
-      "description": "Get substance interactions of an antibiotic including interacting substances, substance types, clinical effects, and interaction descriptions.",
-      "responses": [
+   {
+    "intent": "GET_SUBSTANCE_INTERACTION",
+    "description": "Get substance interactions for an antibiotic.",
+    "responses": [
+      {
+        "responseID": 22,
+        "condition": "generic_only",
+        "responseTexts": [
+          "Here are the known substance interactions of {generic}:",
+          "{generic} interacts with the following substances listed below.",
+          "Based on ontology data, these substances interact with {generic}."
+        ],
+        "columns": [
+          "Brand",
+          "Substance",
+          "Substance Descriptions",
+          "Interaction Description"
+        ]
+      },
+      {
+        "responseID": 22,
+        "condition": "generic_match",
+        "responseTexts": [
+          "Here are the known substance interactions of {generic}:",
+          "{generic} interacts with the following substances listed below.",
+          "Based on ontology data, these substances interact with {generic}."
+        ],
+        "columns": [
+          "Brand",
+          "Substance",
+          "Substance Descriptions",
+          "Interaction Description"
+        ]
+      },
+      {
+        "responseID": 60,
+        "condition": "single_interaction",
+        "responseTexts": [
+          "The following interaction was found for {brand} ({generic}):",
+          "Here is 1 known substance interaction for {brand} ({generic}):",
+          "{brand} ({generic}) has 1 known substance interaction:"
+        ]
+      },
+      {
+        "responseID": 61,
+        "condition": "multiple_interactions",
+        "responseTexts": [
+          "Here are the known substance interactions for {brand} ({generic}):",
+          "{brand} ({generic}) has multiple known substance interactions listed below:",
+          "The following substance interactions were found for {brand} ({generic}):"
+        ],
+        "columns": ["Substance", "Substance Description, Interaction"]
+      },
         {
-          "responseID": 18,
-          "condition": "generic_only",
+          "responseID": 62,
+          "condition": "substance_no_match",
           "responseTexts": [
-            "Here are the known substance interactions of {generic}:",
-            "{generic} interacts with the following substances listed below.",
-            "Based on ontology data, these substances interact with {generic}."
-          ],
-          "columns": [
-            "Substance",
-            "Substance Type",
-            "Clinical Effect"
+            "No known substance interactions were found for {brand} ({generic}).",
+            "There is no interaction information available for {brand} ({generic}).",
+            "Substance interaction data for {brand} ({generic}) is not found in the system."
           ]
         },
         {
-          "responseID": 19,
-          "condition": "substance_description",
-          "responseTexts": [
-            "Here are descriptions of substances that interact with {generic}:",
-            "These substances are categorized based on ontology classification:",
-            "Below are substance details related to interactions with {generic}:"
-          ],
-          "columns": [
-            "Substance",
-            "Substance Type",
-            "Substance Description"
-          ]
-        },
-        {
-          "responseID": 20,
-          "condition": "interaction_description",
-          "responseTexts": [
-            "Here are the clinical effects of interactions involving {generic}:",
-            "These describe how {generic} interacts with different substances:",
-            "Below are interaction effects and clinical outcomes:"
-          ],
-          "columns": [
-            "Substance",
-            "Interaction Type",
-            "Clinical Effect Description"
-          ]
-        },
-        {
-          "responseID": 21,
-          "condition": "generic_substance_grouped",
-          "responseTexts": [
-            "Here are grouped substance interactions for {generic}:",
-            "{generic} interacts with substances categorized as Food, Beverage, and Drug.",
-            "These are categorized interaction effects of {generic}."
-          ],
-          "columns": [
-            "Substance",
-            "Category",
-            "Interaction Effect",
-            "Clinical Effect Description"
-          ]
-        },
-        {
-          "responseID": 22,
+          "responseID": 26,
           "condition": "substance_verify_match",
           "responseTexts": [
             "Yes, {substance} interacts with {generic}.",
@@ -264,16 +265,17 @@
           ]
         },
         {
-          "responseID": 23,
-          "condition": "substance_verify_no_match",
+          "responseID": 62,
+          "condition": "generic_no_match",
           "responseTexts": [
-            "{substance} does not interact with {generic}.",
-            "No interaction is recorded between {generic} and {substance}.",
-            "Based on ontology records, no interaction exists."
+            "No known {substance} interactions were found for ({generic}).",
+            "There is no {substance} interaction information available for ({generic}).",
+            "{substance} interaction data for ({generic}) is not found in the system."
           ]
         }
       ]
     },
+  
     {
       "intent": "GET_WARNING_PRECAUTIONS",
       "description": "Get warning precautions for an antibiotic including pregnancy & lactation, age restriction, overdose, contraindications, and patient condition warnings.",
