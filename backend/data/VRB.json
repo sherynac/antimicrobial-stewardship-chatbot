@@ -187,7 +187,6 @@
             "Based on ontology data, these are the side effects of {brand} ({generic})."
           ],
           "bulletFormat": {
-            "groupHeader": "{brand}",
             "bulletWithPattern": "⁃ {side_effect} ({pattern})",
             "bulletNoPattern": "⁃ {side_effect}",
             "description": "  {side_effect_description}"
@@ -293,11 +292,7 @@
             "Here are the warning precautions for {generic}:",
             "The following safety warnings apply to {generic}:",
             "{generic} has multiple safety considerations listed below."
-          ],
-          "bulletFormat": {
-            "headline": "{warning_headline}",
-            "details": "  ⁃ {warning_description}"
-          }
+          ]
         },
         {
           "responseID": 27,
@@ -368,18 +363,18 @@
           "responseID": 32,
           "condition": "generic_verify_match",
           "responseTexts": [
-            "Yes, {warning} is a known warning for {generic} ({brand}).",
-            "{generic} ({brand}) has this warning recorded in the system.",
-            "Based on ontology data, {warning} is associated with {generic} ({brand})."
+            "Yes, there are {warning_type} warnings for {generic}, specifically these brands have them: ",
+            "{generic} has {warning_type} warning recorded in the system. Specifically, these brands have them:",
+            "Based on ontology data, {warning_type} warnings are associated with {generic}. The following brands have them: "
           ]
         },
         {
           "responseID": 33,
-          "condition": "generic_verify_no_match",
+          "condition": "verify_no_match",
           "responseTexts": [
-            "{warning} is not listed as a warning for {generic} ({brand}).",
-            "No record of this warning exists for {generic} ({brand}).",
-            "Based on available data, {generic} ({brand}) does not include this warning."
+            "{warning_type} is not listed as a warning for {antibiotic}.",
+            "No record of {warning_type} warnings exist for {antibiotic}.",
+            "Based on available data, {antibiotic} does not include {warning_type} warnings."
           ]
         },
         {
