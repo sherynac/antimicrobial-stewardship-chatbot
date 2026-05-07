@@ -95,8 +95,8 @@ class ResponseService:
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_table_response(template['columns'], table_details),
-            self.build_text_response(postText),
-            reference_json
+            reference_json,
+            self.build_text_response(postText)
         ])
 
     def build_antibiotic_single(self, brand_info, reference):
@@ -122,8 +122,8 @@ class ResponseService:
 
         return self.build_composite_response([
             self.build_text_response(text),
-            self.build_text_response(postText),
-            reference_json
+            reference_json,
+            self.build_text_response(postText)
         ])
     
     def build_antibiotic_generic(self, generic_info, table_details, reference):
@@ -143,8 +143,8 @@ class ResponseService:
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_table_response(template['columns'], table_details),
-            self.build_text_response(postText),
-            reference_json
+            reference_json,
+            self.build_text_response(postText)
         ])
     
     def build_indications_single(self, indication_info, symptoms_array, reference):
@@ -167,8 +167,8 @@ class ResponseService:
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_bullet_list(bullets),
-            self.build_text_response(post_text),
-            reference_json
+            reference_json,
+            self.build_text_response(post_text)
         ])
     
     def build_indications_multiple(self, indication_info, indication_final, symptoms_obj, reference):
@@ -196,8 +196,8 @@ class ResponseService:
         return self.build_composite_response([
             self.build_text_response(text),
             bullet_list,
-            self.build_text_response(post_text),
-            reference_json
+            reference_json,
+            self.build_text_response(post_text)
         ])
 
     def build_indications_generic(self, generic_name, table_details, reference):
@@ -216,8 +216,8 @@ class ResponseService:
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_table_response(template['columns'], table_details),
-            self.build_text_response(post_text),
-            reference_json
+            reference_json,
+            self.build_text_response(post_text)
         ])
     
     def build_side_effect_all_match(self, isFound, side_effect_info, reference):
@@ -241,8 +241,8 @@ class ResponseService:
         
         return self.build_composite_response([
             self.build_text_response(text),
-            self.build_text_response(post_text),
-            reference_json
+            reference_json,
+            self.build_text_response(post_text)
         ])
     
     def build_side_effect_brand_match(self, isFound, side_effect_info, reference):
@@ -265,8 +265,8 @@ class ResponseService:
 
         return self.build_composite_response([
             self.build_text_response(text),
-            self.build_text_response(post_text),
-            reference_json
+            reference_json,
+            self.build_text_response(post_text)
         ])
     
     def build_side_effect_generic_match(self, isFound, side_effect_info, reference):
@@ -289,8 +289,8 @@ class ResponseService:
         post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
-            self.build_text_response(post_text),
-            reference_json
+            reference_json,
+            self.build_text_response(post_text)
         ])
 
     def build_side_effect_generic_brand(self, info, side_effect_list, reference): 
@@ -332,8 +332,8 @@ class ResponseService:
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_bullet_list(formatted_effects),
-            self.build_text_response(post_text),
-            reference_json
+            reference_json,
+            self.build_text_response(post_text)
         ])
     
     def build_side_effect_generic(self, side_effect_info: dict, reference: list):
@@ -370,8 +370,8 @@ class ResponseService:
         return self.build_composite_response([
             self.build_text_response(text),
             *brand_sections,
-            self.build_text_response(post_text),
-            reference_json
+            reference_json,
+            self.build_text_response(post_text)
         ])
     
     def build_side_effect_brand(self, brand, side_effect_list, reference):
@@ -411,8 +411,8 @@ class ResponseService:
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_bullet_list(formatted_effects),
-            self.build_text_response(post_text),
-            reference_json
+            reference_json,
+            self.build_text_response(post_text)
         ])
     
     def build_storage_single(self, antibiotic_info, storage_rule, reference):
@@ -430,8 +430,8 @@ class ResponseService:
         post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
-            self.build_text_response(post_text),
-            reference_json
+            reference_json,
+            self.build_text_response(post_text)
         ])
 
     def build_storage_multiple(self, antibiotic_info, storage_rules, reference):
@@ -454,8 +454,8 @@ class ResponseService:
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_bullet_list(bullets),
-            self.build_text_response(post_text),
-            reference_json
+            reference_json,
+            self.build_text_response(post_text)
         ])
 
     def build_storage_none(self, antibiotic_info, reference):
@@ -472,8 +472,8 @@ class ResponseService:
         post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
-            self.build_text_response(post_text),
-            reference_json
+            reference_json,
+            self.build_text_response(post_text)
         ])
     
     def build_storage_generic(self, storage_info: dict, reference: list):
@@ -508,8 +508,8 @@ class ResponseService:
         return self.build_composite_response([
             self.build_text_response(text),
             *brand_sections,
-            self.build_text_response(post_text),
-            reference_json
+            reference_json,
+            self.build_text_response(post_text)
         ])
 
     def build_food_and_timing_single(self, antibiotic_info, food_and_timing_rule, reference):
@@ -617,8 +617,8 @@ class ResponseService:
 
         return self.build_composite_response([
             self.build_text_response(text),
-            self.build_text_response(post_text),
-            reference_json
+            reference_json,
+            self.build_text_response(post_text)
         ])
 
     def build_administration_multiple(self, antibiotic_info, administration_rules, reference):
@@ -641,8 +641,8 @@ class ResponseService:
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_bullet_list(bullets),
-            self.build_text_response(post_text),
-            reference_json
+            reference_json,
+            self.build_text_response(post_text)
         ])
 
     def build_administration_none(self, antibiotic_info, reference):
@@ -660,8 +660,8 @@ class ResponseService:
 
         return self.build_composite_response([
             self.build_text_response(text),
-            self.build_text_response(post_text),
-            reference_json
+            reference_json,
+            self.build_text_response(post_text)
         ])
     
     def build_administration_generic(self, administration_info: dict, reference: list):
@@ -696,8 +696,8 @@ class ResponseService:
         return self.build_composite_response([
             self.build_text_response(text),
             *brand_sections,
-            self.build_text_response(post_text),
-            reference_json
+            reference_json,
+            self.build_text_response(post_text)
         ])
 
     def build_interaction_single(self, interaction_info, reference):
