@@ -88,7 +88,7 @@
 }
 
 .dark-mode .cards-container {
-  @apply bg-[#424242];
+  @apply bg-[#333333];
 }
 
 .dark-mode .qa-card {
