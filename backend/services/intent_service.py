@@ -79,6 +79,10 @@ def handle_intent(intent, query_type, question_entities):
     elif intent == 'get_storage_instructions':
         return intent_handler.handle_storage_instruction(question_entities, query_type)
     elif intent == 'get_food_and_timing':
+        question_entities.pop("Substance", None)
+        query_type = identify_entities_present(question_entities.keys())
+        print("QUERY TYPE", query_type)
+        print(question_entities)
         return intent_handler.handle_food_and_timing(question_entities, query_type)
     elif intent == 'get_administration_instructions':
         return intent_handler.handle_administration_instructions(question_entities, query_type)

@@ -76,6 +76,7 @@ WARNING_TYPE_KEYWORDS = {
         'myasthenia', 'crystalluria',
     ]
 }
+
 def identify_warning_type(words: list) -> str:
     text = " ".join(words).lower()
     

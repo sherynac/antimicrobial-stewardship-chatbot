@@ -849,6 +849,10 @@ def handle_storage_instruction(entities, query_type):
         return response_service.build_storage_none(antibiotic_info, reference_list)
 
 def handle_food_and_timing(entities, query_type):
+
+    if "Substance" in entities or "Antibiotic" in entities:
+        entities.pop("Food", None)
+
     if query_type == 'generic':
         generic_name = entities.get('Antibiotic', [None])[0]
         generic_obj = ontology_service.query_ontology(generic_name)

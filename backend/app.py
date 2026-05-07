@@ -88,6 +88,7 @@ def chat():
     try:
         intent = intent_service.identify_intent(question)
         query_type = intent_service.identify_entities_present(question_entities.keys())
+        print("CONDITION", query_type)
 
         result = intent_service.handle_intent(intent, query_type, question_entities)
 
@@ -104,6 +105,7 @@ def chat():
         app.logger.exception("Unexpected error in /chat")
         reply = "I didn't quite get that. Can you please try rephrasing your question?"
 
+    print(reply)
     return jsonify({
         "reply": reply,
         "session_id": session["session_id"],
