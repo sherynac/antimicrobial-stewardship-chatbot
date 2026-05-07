@@ -237,8 +237,11 @@ class ResponseService:
             side_effect = side_effect_info['side_effect']
         )
 
+        post_text = template['postText']
+        
         return self.build_composite_response([
             self.build_text_response(text),
+            self.build_text_response(post_text),
             reference_json
         ])
     
@@ -258,8 +261,11 @@ class ResponseService:
             side_effect = side_effect_info['side_effect']
         )
 
+        post_text = template['postText']
+
         return self.build_composite_response([
             self.build_text_response(text),
+            self.build_text_response(post_text),
             reference_json
         ])
     
@@ -280,8 +286,10 @@ class ResponseService:
             side_effect = side_effect_info['side_effect']
         )
 
+        post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
+            self.build_text_response(post_text),
             reference_json
         ])
 
@@ -300,27 +308,31 @@ class ResponseService:
 
         for se in side_effect_list:
             if se['pattern']:
-                main_text = bullet_template['mainWithPattern'].format(
+                main_text = bullet_template['bulletWithPattern'].format(
                     side_effect=se['side_effect'],
                     pattern=se['pattern']
                 )
             else:
-                main_text = bullet_template['mainNoPattern'].format(
+                main_text = bullet_template['bulletNoPattern'].format(
                     side_effect=se['side_effect']
                 )
             
+            
+
             formatted_effects.append(
                 self.build_bullet(
-                    main_text=main_text,  
-                    description=se['description']
+                    main_text=main_text,
+                    
+                    description=bullet_template['description'].format(side_effect_description = se['description'])
                 )
             )
 
         reference_json = self.build_reference_list(reference)
-
+        post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_bullet_list(formatted_effects),
+            self.build_text_response(post_text),
             reference_json
         ])
     
@@ -354,11 +366,11 @@ class ResponseService:
             section = template['bulletFormat']['brandHeaderText']
             brand_sections.append(self.build_section(section.format(brand = brand_data['brand']), bullets))  # ← cleaner
 
-        postText = template['postText']
+        post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
             *brand_sections,
-            self.build_text_response(postText),
+            self.build_text_response(post_text),
             reference_json
         ])
     
@@ -371,17 +383,17 @@ class ResponseService:
             brand = brand
         )
 
-        bullet_template = template['itemFormat']
+        bullet_template = template['bulletFormat']
         formatted_effects = []
 
         for se in side_effect_list:
             if se['pattern']:
-                main_text = bullet_template['mainWithPattern'].format(
+                main_text = bullet_template['bulletWithPattern'].format(
                     side_effect=se['side_effect'],
                     pattern=se['pattern']
                 )
             else:
-                main_text = bullet_template['mainNoPattern'].format(
+                main_text = bullet_template['bulletNoPattern'].format(
                     side_effect=se['side_effect']
                 )
             
@@ -394,9 +406,12 @@ class ResponseService:
 
         reference_json = self.build_reference_list(reference)
 
+        post_text = template['postText']
+
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_bullet_list(formatted_effects),
+            self.build_text_response(post_text),
             reference_json
         ])
     
@@ -412,8 +427,10 @@ class ResponseService:
             stewardship_description = storage_rule[0]
         )
 
+        post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
+            self.build_text_response(post_text),
             reference_json
         ])
 
@@ -433,9 +450,11 @@ class ResponseService:
         for rule in storage_rules
         ]
 
+        post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_bullet_list(bullets),
+            self.build_text_response(post_text),
             reference_json
         ])
 
@@ -450,8 +469,10 @@ class ResponseService:
             brand = antibiotic_info['brand'],
         )
 
+        post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
+            self.build_text_response(post_text),
             reference_json
         ])
     
@@ -483,9 +504,11 @@ class ResponseService:
                 "items": bullets
             })
 
+        post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
             *brand_sections,
+            self.build_text_response(post_text),
             reference_json
         ])
 
@@ -590,8 +613,11 @@ class ResponseService:
             stewardship_description =administration_rule[0]
         )
 
+        post_text = template['postText']
+
         return self.build_composite_response([
             self.build_text_response(text),
+            self.build_text_response(post_text),
             reference_json
         ])
 
@@ -611,9 +637,11 @@ class ResponseService:
         for rule in administration_rules
         ]
 
+        post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_bullet_list(bullets),
+            self.build_text_response(post_text),
             reference_json
         ])
 
@@ -628,8 +656,11 @@ class ResponseService:
             brand = antibiotic_info['brand'],
         )
 
+        post_text = template['postText']
+
         return self.build_composite_response([
             self.build_text_response(text),
+            self.build_text_response(post_text),
             reference_json
         ])
     
@@ -660,10 +691,12 @@ class ResponseService:
                 "title": brand_data['brand'],
                 "items": bullets
             })
+        post_text = template['postText']
 
         return self.build_composite_response([
             self.build_text_response(text),
             *brand_sections,
+            self.build_text_response(post_text),
             reference_json
         ])
 
@@ -675,7 +708,8 @@ class ResponseService:
 
         header = response_text.format(
             brand=interaction_info['brand'],
-            generic=interaction_info['generic']
+            generic=interaction_info['generic'],
+            substance = interaction_info['substance_name']
         )
 
         section = self.build_section(
@@ -729,7 +763,8 @@ class ResponseService:
 
         text = response_text.format(
             brand=interaction_info['brand'],
-            generic=interaction_info['generic']
+            generic=interaction_info['generic'],
+            substance = interaction_info['substance']
         )
 
         return self.build_composite_response([
@@ -746,6 +781,7 @@ class ResponseService:
         text = response_text.format(
             substance=interaction_info['substance'],
             generic=interaction_info['generic'],
+            brand = interaction_info['brand']
         )
 
         sections = [
@@ -792,9 +828,37 @@ class ResponseService:
             reference_json
         ])
 
+    def build_interaction_generic_match(self, interaction_info, interactions, reference):
+        print("Interaction Generic Match")
+        template = self.get_response_template("GET_SUBSTANCE_INTERACTION", "generic_substance_match")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        header = response_text.format(
+            substance=interaction_info['substance'],
+            generic=interaction_info['generic'],
+        )
+
+        sections = [
+            self.build_section(
+                title=i['brand_name'],
+                items=[
+                    self.build_bullet(main_text="About", description=i['substance_description']),
+                    self.build_bullet(main_text="Interaction", description=i['interaction_description'])
+                ]
+            )
+            for i in interactions
+        ]
+
+        return self.build_composite_response([
+            self.build_text_response(header),
+            *sections,
+            reference_json
+        ])
+
     def build_interaction_generic_none(self, interaction_info, reference):
         print("Interaction Generic None")
-        template = self.get_response_template("GET_SUBSTANCE_INTERACTION", "generic_no_match")
+        template = self.get_response_template("GET_SUBSTANCE_INTERACTION", "generic_substance_no_match")
         response_text = random.choice(template['responseTexts'])
         reference_json = self.build_reference_list(reference)
 
@@ -807,4 +871,100 @@ class ResponseService:
             self.build_text_response(text),
             reference_json
         ])
+    
+    def build_warnings_brand(self, warnings, reference):
+        print("Brand Warning")
+        template = self.get_response_template("GET_WARNING_PRECAUTIONS", "brand_only")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+        
+        text = response_text.format(
+            brand = warnings['brand_name']
+        )
+
+        sections = []
+    
+        for warning_type, warning_items in warnings['warnings_by_type'].items():
+            # Build bullet list for each warning within a type
+            bullets = []
+            for warning in warning_items:
+                headline = warning['headline'][0]  # Get first headline
+                warning_desc = warning['warning_desc'][0]  # Get first text block
+                
+                bullets.append(
+                    self.build_bullet(
+                        description=warning_desc,
+                        main_text=headline
+                    )
+                )
+        
+            sections.append(
+                self.build_section(
+                    title=warning_type,
+                    items=bullets
+                )
+            )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            *sections,
+            reference_json
+        ])
+
+    def build_warnings_generic_type(self, info, warnings_by_brand, reference):
+        print("Warnings Generic Type")
+        template = self.get_response_template("GET_WARNING_PRECAUTIONS", "generic_verify_match")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        header = response_text.format(
+            generic=info['generic'],
+            warning_type=info['warning_type']
+        )
+
+        sections = [
+            self.build_section(
+                title=brand_name,
+                items=[
+                    self.build_bullet(
+                        main_text=w['headline'],
+                        description=w['description']
+                    )
+                    for w in warnings
+                ]
+            )
+            for brand_name, warnings in warnings_by_brand.items()
+        ]
+
+        return self.build_composite_response([
+            self.build_text_response(header),
+            *sections,
+            reference_json
+        ])
+    
+    def build_warnings_none(self, info, reference):
+        print("Warnings None")
+        template = self.get_response_template("GET_WARNING_PRECAUTIONS", "verify_no_match")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        # use brand if available, otherwise fall back to generic
+        antibiotic = f"{info['brand']} ({info['generic']})" if info.get('brand') else info['generic']
+
+        text = response_text.format(
+            antibiotic=antibiotic,
+            warning_type=info['warning_type']
+        )
+
+        return self.build_composite_response([
+            self.build_text_response(text),
+            reference_json
+        ])
+    
+    def build_redirect_query(self):
+        template = self.get_response_template("REDIRECT_MEDICINE_QUERY", "default")
+        response_text = random.choice(template['responseTexts'])
+        print(response_text)
+        return self.build_text_response(response_text)
+
 response_service = ResponseService('./data/VRB.json')

@@ -28,9 +28,9 @@ INTENT_THRESHOLDS = {
     'get_side_effects':             0.85,  # adjusted
     'get_substance_interaction':    0.90,  # adjusted
     'get_warning_precautions':      0.90,  # adjusted
-    'get_storage_instruction':      0.75, # adjusted
+    'get_storage_instructions':      0.75, # adjusted
     'get_food_and_timing':          0.75, # adjusted
-    'get_administration_instruction': 0.75, # adjusted
+    'get_administration_instructions': 0.75, # adjusted
     'redirect_medicine_query':      0.40
 }
 
@@ -76,11 +76,11 @@ def handle_intent(intent, query_type, question_entities):
         return intent_handler.handle_substance_interaction(question_entities, query_type)
     elif intent == 'get_warning_precautions':
         return intent_handler.handle_warning_precautions(question_entities, query_type)
-    elif intent == 'get_storage_instruction':
+    elif intent == 'get_storage_instructions':
         return intent_handler.handle_storage_instruction(question_entities, query_type)
     elif intent == 'get_food_and_timing':
         return intent_handler.handle_food_and_timing(question_entities, query_type)
-    elif intent == 'get_administration_instruction':
+    elif intent == 'get_administration_instructions':
         return intent_handler.handle_administration_instructions(question_entities, query_type)
     elif intent == 'redirect_medicine_query':
         return intent_handler.handle_redirect_medicine_query()
@@ -95,7 +95,6 @@ def identify_entities_present(entity_types):
     generic_substance = ['Antibiotic', 'Substance']
     brand_substance = ['Brand', 'Substance']
     generic_brand_substance = ['Antibiotic', 'Brand', 'Substance']
-    warning = ['Warning']
     generic_brand_side_effects = ['Antibiotic', 'Brand', 'SideEffect']
     brand_side_effects = ['Brand', 'SideEffect']
     generic_side_effects = ['Antibiotic', 'SideEffect']
@@ -109,11 +108,10 @@ def identify_entities_present(entity_types):
     elif all (e in entity_types for e in brand_substance):
         return 'brand_substance'
     elif all (e in entity_types for e in generic_warning):
+        print("ENTITIES GENERIC WARNINGS", entity_types)
         return 'generic_warning'
     elif all (e in entity_types for e in brand_warning):
         return 'brand_warning'
-    elif all (e in entity_types for e in warning):
-        return 'warning'
     elif all (e in entity_types for e in generic_brand_side_effects):
         return 'generic_brand_side_effects'
     elif all (e in entity_types for e in brand_side_effects):

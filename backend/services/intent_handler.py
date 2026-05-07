@@ -111,7 +111,7 @@ def handle_antibiotic_info(entities, query_type):
         else:
             return response_service.build_text_response("No presentation data found.")
     else:
-        return "Please specify the antibiotic name or brand for more information."
+        return response_service.build_text_response("To learn more about antibiotics. Please specify the antibiotic name or brand for more information.")
 
 def handle_uses_indications(entities, query_type):
     if query_type == 'generic_brand':
@@ -257,7 +257,7 @@ def handle_uses_indications(entities, query_type):
 
         return response_service.build_indications_generic(generic_name, table_details, reference_list)
         
-    return "To get information about the uses and indications of an antibiotic, please specify the antibiotic name or brand."
+    return response_service.build_text_response("To get information about the uses and indications of an antibiotic, please specify the antibiotic name or brand.")
 
 def handle_side_effects(entities, query_type):
     if query_type == 'generic_brand_side_effects':
@@ -379,10 +379,8 @@ def handle_side_effects(entities, query_type):
         isFound = False
     
         for brand in brands_obj:
-            print("Brand_side_effects", brand.hasSideEffect)
             for side_effect_instance in brand.hasSideEffect:
                 ontology_service_side_effect = side_effect_instance.is_a[0].name
-                print("ontology_service Side Effect: ", ontology_service_side_effect)
                 if target_side_effect.lower() == ontology_service_side_effect.lower():
                     isFound= True
                     side_effect_ref = ontology_service.get_reference_from_entity(side_effect_instance)
@@ -422,7 +420,7 @@ def handle_side_effects(entities, query_type):
             side_effects_list.append({
                 "side_effect": side_effect,
                 "pattern": pattern,
-                "description": description[0]
+                "description": unwrap(description, default="No description available")
             })
 
         return response_service.build_side_effect_brand(brand_name, side_effects_list, reference_list)
@@ -448,7 +446,7 @@ def handle_side_effects(entities, query_type):
             
         return response_service.build_side_effect_brand_match(isFound, side_effect_info, reference_list)
     
-    return "To get information about the side effects of an antibiotic, please specify the antibiotic name or brand."
+    return response_service.build_text_response("To get information about the side effects of an antibiotic, please specify the antibiotic name or brand.")
 
 def handle_substance_interaction(entities, query_type):
     ##
@@ -588,7 +586,7 @@ def handle_substance_interaction(entities, query_type):
         }
 
         if interactions:
-            return response_service.build_interaction_match(info, interactions, reference_list)
+            return response_service.build_interaction_generic_match(info, interactions, reference_list)
         else:
             reference_list = ontology_service.get_reference_from_entities(brand_objs)
             return response_service.build_interaction_generic_none(info, reference_list)
@@ -647,124 +645,141 @@ def handle_substance_interaction(entities, query_type):
             return response_service.build_interaction_none(info, reference_list)
 
     else:
-        return "To get information about substance interactions with an antibiotic, please specify the antibiotic name or brand."
+        return response_service.build_text_response("To get information about substance interactions with an antibiotic, please specify the antibiotic name or brand.")
 
-# need checking of results
 def handle_warning_precautions(entities, query_type):
-    # Needed outputs
-    # - Generic
-    # - Brand
-    # - Warning type
-    # - Warning Headline
-    # - Warning Description
+    WARNING_TYPE_MAP = {
+        'Pregnancy & lactation': 'PregnancyAndLactation',
+        'Age restriction':       'AgeRestriction',
+        'Patient condition':     'PatientCondition',
+        'Contraindication':      'Contraindication',
+        'Overdosage':            'Overdosage',
+    }
 
-    if query_type == 'generic_brand':
-        generic_name = entities.get('Antibiotic', [None])[0]
+    if (query_type == 'brand') or (query_type== 'generic_brand') :
         brand_name = entities.get('Brand', [None])[0]
         brand_obj = ontology_service.query_ontology(brand_name)
-        generic_obj = ontology_service.query_ontology(generic_name)
+
+        if query_type == 'generic_brand':
+            generic_name = entities.get('Antibiotic', [None])[0]
+            generic_obj = ontology_service.query_ontology(generic_name)
+            ontology_service.is_correct_generic(generic_name, brand_obj)
+        else:
+            generic_obj = brand_obj.isBrandOf
+            generic_name = generic_obj.name
         
         warning_ids = brand_obj.hasWarning
-        warnings = []
-        print("Generic Name: ", generic_name)
-        print("Brand Name: ", brand_name)
+        warnings_by_type = {}
+        reference_list = ontology_service.get_reference_from_entity(brand_obj)
+
         for warning_id in warning_ids:
             warning_type = warning_id.is_a[0].name
+            warning_type = add_space_to_pascal_case(warning_type.lower())
             warning_headline = warning_id.hasWarningHeadline
             warning_text = warning_id.hasWarningText
-            warnings.append(warning_id)
 
-            print("Warning Type: ", warning_type)
-            print("Warning Headline: ", warning_headline)
-            print("Warning Text: ", warning_text)
-        
-        
-    elif query_type == 'generic':
-        generic_name = entities.get('Antibiotic', [None])[0]
-        generic_obj = ontology_service.query_ontology(generic_name)
-        brands_obj = generic_obj.hasBrandName
-        warnings = []
-        print("Generic Name: ", generic_name)
-        for brand in brands_obj:
-            brand_name = brand.name
-            brand_obj = ontology_service.query_ontology(brand_name)
-            warning_ids = brand_obj.hasWarning
-            print("Brand Name: ", brand_name)
-            for warning_id in warning_ids:
-                warning_type = warning_id.is_a[0].name
-                warning_headline = warning_id.hasWarningHeadline
-                warning_text = warning_id.hasWarningText
-                warnings.append(warning_id)
+            if warning_type not in warnings_by_type:
+                warnings_by_type[warning_type] = []
+            
+            warnings_by_type[warning_type].append({
+                "headline": warning_headline,
+                "warning_desc": warning_text
+            })
 
-                print("Warning Type: ", warning_type)
-                print("Warning Headline: ", warning_headline)
-                print("Warning Text: ", warning_text)
-                
-    elif query_type == 'brand':
-        brand_name = entities.get('Brand', [None])[0]
-        brand_obj = ontology_service.query_ontology(brand_name)
-        generic_obj= brand_obj.isBrandOf
-        generic_name = generic_obj.name
-        warning_ids = brand_obj.hasWarning
-        warnings = []
-        print("Generic Name: ", generic_name)
-        print("Brand Name: ", brand_name)
-        for warning_id in warning_ids:
-            warning_type = warning_id.is_a[0].name
-            warning_headline = warning_id.hasWarningHeadline
-            warning_text = warning_id.hasWarningText
-            warnings.append(warning_id)
+        response_data = {
+            "brand_name": brand_name,
+            "generic_name": generic_name,
+            "warnings_by_type": warnings_by_type
+        }
 
-            print("Warning Type: ", warning_type)
-            print("Warning Headline: ", warning_headline)
-            print("Warning Text: ", warning_text)
-
+        return response_service.build_warnings_brand(response_data, reference_list)
+    
     elif query_type == 'generic_warning':
         target_warning_type = entities.get('Warning', [None])[0]
+        target_warning_type = WARNING_TYPE_MAP.get(target_warning_type, target_warning_type)
         generic_name = entities.get('Antibiotic', [None])[0]
         generic_obj = ontology_service.query_ontology(generic_name)
         brands_obj = generic_obj.hasBrandName
-        found = False
-        
+        reference_list = ontology_service.get_reference_from_entities(brands_obj)
+
+        # group warnings by brand
+        warnings_by_brand = {}
+
+        info = {
+            "generic":      generic_name,
+            "warning_type": (add_space_to_pascal_case(target_warning_type)).lower
+        }
+
         for brand in brands_obj:
-            brand_name = brand.name
-            brand_obj = ontology_service.query_ontology(brand_name)
-            warning_ids = brand_obj.hasWarning
+            brand_name = brand.name  # ← use brand directly, no need to query again
+            warning_ids = brand.hasWarning
+
             for warning_id in warning_ids:
                 ontology_warning_type = warning_id.is_a[0].name
+
                 if target_warning_type.lower() == ontology_warning_type.lower():
-                    found = True
-                    warning_headline = warning_id.hasWarningHeadline
-                    warning_text = warning_id.hasWarningText
-                    print("Warning Found in Brand: ", brand_name)
-                    print("Generic Name: ", generic_name)
-                    print("Brand Name: ", brand_name)
-                    print("Warning Type: ", ontology_warning_type)
-                    print("Warning Headline: ", warning_headline)
-                    print("Warning Text: ", warning_text)
+                    if brand_name not in warnings_by_brand:
+                        warnings_by_brand[brand_name] = []
+
+                    warnings_by_brand[brand_name].append({
+                        'headline':     unwrap(warning_id.hasWarningHeadline, 'No headline'),
+                        'description':  unwrap(warning_id.hasWarningText, 'No description')
+                    })
+
+                    reference_list = ontology_service.combine_references(
+                        reference_list,
+                        ontology_service.get_reference_from_entity(warning_id)
+                    )
+
+        if warnings_by_brand:
+            return response_service.build_warnings_generic_type(info, warnings_by_brand, reference_list)
+        else:
+            return response_service.build_warnings_none(info, reference_list)
     
     elif query_type == 'brand_warning':
         target_warning_type = entities.get('Warning', [None])[0]
+        target_warning_type = WARNING_TYPE_MAP.get(target_warning_type, target_warning_type)
         brand_name = entities.get('Brand', [None])[0]
         brand_obj = ontology_service.query_ontology(brand_name)
         generic_obj = brand_obj.isBrandOf
         generic_name = generic_obj.name
         warning_ids = brand_obj.hasWarning
-        found = False
-        
-        for warning_id in warning_ids:
-            ontology_warning_type = warning_id.is_a[0].name
-            if target_warning_type.lower() == ontology_warning_type.lower():
-                found = True
-                warning_headline = warning_id.hasWarningHeadline
-                warning_text = warning_id.hasWarningText
-                print("Warning Found in Brand: ", brand_name)
-                print("Generic Name: ", generic_name)
-                print("Brand Name: ", brand_name)
-                print("Warning Type: ", ontology_warning_type)
-                print("Warning Headline: ", warning_headline)
-                print("Warning Text: ", warning_text)
+        reference_list = ontology_service.get_reference_from_entity(brand_obj)
 
+        warnings_by_brand = {}
+
+        for warning_id in warning_ids:
+            ontology_warning_type = WARNING_TYPE_MAP.get(
+                warning_id.is_a[0].name, warning_id.is_a[0].name
+            )
+
+            if target_warning_type.lower() == ontology_warning_type.lower():
+                if brand_name not in warnings_by_brand:
+                    warnings_by_brand[brand_name] = []
+
+                warnings_by_brand[brand_name].append({
+                    'headline':    unwrap(warning_id.hasWarningHeadline, 'No headline'),
+                    'description': unwrap(warning_id.hasWarningText, 'No description')
+                })
+
+                reference_list = ontology_service.combine_references(
+                    reference_list,
+                    ontology_service.get_reference_from_entity(warning_id)
+                )
+
+        info = {
+            "generic":      generic_name,
+            "brand":        brand_name,
+            "warning_type": add_space_to_pascal_case(target_warning_type)
+        }
+
+        if warnings_by_brand:
+            return response_service.build_warnings_generic_type(info, warnings_by_brand, reference_list)
+        else:
+            return response_service.build_warnings_none(info, reference_list)
+
+    else:
+        return "Specify a brand or a specific warning type for information."
 
 def handle_storage_instruction(entities, query_type):
     if query_type == 'generic':
@@ -778,6 +793,7 @@ def handle_storage_instruction(entities, query_type):
             storage_rules = []
             for storage_id in brand.hasStorageRule:
                 storage_rule = storage_id.hasStewardshipDescription
+                
                 storage_rules.append(storage_rule[0] if isinstance(storage_rule, list) else storage_rule)
             
             brands_storage.append({
@@ -814,7 +830,7 @@ def handle_storage_instruction(entities, query_type):
             storage_rules.append(storage_rule[0])
     
     else:
-        return "To get storage instructions for an antibiotic, please specify the antibiotic name or brand."
+        return response_service.build_text_response("To get storage instructions for an antibiotic, please specify the antibiotic name or brand.")
 
     antibiotic_info = {
         "generic": generic_name,
@@ -876,7 +892,7 @@ def handle_food_and_timing(entities, query_type):
             food_and_timing_rules.append(food_and_timing_rule[0])
     
     else:
-        return "To get food and timing for an antibiotic, please specify the antibiotic name or brand."
+        return response_service.build_text_response("To get food and timing for an antibiotic, please specify the antibiotic name or brand.")
 
     antibiotic_info = {
         "generic": generic_name,
@@ -940,12 +956,13 @@ def handle_administration_instructions(entities, query_type):
             administration_rules.append(administration_rule[0])
     
     else:
-        return "To get administration guidelines for an antibiotic, please specify the antibiotic name or brand."
+        return response_service.build_text_response("To get administration guidelines for an antibiotic, please specify the antibiotic name or brand.")
 
     antibiotic_info = {
         "generic": generic_name,
         "brand" : brand_name
     }
+
     if len(administration_rules) > 1:
         return response_service.build_administration_multiple(antibiotic_info, administration_rules, reference_list)
     elif len(administration_rules) == 1:
@@ -959,4 +976,4 @@ def handle_is_not_recognized():
     return response_service.build_text_response("Sorry, I didn't understand your question. Please try rephrasing it or ask about a specific antibiotic or brand.")
 
 def handle_redirect_medicine_query():
-    return "Redirecting to medicine query handler..."
+    return response_service.build_redirect_query()
