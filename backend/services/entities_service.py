@@ -46,35 +46,37 @@ def look_up_entity(words, original_text=""):
     return found_entities
 
 WARNING_TYPE_KEYWORDS = {
-    'Pregnancy & Lactation': [
+    'Pregnancy & Lactation': [         # ← fix key to match ontology
         'pregnan', 'lactat', 'breastfeed', 'fetal', 'fertility',
-        'maternal', 'labor', 'delivery', 'embryo', 'animal stud',
-        'pregnancy category', 'teratogen', 'cardiovascular anomal'
+        'maternal', 'labor', 'delivery', 'embryo',
+        'pregnancy category', 'teratogen',
     ],
     'Contraindication': [
-        'contraindic', 'hypersensitiv', 'allerg', 'interaction',
-        'history of', 'qt prolongation', 'renal impairment',
-        'restricted use', 'epilep', 'ticagrelor', 'ranolazine',
-        'statin', 'colchicine', 'midazolam', 'ergot'
+        'contraindic', 'contraindicated',
+        'hypersensitiv', 'allerg',
+        'qt prolongation', 'renal impairment',
+        'epilep', 'ticagrelor', 'ranolazine',
+        'statin', 'colchicine', 'midazolam', 'ergot',
     ],
     'Age Restriction': [
-        'pediatric', 'children', 'adolescent', 'infant', 'age',
-        'tooth', 'bone growth', 'enamel', 'discolor', 'young animal'
+        'pediatric', 'children', 'adolescent', 'infant',
+        'age restriction', 'age limit',
+        'not for children', 'under 8', 'under 12', 'safe for kids',
     ],
     'Overdosage': [
-        'overdos', 'overdosage', 'toxicit', 'gastric lavage',
-        'dialysis', 'rehydration', 'elimination', 'antidote',
-        'management of overdos', 'cns and metabolic'
+        'overdos', 'overdosage',
+        'gastric lavage', 'antidote',
+        'management of overdos',
     ],
-    'Patient Condition': [
-        'cdad', 'clostridium', 'severe skin', 'photosensitiv',
-        'tendon', 'neuropathy', 'qt', 'renal function', 'bun',
-        'hypertension', 'intracranial', 'mononucleosis', 'sulfite',
-        'crystalluria', 'myasthenia', 'arthralgia', 'anaphylactic',
-        'penicillin-sensitive', 'non-susceptible', 'antacid',
-        'xanthine', 'sodium metabisulfite', 'peripheral'
+    'Patient Condition': [              # ← fix key to match ontology
+        'cdad', 'clostridium difficile',
+        'photosensitiv',
+        'intracranial hypertension',
+        'mononucleosis',
+        'myasthenia', 'crystalluria',
     ]
 }
+
 
 def identify_warning_type(words: list) -> str:
     text = " ".join(words).lower()

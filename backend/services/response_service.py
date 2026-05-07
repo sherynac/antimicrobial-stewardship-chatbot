@@ -258,8 +258,11 @@ class ResponseService:
             side_effect = side_effect_info['side_effect']
         )
 
+        post_text = template['postText']
+
         return self.build_composite_response([
             self.build_text_response(text),
+            self.build_text_response(post_text),
             reference_json
         ])
     
@@ -280,8 +283,10 @@ class ResponseService:
             side_effect = side_effect_info['side_effect']
         )
 
+        postText= template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
+            self.build_text_response(postText),
             reference_json
         ])
 
@@ -300,12 +305,12 @@ class ResponseService:
 
         for se in side_effect_list:
             if se['pattern']:
-                main_text = bullet_template['mainWithPattern'].format(
+                main_text = bullet_template['bulletWithPattern'].format(
                     side_effect=se['side_effect'],
                     pattern=se['pattern']
                 )
             else:
-                main_text = bullet_template['mainNoPattern'].format(
+                main_text = bullet_template['bulletNoPattern'].format(
                     side_effect=se['side_effect']
                 )
             
@@ -317,10 +322,11 @@ class ResponseService:
             )
 
         reference_json = self.build_reference_list(reference)
-
+        postText = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_bullet_list(formatted_effects),
+            self.build_text_response(postText),
             reference_json
         ])
     
@@ -371,17 +377,17 @@ class ResponseService:
             brand = brand
         )
 
-        bullet_template = template['itemFormat']
+        bullet_template = template['bulletFormat']
         formatted_effects = []
 
         for se in side_effect_list:
             if se['pattern']:
-                main_text = bullet_template['mainWithPattern'].format(
+                main_text = bullet_template['bulletWithPattern'].format(
                     side_effect=se['side_effect'],
                     pattern=se['pattern']
                 )
             else:
-                main_text = bullet_template['mainNoPattern'].format(
+                main_text = bullet_template['bulletNoPattern'].format(
                     side_effect=se['side_effect']
                 )
             
@@ -393,10 +399,12 @@ class ResponseService:
             )
 
         reference_json = self.build_reference_list(reference)
+        postText = template['postText']
 
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_bullet_list(formatted_effects),
+            self.build_text_response(postText),
             reference_json
         ])
     
@@ -675,7 +683,8 @@ class ResponseService:
 
         header = response_text.format(
             brand=interaction_info['brand'],
-            generic=interaction_info['generic']
+            generic=interaction_info['generic'],
+            substance = interaction_info['substance_name']
         )
 
         section = self.build_section(
@@ -729,7 +738,8 @@ class ResponseService:
 
         text = response_text.format(
             brand=interaction_info['brand'],
-            generic=interaction_info['generic']
+            generic=interaction_info['generic'],
+            substance = interaction_info['substance']
         )
 
         return self.build_composite_response([
@@ -746,6 +756,7 @@ class ResponseService:
         text = response_text.format(
             substance=interaction_info['substance'],
             generic=interaction_info['generic'],
+            brand = interaction_info['brand']
         )
 
         sections = [
@@ -807,4 +818,9 @@ class ResponseService:
             self.build_text_response(text),
             reference_json
         ])
+    
+    def build_redirect_query(self):
+        template = self.get_response_template("REDIRECT_MEDICINE_QUERY", "default")
+        response_text = random.choice(template['responseTexts'])
+
 response_service = ResponseService('./backend/data/VRB.json')

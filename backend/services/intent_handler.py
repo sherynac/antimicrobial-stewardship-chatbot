@@ -379,10 +379,8 @@ def handle_side_effects(entities, query_type):
         isFound = False
     
         for brand in brands_obj:
-            print("Brand_side_effects", brand.hasSideEffect)
             for side_effect_instance in brand.hasSideEffect:
                 ontology_service_side_effect = side_effect_instance.is_a[0].name
-                print("ontology_service Side Effect: ", ontology_service_side_effect)
                 if target_side_effect.lower() == ontology_service_side_effect.lower():
                     isFound= True
                     side_effect_ref = ontology_service.get_reference_from_entity(side_effect_instance)
@@ -649,7 +647,6 @@ def handle_substance_interaction(entities, query_type):
     else:
         return "To get information about substance interactions with an antibiotic, please specify the antibiotic name or brand."
 
-# need checking of results
 def handle_warning_precautions(entities, query_type):
     # Needed outputs
     # - Generic
@@ -764,7 +761,6 @@ def handle_warning_precautions(entities, query_type):
                 print("Warning Type: ", ontology_warning_type)
                 print("Warning Headline: ", warning_headline)
                 print("Warning Text: ", warning_text)
-
 
 def handle_storage_instruction(entities, query_type):
     if query_type == 'generic':
@@ -959,4 +955,4 @@ def handle_is_not_recognized():
     return response_service.build_text_response("Sorry, I didn't understand your question. Please try rephrasing it or ask about a specific antibiotic or brand.")
 
 def handle_redirect_medicine_query():
-    return "Redirecting to medicine query handler..."
+    return response_service.build_redirect_query
