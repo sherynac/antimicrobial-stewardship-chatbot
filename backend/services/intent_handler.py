@@ -420,7 +420,7 @@ def handle_side_effects(entities, query_type):
             side_effects_list.append({
                 "side_effect": side_effect,
                 "pattern": pattern,
-                "description": description[0]
+                "description": unwrap(description, default="No description available")
             })
 
         return response_service.build_side_effect_brand(brand_name, side_effects_list, reference_list)
@@ -586,7 +586,7 @@ def handle_substance_interaction(entities, query_type):
         }
 
         if interactions:
-            return response_service.build_interaction_match(info, interactions, reference_list)
+            return response_service.build_interaction_generic_match(info, interactions, reference_list)
         else:
             reference_list = ontology_service.get_reference_from_entities(brand_objs)
             return response_service.build_interaction_generic_none(info, reference_list)
@@ -961,6 +961,7 @@ def handle_administration_instructions(entities, query_type):
         "generic": generic_name,
         "brand" : brand_name
     }
+    
     if len(administration_rules) > 1:
         return response_service.build_administration_multiple(antibiotic_info, administration_rules, reference_list)
     elif len(administration_rules) == 1:

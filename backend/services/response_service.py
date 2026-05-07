@@ -810,9 +810,37 @@ class ResponseService:
             reference_json
         ])
 
+    def build_interaction_generic_match(self, interaction_info, interactions, reference):
+        print("Interaction Generic Match")
+        template = self.get_response_template("GET_SUBSTANCE_INTERACTION", "generic_substance_match")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        header = response_text.format(
+            substance=interaction_info['substance'],
+            generic=interaction_info['generic'],
+        )
+
+        sections = [
+            self.build_section(
+                title=i['brand_name'],
+                items=[
+                    self.build_bullet(main_text="About", description=i['substance_description']),
+                    self.build_bullet(main_text="Interaction", description=i['interaction_description'])
+                ]
+            )
+            for i in interactions
+        ]
+
+        return self.build_composite_response([
+            self.build_text_response(header),
+            *sections,
+            reference_json
+        ])
+
     def build_interaction_generic_none(self, interaction_info, reference):
         print("Interaction Generic None")
-        template = self.get_response_template("GET_SUBSTANCE_INTERACTION", "generic_no_match")
+        template = self.get_response_template("GET_SUBSTANCE_INTERACTION", "generic_substance_no_match")
         response_text = random.choice(template['responseTexts'])
         reference_json = self.build_reference_list(reference)
 

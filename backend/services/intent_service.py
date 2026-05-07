@@ -30,7 +30,7 @@ INTENT_THRESHOLDS = {
     'get_warning_precautions':      0.90,  # adjusted
     'get_storage_instruction':      0.75, # adjusted
     'get_food_and_timing':          0.75, # adjusted
-    'get_administration_instruction': 0.75, # adjusted
+    'get_administration_instructions': 0.75, # adjusted
     'redirect_medicine_query':      0.40
 }
 
@@ -80,7 +80,7 @@ def handle_intent(intent, query_type, question_entities):
         return intent_handler.handle_storage_instruction(question_entities, query_type)
     elif intent == 'get_food_and_timing':
         return intent_handler.handle_food_and_timing(question_entities, query_type)
-    elif intent == 'get_administration_instruction':
+    elif intent == 'get_administration_instructions':
         return intent_handler.handle_administration_instructions(question_entities, query_type)
     elif intent == 'redirect_medicine_query':
         return intent_handler.handle_redirect_medicine_query()
