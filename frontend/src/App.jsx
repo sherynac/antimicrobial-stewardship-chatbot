@@ -26,15 +26,6 @@ const API_BASE_URL = '/api'
 
 const generateSessionId = () => crypto.randomUUID()
 
-const getOrCreateSessionId = () => {
-  let sessionId = sessionStorage.getItem('ophiuchus_session_id')
-  if (!sessionId) {
-    sessionId = generateSessionId()
-    sessionStorage.setItem('ophiuchus_session_id', sessionId)
-  }
-  return sessionId
-}
-
 // ---------------------------------------------------------------------------
 // Utility — strip duplicate "Php Php" currency prefix
 // build_antibiotic_single() prepends "Php " to unit_price, but some VRB
@@ -234,6 +225,10 @@ function BotMessage({ payload }) {
     return <p>{payload}</p>
   }
 
+  if (payload?.type === 'text' && payload?.content) {
+    return <p className="bot-text">{payload.content}</p>
+  }  
+
   if (payload?.type === 'composite' && Array.isArray(payload.responses)) {
     return (
       <div className="bot-composite">
@@ -273,7 +268,11 @@ function App() {
   const [activePage, setActivePage] = useState('chat')
   const [navCollapsed, setNavCollapsed] = useState(false)
   const [darkMode, setDarkMode] = useState(false)
-  const [sessionId, setSessionId] = useState(() => getOrCreateSessionId())
+  const [sessionId, setSessionId] = useState(() => {
+    const newId = generateSessionId()
+    sessionStorage.setItem('ophiuchus_session_id', newId)
+    return newId
+  })
   const [messages, setMessages] = useState([])
   const [inputValue, setInputValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -295,6 +294,7 @@ function App() {
     try {
       const response = await fetch(`${API_BASE_URL}/chat`, {
         method: 'POST',
+        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: trimmed, session_id: sessionId }),
       })
@@ -343,14 +343,26 @@ function App() {
     }
   }
 
-  const handleClearChat = (e) => {
+  const handleClearChat = async (e) => {
     e.preventDefault()
-    setMessages([])
-    setInputValue('')
-    setActivePage('chat')
+
+    // Tell Flask to wipe the server-side session cookie
+    try {
+      await fetch(`${API_BASE_URL}/session/clear`, {
+        method: 'POST',
+        credentials: 'include',   // must send the cookie so Flask knows which session to clear
+      })
+    } catch {
+      // Non-fatal — proceed with frontend reset regardless
+    }
+
+    // Now reset the frontend
     const newSessionId = generateSessionId()
     sessionStorage.setItem('ophiuchus_session_id', newSessionId)
     setSessionId(newSessionId)
+    setMessages([])
+    setInputValue('')
+    setActivePage('chat')
   }
 
   return (

@@ -373,7 +373,7 @@ p.bot-references-label {
   @apply mt-1
 }
 
-.bot-composite div:nth-last-child(1) p{
+.bot-composite div:nth-last-child(1) p.bot-disclaimer {
   @apply font-[Cabin-SemiBold]
 }
 
