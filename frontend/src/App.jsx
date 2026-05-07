@@ -22,17 +22,10 @@ import './App.css'
 import FAQ from './components/faq.jsx'
 import About from './components/about.jsx'
 
-// Base URL for your Flask backend.
-// In development, Vite's proxy (vite.config.js) can forward '/api' to 'http://127.0.0.1:5000'.
-// In production, replace with your deployed backend URL.
 const API_BASE_URL = '/api'
 
-// Generates a UUID v4 to uniquely identify a chat session.
 const generateSessionId = () => crypto.randomUUID()
 
-// Retrieves the existing session ID from sessionStorage, or creates and stores a new one.
-// sessionStorage is automatically cleared when the tab is closed, which naturally
-// triggers a fresh session on the next visit.
 const getOrCreateSessionId = () => {
   let sessionId = sessionStorage.getItem('ophiuchus_session_id')
   if (!sessionId) {
@@ -43,28 +36,26 @@ const getOrCreateSessionId = () => {
 }
 
 // ---------------------------------------------------------------------------
-// BotMessage — renders a structured bot reply from the backend.
-//
-// The backend returns either:
-//   • A plain string  →  rendered as a simple paragraph
-//   • A composite object:
-//     {
-//       type: 'composite',
-//       responses: [
-//         { type: 'text',           content: '...' },
-//         { type: 'reference_list', sources: [{ name, title, url }] }
-//       ]
-//     }
+// Utility — strip duplicate "Php Php" currency prefix
+// build_antibiotic_single() prepends "Php " to unit_price, but some VRB
+// responseTexts already include the word "Php" before {unit_price}.
 // ---------------------------------------------------------------------------
-// Splits a drug info sentence into multiple lines at known field labels.
-// e.g. "...Doxycycline Hyclate. Manufacturer: BIOFEMME. Distributor: UNILAB. Price: Php 103."
-// becomes three separate <span> lines inside the same <p>.
+function stripDoubleCurrency(text) {
+  return text.replace(/\bPrice:\s*Php\s+Php\s+/gi, 'Price: Php ')
+}
+
+// ---------------------------------------------------------------------------
+// formatDrugText
+// Splits a single long drug-info sentence into stacked lines at field labels.
+// Applied to every `text` block so it also catches postText lines.
+// ---------------------------------------------------------------------------
 function formatDrugText(text) {
+  const cleaned = stripDoubleCurrency(text)
   const FIELD_LABELS = ['Manufacturer:', 'Distributor:', 'Price:']
   const regex = new RegExp(`(?=${FIELD_LABELS.join('|')})`, 'g')
-  const parts = text.split(regex).map(s => s.trim()).filter(Boolean)
+  const parts = cleaned.split(regex).map(s => s.trim()).filter(Boolean)
 
-  if (parts.length <= 1) return <p className="bot-text">{text}</p>
+  if (parts.length <= 1) return <p className="bot-text">{cleaned}</p>
 
   return (
     <p className="bot-text">
@@ -75,64 +66,206 @@ function formatDrugText(text) {
   )
 }
 
+// ---------------------------------------------------------------------------
+// Block renderers
+// These map 1-to-1 to what response_service.py actually builds and sends.
+//
+// response_service.py emits exactly FIVE block types inside composite.responses:
+//
+//  1. { type: "text", content: "..." }
+//     → build_text_response()
+//     Used for: intro sentences, postText disclaimers, plain replies
+//
+//  2. { type: "table", columns: [...], rows: [[...], ...] }
+//     → build_table_response()
+//     Used for: antibiotic generic_only, brand_multiple, indications generic_only,
+//               substance interactions (generic + multiple)
+//
+//  3. { type: "bullet_list", items: [ { type:"bullet", main_text, description }, ... ] }
+//     → build_bullet_list()  wrapping  build_bullet()
+//     Used for: side effects (brand_only, generic_brand_only),
+//               indications (single + multiple), administration (multiple)
+//     • main_text  — bold label, e.g. "Nausea (Common)" or disease headline
+//     • description — plain detail text beneath the label (may be empty string)
+//
+//  4. { type: "section", title: "...", items: [ { type:"bullet", ... }, ... ] }
+//     → build_section()  wrapping  build_bullet()
+//     Used for: side effects generic_only (one section per brand),
+//               warnings (brand_only, generic_verify_match),
+//               interactions (single + match + generic_match),
+//               food_and_timing generic, administration generic
+//     • title  — section header, e.g. brand name or warning type
+//     • items  — same bullet shape as bullet_list above
+//
+//  5. { type: "reference_list", sources: [ { type:"reference", name, title, url }, ... ] }
+//     → build_reference_list()
+//     Used for: every response as the last block
+// ---------------------------------------------------------------------------
+
+// ── 1. TEXT ─────────────────────────────────────────────────────────────────
+// Handled inline inside BotMessage via formatDrugText — no separate component needed.
+
+// ── 2. TABLE ─────────────────────────────────────────────────────────────────
+function TableBlock({ block }) {
+  if (!Array.isArray(block.columns) || !Array.isArray(block.rows) || block.rows.length === 0) {
+    return <p className="bot-text bot-text-muted">No data available.</p>
+  }
+  return (
+    <div className="bot-table-wrapper">
+      <table className="bot-table">
+        <thead>
+          <tr>
+            {block.columns.map((col, i) => <th key={i}>{col}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {block.rows.map((row, i) => (
+            <tr key={i}>
+              {row.map((cell, j) => <td key={j}>{cell}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
+// ── 3. BULLET_LIST ───────────────────────────────────────────────────────────
+// items: [{ type: "bullet", main_text: "...", description: "..." }]
+// main_text  → bold label (may be empty for plain description-only bullets)
+// description → detail text (may be empty string)
+function BulletListBlock({ block }) {
+  const items = block.items || []
+  if (items.length === 0) return <p className="bot-text bot-text-muted">No items to display.</p>
+
+  return (
+    <ul className="bot-bullet-list">
+      {items.map((item, i) => (
+        <li key={i} className="bot-bullet-item">
+          <div className="bot-bullet-item-inner">
+            {item.main_text && (
+              <span className="bot-bullet-main">{item.main_text}</span>
+            )}
+            {item.description && (
+              <span className={`bot-bullet-description${item.main_text ? ' bot-bullet-description-indented' : ''}`}>
+                {item.description.trim()}
+              </span>
+            )}
+          </div>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+// ── 4. SECTION ────────────────────────────────────────────────────────────────
+// { type: "section", title: "BrandName", items: [{ type:"bullet", main_text, description }] }
+// Renders a titled group with the same bullet shape as BulletListBlock.
+function SectionBlock({ block }) {
+  const items = block.items || []
+  return (
+    <div className="bot-section">
+      {block.title && (
+        <p className="bot-section-title"><strong>{block.title}</strong></p>
+      )}
+      {items.length > 0 ? (
+        <ul className="bot-bullet-list">
+          {items.map((item, i) => (
+            <li key={i} className="bot-bullet-item">
+              {item.main_text && (
+                <span className="bot-bullet-main">{item.main_text}</span>
+              )}
+              {item.description && (
+                <span className={`bot-bullet-description${item.main_text ? ' bot-bullet-description-indented' : ''}`}>
+                  {item.description.trim()}
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="bot-text bot-text-muted">No details available.</p>
+      )}
+    </div>
+  )
+}
+
+// ── 5. REFERENCE_LIST ────────────────────────────────────────────────────────
+// { type: "reference_list", sources: [{ name, title, url }] }
+function ReferenceListBlock({ block }) {
+  const sources = block.sources || []
+  if (sources.length === 0) return null
+  return (
+    <div className="bot-references">
+      <p className="bot-references-label">References</p>
+      <ul>
+        {sources.map((src, j) => (
+          <li key={j}>
+            <a href={src.url} target="_blank" rel="noopener noreferrer">
+              {src.title || src.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// BotMessage — top-level renderer
+//
+// Dispatches each block in payload.responses to the correct renderer above.
+// Every block type that response_service.py can emit is handled here.
+// ---------------------------------------------------------------------------
 function BotMessage({ payload }) {
-  // If the payload is a plain string, just render it as-is
+  // Plain string fallback (error messages, unrecognised intent replies)
   if (typeof payload === 'string') {
     return <p>{payload}</p>
   }
 
-  // Composite response — iterate over each block
   if (payload?.type === 'composite' && Array.isArray(payload.responses)) {
     return (
       <div className="bot-composite">
         {payload.responses.map((block, i) => {
-          if (block.type === 'text') {
-            return <div key={i}>{formatDrugText(block.content)}</div>
-          }
+          switch (block.type) {
+            case 'text':
+              return <div key={i}>{formatDrugText(block.content)}</div>
 
-          if (block.type === 'reference_list' && Array.isArray(block.sources)) {
-            return (
-              <div key={i} className="bot-references">
-                <p className="bot-references-label">References</p>
-                <ul>
-                  {block.sources.map((src, j) => (
-                    <li key={j}>
-                      <a href={src.url} target="_blank" rel="noopener noreferrer">
-                        {src.title || src.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )
-          }
+            case 'table':
+              return <TableBlock key={i} block={block} />
 
-          // Fallback for unknown block types — render raw content if available
-          return block.content
-            ? <p key={i} className="bot-text">{block.content}</p>
-            : null
+            case 'bullet_list':
+              return <BulletListBlock key={i} block={block} />
+
+            case 'section':
+              return <SectionBlock key={i} block={block} />
+
+            case 'reference_list':
+              return <ReferenceListBlock key={i} block={block} />
+
+            default:
+              // Safety net — render raw content if present, otherwise skip
+              return block.content
+                ? <p key={i} className="bot-text">{block.content}</p>
+                : null
+          }
         })}
       </div>
     )
   }
 
-  // Absolute fallback — stringify whatever came through
+  // Absolute fallback — should never be reached with a well-formed backend response
   return <p>{JSON.stringify(payload)}</p>
 }
 
 function App() {
-  const [activePage, setActivePage] = useState('chat') // 'chat', 'about', 'faqs'
+  const [activePage, setActivePage] = useState('chat')
   const [navCollapsed, setNavCollapsed] = useState(false)
   const [darkMode, setDarkMode] = useState(false)
-
-  // Session ID — loaded from sessionStorage on mount, or freshly generated.
-  // Stored in state so React re-renders reflect the current session.
   const [sessionId, setSessionId] = useState(() => getOrCreateSessionId())
-
-  // Each entry: { role: 'user' | 'bot', text: string }
   const [messages, setMessages] = useState([])
   const [inputValue, setInputValue] = useState('')
-  const [isLoading, setIsLoading] = useState(false)  // tracks whether we're awaiting a bot reply
+  const [isLoading, setIsLoading] = useState(false)
   const chatBottomRef = useRef(null)
 
   useEffect(() => {
@@ -144,7 +277,6 @@ function App() {
     const trimmed = inputValue.trim()
     if (!trimmed || isLoading) return
 
-    // Optimistically add the user message and clear the input immediately
     setMessages(prev => [...prev, { role: 'user', text: trimmed }])
     setInputValue('')
     setIsLoading(true)
@@ -152,14 +284,11 @@ function App() {
     try {
       const response = await fetch(`${API_BASE_URL}/chat`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: trimmed, session_id: sessionId }),
       })
 
       if (!response.ok) {
-        // Surface HTTP-level errors (4xx, 5xx) as a readable message
         const errorData = await response.json().catch(() => null)
         throw new Error(
           errorData?.error || `Server error: ${response.status} ${response.statusText}`
@@ -167,23 +296,17 @@ function App() {
       }
 
       const data = await response.json()
-
-      // The backend may return a plain string or a structured composite object.
-      // Store the raw value — BotMessage handles rendering both shapes.
       const botReply = data.reply ?? 'Sorry, I did not receive a valid response.'
 
-      // Parse the reply into an object if needed.
-      // The backend may send a Python dict stringified with single quotes instead of
-      // valid JSON double quotes (e.g. "{'type': 'composite', ...}"). We handle both.
+      // The backend uses jsonify() which always produces valid JSON, so the
+      // reply arrives as a proper object when it's structured. The single-quote
+      // fallback is kept as a safety net for any edge case where a Python dict
+      // gets stringified before being passed to jsonify.
       let parsedReply
       if (typeof botReply === 'string') {
-        // First, try standard JSON.parse (handles properly serialized responses)
         try {
           parsedReply = JSON.parse(botReply)
         } catch {
-          // Fallback: convert Python dict syntax → valid JSON, then parse again.
-          // Swaps single-quoted strings to double-quoted, and converts
-          // Python's None/True/False to JSON null/true/false.
           try {
             const asJson = botReply
               .replace(/'/g, '"')
@@ -192,17 +315,16 @@ function App() {
               .replace(/\bFalse\b/g, 'false')
             parsedReply = JSON.parse(asJson)
           } catch {
-            parsedReply = botReply  // genuinely plain text — keep as-is
+            parsedReply = botReply  // genuinely plain text
           }
         }
       } else {
-        parsedReply = botReply  // already an object
+        parsedReply = botReply  // already an object — most structured responses land here
       }
 
       setMessages(prev => [...prev, { role: 'bot', payload: parsedReply }])
 
     } catch (err) {
-      // Push the error as a bot message so it persists in chat history
       const errorText = err.message || 'Something went wrong. Please try again.'
       setMessages(prev => [...prev, { role: 'bot', payload: `⚠️ ${errorText}`, isError: true }])
     } finally {
@@ -215,9 +337,6 @@ function App() {
     setMessages([])
     setInputValue('')
     setActivePage('chat')
-
-    // Invalidate the current session and start a fresh one.
-    // The new ID is stored in sessionStorage so a page refresh stays on the same session.
     const newSessionId = generateSessionId()
     sessionStorage.setItem('ophiuchus_session_id', newSessionId)
     setSessionId(newSessionId)
@@ -227,112 +346,68 @@ function App() {
     <>
       <div className={`navbar ${navCollapsed ? 'navbar-collapsed' : ''} ${darkMode ? 'dark-mode' : ''}`}>
         <div className="first-row">
-
-          {/* Hide clear-chat-button when collapsed */}
           {!navCollapsed && (
             <div id="clear-chat-button"
-              onClick={(e) => { handleClearChat(e); setActivePage('chat'); }}
+              onClick={(e) => { handleClearChat(e); setActivePage('chat') }}
             >
-              {!darkMode && (
-                <img src={clear_chat} alt="clear-icon" id="clear-icon" className="icons" />
-              )}
-              {darkMode && (
-                <img src={clear_chat_dark} alt="clear-icon" id="clear-icon-dark" className="icons" />
-              )}
+              {!darkMode
+                ? <img src={clear_chat} alt="clear-icon" id="clear-icon" className="icons" />
+                : <img src={clear_chat_dark} alt="clear-icon" id="clear-icon-dark" className="icons" />}
               <a href="" id="clear-chat">Clear Chat</a>
             </div>
           )}
-
-          {/* Menu button — always visible, toggles collapse */}
-          <div
-            className="menu-button-container"
-            id="menu-button"
-            onClick={() => setNavCollapsed(!navCollapsed)}
-          >
-            {!darkMode && (
-              <img src={menu} alt="menu-icon" id='menu-icon' className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
-            )}
-            {darkMode && (
-              <img src={menu_dark} alt="menu-icon" id='menu-icon-dark' className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
-            )}
-
+          <div className="menu-button-container" id="menu-button" onClick={() => setNavCollapsed(!navCollapsed)}>
+            {!darkMode
+              ? <img src={menu} alt="menu-icon" id='menu-icon' className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
+              : <img src={menu_dark} alt="menu-icon" id='menu-icon-dark' className={`icons ${navCollapsed ? 'collapsed' : ''}`} />}
           </div>
         </div>
 
-        {/* Chat */}
         <div
-          className={`${activePage === 'chat' ? "button-container-active" : "button-container"} ${navCollapsed ? 'collapsed' : ''}`}
+          className={`${activePage === 'chat' ? 'button-container-active' : 'button-container'} ${navCollapsed ? 'collapsed' : ''}`}
           onClick={() => setActivePage('chat')}
         >
-          {!darkMode && (
-            <img src={chat_icon} alt="chat-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
-          )}
-          {darkMode && (
-            <img src={chat_icon_dark} alt="chat-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
-          )}
-
+          {!darkMode
+            ? <img src={chat_icon} alt="chat-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
+            : <img src={chat_icon_dark} alt="chat-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />}
           {!navCollapsed && <div className="nav-title">Chat</div>}
         </div>
 
-        {/* About */}
         <div
-          className={`${activePage === 'about' ? "button-container-active" : "button-container"} ${navCollapsed ? 'collapsed' : ''}`}
+          className={`${activePage === 'about' ? 'button-container-active' : 'button-container'} ${navCollapsed ? 'collapsed' : ''}`}
           onClick={() => setActivePage('about')}
         >
-          {!darkMode && (
-            <img src={about_icon} alt="about-icon-dark" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
-          )}
-          {darkMode && (
-            <img src={about_icon_dark} alt="about-icon-dark" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
-          )}
-
+          {!darkMode
+            ? <img src={about_icon} alt="about-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
+            : <img src={about_icon_dark} alt="about-icon-dark" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />}
           {!navCollapsed && <div className="nav-title">About</div>}
         </div>
 
-        {/* FAQs */}
         <div
-          className={`${activePage === 'faqs' ? "button-container-active" : "button-container"} ${navCollapsed ? 'collapsed' : ''}`}
+          className={`${activePage === 'faqs' ? 'button-container-active' : 'button-container'} ${navCollapsed ? 'collapsed' : ''}`}
           onClick={() => setActivePage('faqs')}
         >
-          {!darkMode && (
-            <img src={faqs_icon} alt="FAQs-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
-          )}
-          {darkMode && (
-            <img src={faqs_icon_dark} alt="FAQs-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
-          )}
-
+          {!darkMode
+            ? <img src={faqs_icon} alt="FAQs-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
+            : <img src={faqs_icon_dark} alt="FAQs-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />}
           {!navCollapsed && <div className="nav-title">FAQs</div>}
         </div>
 
         {!navCollapsed && (
-          <div
-            className={`theme-switch ${darkMode ? 'theme-switch-dark' : ''}`}
-            onClick={() => setDarkMode(!darkMode)}
-          >
-            {!darkMode && (
-              <img src={light_mode} alt="" />
-            )}
-            {darkMode && (
-              <img src={dark_mode} alt="" />
-            )}
+          <div className={`theme-switch ${darkMode ? 'theme-switch-dark' : ''}`} onClick={() => setDarkMode(!darkMode)}>
+            {!darkMode ? <img src={light_mode} alt="" /> : <img src={dark_mode} alt="" />}
           </div>
         )}
-
       </div>
 
       <div className={`main-container ${darkMode ? 'dark-mode' : ''}`}>
         <div className="main-content">
-
           {activePage === 'chat' && (
             <>
               <div className="header">
-                {!darkMode && (
-                  <img src={ophiuchus_logo} className="" alt="Ophiuchus logo" />
-                )}
-                {darkMode && (
-                  <img src={ophiuchus_logo_dark} className="" alt="Ophiuchus logo" />
-                )}
-
+                {!darkMode
+                  ? <img src={ophiuchus_logo} className="" alt="Ophiuchus logo" />
+                  : <img src={ophiuchus_logo_dark} className="" alt="Ophiuchus logo" />}
                 <div className="title-container">
                   <p className="title">Ophiuchus</p>
                   <p className="sub-title">Ask me anything</p>
@@ -340,8 +415,6 @@ function App() {
               </div>
 
               <div className={`main-chat ${navCollapsed ? 'collapsed' : ''} ${messages.length === 0 ? 'empty' : ''}`}>
-
-                {/* Welcome message — only shown before any messages */}
                 {messages.length === 0 && (
                   <div className="welcome-message">
                     <p id='greeting'>Hello, I am <span>Ophiuchus</span>!</p>
@@ -350,13 +423,10 @@ function App() {
                   </div>
                 )}
 
-                {/* Dynamic message history */}
                 {messages.map((msg, index) =>
                   msg.role === 'user' ? (
                     <div className="message-container" key={index}>
-                      <div className="message-prompt">
-                        <p>{msg.text}</p>
-                      </div>
+                      <div className="message-prompt"><p>{msg.text}</p></div>
                     </div>
                   ) : (
                     <div className="reply-container" key={index}>
@@ -367,20 +437,14 @@ function App() {
                   )
                 )}
 
-                {/* Loading indicator — shown while awaiting bot response */}
                 {isLoading && (
                   <div className="reply-container">
                     <div className="chatbot-reply loading">
-                      <span className="dot" />
-                      <span className="dot" />
-                      <span className="dot" />
+                      <span className="dot" /><span className="dot" /><span className="dot" />
                     </div>
                   </div>
                 )}
-
-                {/* Scroll anchor */}
                 <div ref={chatBottomRef} />
-
               </div>
 
               <div className={`message-box ${navCollapsed ? 'collapsed' : ''}`}>
@@ -394,22 +458,16 @@ function App() {
                     autoComplete='off'
                     disabled={isLoading}
                   />
-                  {!darkMode && (
-                    <input type="image" src={send_button} alt="Submit" disabled={isLoading} />
-                  )}
-                  {darkMode && (
-                    <input type="image" src={send_button_dark} alt="Submit" disabled={isLoading} />
-                  )}
-
+                  {!darkMode
+                    ? <input type="image" src={send_button} alt="Submit" disabled={isLoading} />
+                    : <input type="image" src={send_button_dark} alt="Submit" disabled={isLoading} />}
                 </form>
               </div>
             </>
           )}
 
           {activePage === 'about' && <About navCollapsed={navCollapsed} darkMode={darkMode} />}
-
           {activePage === 'faqs' && <FAQ navCollapsed={navCollapsed} darkMode={darkMode} />}
-
         </div>
       </div>
     </>

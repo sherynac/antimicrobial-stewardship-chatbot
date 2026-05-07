@@ -175,7 +175,7 @@
 }
 
 .main-chat {
-  @apply h-full w-[calc(100%-18rem)] flex flex-col items-start items-center overflow-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]
+  @apply h-full w-[calc(100%-18rem)] flex flex-col items-start items-center overflow-auto
 }
 
 .main-chat.empty {
@@ -227,7 +227,7 @@
 }
 
 .reply-container {
-  @apply w-full flex flex-row
+  @apply w-full flex flex-row font-[Figtree-Regular]
 }
 
 .chatbot-reply {
@@ -308,8 +308,32 @@ form input[type=image] {
   margin: 0;
 }
 
+.bot-section {
+  @apply flex flex-col
+}
+
+.bot-bullet-list {
+  @apply flex flex-col gap-2 mx-4 pl-4 pr-2 pb-2 list-disc text-justify
+}
+
+.bot-bullet-item {
+  @apply list-item
+}
+
+.bot-bullet-item-inner {
+  @apply flex flex-col
+}
+
+.bot-bullet-item-inner .bot-bullet-main {
+  @apply font-[Cabin-bold]
+}
+
+.bot-bullet-item-inner .bot-bullet-description {
+  @apply list-item list-['-_'] ml-4
+}
+
 .bot-references {
-  margin-bottom: 1rem;
+  @apply mb-4
 }
 
 p.bot-references-label {
@@ -323,18 +347,55 @@ p.bot-references-label {
 }
 
 .bot-references a {
-  color: #02542D;
-  text-decoration: underline;
+  @apply text-[#02542D] underline underline-offset-3
 }
 
-.bot-references a:hover {
-  opacity: 0.75;
+.dark-mode .bot-references a{
+  @apply text-[#D4E9D7]
+}
+
+.bot-references a {
+  @apply hover:opacity-75
 }
 
 .bot-text-line {
-  display: block;
+  @apply block
 }
 
 .bot-text-line+.bot-text-line {
-  margin-top: 4px;
+  @apply mt-1
+}
+
+.bot-table-wrapper {
+  @apply p-3 text-left overflow-auto rounded-2xl
+}
+
+.bot-table-wrapper th {
+  @apply font-[Cabin-bold] p-2 border border-black/20
+}
+
+.bot-table-wrapper td{
+  @apply p-2 border border-black/20
+}
+
+.dark-mode .bot-table-wrapper th, .dark-mode .bot-table-wrapper td{
+  @apply border-white/20
+}
+
+/* Scrollbar*/
+::-webkit-scrollbar {
+  width: 0.3rem;
+}
+
+::-webkit-scrollbar-track {
+  background: inherit;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cdcdcd;
+  border-radius: 2rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #434343;
 }
