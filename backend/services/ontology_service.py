@@ -176,5 +176,4 @@ class OntologyService:
                     seen_urls.add(ref["url"])
         return combined
 
-
 ontology_service = OntologyService()

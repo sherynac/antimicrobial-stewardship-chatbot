@@ -127,9 +127,9 @@
           "responseID": 13,
           "condition": "generic_verify_match",
           "responseTexts": [
-            "Yes, {side_effect} is a known side effect of {generic}. It is associated with the following brands: {brands}.",
-            "{generic} is associated with {side_effect}. The brands that report this side effect include: {brands}.",
-            "Based on records, {generic} can cause {side_effect}. This is observed in the following brands: {brands}."
+            "Yes, {side_effect} is a known side effect of {generic}. It is associated with the following brands: {brand}.",
+            "{generic} is associated with {side_effect}. The brands that report this side effect include: {brand}.",
+            "Based on records, {generic} can cause {side_effect}. This is observed in the following brands: {brand}."
           ],
           "postText": "Disclaimer: The listed side effects may occur before, during, or after taking the medication. Timing can vary depending on individual response."
         },
@@ -259,7 +259,7 @@
             "An interaction exists between {generic} ({brand}) and {substance}."
           ],
           "bulletFormat": {
-            "groupHeader": "• {substance} ({substance_type})",
+            "groupHeader": " {substance} ({substance_type})",
             "bullet": "  {interaction_description}"
           }
         },
@@ -369,18 +369,18 @@
           "responseID": 32,
           "condition": "generic_verify_match",
           "responseTexts": [
-            "Yes, {warning} is a known warning for {generic} ({brand}).",
-            "{generic} ({brand}) has this warning recorded in the system.",
-            "Based on ontology data, {warning} is associated with {generic} ({brand})."
+            "Yes, there are {warning_type} warnings for {generic}, specifically these brands have them: ",
+            "{generic} has {warning_type} warning recorded in the system. Specifically, these brands have them:",
+            "Based on ontology data, {warning_type} warnings are associated with {generic}. The following brands have them: "
           ]
         },
         {
           "responseID": 33,
-          "condition": "generic_verify_no_match",
+          "condition": "verify_no_match",
           "responseTexts": [
-            "{warning} is not listed as a warning for {generic} ({brand}).",
-            "No record of this warning exists for {generic} ({brand}).",
-            "Based on available data, {generic} ({brand}) does not include this warning."
+            "{warning_type} is not listed as a warning for {antibiotic}.",
+            "No record of {warning_type} warnings exist for {antibiotic}.",
+            "Based on available data, {antibiotic} does not include {warning_type} warnings."
           ]
         },
         {
@@ -393,7 +393,7 @@
           ],
           "bulletFormat": {
             "headline": "{warning_headline}",
-            "details": "  {warning_description}"
+            "details": " {warning_description}"
           }
         },
         {
@@ -493,7 +493,7 @@
       ]
     },
     {
-      "intent": "GET_ADMINISTRATION_INSTRUCTIONS",
+      "intent": "GET_ADMINISTRATION_ADHERENCE",
       "description": "Get administration and adherence instructions for an antibiotic.",
       "responses": [
         {

@@ -18,10 +18,14 @@ import light_mode from './assets/light-mode.svg'
 import dark_mode from './assets/dark-mode.svg'
 
 import './App.css'
-import botResponses from './responses.json'
 
 import FAQ from './components/faq.jsx'
 import About from './components/about.jsx'
+
+// Base URL for your Flask backend.
+// In development, Vite's proxy (vite.config.js) can forward '/api' to 'http://127.0.0.1:5000'.
+// In production, replace with your deployed backend URL.
+const API_BASE_URL = '/api'
 
 function App() {
   const [activePage, setActivePage] = useState('chat') // 'chat', 'about', 'faqs'
@@ -31,28 +35,54 @@ function App() {
   // Each entry: { role: 'user' | 'bot', text: string }
   const [messages, setMessages] = useState([])
   const [inputValue, setInputValue] = useState('')
+  const [isLoading, setIsLoading] = useState(false)  // tracks whether we're awaiting a bot reply
   const chatBottomRef = useRef(null)
 
   useEffect(() => {
     chatBottomRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [messages])
+  }, [messages, isLoading])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const trimmed = inputValue.trim()
-    if (!trimmed) return
+    if (!trimmed || isLoading) return
 
-    const randomReply = botResponses.responses[
-      Math.floor(Math.random() * botResponses.responses.length)
-    ]
-
-    setMessages(prev => [
-      ...prev,
-      { role: 'user', text: trimmed },
-      { role: 'bot', text: randomReply }
-    ])
-
+    // Optimistically add the user message and clear the input immediately
+    setMessages(prev => [...prev, { role: 'user', text: trimmed }])
     setInputValue('')
+    setIsLoading(true)
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/chat`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: trimmed }),
+      })
+
+      if (!response.ok) {
+        // Surface HTTP-level errors (4xx, 5xx) as a readable message
+        const errorData = await response.json().catch(() => null)
+        throw new Error(
+          errorData?.error || `Server error: ${response.status} ${response.statusText}`
+        )
+      }
+
+      const data = await response.json()
+
+      // Expects the Flask backend to return: { "reply": "..." }
+      const botReply = data.reply ?? 'Sorry, I did not receive a valid response.'
+
+      setMessages(prev => [...prev, { role: 'bot', text: botReply }])
+
+    } catch (err) {
+      // Push the error as a bot message so it persists in chat history
+      const errorText = err.message || 'Something went wrong. Please try again.'
+      setMessages(prev => [...prev, { role: 'bot', text: `⚠️ ${errorText}`, isError: true }])
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleClearChat = (e) => {
@@ -156,7 +186,6 @@ function App() {
             )}
           </div>
         )}
-        {/* Dark Mode */}
 
       </div>
 
@@ -185,7 +214,7 @@ function App() {
                 {messages.length === 0 && (
                   <div className="welcome-message">
                     <p id='greeting'>Hello, I am <span>Ophiuchus</span>!</p>
-                    <p id='intro'>I am a conversational guide for antimicrobial stewardship. I’m here to help promote responsible antibiotic use</p>
+                    <p id='intro'>I am a conversational guide for antimicrobial stewardship. I'm here to help promote responsible antibiotic use</p>
                     <p id='disclaimer'>Disclaimer: Ophiuchus is for educational and informational purposes only. I do <span>not</span> provide medical diagnoses, treatment plans, or prescriptions. Always consult a qualified healthcare professional for medical advice.</p>
                   </div>
                 )}
@@ -200,11 +229,22 @@ function App() {
                     </div>
                   ) : (
                     <div className="reply-container" key={index}>
-                      <div className="chatbot-reply">
+                      <div className={`chatbot-reply ${msg.isError ? 'error' : ''}`}>
                         <p>{msg.text}</p>
                       </div>
                     </div>
                   )
+                )}
+
+                {/* Loading indicator — shown while awaiting bot response */}
+                {isLoading && (
+                  <div className="reply-container">
+                    <div className="chatbot-reply loading">
+                      <span className="dot" />
+                      <span className="dot" />
+                      <span className="dot" />
+                    </div>
+                  </div>
                 )}
 
                 {/* Scroll anchor */}
@@ -221,12 +261,13 @@ function App() {
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     autoComplete='off'
+                    disabled={isLoading}
                   />
                   {!darkMode && (
-                    <input type="image" src={send_button} alt="Submit" />
+                    <input type="image" src={send_button} alt="Submit" disabled={isLoading} />
                   )}
                   {darkMode && (
-                    <input type="image" src={send_button_dark} alt="Submit" />
+                    <input type="image" src={send_button_dark} alt="Submit" disabled={isLoading} />
                   )}
 
                 </form>

@@ -1,5 +1,5 @@
-Interaction ID,Type,Substance Name,Substance Description,Reference ID
-ITN001,Drug,Anticoagulants,"Anticoagulants are medicines that increase the time it takes for blood to clot. They are commonly called blood thinners. 
+Substance ID,Type,Substance Name,Substance Description,Reference ID
+SUB001,Drug,Anticoagulants,"Anticoagulants are medicines that increase the time it takes for blood to clot. They are commonly called blood thinners. 
 ","R001
 R002
 R003
@@ -7,13 +7,13 @@ R013
 R027
 R029
 R031"
-ITN002,Drug,Penicillin,"Penicillins are a group of antibiotics that fight bacteria and was originally developed from the Penicillium fungi. Penicillin V is one type of penicillin antibiotic and is used to treat a wide range of bacterial infections such as ear infections, throat infections, skin infections and preventing rheumatic fever.
+SUB002,Drug,Penicillin,"Penicillins are a group of antibiotics that fight bacteria and was originally developed from the Penicillium fungi. Penicillin V is one type of penicillin antibiotic and is used to treat a wide range of bacterial infections such as ear infections, throat infections, skin infections and preventing rheumatic fever.
 
 ","R001
 R002
 R003
 R032"
-ITN003,Drug,Antacids,"Antacids are medicines that neutralize acid in the stomach. They contain ingredients such as aluminum, calcium, magnesium, or sodium bicarbonate which act as bases (alkalis) to counteract stomach acid and make its pH more neutral.","R001
+SUB003,Drug,Antacids,"Antacids are medicines that neutralize acid in the stomach. They contain ingredients such as aluminum, calcium, magnesium, or sodium bicarbonate which act as bases (alkalis) to counteract stomach acid and make its pH more neutral.","R001
 R002
 R003
 R004
@@ -23,11 +23,11 @@ R008
 R009
 R010
 R033"
-ITN004,Drug,Barbiturates,"Barbiturates are a class of drugs that were used extensively in the 1960s and 1970s as a treatment for anxiety, insomnia, and seizure disorders. Apart from a few specific indications, they are not commonly prescribed these days, having been largely superseded by benzodiazepines, which are much safer, although still potentially addictive.","R001
+SUB004,Drug,Barbiturates,"Barbiturates are a class of drugs that were used extensively in the 1960s and 1970s as a treatment for anxiety, insomnia, and seizure disorders. Apart from a few specific indications, they are not commonly prescribed these days, having been largely superseded by benzodiazepines, which are much safer, although still potentially addictive.","R001
 R002
 R003
 R034"
-ITN005,Drug,Carbamazepine,"Carbamazepine is an anticonvulsant. It works by decreasing nerve impulses that cause seizures and nerve pain, such as trigeminal neuralgia and diabetic neuropathy.","R001
+SUB005,Drug,Carbamazepine,"Carbamazepine is an anticonvulsant. It works by decreasing nerve impulses that cause seizures and nerve pain, such as trigeminal neuralgia and diabetic neuropathy.","R001
 R002
 R003
 R009
@@ -37,69 +37,69 @@ R016
 R027
 R029
 R035"
-ITN006,Drug,Phenytoin,"Phenytoin is an anti-epileptic drug, also called an anticonvulsant. Phenytoin works by slowing down impulses in the brain that cause seizures.","R001
+SUB006,Drug,Phenytoin,"Phenytoin is an anti-epileptic drug, also called an anticonvulsant. Phenytoin works by slowing down impulses in the brain that cause seizures.","R001
 R002
 R003
 R014
 R016
 R020
 R036"
-ITN007,Drug,Methoxyflurane,"It is used to ease pain.","R001
+SUB007,Drug,Methoxyflurane,"It is used to ease pain.","R001
 R037"
-ITN008,Drug,Oral Contraceptives,Contraceptives are the name given to medicines and other devices that are used to prevent unwanted pregnancy. Contraceptives may also be referred to as birth control. Hormonal contraceptives that contain both an estrogen and progestin are called combined oral contraceptives (COCs).,"R001
+SUB008,Drug,Oral Contraceptives,Contraceptives are the name given to medicines and other devices that are used to prevent unwanted pregnancy. Contraceptives may also be referred to as birth control. Hormonal contraceptives that contain both an estrogen and progestin are called combined oral contraceptives (COCs).,"R001
 R002
 R012
 R013
 R038"
-ITN009,Drug,Bismuth Subsalicylate,"Bismuth subsalicylate relieves diarrhea, travelers' diarrhea, nausea, heartburn, indigestion, gas, or upset stomach.","R001
+SUB009,Drug,Bismuth Subsalicylate,"Bismuth subsalicylate relieves diarrhea, travelers' diarrhea, nausea, heartburn, indigestion, gas, or upset stomach.","R001
 R002
 R003
 R039"
-ITN010,Drug,Aminoglycosides,"Aminoglycosides are a class of antibiotics used mainly in the treatment of aerobic gram-negative bacilli infections, although they are also effective against other bacteria including Staphylococci and Mycobacterium tuberculosis. They are often used in combination with other antibiotics.","R003
+SUB010,Drug,Aminoglycosides,"Aminoglycosides are a class of antibiotics used mainly in the treatment of aerobic gram-negative bacilli infections, although they are also effective against other bacteria including Staphylococci and Mycobacterium tuberculosis. They are often used in combination with other antibiotics.","R003
 R040"
-ITN011,Drug,Contraceptives,COCs prevent pregnancy by inhibiting the normal process of ovulation (the release of an egg from an ovary) and by altering the lining of the uterus (the endometrium) so that it is unable to support a fertilized egg. They also change the viscosity (stickiness) of mucus within the cervix to make it hard for sperm to travel to the uterus.,"R003
+SUB011,Drug,Contraceptives,COCs prevent pregnancy by inhibiting the normal process of ovulation (the release of an egg from an ovary) and by altering the lining of the uterus (the endometrium) so that it is unable to support a fertilized egg. They also change the viscosity (stickiness) of mucus within the cervix to make it hard for sperm to travel to the uterus.,"R003
 R038"
-ITN012,Drug,Sucralfate,"Sucralfate works mainly in the lining of the stomach and is not highly absorbed into the body. sucralfate adheres to ulcer sites and protects them from acids, enzymes, and bile salts.","R004
+SUB012,Drug,Sucralfate,"Sucralfate works mainly in the lining of the stomach and is not highly absorbed into the body. sucralfate adheres to ulcer sites and protects them from acids, enzymes, and bile salts.","R004
 R005
 R006
 R026
 R041"
-ITN013,Drug,Didanosine,Didanosine is used in combination with other medicines for the treatment of human immunodeficiency virus (HIV) infection. HIV is the virus that causes acquired immune deficiency syndrome (AIDS).,"R004
+SUB013,Drug,Didanosine,Didanosine is used in combination with other medicines for the treatment of human immunodeficiency virus (HIV) infection. HIV is the virus that causes acquired immune deficiency syndrome (AIDS).,"R004
 R009
 R042"
-ITN014,Food,Multivit Prep w/ Zn,Zinc is a naturally occurring mineral. Zinc is important for growth and for the development and health of body tissues.,"R004
+SUB014,Food,Multivit Prep w/ Zn,Zinc is a naturally occurring mineral. Zinc is important for growth and for the development and health of body tissues.,"R004
 R005
 R043"
-ITN015,Drug,"Class IA (Quinidine, Procainamide)","Precise role in antiarrhythmic therapy has not been established. Some experts recommend that disopyramide be reserved for use as an alternative drug when lidocaine, quinidine, or procainamide is ineffective or adverse effects of these drugs are intolerable.","R004
+SUB015,Drug,"Class IA (Quinidine, Procainamide)","Precise role in antiarrhythmic therapy has not been established. Some experts recommend that disopyramide be reserved for use as an alternative drug when lidocaine, quinidine, or procainamide is ineffective or adverse effects of these drugs are intolerable.","R004
 R044"
-ITN016,Drug,"Class III (Amiodarone, Sotalol)","Used to suppress and prevent recurrence of documented life-threatening ventricular arrhythmias (e.g., sustained ventricular tachycardia); designated an orphan drug by FDA for such use.","R004
+SUB016,Drug,"Class III (Amiodarone, Sotalol)","Used to suppress and prevent recurrence of documented life-threatening ventricular arrhythmias (e.g., sustained ventricular tachycardia); designated an orphan drug by FDA for such use.","R004
 R045"
-ITN017,Drug,Fluoxetine,"Fluoxetine is a selective serotonin reuptake inhibitor (SSRI) antidepressant. Fluoxetine inhibits the uptake of serotonin by a nerve cells (neurons) and helps people with depression, panic, anxiety, or obsessive-compulsive symptoms.","R004
+SUB017,Drug,Fluoxetine,"Fluoxetine is a selective serotonin reuptake inhibitor (SSRI) antidepressant. Fluoxetine inhibits the uptake of serotonin by a nerve cells (neurons) and helps people with depression, panic, anxiety, or obsessive-compulsive symptoms.","R004
 R014
 R046"
-ITN018,Drug,Imipramine,Imipramine is a tricyclic antidepressant used to treat symptoms of depression. Imipramine is sometimes used to treat bed-wetting in children ages 6 and older.,"R004
+SUB018,Drug,Imipramine,Imipramine is a tricyclic antidepressant used to treat symptoms of depression. Imipramine is sometimes used to treat bed-wetting in children ages 6 and older.,"R004
 R047"
-ITN019,Drug,Antidiabetic Agent,"Antidiabetic agents refer to all the different types of medicine involved in the treatment of diabetes. Antidiabetic agents also prevent the development of, or slow the progression of, long-term complications of the disease, such as nephropathy (kidney disease), neuropathy (nerve damage), and retinopathy (damage to the retina of the eye).","R004
+SUB019,Drug,Antidiabetic Agent,"Antidiabetic agents refer to all the different types of medicine involved in the treatment of diabetes. Antidiabetic agents also prevent the development of, or slow the progression of, long-term complications of the disease, such as nephropathy (kidney disease), neuropathy (nerve damage), and retinopathy (damage to the retina of the eye).","R004
 R005
 R048"
-ITN020,Drug,Cyclosporine,"Cyclosporine weakens your body's immune system, to help keep it from ""rejecting"" a transplanted organ such as a kidney. Organ rejection happens when the immune system treats the new organ as an invader and attacks it.","R005
+SUB020,Drug,Cyclosporine,"Cyclosporine weakens your body's immune system, to help keep it from ""rejecting"" a transplanted organ such as a kidney. Organ rejection happens when the immune system treats the new organ as an invader and attacks it.","R005
 R010
 R014
 R016
 R026
 R049"
-ITN021,Drug,Tacrolimus,"Tacrolimus is used together with other medicines in people who have had a heart, kidney, liver, or lung transplant.","R004
+SUB021,Drug,Tacrolimus,"Tacrolimus is used together with other medicines in people who have had a heart, kidney, liver, or lung transplant.","R004
 R014
 R016
 R050"
-ITN022,Drug,Corticosteroids,Corticosteroids (adrenal cortical steroids) are natural hormones made by the adrenal cortex which are important in maintaining good health. ,"R004
+SUB022,Drug,Corticosteroids,Corticosteroids (adrenal cortical steroids) are natural hormones made by the adrenal cortex which are important in maintaining good health. ,"R004
 R010
 R051"
-ITN023,Drug,Fluconazole,"Fluconazole is a prescription azole antifungal medication that may be used to treat serious fungal or yeast infections including those that affect the vagina, mouth or throat, lungs, bladder, or blood.","R004
+SUB023,Drug,Fluconazole,"Fluconazole is a prescription azole antifungal medication that may be used to treat serious fungal or yeast infections including those that affect the vagina, mouth or throat, lungs, bladder, or blood.","R004
 R009
 R014
 R052"
-ITN024,Drug,Theophylline,"Theophylline is a bronchodilator that is used to treat symptoms of asthma, bronchitis, emphysema, and other breathing problems.","R004
+SUB024,Drug,Theophylline,"Theophylline is a bronchodilator that is used to treat symptoms of asthma, bronchitis, emphysema, and other breathing problems.","R004
 R005
 R006
 R009
@@ -110,7 +110,7 @@ R024
 R025
 R026
 R053"
-ITN025,Drug,Warfarin,"Warfarin is an anticoagulant (blood thinner). Warfarin reduces the formation of blood clots. Warfarin is used to treat or prevent blood clots in veins or arteries, which can reduce the risk of stroke, heart attack, or other serious conditions.
+SUB025,Drug,Warfarin,"Warfarin is an anticoagulant (blood thinner). Warfarin reduces the formation of blood clots. Warfarin is used to treat or prevent blood clots in veins or arteries, which can reduce the risk of stroke, heart attack, or other serious conditions.
 ","R004
 R005
 R009
@@ -120,10 +120,10 @@ R020
 R027
 R029
 R054"
-ITN026,Drug,Nonsteroidal Anti-Inflammatory Drugs (NSAIDs),Nonsteroidal anti-inflammatories (usually abbreviated to NSAIDs) are a class of medicines that relieve pain and fever and reduce inflammation.,"R005
+SUB026,Drug,Nonsteroidal Anti-Inflammatory Drugs (NSAIDs),Nonsteroidal anti-inflammatories (usually abbreviated to NSAIDs) are a class of medicines that relieve pain and fever and reduce inflammation.,"R005
 R006
 R055"
-ITN027,Drug,Digoxin,"Digoxin is derived from the leaves of a digitalis plant. Digoxin helps make the heart beat stronger and with a more regular rhythm.
+SUB027,Drug,Digoxin,"Digoxin is derived from the leaves of a digitalis plant. Digoxin helps make the heart beat stronger and with a more regular rhythm.
 ","R005
 R006
 R009
@@ -132,7 +132,7 @@ R013
 R014
 R020
 R056"
-ITN028,Drug,Probenecid,Probenecid is used to treat gout and gouty arthritis. probenecid reduces the amount of uric acid in your body by causing it to be passed in your urine.,"R005
+SUB028,Drug,Probenecid,Probenecid is used to treat gout and gouty arthritis. probenecid reduces the amount of uric acid in your body by causing it to be passed in your urine.,"R005
 R006
 R007
 R011
@@ -146,218 +146,218 @@ R027
 R029
 R030
 R057"
-ITN029,Drug,Cimetidine,"Cimetidine is a stomach acid reducer that is used to treat and prevent certain types of stomach ulcer. Cimetidine is also used to treat gastroesophageal reflux disease (GERD), when stomach acid backs up into the esophagus and causes heartburn.","R005
+SUB029,Drug,Cimetidine,"Cimetidine is a stomach acid reducer that is used to treat and prevent certain types of stomach ulcer. Cimetidine is also used to treat gastroesophageal reflux disease (GERD), when stomach acid backs up into the esophagus and causes heartburn.","R005
 R006
 R009
 R014
 R058"
-ITN031,Drug,Iron Salts,Iron dextran is used to treat iron deficiencies and iron deficiency anemia (low red blood cells).,"R006
+SUB030,Drug,Iron Salts,Iron dextran is used to treat iron deficiencies and iron deficiency anemia (low red blood cells).,"R006
 R026
 R060"
-ITN032,Drug,Calcium Carbonate,Calcium carbonate is used to prevent or to treat a calcium deficiency.,"R006
+SUB031,Drug,Calcium Carbonate,Calcium carbonate is used to prevent or to treat a calcium deficiency.,"R006
 R061"
-ITN033,Drug,Ranitidine,"Ranitidine is used to treat and prevent ulcers in the stomach and intestines. It is also used to treat conditions in which the stomach produces too much acid, such as Zollinger-Ellison syndrome.","R006
+SUB032,Drug,Ranitidine,"Ranitidine is used to treat and prevent ulcers in the stomach and intestines. It is also used to treat conditions in which the stomach produces too much acid, such as Zollinger-Ellison syndrome.","R006
 R062"
-ITN034,Food,Meals,Regularly scheduled eating occasions consisting of a combination of foods and beverages.,"R006
+SUB033,Food,Meals,Regularly scheduled eating occasions consisting of a combination of foods and beverages.,"R006
 "
-ITN035,Drug,Mezlocillin,"Used in treatment of Cesarean Section, Gonococcal Infection, Surgical Prophylaxis, Urinary Tract Infection.","R007
+SUB034,Drug,Mezlocillin,"Used in treatment of Cesarean Section, Gonococcal Infection, Surgical Prophylaxis, Urinary Tract Infection.","R007
 R063"
-ITN036,Drug,Astemizole,Astemizole was withdrawn from U.S. market in 1999.,"R008
+SUB035,Drug,Astemizole,Astemizole was withdrawn from U.S. market in 1999.,"R008
 R015
 R016
 R064"
-ITN037,Drug,Cisapride,"Cisapride is used for the symptomatic (e.g., nocturnal heartburn) relief of gastroesophageal reflux. Drug therapy (e.g., antacids, alginic acid, prokinetic agents, histamine H2-receptor antagonists, proton-pump inhibitors) for gastroesophageal reflux is used in adults who are unresponsive to conventional nondrug therapy alone, including changes in lifestyle, habits, and/or diet that may be contributing factors, and weight reduction in obese patients.","R008
+SUB036,Drug,Cisapride,"Cisapride is used for the symptomatic (e.g., nocturnal heartburn) relief of gastroesophageal reflux. Drug therapy (e.g., antacids, alginic acid, prokinetic agents, histamine H2-receptor antagonists, proton-pump inhibitors) for gastroesophageal reflux is used in adults who are unresponsive to conventional nondrug therapy alone, including changes in lifestyle, habits, and/or diet that may be contributing factors, and weight reduction in obese patients.","R008
 R015
 R016
 R017
 R065"
-ITN038,Drug,Terfenadine,Terfenadine was withdrawn from the U.S. market in 1998.,"R008
+SUB037,Drug,Terfenadine,Terfenadine was withdrawn from the U.S. market in 1998.,"R008
 R009
 R014
 R015
 R016
 R066"
-ITN039,Drug,Cetirizine,"Cetirizine is also used to treat an allergic reaction, itching and swelling caused by chronic urticaria (hives) and minimizes or eliminates the symptoms of perennial allergic rhinitis, seasonal allergic rhinitis, chronic idiopathic urticaria, allergic asthma, physical urticaria, and atopic dermatitis.","R009
+SUB038,Drug,Cetirizine,"Cetirizine is also used to treat an allergic reaction, itching and swelling caused by chronic urticaria (hives) and minimizes or eliminates the symptoms of perennial allergic rhinitis, seasonal allergic rhinitis, chronic idiopathic urticaria, allergic asthma, physical urticaria, and atopic dermatitis.","R009
 R067"
-ITN040,Drug,Colchicine,"Colchicine is an oral, plant-based prescription alkaloid derived from the dried seeds of the autumn crocus or meadow saffron (Colchicum autumnale) that, depending on the brand or generic, may be used to treat and prevent gout flares in adults.","R009
+SUB039,Drug,Colchicine,"Colchicine is an oral, plant-based prescription alkaloid derived from the dried seeds of the autumn crocus or meadow saffron (Colchicum autumnale) that, depending on the brand or generic, may be used to treat and prevent gout flares in adults.","R009
 R014
 R068"
-ITN041,Drug,Zidovudine,"Zidovudine is an antiviral medicine used to treat HIV, the virus that can cause acquired immunodeficiency syndrome (AIDS). Zidovudine is also given during pregnancy to prevent an HIV-infected woman from passing the virus to her baby. Zidovudine is not a cure for HIV or AIDS.","R009
+SUB040,Drug,Zidovudine,"Zidovudine is an antiviral medicine used to treat HIV, the virus that can cause acquired immunodeficiency syndrome (AIDS). Zidovudine is also given during pregnancy to prevent an HIV-infected woman from passing the virus to her baby. Zidovudine is not a cure for HIV or AIDS.","R009
 R014
 R016
 R020
 R069"
-ITN042,Drug,Atorvastatin,"Atorvastatin is a prescription medicine used to treat high cholesterol and to reduce the risk of heart attack, stroke, angina, and to decrease the chance that heart surgery will be needed in people who have heart disease or who are at risk of developing heart disease.","R009
+SUB041,Drug,Atorvastatin,"Atorvastatin is a prescription medicine used to treat high cholesterol and to reduce the risk of heart attack, stroke, angina, and to decrease the chance that heart surgery will be needed in people who have heart disease or who are at risk of developing heart disease.","R009
 R070"
-ITN043,Drug,Efavirenz,"Efavirenz is used to treat HIV, the virus that can cause acquired immunodeficiency syndrome (AIDS). Efavirenz is for adults and children who are at least 3 months old and weigh at least 8 pounds. Efavirenz is not a cure for HIV or AIDS.","R009
+SUB042,Drug,Efavirenz,"Efavirenz is used to treat HIV, the virus that can cause acquired immunodeficiency syndrome (AIDS). Efavirenz is for adults and children who are at least 3 months old and weigh at least 8 pounds. Efavirenz is not a cure for HIV or AIDS.","R009
 R014
 R071"
-ITN044,Drug,Indinavir,Indinavir is used alone or in combination with other anti-HIV medicines to treat infection caused by the human immunodeficiency virus (HIV). HIV is the virus that causes acquired immune deficiency syndrome (AIDS).,"R009
+SUB043,Drug,Indinavir,Indinavir is used alone or in combination with other anti-HIV medicines to treat infection caused by the human immunodeficiency virus (HIV). HIV is the virus that causes acquired immune deficiency syndrome (AIDS).,"R009
 R072"
-ITN045,Drug,Methylprednisolone,Methylprednisolone is a corticosteroid medicine that prevents the release of substances in the body that cause inflammation.,"R009
+SUB044,Drug,Methylprednisolone,Methylprednisolone is a corticosteroid medicine that prevents the release of substances in the body that cause inflammation.,"R009
 R014
 R073"
-ITN046,Drug,Midazolam,"Midazolam is a benzodiazepine (ben-zoe-dye-AZE-eh-peen) that is used to help you relax before having a minor surgery, dental work, or other medical procedure.","R009
+SUB045,Drug,Midazolam,"Midazolam is a benzodiazepine (ben-zoe-dye-AZE-eh-peen) that is used to help you relax before having a minor surgery, dental work, or other medical procedure.","R009
 R014
 R026
 R074"
-ITN047,Drug,Nelfinavir,Nelfinavir is an antiviral medicine that is used to treat HIV (human immunodeficiency virus). HIV can cause acquired immunodeficiency syndrome (AIDS). Nelfinavir is not a cure for HIV or AIDS.,"R009
+SUB046,Drug,Nelfinavir,Nelfinavir is an antiviral medicine that is used to treat HIV (human immunodeficiency virus). HIV can cause acquired immunodeficiency syndrome (AIDS). Nelfinavir is not a cure for HIV or AIDS.,"R009
 R010
 R075"
-ITN048,Drug,Rifabutin,Rifabutin is used to prevent mycobacterium avium complex (MAC) in people with HIV (human immunodeficiency virus) infection. Rifabutin is also used with other medicines to treat tuberculosis in people with HIV.,"R009
+SUB047,Drug,Rifabutin,Rifabutin is used to prevent mycobacterium avium complex (MAC) in people with HIV (human immunodeficiency virus) infection. Rifabutin is also used with other medicines to treat tuberculosis in people with HIV.,"R009
 R014
 R016
 R076"
-ITN049,Drug,Sildenafil,"Sildenafil is used to treat erectile dysfunction (ED) in adult men or pulmonary arterial hypertension (PAH) in adults and children, depending on the brand or formulation.","R009
+SUB048,Drug,Sildenafil,"Sildenafil is used to treat erectile dysfunction (ED) in adult men or pulmonary arterial hypertension (PAH) in adults and children, depending on the brand or formulation.","R009
 R014
 R077"
-ITN050,Drug,Triazolam,Triazolam is a benzodiazepine that is used short term (7 to 10 days) to treat insomnia (trouble falling or staying asleep).,"R009
+SUB049,Drug,Triazolam,Triazolam is a benzodiazepine that is used short term (7 to 10 days) to treat insomnia (trouble falling or staying asleep).,"R009
 R014
 R078"
-ITN051,Drug,Sulfamethoxazole/Trimethoprim (Co-trimoxazole),"Sulfamethoxazole and trimethoprim is a combination antibiotic used to treat ear infections, urinary tract infections, bronchitis, traveler's diarrhea, shigellosis, and Pneumocystis jiroveci pneumonia.","R009
+SUB050,Drug,Sulfamethoxazole/Trimethoprim (Co-trimoxazole),"Sulfamethoxazole and trimethoprim is a combination antibiotic used to treat ear infections, urinary tract infections, bronchitis, traveler's diarrhea, shigellosis, and Pneumocystis jiroveci pneumonia.","R009
 R018
 R019
 R079"
-ITN052,Drug,Lincomycin,Lincomycin is an antibiotic that is used to treat severe bacterial infections in people who cannot use penicillin antibiotics.,"R009
+SUB051,Drug,Lincomycin,Lincomycin is an antibiotic that is used to treat severe bacterial infections in people who cannot use penicillin antibiotics.,"R009
 R080"
-ITN053,Drug,Clindamycin,Clindamycin is an antibiotic that fights bacteria in the body. Clindamycin is used to treat serious infections caused by bacteria.,"R009
+SUB052,Drug,Clindamycin,Clindamycin is an antibiotic that fights bacteria in the body. Clindamycin is used to treat serious infections caused by bacteria.,"R009
 R081"
-ITN054,Food,Food,Any substance consumed by humans to provide nutritional support.,"R010
+SUB053,Food,Food,Any substance consumed by humans to provide nutritional support.,"R010
 R017
 R018
 R025"
-ITN055,Drug,Combined Oral Contraceptives,"Combined oral contraceptives (COCs) contain an estrogen and a progestin to prevent ovulation (the release of an egg from an ovary), thin the uterine lining, and thicken cervical mucus making it impenetrable to sperm.","R011
+SUB054,Drug,Combined Oral Contraceptives,"Combined oral contraceptives (COCs) contain an estrogen and a progestin to prevent ovulation (the release of an egg from an ovary), thin the uterine lining, and thicken cervical mucus making it impenetrable to sperm.","R011
 R038"
-ITN056,Drug,Allopurinol,"Allopurinol is used to treat gout (a type of arthritis in which uric acid, a naturally occurring substance in the body, builds up in the joints and causes sudden attacks of redness, swelling, pain, and heat in one or more joints). Allopurinol is used to prevent gout attacks, not to treat them once they occur. Allopurinol does not need to be stopped during an acute flare.","R011
+SUB055,Drug,Allopurinol,"Allopurinol is used to treat gout (a type of arthritis in which uric acid, a naturally occurring substance in the body, builds up in the joints and causes sudden attacks of redness, swelling, pain, and heat in one or more joints). Allopurinol is used to prevent gout attacks, not to treat them once they occur. Allopurinol does not need to be stopped during an acute flare.","R011
 R012
 R013
 R082"
-ITN057,Drug,Acenocoumarol,"Acenocoumarol is not approved for marketing in the United States by the U.S. Food and Drug Administration, but is available in Canada and other countries. Because of the low levels of acenocoumarol in breastmilk, amounts ingested by the infant are small.","R011
+SUB056,Drug,Acenocoumarol,"Acenocoumarol is not approved for marketing in the United States by the U.S. Food and Drug Administration, but is available in Canada and other countries. Because of the low levels of acenocoumarol in breastmilk, amounts ingested by the infant are small.","R011
 R083"
-ITN058,Drug,Methotrexate,"Methotrexate interferes with the growth of certain cells of the body, especially cells that reproduce quickly, such as cancer cells, bone marrow cells, and skin cells. Methotrexate is used to treat leukemia and certain types of cancer of the breast, skin, head and neck, lung, or uterus.","R012
+SUB057,Drug,Methotrexate,"Methotrexate interferes with the growth of certain cells of the body, especially cells that reproduce quickly, such as cancer cells, bone marrow cells, and skin cells. Methotrexate is used to treat leukemia and certain types of cancer of the breast, skin, head and neck, lung, or uterus.","R012
 R013
 R020
 R084"
-ITN059,Drug,Chloramphenicol,"It is used to treat bacterial infections.","R013
+SUB058,Drug,Chloramphenicol,"It is used to treat bacterial infections.","R013
 R027
 R029
 R085"
-ITN060,Drug,Macrolides,"Macrolides inhibit protein synthesis in bacteria by reversibly binding to the P site of the 50S unit of the ribosome. Macrolides mainly affect gram-positive cocci and intracellular pathogens such as mycoplasma, chlamydia, and legionella. Erythromycin was the first macrolide discovered; other macrolides include azithromycin, clarithromycin, and roxithromycin.","R013
+SUB059,Drug,Macrolides,"Macrolides inhibit protein synthesis in bacteria by reversibly binding to the P site of the 50S unit of the ribosome. Macrolides mainly affect gram-positive cocci and intracellular pathogens such as mycoplasma, chlamydia, and legionella. Erythromycin was the first macrolide discovered; other macrolides include azithromycin, clarithromycin, and roxithromycin.","R013
 R018
 R019
 R086"
-ITN061,Drug,Sulfonamides,Sulfonamides (sulphonamides) are a group of man-made (synthetic) medicines that contain the sulfonamide chemical group. They may also be called sulfa drugs.,"R013
+SUB060,Drug,Sulfonamides,Sulfonamides (sulphonamides) are a group of man-made (synthetic) medicines that contain the sulfonamide chemical group. They may also be called sulfa drugs.,"R013
 R087"
-ITN062,Drug,Tetracyclines,"Tetracyclines are a class of antibiotics that may be used to treat infections caused by susceptible microorganisms such as gram positive and gram negative bacteria, chlamydiae, mycoplasma, protozoans, or rickettsiae.","R013
+SUB061,Drug,Tetracyclines,"Tetracyclines are a class of antibiotics that may be used to treat infections caused by susceptible microorganisms such as gram positive and gram negative bacteria, chlamydiae, mycoplasma, protozoans, or rickettsiae.","R013
 R088"
-ITN063,Drug,Estriol/Estrone/Estradiol Conjugates,"Estradiol, estrone, and estriol are excreted in the urine along with glucuronide and sulfate conjugates.","R013
+SUB062,Drug,Estriol/Estrone/Estradiol Conjugates,"Estradiol, estrone, and estriol are excreted in the urine along with glucuronide and sulfate conjugates.","R013
 R089"
-ITN064,Drug,Ritonavir,"Ritonavir is an antiviral medicine that prevents human immunodeficiency virus (HIV) from multiplying in your body. Ritonavir is used together with other antiviral medicines to treat HIV, the virus that can cause acquired immunodeficiency syndrome (AIDS). Ritonavir is not a cure for HIV or AIDS.","R014
+SUB063,Drug,Ritonavir,"Ritonavir is an antiviral medicine that prevents human immunodeficiency virus (HIV) from multiplying in your body. Ritonavir is used together with other antiviral medicines to treat HIV, the virus that can cause acquired immunodeficiency syndrome (AIDS). Ritonavir is not a cure for HIV or AIDS.","R014
 R016
 R090"
-ITN065,Drug,Omeprazole,"Omeprazole is used to treat excess stomach acid in conditions such as non cancerous stomach ulcers, gastroesophageal reflux disease (GERD), active duodenal ulcer, Zollinger-Ellison syndrome and erosive esophagitis. Omeprazole works by blocking gastric acid production and is from the group of medicines called proton pump inhibitors.","R014
+SUB064,Drug,Omeprazole,"Omeprazole is used to treat excess stomach acid in conditions such as non cancerous stomach ulcers, gastroesophageal reflux disease (GERD), active duodenal ulcer, Zollinger-Ellison syndrome and erosive esophagitis. Omeprazole works by blocking gastric acid production and is from the group of medicines called proton pump inhibitors.","R014
 R091"
-ITN066,Drug,Ethambutol,"Ethambutol is an antibiotic that prevents growth of the tuberculous bacteria in the body. Ethambutol is used to treat tuberculosis (TB), and is usually given together with at least one other tuberculosis medicine.","R014
+SUB065,Drug,Ethambutol,"Ethambutol is an antibiotic that prevents growth of the tuberculous bacteria in the body. Ethambutol is used to treat tuberculosis (TB), and is usually given together with at least one other tuberculosis medicine.","R014
 R092"
-ITN067,Drug,Isoniazid,Isoniazid is an antibiotic that fights bacteria. Isoniazid is used to treat and to prevent tuberculosis (TB).,"R014
+SUB066,Drug,Isoniazid,Isoniazid is an antibiotic that fights bacteria. Isoniazid is used to treat and to prevent tuberculosis (TB).,"R014
 R093"
-ITN068,Drug,Pyrazinamide,Pyrazinamide is an antibiotic that fights bacteria. Pyrazinamide is used to treat tuberculosis (TB) in adults and children.,"R014
+SUB067,Drug,Pyrazinamide,Pyrazinamide is an antibiotic that fights bacteria. Pyrazinamide is used to treat tuberculosis (TB) in adults and children.,"R014
 R094"
-ITN069,Drug,Oral Anticoagulants,Anticoagulants are medicines that increase the time it takes for blood to clot. They are commonly called blood thinners. ,"R014
+SUB068,Drug,Oral Anticoagulants,Anticoagulants are medicines that increase the time it takes for blood to clot. They are commonly called blood thinners. ,"R014
 R016
 R020
 R031"
-ITN070,Drug,Quinidine,"Quinidine is used to help keep the heart beating normally in people with certain heart rhythm disorders, usually after other treatments have failed. Quinidine has not been proven to lower the risks of stroke or death.","R014
+SUB069,Drug,Quinidine,"Quinidine is used to help keep the heart beating normally in people with certain heart rhythm disorders, usually after other treatments have failed. Quinidine has not been proven to lower the risks of stroke or death.","R014
 R095"
-ITN071,Drug,Disopyramide,Disopyramide affects the way that your heart beats. Disopyramide is used to treat life-threatening irregular heartbeat patterns.,"R014
+SUB070,Drug,Disopyramide,Disopyramide affects the way that your heart beats. Disopyramide is used to treat life-threatening irregular heartbeat patterns.,"R014
 R016
 R096"
-ITN072,Drug,Ergotamine,Ergotamine is an ergot alkaloid medicine that is used to treat a vascular headache (such as a migraine or cluster headache).,"R014
+SUB071,Drug,Ergotamine,Ergotamine is an ergot alkaloid medicine that is used to treat a vascular headache (such as a migraine or cluster headache).,"R014
 R097"
-ITN073,Drug,Dihydroergotamine,Dihydroergotamine is an ergot alkaloid medicine that is used to treat a migraine or cluster headache attack. dihydroergotamine will not prevent headaches or reduce the number of attacks.,"R014
+SUB072,Drug,Dihydroergotamine,Dihydroergotamine is an ergot alkaloid medicine that is used to treat a migraine or cluster headache attack. dihydroergotamine will not prevent headaches or reduce the number of attacks.,"R014
 R098"
-ITN074,Drug,Alprazolam,"Alprazolam is a benzodiazepine. It is thought that it works by enhancing the activity of certain neurotransmitters in the brain. Alprazolam is used to treat anxiety disorders, panic disorders, and anxiety caused by depression. It is dangerous to purchase alprazolam on the Internet or outside the United States. ","R014
+SUB073,Drug,Alprazolam,"Alprazolam is a benzodiazepine. It is thought that it works by enhancing the activity of certain neurotransmitters in the brain. Alprazolam is used to treat anxiety disorders, panic disorders, and anxiety caused by depression. It is dangerous to purchase alprazolam on the Internet or outside the United States. ","R014
 R099"
-ITN075,Drug,Lovastatin,"Lovastatin is used to lower the risk of stroke, heart attack, and other heart complications in adults with diabetes, coronary heart disease, or other risk factors.","R014
+SUB074,Drug,Lovastatin,"Lovastatin is used to lower the risk of stroke, heart attack, and other heart complications in adults with diabetes, coronary heart disease, or other risk factors.","R014
 R016
 R100"
-ITN076,Drug,Simvastatin,"Simvastatin is also used to lower the risk of stroke, heart attack, and other heart complications in people with diabetes, coronary heart disease, or other risk factors.","R014
+SUB075,Drug,Simvastatin,"Simvastatin is also used to lower the risk of stroke, heart attack, and other heart complications in people with diabetes, coronary heart disease, or other risk factors.","R014
 R016
 R101"
-ITN077,Drug,Alfentanil,Alfentanil injection is given together with other medicines to relieve pain during surgery. It is also used as a primary anesthesia (numbing medicine) for patients undergoing general surgery.,"R014 
+SUB076,Drug,Alfentanil,Alfentanil injection is given together with other medicines to relieve pain during surgery. It is also used as a primary anesthesia (numbing medicine) for patients undergoing general surgery.,"R014 
 R016
 R102"
-ITN078,Drug,Cilostazol,Cilostazol is a vasodilator that works by relaxing the muscles in your blood vessels to help them dilate (widen). Cilostazol dilates arteries that supply blood to your legs. Cilostazol also improves circulation by keeping platelets in the blood from sticking together and clotting.,"R014
+SUB077,Drug,Cilostazol,Cilostazol is a vasodilator that works by relaxing the muscles in your blood vessels to help them dilate (widen). Cilostazol dilates arteries that supply blood to your legs. Cilostazol also improves circulation by keeping platelets in the blood from sticking together and clotting.,"R014
 R103"
-ITN079,Drug,Bromocriptine,"The Parlodel brand of bromocriptine is used to treat certain conditions caused by a hormone imbalance in which there is too much prolactin in the blood (hyperprolactinemia). High prolactin levels may cause sexual problems, hot flashes, menstrual problems or infertility in women, muscle loss in men, breast enlargement in men and women, and lack of sexual development in adolescents. Parlodel is also used to treat these disorders when they are caused by a noncancerous tumor of the pituitary gland that can overproduce prolactin.","R014
+SUB078,Drug,Bromocriptine,"The Parlodel brand of bromocriptine is used to treat certain conditions caused by a hormone imbalance in which there is too much prolactin in the blood (hyperprolactinemia). High prolactin levels may cause sexual problems, hot flashes, menstrual problems or infertility in women, muscle loss in men, breast enlargement in men and women, and lack of sexual development in adolescents. Parlodel is also used to treat these disorders when they are caused by a noncancerous tumor of the pituitary gland that can overproduce prolactin.","R014
 R016
 R104"
-ITN080,Drug,Valproate,Valproate Sodium Injection is indicated as an intravenous alternative in patients in whom oral administration of valproate products is temporarily not feasible in the following conditions:,"R014
+SUB079,Drug,Valproate,Valproate Sodium Injection is indicated as an intravenous alternative in patients in whom oral administration of valproate products is temporarily not feasible in the following conditions:,"R014
 R016
 R105"
-ITN081,Drug,Pimozide,Pimozide works by changing the actions of chemicals in the brain. Pimozide is used in people with Tourette's syndrome. Pimozide suppresses the physical (motor) and vocal (phonic) symptoms of tics when these symptoms interfere with daily life function.,"R015
+SUB080,Drug,Pimozide,Pimozide works by changing the actions of chemicals in the brain. Pimozide is used in people with Tourette's syndrome. Pimozide suppresses the physical (motor) and vocal (phonic) symptoms of tics when these symptoms interfere with daily life function.,"R015
 R016
 R106"
-ITN082,Drug,Metoclopramide,Metoclopramide increases muscle contractions in the upper digestive tract. This speeds up the rate at which the stomach empties into the intestines.,"R017
+SUB081,Drug,Metoclopramide,Metoclopramide increases muscle contractions in the upper digestive tract. This speeds up the rate at which the stomach empties into the intestines.,"R017
 R018
 R019
 R107"
-ITN083,Drug,Bethanechol,"Bethanechol is used to treat urinary retention (trouble urinating) that may be caused by surgery, delivering a baby, or other conditions.","R017
+SUB082,Drug,Bethanechol,"Bethanechol is used to treat urinary retention (trouble urinating) that may be caused by surgery, delivering a baby, or other conditions.","R017
 R108"
-ITN084,Drug,Domperidone,"Domperidone is an antiemetic (anti-sickness) and prokinetic drug. It belongs to a group of drugs called dopamine antagonists. It is used to treat stomach-related issues, such as nausea and vomiting, as well as stomach pain and discomfort caused by decreased movement of the stomach and upper gastrointestinal (GI) tract. It is also used to boost breastmilk supply.","R017
+SUB083,Drug,Domperidone,"Domperidone is an antiemetic (anti-sickness) and prokinetic drug. It belongs to a group of drugs called dopamine antagonists. It is used to treat stomach-related issues, such as nausea and vomiting, as well as stomach pain and discomfort caused by decreased movement of the stomach and upper gastrointestinal (GI) tract. It is also used to boost breastmilk supply.","R017
 R109"
-ITN085,Drug,Laxatives,"Laxatives are medicines that help resolve constipation or empty the bowel of fecal matter before procedures or surgery involving the lower bowel. There are several different types available (see differences below) and each type works in a particular way. Some soften or loosen up the stool, while others increase how frequently the large colon contracts which helps move the stool along the bowel.","R017
+SUB084,Drug,Laxatives,"Laxatives are medicines that help resolve constipation or empty the bowel of fecal matter before procedures or surgery involving the lower bowel. There are several different types available (see differences below) and each type works in a particular way. Some soften or loosen up the stool, while others increase how frequently the large colon contracts which helps move the stool along the bowel.","R017
 R110"
-ITN086,Drug,Fluoroquinolones," One of the classes, called fluoroquinolones, was derived from quinolones by adding a fluorine atom to nalidixic acid. This enhanced its activity against bacteria, and improved its absorption, metabolism, and excretion characteristics.","R018
+SUB085,Drug,Fluoroquinolones," One of the classes, called fluoroquinolones, was derived from quinolones by adding a fluorine atom to nalidixic acid. This enhanced its activity against bacteria, and improved its absorption, metabolism, and excretion characteristics.","R018
 R019
 R111"
-ITN087,Drug,Cephalosporins,"Cephalosporins are bactericidal (kill bacteria) and work in a similar way to penicillins. They bind to and block the activity of enzymes responsible for making peptidoglycan, an important component of the bacterial cell wall. ","R018
+SUB086,Drug,Cephalosporins,"Cephalosporins are bactericidal (kill bacteria) and work in a similar way to penicillins. They bind to and block the activity of enzymes responsible for making peptidoglycan, an important component of the bacterial cell wall. ","R018
 R019
 R112"
-ITN088,Drug,Potassium Aminobenzoate,"Potassium aminobenzoate is possibly effective in treating fibrosis or a certain type of inflammation, which can cause skin or tissues to harden. These conditions occur in people with scleroderma, dermatomyositis, morphea, pemphigus, or Peyronie's disease.","R020
+SUB087,Drug,Potassium Aminobenzoate,"Potassium aminobenzoate is possibly effective in treating fibrosis or a certain type of inflammation, which can cause skin or tissues to harden. These conditions occur in people with scleroderma, dermatomyositis, morphea, pemphigus, or Peyronie's disease.","R020
 R113"
-ITN089,Drug,Procaine (Local Anesthesia),"Penicillin G procaine, a natural penicillin, is a β-lactam antibiotic. The drug is the procaine monohydrate salt of penicillin G and is a long-acting formulation of penicillin G.","R020
+SUB088,Drug,Procaine (Local Anesthesia),"Penicillin G procaine, a natural penicillin, is a β-lactam antibiotic. The drug is the procaine monohydrate salt of penicillin G and is a long-acting formulation of penicillin G.","R020
 R114"
-ITN090,Drug,Procainamide,Procainamide is used to help keep the heart beating normally in people with certain heart rhythm disorders of the ventricles (the lower chambers of the heart that allow blood to flow out of the heart).,"R020
+SUB089,Drug,Procainamide,Procainamide is used to help keep the heart beating normally in people with certain heart rhythm disorders of the ventricles (the lower chambers of the heart that allow blood to flow out of the heart).,"R020
 R115"
-ITN091,Drug,Rosiglitazone,Rosiglitazone is used to treat a type of diabetes mellitus called type 2 diabetes. It may be used alone or with other medicines such as metformin or sulfonylurea agents. Rosiglitazone is used together with a proper diet and exercise to help control blood sugar levels. It does this by helping your body use insulin better.,"R020
+SUB090,Drug,Rosiglitazone,Rosiglitazone is used to treat a type of diabetes mellitus called type 2 diabetes. It may be used alone or with other medicines such as metformin or sulfonylurea agents. Rosiglitazone is used together with a proper diet and exercise to help control blood sugar levels. It does this by helping your body use insulin better.,"R020
 R116"
-ITN092,Drug,Zalcitabine,Zalcitabine can cause severe peripheral neuropathy and should be used with extreme caution in patients with preexisting neuropathy. ,"R020
+SUB091,Drug,Zalcitabine,Zalcitabine can cause severe peripheral neuropathy and should be used with extreme caution in patients with preexisting neuropathy. ,"R020
 R117"
-ITN093,Drug,Lamivudine,Lamivudine is an antiviral medicine that prevents human immunodeficiency virus (HIV) or hepatitis B virus from multiplying in your body.,"R020
+SUB092,Drug,Lamivudine,Lamivudine is an antiviral medicine that prevents human immunodeficiency virus (HIV) or hepatitis B virus from multiplying in your body.,"R020
 R118"
-ITN094,Drug,Dapsone,Dapsone is an anti-infective medicine that fights bacteria. Dapsone is used to treat dermatitis herpetiformis (a skin condition) and leprosy.,"R020
+SUB093,Drug,Dapsone,Dapsone is an anti-infective medicine that fights bacteria. Dapsone is used to treat dermatitis herpetiformis (a skin condition) and leprosy.,"R020
 R119"
-ITN095,Drug,Progesterone Contraceptives,"Progestin-only contraceptives (POPs) contain just one hormone, progestin. Most work by thickening cervical mucus, preventing sperm from entering the uterus.  ","R021
+SUB094,Drug,Progesterone Contraceptives,"Progestin-only contraceptives (POPs) contain just one hormone, progestin. Most work by thickening cervical mucus, preventing sperm from entering the uterus.  ","R021
 R022
 R038"
-ITN096,Drug,Magnesium Hydroxide (Antacids),"Magnesium is a naturally occurring mineral. Magnesium hydroxide reduces stomach acid, and increases water in the intestines which may induce bowel movements. Magnesium hydroxide is used as a laxative to relieve occasional constipation.","R025
+SUB095,Drug,Magnesium Hydroxide (Antacids),"Magnesium is a naturally occurring mineral. Magnesium hydroxide reduces stomach acid, and increases water in the intestines which may induce bowel movements. Magnesium hydroxide is used as a laxative to relieve occasional constipation.","R025
 R026
 R120"
-ITN097,Drug,Aluminum Hydroxide (Antacids),"Aluminum hydroxide is used to treat heartburn, upset stomach, sour stomach, or acid indigestion. Aluminum hydroxide is also used to reduce phosphate levels in people with certain kidney conditions.","R025
+SUB096,Drug,Aluminum Hydroxide (Antacids),"Aluminum hydroxide is used to treat heartburn, upset stomach, sour stomach, or acid indigestion. Aluminum hydroxide is also used to reduce phosphate levels in people with certain kidney conditions.","R025
 R026
 R121"
-ITN098,Drug,Metronidazole,"Metronidazole is an antibiotic that may be used to treat certain infections of the vagina, stomach, liver, skin, joints, brain and spinal cord, lungs, heart, or bloodstream.","R025
+SUB097,Drug,Metronidazole,"Metronidazole is an antibiotic that may be used to treat certain infections of the vagina, stomach, liver, skin, joints, brain and spinal cord, lungs, heart, or bloodstream.","R025
 R122"
-ITN099,Drug,Caffeine,"Caffeine is a central nervous system stimulant. It works by stimulating the brain. Caffeine is found naturally in foods and beverages such as coffee, tea, colas, energy and chocolate. Botanical sources of caffeine include kola nuts, guarana, and yerba mate. Caffeine is also available in prescription and non-prescription medications.","R025
+SUB098,Drug,Caffeine,"Caffeine is a central nervous system stimulant. It works by stimulating the brain. Caffeine is found naturally in foods and beverages such as coffee, tea, colas, energy and chocolate. Botanical sources of caffeine include kola nuts, guarana, and yerba mate. Caffeine is also available in prescription and non-prescription medications.","R025
 R026
 R123"
-ITN100,Food,Dairy Products (High Calcium Content),"Food derived drom milk that are rich in calcium, such as milk, cheese, yogurt, and butter.",R026
-ITN101,Drug,H2 Antagonists,"H2 antagonists block histamine-induced gastric acid secretion from the parietal cells of the gastric mucosa (lining of the stomach). H2 antagonists are used to treat gastroesophageal reflux disease (GERD), gastrointestinal ulcers and other gastrointestinal hypersecretory conditions.","R026
+SUB099,Food,Dairy Products (High Calcium Content),"Food derived drom milk that are rich in calcium, such as milk, cheese, yogurt, and butter.",R026
+SUB100,Drug,H2 Antagonists,"H2 antagonists block histamine-induced gastric acid secretion from the parietal cells of the gastric mucosa (lining of the stomach). H2 antagonists are used to treat gastroesophageal reflux disease (GERD), gastrointestinal ulcers and other gastrointestinal hypersecretory conditions.","R026
 R124"
-ITN102,Drug,Naproxen,"Naproxen is a nonsteroidal anti-inflammatory drug (NSAID). It works by reducing hormones that cause inflammation and pain in the body. Naproxen is used to treat pain or inflammation caused by conditions such as arthritis, ankylosing spondylitis, tendinitis, bursitis, gout, or menstrual cramps. It can also be used to treat acute pain caused by other conditions not listed in this medication guide.","R026
+SUB101,Drug,Naproxen,"Naproxen is a nonsteroidal anti-inflammatory drug (NSAID). It works by reducing hormones that cause inflammation and pain in the body. Naproxen is used to treat pain or inflammation caused by conditions such as arthritis, ankylosing spondylitis, tendinitis, bursitis, gout, or menstrual cramps. It can also be used to treat acute pain caused by other conditions not listed in this medication guide.","R026
 R125"
-ITN103,Drug,Chloroquine,"Chloroquine is used to treat or prevent malaria, a disease caused by parasites that enter the body through the bite of a mosquito. Chloroquine is not effective against all strains of malaria, or against malaria in areas where the infection has been resistant to a similar drug called hydroxychloroquine.","R026
+SUB102,Drug,Chloroquine,"Chloroquine is used to treat or prevent malaria, a disease caused by parasites that enter the body through the bite of a mosquito. Chloroquine is not effective against all strains of malaria, or against malaria in areas where the infection has been resistant to a similar drug called hydroxychloroquine.","R026
 R126"
-ITN104,Drug,Opioid Analgesics,"Opioid analgesics have been one of the most widely used analgesics for pain relief; however, they have been overused, overprescribed, and misused. According to the NCDAS, more than 9 million people misuse opioids every year. ","R026
+SUB103,Drug,Opioid Analgesics,"Opioid analgesics have been one of the most widely used analgesics for pain relief; however, they have been overused, overprescribed, and misused. According to the NCDAS, more than 9 million people misuse opioids every year. ","R026
 R127"
-ITN105,Drug,Nifedipine,Nifedipine is in a group of drugs called calcium channel blockers. It works by relaxing the muscles of your heart and blood vessels. Nifedipine is used to treat hypertension (high blood pressure) and angina (chest pain).,"R027
+SUB104,Drug,Nifedipine,Nifedipine is in a group of drugs called calcium channel blockers. It works by relaxing the muscles of your heart and blood vessels. Nifedipine is used to treat hypertension (high blood pressure) and angina (chest pain).,"R027
 R029
 R128"
-ITN106,Drug,Aspirin (Salicylates),"Aspirin is a salicylate. It works by reducing substances in the body that cause pain, fever, and inflammation. Aspirin is used to treat pain, and reduce fever or inflammation. It is sometimes used to treat or prevent heart attacks, strokes, and chest pain (angina).","R027
+SUB105,Drug,Aspirin (Salicylates),"Aspirin is a salicylate. It works by reducing substances in the body that cause pain, fever, and inflammation. Aspirin is used to treat pain, and reduce fever or inflammation. It is sometimes used to treat or prevent heart attacks, strokes, and chest pain (angina).","R027
 R029
 R129"
-ITN107,Drug,Sulfinpyrazone,"Sulfinpyrazone is used in the treatment of chronic gout (gouty arthritis), which is caused by too much uric acid in the blood. The medicine works by removing the extra uric acid from the body. Sulfinpyrazone does not cure gout, but after you have been taking it for a few months it may help prevent gout attacks.","R030
+SUB106,Drug,Sulfinpyrazone,"Sulfinpyrazone is used in the treatment of chronic gout (gouty arthritis), which is caused by too much uric acid in the blood. The medicine works by removing the extra uric acid from the body. Sulfinpyrazone does not cure gout, but after you have been taking it for a few months it may help prevent gout attacks.","R030
 R130"
-ITN108,Drug,Carbonic Anhydrase Inhibitors,"Carbonic anhydrase inhibitors reduce the activity of carbonic anhydrase, an enzyme responsible for catalyzing the reaction between carbon dioxide and water into carbonic acid and then bicarbonate. This reduces the resorption of bicarbonate from the proximal tubule in the kidneys, which causes a direct increase in bicarbonate excretion and mild increases in sodium, and potassium excretion. ","R030
+SUB107,Drug,Carbonic Anhydrase Inhibitors,"Carbonic anhydrase inhibitors reduce the activity of carbonic anhydrase, an enzyme responsible for catalyzing the reaction between carbon dioxide and water into carbonic acid and then bicarbonate. This reduces the resorption of bicarbonate from the proximal tubule in the kidneys, which causes a direct increase in bicarbonate excretion and mild increases in sodium, and potassium excretion. ","R030
 R131"
