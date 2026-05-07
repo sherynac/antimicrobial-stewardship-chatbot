@@ -48,21 +48,21 @@ def chat():
     # Flask's built-in session is cookie-based and signed with secret_key.
     # We keep a rolling history of entity dicts so follow-up questions can
     # reuse context when the current question supplies no entities.
-    if "session_id" not in session:
-        session["session_id"] = str(uuid.uuid4())
+    # if "session_id" not in session:
+    #     session["session_id"] = str(uuid.uuid4())
 
-    # session_entities: list of {EntityType: [names]} dicts, one per turn
-    if "session_entities" not in session:
-        session["session_entities"] = []
+    # # session_entities: list of {EntityType: [names]} dicts, one per turn
+    # if "session_entities" not in session:
+    #     session["session_entities"] = []
 
     # ── NER ────────────────────────────────────────────────────────────────
     words = get_splitted_question(question)
-    raw_entities = entities_service.look_up_entity(words)
+    raw_entities = entities_service.look_up_entity(words, question)
 
     # Build {EntityType: [Name, ...]} for this turn
-    current_entities: dict = {}
-    for word, entity_type in raw_entities.items():
-        current_entities.setdefault(entity_type, []).append(word.capitalize())
+    # current_entities: dict = {}
+    # for word, entity_type in raw_entities.items():
+    #     current_entities.setdefault(entity_type, []).append(word.capitalize())
 
     # ── Follow-up context merging ──────────────────────────────────────────
     # If the current question has NO entities at all, reuse the entire last
@@ -70,18 +70,24 @@ def chat():
     # If there ARE some entities but a key type is missing, fill the gap
     # from the most-recent turn that had it (e.g. "What about amoxicillin?"
     # where the prior turn already established a Brand name).
-    if not current_entities and session["session_entities"]:
-        question_entities = dict(session["session_entities"][-1])
-    else:
-        question_entities = dict(current_entities)
-        for past in reversed(session["session_entities"]):
-            for etype, names in past.items():
-                if etype not in question_entities:
-                    question_entities[etype] = names
+    # if not current_entities and session["session_entities"]:
+    #     question_entities = dict(session["session_entities"][-1])
+    # else:
+    #     question_entities = dict(current_entities)
+    #     for past in reversed(session["session_entities"]):
+    #         for etype, names in past.items():
+    #             if etype not in question_entities:
+    #                 question_entities[etype] = names
+
+    question_entities = {}
+    for word, entity_type in raw_entities.items():
+        if entity_type not in question_entities:
+            question_entities[entity_type] = []
+        question_entities[entity_type].append(word.capitalize())
 
     # Persist this turn's entities to history (keep last 10 turns)
-    session["session_entities"] = session["session_entities"][-9:] + [current_entities]
-    session.modified = True  # tell Flask the mutable dict was changed
+    # session["session_entities"] = session["session_entities"][-9:] + [current_entities]
+    # session.modified = True  # tell Flask the mutable dict was changed
 
     # ── Intent + response ──────────────────────────────────────────────────
     try:
@@ -104,9 +110,9 @@ def chat():
         reply = "An unexpected error occurred. Please try again."
 
     return jsonify({
-        "reply": reply,
-        "session_id": session["session_id"],
-        "resolved_entities": question_entities,
+        "reply": reply
+        # "session_id": session["session_id"],
+        # "resolved_entities": question_entities,
     })
 
 

@@ -51,12 +51,13 @@ def make_uri_id(id_str):
     return id_str
 
 def make_safe_uri_label(label_str):
-    """Create a safe URI local name from a label (replace spaces with underscores)."""
     if not label_str or str(label_str).strip().lower() == "nan":
         return None
+    # preserve word casing, just remove unsafe chars and join
     label_str = str(label_str).strip()
-    label_str = re.sub(r"[^\w\-]", "_", label_str)
-    return label_str
+    label_str = re.sub(r"[^a-zA-Z0-9\s]", "", label_str)  # remove special chars
+    words = label_str.split()
+    return ''.join(w[0].upper() + w[1:] for w in words if w)
 
 def sanitize_ttl_name(name):
     """Create a safe URI local name from a label (CamelCase)."""
@@ -697,7 +698,7 @@ def generate_ttl_output():
     return "\n".join(lines)
 
 ttl_content = generate_ttl_output()
-with open(output_path, "w") as f:
+with open(output_path, "w", encoding="utf-8") as f:
     f.write(ttl_content)
 
 print(f"Turtle file generated: {output_path}")

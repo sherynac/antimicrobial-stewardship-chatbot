@@ -9,12 +9,12 @@ class OntologyService:
         self.onto = self.load_ontology()
 
     def load_ontology(self):
-        owl_path = "./backend/data/FinalOntology.owl"
+        owl_path = "./data/FinalOntology.owl"
 
         if not os.path.exists(owl_path):
             print("Converting TTL to OWL...")
             g = Graph()
-            g.parse("./backend/data/FinalOntology.ttl", format="turtle")
+            g.parse("./data/FinalOntology.ttl", format="turtle")
             g.serialize(destination=owl_path, format="xml")
             print("Conversion done, saved to .owl")
 
