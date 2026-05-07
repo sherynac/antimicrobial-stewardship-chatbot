@@ -73,8 +73,17 @@ class OntologyService:
         presentation = presentation_obj.is_a
         dosage = presentation_obj.hasDosage
         unit_price = presentation_obj.hasUnitPrice
-        unit_price_value = f"Php {unit_price[0]}" if unit_price and unit_price[0] != "Not Specified" else "-"     
-        return add_space_to_pascal_case(presentation[0].name), dosage[0], unit_price_value
+
+        if unit_price and unit_price[0] != "Not Specified":
+            unit_price_value = f"₱{float(unit_price[0]):,.2f}"
+        else:
+            unit_price_value = "-"
+
+        return (
+            add_space_to_pascal_case(presentation[0].name),
+            dosage[0],
+            unit_price_value
+        )
     
     def get_brand_presentations (self, presentation_obj):
         '''

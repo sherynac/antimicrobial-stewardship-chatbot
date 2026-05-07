@@ -80,3 +80,35 @@ def unwrap(value, default="Not specified"):
     if isinstance(value, list):
         return value[0] if len(value) > 0 else default
     return value if value else default
+
+def sort_side_effects(side_effects):
+    pattern_priority = {
+        "serious": 1,
+
+        "common": 2,
+        "fairly frequent": 2,
+        "dose-related": 2,
+
+        "less common": 3,
+        "occasional": 3,
+        "uncommon": 3,
+
+        "infrequent": 4,
+        "rare": 4,
+
+        "very rare": 5,
+
+        "not specified": 6,
+        None: 6
+    }
+
+    return sorted(
+        side_effects,
+        key=lambda se: (
+            pattern_priority.get(
+                str(se.get("pattern", "")).strip().lower(),
+                6
+            ),
+            se.get("side_effect", "").lower()
+        )
+    )

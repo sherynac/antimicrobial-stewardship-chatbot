@@ -105,7 +105,7 @@ class ResponseService:
         response_text = random.choice(template['responseTexts'])
 
         reference_json = self.build_reference_list(reference)
-        unit_price_text = f"Php {brand_info['unit_price']}" if brand_info['unit_price'] != "Not specified" else ""
+        unit_price_text = brand_info['unit_price'] if brand_info['unit_price'] != "Not specified" else ""
 
         text = response_text.format(
             brand=brand_info["brand"], 
@@ -349,6 +349,7 @@ class ResponseService:
             bullets = []
             for se in brand_data['side_effects']:
                 if se['pattern']:
+                    print("RESPONSE", se['pattern'])
                     main_text = template['bulletFormat']['bulletWithPattern'].format(
                         side_effect=se['side_effect'],
                         pattern=se['pattern']

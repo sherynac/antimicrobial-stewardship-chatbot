@@ -1,6 +1,6 @@
 from services.ontology_service import ontology_service
 from services.response_service import response_service
-from utils.helpers import add_space_to_pascal_case, split_commas, array_to_string, unwrap
+from utils.helpers import add_space_to_pascal_case, split_commas, array_to_string, unwrap, sort_side_effects
 
 # TODO: check referencing for side effect (once data is finished)
 
@@ -319,6 +319,8 @@ def handle_side_effects(entities, query_type):
             "generic": generic_name,
         }
 
+        side_effects_list = sort_side_effects(side_effects_list)
+
         return response_service.build_side_effect_generic_brand(info, side_effects_list, reference_list)
 
     elif query_type == 'generic':
@@ -342,7 +344,7 @@ def handle_side_effects(entities, query_type):
 
                 description = side_effect.hasSideEffectDescription
             
-                if not pattern_object:
+                if(not pattern_object) or ("NotSpecified" == pattern_object[0].name):
                     pattern = None
                 else:
                     pattern = pattern_object[0].name
@@ -350,10 +352,11 @@ def handle_side_effects(entities, query_type):
                 side_effect = add_space_to_pascal_case(side_effect_class[0].name)
                 side_effects_list.append({
                     "side_effect": side_effect,
-                    "pattern": pattern,
+                    "pattern": add_space_to_pascal_case(pattern) if pattern else None,
                     "description": unwrap(description, default="No description available")
                 })
 
+            side_effects_list = sort_side_effects(side_effects_list)
             brands_side_effects.append({
             "brand": brand.name,
             "side_effects": side_effects_list
@@ -423,6 +426,7 @@ def handle_side_effects(entities, query_type):
                 "description": unwrap(description, default="No description available")
             })
 
+        side_effects_list = sort_side_effects(side_effects_list)
         return response_service.build_side_effect_brand(brand_name, side_effects_list, reference_list)
 
     elif query_type == 'brand_side_effects':
