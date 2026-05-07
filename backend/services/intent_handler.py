@@ -111,7 +111,7 @@ def handle_antibiotic_info(entities, query_type):
         else:
             return response_service.build_text_response("No presentation data found.")
     else:
-        return "Please specify the antibiotic name or brand for more information."
+        return response_service.build_text_response("To learn more about antibiotics. Please specify the antibiotic name or brand for more information.")
 
 def handle_uses_indications(entities, query_type):
     if query_type == 'generic_brand':
@@ -257,7 +257,7 @@ def handle_uses_indications(entities, query_type):
 
         return response_service.build_indications_generic(generic_name, table_details, reference_list)
         
-    return "To get information about the uses and indications of an antibiotic, please specify the antibiotic name or brand."
+    return response_service.build_text_response("To get information about the uses and indications of an antibiotic, please specify the antibiotic name or brand.")
 
 def handle_side_effects(entities, query_type):
     if query_type == 'generic_brand_side_effects':
@@ -446,7 +446,7 @@ def handle_side_effects(entities, query_type):
             
         return response_service.build_side_effect_brand_match(isFound, side_effect_info, reference_list)
     
-    return "To get information about the side effects of an antibiotic, please specify the antibiotic name or brand."
+    return response_service.build_text_response("To get information about the side effects of an antibiotic, please specify the antibiotic name or brand.")
 
 def handle_substance_interaction(entities, query_type):
     ##
@@ -645,7 +645,7 @@ def handle_substance_interaction(entities, query_type):
             return response_service.build_interaction_none(info, reference_list)
 
     else:
-        return "To get information about substance interactions with an antibiotic, please specify the antibiotic name or brand."
+        return response_service.build_text_response("To get information about substance interactions with an antibiotic, please specify the antibiotic name or brand.")
 
 def handle_warning_precautions(entities, query_type):
     WARNING_TYPE_MAP = {
@@ -674,7 +674,7 @@ def handle_warning_precautions(entities, query_type):
 
         for warning_id in warning_ids:
             warning_type = warning_id.is_a[0].name
-            warning_type = add_space_to_pascal_case(warning_type)
+            warning_type = add_space_to_pascal_case(warning_type.lower())
             warning_headline = warning_id.hasWarningHeadline
             warning_text = warning_id.hasWarningText
 
@@ -707,7 +707,7 @@ def handle_warning_precautions(entities, query_type):
 
         info = {
             "generic":      generic_name,
-            "warning_type": add_space_to_pascal_case(target_warning_type)
+            "warning_type": (add_space_to_pascal_case(target_warning_type)).lower
         }
 
         for brand in brands_obj:
@@ -830,7 +830,7 @@ def handle_storage_instruction(entities, query_type):
             storage_rules.append(storage_rule[0])
     
     else:
-        return "To get storage instructions for an antibiotic, please specify the antibiotic name or brand."
+        return response_service.build_text_response("To get storage instructions for an antibiotic, please specify the antibiotic name or brand.")
 
     antibiotic_info = {
         "generic": generic_name,
@@ -892,7 +892,7 @@ def handle_food_and_timing(entities, query_type):
             food_and_timing_rules.append(food_and_timing_rule[0])
     
     else:
-        return "To get food and timing for an antibiotic, please specify the antibiotic name or brand."
+        return response_service.build_text_response("To get food and timing for an antibiotic, please specify the antibiotic name or brand.")
 
     antibiotic_info = {
         "generic": generic_name,
@@ -956,7 +956,7 @@ def handle_administration_instructions(entities, query_type):
             administration_rules.append(administration_rule[0])
     
     else:
-        return "To get administration guidelines for an antibiotic, please specify the antibiotic name or brand."
+        return response_service.build_text_response("To get administration guidelines for an antibiotic, please specify the antibiotic name or brand.")
 
     antibiotic_info = {
         "generic": generic_name,

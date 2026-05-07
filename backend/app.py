@@ -107,7 +107,7 @@ def chat():
         reply = str(e)
     except Exception as e:
         app.logger.exception("Unexpected error in /chat")
-        reply = "An unexpected error occurred. Please try again."
+        reply = "I didn't quite get that. Can you please try rephrasing your question?"
 
     return jsonify({
         "reply": reply
