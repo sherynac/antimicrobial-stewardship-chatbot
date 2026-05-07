@@ -31,19 +31,19 @@
 }
 
 .navbar {
-  @apply flex flex-col gap-y-5 pt-4 border-r-1 border-r-black/20 content-center h-dvh w-2xs bg-[#F8F9FA] static transition-all ease-in-out duration-100
+  @apply flex flex-col gap-y-5 pt-4 border-r-1 border-r-black/20 content-center h-dvh w-2xs bg-[#F8F9FA] static transition-all ease-in-out duration-300
 }
 
 .dark-mode.navbar {
-  @apply bg-[#232323] border-r-white/10 text-white
+  @apply bg-[#232323] border-r-white/10 text-white transition-colors duration-300
 }
 
 .navbar-collapsed {
-  @apply flex flex-col gap-y-5 pt-4 border-r-1 border-r-black/20 content-center h-dvh w-16 bg-white static transition-all transition-discrete ease-linear duration-100
+  @apply flex flex-col gap-y-5 pt-4 border-r-1 border-r-black/20 content-center h-dvh w-16 bg-white static transition-all ease-in-out duration-300
 }
 
 .dark-mode.navbar-collapsed {
-  @apply bg-[#333333]
+  @apply bg-[#333333] transition-colors duration-300
 }
 
 .first-row {
@@ -75,11 +75,11 @@
 }
 
 .main-container {
-  @apply flex flex-col justify-start w-dvw transition-all ease-in-out duration-100
+  @apply flex flex-col justify-start w-dvw transition-all ease-in-out duration-300
 }
 
 .dark-mode.main-container {
-  @apply bg-[#333333] text-white transition-all ease-in-out duration-100
+  @apply bg-[#333333] text-white transition-all ease-in-out duration-300
 }
 
 #menu-icon {
@@ -91,35 +91,35 @@
 }
 
 .button-container {
-  @apply flex justify-start mx-4 space-x-4 items-center hover:bg-white rounded-xl cursor-pointer font-[Figtree-Regular]
+  @apply flex justify-start mx-4 space-x-4 items-center hover:bg-white rounded-xl cursor-pointer font-[Figtree-Regular] transition-colors duration-200
 }
 
 .button-container.collapsed {
-  @apply flex justify-center mx-1 py-4 items-center hover:bg-[#F8F9FA] rounded-xl
+  @apply flex justify-center mx-1 py-4 items-center hover:bg-[#F8F9FA] rounded-xl transition-colors duration-200
 }
 
 .button-container-active {
-  @apply flex justify-start mx-4 space-x-4 items-center rounded-xl bg-white cursor-pointer
+  @apply flex justify-start mx-4 space-x-4 items-center rounded-xl bg-white cursor-pointer transition-colors duration-200
 }
 
 .button-container-active.collapsed {
-  @apply flex justify-center mx-2 py-4 items-center rounded-xl bg-[#F8F9FA]
+  @apply flex justify-center mx-2 py-4 items-center rounded-xl bg-[#F8F9FA] transition-colors duration-200
 }
 
 .dark-mode .button-container {
-  @apply hover:bg-[#333333]
+  @apply hover:bg-[#333333] transition-colors duration-200
 }
 
 .dark-mode .button-container-active {
-  @apply bg-[#333333]
+  @apply bg-[#333333] transition-colors duration-200
 }
 
 .dark-mode .button-container.collapsed {
-  @apply hover:bg-[#424242]
+  @apply hover:bg-[#424242] transition-colors duration-200
 }
 
 .dark-mode .button-container-active.collapsed {
-  @apply bg-[#424242]
+  @apply bg-[#424242] transition-colors duration-200
 }
 
 .icons {
@@ -131,11 +131,11 @@
 }
 
 .theme-switch {
-  @apply flex w-10 h-10 rounded-3xl ml-4 mt-83 bg-[#D4E9D7] content-center justify-center
+  @apply flex w-10 h-10 rounded-3xl ml-4 mt-83 bg-[#D4E9D7] content-center justify-center transition-colors duration-300 cursor-pointer
 }
 
 .dark-mode .theme-switch {
-  @apply bg-[#424242]
+  @apply bg-[#424242] transition-colors duration-300
 }
 
 .theme-switch img {
@@ -151,7 +151,7 @@
 }
 
 .dark-mode .header {
-  @apply border-b-white/20
+  @apply border-b-white/20 transition-colors duration-300
 }
 
 .header img {
@@ -175,7 +175,7 @@
 }
 
 .main-chat {
-  @apply h-full w-[calc(100%-18rem)] flex flex-col items-start items-center overflow-auto
+  @apply h-full w-[calc(100%-18rem)] flex flex-col items-start items-center overflow-auto transition-all ease-in-out duration-300
 }
 
 .main-chat.empty {
@@ -223,7 +223,7 @@
 }
 
 .dark-mode .message-prompt {
-  @apply bg-[#3B3B3B]
+  @apply bg-[#3B3B3B] transition-colors duration-300
 }
 
 .reply-container {
@@ -231,11 +231,11 @@
 }
 
 .chatbot-reply {
-  @apply bg-[#F8F9FA] m-4 rounded-xl max-w-7/12
+  @apply bg-[#F8F9FA] m-4 rounded-xl max-w-7/12 transition-colors duration-300
 }
 
 .dark-mode .chatbot-reply {
-  @apply bg-[#232323]
+  @apply bg-[#232323] transition-colors duration-300
 }
 
 .chatbot-reply.loading {
@@ -259,11 +259,11 @@
 }
 
 .message-box {
-  @apply border-t-1 border-black/20 w-[calc(100%-18rem)] h-20.5 flex flex-row items-center static
+  @apply border-t-1 border-black/20 w-[calc(100%-18rem)] h-20.5 flex flex-row items-center static transition-all ease-in-out duration-300
 }
 
 .dark-mode .message-box {
-  @apply border-white/10
+  @apply border-white/10 transition-colors duration-300
 }
 
 .message-box.collapsed {
@@ -275,11 +275,11 @@ form {
 }
 
 form input {
-  @apply h-3/4 ml-4 bg-[#F8F9FA] rounded-md w-24/25 border-1 border-black/20 focus-visible:outline-0
+  @apply h-3/4 ml-4 bg-[#e7eaed] rounded-md w-24/25 border-1 border-black/20 focus-visible:outline-0
 }
 
 .dark-mode form input {
-  @apply bg-[#3B3B3B]
+  @apply bg-[#3B3B3B] transition-colors duration-300
 }
 
 form input[type=text] {
@@ -332,6 +332,14 @@ form input[type=image] {
   @apply list-item list-['-_'] ml-4
 }
 
+.bot-bullet-toggle {
+  @apply mx-4 mb-2 text-sm text-[#02542D] font-[Cabin-SemiBold] cursor-pointer hover:opacity-75 transition-all duration-200 focus-visible:outline-0
+}
+
+.dark-mode .bot-bullet-toggle {
+  @apply text-[#D4E9D7] transition-colors duration-300
+}
+
 .bot-references {
   @apply mb-4
 }
@@ -342,16 +350,15 @@ p.bot-references-label {
 }
 
 .bot-references ul {
-  margin: 0;
-  padding-left: 18px;
+@apply flex flex-row gap-1 m-0 mt-2 pl-4
 }
 
 .bot-references a {
-  @apply text-[#02542D] underline underline-offset-3
+  @apply text-[#02542D] bg-black/5 px-4 py-1 rounded-3xl font-[Cabin-SemiBold]
 }
 
 .dark-mode .bot-references a{
-  @apply text-[#D4E9D7]
+  @apply text-[#D4E9D7] bg-white/10
 }
 
 .bot-references a {
@@ -364,6 +371,10 @@ p.bot-references-label {
 
 .bot-text-line+.bot-text-line {
   @apply mt-1
+}
+
+.bot-composite div:nth-last-child(1) p{
+  @apply font-[Cabin-SemiBold]
 }
 
 .bot-table-wrapper {
