@@ -379,10 +379,8 @@ def handle_side_effects(entities, query_type):
         isFound = False
     
         for brand in brands_obj:
-            print("Brand_side_effects", brand.hasSideEffect)
             for side_effect_instance in brand.hasSideEffect:
                 ontology_service_side_effect = side_effect_instance.is_a[0].name
-                print("ontology_service Side Effect: ", ontology_service_side_effect)
                 if target_side_effect.lower() == ontology_service_side_effect.lower():
                     isFound= True
                     side_effect_ref = ontology_service.get_reference_from_entity(side_effect_instance)
@@ -422,7 +420,7 @@ def handle_side_effects(entities, query_type):
             side_effects_list.append({
                 "side_effect": side_effect,
                 "pattern": pattern,
-                "description": description[0]
+                "description": unwrap(description, default="No description available")
             })
 
         return response_service.build_side_effect_brand(brand_name, side_effects_list, reference_list)
@@ -588,7 +586,7 @@ def handle_substance_interaction(entities, query_type):
         }
 
         if interactions:
-            return response_service.build_interaction_match(info, interactions, reference_list)
+            return response_service.build_interaction_generic_match(info, interactions, reference_list)
         else:
             reference_list = ontology_service.get_reference_from_entities(brand_objs)
             return response_service.build_interaction_generic_none(info, reference_list)
@@ -649,7 +647,6 @@ def handle_substance_interaction(entities, query_type):
     else:
         return "To get information about substance interactions with an antibiotic, please specify the antibiotic name or brand."
 
-# need checking of results
 def handle_warning_precautions(entities, query_type):
     WARNING_TYPE_MAP = {
         'Pregnancy & lactation': 'PregnancyAndLactation',
@@ -784,7 +781,6 @@ def handle_warning_precautions(entities, query_type):
     else:
         return "Specify a brand or a specific warning type for information."
 
-
 def handle_storage_instruction(entities, query_type):
     if query_type == 'generic':
         generic_name = entities.get('Antibiotic', [None])[0]
@@ -797,6 +793,7 @@ def handle_storage_instruction(entities, query_type):
             storage_rules = []
             for storage_id in brand.hasStorageRule:
                 storage_rule = storage_id.hasStewardshipDescription
+                
                 storage_rules.append(storage_rule[0] if isinstance(storage_rule, list) else storage_rule)
             
             brands_storage.append({
@@ -965,6 +962,7 @@ def handle_administration_instructions(entities, query_type):
         "generic": generic_name,
         "brand" : brand_name
     }
+
     if len(administration_rules) > 1:
         return response_service.build_administration_multiple(antibiotic_info, administration_rules, reference_list)
     elif len(administration_rules) == 1:
@@ -978,4 +976,4 @@ def handle_is_not_recognized():
     return response_service.build_text_response("Sorry, I didn't understand your question. Please try rephrasing it or ask about a specific antibiotic or brand.")
 
 def handle_redirect_medicine_query():
-    return "Redirecting to medicine query handler..."
+    return response_service.build_redirect_query()

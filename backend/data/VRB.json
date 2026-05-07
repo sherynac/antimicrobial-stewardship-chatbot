@@ -127,9 +127,9 @@
           "responseID": 13,
           "condition": "generic_verify_match",
           "responseTexts": [
-            "Yes, {side_effect} is a known side effect of {generic}. It is associated with the following brands: {brand}.",
-            "{generic} is associated with {side_effect}. The brands that report this side effect include: {brand}.",
-            "Based on records, {generic} can cause {side_effect}. This is observed in the following brands: {brand}."
+            "Yes, {side_effect} is a known side effect of {generic}. It is associated with the following brands: {brands}.",
+            "{generic} is associated with {side_effect}. The brands that report this side effect include: {brands}.",
+            "Based on records, {generic} can cause {side_effect}. This is observed in the following brands: {brands}."
           ],
           "postText": "Disclaimer: The listed side effects may occur before, during, or after taking the medication. Timing can vary depending on individual response."
         },
@@ -147,14 +147,15 @@
           "responseID": 15,
           "condition": "brand_only",
           "responseTexts": [
-            "**{brand}**",
-            "Here are the side effects associated with **{brand}**:",
-            "**{brand}** may cause the following side effects:",
-            "Based on ontology data, these are the side effects linked to **{brand}**."
+            "{brand}",
+            "Here are the side effects associated with {brand}:",
+            "{brand} may cause the following side effects:",
+            "Based on ontology data, these are the side effects linked to {brand}."
           ],
           "bulletFormat": {
-            "headline": "{side_effect} ({pattern})",
-            "details": " ⁃ Note: {side_effect_description}"
+            "bulletWithPattern": "{side_effect} ({pattern})",
+            "bulletNoPattern": "{side_effect}",
+            "description": "{side_effect_description}"
           },
           "postText": "Disclaimer: The listed side effects may occur before, during, or after taking the medication. Timing can vary depending on individual response."
         },
@@ -187,8 +188,9 @@
             "Based on ontology data, these are the side effects of {brand} ({generic})."
           ],
           "bulletFormat": {
-            "bulletWithPattern": "⁃ {side_effect} ({pattern})",
-            "bulletNoPattern": "⁃ {side_effect}",
+            "groupHeader": "{brand}",
+            "bulletWithPattern": "{side_effect} ({pattern})",
+            "bulletNoPattern": "{side_effect}",
             "description": "  {side_effect_description}"
           },
           "postText": "Disclaimer: The listed side effects may occur before, during, or after taking the medication. Timing can vary depending on individual response."
@@ -257,8 +259,8 @@
             "An interaction exists between {generic} ({brand}) and {substance}."
           ],
           "bulletFormat": {
-            "groupHeader": "• {substance} ({substance_type})",
-            "bullet": "  ⁃ {interaction_description}"
+            "groupHeader": " {substance} ({substance_type})",
+            "bullet": "  {interaction_description}"
           }
         },
         {
@@ -278,6 +280,24 @@
             "No interaction is recorded between ({brand}) and {substance}.",
             "Based on ontology records, no interaction exists."
           ]
+        },
+        {
+          "responseID": 65,
+          "condition": "generic_substance_match",
+          "responseTexts": [
+            "Yes, {substance} is known to interact with {generic}. Here are the details per brand:",
+            "{substance} has a known interaction with {generic}. See the details below:",
+            "An interaction between {generic} and {substance} was found across the following brands:"
+          ]
+        },
+        {
+          "responseID": 66,
+          "condition": "generic_substance_no_match",
+          "responseTexts": [
+            "No interaction was found between {generic} and {substance}.",
+            "{generic} does not have a recorded interaction with {substance}.",
+            "There is no interaction data between {generic} and {substance} in the system."
+          ]
         }
       ]
     },
@@ -292,7 +312,11 @@
             "Here are the warning precautions for {generic}:",
             "The following safety warnings apply to {generic}:",
             "{generic} has multiple safety considerations listed below."
-          ]
+          ],
+          "bulletFormat": {
+            "headline": "{warning_headline}",
+            "details": "  {warning_description}"
+          }
         },
         {
           "responseID": 27,
@@ -304,7 +328,7 @@
           ],
           "bulletFormat": {
             "headline": "{warning_headline}",
-            "details": "  ⁃ {warning_description}"
+            "details": "  {warning_description}"
           }
         },
         {
@@ -317,7 +341,7 @@
           ],
           "bulletFormat": {
             "headline": "{warning_headline}",
-            "details": "  ⁃ {warning_description}"
+            "details": "  {warning_description}"
           }
         },
         {
@@ -330,7 +354,7 @@
           ],
           "bulletFormat": {
             "headline": "{warning_headline}",
-            "details": "  ⁃ {warning_description}"
+            "details": "  {warning_description}"
           }
         },
         {
@@ -343,7 +367,7 @@
           ],
           "bulletFormat": {
             "headline": "{warning_headline}",
-            "details": "  ⁃ {warning_description}"
+            "details": "  {warning_description}"
           }
         },
         {
@@ -356,7 +380,7 @@
           ],
           "bulletFormat": {
             "headline": "{warning_headline}",
-            "details": "  ⁃ {warning_description}"
+            "details": "  {warning_description}"
           }
         },
         {
@@ -387,7 +411,7 @@
           ],
           "bulletFormat": {
             "headline": "{warning_headline}",
-            "details": "  ⁃ {warning_description}"
+            "details": " {warning_description}"
           }
         },
         {
@@ -400,7 +424,7 @@
           ],
           "bulletFormat": {
             "headline": "{warning_headline}",
-            "details": "  ⁃ {warning_description}"
+            "details": "  {warning_description}"
           }
         }
       ]
@@ -415,7 +439,7 @@
           "responseTexts": [
             "Storage instruction for {brand} ({generic}): {stewardship_description}",
             "{brand} ({generic}) should be stored as follows: {stewardship_description}",
-            "Recommended storage condition for {brand}{generic}: {stewardship_description}"
+            "Recommended storage condition for {brand} ({generic}): {stewardship_description}"
           ],
           "postText": "Note: Do not use leftover or expired antibiotics. If an extra dose is taken accidentally, consult a healthcare provider immediately."
         },
@@ -427,109 +451,115 @@
             "{brand} ({generic}) has multiple storage requirements listed below:",
             "The following are the recommended storage conditions for {brand} ({generic})."
           ],
-          "bulletFormat": "⁃ {hasStewardshipDescription}",
           "postText": "Note: Always discard expired antibiotics properly. Do not reuse leftovers without medical advice."
         },
         {
           "responseID": 38,
           "condition": "no_match",
           "responseTexts": [
-            "No storage instructions are available for {brand}{generic}.",
-            "There is no storage information for {brand}{generic}.",
-            "Storage guidelines for {brand}{generic} are not found in the system."
+            "No storage instructions are available for {brand} ({generic}).",
+            "There is no storage information for {brand} ({generic}).",
+            "Storage guidelines for {brand} ({generic}) are not found in the system."
           ],
           "postText": "Reminder: Never take expired antibiotics or leftover medication without consulting a healthcare professional."
+        },
+        {
+          "responseID": 39,
+          "condition": "generic_only",
+          "responseTexts": [
+            "Here are the storage instructions for {generic}:",
+            "{generic} has multiple storage requirements listed below:",
+            "The following are the recommended storage conditions for {generic}."
+          ],
+          "postText": "Note: Do not use leftover or expired antibiotics."
         }
       ]
     },
     {
-      "intent": "GET_FOOD_TIMING",
+      "intent": "GET_FOOD_AND_TIMING",
       "description": "Get food-related and timing instructions for an antibiotic.",
       "responses": [
         {
-          "responseID": 39,
-          "condition": "generic_multiple",
-          "responseTexts": [
-            "Here are the food and timing instructions for {generic}:",
-            "{generic} has multiple food-related and timing guidelines listed below:",
-            "The following are the recommended food and timing instructions for {generic}."
-          ],
-          "bulletFormat": "{hasStewardshipDescription}"
-
-        },
-        {
           "responseID": 40,
-          "condition": "generic_single",
+          "condition": "single_food_and_timing",
           "responseTexts": [
-            "Food and timing instruction for {generic}: {stewardship_description}",
-            "{generic} should be taken as follows: {stewardship_description}",
-            "Recommended food/timing guideline for {generic}: {stewardship_description}"
+            "Food and timing instruction for {brand} ({generic}): {stewardship_description}",
+            "{brand} ({generic}) should be taken as follows: {stewardship_description}",
+            "Recommended food/timing guideline for {brand} ({generic}): {stewardship_description}"
           ]
         },
         {
           "responseID": 41,
-          "condition": "generic_verify_match",
+          "condition": "multiple_food_and_timing",
           "responseTexts": [
-            "Yes, food and timing instructions exist for {generic}.",
-            "{generic} has documented food and timing guidelines.",
-            "Food and timing information is available for {generic}."
+            "Here are the food and timing instructions for {brand} ({generic}):",
+            "{brand} ({generic}) has multiple food-related and timing guidelines listed below:",
+            "The following are the recommended food and timing instructions for {brand} ({generic})."
           ]
         },
         {
           "responseID": 42,
-          "condition": "generic_verify_no_match",
+          "condition": "no_match",
           "responseTexts": [
-            "No food or timing instructions are available for {generic}.",
-            "There is no food/timing information for {generic}.",
-            "Food and timing guidelines for {generic} are not found in the system."
+            "No food or timing instructions are available for {brand} ({generic}).",
+            "There is no food/timing information for {brand} ({generic}).",
+            "Food and timing guidelines for {brand} ({generic}) are not found in the system."
+          ]
+        },
+        {
+          "responseID": 43,
+          "condition": "generic_only",
+          "responseTexts": [
+            "Here are the food and timing instructions for {generic}:",
+            "{generic} has multiple food-related and timing guidelines listed below:",
+            "The following are the recommended food and timing instructions for {generic}."
           ]
         }
       ]
     },
     {
-      "intent": "GET_ADMINISTRATION_ADHERENCE",
+      "intent": "GET_ADMINISTRATION_INSTRUCTIONS",
       "description": "Get administration and adherence instructions for an antibiotic.",
       "responses": [
         {
-          "responseID": 43,
-          "condition": "generic_multiple",
+          "responseID": 44,
+          "condition": "single_administration",
+          "responseTexts": [
+            "Administration and adherence instruction for {brand} ({generic}): {stewardship_description}",
+            "{brand} ({generic}) should be taken as follows: {stewardship_description}",
+            "Recommended administration/adherence guideline for {brand} ({generic}): {stewardship_description}"
+          ],
+          "postText": "Note: Follow doctor's prescription and consult your doctor regarding missed doses, stopping, or skipping doses. Improper use may reduce effectiveness and increase the risk of antimicrobial resistance (AMR)."
+        },
+        {
+          "responseID": 45,
+          "condition": "multiple_administration",
+          "responseTexts": [
+            "Here are the administration and adherence instructions for {brand} ({generic}):",
+            "{brand} ({generic}) has multiple administration and adherence guidelines listed below:",
+            "The following are the recommended administration and adherence instructions for {brand} ({generic})."
+          ],
+          "postText": "Note: Follow doctor's prescription and consult your doctor regarding missed doses, stopping, or skipping doses. Improper use may reduce effectiveness and increase the risk of antimicrobial resistance (AMR)."
+        },
+        {
+          "responseID": 46,
+          "condition": "no_match",
+          "responseTexts": [
+            "No administration or adherence instructions are available for {brand} ({generic}).",
+            "There is no administration/adherence information for {brand} ({generic}).",
+            "Administration and adherence guidelines for {brand} ({generic}) are not found in the system."
+          ],
+          "postText": "Note: Follow doctor's prescription and consult your doctor regarding missed doses, stopping, or skipping doses. Improper use may reduce effectiveness and increase the risk of antimicrobial resistance (AMR)."
+        },
+        {
+          "responseID": 47,
+          "condition": "generic_only",
           "responseTexts": [
             "Here are the administration and adherence instructions for {generic}:",
             "{generic} has multiple administration and adherence guidelines listed below:",
             "The following are the recommended administration and adherence instructions for {generic}."
           ],
-          "bulletFormat": "⁃ {hasStewardshipDescription}",
-          "postText": "Note: Follow doctor’s prescription and consult your doctor regarding missed doses, stopping, or skipping doses. Improper use may reduce effectiveness and increase the risk of antimicrobial resistance (AMR)."
-        },
-        {
-          "responseID": 44,
-          "condition": "generic_single",
-          "responseTexts": [
-            "Administration and adherence instruction for {generic}: {stewardship_description}",
-            "{generic} should be taken as follows: {stewardship_description}",
-            "Recommended administration/adherence guideline for {generic}: {stewardship_description}"
-          ],
-          "postText": "Note: Follow doctor’s prescription and consult your doctor regarding missed doses, stopping, or skipping doses. Improper use may reduce effectiveness and increase the risk of antimicrobial resistance (AMR)."
-        },
-        {
-          "responseID": 45,
-          "condition": "generic_verify_match",
-          "responseTexts": [
-            "Yes, administration and adherence instructions exist for {generic}.",
-            "{generic} has documented administration and adherence guidelines.",
-            "Administration and adherence information is available for {generic}."
-          ],
-          "postText": "Note: Follow doctor’s prescription and consult your doctor regarding missed doses, stopping, or skipping doses. Improper use may reduce effectiveness and increase the risk of antimicrobial resistance (AMR)."
-        },
-        {
-          "responseID": 46,
-          "condition": "generic_verify_no_match",
-          "responseTexts": [
-            "No administration or adherence instructions are available for {generic}.",
-            "There is no administration/adherence information for {generic}.",
-            "Administration and adherence guidelines for {generic} are not found in the system."
-          ],
-          "postText": "Note: Follow doctor’s prescription and consult your doctor regarding missed doses, stopping, or skipping doses. Improper use may reduce effectiveness and increase the risk of antimicrobial resistance (AMR)."
+          "postText": "Note: Follow doctor's prescription and consult your doctor regarding missed doses, stopping, or skipping doses. Improper use may reduce effectiveness and increase the risk of antimicrobial resistance (AMR)."
         }
       ]
     },

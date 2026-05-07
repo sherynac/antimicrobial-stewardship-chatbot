@@ -287,7 +287,6 @@ class ResponseService:
         )
 
         post_text = template['postText']
-
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_text_response(post_text),
@@ -367,11 +366,11 @@ class ResponseService:
             section = template['bulletFormat']['brandHeaderText']
             brand_sections.append(self.build_section(section.format(brand = brand_data['brand']), bullets))  # ← cleaner
 
-        postText = template['postText']
+        post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
             *brand_sections,
-            self.build_text_response(postText),
+            self.build_text_response(post_text),
             reference_json
         ])
     
@@ -384,7 +383,7 @@ class ResponseService:
             brand = brand
         )
 
-        bullet_template = template['itemFormat']
+        bullet_template = template['bulletFormat']
         formatted_effects = []
 
         for se in side_effect_list:
@@ -428,8 +427,10 @@ class ResponseService:
             stewardship_description = storage_rule[0]
         )
 
+        post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
+            self.build_text_response(post_text),
             reference_json
         ])
 
@@ -449,9 +450,11 @@ class ResponseService:
         for rule in storage_rules
         ]
 
+        post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_bullet_list(bullets),
+            self.build_text_response(post_text),
             reference_json
         ])
 
@@ -466,8 +469,10 @@ class ResponseService:
             brand = antibiotic_info['brand'],
         )
 
+        post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
+            self.build_text_response(post_text),
             reference_json
         ])
     
@@ -499,9 +504,11 @@ class ResponseService:
                 "items": bullets
             })
 
+        post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
             *brand_sections,
+            self.build_text_response(post_text),
             reference_json
         ])
 
@@ -606,8 +613,11 @@ class ResponseService:
             stewardship_description =administration_rule[0]
         )
 
+        post_text = template['postText']
+
         return self.build_composite_response([
             self.build_text_response(text),
+            self.build_text_response(post_text),
             reference_json
         ])
 
@@ -627,9 +637,11 @@ class ResponseService:
         for rule in administration_rules
         ]
 
+        post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_bullet_list(bullets),
+            self.build_text_response(post_text),
             reference_json
         ])
 
@@ -644,8 +656,11 @@ class ResponseService:
             brand = antibiotic_info['brand'],
         )
 
+        post_text = template['postText']
+
         return self.build_composite_response([
             self.build_text_response(text),
+            self.build_text_response(post_text),
             reference_json
         ])
     
@@ -676,10 +691,12 @@ class ResponseService:
                 "title": brand_data['brand'],
                 "items": bullets
             })
+        post_text = template['postText']
 
         return self.build_composite_response([
             self.build_text_response(text),
             *brand_sections,
+            self.build_text_response(post_text),
             reference_json
         ])
 
@@ -691,7 +708,8 @@ class ResponseService:
 
         header = response_text.format(
             brand=interaction_info['brand'],
-            generic=interaction_info['generic']
+            generic=interaction_info['generic'],
+            substance = interaction_info['substance_name']
         )
 
         section = self.build_section(
@@ -745,7 +763,8 @@ class ResponseService:
 
         text = response_text.format(
             brand=interaction_info['brand'],
-            generic=interaction_info['generic']
+            generic=interaction_info['generic'],
+            substance = interaction_info['substance']
         )
 
         return self.build_composite_response([
@@ -762,6 +781,7 @@ class ResponseService:
         text = response_text.format(
             substance=interaction_info['substance'],
             generic=interaction_info['generic'],
+            brand = interaction_info['brand']
         )
 
         sections = [
@@ -808,9 +828,37 @@ class ResponseService:
             reference_json
         ])
 
+    def build_interaction_generic_match(self, interaction_info, interactions, reference):
+        print("Interaction Generic Match")
+        template = self.get_response_template("GET_SUBSTANCE_INTERACTION", "generic_substance_match")
+        response_text = random.choice(template['responseTexts'])
+        reference_json = self.build_reference_list(reference)
+
+        header = response_text.format(
+            substance=interaction_info['substance'],
+            generic=interaction_info['generic'],
+        )
+
+        sections = [
+            self.build_section(
+                title=i['brand_name'],
+                items=[
+                    self.build_bullet(main_text="About", description=i['substance_description']),
+                    self.build_bullet(main_text="Interaction", description=i['interaction_description'])
+                ]
+            )
+            for i in interactions
+        ]
+
+        return self.build_composite_response([
+            self.build_text_response(header),
+            *sections,
+            reference_json
+        ])
+
     def build_interaction_generic_none(self, interaction_info, reference):
         print("Interaction Generic None")
-        template = self.get_response_template("GET_SUBSTANCE_INTERACTION", "generic_no_match")
+        template = self.get_response_template("GET_SUBSTANCE_INTERACTION", "generic_substance_no_match")
         response_text = random.choice(template['responseTexts'])
         reference_json = self.build_reference_list(reference)
 
@@ -912,7 +960,11 @@ class ResponseService:
             self.build_text_response(text),
             reference_json
         ])
-
     
+    def build_redirect_query(self):
+        template = self.get_response_template("REDIRECT_MEDICINE_QUERY", "default")
+        response_text = random.choice(template['responseTexts'])
+        print(response_text)
+        return self.build_text_response(response_text)
 
 response_service = ResponseService('./backend/data/VRB.json')
