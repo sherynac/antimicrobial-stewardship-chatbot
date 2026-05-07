@@ -11,7 +11,7 @@ from utils.helpers import get_splitted_question
 app = Flask(__name__)
 
 # Secret key for signing session cookies — override via SECRET_KEY env var in production
-app.secret_key = os.environ.get("SECRET_KEY", "ophiuchus-dev-secret-change-in-prod")
+app.secret_key = os.environ.get("SECRET_KEY", os.urandom(24))
 
 # Allow credentials (cookies) from the React dev server and the nginx-served frontend
 CORS(app, supports_credentials=True, origins=[
