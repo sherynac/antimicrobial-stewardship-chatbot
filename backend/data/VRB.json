@@ -439,7 +439,7 @@
           "responseTexts": [
             "Storage instruction for {brand} ({generic}): {stewardship_description}",
             "{brand} ({generic}) should be stored as follows: {stewardship_description}",
-            "Recommended storage condition for {brand}{generic}: {stewardship_description}"
+            "Recommended storage condition for {brand} ({generic}): {stewardship_description}"
           ],
           "postText": "Note: Do not use leftover or expired antibiotics. If an extra dose is taken accidentally, consult a healthcare provider immediately."
         },
@@ -451,61 +451,68 @@
             "{brand} ({generic}) has multiple storage requirements listed below:",
             "The following are the recommended storage conditions for {brand} ({generic})."
           ],
-          "bulletFormat": "{hasStewardshipDescription}",
           "postText": "Note: Always discard expired antibiotics properly. Do not reuse leftovers without medical advice."
         },
         {
           "responseID": 38,
           "condition": "no_match",
           "responseTexts": [
-            "No storage instructions are available for {brand}{generic}.",
-            "There is no storage information for {brand}{generic}.",
-            "Storage guidelines for {brand}{generic} are not found in the system."
+            "No storage instructions are available for {brand} ({generic}).",
+            "There is no storage information for {brand} ({generic}).",
+            "Storage guidelines for {brand} ({generic}) are not found in the system."
           ],
           "postText": "Reminder: Never take expired antibiotics or leftover medication without consulting a healthcare professional."
+        },
+        {
+          "responseID": 39,
+          "condition": "generic_only",
+          "responseTexts": [
+            "Here are the storage instructions for {generic}:",
+            "{generic} has multiple storage requirements listed below:",
+            "The following are the recommended storage conditions for {generic}."
+          ],
+          "postText": "Note: Do not use leftover or expired antibiotics."
         }
       ]
     },
     {
-      "intent": "GET_FOOD_TIMING",
+      "intent": "GET_FOOD_AND_TIMING",
       "description": "Get food-related and timing instructions for an antibiotic.",
       "responses": [
         {
-          "responseID": 39,
-          "condition": "generic_multiple",
-          "responseTexts": [
-            "Here are the food and timing instructions for {generic}:",
-            "{generic} has multiple food-related and timing guidelines listed below:",
-            "The following are the recommended food and timing instructions for {generic}."
-          ],
-          "bulletFormat": "{hasStewardshipDescription}"
-
-        },
-        {
           "responseID": 40,
-          "condition": "generic_single",
+          "condition": "single_food_and_timing",
           "responseTexts": [
-            "Food and timing instruction for {generic}: {stewardship_description}",
-            "{generic} should be taken as follows: {stewardship_description}",
-            "Recommended food/timing guideline for {generic}: {stewardship_description}"
+            "Food and timing instruction for {brand} ({generic}): {stewardship_description}",
+            "{brand} ({generic}) should be taken as follows: {stewardship_description}",
+            "Recommended food/timing guideline for {brand} ({generic}): {stewardship_description}"
           ]
         },
         {
           "responseID": 41,
-          "condition": "generic_verify_match",
+          "condition": "multiple_food_and_timing",
           "responseTexts": [
-            "Yes, food and timing instructions exist for {generic}.",
-            "{generic} has documented food and timing guidelines.",
-            "Food and timing information is available for {generic}."
+            "Here are the food and timing instructions for {brand} ({generic}):",
+            "{brand} ({generic}) has multiple food-related and timing guidelines listed below:",
+            "The following are the recommended food and timing instructions for {brand} ({generic})."
           ]
         },
         {
           "responseID": 42,
-          "condition": "generic_verify_no_match",
+          "condition": "no_match",
           "responseTexts": [
-            "No food or timing instructions are available for {generic}.",
-            "There is no food/timing information for {generic}.",
-            "Food and timing guidelines for {generic} are not found in the system."
+            "No food or timing instructions are available for {brand} ({generic}).",
+            "There is no food/timing information for {brand} ({generic}).",
+            "Food and timing guidelines for {brand} ({generic}) are not found in the system."
+          ]
+        },
+        {
+          "responseID": 43,
+          "condition": "generic_only",
+          "responseTexts": [
+            "Here are the food and timing instructions for {generic}:",
+            "{generic} has multiple food-related and timing guidelines listed below:",
+            "The following are the recommended food and timing instructions for {generic}."
           ]
         }
       ]
@@ -515,45 +522,44 @@
       "description": "Get administration and adherence instructions for an antibiotic.",
       "responses": [
         {
-          "responseID": 43,
-          "condition": "generic_multiple",
+          "responseID": 44,
+          "condition": "single_administration",
+          "responseTexts": [
+            "Administration and adherence instruction for {brand} ({generic}): {stewardship_description}",
+            "{brand} ({generic}) should be taken as follows: {stewardship_description}",
+            "Recommended administration/adherence guideline for {brand} ({generic}): {stewardship_description}"
+          ],
+          "postText": "Note: Follow doctor's prescription and consult your doctor regarding missed doses, stopping, or skipping doses. Improper use may reduce effectiveness and increase the risk of antimicrobial resistance (AMR)."
+        },
+        {
+          "responseID": 45,
+          "condition": "multiple_administration",
+          "responseTexts": [
+            "Here are the administration and adherence instructions for {brand} ({generic}):",
+            "{brand} ({generic}) has multiple administration and adherence guidelines listed below:",
+            "The following are the recommended administration and adherence instructions for {brand} ({generic})."
+          ],
+          "postText": "Note: Follow doctor's prescription and consult your doctor regarding missed doses, stopping, or skipping doses. Improper use may reduce effectiveness and increase the risk of antimicrobial resistance (AMR)."
+        },
+        {
+          "responseID": 46,
+          "condition": "no_match",
+          "responseTexts": [
+            "No administration or adherence instructions are available for {brand} ({generic}).",
+            "There is no administration/adherence information for {brand} ({generic}).",
+            "Administration and adherence guidelines for {brand} ({generic}) are not found in the system."
+          ],
+          "postText": "Note: Follow doctor's prescription and consult your doctor regarding missed doses, stopping, or skipping doses. Improper use may reduce effectiveness and increase the risk of antimicrobial resistance (AMR)."
+        },
+        {
+          "responseID": 47,
+          "condition": "generic_only",
           "responseTexts": [
             "Here are the administration and adherence instructions for {generic}:",
             "{generic} has multiple administration and adherence guidelines listed below:",
             "The following are the recommended administration and adherence instructions for {generic}."
           ],
-          "bulletFormat": "{hasStewardshipDescription}",
-          "postText": "Note: Follow doctor’s prescription and consult your doctor regarding missed doses, stopping, or skipping doses. Improper use may reduce effectiveness and increase the risk of antimicrobial resistance (AMR)."
-        },
-        {
-          "responseID": 44,
-          "condition": "generic_single",
-          "responseTexts": [
-            "Administration and adherence instruction for {generic}: {stewardship_description}",
-            "{generic} should be taken as follows: {stewardship_description}",
-            "Recommended administration/adherence guideline for {generic}: {stewardship_description}"
-          ],
-          "postText": "Note: Follow doctor’s prescription and consult your doctor regarding missed doses, stopping, or skipping doses. Improper use may reduce effectiveness and increase the risk of antimicrobial resistance (AMR)."
-        },
-        {
-          "responseID": 45,
-          "condition": "generic_verify_match",
-          "responseTexts": [
-            "Yes, administration and adherence instructions exist for {generic}.",
-            "{generic} has documented administration and adherence guidelines.",
-            "Administration and adherence information is available for {generic}."
-          ],
-          "postText": "Note: Follow doctor’s prescription and consult your doctor regarding missed doses, stopping, or skipping doses. Improper use may reduce effectiveness and increase the risk of antimicrobial resistance (AMR)."
-        },
-        {
-          "responseID": 46,
-          "condition": "generic_verify_no_match",
-          "responseTexts": [
-            "No administration or adherence instructions are available for {generic}.",
-            "There is no administration/adherence information for {generic}.",
-            "Administration and adherence guidelines for {generic} are not found in the system."
-          ],
-          "postText": "Note: Follow doctor’s prescription and consult your doctor regarding missed doses, stopping, or skipping doses. Improper use may reduce effectiveness and increase the risk of antimicrobial resistance (AMR)."
+          "postText": "Note: Follow doctor's prescription and consult your doctor regarding missed doses, stopping, or skipping doses. Improper use may reduce effectiveness and increase the risk of antimicrobial resistance (AMR)."
         }
       ]
     },

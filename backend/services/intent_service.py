@@ -28,7 +28,7 @@ INTENT_THRESHOLDS = {
     'get_side_effects':             0.85,  # adjusted
     'get_substance_interaction':    0.90,  # adjusted
     'get_warning_precautions':      0.90,  # adjusted
-    'get_storage_instruction':      0.75, # adjusted
+    'get_storage_instructions':      0.75, # adjusted
     'get_food_and_timing':          0.75, # adjusted
     'get_administration_instructions': 0.75, # adjusted
     'redirect_medicine_query':      0.40
@@ -76,7 +76,7 @@ def handle_intent(intent, query_type, question_entities):
         return intent_handler.handle_substance_interaction(question_entities, query_type)
     elif intent == 'get_warning_precautions':
         return intent_handler.handle_warning_precautions(question_entities, query_type)
-    elif intent == 'get_storage_instruction':
+    elif intent == 'get_storage_instructions':
         return intent_handler.handle_storage_instruction(question_entities, query_type)
     elif intent == 'get_food_and_timing':
         return intent_handler.handle_food_and_timing(question_entities, query_type)

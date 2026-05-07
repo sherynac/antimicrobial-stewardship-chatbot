@@ -793,6 +793,7 @@ def handle_storage_instruction(entities, query_type):
             storage_rules = []
             for storage_id in brand.hasStorageRule:
                 storage_rule = storage_id.hasStewardshipDescription
+                
                 storage_rules.append(storage_rule[0] if isinstance(storage_rule, list) else storage_rule)
             
             brands_storage.append({
@@ -961,7 +962,7 @@ def handle_administration_instructions(entities, query_type):
         "generic": generic_name,
         "brand" : brand_name
     }
-    
+
     if len(administration_rules) > 1:
         return response_service.build_administration_multiple(antibiotic_info, administration_rules, reference_list)
     elif len(administration_rules) == 1:
@@ -975,4 +976,4 @@ def handle_is_not_recognized():
     return response_service.build_text_response("Sorry, I didn't understand your question. Please try rephrasing it or ask about a specific antibiotic or brand.")
 
 def handle_redirect_medicine_query():
-    return response_service.build_redirect_query
+    return response_service.build_redirect_query()

@@ -427,8 +427,10 @@ class ResponseService:
             stewardship_description = storage_rule[0]
         )
 
+        post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
+            self.build_text_response(post_text),
             reference_json
         ])
 
@@ -448,9 +450,11 @@ class ResponseService:
         for rule in storage_rules
         ]
 
+        post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_bullet_list(bullets),
+            self.build_text_response(post_text),
             reference_json
         ])
 
@@ -465,8 +469,10 @@ class ResponseService:
             brand = antibiotic_info['brand'],
         )
 
+        post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
+            self.build_text_response(post_text),
             reference_json
         ])
     
@@ -498,9 +504,11 @@ class ResponseService:
                 "items": bullets
             })
 
+        post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
             *brand_sections,
+            self.build_text_response(post_text),
             reference_json
         ])
 
@@ -605,8 +613,11 @@ class ResponseService:
             stewardship_description =administration_rule[0]
         )
 
+        post_text = template['postText']
+
         return self.build_composite_response([
             self.build_text_response(text),
+            self.build_text_response(post_text),
             reference_json
         ])
 
@@ -626,9 +637,11 @@ class ResponseService:
         for rule in administration_rules
         ]
 
+        post_text = template['postText']
         return self.build_composite_response([
             self.build_text_response(text),
             self.build_bullet_list(bullets),
+            self.build_text_response(post_text),
             reference_json
         ])
 
@@ -643,8 +656,11 @@ class ResponseService:
             brand = antibiotic_info['brand'],
         )
 
+        post_text = template['postText']
+
         return self.build_composite_response([
             self.build_text_response(text),
+            self.build_text_response(post_text),
             reference_json
         ])
     
@@ -675,10 +691,12 @@ class ResponseService:
                 "title": brand_data['brand'],
                 "items": bullets
             })
+        post_text = template['postText']
 
         return self.build_composite_response([
             self.build_text_response(text),
             *brand_sections,
+            self.build_text_response(post_text),
             reference_json
         ])
 
@@ -942,13 +960,11 @@ class ResponseService:
             self.build_text_response(text),
             reference_json
         ])
-
-    
-
     
     def build_redirect_query(self):
         template = self.get_response_template("REDIRECT_MEDICINE_QUERY", "default")
         response_text = random.choice(template['responseTexts'])
-        return response_text
+        print(response_text)
+        return self.build_text_response(response_text)
 
 response_service = ResponseService('./backend/data/VRB.json')
