@@ -297,7 +297,8 @@ if "Presentation" in dfs and not dfs["Presentation"].empty:
                 price_clean = str(unit_price).replace("₱", "").replace(",", "").strip()
                 try:
                     price_float = float(price_clean)
-                    g.add((pres_uri, EX.hasUnitPrice, Literal(price_float, datatype=XSD.double)))
+                    price_formatted = round(price_float, 2)
+                    g.add((pres_uri, EX.hasUnitPrice, Literal(price_formatted, datatype=XSD.double)))
                 except:
                     if price_clean:
                         g.add((pres_uri, EX.hasUnitPrice, Literal(price_clean)))
@@ -679,7 +680,8 @@ def generate_ttl_output():
                 if isinstance(o, Literal) and o.datatype and "integer" in str(o.datatype):
                     lines.append(f":{subj_name} :{pred_name} {int(o)} .")
                 elif isinstance(o, Literal) and o.datatype and "double" in str(o.datatype):
-                    lines.append(f':{subj_name} :{pred_name} "{o}"^^xsd:double .')
+                    formatted = f"{float(o):.2f}"
+                    lines.append(f':{subj_name} :{pred_name} "{formatted}"^^xsd:double .')
                 else:
                     lit_value = clean_string(str(o))
                     lines.append(f':{subj_name} :{pred_name} "{lit_value}" .')
