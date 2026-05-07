@@ -45,49 +45,44 @@ def chat():
         return jsonify({"error": "No message provided."}), 400
 
     # ── Session bootstrap ──────────────────────────────────────────────────
-    # Flask's built-in session is cookie-based and signed with secret_key.
-    # We keep a rolling history of entity dicts so follow-up questions can
-    # reuse context when the current question supplies no entities.
-    # if "session_id" not in session:
-    #     session["session_id"] = str(uuid.uuid4())
+    if "session_id" not in session:
+        session["session_id"] = str(uuid.uuid4())
 
-    # # session_entities: list of {EntityType: [names]} dicts, one per turn
-    # if "session_entities" not in session:
-    #     session["session_entities"] = []
+    # session_entities: list of {EntityType: [names]} dicts, one per turn
+    if "session_entities" not in session:
+        session["session_entities"] = []
 
     # ── NER ────────────────────────────────────────────────────────────────
     words = get_splitted_question(question)
     raw_entities = entities_service.look_up_entity(words, question)
 
     # Build {EntityType: [Name, ...]} for this turn
-    # current_entities: dict = {}
-    # for word, entity_type in raw_entities.items():
-    #     current_entities.setdefault(entity_type, []).append(word.capitalize())
+    current_entities: dict = {}
+    for word, entity_type in raw_entities.items():
+        current_entities.setdefault(entity_type, []).append(word.capitalize())
 
     # ── Follow-up context merging ──────────────────────────────────────────
-    # If the current question has NO entities at all, reuse the entire last
-    # turn's resolved entities (e.g. "What about its side effects?").
-    # If there ARE some entities but a key type is missing, fill the gap
-    # from the most-recent turn that had it (e.g. "What about amoxicillin?"
-    # where the prior turn already established a Brand name).
-    # if not current_entities and session["session_entities"]:
-    #     question_entities = dict(session["session_entities"][-1])
-    # else:
-    #     question_entities = dict(current_entities)
-    #     for past in reversed(session["session_entities"]):
-    #         for etype, names in past.items():
-    #             if etype not in question_entities:
-    #                 question_entities[etype] = names
+    # Rule 1: Current question has entities → it's a NEW topic.
+    #         Use only what the user just said. Never pull from history.
+    #
+    # Rule 2: Current question has NO entities → it's a follow-up
+    #         (e.g. "What about its side effects?", "Tell me more").
+    #         Reuse the full resolved context from the previous turn.
+    if current_entities:
+        # New topic — use only current turn's entities
+        question_entities = dict(current_entities)
+    elif session["session_entities"]:
+        # Pure follow-up — clone last turn's resolved entities
+        question_entities = dict(session["session_entities"][-1])
+    else:
+        # No entities and no history — nothing to work with
+        question_entities = {}
 
-    question_entities = {}
-    for word, entity_type in raw_entities.items():
-        if entity_type not in question_entities:
-            question_entities[entity_type] = []
-        question_entities[entity_type].append(word.capitalize())
-
-    # Persist this turn's entities to history (keep last 10 turns)
-    # session["session_entities"] = session["session_entities"][-9:] + [current_entities]
-    # session.modified = True  # tell Flask the mutable dict was changed
+    # Persist this turn's RESOLVED entities to history (keep last 10 turns).
+    # We store question_entities (not current_entities) so that follow-up
+    # chains always have a non-empty context to inherit from.
+    session["session_entities"] = (session["session_entities"][-9:] + [question_entities])
+    session.modified = True  # required: Flask won't auto-detect mutations in nested lists
 
     # ── Intent + response ──────────────────────────────────────────────────
     try:
@@ -97,14 +92,10 @@ def chat():
         result = intent_service.handle_intent(intent, query_type, question_entities)
 
         if result is None:
-            # No result — return a plain string reply
             reply = "Sorry, I couldn't understand your question. Could you please rephrase it?"
         elif isinstance(result, (dict, list)):
-            # Structured response (composite, reference_list, etc.) — pass as-is
-            # so jsonify serializes it properly instead of str() producing Python syntax
             reply = result
         else:
-            # Scalar (int, float, etc.) — safe to stringify
             reply = str(result)
 
     except (ValueError, AssertionError) as e:
@@ -114,9 +105,9 @@ def chat():
         reply = "I didn't quite get that. Can you please try rephrasing your question?"
 
     return jsonify({
-        "reply": reply
-        # "session_id": session["session_id"],
-        # "resolved_entities": question_entities,
+        "reply": reply,
+        "session_id": session["session_id"],
+        "resolved_entities": question_entities,
     })
 
 
