@@ -131,30 +131,41 @@ function TableBlock({ block }) {
 }
 
 // ── 3. BULLET_LIST ───────────────────────────────────────────────────────────
-// items: [{ type: "bullet", main_text: "...", description: "..." }]
-// main_text  → bold label (may be empty for plain description-only bullets)
-// description → detail text (may be empty string)
+const COLLAPSE_THRESHOLD = 3
+
 function BulletListBlock({ block }) {
   const items = block.items || []
+  const [expanded, setExpanded] = useState(false)
+
   if (items.length === 0) return <p className="bot-text bot-text-muted">No items to display.</p>
 
+  const shouldCollapse = items.length > COLLAPSE_THRESHOLD
+  const visibleItems = shouldCollapse && !expanded ? items.slice(0, COLLAPSE_THRESHOLD) : items
+
   return (
-    <ul className="bot-bullet-list">
-      {items.map((item, i) => (
-        <li key={i} className="bot-bullet-item">
-          <div className="bot-bullet-item-inner">
-            {item.main_text && (
-              <span className="bot-bullet-main">{item.main_text}</span>
-            )}
-            {item.description && (
-              <span className={`bot-bullet-description${item.main_text ? ' bot-bullet-description-indented' : ''}`}>
-                {item.description.trim()}
-              </span>
-            )}
-          </div>
-        </li>
-      ))}
-    </ul>
+    <div>
+      <ul className="bot-bullet-list">
+        {visibleItems.map((item, i) => (
+          <li key={i} className="bot-bullet-item">
+            <div className="bot-bullet-item-inner">
+              {item.main_text && (
+                <span className="bot-bullet-main">{item.main_text}</span>
+              )}
+              {item.description && (
+                <span className={`bot-bullet-description${item.main_text ? ' bot-bullet-description-indented' : ''}`}>
+                  {item.description.trim()}
+                </span>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+      {shouldCollapse && (
+        <button className="bot-bullet-toggle" onClick={() => setExpanded(!expanded)}>
+          {expanded ? '▲ See less' : `▼ See ${items.length - COLLAPSE_THRESHOLD} more`}
+        </button>
+      )}
+    </div>
   )
 }
 
