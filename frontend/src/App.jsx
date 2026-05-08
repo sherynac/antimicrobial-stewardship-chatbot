@@ -46,10 +46,16 @@ function formatDrugText(text) {
   const regex = new RegExp(`(?=${FIELD_LABELS.join('|')})`, 'g')
   const parts = cleaned.split(regex).map(s => s.trim()).filter(Boolean)
 
-  if (parts.length <= 1) return <p className="bot-text">{cleaned}</p>
+  const isDisclaimer = cleaned.trim().startsWith('Disclaimer:')
+
+  if (parts.length <= 1) return (
+    <p className={`bot-text${isDisclaimer ? ' bot-disclaimer' : ''}`}>
+      {cleaned}
+    </p>
+  )
 
   return (
-    <p className="bot-text">
+    <p className={`bot-text${isDisclaimer ? ' bot-disclaimer' : ''}`}>
       {parts.map((part, i) => (
         <span key={i} className="bot-text-line">{part}</span>
       ))}
@@ -227,7 +233,7 @@ function BotMessage({ payload }) {
 
   if (payload?.type === 'text' && payload?.content) {
     return <p className="bot-text">{payload.content}</p>
-  }  
+  }
 
   if (payload?.type === 'composite' && Array.isArray(payload.responses)) {
     return (

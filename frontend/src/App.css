@@ -350,14 +350,14 @@ p.bot-references-label {
 }
 
 .bot-references ul {
-@apply flex flex-row flex-wrap gap-1 m-0 mt-2 pl-4 gap-y-3
+  @apply flex flex-row flex-wrap gap-1 m-0 mt-2 pl-4 gap-y-3
 }
 
 .bot-references a {
   @apply text-[#02542D] bg-black/5 px-4 py-1 rounded-3xl font-[Cabin-SemiBold]
 }
 
-.dark-mode .bot-references a{
+.dark-mode .bot-references a {
   @apply text-[#D4E9D7] bg-white/10
 }
 
@@ -378,27 +378,44 @@ p.bot-references-label {
 }
 
 .bot-table-wrapper {
-  @apply p-3 text-left overflow-auto rounded-2xl
+  @apply mx-3 text-left overflow-auto max-h-100
+}
+
+.bot-table thead tr th {
+  @apply sticky top-0 bg-[#D4E9D7] border border-black/20
+}
+
+.dark-mode .bot-table thead tr th {
+  @apply bg-[#424242]
 }
 
 .bot-table-wrapper th {
   @apply font-[Cabin-bold] p-2 border border-black/20
 }
 
-.bot-table-wrapper td{
+.bot-table-wrapper td {
   @apply p-2 border border-black/20
 }
 
-.dark-mode .bot-table-wrapper th, .dark-mode .bot-table-wrapper td{
+.dark-mode .bot-table-wrapper th, .dark-mode .bot-table-wrapper td {
   @apply border-white/20
+}
+
+.bot-table {
+  @apply border border-black/20
 }
 
 /* Scrollbar*/
 ::-webkit-scrollbar {
   width: 0.3rem;
+  height: 0.3rem;
 }
 
 ::-webkit-scrollbar-track {
+  background: inherit;
+}
+
+::-webkit-scrollbar-corner {
   background: inherit;
 }
 
