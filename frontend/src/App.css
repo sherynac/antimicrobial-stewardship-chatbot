@@ -350,7 +350,7 @@ p.bot-references-label {
 }
 
 .bot-references ul {
-@apply flex flex-row gap-1 m-0 mt-2 pl-4
+@apply flex flex-row flex-wrap gap-1 m-0 mt-2 pl-4 gap-y-3
 }
 
 .bot-references a {
