@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import ophiuchus_logo from './assets/ophiuchus_logo.svg'
 import ophiuchus_logo_dark from './assets/ophiuchus_logo_dark.svg'
 import clear_chat from './assets/clear-chat.svg'
@@ -40,7 +40,7 @@ function stripDoubleCurrency(text) {
 // Splits a single long drug-info sentence into stacked lines at field labels.
 // Applied to every `text` block so it also catches postText lines.
 // ---------------------------------------------------------------------------
-function formatDrugText(text) {
+function formatDrugText(text, entities = []) {
   const cleaned = stripDoubleCurrency(text)
   const FIELD_LABELS = ['Manufacturer:', 'Distributor:', 'Price:']
   const regex = new RegExp(`(?=${FIELD_LABELS.join('|')})`, 'g')
@@ -50,14 +50,14 @@ function formatDrugText(text) {
 
   if (parts.length <= 1) return (
     <p className={`bot-text${isDisclaimer ? ' bot-disclaimer' : ''}`}>
-      {cleaned}
+      {highlightEntities(cleaned, entities)}
     </p>
   )
 
   return (
     <p className={`bot-text${isDisclaimer ? ' bot-disclaimer' : ''}`}>
       {parts.map((part, i) => (
-        <span key={i} className="bot-text-line">{part}</span>
+        <span key={i} className="bot-text-line">{highlightEntities(part, entities)}</span>
       ))}
     </p>
   )
@@ -102,28 +102,124 @@ function formatDrugText(text) {
 // ── 1. TEXT ─────────────────────────────────────────────────────────────────
 // Handled inline inside BotMessage via formatDrugText — no separate component needed.
 
+
+// ---------------------------------------------------------------------------
+// highlightEntities
+// Splits a user message string and wraps any resolved entity names in
+// a <strong> with Cabin-Bold so they stand out in the chat bubble.
+// Matching is case-insensitive; original casing is preserved in output.
+// ---------------------------------------------------------------------------
+function highlightEntities(text, entities) {
+  if (!entities || entities.length === 0) return text
+  const escaped = entities.map(e => e.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+  const pattern = new RegExp(`(${escaped.join('|')})`, 'gi')
+  const parts = text.split(pattern)
+  return parts.map((part, i) =>
+    pattern.test(part)
+      ? <strong key={i} className="font-[Cabin-Bold]">{part}</strong>
+      : part
+  )
+}
+
 // ── 2. TABLE ─────────────────────────────────────────────────────────────────
 function TableBlock({ block }) {
+  const darkMode = React.useContext(DarkModeContext)
+  const activeEntities = React.useContext(ActiveEntitiesContext)
+  const shouldHighlight = React.useContext(ShouldHighlightContext)
+  const entities = shouldHighlight ? activeEntities : []
+
+  const wrapperRef = useRef(null)
+  const [isOverflowing, setIsOverflowing] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
+  const [zoomLevel, setZoomLevel] = useState(1)
+
+  useEffect(() => {
+    const el = wrapperRef.current
+    if (!el) return
+    const check = () => setIsOverflowing(el.scrollWidth > el.clientWidth || el.scrollHeight > el.clientHeight)
+    check()
+    const ro = new ResizeObserver(check)
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!isExpanded) return
+    const onKey = (e) => { if (e.key === 'Escape') setIsExpanded(false) }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [isExpanded])
+
+  const handleOpen = () => { setZoomLevel(1); setIsExpanded(true) }
+  const zoomIn = () => setZoomLevel(z => Math.min(z + 0.25, 3))
+  const zoomOut = () => setZoomLevel(z => Math.max(z - 0.25, 0.5))
+
   if (!Array.isArray(block.columns) || !Array.isArray(block.rows) || block.rows.length === 0) {
     return <p className="bot-text bot-text-muted">No data available.</p>
   }
+
+  const tableMarkup = (
+    <table className="bot-table">
+      <thead>
+        <tr>{block.columns.map((col, i) => <th key={i}>{highlightEntities(col, entities)}</th>)}</tr>
+      </thead>
+      <tbody>
+        {block.rows.map((row, i) => (
+          <tr key={i}>{row.map((cell, j) => <td key={j}>{highlightEntities(String(cell ?? ''), entities)}</td>)}</tr>
+        ))}
+      </tbody>
+    </table>
+  )
+
   return (
-    <div className="bot-table-wrapper">
-      <table className="bot-table">
-        <thead>
-          <tr>
-            {block.columns.map((col, i) => <th key={i}>{col}</th>)}
-          </tr>
-        </thead>
-        <tbody>
-          {block.rows.map((row, i) => (
-            <tr key={i}>
-              {row.map((cell, j) => <td key={j}>{cell}</td>)}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <>
+      <div className="bot-table-outer">
+        <div className="bot-table-wrapper" ref={wrapperRef}>
+          {tableMarkup}
+        </div>
+        {isOverflowing && (
+          <button className="bot-table-expand-btn" onClick={handleOpen} title="Expand table">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 3 21 3 21 9" /><polyline points="9 21 3 21 3 15" />
+              <line x1="21" y1="3" x2="14" y2="10" /><line x1="3" y1="21" x2="10" y2="14" />
+            </svg>
+            Expand
+          </button>
+        )}
+      </div>
+
+      {isExpanded && (
+        <div className="table-modal-overlay" onClick={() => setIsExpanded(false)}>
+          <div className={`table-modal${darkMode ? ' dark-modal' : ''}`} onClick={e => e.stopPropagation()}>
+            <button className="table-modal-close" onClick={() => setIsExpanded(false)} title="Close (Esc)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+            <div className="table-modal-scroll">
+              <div className="table-modal-inner">
+                <div className="bot-table-wrapper" style={{ transform: `scale(${zoomLevel})`, transformOrigin: 'top center' }}>
+                  {tableMarkup}
+                </div>
+              </div>
+            </div>
+            <div className="table-modal-controls">
+              <button className="table-zoom-btn" onClick={zoomOut} disabled={zoomLevel <= 0.5} title="Zoom out">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /><line x1="8" y1="11" x2="14" y2="11" />
+                </svg>
+              </button>
+              <span className="table-zoom-label">{Math.round(zoomLevel * 100)}%</span>
+              <button className="table-zoom-btn" onClick={zoomIn} disabled={zoomLevel >= 3} title="Zoom in">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /><line x1="11" y1="8" x2="11" y2="14" /><line x1="8" y1="11" x2="14" y2="11" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   )
 }
 
@@ -131,6 +227,9 @@ function TableBlock({ block }) {
 const COLLAPSE_THRESHOLD = 3
 
 function BulletListBlock({ block }) {
+  const activeEntities = React.useContext(ActiveEntitiesContext)
+  const shouldHighlight = React.useContext(ShouldHighlightContext)
+  const entities = shouldHighlight ? activeEntities : []
   const items = block.items || []
   const [expanded, setExpanded] = useState(false)
 
@@ -146,11 +245,11 @@ function BulletListBlock({ block }) {
           <li key={i} className="bot-bullet-item">
             <div className="bot-bullet-item-inner">
               {item.main_text && (
-                <span className="bot-bullet-main">{item.main_text}</span>
+                <span className="bot-bullet-main">{highlightEntities(item.main_text, entities)}</span>
               )}
               {item.description && (
                 <span className={`bot-bullet-description${item.main_text ? ' bot-bullet-description-indented' : ''}`}>
-                  {item.description.trim()}
+                  {highlightEntities(item.description.trim(), entities)}
                 </span>
               )}
             </div>
@@ -168,29 +267,46 @@ function BulletListBlock({ block }) {
 
 // ── 4. SECTION ────────────────────────────────────────────────────────────────
 // { type: "section", title: "BrandName", items: [{ type:"bullet", main_text, description }] }
-// Renders a titled group with the same bullet shape as BulletListBlock.
+// Renders a titled group with the same bullet shape and collapse logic as BulletListBlock.
 function SectionBlock({ block }) {
+  const activeEntities = React.useContext(ActiveEntitiesContext)
+  const shouldHighlight = React.useContext(ShouldHighlightContext)
+  const entities = shouldHighlight ? activeEntities : []
   const items = block.items || []
+  const [expanded, setExpanded] = useState(false)
+
+  const shouldCollapse = items.length > COLLAPSE_THRESHOLD
+  const visibleItems = shouldCollapse && !expanded ? items.slice(0, COLLAPSE_THRESHOLD) : items
+
   return (
     <div className="bot-section">
       {block.title && (
-        <p className="bot-section-title"><strong>{block.title}</strong></p>
+        <p className="bot-section-title"><strong>{highlightEntities(block.title, entities)}</strong></p>
       )}
       {items.length > 0 ? (
-        <ul className="bot-bullet-list">
-          {items.map((item, i) => (
-            <li key={i} className="bot-bullet-item">
-              {item.main_text && (
-                <span className="bot-bullet-main">{item.main_text}</span>
-              )}
-              {item.description && (
-                <span className={`bot-bullet-description${item.main_text ? ' bot-bullet-description-indented' : ''}`}>
-                  {item.description.trim()}
-                </span>
-              )}
-            </li>
-          ))}
-        </ul>
+        <>
+          <ul className="bot-bullet-list">
+            {visibleItems.map((item, i) => (
+              <li key={i} className="bot-bullet-item">
+                <div className="bot-bullet-item-inner">
+                  {item.main_text && (
+                    <span className="bot-bullet-main">{highlightEntities(item.main_text, entities)}</span>
+                  )}
+                  {item.description && (
+                    <span className={`bot-bullet-description${item.main_text ? ' bot-bullet-description-indented' : ''}`}>
+                      {highlightEntities(item.description.trim(), entities)}
+                    </span>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+          {shouldCollapse && (
+            <button className="bot-bullet-toggle" onClick={() => setExpanded(!expanded)}>
+              {expanded ? '▲ See less' : `▼ See ${items.length - COLLAPSE_THRESHOLD} more`}
+            </button>
+          )}
+        </>
       ) : (
         <p className="bot-text bot-text-muted">No details available.</p>
       )}
@@ -225,8 +341,14 @@ function ReferenceListBlock({ block }) {
 // Dispatches each block in payload.responses to the correct renderer above.
 // Every block type that response_service.py can emit is handled here.
 // ---------------------------------------------------------------------------
+const DarkModeContext = React.createContext(false)
+const ActiveEntitiesContext = React.createContext([])
+const ShouldHighlightContext = React.createContext(false)
+
 function BotMessage({ payload }) {
-  // Plain string fallback (error messages, unrecognised intent replies)
+  const activeEntities = React.useContext(ActiveEntitiesContext)
+
+
   if (typeof payload === 'string') {
     return <p>{payload}</p>
   }
@@ -236,27 +358,49 @@ function BotMessage({ payload }) {
   }
 
   if (payload?.type === 'composite' && Array.isArray(payload.responses)) {
+
+    let entityHighlightUsed = false
+
     return (
       <div className="bot-composite">
         {payload.responses.map((block, i) => {
           switch (block.type) {
-            case 'text':
-              return <div key={i}>{formatDrugText(block.content)}</div>
+            case 'text': {
+              const hasEntity = activeEntities.length > 0 &&
+                activeEntities.some(e =>
+                  new RegExp(e.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i').test(block.content)
+                )
+              const shouldHighlight = hasEntity && !entityHighlightUsed
+              if (shouldHighlight) entityHighlightUsed = true
+              return <div key={i}>{formatDrugText(block.content, shouldHighlight ? activeEntities : [])}</div>
+            }
 
             case 'table':
-              return <TableBlock key={i} block={block} />
+              return (
+                <ShouldHighlightContext.Provider key={i} value={!entityHighlightUsed}>
+                  <TableBlock block={block} />
+                </ShouldHighlightContext.Provider>
+              )
 
             case 'bullet_list':
-              return <BulletListBlock key={i} block={block} />
+              return (
+                <ShouldHighlightContext.Provider key={i} value={!entityHighlightUsed}>
+                  <BulletListBlock block={block} />
+                </ShouldHighlightContext.Provider>
+              )
 
             case 'section':
-              return <SectionBlock key={i} block={block} />
+              return (
+                <ShouldHighlightContext.Provider key={i} value={!entityHighlightUsed}>
+                  <SectionBlock block={block} />
+                </ShouldHighlightContext.Provider>
+              )
 
             case 'reference_list':
               return <ReferenceListBlock key={i} block={block} />
 
             default:
-              // Safety net — render raw content if present, otherwise skip
+
               return block.content
                 ? <p key={i} className="bot-text">{block.content}</p>
                 : null
@@ -266,7 +410,7 @@ function BotMessage({ payload }) {
     )
   }
 
-  // Absolute fallback — should never be reached with a well-formed backend response
+
   return <p>{JSON.stringify(payload)}</p>
 }
 
@@ -282,6 +426,7 @@ function App() {
   const [messages, setMessages] = useState([])
   const [inputValue, setInputValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [activeEntities, setActiveEntities] = useState([])
   const chatBottomRef = useRef(null)
 
   useEffect(() => {
@@ -293,7 +438,7 @@ function App() {
     const trimmed = inputValue.trim()
     if (!trimmed || isLoading) return
 
-    setMessages(prev => [...prev, { role: 'user', text: trimmed }])
+    setMessages(prev => [...prev, { role: 'user', text: trimmed, entities: [] }])
     setInputValue('')
     setIsLoading(true)
 
@@ -315,10 +460,6 @@ function App() {
       const data = await response.json()
       const botReply = data.reply ?? 'Sorry, I did not receive a valid response.'
 
-      // The backend uses jsonify() which always produces valid JSON, so the
-      // reply arrives as a proper object when it's structured. The single-quote
-      // fallback is kept as a safety net for any edge case where a Python dict
-      // gets stringified before being passed to jsonify.
       let parsedReply
       if (typeof botReply === 'string') {
         try {
@@ -332,14 +473,36 @@ function App() {
               .replace(/\bFalse\b/g, 'false')
             parsedReply = JSON.parse(asJson)
           } catch {
-            parsedReply = botReply  // genuinely plain text
+            parsedReply = botReply
           }
         }
       } else {
-        parsedReply = botReply  // already an object — most structured responses land here
+        parsedReply = botReply
       }
 
-      setMessages(prev => [...prev, { role: 'bot', payload: parsedReply }])
+
+      const resolvedEntities = data.resolved_entities
+        ? Object.values(data.resolved_entities).flat()
+        : []
+
+
+      if (resolvedEntities.length > 0) {
+        setActiveEntities(resolvedEntities)
+      }
+
+
+      setMessages(prev => {
+        const updated = [...prev]
+        for (let i = updated.length - 1; i >= 0; i--) {
+          if (updated[i].role === 'user') {
+            updated[i] = { ...updated[i], entities: resolvedEntities }
+            break
+          }
+        }
+        return updated
+      })
+
+      setMessages(prev => [...prev, { role: 'bot', payload: parsedReply, entities: resolvedEntities }])
 
     } catch (err) {
       const errorText = err.message || 'Something went wrong. Please try again.'
@@ -352,22 +515,22 @@ function App() {
   const handleClearChat = async (e) => {
     e.preventDefault()
 
-    // Tell Flask to wipe the server-side session cookie
+
     try {
       await fetch(`${API_BASE_URL}/session/clear`, {
         method: 'POST',
-        credentials: 'include',   // must send the cookie so Flask knows which session to clear
+        credentials: 'include',
       })
     } catch {
-      // Non-fatal — proceed with frontend reset regardless
     }
 
-    // Now reset the frontend
+
     const newSessionId = generateSessionId()
     sessionStorage.setItem('ophiuchus_session_id', newSessionId)
     setSessionId(newSessionId)
     setMessages([])
     setInputValue('')
+    setActiveEntities([])
     setActivePage('chat')
   }
 
@@ -399,7 +562,7 @@ function App() {
           {!darkMode
             ? <img src={chat_icon} alt="chat-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
             : <img src={chat_icon_dark} alt="chat-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />}
-          {!navCollapsed && <div className="nav-title">Chat</div>}
+          {!navCollapsed && <div className={`nav-title ${activePage === 'chat' ? 'font-[Cabin-Bold]' : ''}`}>Chat</div>}
         </div>
 
         <div
@@ -409,7 +572,7 @@ function App() {
           {!darkMode
             ? <img src={about_icon} alt="about-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
             : <img src={about_icon_dark} alt="about-icon-dark" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />}
-          {!navCollapsed && <div className="nav-title">About</div>}
+          {!navCollapsed && <div className={`nav-title ${activePage === 'about' ? 'font-[Cabin-Bold]' : ''}`}>About</div>}
         </div>
 
         <div
@@ -419,7 +582,7 @@ function App() {
           {!darkMode
             ? <img src={faqs_icon} alt="FAQs-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />
             : <img src={faqs_icon_dark} alt="FAQs-icon" className={`icons ${navCollapsed ? 'collapsed' : ''}`} />}
-          {!navCollapsed && <div className="nav-title">FAQs</div>}
+          {!navCollapsed && <div className={`nav-title ${activePage === 'faqs' ? 'font-[Cabin-Bold]' : ''}`}>FAQs</div>}
         </div>
 
         {!navCollapsed && (
@@ -452,19 +615,29 @@ function App() {
                   </div>
                 )}
 
-                {messages.map((msg, index) =>
-                  msg.role === 'user' ? (
-                    <div className="message-container" key={index}>
-                      <div className="message-prompt"><p>{msg.text}</p></div>
-                    </div>
-                  ) : (
-                    <div className="reply-container" key={index}>
-                      <div className={`chatbot-reply ${msg.isError ? 'error' : ''}`}>
-                        <BotMessage payload={msg.payload} />
+                {(() => {
+                  const lastBotIndex = messages.reduce((last, msg, i) => msg.role === 'bot' ? i : last, -1)
+                  const lastUserIndex = messages.reduce((last, msg, i) => msg.role === 'user' ? i : last, -1)
+                  return messages.map((msg, index) =>
+                    msg.role === 'user' ? (
+                      <div className="message-container" key={index}>
+                        <div className="message-prompt">
+                          <p>{highlightEntities(msg.text, index === lastUserIndex ? msg.entities : [])}</p>
+                        </div>
                       </div>
-                    </div>
+                    ) : (
+                      <div className="reply-container" key={index}>
+                        <div className={`chatbot-reply ${msg.isError ? 'error' : ''}`}>
+                          <DarkModeContext.Provider value={darkMode}>
+                            <ActiveEntitiesContext.Provider value={index === lastBotIndex ? (msg.entities ?? []) : []}>
+                              <BotMessage payload={msg.payload} />
+                            </ActiveEntitiesContext.Provider>
+                          </DarkModeContext.Provider>
+                        </div>
+                      </div>
+                    )
                   )
-                )}
+                })()}
 
                 {isLoading && (
                   <div className="reply-container">
