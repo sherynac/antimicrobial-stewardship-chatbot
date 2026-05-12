@@ -968,4 +968,4 @@ class ResponseService:
         print(response_text)
         return self.build_text_response(response_text)
 
-response_service = ResponseService('./data/VRB.json')
+response_service = ResponseService('./backend/data/VRB.json')

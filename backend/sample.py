@@ -102,7 +102,7 @@ if __name__ == "__main__":
     # terminal_test("doxycycline food_and_timing")
 
     # test for all possible cases for get_administration
-    # terminal_test("doxycycline dynadoxy administration")
+    terminal_test("doxycycline dynadoxy administration")
     # terminal_test("doxycycline doxin administration") 
     # terminal_test("doxycycline doxyclen administration") 
     # terminal_test("dynadoxy administration") 

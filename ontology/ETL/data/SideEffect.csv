@@ -463,7 +463,7 @@ R172"
 SE232,A009,Anxiety,Not Specified,"Anxiety is a feeling of fear, dread, and uneasiness. It might cause you to sweat, feel restless and tense, and have a rapid heartbeat. It can be a normal reaction to stress.","R009
 R171"
 SE233,A009,Delirium,Not Specified,"Delirium is a mental state in which you are confused, disoriented, and not able to think or remember clearly. It usually starts suddenly. It is often temporary and treatable.","R009
-R2264"
+R264"
 SE234,A009,Hallucination,Not Specified,"Hallucinations involve sensing things such as visions, sounds, or smells that seem real but are not. These things are created by the mind.","R009
 R196"
 SE235,A009,Headache,Common,Headache is the most common form of pain. It's a major reason people miss days at work or school or visit the doctor.,"R009
@@ -591,7 +591,7 @@ R133"
 SE296,A010,Vomiting,Serious,Vomiting is when you throw up.,"R010
 R133"
 SE297,A010,Diarrhea,Serious,"Diarrhea is loose, watery stools (bowel movements).","R010
-R13"
+R134"
 SE298,A010,Abdominal Pain,Serious,Abdominal pain is pain that you feel anywhere between your chest and groin. This is often referred to as the stomach region or belly.,"R010
 R163"
 SE299,A010,Palpitation,Not Specified,"Palpitations are feelings or sensations that your heart is pounding or racing. They can be felt in your chest, throat, or neck.","R010

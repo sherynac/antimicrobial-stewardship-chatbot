@@ -8,8 +8,7 @@ from transformers import (
 )
 import torch
 
-    
-MODEL_BASE_PATH =  r'C:\Users\reyro\Downloads\antimicrobial-stewardship-chatbot\nlp\biobert_ner_model'
+MODEL_BASE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "models/biobert_ner_model")
 
 NER_MODEL_PATHS = {
     'disease': os.path.join(MODEL_BASE_PATH, 'OpenMed_OpenMed-NER-DiseaseDetect-SuperClinical-184M'),
@@ -37,7 +36,7 @@ MIN_WORD_LENGTH = 3
 
 CUSTOM_TERMS = {}
 
-BASE_PATH = r'C:\Users\reyro\Downloads\antimicrobial-stewardship-chatbot\backend\data\custom_terms'
+BASE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data/custom_terms")
 
 csv_files = [
     ('food.csv', 'FOOD'),
