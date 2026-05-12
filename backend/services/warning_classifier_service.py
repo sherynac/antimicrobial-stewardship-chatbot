@@ -2,12 +2,16 @@ import json
 import torch
 import torch.nn.functional as F
 import pandas as pd
+from pathlib import Path
 from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassification
 
 
 class WarningClassifierService:
 
-    def __init__(self, model_dir: str, signal_words_csv: str, max_len: int = 128):
+    # Path to the warning signal words CSV
+    SIGNAL_WORDS_CSV = Path(r'C:\Users\reyro\Downloads\antimicrobial-stewardship-chatbot\backend\data\custom_terms\warning signal words.csv')
+
+    def __init__(self, model_dir: str, max_len: int = 128):
         self.max_len = max_len
         self.device  = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -15,8 +19,8 @@ class WarningClassifierService:
         with open(f'{model_dir}/label_encoder_classes.json', 'r') as f:
             self.labels = json.load(f)
 
-        # Load signal words from CSV
-        sig_df = pd.read_csv(signal_words_csv)
+        # Load signal words from fixed CSV path
+        sig_df = pd.read_csv(self.SIGNAL_WORDS_CSV)
         self.warning_signal_words = (
             sig_df['signal_word']
             .astype(str)
@@ -35,7 +39,7 @@ class WarningClassifierService:
         print(f'  Model dir    : {model_dir}')
         print(f'  Device       : {self.device}')
         print(f'  Labels       : {self.labels}')
-        print(f'  Signal words : {len(self.warning_signal_words)} loaded from {signal_words_csv}')
+        print(f'  Signal words : {len(self.warning_signal_words)} loaded from {self.SIGNAL_WORDS_CSV}')
 
     def has_warning_signal(self, text: str) -> bool:
         text_lower = text.lower()
@@ -116,3 +120,30 @@ class WarningClassifierService:
                 }
 
         return results
+
+def main():
+    classifier = WarningClassifierService(model_dir=r'C:\Users\reyro\Downloads\antimicrobial-stewardship-chatbot\nlp\distilbert models\distilbert_warning_model')
+
+    test_questions = [
+        "What are the contraindications for Doxin?",
+        "Can I take Penicillin while pregnant?",
+        "What should I do in case of an overdose of Doxycycline?",
+        "Are there any warnings for elderly patients taking Doxin?",
+        "Is Doxyclen safe for children under 12?",
+        "What are the general warnings for Doxin?",
+        "What is beer and milk",
+        "Do you like Bread",
+    ]
+
+    for q in test_questions:
+        result = classifier.predict(q)
+        print(f'Question   : {result["text"]}')
+        if result['predicted_warning_type']:
+            print(f'Warning    : {result["predicted_warning_type"]}')
+            print(f'Confidence : {result["confidence"]}')
+        else:
+            print(f'Warning    : No warning detected')
+        print()
+
+if __name__ == '__main__':
+    main()

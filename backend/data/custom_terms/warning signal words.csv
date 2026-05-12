@@ -1,0 +1,89 @@
+signal_word,warning_category
+contraindicated,Contraindication
+contraindication,Contraindication
+must not,Contraindication
+should not,Contraindication
+do not use,Contraindication
+not recommended,Contraindication
+not suitable,Contraindication
+incompatible,Contraindication
+forbidden,Contraindication
+prohibited,Contraindication
+not for use,Contraindication
+avoid use,Contraindication
+pregnant,Pregnancy and Lactation
+pregnancy,Pregnancy and Lactation
+breastfeed,Pregnancy and Lactation
+breastfeeding,Pregnancy and Lactation
+lactation,Pregnancy and Lactation
+lactating,Pregnancy and Lactation
+nursing,Pregnancy and Lactation
+prenatal,Pregnancy and Lactation
+postnatal,Pregnancy and Lactation
+fetal,Pregnancy and Lactation
+fetus,Pregnancy and Lactation
+trimester,Pregnancy and Lactation
+maternal,Pregnancy and Lactation
+newborn,Pregnancy and Lactation
+overdose,Overdosage
+overdosage,Overdosage
+overdosed,Overdosage
+toxic dose,Overdosage
+toxicity,Overdosage
+lethal dose,Overdosage
+maximum dose,Overdosage
+exceeded dose,Overdosage
+too much,Overdosage
+accidental ingestion,Overdosage
+poisoning,Overdosage
+kidney,Patient Condition
+renal,Patient Condition
+liver,Patient Condition
+hepatic,Patient Condition
+cardiac,Patient Condition
+heart failure,Patient Condition
+diabetes,Patient Condition
+diabetic,Patient Condition
+hypertension,Patient Condition
+immunocompromised,Patient Condition
+asthma,Patient Condition
+epilepsy,Patient Condition
+seizure,Patient Condition
+chronic condition,Patient Condition
+child,Age Restriction
+children,Age Restriction
+infant,Age Restriction
+infants,Age Restriction
+pediatric,Age Restriction
+elderly,Age Restriction
+geriatric,Age Restriction
+neonatal,Age Restriction
+neonate,Age Restriction
+age limit,Age Restriction
+under 18,Age Restriction
+under 12,Age Restriction
+age restriction,Age Restriction
+not for children,Age Restriction
+warn,General Warning
+warning,General Warning
+caution,General Warning
+danger,General Warning
+dangerous,General Warning
+risk,General Warning
+risky,General Warning
+adverse,General Warning
+side effect,General Warning
+adverse effect,General Warning
+precaution,General Warning
+alert,General Warning
+hazard,General Warning
+harmful,General Warning
+toxic,General Warning
+serious,General Warning
+severe,General Warning
+interact,General Warning
+interaction,General Warning
+drug interaction,General Warning
+allergy,General Warning
+allergic,General Warning
+reaction,General Warning
