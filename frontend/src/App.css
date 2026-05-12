@@ -405,6 +405,118 @@ p.bot-references-label {
   @apply border border-black/20
 }
 
+/* ── Table expand feature ──────────────────────────────────────────────────── */
+.bot-table-outer {
+  @apply relative mx-3
+}
+
+.bot-table-outer .bot-table-wrapper {
+  @apply mx-0
+}
+
+.bot-table-expand-btn {
+  @apply flex items-center gap-1.5 mt-1.5 mb-1 ml-auto px-3 py-1 text-xs rounded-3xl
+         font-[Cabin-SemiBold] cursor-pointer
+         bg-black/5 text-[#02542D]
+         hover:opacity-75 transition-all duration-200 focus-visible:outline-0
+}
+
+.dark-mode .bot-table-expand-btn {
+  @apply bg-white/10 text-[#D4E9D7]
+}
+
+/* Modal overlay */
+.table-modal-overlay {
+  @apply fixed inset-0 z-50 flex items-center justify-center
+         bg-black/50 backdrop-blur-sm
+}
+
+/* Modal box */
+.table-modal {
+  @apply relative flex flex-col bg-white rounded-2xl shadow-2xl
+         w-[90vw] max-w-6xl h-[85vh] overflow-hidden
+}
+
+/* Close button */
+.table-modal-close {
+  @apply absolute top-3 right-3 z-10 flex items-center justify-center
+         w-8 h-8 rounded-full bg-black/10 hover:bg-black/20
+         cursor-pointer transition-colors duration-200 focus-visible:outline-0
+}
+
+/* Scrollable area inside modal */
+.table-modal-scroll {
+  @apply flex-1 overflow-auto p-6 pt-10 flex justify-center items-start
+}
+
+/* Inner wrapper — mirrors .bot-table-wrapper but without max-height cap */
+.table-modal-inner {
+  @apply w-full flex justify-center font-[Figtree-Regular]
+}
+
+.table-modal-inner .bot-table-wrapper {
+  @apply mx-0 max-h-none overflow-visible
+}
+
+.table-modal-inner .bot-table thead tr th {
+  @apply static bg-[#D4E9D7] border border-black/20 font-[Cabin-Bold] p-2
+}
+
+.table-modal-inner .bot-table td {
+  @apply p-2 border border-black/20
+}
+
+.table-modal.dark-modal .table-modal-inner .bot-table thead tr th {
+  @apply bg-[#424242] border-white/20
+}
+
+.table-modal.dark-modal .table-modal-inner .bot-table td {
+  @apply border-white/20
+}
+
+/* Zoom controls bar */
+.table-modal-controls {
+  @apply flex items-center justify-center gap-3 py-3
+         border-t border-black/10
+}
+
+.table-zoom-btn {
+  @apply flex items-center justify-center w-9 h-9 rounded-full
+         bg-[#D4E9D7] text-[#02542D]
+         hover:opacity-75 disabled:opacity-30 disabled:cursor-not-allowed
+         cursor-pointer transition-all duration-200 focus-visible:outline-0
+}
+
+.table-zoom-label {
+  @apply text-sm font-[Cabin-SemiBold] w-12 text-center
+}
+
+/* Dark-mode modal */
+.table-modal.dark-modal {
+  @apply bg-[#232323] text-white
+}
+
+.table-modal.dark-modal .table-modal-controls {
+  @apply border-white/10
+}
+
+.table-modal.dark-modal .table-modal-close {
+  @apply bg-white/10 hover:bg-white/20
+}
+
+.table-modal.dark-modal .table-zoom-btn {
+  @apply bg-[#3B3B3B] text-[#D4E9D7]
+}
+
+.table-modal.dark-modal .bot-table thead tr th {
+  @apply bg-[#424242]
+}
+
+.table-modal.dark-modal .bot-table-wrapper th,
+.table-modal.dark-modal .bot-table-wrapper td {
+  @apply border-white/20
+}
+
 /* Scrollbar*/
 ::-webkit-scrollbar {
   width: 0.3rem;
