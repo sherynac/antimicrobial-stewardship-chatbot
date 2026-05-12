@@ -23,15 +23,15 @@ with open(os.path.join(EXPORT_DIR, "label_encoder.pkl"), "rb") as f:
 print(f"Intent model loaded on {DEVICE}")
 
 INTENT_THRESHOLDS = {
-    'get_antibiotic_info':          0.70, # adjusted
-    'get_uses_indications':         0.50,
-    'get_side_effects':             0.85,  # adjusted
-    'get_substance_interaction':    0.90,  # adjusted
-    'get_warning_precautions':      0.90,  # adjusted
-    'get_storage_instructions':      0.75, # adjusted
-    'get_food_and_timing':          0.75, # adjusted
-    'get_administration_instructions': 0.75, # adjusted
-    'redirect_medicine_query':      0.40
+    'get_antibiotic_info':          0.71, # adjusted
+    'get_uses_indications':         0.92,
+    'get_side_effects':             0.87,  # adjusted
+    'get_substance_interaction':    0.89,  # adjusted
+    'get_warning_precautions':      0.95,  # adjusted
+    'get_storage_instructions':      0.73, # adjusted
+    'get_food_and_timing':          0.79, # adjusted
+    'get_administration_instructions': 0.86, # adjusted
+    'redirect_medicine_query':      0.97
 }
 
 def identify_intent(text: str) -> str:
