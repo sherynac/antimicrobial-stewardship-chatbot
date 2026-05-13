@@ -20,7 +20,7 @@ class NERService:
         # Load everything ONCE at startup
         self.custom_terms = self._load_custom_terms()
         self.ner_pipelines = self._load_ner_models()
-        self.ontology = self._load_ontology_once()
+        self.ontology = self._load_ontology_once()  # also sets self.ontology_lookup
         
         print(f'NERService initialized on: {"GPU" if self.device == 0 else "CPU"}')
         print(f'Loaded {len(self.custom_terms)} custom terms')
@@ -117,10 +117,23 @@ class NERService:
 
             print(f"Filled entities: {entities}")
 
+            # Build case-insensitive lookup: lowercase (and no-space variant) → canonical name
+            # e.g. "ritemedlevofloxacin" → "RiteMEDLevofloxacin"
+            #      "ritemed levofloxacin" → "RiteMEDLevofloxacin"  (space-stripped key)
+            self.ontology_lookup = {}
+            for category, names in entities.items():
+                for name in names:
+                    lower = name.lower()
+                    self.ontology_lookup[lower] = name
+                    no_space = lower.replace(' ', '')
+                    if no_space != lower:
+                        self.ontology_lookup[no_space] = name
+
             return entities
         except AttributeError:
             print("⚠️  Ontology methods not found - using empty lists")
-            return {'BrandS': [], 'GenericS': [], 'DRUG_CLASSES': [], 'SideEffectS': []}
+            self.ontology_lookup = {}
+            return {'Brand': [], 'Antibiotic': [], 'SideEffect': [], 'Substance': []}
     
     def clean_entity(self, word: str) -> str:
         """Clean entity text"""
@@ -184,29 +197,98 @@ class NERService:
                     'confidence': 1.0,
                     'source': 'custom'
                 })
-        
+                custom_added.add(term_lower)
+
+        # Ontology scan — handles multi-word & odd casing (e.g. "Ritemed Levofloxacin")
+        # Matches against both normal text and space-stripped text so "ritemed levofloxacin"
+        # hits the key "ritemedlevofloxacin" → canonical "RiteMEDLevofloxacin"
+        text_lower = text.lower()
+        text_lower_nospace = text_lower.replace(' ', '')
+        ontology_added = set()  # track canonicals already added in this pass
+
+        for name_lower, canonical in self.ontology_lookup.items():
+            if canonical in ontology_added:
+                continue
+
+            matched = (
+                re.search(r'\b' + re.escape(name_lower) + r'\b', text_lower)
+                or name_lower in text_lower_nospace
+            )
+
+            if not matched:
+                continue
+
+            if canonical in self.ontology['Brand']:
+                label = 'Brand'
+            elif canonical in self.ontology['Antibiotic']:
+                label = 'CHEM'
+            elif canonical in self.ontology['Substance']:
+                label = 'Substance'
+            else:
+                continue
+
+            # If this is a brand, remove any previously added entity whose name
+            # is a substring of this brand (e.g. remove "Levofloxacin" when
+            # "RiteMEDLevofloxacin" is found), UNLESS it is itself a brand match.
+            if label == 'Brand':
+                results = [
+                    r for r in results
+                    if not (
+                        r['entity'].lower() in canonical.lower()
+                        and r['entity_type'] != 'Brand'
+                    )
+                ]
+
+            results.append({
+                'entity': canonical,
+                'entity_type': label,
+                'confidence': 1.0,
+                'source': 'ontology'
+            })
+            ontology_added.add(canonical)
+
         return results
     
     def classify_entities(self, question_entities: Dict[str, List[str]]) -> Dict[str, List[str]]:
         """Classify CHEM → Brand/Generic + DISEASE → SideEffect"""
         result = defaultdict(list)
-        
-        # Classify CHEM (memory lookup only - FAST!)
+
+        # Pass through Brand entities already identified by the ontology scan
+        for brand in question_entities.get('Brand', []):
+            if brand in self.ontology['Brand']:
+                result['Brand'].append(brand)
+
+        # Collect generic names already covered by a matched brand
+        covered_generics = set()
+        for brand in result.get('Brand', []):
+            covered_generics.add(brand.lower())
+
+        # Classify CHEM → Brand / Generic / Substance
         for chem in question_entities.get('CHEM', []):
             print("ENTITY CHEM", chem)
+            canonical = self.ontology_lookup.get(chem.lower())
+            print("CANONICAL MATCH", canonical)
 
-            print("CHECKING OF READ ONTOLGOY", self.ontology['Brand'])
-            if chem in self.ontology['Brand']:
-                result['Brand'].append(chem)
-            elif chem in self.ontology['Antibiotic']:
-                result['Generic'].append(chem)
-            elif chem in self.ontology['Substance']:
-                result['Substance'].append(chem)
+            if canonical is None:
+                continue
+
+            # Skip if this generic name is a substring of an already-matched brand
+            if any(canonical.lower() in b.lower() for b in result.get('Brand', [])):
+                print(f"Skipping '{canonical}' — already covered by a matched brand")
+                continue
+
+            if canonical in self.ontology['Brand']:
+                result['Brand'].append(canonical)
+            elif canonical in self.ontology['Antibiotic']:
+                result['Generic'].append(canonical)
+            elif canonical in self.ontology['Substance']:
+                result['Substance'].append(canonical)
         
-        # Classify DISEASE → SideEffect (memory lookup)
+        # Classify DISEASE → SideEffect
         for disease in question_entities.get('EFFECT', []):
-            if disease in self.ontology['SideEffect']:
-                result['SideEffect'].append(disease)
+            canonical = self.ontology_lookup.get(disease.lower(), disease)
+            if canonical in self.ontology['SideEffect']:
+                result['SideEffect'].append(canonical)
         
         return dict(result)
     
@@ -236,4 +318,3 @@ class NERService:
         return 'unknown_query_type'
 
 ner_service = NERService()
-

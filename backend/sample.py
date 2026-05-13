@@ -29,9 +29,15 @@ def terminal_test():
 
             question_entities = defaultdict(list)
             for entity_dict in raw_entities:
-                camel_word = to_camel_case(entity_dict['entity'])
                 entity_type = entity_dict['entity_type']
-                question_entities[entity_type].append(camel_word)
+                
+                # Preserve canonical casing for ontology matches; camel-case only NER output
+                if entity_dict.get('source') == 'ontology' or entity_dict.get('source') == 'custom':
+                    word = entity_dict['entity']
+                else:
+                    word = to_camel_case(entity_dict['entity'])
+                
+                question_entities[entity_type].append(word)
                 
             print(f"Processed question entities: {question_entities}")
             
