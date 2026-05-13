@@ -1,5 +1,6 @@
 from typing import List
 import services.ontology_service as ontology_service
+import services.ner_service as ner_service
 import services.intent_handler as intent_handler
 import os
 
@@ -80,7 +81,7 @@ def handle_intent(intent, query_type, question_entities):
         return intent_handler.handle_storage_instruction(question_entities, query_type)
     elif intent == 'get_food_and_timing':
         question_entities.pop("Substance", None)
-        query_type = identify_entities_present(question_entities.keys())
+        query_type = ner_service.identify_entities_present(question_entities.keys())
         print("QUERY TYPE", query_type)
         print(question_entities)
         return intent_handler.handle_food_and_timing(question_entities, query_type)
@@ -91,48 +92,3 @@ def handle_intent(intent, query_type, question_entities):
     else:
         print("Sorry, I couldn't understand your question. Could you please rephrase it?")
         return None
-
-def identify_entities_present(entity_types):
-    generic_brand = ['Antibiotic', 'Brand']
-    generic = ['Antibiotic']
-    substance = ['Substance']
-    generic_substance = ['Antibiotic', 'Substance']
-    brand_substance = ['Brand', 'Substance']
-    generic_brand_substance = ['Antibiotic', 'Brand', 'Substance']
-    generic_brand_side_effects = ['Antibiotic', 'Brand', 'SideEffect']
-    brand_side_effects = ['Brand', 'SideEffect']
-    generic_side_effects = ['Antibiotic', 'SideEffect']
-    generic_warning = ['Antibiotic', 'Warning']
-    brand_warning = ['Brand', 'Warning']
-
-    if all (e in entity_types for e in generic_brand_substance):
-        return 'generic_brand_substance'
-    elif all (e in entity_types for e in generic_substance):
-        return 'generic_substance'
-    elif all (e in entity_types for e in brand_substance):
-        return 'brand_substance'
-    elif all (e in entity_types for e in generic_warning):
-        print("ENTITIES GENERIC WARNINGS", entity_types)
-        return 'generic_warning'
-    elif all (e in entity_types for e in brand_warning):
-        return 'brand_warning'
-    elif all (e in entity_types for e in generic_brand_side_effects):
-        return 'generic_brand_side_effects'
-    elif all (e in entity_types for e in brand_side_effects):
-        return 'brand_side_effects'
-    elif all (e in entity_types for e in generic_side_effects):
-        return 'generic_side_effects'
-    elif all (e in entity_types for e in generic_brand):
-        return 'generic_brand'
-    elif all (e in entity_types for e in generic):
-        return 'generic'
-    elif all(e == 'Brand' for e in entity_types):
-        entity_types_list = list(entity_types)
-        if entity_types_list.count('Brand') > 1:
-            return 'multiple_brands'
-        return 'brand'
-    elif all (e in entity_types for e in substance):
-        return 'substance'
-    else:
-        return 'unknown_entity_combination'
-    

@@ -1,9 +1,10 @@
 import services.intent_service as intent_service
-import services.entities_service as entities_service
+from services.ner_service import ner_service
 from services.ontology_service import ontology_service
 from services.response_service import response_service
-from utils.helpers import get_splitted_question
-entities = entities_service.fill_entities()
+from utils.helpers import to_camel_case
+from collections import defaultdict
+
 
 def terminal_test():
     print("\n")
@@ -21,24 +22,30 @@ def terminal_test():
                 print("Goodbye!")
                 break
 
-            words = get_splitted_question(question)
-            raw_entities = entities_service.look_up_entity(words, question)
+
+            raw_entities = ner_service.extract_entities(question)
             print(f"RAW question entities: {raw_entities}")
-            
-            question_entities = {}
-            for word, entity_type in raw_entities.items():
-                if entity_type not in question_entities:
-                    question_entities[entity_type] = []
-                question_entities[entity_type].append(word.capitalize())
+
+            question_entities = defaultdict(list)
+            for entity_dict in raw_entities:
+                camel_word = to_camel_case(entity_dict['entity'])
+                entity_type = entity_dict['entity_type']
+                question_entities[entity_type].append(camel_word)
                 
             print(f"Processed question entities: {question_entities}")
             
             intent = intent_service.identify_intent(question)
             print(f"Identified intent: {intent}")
-            query_type = intent_service.identify_entities_present(raw_entities.values())
+            
+            classified = ner_service.classify_entities(question_entities)
+            print("CLASSIFIED ENTITIES", classified)
+
+            entity_types = list(classified.keys())
+
+            query_type = ner_service.identify_query_type(entity_types)
             print(f"Identified query type: {query_type}", end="\n\n")
                 
-            response = intent_service.handle_intent(intent, query_type, question_entities)
+            response = intent_service.handle_intent(intent, query_type, classified)
             print(response)
 
         except ValueError as e:
@@ -52,6 +59,7 @@ def terminal_test():
 
 if __name__ == "__main__":
     terminal_test()
+
     # test for all possible cases for get_antibiotic_info
     # terminal_test("doxycycline antibiotic_info")
     # terminal_test("levofloxacin antibiotic_info")

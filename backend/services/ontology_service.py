@@ -32,23 +32,26 @@ class OntologyService:
         raise ValueError(f"Entity '{entity}' not found in the ontology.")
 
     def find_entities(self, entity_name: str) -> list[str]:
+        """Returns FLAT list of entity names"""
         entities = []
-        entity_class = self.onto.search_one(iri="*#" + entity_name)  # ← self.onto
-
+        entity_class = self.onto.search_one(iri="*#" + entity_name)
+        
         if entity_class:
             for entity in entity_class.instances():
-                entity_name_clean = str(entity).split(".")[-1]
-                entities.append(entity_name_clean)
-        return sorted(set(entities))
+                entities.append(entity.name)
+        
+        return sorted(list(set(entities)))
 
     def find_subclasses(self, entity_name: str) -> list[str]:
-        entity_class = self.onto.search_one(iri="*#" + entity_name)
+        """Returns FLAT list of subclass names"""
         subclasses = []
-
+        entity_class = self.onto.search_one(iri="*#" + entity_name)
+        
         if entity_class:
             for subclass in entity_class.subclasses():
                 subclasses.append(subclass.name)
-        return sorted(set(subclasses))
+        
+        return sorted(list(set(subclasses)))
     
     def is_correct_generic(self, generic_name, brand_obj):
         generic_obj = brand_obj.isBrandOf

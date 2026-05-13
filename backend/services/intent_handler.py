@@ -74,6 +74,7 @@ def handle_antibiotic_info(entities, query_type):
 
     elif query_type == 'brand':
         brand_name = entities.get('Brand', [None])[0]
+        print("RECEIVED BRAND", brand_name)
         brand_obj = ontology_service.query_ontology(brand_name)
         generic_obj = brand_obj.isBrandOf
         generic_name = generic_obj.name

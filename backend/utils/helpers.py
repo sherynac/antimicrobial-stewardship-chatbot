@@ -1,5 +1,12 @@
 import re
 
+def to_camel_case(text):
+    # Split on spaces/whitespace and capitalize each word, then join without spaces
+    words = re.findall(r'\b\w+\b', text.lower())
+    if not words:
+        return text.capitalize()
+    return ''.join(word.capitalize() for word in words)
+
 def array_to_string (array):
     '''
     Method for transforming an array to a string
@@ -62,14 +69,6 @@ def is_name_match(user_string, db_string):
     db_words = set(clean_db_string.split())
     
     return user_words.issubset(db_words)
-
-def get_splitted_question(question):
-    question = question.lower()
-    question = re.sub(r'\s+', ' ', question)
-    question = question.strip()
-    words = re.findall(r'\b\w+\b', question)
-    # print(f"Splitted question: {words}")
-    return words
 
 def split_commas(sentence):
     string = sentence[0]  # → "headache, dizziness, tiredness"
