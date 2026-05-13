@@ -23,7 +23,6 @@ def terminal_test():
                 print("Goodbye!")
                 break
 
-
             raw_entities = ner_service.extract_entities(question)
             print(f"RAW question entities: {raw_entities}")
 
@@ -44,7 +43,6 @@ def terminal_test():
             intent = intent_service.identify_intent(question)
             print(f"Identified intent: {intent}")
             
-                
             classified = ner_service.classify_entities(question_entities)
 
             if intent == "get_warning_precautions":
@@ -68,8 +66,8 @@ def terminal_test():
         except AssertionError as e:
             error_json = response_service.build_text_response(str(e))
             print(error_json)
-        # except Exception as e:
-        #     print(f"Unexpected error: {e}")  # catch anything else so loop never dies
+        except Exception as e:
+            print(f"Unexpected error: {e}")  # catch anything else so loop never dies
 
 if __name__ == "__main__":
     terminal_test()

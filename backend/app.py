@@ -2,27 +2,25 @@ import os
 import uuid
 from flask import Flask, request, jsonify, session
 from flask_cors import CORS
+from collections import defaultdict
 
 import services.intent_service as intent_service
-import services.entities_service as entities_service
+from services.ner_service import ner_service
+from services.ontology_service import ontology_service
 from services.response_service import response_service
-from utils.helpers import get_splitted_question
+from services.warning_classifier_service import warning_classifier
+from utils.helpers import to_camel_case
 
 app = Flask(__name__)
 
-# Secret key for signing session cookies — override via SECRET_KEY env var in production
 app.secret_key = os.environ.get("SECRET_KEY", os.urandom(24))
 
-# Allow credentials (cookies) from the React dev server and the nginx-served frontend
 CORS(app, supports_credentials=True, origins=[
-    "http://localhost:5173",   # Vite dev server
-    "http://localhost:3000",   # alternative dev port
-    "http://localhost",        # nginx in Docker
-    "http://frontend",         # Docker service name
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "http://localhost",
+    "http://frontend",
 ])
-
-# Pre-load entity list once at startup (reads the OWL ontology — expensive)
-_entities_cache = entities_service.fill_entities()
 
 
 # ---------------------------------------------------------------------------
@@ -48,64 +46,66 @@ def chat():
     if "session_id" not in session:
         session["session_id"] = str(uuid.uuid4())
 
-    # session_entities: list of {EntityType: [names]} dicts, one per turn
     if "session_entities" not in session:
         session["session_entities"] = []
 
     # ── NER ────────────────────────────────────────────────────────────────
-    words = get_splitted_question(question)
-    raw_entities = entities_service.look_up_entity(words, question)
+    raw_entities = ner_service.extract_entities(question)
 
-    # Build {EntityType: [Name, ...]} for this turn
-    current_entities: dict = {}
-    for word, entity_type in raw_entities.items():
-        current_entities.setdefault(entity_type, []).append(word.capitalize())
+    # Build {EntityType: [Name, ...]} for this turn — same as terminal
+    current_entities = defaultdict(list)
+    for entity_dict in raw_entities:
+        entity_type = entity_dict['entity_type']
+
+        if entity_dict.get('source') in ('ontology', 'custom'):
+            word = entity_dict['entity']
+        else:
+            word = to_camel_case(entity_dict['entity'])
+
+        current_entities[entity_type].append(word)
 
     # ── Follow-up context merging ──────────────────────────────────────────
-    # Rule 1: Current question has entities → it's a NEW topic.
-    #         Use only what the user just said. Never pull from history.
-    #
-    # Rule 2: Current question has NO entities → it's a follow-up
-    #         (e.g. "What about its side effects?", "Tell me more").
-    #         Reuse the full resolved context from the previous turn.
     if current_entities:
-        # New topic — use only current turn's entities
         question_entities = dict(current_entities)
     elif session["session_entities"]:
-        # Pure follow-up — clone last turn's resolved entities
         question_entities = dict(session["session_entities"][-1])
     else:
-        # No entities and no history — nothing to work with
         question_entities = {}
 
-    # Persist this turn's RESOLVED entities to history (keep last 10 turns).
-    # We store question_entities (not current_entities) so that follow-up
-    # chains always have a non-empty context to inherit from.
     session["session_entities"] = (session["session_entities"][-9:] + [question_entities])
-    session.modified = True  # required: Flask won't auto-detect mutations in nested lists
+    session.modified = True
 
-    # ── Intent + response ──────────────────────────────────────────────────
+    # ── Intent + classify + response ───────────────────────────────────────
     try:
         intent = intent_service.identify_intent(question)
-        query_type = intent_service.identify_entities_present(question_entities.keys())
-        print("CONDITION", query_type)
 
-        result = intent_service.handle_intent(intent, query_type, question_entities)
+        classified = ner_service.classify_entities(question_entities)
+
+        if intent == "get_warning_precautions":
+            warning_result = warning_classifier.predict(question)
+            if warning_result['predicted_warning_type']:
+                classified['WarningType'] = [warning_result['predicted_warning_type']]
+
+        entity_types = list(classified.keys())
+        query_type = ner_service.identify_query_type(entity_types)
+
+        result = intent_service.handle_intent(intent, query_type, classified)
 
         if result is None:
-            reply = "Sorry, I couldn't understand your question. Could you please rephrase it?"
-        elif isinstance(result, (dict, list)):
-            reply = result
+            reply = response_service.build_text_response(
+                "Sorry, I couldn't understand your question. Could you please rephrase it?"
+            )
         else:
-            reply = str(result)
+            reply = result
 
     except (ValueError, AssertionError) as e:
-        reply = str(e)
+        reply = response_service.build_text_response(str(e))
     except Exception as e:
         app.logger.exception("Unexpected error in /chat")
-        reply = "I didn't quite get that. Can you please try rephrasing your question?"
+        reply = response_service.build_text_response(
+            "I didn't quite get that. Can you please try rephrasing your question?"
+        )
 
-    print(reply)
     return jsonify({
         "reply": reply,
         "session_id": session["session_id"],
@@ -114,7 +114,7 @@ def chat():
 
 
 # ---------------------------------------------------------------------------
-# Clear session endpoint — called when user clicks "Clear Chat"
+# Clear session
 # ---------------------------------------------------------------------------
 @app.route("/session/clear", methods=["POST"])
 def clear_session():
