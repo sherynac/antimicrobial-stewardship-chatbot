@@ -9,7 +9,7 @@ from utils.helpers import add_space_to_pascal_case, split_commas, array_to_strin
 def handle_antibiotic_info(entities, query_type):
     
     if query_type == 'generic_brand':
-        generic_name = entities.get('Antibiotic', [None])[0]
+        generic_name = entities.get('Generic', [None])[0]
         brand_name = entities.get('Brand', [None])[0]
         brand_obj = ontology_service.query_ontology(brand_name)
         generic_obj = ontology_service.query_ontology(generic_name)
@@ -51,7 +51,7 @@ def handle_antibiotic_info(entities, query_type):
 
 
     elif query_type == 'generic':
-        generic_name = entities.get('Antibiotic', [None])[0]
+        generic_name = entities.get('Generic', [None])[0]
         generic_obj = ontology_service.query_ontology(generic_name)
         drug_class = generic_obj.hasDrugClass
         brands_obj = generic_obj.hasBrandName
@@ -117,7 +117,7 @@ def handle_antibiotic_info(entities, query_type):
 def handle_uses_indications(entities, query_type):
     if query_type == 'generic_brand':
         print("Handling uses and indications for generic_brand query type")
-        generic_name = entities.get('Antibiotic', [None])[0]
+        generic_name = entities.get('Generic', [None])[0]
         brand_name = entities.get('Brand', [None])[0]
         brand_obj = ontology_service.query_ontology(brand_name)
         generic_obj = ontology_service.query_ontology(generic_name)
@@ -227,7 +227,7 @@ def handle_uses_indications(entities, query_type):
             return response_service.build_indications_multiple(indication_info, indication_final, symptoms_obj, reference_list)
     
     elif query_type == 'generic':
-        generic_name = entities.get('Antibiotic', [None])[0]
+        generic_name = entities.get('Generic', [None])[0]
         generic_obj = ontology_service.query_ontology(generic_name)
         
         brands_obj = generic_obj.hasBrandName
@@ -262,7 +262,7 @@ def handle_uses_indications(entities, query_type):
 
 def handle_side_effects(entities, query_type):
     if query_type == 'generic_brand_side_effects':
-        generic_name = entities.get('Antibiotic', [None])[0]
+        generic_name = entities.get('Generic', [None])[0]
         brand_name = entities.get('Brand', [None])[0]
         target_side_effect = entities.get('SideEffect', [None])[0]
         brand_obj = ontology_service.query_ontology(brand_name)
@@ -286,7 +286,7 @@ def handle_side_effects(entities, query_type):
         return response_service.build_side_effect_all_match(isFound, side_effect_info, reference_list)
             
     elif query_type == 'generic_brand':
-        generic_name = entities.get('Antibiotic', [None])[0]
+        generic_name = entities.get('Generic', [None])[0]
         brand_name = entities.get('Brand', [None])[0]
         brand_obj = ontology_service.query_ontology(brand_name)
         generic_obj = ontology_service.query_ontology(generic_name)
@@ -325,7 +325,7 @@ def handle_side_effects(entities, query_type):
         return response_service.build_side_effect_generic_brand(info, side_effects_list, reference_list)
 
     elif query_type == 'generic':
-        generic_name = entities.get('Antibiotic', [None])[0]
+        generic_name = entities.get('Generic', [None])[0]
         generic_obj = ontology_service.query_ontology(generic_name)
         
         brands_obj = generic_obj.hasBrandName
@@ -372,7 +372,7 @@ def handle_side_effects(entities, query_type):
         return response_service.build_side_effect_generic(side_effect_info, reference_list)
                 
     elif query_type == 'generic_side_effects':# have not tested
-        generic_name = entities.get('Antibiotic', [None])[0]
+        generic_name = entities.get('Generic', [None])[0]
         generic_obj = ontology_service.query_ontology(generic_name)
         target_side_effect = entities.get('SideEffect', [None])[0]
         
@@ -465,7 +465,7 @@ def handle_substance_interaction(entities, query_type):
     ##
     
     if query_type == 'generic':
-        generic_name = entities.get('Antibiotic', [None])[0]
+        generic_name = entities.get('Generic', [None])[0]
         generic_obj = ontology_service.query_ontology(generic_name)
         brand_objs = generic_obj.hasBrandName
         reference_list = []
@@ -500,7 +500,7 @@ def handle_substance_interaction(entities, query_type):
         brand_obj = ontology_service.query_ontology(brand_name)
 
         if query_type == 'generic_brand':
-            generic_name = entities.get('Antibiotic', [None])[0]
+            generic_name = entities.get('Generic', [None])[0]
             generic_obj = ontology_service.query_ontology(generic_name)
             ontology_service.is_correct_generic(generic_name, brand_obj)
         else:
@@ -557,7 +557,7 @@ def handle_substance_interaction(entities, query_type):
             return response_service.build_interaction_none(interaction_info, reference_list)
                 
     elif query_type == 'generic_substance':
-        generic_name = entities.get('Antibiotic', [None])[0]
+        generic_name = entities.get('Generic', [None])[0]
         target_substance = entities.get('Substance', [None])[0]
         generic_obj = ontology_service.query_ontology(generic_name)
         brand_objs = generic_obj.hasBrandName
@@ -602,7 +602,7 @@ def handle_substance_interaction(entities, query_type):
         brand_obj = ontology_service.query_ontology(brand_name)
 
         if query_type == 'generic_brand_substance':
-            generic_name = entities.get('Antibiotic', [None])[0]
+            generic_name = entities.get('Generic', [None])[0]
             generic_obj = ontology_service.query_ontology(generic_name)
             ontology_service.is_correct_generic(generic_name, brand_obj)
         else:
@@ -654,9 +654,9 @@ def handle_substance_interaction(entities, query_type):
 
 def handle_warning_precautions(entities, query_type):
     WARNING_TYPE_MAP = {
-        'Pregnancy & lactation': 'PregnancyAndLactation',
-        'Age restriction':       'AgeRestriction',
-        'Patient condition':     'PatientCondition',
+        'Pregnancy and Lactation': 'PregnancyAndLactation',
+        'Age Restriction':       'AgeRestriction',
+        'Patient Condition':     'PatientCondition',
         'Contraindication':      'Contraindication',
         'Overdosage':            'Overdosage',
     }
@@ -666,7 +666,7 @@ def handle_warning_precautions(entities, query_type):
         brand_obj = ontology_service.query_ontology(brand_name)
 
         if query_type == 'generic_brand':
-            generic_name = entities.get('Antibiotic', [None])[0]
+            generic_name = entities.get('Generic', [None])[0]
             generic_obj = ontology_service.query_ontology(generic_name)
             ontology_service.is_correct_generic(generic_name, brand_obj)
         else:
@@ -700,9 +700,11 @@ def handle_warning_precautions(entities, query_type):
         return response_service.build_warnings_brand(response_data, reference_list)
     
     elif query_type == 'generic_warning':
-        target_warning_type = entities.get('Warning', [None])[0]
+        target_warning_type = entities.get('WarningType', [None])[0]
+        print("BEFORE", target_warning_type)
         target_warning_type = WARNING_TYPE_MAP.get(target_warning_type, target_warning_type)
-        generic_name = entities.get('Antibiotic', [None])[0]
+        print("AFTER", target_warning_type)
+        generic_name = entities.get('Generic', [None])[0]
         generic_obj = ontology_service.query_ontology(generic_name)
         brands_obj = generic_obj.hasBrandName
         reference_list = ontology_service.get_reference_from_entities(brands_obj)
@@ -712,7 +714,7 @@ def handle_warning_precautions(entities, query_type):
 
         info = {
             "generic":      generic_name,
-            "warning_type": (add_space_to_pascal_case(target_warning_type)).lower
+            "warning_type": (add_space_to_pascal_case(target_warning_type))
         }
 
         for brand in brands_obj:
@@ -742,7 +744,7 @@ def handle_warning_precautions(entities, query_type):
             return response_service.build_warnings_none(info, reference_list)
     
     elif query_type == 'brand_warning':
-        target_warning_type = entities.get('Warning', [None])[0]
+        target_warning_type = entities.get('WarningType', [None])[0]
         target_warning_type = WARNING_TYPE_MAP.get(target_warning_type, target_warning_type)
         brand_name = entities.get('Brand', [None])[0]
         brand_obj = ontology_service.query_ontology(brand_name)
@@ -757,6 +759,7 @@ def handle_warning_precautions(entities, query_type):
             ontology_warning_type = WARNING_TYPE_MAP.get(
                 warning_id.is_a[0].name, warning_id.is_a[0].name
             )
+
 
             if target_warning_type.lower() == ontology_warning_type.lower():
                 if brand_name not in warnings_by_brand:
@@ -788,7 +791,7 @@ def handle_warning_precautions(entities, query_type):
 
 def handle_storage_instruction(entities, query_type):
     if query_type == 'generic':
-        generic_name = entities.get('Antibiotic', [None])[0]
+        generic_name = entities.get('Generic', [None])[0]
         generic_obj = ontology_service.query_ontology(generic_name)
         brands_obj = generic_obj.hasBrandName
         reference_list = []
@@ -811,7 +814,7 @@ def handle_storage_instruction(entities, query_type):
         return response_service.build_storage_generic(storage_info, reference_list)
             
     elif query_type == 'generic_brand':
-        generic_name = entities.get('Antibiotic', [None])[0]
+        generic_name = entities.get('Generic', [None])[0]
         brand_name = entities.get('Brand', [None])[0]
         brand_obj = ontology_service.query_ontology(brand_name)
         ontology_service.is_correct_generic(generic_name, brand_obj)
@@ -855,7 +858,7 @@ def handle_food_and_timing(entities, query_type):
         entities.pop("Food", None)
 
     if query_type == 'generic':
-        generic_name = entities.get('Antibiotic', [None])[0]
+        generic_name = entities.get('Generic', [None])[0]
         generic_obj = ontology_service.query_ontology(generic_name)
         brands_obj = generic_obj.hasBrandName
         reference_list = []
@@ -877,7 +880,7 @@ def handle_food_and_timing(entities, query_type):
         return response_service.build_food_and_timing_generic(food_and_timing_info, reference_list)
             
     elif query_type == 'generic_brand':
-        generic_name = entities.get('Antibiotic', [None])[0]
+        generic_name = entities.get('Generic', [None])[0]
         brand_name = entities.get('Brand', [None])[0]
         brand_obj = ontology_service.query_ontology(brand_name)
         ontology_service.is_correct_generic(generic_name, brand_obj)
@@ -919,7 +922,7 @@ def handle_food_and_timing(entities, query_type):
 
 def handle_administration_instructions(entities, query_type):
     if query_type == 'generic':
-        generic_name = entities.get('Antibiotic', [None])[0]
+        generic_name = entities.get('Generic', [None])[0]
         generic_obj = ontology_service.query_ontology(generic_name)
         brands_obj = generic_obj.hasBrandName
         reference_list = []
@@ -941,7 +944,7 @@ def handle_administration_instructions(entities, query_type):
         return response_service.build_administration_generic(administration_info, reference_list)
             
     elif query_type == 'generic_brand':
-        generic_name = entities.get('Antibiotic', [None])[0]
+        generic_name = entities.get('Generic', [None])[0]
         brand_name = entities.get('Brand', [None])[0]
         brand_obj = ontology_service.query_ontology(brand_name)
         ontology_service.is_correct_generic(generic_name, brand_obj)

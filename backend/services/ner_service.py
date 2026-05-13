@@ -290,6 +290,9 @@ class NERService:
             if canonical in self.ontology['SideEffect']:
                 result['SideEffect'].append(canonical)
         
+        for substance in question_entities.get('Substance', []):
+            if substance in self.ontology['Substance']:
+                result['Substance'].append(substance)
         return dict(result)
     
     def identify_query_type(self, entity_types: Dict[str, List[str]]) -> str:
