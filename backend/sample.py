@@ -2,6 +2,7 @@ import services.intent_service as intent_service
 from services.ner_service import ner_service
 from services.ontology_service import ontology_service
 from services.response_service import response_service
+from services.warning_classifier_service import warning_classifier
 from utils.helpers import to_camel_case
 from collections import defaultdict
 
@@ -37,7 +38,14 @@ def terminal_test():
             intent = intent_service.identify_intent(question)
             print(f"Identified intent: {intent}")
             
+                
             classified = ner_service.classify_entities(question_entities)
+
+            if intent == "get_warning_precautions":
+                warning_result = warning_classifier.predict(question)
+                if warning_result['predicted_warning_type']:
+                    classified['WarningType'] = [warning_result['predicted_warning_type']]
+            
             print("CLASSIFIED ENTITIES", classified)
 
             entity_types = list(classified.keys())

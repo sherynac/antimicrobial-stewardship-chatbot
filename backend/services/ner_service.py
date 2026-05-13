@@ -216,9 +216,12 @@ class NERService:
         patterns = {
             frozenset(['Generic', 'Brand', 'SideEffect']): 'generic_brand_side_effects',
             frozenset(['Generic', 'Brand', 'Substance']): 'generic_brand_substance',
+            frozenset(['Generic', 'Brand', 'WarningType']): 'generic,_brand_warning',
             frozenset(['Brand', 'SideEffect']): 'brand_side_effects',
             frozenset(['Brand', 'Substance']): 'brand_substance',
+            frozenset(['Brand', 'WarningType']): 'brand_warning',
             frozenset(['Generic', 'SideEffect']): 'generic_side_effects',
+            frozenset(['Generic', 'WarningType']) : 'generic_warning',
             frozenset(['Generic', 'Substance']): 'generic_substance',
             frozenset(['Generic', 'Brand']): 'generic_brand',
             frozenset(['Generic']): 'generic',

@@ -1,6 +1,7 @@
 from typing import List
-import services.ontology_service as ontology_service
-import services.ner_service as ner_service
+from services.ontology_service import ontology_service
+from services.ner_service import ner_service
+from services.warning_classifier_service import warning_classifier
 import services.intent_handler as intent_handler
 import os
 
