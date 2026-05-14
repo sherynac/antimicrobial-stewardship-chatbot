@@ -76,6 +76,11 @@ def handle_intent(intent, query_type, question_entities):
         print("TO INTERACTION HANDLER")
         return intent_handler.handle_substance_interaction(question_entities, query_type)
     elif intent == 'get_warning_precautions':
+        if question_entities['WarningType'] == ['General Warning']:
+            question_entities.pop('WarningType')
+            query_type = ner_service.identify_query_type(question_entities)
+            print("QUERY TYPE", query_type)
+            print(question_entities)
         return intent_handler.handle_warning_precautions(question_entities, query_type)
     elif intent == 'get_storage_instructions':
         return intent_handler.handle_storage_instruction(question_entities, query_type)

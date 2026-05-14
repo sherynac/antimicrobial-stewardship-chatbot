@@ -85,6 +85,7 @@ def chat():
             warning_result = warning_classifier.predict(question)
             if warning_result['predicted_warning_type']:
                 classified['WarningType'] = [warning_result['predicted_warning_type']]
+                print("WARNING CLASSIFIER RESULT", warning_result)
 
         entity_types = list(classified.keys())
         query_type = ner_service.identify_query_type(entity_types)

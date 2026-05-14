@@ -679,7 +679,7 @@ def handle_warning_precautions(entities, query_type):
 
         for warning_id in warning_ids:
             warning_type = warning_id.is_a[0].name
-            warning_type = add_space_to_pascal_case(warning_type.lower())
+            warning_type = add_space_to_pascal_case(warning_type)
             warning_headline = warning_id.hasWarningHeadline
             warning_text = warning_id.hasWarningText
 
