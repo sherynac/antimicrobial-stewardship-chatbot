@@ -19,8 +19,7 @@ _model     = DistilBertForSequenceClassification.from_pretrained(EXPORT_DIR).to(
 _tokenizer = DistilBertTokenizerFast.from_pretrained(EXPORT_DIR)
 _model.eval()
 
-with open(os.path.join(EXPORT_DIR, "label_encoder.pkl"), "rb") as f:
-    _le = pickle.load(f)
+_le = np.load(os.path.join(EXPORT_DIR, "label_classes.npy"), allow_pickle=True)
 
 print(f"Intent model loaded on {DEVICE}")
 
@@ -54,7 +53,7 @@ def identify_intent(text: str) -> str:
     probs      = torch.softmax(logits, dim=1).squeeze().cpu().numpy()
     top_idx    = int(np.argmax(probs))
     confidence = float(probs[top_idx])
-    intent     = _le.inverse_transform([top_idx])[0]
+    intent = _le[top_idx]
 
     threshold = INTENT_THRESHOLDS.get(intent.lower())
     print(f"[Intent] '{intent}' | confidence: {confidence:.2f} | threshold: {threshold}")
